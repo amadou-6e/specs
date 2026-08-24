@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -19,11 +20,11 @@ IGNORED_PARTS = {".git", "__pycache__", "node_modules", ".venv", "venv"}
 
 
 def files() -> list[Path]:
-    return [
-        path
-        for path in ROOT.rglob("*")
-        if path.is_file() and not any(part in IGNORED_PARTS for part in path.parts)
-    ]
+    discovered: list[Path] = []
+    for directory, names, filenames in os.walk(ROOT):
+        names[:] = [name for name in names if name not in IGNORED_PARTS]
+        discovered.extend(Path(directory) / filename for filename in filenames)
+    return discovered
 
 
 def validate_manifest(project: Path, errors: list[str]) -> None:
