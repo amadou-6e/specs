@@ -1,0 +1,11 @@
+stateDiagram-v2
+  [*] --> pending : article created
+
+  pending --> pending : PATCH /api/articles/{id} (content changes, gate reset)
+  pending --> pass : POST /api/articles/{id}/inspect → word count ≥ 500 & all rules green
+  pending --> warn : POST /api/articles/{id}/inspect → word count OK but open comments
+  pending --> fail : POST /api/articles/{id}/inspect → word count < 500
+
+  pass --> pending : article body changed (autosave)
+  warn --> pending : article body changed (autosave)
+  fail --> pending : article body changed (autosave)

@@ -1,0 +1,24 @@
+flowchart LR
+    subgraph "Dev Service"
+        DR[Router\ndev.py]
+        SD[SEED_ARTICLES\nconstant]
+    end
+
+    subgraph Store
+        AS[(_articles)]
+        JS[(_jobs)]
+    end
+
+    subgraph "Test Runner"
+        PW[Playwright\nbeforeEach]
+        CI[CI health probe]
+    end
+
+    PW -->|POST /api/dev/reset| DR
+    CI -->|GET /health| DR
+
+    SD -->|deepcopy| DR
+    DR -->|overwrite| AS
+    DR -->|clear| JS
+    DR -->|200 ok| PW
+    DR -->|200 ok| CI

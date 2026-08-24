@@ -1,0 +1,68 @@
+flowchart TD
+    START(( )) --> LOAD
+
+    subgraph LOAD ["⟳  Load"]
+        direction LR
+        L1["GET /api/articles/:id"] -->|ok| L2([Article ready])
+        L1 -->|error| LE[Load error]
+    end
+
+    L2 --> WRITE
+
+    subgraph WRITE ["✏  Write Mode"]
+        direction TB
+        W1[Idle] -->|type| W2[Unsaved — amber dot]
+        W2 -->|"2s inactivity"| W3["PATCH /api/articles/:id (autosave)"]
+        W3 -->|ok| W1
+        W3 -->|error| WE[Save failed — dot stays]
+        WE -->|next keystroke| W2
+    end
+
+    WRITE -->|Review button| REVIEW
+    REVIEW -->|Review button| WRITE
+
+    subgraph REVIEW ["👁  Review Mode"]
+        direction LR
+        R1[Comment anchors active] --> R2{Overlay}
+        R2 -->|"Done — view patches"| R3([Open Patches panel])
+        R2 -->|Dismiss| R1
+    end
+
+    R3 --> WRITE
+
+    WRITE -->|"select text + Add Comment"| COMMENT
+
+    subgraph COMMENT ["💬  Comment Flow"]
+        direction TB
+        C1[Anchor created] --> C2{Action}
+        C2 -->|Fix with AI| C3["POST /api/agent/generate-patch → 202"]
+        C3 --> PATCH
+        C2 -->|Resolve| C4(["POST resolve → comment closed"])
+    end
+
+    subgraph PATCH ["⧉  Patch Pending"]
+        direction LR
+        P1[Diff shown in Patches panel] --> P2{Decision}
+        P2 -->|Accept| P3["POST /api/patches/:id/accept → diff applied"]
+        P2 -->|Reject| P4["POST /api/patches/:id/reject → comment stays open"]
+    end
+
+    P3 & P4 & C4 --> WRITE
+
+    WRITE -->|Preview toggle| PREVIEW
+
+    subgraph PREVIEW ["◫  Preview Pane"]
+        direction LR
+        V1[Markdown rendered] -->|Reload draft| V1
+    end
+
+    PREVIEW -->|Preview toggle| WRITE
+
+    WRITE -->|Inspect button| END_INSP(( ))
+    WRITE -->|Articles breadcrumb| END_OV(( ))
+
+    style START   fill:#6366f1,stroke:none
+    style END_INSP fill:#6366f1,stroke:none
+    style END_OV   fill:#6366f1,stroke:none
+    style LE  fill:#2a1515,stroke:#7f1d1d,color:#f87171
+    style WE  fill:#2a1515,stroke:#7f1d1d,color:#f87171

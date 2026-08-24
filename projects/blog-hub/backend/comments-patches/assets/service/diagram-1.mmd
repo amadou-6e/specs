@@ -1,0 +1,18 @@
+flowchart LR
+  FE["Editor\nComments + Patches panels"]
+  CR["Comments Router\n/api/articles/{id}/comments"]
+  PR["Patches Router\n/api/patches/{id}"]
+  CS["Comments Store"]
+  PS["Patches Store"]
+  AS["Articles Store"]
+  AG["Agent Service\n(writes patches)"]
+
+  FE -->|POST /comments| CR
+  FE -->|POST /comments/{cid}/resolve| CR
+  FE -->|POST /patches/{pid}/accept| PR
+  FE -->|POST /patches/{pid}/reject| PR
+  CR -->|read/write| CS
+  PR -->|read/write| PS
+  PR -->|apply diff to body| AS
+  AG -->|write Patch + hasPatch| PS
+  AG -->|update Comment.hasPatch| CS

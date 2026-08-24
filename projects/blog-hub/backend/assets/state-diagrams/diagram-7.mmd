@@ -1,0 +1,14 @@
+stateDiagram-v2
+  [*] --> disconnected : platform available but not configured
+
+  disconnected --> connecting : OAuth flow / CLI login initiated
+  connecting --> connected : token saved to connections store
+  connecting --> disconnected : OAuth cancelled or CLI error
+
+  connected --> expired : provider reports token expired
+  expired --> connecting : user clicks Reconnect
+
+  connected --> disconnected : DELETE /api/connections/{id} (disconnect)
+  expired --> disconnected : DELETE /api/connections/{id}
+
+  connected --> [*]

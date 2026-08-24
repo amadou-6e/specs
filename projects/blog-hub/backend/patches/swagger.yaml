@@ -1,0 +1,107 @@
+openapi: "3.0.3"
+info:
+  title: BlogHub Patches API
+  version: "0.1.0"
+
+paths:
+  /api/articles/{article_id}/patches:
+    get:
+      operationId: listPatches
+      summary: List all patches on an article
+      parameters:
+        - name: article_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Patch list
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [patches]
+                properties:
+                  patches:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Patch"
+        "404":
+          description: Article not found
+
+  /api/articles/{article_id}/patches/{patch_id}/accept:
+    post:
+      operationId: acceptPatch
+      summary: Accept a patch suggestion
+      parameters:
+        - name: article_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: patch_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Updated patch
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Patch"
+        "404":
+          description: Article or patch not found
+
+  /api/articles/{article_id}/patches/{patch_id}/reject:
+    post:
+      operationId: rejectPatch
+      summary: Reject a patch suggestion
+      parameters:
+        - name: article_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: patch_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Updated patch
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Patch"
+        "404":
+          description: Article or patch not found
+
+components:
+  schemas:
+    Patch:
+      type: object
+      required: [id, articleId, label, removed, added, state, createdAt]
+      properties:
+        id:
+          type: string
+        articleId:
+          type: string
+        commentId:
+          type: string
+          nullable: true
+        label:
+          type: string
+        removed:
+          type: string
+        added:
+          type: string
+        state:
+          type: string
+          enum: [pending, accepted, rejected]
+        createdAt:
+          type: string
+          format: date-time

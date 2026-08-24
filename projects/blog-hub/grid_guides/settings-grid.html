@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BlogHub · Settings Grid Guide</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --ink:#1a1917; --ink2:#4a4845; --ink3:#8a887f; --ink4:#b0aea8; --line:#dddad4;
+  --cg:16px; --mg:40px; --bl:24px;
+  --col-ln:rgba(214,52,36,.28);
+  --col-bg:rgba(214,52,36,.065);
+  --bl-ln:rgba(214,52,36,.09);
+  --lg:rgba(214,52,36,.70);
+}
+
+body{
+  background:#eceae6;
+  font-family:system-ui,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  padding:40px 24px 80px;
+  color:var(--ink);
+}
+
+.hd{
+  max-width:1260px;margin:0 auto 28px;
+  display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+}
+.hd-title{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);}
+.hd-spec{display:flex;}
+.hd-spec span{
+  font-size:9px;font-family:ui-monospace,monospace;color:var(--ink4);
+  padding:0 12px;border-left:1px solid var(--line);
+}
+.hd-spec span:first-child{padding-left:0;border-left:none;}
+
+.guide{
+  max-width:1260px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 136px;
+  align-items:start;
+}
+
+.wf-shell{background:#fff;border:1px solid #c4c0ba;display:flex;}
+
+.wf-mg{
+  width:var(--mg);flex-shrink:0;
+  background:rgba(214,52,36,.04);
+  border-right:1px dashed rgba(214,52,36,.18);
+  display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;
+}
+.wf-mg.r{border-right:none;border-left:1px dashed rgba(214,52,36,.18);}
+.wf-mg span{
+  font-size:6px;font-family:ui-monospace,monospace;
+  color:rgba(214,52,36,.45);letter-spacing:.08em;
+  writing-mode:vertical-rl;transform:rotate(180deg);
+}
+
+/* ── CONTENT GRID ──
+   Row y-positions from grid top (all multiples of 24px):
+     ruler  0     nav   24    hd    72
+     s1hd   120   nm    168   em    216
+     bio    264   div   336   s2hd  360
+     cl     408   oa    480   sv    552
+     end    624
+── */
+.wf-grid{
+  flex:1;
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  column-gap:var(--cg);
+  row-gap:0;
+  position:relative;
+  isolation:isolate;
+  grid-template-rows:
+    [ruler-s] 24px
+    [ruler-e nav-s] 48px
+    [nav-e hd-s] 48px
+    [hd-e s1hd-s] 48px
+    [s1hd-e nm-s] 48px
+    [nm-e em-s] 48px
+    [em-e bio-s] 72px
+    [bio-e div-s] 24px
+    [div-e s2hd-s] 48px
+    [s2hd-e cl-s] 72px
+    [cl-e oa-s] 72px
+    [oa-e sv-s] 72px [sv-e];
+}
+
+/* Overlay 1: column bands (z:-1) */
+.col-bands{
+  position:absolute;inset:0;pointer-events:none;z-index:-1;
+  display:grid;grid-template-columns:repeat(12,1fr);
+  grid-template-rows:1fr;column-gap:var(--cg);
+}
+.col-bands>div{background:var(--col-bg);}
+
+/* Overlay 2: 24px baseline grid (z:9) */
+.bl-ov{
+  position:absolute;inset:0;pointer-events:none;z-index:9;
+  background-image:repeating-linear-gradient(
+    to bottom,
+    var(--bl-ln) 0px, var(--bl-ln) 1px,
+    transparent 1px, transparent var(--bl)
+  );
+}
+
+/* Overlay 3: column edge lines (z:10) */
+.col-lines{
+  position:absolute;inset:0;pointer-events:none;z-index:10;
+  display:grid;grid-template-columns:repeat(12,1fr);
+  grid-template-rows:1fr;column-gap:var(--cg);
+}
+.col-lines>div{border-left:1px solid var(--col-ln);}
+.col-lines>div:last-child{border-right:1px solid var(--col-ln);}
+
+/* Local guide lines */
+.lg-v{position:absolute;width:0;border-left:1.5px solid var(--lg);pointer-events:none;z-index:20;}
+.lg-h{position:absolute;height:0;border-top:1px dashed var(--lg);pointer-events:none;z-index:20;}
+
+/* RULER */
+.ruler{
+  grid-column:1/13;grid-row:ruler-s/ruler-e;
+  display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--cg);
+  background:#f0ede8;border-bottom:1px solid var(--line);z-index:5;
+}
+.ruler>span{
+  display:flex;align-items:center;justify-content:center;
+  font-size:7px;font-family:ui-monospace,monospace;
+  color:rgba(214,52,36,.55);
+  border-left:1px solid rgba(214,52,36,.14);
+}
+.ruler>span:last-child{border-right:1px solid rgba(214,52,36,.14);}
+
+/* NAV 48px = 2×24px */
+.z-nav{
+  grid-column:1/13;grid-row:nav-s/nav-e;
+  background:#0f0f0e;
+  display:flex;align-items:center;padding:0;
+}
+.nav-logo{font-size:12px;font-weight:700;color:#f4f2ee;letter-spacing:-.01em;line-height:48px;padding-left:8px;margin-right:16px;flex-shrink:0;}
+.nav-links{display:flex;flex-shrink:0;}
+.nav-link{font-size:11px;color:#5a5852;line-height:48px;padding:0 12px;letter-spacing:.01em;}
+.nav-link.on{color:#f4f2ee;}
+.nav-sp{flex:1;}
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;padding-right:8px;}
+.nav-avatar{width:24px;height:24px;border-radius:50%;background:#2a2927;}
+.nav-cta{font-size:10px;font-weight:600;color:#0f0f0e;background:#f4f2ee;line-height:28px;padding:0 10px;border-radius:3px;white-space:nowrap;}
+
+/* ── SIDEBAR col 1–2, spans all content rows
+   Right edge = col 2 end = the structural boundary between
+   navigation and content. The full-page col 3 line marks this.
+   Sidebar items: 48px each = 2×24px — own rhythm.             */
+.z-sidebar{
+  grid-column:1/3;grid-row:hd-s/sv-e;
+  background:#f8f6f2;
+  border-right:1px solid var(--line);
+  display:flex;flex-direction:column;
+}
+.sb-item{
+  font-size:11px;color:var(--ink3);
+  line-height:48px;        /* each item = 2×24px */
+  padding:0 0 0 12px;
+  border-left:3px solid transparent;
+  white-space:nowrap;overflow:hidden;
+  flex-shrink:0;
+}
+.sb-item.on{color:var(--ink);font-weight:600;background:#f0ede8;border-left-color:var(--ink);}
+
+/* ── PAGE HEADER col 3–12, 48px = 2×24px
+   padding:0 — page title starts at col 3 line               */
+.z-page-hd{
+  grid-column:3/13;grid-row:hd-s/hd-e;
+  background:#f8f6f2;
+  border-bottom:1px solid var(--line);
+  padding:0;
+}
+.pg-title{font-size:14px;font-weight:700;color:var(--ink);line-height:var(--bl);}
+.pg-sub{font-size:9px;color:var(--ink3);line-height:var(--bl);}
+
+/* ── SECTION HEADING col 3–12, 48px = 2×24px */
+.z-sec-hd{
+  background:#fff;
+  border-bottom:1px solid var(--line);
+  padding:0;
+}
+.sec-title{font-size:11px;font-weight:700;color:var(--ink);line-height:var(--bl);}
+.sec-sub{font-size:9px;color:var(--ink3);line-height:var(--bl);}
+
+/* ── FORM LABEL col 3–5
+   padding:0 — label text starts at col 3 line               */
+.z-lbl{
+  background:#f8f6f2;
+  border-bottom:1px solid #eeece8;
+  padding:0;
+  position:relative;
+}
+.fl-key{font-size:11px;font-weight:600;color:var(--ink);line-height:var(--bl);display:block;white-space:nowrap;}
+.fl-hint{font-size:9px;color:var(--ink3);line-height:var(--bl);display:block;}
+
+/* ── FORM INPUT col 6–12
+   padding:0 — input left edge at col 6 line                 */
+.z-val{
+  background:#fff;
+  border-bottom:1px solid #eeece8;
+  border-left:1px solid #eeece8;
+  padding:0;
+  display:flex;align-items:center;
+  position:relative;
+}
+.input-f{
+  /* height:48px = 1px border + 11px pad + 24px lh + 11px pad + 1px border */
+  height:48px;width:100%;
+  border:1px solid var(--line);border-radius:4px;
+  font-size:11px;line-height:24px;padding:11px 12px;
+  color:var(--ink);background:#fff;
+}
+.textarea-f{
+  /* height:72px = 1+11+24+24+11+1 = content:48px = 2 baseline lines */
+  height:72px;width:100%;
+  border:1px solid var(--line);border-radius:4px;
+  font-size:11px;line-height:24px;padding:11px 12px;
+  color:var(--ink2);background:#fff;resize:none;overflow:hidden;
+}
+
+/* ── BIO LABEL col 3–5, 72px = 3×24px (3 text lines) */
+.z-bio-lbl{
+  background:#f8f6f2;
+  border-bottom:1px solid #eeece8;
+  padding:0;
+  position:relative;
+}
+/* ── BIO TEXTAREA col 6–12, 72px */
+.z-bio-val{
+  background:#fff;
+  border-bottom:1px solid #eeece8;
+  border-left:1px solid #eeece8;
+  padding:0;
+}
+
+/* ── SECTION DIVIDER col 3–12, 24px */
+.z-div{
+  grid-column:3/13;
+  background:#f0ede8;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+/* ── PROVIDER IDENTITY col 3–5, 72px = 3×24px
+   Starts at col 3 line (same as form labels)                */
+.z-pv-id{
+  background:#f8f6f2;
+  border-bottom:1px solid #eeece8;
+  border-right:1px solid #eeece8;
+  padding:0;
+  position:relative;
+}
+.pv-name{font-size:11px;font-weight:600;color:var(--ink);line-height:var(--bl);display:block;}
+.pv-model{font-size:9px;color:var(--ink3);line-height:var(--bl);display:block;}
+.pv-flow{font-size:8px;color:var(--ink4);line-height:var(--bl);display:block;font-family:ui-monospace,monospace;}
+
+/* ── PROVIDER STATUS col 6–10, 72px = 3×24px
+   Left edge at col 6 line (same as form inputs)             */
+.z-pv-st{
+  background:#fff;
+  border-bottom:1px solid #eeece8;
+  border-left:1px solid #eeece8;
+  border-right:1px solid #eeece8;
+  padding:0;
+  position:relative;
+}
+.ps-state{
+  font-size:10px;line-height:var(--bl);
+  display:flex;align-items:center;gap:5px;
+}
+.ps-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.ps-info{font-size:9px;color:var(--ink3);line-height:var(--bl);display:block;font-family:ui-monospace,monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ps-sub{font-size:8px;color:var(--ink4);line-height:var(--bl);display:block;}
+
+/* ── PROVIDER ACTION col 11–12, 72px
+   padding-top:24px pins button to grid line 2 of the row    */
+.z-pv-ac{
+  background:#f8f6f2;
+  border-bottom:1px solid #eeece8;
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:24px 8px 0;
+}
+.ac-btn{
+  font-size:8px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  padding:4px 0;line-height:16px;border-radius:10px;text-align:center;
+  width:100%;box-sizing:border-box;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.ac-dis{background:#e8e5e1;color:var(--ink3);}
+.ac-con{background:#1a1917;color:#f4f2ee;}
+
+/* ── SAVE ROW col 6–12, 72px
+   padding-top:24px — buttons start at grid line 2           */
+.z-sv-lbl{
+  background:#f8f6f2;
+  border-top:1px solid var(--line);
+}
+.z-sv{
+  background:#fff;
+  border-top:1px solid var(--line);
+  border-left:1px solid #eeece8;
+  display:flex;align-items:flex-start;gap:8px;
+  padding:24px 0 0;
+}
+.btn-primary{font-size:10px;font-weight:700;color:#f4f2ee;background:#1a1917;line-height:24px;padding:0 16px;border-radius:4px;white-space:nowrap;}
+.btn-ghost{font-size:10px;font-weight:600;color:var(--ink3);line-height:24px;padding:0 12px;border:1px solid var(--line);border-radius:4px;white-space:nowrap;}
+
+/* RIGHT BRACKET ANNOTATIONS */
+.ann-col{padding-left:12px;display:flex;flex-direction:column;}
+.ann-sp{height:24px;flex-shrink:0;}
+.brk{display:flex;align-items:stretch;gap:7px;flex-shrink:0;}
+.brk-bar{width:6px;flex-shrink:0;border-top:1px solid var(--ink3);border-bottom:1px solid var(--ink3);border-left:1px solid var(--ink3);}
+.brk-lbl{display:flex;flex-direction:column;justify-content:center;gap:2px;}
+.brk-lbl b{font-size:9px;font-weight:600;color:var(--ink2);}
+.brk-lbl s{font-size:8px;font-family:ui-monospace,monospace;color:var(--ink3);text-decoration:none;white-space:nowrap;}
+
+/* SPAN ANNOTATION ROWS */
+.span-row{display:flex;max-width:1260px;margin:0 auto;}
+.span-mg{width:calc(var(--mg) + 1px);flex-shrink:0;}
+.span-grid{flex:1;display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--cg);}
+.sc{border-top:2px solid rgba(214,52,36,.28);padding-top:4px;font-size:6px;font-family:ui-monospace,monospace;color:rgba(214,52,36,.65);white-space:nowrap;overflow:hidden;}
+.span-ann{width:136px;flex-shrink:0;}
+
+/* ZONE TABLE */
+.zt-wrap{max-width:1100px;margin:36px auto 0;}
+.zt-title{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;}
+.zt{width:100%;border-collapse:collapse;font-size:9px;}
+.zt th{background:var(--ink);color:#f4f2ee;text-align:left;font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 10px;}
+.zt td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top;}
+.zt td:nth-child(3),.zt td:nth-child(4),.zt td:nth-child(5){font-family:ui-monospace,monospace;}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px;border:1px solid rgba(0,0,0,.1);margin-right:6px;vertical-align:middle;}
+</style>
+</head>
+<body>
+
+<div class="hd">
+  <span class="hd-title">BlogHub · Grid Guide · 02 Settings</span>
+  <div class="hd-spec">
+    <span>12 col</span>
+    <span>24px gutter</span>
+    <span>32px margin</span>
+    <span>sidebar col 1–2</span>
+    <span>content col 3–12</span>
+    <span>24px baseline</span>
+  </div>
+</div>
+
+<div class="guide">
+
+  <div class="wf-shell">
+    <div class="wf-mg"><span>margin · 32px</span></div>
+
+    <div class="wf-grid">
+
+      <div class="col-bands">
+        <div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div>
+      </div>
+      <div class="bl-ov"></div>
+      <div class="col-lines">
+        <div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div>
+      </div>
+
+      <div class="ruler">
+        <span>1</span><span>2</span><span>3</span><span>4</span>
+        <span>5</span><span>6</span><span>7</span><span>8</span>
+        <span>9</span><span>10</span><span>11</span><span>12</span>
+      </div>
+
+      <!-- NAV: col 1–12, 48px = 2×24px -->
+      <div class="z-nav">
+        <div class="lg-v" style="left:8px;top:8px;bottom:8px;"></div>
+        <span class="nav-logo">BlogHub</span>
+        <div class="nav-links">
+          <span class="nav-link">Articles</span>
+          <span class="nav-link">Queue</span>
+          <span class="nav-link">Platforms</span>
+          <span class="nav-link on">Settings</span>
+        </div>
+        <div class="nav-sp"></div>
+        <div class="nav-actions">
+          <div class="nav-avatar"></div>
+          <div class="nav-cta">New article</div>
+        </div>
+      </div>
+
+      <!-- ─────────────────────────────────────────────────────────
+           SIDEBAR: col 1–2, spans all content rows (hd → sv)
+           Right edge at col 2 end = col 3 line = content boundary.
+           Each item is 48px = 2×24px, its own internal rhythm.
+      ──────────────────────────────────────────────────────────── -->
+      <div class="z-sidebar">
+        <div class="sb-item">General</div>
+        <div class="sb-item on">Profile</div>
+        <div class="sb-item">Connections</div>
+        <div class="sb-item">Appearance</div>
+        <div class="sb-item">Notifications</div>
+        <div class="sb-item">API &amp; Billing</div>
+      </div>
+
+      <!-- ─────────────────────────────────────────────────────────
+           PAGE HEADER: col 3–12, 48px = 2×24px
+           padding:0 — title starts flush at col 3 line
+      ──────────────────────────────────────────────────────────── -->
+      <div class="z-page-hd">
+        <div class="pg-title">Profile</div>       <!-- line 1: 24px -->
+        <div class="pg-sub">Manage your account information and preferences</div> <!-- line 2: 24px -->
+      </div>
+
+      <!-- ─────────────────────────────────────────────────────────
+           SECTION 1 HEADING: col 3–12, 48px = 2×24px
+      ──────────────────────────────────────────────────────────── -->
+      <div class="z-sec-hd" style="grid-column:3/13;grid-row:s1hd-s/s1hd-e;">
+        <div class="sec-title">Personal information</div>  <!-- line 1 -->
+        <div class="sec-sub">Your name and bio are shown on published articles</div><!-- line 2 -->
+      </div>
+
+      <!-- ─────────────────────────────────────────────────────────
+           FORM ROWS: label col 3–5 / input col 6–12, 48px each
+           Both zones: padding:0 so text aligns to col 3 / col 6.
+           Local h-guide at top of input shows the 24px cap-height.
+      ──────────────────────────────────────────────────────────── -->
+
+      <!-- NAME ROW -->
+      <div class="z-lbl" style="grid-column:3/6;grid-row:nm-s/nm-e;">
+        <span class="fl-key">Display name</span>           <!-- line 1 -->
+        <span class="fl-hint">Shown on all published articles</span><!-- line 2 -->
+      </div>
+      <div class="z-val" style="grid-column:6/13;grid-row:nm-s/nm-e;">
+        <!-- Local h-guide shows where input top cap aligns -->
+        <div class="lg-h" style="top:12px;left:0;right:0;"></div>
+        <div class="input-f">Marcus Chen</div>
+      </div>
+
+      <!-- EMAIL ROW -->
+      <div class="z-lbl" style="grid-column:3/6;grid-row:em-s/em-e;">
+        <span class="fl-key">Email address</span>
+        <span class="fl-hint">Used for login and notifications</span>
+      </div>
+      <div class="z-val" style="grid-column:6/13;grid-row:em-s/em-e;">
+        <div class="input-f" style="color:var(--ink3);">amadou.6e@googlemail.com</div>
+      </div>
+
+      <!-- BIO ROW: 72px = 3×24px — label has 3 text lines, textarea fills zone -->
+      <div class="z-bio-lbl" style="grid-column:3/6;grid-row:bio-s/bio-e;">
+        <span class="fl-key">Bio</span>                      <!-- line 1 -->
+        <span class="fl-hint">Tell readers who you are</span><!-- line 2 -->
+        <span class="fl-hint">Max 280 characters</span>      <!-- line 3 -->
+        <!-- Local h-guides at each baseline within bio label -->
+        <div class="lg-h" style="top:24px;left:0;right:0;"></div>
+        <div class="lg-h" style="top:48px;left:0;right:0;"></div>
+      </div>
+      <div class="z-bio-val" style="grid-column:6/13;grid-row:bio-s/bio-e;">
+        <div class="textarea-f">Software engineer & technical writer. I write about backend architecture, distributed systems, and the craft of writing software that actually ships.</div>
+      </div>
+
+      <!-- SECTION DIVIDER: 24px = 1 baseline unit -->
+      <div class="z-div" style="grid-row:div-s/div-e;"></div>
+
+      <!-- ─────────────────────────────────────────────────────────
+           SECTION 2 HEADING: col 3–12, 48px
+      ──────────────────────────────────────────────────────────── -->
+      <div class="z-sec-hd" style="grid-column:3/13;grid-row:s2hd-s/s2hd-e;">
+        <div class="sec-title">AI providers</div>
+        <div class="sec-sub">Authentication for AI-assisted writing features</div>
+      </div>
+
+      <!-- ─────────────────────────────────────────────────────────
+           PROVIDER ROWS: 72px = 3×24px each
+           identity col 3–5 / status col 6–10 / action col 11–12
+           All text starts at col 3 (identity) or col 6 (status).
+           Action button: padding-top:24px pins to line 2.
+      ──────────────────────────────────────────────────────────── -->
+
+      <!-- ANTHROPIC -->
+      <div class="z-pv-id" style="grid-column:3/6;grid-row:cl-s/cl-e;">
+        <div class="lg-h" style="top:24px;left:0;right:0;"></div>
+        <div class="lg-h" style="top:48px;left:0;right:0;"></div>
+        <div class="pv-name">Anthropic</div>        <!-- line 1 -->
+        <div class="pv-model">Claude 3.5 Sonnet</div><!-- line 2 -->
+        <div class="pv-flow">claude auth login</div> <!-- line 3 -->
+      </div>
+      <div class="z-pv-st" style="grid-column:6/11;grid-row:cl-s/cl-e;">
+        <div class="ps-state">
+          <div class="ps-dot" style="background:#286228;color:#286228;"></div>
+          <span style="color:#286228;font-size:10px;font-weight:600;">Connected</span>
+        </div>                                         <!-- line 1 -->
+        <div class="ps-info">amadou.6e@googlemail.com</div><!-- line 2 -->
+        <div class="ps-sub">OAuth · authenticated 12 days ago</div><!-- line 3 -->
+      </div>
+      <div class="z-pv-ac" style="grid-column:11/13;grid-row:cl-s/cl-e;">
+        <div class="ac-btn ac-dis">Disconnect</div>
+      </div>
+
+      <!-- OPENAI -->
+      <div class="z-pv-id" style="grid-column:3/6;grid-row:oa-s/oa-e;">
+        <div class="lg-h" style="top:24px;left:0;right:0;"></div>
+        <div class="lg-h" style="top:48px;left:0;right:0;"></div>
+        <div class="pv-name">OpenAI</div>
+        <div class="pv-model">Codex CLI</div>
+        <div class="pv-flow">codex login --device-auth</div>
+      </div>
+      <div class="z-pv-st" style="grid-column:6/11;grid-row:oa-s/oa-e;">
+        <div class="ps-state">
+          <div class="ps-dot" style="background:var(--ink4);color:var(--ink4);"></div>
+          <span style="color:var(--ink3);font-size:10px;">Not connected</span>
+        </div>
+        <div class="ps-info">No account linked</div>
+        <div class="ps-sub">Device-code flow · RFC 8628</div>
+      </div>
+      <div class="z-pv-ac" style="grid-column:11/13;grid-row:oa-s/oa-e;">
+        <div class="ac-btn ac-con">Connect</div>
+      </div>
+
+      <!-- ─────────────────────────────────────────────────────────
+           SAVE ROW: 72px = 3×24px
+           label zone (col 3–5): empty — no label for action row
+           button zone (col 6–12): padding-top:24px pins buttons
+           to grid line 2, same y as form inputs and status text
+      ──────────────────────────────────────────────────────────── -->
+      <div class="z-sv-lbl" style="grid-column:3/6;grid-row:sv-s/sv-e;"></div>
+      <div class="z-sv" style="grid-column:6/13;grid-row:sv-s/sv-e;">
+        <div class="btn-primary">Save changes</div>
+        <div class="btn-ghost">Cancel</div>
+      </div>
+
+    </div><!-- /wf-grid -->
+    <div class="wf-mg r"><span>margin · 32px</span></div>
+  </div>
+
+  <!-- HEIGHT ANNOTATIONS -->
+  <div class="ann-col">
+    <div class="ann-sp"></div>
+
+    <div class="brk" style="height:48px;">
+      <div class="brk-bar"></div>
+      <div class="brk-lbl"><b>Nav</b><s>48px</s><s>2×24</s></div>
+    </div>
+    <div class="brk" style="height:48px;">
+      <div class="brk-bar"></div>
+      <div class="brk-lbl"><b>Page hd</b><s>48px</s><s>2×24</s></div>
+    </div>
+    <div class="brk" style="height:48px;">
+      <div class="brk-bar"></div>
+      <div class="brk-lbl"><b>Sec hd</b><s>48px</s><s>2×24</s></div>
+    </div>
+    <div class="brk" style="height:48px;">
+      <div class="brk-bar"></div>
+      <div class="brk-lbl"><b>Field</b><s>48px × 2</s><s>2×24</s></div>
+    </div>
+    <div class="brk" style="height:48px;"><div class="brk-bar"></div></div>
+    <div class="brk" style="height:72px;">
+      <div class="brk-bar"></div>
+      <div class="brk-lbl"><b>Bio</b><s>72px</s><s>3×24</s></div>
+    </div>
+    <div class="brk" style="height:24px;">
+      <div class="brk-bar"></div>
+      <div class="brk-lbl"><b>Div</b><s>24px</s><s>1×24</s></div>
+    </div>
+    <div class="brk" style="height:48px;">
+      <div class="brk-bar"></div>
+      <div class="brk-lbl"><b>Sec hd</b><s>48px</s><s>2×24</s></div>
+    </div>
+    <div class="brk" style="height:72px;">
+      <div class="brk-bar"></div>
+      <div class="brk-lbl"><b>Provider</b><s>72px × 2</s><s>3×24</s></div>
+    </div>
+    <div class="brk" style="height:72px;"><div class="brk-bar"></div></div>
+    <div class="brk" style="height:72px;">
+      <div class="brk-bar"></div>
+      <div class="brk-lbl"><b>Save</b><s>72px</s><s>3×24</s></div>
+    </div>
+
+  </div>
+
+</div><!-- /guide -->
+
+<!-- LEGEND -->
+<div style="max-width:1260px;margin:16px auto 0;display:flex;gap:24px;padding-left:calc(var(--mg) + 1px);">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <div style="width:24px;height:0;border-top:1px solid rgba(214,52,36,.28);"></div>
+    <span style="font-size:8px;font-family:ui-monospace,monospace;color:var(--ink3);">Full-page column line — structural boundary across entire layout</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px;">
+    <div style="width:24px;height:0;border-top:1.5px dashed rgba(214,52,36,.70);"></div>
+    <span style="font-size:8px;font-family:ui-monospace,monospace;color:var(--ink3);">Local guide — baseline or cap-height within zone only</span>
+  </div>
+</div>
+
+<!-- SPAN ANNOTATIONS -->
+<div class="span-row" style="margin-top:24px;margin-bottom:2px;">
+  <div class="span-mg"></div>
+  <div class="span-grid">
+    <div class="sc" style="grid-column:1/3;">sidebar<br>col 1–2</div>
+    <div class="sc" style="grid-column:3/13;">all content · col 3–12</div>
+  </div>
+  <div class="span-ann"></div>
+</div>
+
+<div class="span-row" style="margin-top:10px;margin-bottom:2px;">
+  <div class="span-mg"></div>
+  <div class="span-grid">
+    <div class="sc" style="grid-column:1/3;color:transparent;">—</div>
+    <div class="sc" style="grid-column:3/6;">label · col 3–5</div>
+    <div class="sc" style="grid-column:6/13;">input / value · col 6–12</div>
+  </div>
+  <div class="span-ann"></div>
+</div>
+
+<div class="span-row" style="margin-top:10px;">
+  <div class="span-mg"></div>
+  <div class="span-grid">
+    <div class="sc" style="grid-column:1/3;color:transparent;">—</div>
+    <div class="sc" style="grid-column:3/6;">identity · col 3–5</div>
+    <div class="sc" style="grid-column:6/11;">status · col 6–10</div>
+    <div class="sc" style="grid-column:11/13;">action · col 11–12</div>
+  </div>
+  <div class="span-ann"></div>
+</div>
+
+<!-- ZONE TABLE -->
+<div class="zt-wrap">
+  <p class="zt-title">Zone map</p>
+  <table class="zt">
+    <thead>
+      <tr><th>Zone</th><th>Role</th><th>Col span</th><th>Height</th><th>Baseline</th><th>H-alignment</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="sw" style="background:#0f0f0e;"></span>Nav</td>
+        <td>Global navigation</td><td>1–12</td><td>48px</td><td>2×24</td>
+        <td>Logo at col 1 + 8px inset · Settings tab active</td>
+      </tr>
+      <tr>
+        <td><span class="sw" style="background:#f8f6f2;border-color:#d8d5d0;"></span>Sidebar</td>
+        <td>Settings navigation</td><td>1–2</td><td>full height</td><td>48px items</td>
+        <td>Items flush to col 1 line · right edge = col 3 line</td>
+      </tr>
+      <tr>
+        <td><span class="sw" style="background:#f8f6f2;border-color:#d8d5d0;"></span>Page header</td>
+        <td>Section title + subtitle</td><td>3–12</td><td>48px</td><td>2×24</td>
+        <td>Title flush to col 3 line</td>
+      </tr>
+      <tr>
+        <td><span class="sw" style="background:#fff;border-color:#d8d5d0;"></span>Section hd</td>
+        <td>Sub-section label</td><td>3–12</td><td>48px</td><td>2×24</td>
+        <td>Flush to col 3 line</td>
+      </tr>
+      <tr>
+        <td><span class="sw" style="background:#f8f6f2;border-color:#d8d5d0;"></span>Form label</td>
+        <td>Field name + hint</td><td>3–5</td><td>48px</td><td>2×24</td>
+        <td>Flush to col 3 line</td>
+      </tr>
+      <tr>
+        <td><span class="sw" style="background:#fff;border-color:#d8d5d0;"></span>Form input</td>
+        <td>Text field (height:48px)</td><td>6–12</td><td>48px</td><td>2×24</td>
+        <td>Left edge flush to col 6 line</td>
+      </tr>
+      <tr>
+        <td><span class="sw" style="background:#f8f6f2;border-color:#d8d5d0;"></span>Bio label</td>
+        <td>Textarea label (3 lines)</td><td>3–5</td><td>72px</td><td>3×24</td>
+        <td>Flush to col 3 line</td>
+      </tr>
+      <tr>
+        <td><span class="sw" style="background:#fff;border-color:#d8d5d0;"></span>Textarea</td>
+        <td>Multi-line text (height:72px)</td><td>6–12</td><td>72px</td><td>3×24</td>
+        <td>Left edge flush to col 6 line</td>
+      </tr>
+      <tr>
+        <td><span class="sw" style="background:#f0ede8;"></span>Divider</td>
+        <td>Section separator</td><td>3–12</td><td>24px</td><td>1×24</td>
+        <td>Full content width</td>
+      </tr>
+      <tr>
+        <td><span class="sw" style="background:#f8f6f2;border-color:#d8d5d0;"></span>Provider identity</td>
+        <td>Name · model · auth flow</td><td>3–5</td><td>72px</td><td>3×24</td>
+        <td>Flush to col 3 line</td>
+      </tr>
+      <tr>
+        <td><span class="sw" style="background:#fff;border-color:#d8d5d0;"></span>Provider status</td>
+        <td>Connection state · account</td><td>6–10</td><td>72px</td><td>3×24</td>
+        <td>Left edge flush to col 6 line</td>
+      </tr>
+      <tr>
+        <td><span class="sw" style="background:#f8f6f2;border-color:#d8d5d0;"></span>Provider action</td>
+        <td>Connect / Disconnect</td><td>11–12</td><td>72px</td><td>3×24</td>
+        <td>Button at line 2 (padding-top:24px)</td>
+      </tr>
+      <tr>
+        <td><span class="sw" style="background:#fff;border-color:#d8d5d0;"></span>Save</td>
+        <td>CTA buttons</td><td>6–12</td><td>72px</td><td>3×24</td>
+        <td>Buttons at line 2 · left edge flush to col 6 line</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

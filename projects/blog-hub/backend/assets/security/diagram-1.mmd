@@ -1,0 +1,20 @@
+sequenceDiagram
+    participant F as Frontend
+    participant B as Backend
+    participant P as Provider (e.g. Medium)
+
+    F->>B: GET /api/connections/{id}/oauth-start
+    B->>B: state = secrets.token_urlsafe(32)
+    B->>B: _oauth_pending[state] = { conn_id, expires: +10 min }
+    B-->>F: { url: "https://provider.com/authorize?state=…" }
+    F->>P: open popup → GET /authorize?client_id&state&redirect_uri
+    Note over F,P: User grants permission in popup
+    P->>B: GET /api/connections/{id}/oauth-callback?code=…&state=…
+    B->>B: entry = _oauth_pending.pop(state)  ← single-use
+    B->>B: validate: non-null, conn_id match, not expired
+    B->>P: POST /token { code, client_id, client_secret }
+    P-->>B: { access_token, refresh_token }
+    B->>B: store token in _connections; clear _oauth_pending entry
+    B-->>F: HTML page with postMessage script
+    F->>F: opener.postMessage({type:'oauth-complete'}, APP_ORIGIN)
+    Note over F: parent validates e.origin; reloads connection list

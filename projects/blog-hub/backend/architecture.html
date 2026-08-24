@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BlogHub — Backend Architecture</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0a0d14;
+      color: #c9cfe0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 13px;
+      min-height: 100vh;
+      padding: 40px 48px 80px;
+    }
+
+    h1 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #e8eaf2;
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+    .subtitle { color: #5a6080; font-size: 12px; margin-bottom: 44px; }
+
+    /* ── Layout ─────────────────────────────────────────── */
+    .arch {
+      display: grid;
+      grid-template-columns: 180px 1fr 180px;
+      grid-template-rows: auto auto auto;
+      gap: 0;
+      align-items: start;
+    }
+
+    /* ── Layers (row labels) ────────────────────────────── */
+    .layer-label {
+      writing-mode: horizontal-tb;
+      color: #353b52;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding-top: 14px;
+      padding-right: 24px;
+      text-align: right;
+      user-select: none;
+    }
+
+    /* ── Columns: center content ────────────────────────── */
+    .col-center {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* ── Swimlane ────────────────────────────────────────── */
+    .swimlane {
+      border-left: 1px solid #1c2132;
+      border-right: 1px solid #1c2132;
+      padding: 24px 24px 28px;
+      position: relative;
+    }
+    .swimlane:first-child { border-top: 1px solid #1c2132; border-radius: 8px 8px 0 0; }
+    .swimlane:last-child  { border-bottom: 1px solid #1c2132; border-radius: 0 0 8px 8px; }
+    .swimlane + .swimlane { border-top: 1px dashed #1c2132; }
+
+    .swimlane-title {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #353b52;
+      margin-bottom: 14px;
+    }
+
+    /* ── Boxes ───────────────────────────────────────────── */
+    .boxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .box {
+      border-radius: 7px;
+      padding: 10px 14px;
+      cursor: default;
+      transition: border-color 130ms, background 130ms;
+      position: relative;
+    }
+
+    .box-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #e8eaf2;
+      white-space: nowrap;
+    }
+    .box-sub {
+      font-size: 10px;
+      color: #5a6080;
+      margin-top: 2px;
+      font-family: 'Cascadia Code', 'JetBrains Mono', monospace;
+    }
+
+    /* themes */
+    .box-ui {
+      background: #10162a;
+      border: 1px solid #1e2d5a;
+    }
+    .box-ui:hover { border-color: #3a50a0; background: #131a35; }
+
+    .box-router {
+      background: #0e1a1a;
+      border: 1px solid #1a3535;
+    }
+    .box-router:hover { border-color: #2a6060; background: #111f1f; }
+
+    .box-schema {
+      background: #181224;
+      border: 1px solid #2d1e45;
+    }
+    .box-schema:hover { border-color: #5a3a90; }
+
+    .box-store {
+      background: #1a160a;
+      border: 1px solid #3a3010;
+    }
+    .box-store:hover { border-color: #7a6020; }
+
+    .box-ext {
+      background: #121212;
+      border: 1px solid #252525;
+    }
+
+    /* ── Connector arrows (SVG) ──────────────────────────── */
+    .arrow-layer {
+      grid-column: 1 / -1;
+      pointer-events: none;
+    }
+
+    /* ── Method badges ───────────────────────────────────── */
+    .methods {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 8px;
+    }
+    .method {
+      font-size: 9px;
+      font-weight: 700;
+      font-family: monospace;
+      padding: 2px 6px;
+      border-radius: 3px;
+      letter-spacing: 0.04em;
+    }
+    .m-get    { background: #0e2d1e; color: #4ade80; border: 1px solid #1a4d35; }
+    .m-post   { background: #1e2a4a; color: #6ea8fe; border: 1px solid #2a3d6a; }
+    .m-put    { background: #2a2510; color: #fbbf24; border: 1px solid #4a3d1a; }
+    .m-delete { background: #2d1a1a; color: #f87171; border: 1px solid #4d2a2a; }
+
+    .path-tag {
+      font-family: 'Cascadia Code', 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: #8892b0;
+      margin-top: 6px;
+    }
+
+    /* ── Right-side legend ───────────────────────────────── */
+    .legend {
+      padding-left: 32px;
+      padding-top: 14px;
+    }
+    .legend-title {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #353b52;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 7px;
+      font-size: 11px;
+      color: #5a6080;
+    }
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ── Route table ─────────────────────────────────────── */
+    .route-table {
+      margin-top: 44px;
+    }
+    .route-table h2 {
+      font-size: 12px;
+      font-weight: 600;
+      color: #e8eaf2;
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    th {
+      text-align: left;
+      padding: 6px 12px;
+      color: #353b52;
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-bottom: 1px solid #1c2132;
+    }
+    td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #13172040;
+      vertical-align: top;
+    }
+    tr:hover td { background: #13172080; }
+    td:first-child { white-space: nowrap; }
+    td.mono { font-family: 'Cascadia Code', 'JetBrains Mono', monospace; color: #8892b0; }
+    td.notes { color: #5a6080; font-size: 11px; }
+    td.group { font-weight: 600; }
+
+    .g-articles    { color: #4ade80; }
+    .g-connections { color: #6ea8fe; }
+    .g-jobs        { color: #fbbf24; }
+    .g-platforms   { color: #c4b5fd; }
+    .g-dev         { color: #f87171; }
+
+    /* ── Separator ───────────────────────────────────────── */
+    .sep {
+      border: none;
+      border-top: 1px solid #1c2132;
+      margin: 40px 0;
+    }
+  </style>
+</head>
+<body>
+
+<h1>BlogHub · Backend Architecture</h1>
+<p class="subtitle">FastAPI · Python 3.13 · In-memory store · Playwright (E2E)</p>
+
+<div class="arch">
+
+  <!-- ── Row 1: Client layer ──────────────────────────────── -->
+  <div class="layer-label" style="grid-row:1; grid-column:1;">Client</div>
+
+  <div class="col-center" style="grid-row:1; grid-column:2;">
+    <div class="swimlane">
+      <div class="swimlane-title">Browser clients</div>
+      <div class="boxes">
+        <div class="box box-ui">
+          <div class="box-label">overview / v4.html</div>
+          <div class="box-sub">Article table · Filters · Side panel</div>
+        </div>
+        <div class="box box-ui">
+          <div class="box-label">settings / v1.html</div>
+          <div class="box-sub">Connections · OAuth popup</div>
+        </div>
+        <div class="box box-ui">
+          <div class="box-label">editor / v2.html</div>
+          <div class="box-sub">Markdown editor · AI chat · Comments</div>
+        </div>
+        <div class="box box-ext" style="opacity:0.5;">
+          <div class="box-label" style="color:#5a6080;">Playwright</div>
+          <div class="box-sub">E2E test suite</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="grid-row:1; grid-column:3;"></div>
+
+  <!-- ── Row 2: API layer ─────────────────────────────────── -->
+  <div class="layer-label" style="grid-row:2; grid-column:1;">API</div>
+
+  <div class="col-center" style="grid-row:2; grid-column:2;">
+    <div class="swimlane">
+      <div class="swimlane-title">FastAPI routers — backend/routers/</div>
+      <div class="boxes">
+
+        <div class="box box-router">
+          <div class="box-label">articles</div>
+          <div class="path-tag">/api/articles</div>
+          <div class="methods">
+            <span class="method m-get">GET</span>
+            <span class="method m-post">POST</span>
+            <span class="method m-delete">DELETE</span>
+            <span class="method m-post" title="POST /:id/push">push</span>
+            <span class="method m-post" title="POST /:id/inspect">inspect</span>
+          </div>
+        </div>
+
+        <div class="box box-router">
+          <div class="box-label">connections</div>
+          <div class="path-tag">/api/connections</div>
+          <div class="methods">
+            <span class="method m-get">GET</span>
+            <span class="method m-put">PUT</span>
+            <span class="method m-delete">DELETE</span>
+            <span class="method m-get" title="oauth-start">oauth↗</span>
+            <span class="method m-get" title="oauth-callback">callback</span>
+          </div>
+        </div>
+
+        <div class="box box-router">
+          <div class="box-label">jobs</div>
+          <div class="path-tag">/api/jobs</div>
+          <div class="methods">
+            <span class="method m-get">GET /:id</span>
+          </div>
+        </div>
+
+        <div class="box box-router" style="opacity:0.65;">
+          <div class="box-label">platforms</div>
+          <div class="path-tag">/api/platforms  <span style="color:#353b52;">(legacy)</span></div>
+          <div class="methods">
+            <span class="method m-get">GET</span>
+          </div>
+        </div>
+
+        <div class="box box-router" style="border-color:#4d2a2a;">
+          <div class="box-label" style="color:#f87171;">dev</div>
+          <div class="path-tag">/api/dev</div>
+          <div class="methods">
+            <span class="method m-post">POST /reset</span>
+          </div>
+        </div>
+
+        <div class="box box-router" style="border-color:#1a3535;">
+          <div class="box-label">static</div>
+          <div class="path-tag">/screens/**  <span style="color:#353b52;">(StaticFiles)</span></div>
+          <div class="methods">
+            <span class="method m-get">GET</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend" style="grid-row:2; grid-column:3; padding-top:38px;">
+    <div class="legend-title">Groups</div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#1a4d35; border:1px solid #2a6040;"></div>
+      articles
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#1e2d5a; border:1px solid #2a3d7a;"></div>
+      connections
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#3a3010; border:1px solid #5a4a20;"></div>
+      jobs
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#2d1e45; border:1px solid #4d3a70;"></div>
+      platforms
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#4d2a2a; border:1px solid #7a3a3a;"></div>
+      dev (test only)
+    </div>
+
+    <div class="legend-title" style="margin-top:20px;">Swagger specs</div>
+    <div style="font-size:10px; color:#353b52; line-height:1.8; font-family:monospace;">
+      swagger-articles.yaml<br/>
+      swagger-connections.yaml<br/>
+      swagger-jobs-platforms.yaml<br/>
+      swagger-dev.yaml
+    </div>
+  </div>
+
+  <!-- ── Row 3: Store + Schema layer ──────────────────────── -->
+  <div class="layer-label" style="grid-row:3; grid-column:1;">Data</div>
+
+  <div class="col-center" style="grid-row:3; grid-column:2;">
+    <div class="swimlane">
+      <div class="swimlane-title">Store · Schemas</div>
+      <div class="boxes">
+        <div class="box box-store">
+          <div class="box-label">memory.py</div>
+          <div class="box-sub">_articles · _jobs · _connections · _platforms</div>
+          <div class="box-sub" style="margin-top:4px; color:#3a3010;">reset() clears articles+jobs (not connections)</div>
+        </div>
+        <div class="box box-schema">
+          <div class="box-label">overview.py</div>
+          <div class="box-sub">ArticleSummary · JobResponse · PlatformSummary</div>
+        </div>
+        <div class="box box-schema">
+          <div class="box-label">connections.py</div>
+          <div class="box-sub">ConnectionInfo · SaveTokenRequest · OAuthStartResponse</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="grid-row:3; grid-column:3;"></div>
+</div>
+
+<hr class="sep" />
+
+<!-- ── Route table ──────────────────────────────────────────── -->
+<div class="route-table">
+  <h2>All routes</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Method</th>
+        <th>Path</th>
+        <th>Group</th>
+        <th>Summary</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="method m-get">GET</span></td>
+        <td class="mono">/health</td>
+        <td class="group g-dev">dev</td>
+        <td>Health check</td>
+        <td class="notes">Used by Playwright webServer.url</td>
+      </tr>
+      <tr>
+        <td><span class="method m-get">GET</span></td>
+        <td class="mono">/api/articles</td>
+        <td class="group g-articles">articles</td>
+        <td>List articles</td>
+        <td class="notes">Filters: q, gate, status, platform, page, pageSize, sortBy, sortDir</td>
+      </tr>
+      <tr>
+        <td><span class="method m-post">POST</span></td>
+        <td class="mono">/api/articles</td>
+        <td class="group g-articles">articles</td>
+        <td>Create article</td>
+        <td class="notes">Body: { title }  →  201 + { id, title, createdAt }</td>
+      </tr>
+      <tr>
+        <td><span class="method m-delete">DELETE</span></td>
+        <td class="mono">/api/articles</td>
+        <td class="group g-articles">articles</td>
+        <td>Delete articles (bulk)</td>
+        <td class="notes">Body: { ids[], force? }  →  409 if published + force=false</td>
+      </tr>
+      <tr>
+        <td><span class="method m-post">POST</span></td>
+        <td class="mono">/api/articles/{id}/push</td>
+        <td class="group g-articles">articles</td>
+        <td>Push drafts to platforms</td>
+        <td class="notes">→ 202 { jobId }. Simulated: job already done on first poll.</td>
+      </tr>
+      <tr>
+        <td><span class="method m-post">POST</span></td>
+        <td class="mono">/api/articles/{id}/inspect</td>
+        <td class="group g-articles">articles</td>
+        <td>Run gate inspection</td>
+        <td class="notes">→ 202 { jobId }. Gate: pass if wordCount ≥ 500, else warn.</td>
+      </tr>
+      <tr>
+        <td><span class="method m-get">GET</span></td>
+        <td class="mono">/api/jobs/{job_id}</td>
+        <td class="group g-jobs">jobs</td>
+        <td>Get job status</td>
+        <td class="notes">Poll every 2 s. Stop on status=done|error.</td>
+      </tr>
+      <tr>
+        <td><span class="method m-get">GET</span></td>
+        <td class="mono">/api/connections</td>
+        <td class="group g-connections">connections</td>
+        <td>List all connections</td>
+        <td class="notes">Always returns all 5 (blog + AI) regardless of status.</td>
+      </tr>
+      <tr>
+        <td><span class="method m-put">PUT</span></td>
+        <td class="mono">/api/connections/{id}</td>
+        <td class="group g-connections">connections</td>
+        <td>Save API token</td>
+        <td class="notes">Body: { token }. Marks status=connected.</td>
+      </tr>
+      <tr>
+        <td><span class="method m-delete">DELETE</span></td>
+        <td class="mono">/api/connections/{id}</td>
+        <td class="group g-connections">connections</td>
+        <td>Disconnect</td>
+        <td class="notes">Removes token, marks status=disconnected.</td>
+      </tr>
+      <tr>
+        <td><span class="method m-get">GET</span></td>
+        <td class="mono">/api/connections/medium/oauth-start</td>
+        <td class="group g-connections">connections</td>
+        <td>Get Medium OAuth URL</td>
+        <td class="notes">Requires MEDIUM_CLIENT_ID env var. Returns available=false if not set.</td>
+      </tr>
+      <tr>
+        <td><span class="method m-get">GET</span></td>
+        <td class="mono">/api/connections/medium/oauth-callback</td>
+        <td class="group g-connections">connections</td>
+        <td>OAuth redirect handler</td>
+        <td class="notes">Exchanges code→token, posts postMessage, closes popup.</td>
+      </tr>
+      <tr>
+        <td><span class="method m-get">GET</span></td>
+        <td class="mono">/api/platforms</td>
+        <td class="group g-platforms">platforms</td>
+        <td>List platform connectivity (legacy)</td>
+        <td class="notes">Seed-state only. Use /api/connections for live state.</td>
+      </tr>
+      <tr>
+        <td><span class="method m-post">POST</span></td>
+        <td class="mono">/api/dev/reset</td>
+        <td class="group g-dev">dev</td>
+        <td>Reset store</td>
+        <td class="notes">Restores articles + jobs to seed. Connections NOT reset.</td>
+      </tr>
+      <tr>
+        <td><span class="method m-get">GET</span></td>
+        <td class="mono">/screens/**</td>
+        <td class="group" style="color:#5a6080;">static</td>
+        <td>Serve HTML screens</td>
+        <td class="notes">FastAPI StaticFiles mount. Covers overview/, settings/, editor/, …</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

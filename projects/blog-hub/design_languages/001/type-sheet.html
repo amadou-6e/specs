@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BlogHub — Typographic Sheet</title>
+<style>
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Tokens ── */
+:root {
+  --bg:       #f8f6f2;
+  --ink:      #1a1917;
+  --ink2:     #4a4845;
+  --ink3:     #8a887f;
+  --ink4:     #b0aea8;
+  --line:     #dddad4;
+  --line-med: #cccac4;
+  --pad:      24px;
+  --gap:      1px;
+}
+
+/* ── Page ── */
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 11px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ══════════════════════════════════════════════════
+   HEADER
+══════════════════════════════════════════════════ */
+.hd {
+  background: var(--ink);
+  color: var(--bg);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.hd-left {
+  padding: 36px 40px 32px;
+  border-right: 1px solid #2e2d2a;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+}
+.hd-kicker { font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #4a4845; }
+.hd-title  { font-size: 40px; font-weight: 300; letter-spacing: -0.03em; line-height: 1.05; color: #f4f2ee; }
+.hd-sub    { font-size: 11px; color: #6b6860; line-height: 1.6; max-width: 380px; }
+
+.hd-right { padding: 28px 36px; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
+.nom-row  { display: grid; grid-template-columns: 104px 1fr; align-items: start; gap: 4px; }
+.nom-lbl  { font-size: 8px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #4a4845; padding-top: 4px; }
+.nom-pills{ display: flex; flex-wrap: wrap; gap: 4px; }
+.pill     { font-size: 8px; letter-spacing: 0.04em; padding: 2px 8px; border-radius: 20px; border: 1px solid #2e2d2a; color: #4a4845; }
+.pill.on  { background: #f4f2ee; border-color: #f4f2ee; color: #1a1917; font-weight: 600; }
+
+/* ══════════════════════════════════════════════════
+   INTRO
+══════════════════════════════════════════════════ */
+.intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+  background: var(--line);
+  border-top: var(--gap) solid var(--line);
+}
+.intro-left {
+  background: var(--bg);
+  padding: 36px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+.intro-quote {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.35;
+  color: var(--ink);
+  max-width: 420px;
+}
+.intro-body {
+  font-size: 12px;
+  color: var(--ink2);
+  line-height: 1.7;
+  max-width: 440px;
+}
+
+.intro-right {
+  background: var(--bg);
+  padding: 28px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.energy-row {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: start;
+}
+.energy-row:last-child { border-bottom: none; }
+.energy-tag {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  padding-top: 2px;
+}
+.energy-tag.active { color: var(--ink); }
+.energy-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+.energy-name.active {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 13px;
+}
+.energy-desc { font-size: 10px; color: var(--ink3); line-height: 1.6; }
+
+/* ══════════════════════════════════════════════════
+   GRID SYSTEM
+══════════════════════════════════════════════════ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+  background: var(--line);
+  border-top: var(--gap) solid var(--line);
+}
+.grid + .grid { border-top: none; }
+.grid-full { grid-template-columns: 1fr; }
+
+.cell {
+  background: var(--bg);
+  padding: var(--pad);
+  display: flex;
+  flex-direction: column;
+}
+
+.sec {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink4);
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 16px;
+}
+
+/* ══════════════════════════════════════════════════
+   01 TYPE SCALE — large live specimens
+══════════════════════════════════════════════════ */
+.scale-row {
+  display: grid;
+  grid-template-columns: 72px 1fr 80px;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.scale-row:last-child { border-bottom: none; padding-bottom: 0; }
+.scale-lbl  { font-size: 7px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink4); }
+.scale-spec { font-size: 7px; font-family: ui-monospace, monospace; color: var(--ink4); text-align: right; line-height: 1.9; }
+
+/* ══════════════════════════════════════════════════
+   02 FONT PAIRINGS — large glyphs
+══════════════════════════════════════════════════ */
+.pair-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.pair-row:last-child { border-bottom: none; padding-bottom: 0; }
+.pair-glyph {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.pair-num { font-size: 8px; font-family: ui-monospace, monospace; color: var(--ink4); }
+.pair-name  { font-size: 11px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.pair-stack { font-size: 9px; color: var(--ink3); line-height: 1.85; }
+.pair-stack em { font-style: normal; font-family: ui-monospace, monospace; font-size: 8px; }
+.pair-when  { font-size: 8px; color: var(--ink4); margin-top: 5px; font-style: italic; }
+
+/* ══════════════════════════════════════════════════
+   03 READABILITY
+══════════════════════════════════════════════════ */
+.tip-row {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line);
+}
+.tip-row:last-child { border-bottom: none; }
+.tip-icon  { font-size: 14px; line-height: 1.4; color: var(--ink2); }
+.tip-title { font-size: 11px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.tip-body  { font-size: 9px; color: var(--ink3); line-height: 1.6; }
+.tip-val   { display: inline-block; font-family: ui-monospace, monospace; font-size: 7px; background: #eeecea; padding: 2px 5px; border-radius: 3px; color: var(--ink2); margin-top: 3px; }
+
+/* ══════════════════════════════════════════════════
+   04 DOS & DON'TS
+══════════════════════════════════════════════════ */
+.dd-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }
+.dd-head { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding-bottom: 9px; border-bottom: 2px solid var(--ink); margin-bottom: 10px; color: var(--ink); }
+.dd-item { display: flex; gap: 7px; padding: 6px 0; border-bottom: 1px solid var(--line); align-items: start; }
+.dd-item:last-child { border-bottom: none; }
+.dd-icon { font-size: 10px; flex-shrink: 0; margin-top: 1px; color: var(--ink2); }
+.dd-text { font-size: 10px; color: var(--ink2); line-height: 1.5; }
+.dd-text strong { display: block; font-size: 10px; font-weight: 600; color: var(--ink); margin-bottom: 1px; }
+
+/* ══════════════════════════════════════════════════
+   05 IN CONTEXT
+══════════════════════════════════════════════════ */
+.ctx-card {
+  display: flex;
+  border: 1px solid var(--line);
+  height: 168px;
+  overflow: hidden;
+}
+.ctx-cover {
+  width: 144px;
+  flex-shrink: 0;
+  background: linear-gradient(145deg, #d5d2cc, #e5e2dc);
+  position: relative;
+}
+.ctx-cover::after {
+  content: 'cover';
+  position: absolute; bottom: 8px; left: 0; right: 0;
+  text-align: center;
+  font-size: 7px; letter-spacing: 0.12em; color: var(--ink4); text-transform: uppercase;
+}
+.ctx-right { flex: 1; padding: 11px 13px; display: flex; flex-direction: column; min-width: 0; }
+.ctx-div   { height: 2px; background: var(--ink3); margin: 6px 0; }
+.ctx-foot  { margin-top: auto; display: flex; align-items: center; gap: 5px; }
+.ctx-leg   { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 14px; margin-top: 12px; }
+.ctx-item  { display: flex; gap: 5px; }
+.ctx-lbl   { font-size: 7px; color: var(--ink3); flex-shrink: 0; width: 58px; }
+.ctx-spc   { font-size: 7px; font-family: ui-monospace, monospace; color: var(--ink2); }
+
+/* ══════════════════════════════════════════════════
+   06 PAIRING SHOWCASE
+══════════════════════════════════════════════════ */
+.sh-row {
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  gap: 8px 12px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.sh-row:last-child { border-bottom: none; }
+.sh-lbl  { font-size: 7px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); }
+.sh-data { font-family: ui-monospace, monospace; font-size: 8px; color: var(--ink4); margin-top: 2px; }
+
+/* ══════════════════════════════════════════════════
+   07 WIDE BOTTOM — page layout specimen
+══════════════════════════════════════════════════ */
+.specimen-wrap { padding: 0; }
+
+.spec-header {
+  padding: 16px 28px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.spec-header p.sec { border-bottom: none; margin-bottom: 4px; }
+.spec-desc { font-size: 10px; color: var(--ink3); }
+
+/* Simulated app chrome */
+.sim-nav {
+  background: #111110;
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 24px;
+  gap: 28px;
+}
+.sim-logo {
+  font-size: 13px;
+  font-weight: 700;
+  color: #f4f2ee;
+  letter-spacing: -0.01em;
+  margin-right: 8px;
+}
+.sim-navlink {
+  font-size: 11px;
+  color: #6b6860;
+}
+.sim-navlink.active { color: #f4f2ee; font-weight: 500; }
+.sim-spacer { flex: 1; }
+.sim-btn {
+  font-size: 10px;
+  font-weight: 600;
+  background: #f4f2ee;
+  color: #111110;
+  padding: 5px 12px;
+  border-radius: 5px;
+}
+
+.sim-filter {
+  background: #f4f2ee;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 24px;
+  gap: 6px;
+}
+.sim-search {
+  border: 1px solid var(--line-med);
+  border-radius: 5px;
+  padding: 4px 10px;
+  font-size: 10px;
+  color: var(--ink3);
+  background: #fff;
+  width: 180px;
+}
+.sim-divider { width: 1px; height: 20px; background: var(--line); margin: 0 6px; }
+.sim-pill {
+  font-size: 10px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  color: var(--ink3);
+  background: #fff;
+}
+.sim-pill.on { background: var(--ink); color: #f4f2ee; border-color: var(--ink); font-weight: 500; }
+.sim-count { font-family: ui-monospace, monospace; font-size: 9px; color: var(--ink3); margin-left: auto; }
+
+.sim-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--bg);
+}
+
+.sim-card {
+  display: flex;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  height: 156px;
+  background: #fff;
+}
+.sim-card-cover {
+  width: 120px;
+  flex-shrink: 0;
+  background: linear-gradient(145deg, #d5d2cc, #e8e5e0);
+}
+.sim-card-right {
+  flex: 1;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.sim-card-divider { height: 2px; margin: 5px 0; }
+.sim-card-foot { margin-top: auto; display: flex; align-items: center; gap: 4px; }
+
+/* callout text labels */
+.ann-lbl {
+  font-size: 7px;
+  font-family: ui-monospace, monospace;
+  color: var(--ink3);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  vertical-align: super;
+  margin-left: 2px;
+}
+
+/* Legend strip */
+.sim-legend {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+  background: var(--line);
+  border-top: 1px solid var(--line);
+}
+.leg-item {
+  background: var(--bg);
+  padding: 12px 14px;
+  border-right: 1px solid var(--line);
+}
+.leg-item:last-child { border-right: none; }
+.leg-num  { font-size: 7px; font-weight: 700; letter-spacing: 0.1em; color: var(--ink4); margin-bottom: 4px; text-transform: uppercase; }
+.leg-role { font-size: 10px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.leg-spec { font-size: 7px; font-family: ui-monospace, monospace; color: var(--ink3); line-height: 1.8; }
+
+/* ══════════════════════════════════════════════════
+   07 EDITORIAL FRONT PAGE SPECIMEN
+══════════════════════════════════════════════════ */
+
+.ep-nav-bar {
+  background: #111110;
+  display: flex; align-items: center;
+  height: 40px; padding: 0 28px; gap: 22px;
+  border-bottom: 1px solid #222220;
+}
+.ep-logo { font-size: 13px; font-weight: 700; color: #f4f2ee; letter-spacing: -0.01em; }
+.ep-nav-l { font-size: 11px; color: #6b6860; }
+.ep-nav-l.on { color: #f4f2ee; font-weight: 500; }
+.ep-sp { flex: 1; }
+.ep-action { font-size: 10px; font-weight: 600; color: #111110; background: #f4f2ee; padding: 4px 12px; border-radius: 4px; }
+
+.ep-hero {
+  background: #111110;
+  display: grid; grid-template-columns: 1fr 232px;
+  gap: 28px; padding: 28px 28px 32px; align-items: start;
+}
+.ep-kicker {
+  font-size: 8px; font-weight: 700; letter-spacing: 0.18em;
+  font-family: ui-monospace, monospace; color: #4a4845;
+  text-transform: uppercase; margin-bottom: 12px;
+}
+.ep-title {
+  font-family: Georgia, serif; font-size: 26px; font-weight: 400;
+  font-style: italic; line-height: 1.25; color: #f4f2ee;
+  margin-bottom: 12px;
+}
+.ep-lead { font-size: 12px; color: #6b6860; line-height: 1.65; margin-bottom: 14px; }
+.ep-hero-meta { display: flex; align-items: center; gap: 6px; }
+.ep-tag-d {
+  font-size: 7px; font-weight: 700; font-family: ui-monospace, monospace;
+  color: #4a4845; background: #1e1e1c; padding: 2px 6px; border-radius: 3px;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.ep-wc { font-family: ui-monospace, monospace; font-size: 9px; color: #4a4845; margin-left: auto; }
+
+.ep-cover-dark {
+  background: linear-gradient(145deg, #2a2825, #363430);
+  border-radius: 6px; height: 128px; margin-bottom: 12px;
+}
+.ep-stats { display: flex; gap: 24px; }
+.ep-stat-n { font-family: ui-monospace, monospace; font-size: 20px; color: #f4f2ee; line-height: 1; }
+.ep-stat-l { font-family: ui-monospace, monospace; font-size: 7px; color: #4a4845; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 3px; }
+
+.ep-band {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 16px 28px 14px; border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+.ep-band-title { font-size: 28px; font-weight: 300; color: var(--ink); line-height: 1; letter-spacing: -0.01em; }
+.ep-band-count { font-family: ui-monospace, monospace; font-size: 9px; color: var(--ink3); }
+
+.ep-row {
+  display: grid; grid-template-columns: 36px 1fr 196px;
+  gap: 0 16px; padding: 14px 28px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg); align-items: start;
+}
+.ep-row:last-child { border-bottom: none; }
+.ep-idx { font-family: ui-monospace, monospace; font-size: 10px; color: var(--ink4); padding-top: 3px; }
+.ep-rt { font-family: Georgia, serif; font-size: 14px; font-style: italic; font-weight: 400; color: var(--ink); line-height: 1.35; margin-bottom: 5px; }
+.ep-rx { font-size: 11px; color: var(--ink3); line-height: 1.6; margin-bottom: 6px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; }
+.ep-rf { display: flex; gap: 4px; align-items: center; }
+.ep-rtag { font-size: 7px; font-weight: 700; font-family: ui-monospace, monospace; color: var(--ink3); background: #eeecea; padding: 2px 5px; border-radius: 3px; }
+.ep-rright { display: flex; flex-direction: column; gap: 5px; }
+.ep-rwc { font-family: ui-monospace, monospace; font-size: 9px; color: var(--ink4); text-align: right; }
+.ep-rplats { display: flex; flex-direction: column; gap: 3px; }
+.ep-rplat { display: flex; align-items: center; gap: 5px; }
+.ep-rdot { width: 5px; height: 5px; border-radius: 50%; background: var(--ink4); flex-shrink: 0; }
+.ep-rpname { font-family: ui-monospace, monospace; font-size: 8px; color: var(--ink3); width: 52px; }
+.ep-rpst { font-family: ui-monospace, monospace; font-size: 8px; color: var(--ink4); }
+
+.ep-pub-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap); background: var(--line);
+}
+.ep-pub-item { background: var(--bg); padding: 14px 28px; display: flex; gap: 12px; align-items: start; }
+.ep-pub-cover { width: 64px; height: 48px; border-radius: 4px; background: linear-gradient(145deg, #d5d2cc, #e5e2dc); flex-shrink: 0; }
+.ep-pub-title { font-family: Georgia, serif; font-size: 12px; font-style: italic; color: var(--ink); line-height: 1.4; margin-bottom: 4px; }
+.ep-pub-meta { font-family: ui-monospace, monospace; font-size: 8px; color: var(--ink4); line-height: 1.75; }
+
+/* ══════════════════════════════════════════════════
+   FOOTER STRIP
+══════════════════════════════════════════════════ */
+.footer-strip {
+  background: var(--ink);
+  color: #6b6860;
+  font-size: 9px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 11px 40px;
+  gap: 0;
+  border-top: 1px solid #2e2d2a;
+}
+.footer-strip strong { color: #f4f2ee; margin-right: 8px; }
+.footer-strip span { padding: 0 14px; border-left: 1px solid #2e2d2a; }
+.footer-strip span:first-of-type { border-left: none; padding-left: 0; }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ════════════════════════════════════════════ -->
+<div class="hd">
+  <div class="hd-left">
+    <div>
+      <p class="hd-kicker">BlogHub · Design System · v1</p>
+      <p class="hd-title">Typographic<br>Reference</p>
+    </div>
+    <p class="hd-sub">Every text decision in BlogHub — the scale it lives on, the pairings it draws from, and the reasoning behind each choice.</p>
+  </div>
+  <div class="hd-right">
+    <div class="nom-row">
+      <span class="nom-lbl">Emphasis</span>
+      <div class="nom-pills"><span class="pill">image</span><span class="pill">stat</span><span class="pill on">text</span><span class="pill">functional</span></div>
+    </div>
+    <div class="nom-row">
+      <span class="nom-lbl">Information</span>
+      <div class="nom-pills"><span class="pill">sparse</span><span class="pill on">balanced</span><span class="pill">dense</span></div>
+    </div>
+    <div class="nom-row">
+      <span class="nom-lbl">Personality</span>
+      <div class="nom-pills"><span class="pill on">editorial</span><span class="pill">technical</span><span class="pill">corporate</span><span class="pill">luxury</span><span class="pill">playful</span></div>
+    </div>
+    <div class="nom-row">
+      <span class="nom-lbl">Highlighting</span>
+      <div class="nom-pills"><span class="pill on">none</span><span class="pill">gradient</span><span class="pill">shade</span><span class="pill">line</span></div>
+    </div>
+    <div class="nom-row">
+      <span class="nom-lbl">Depth</span>
+      <div class="nom-pills"><span class="pill on">flat</span><span class="pill">floating</span><span class="pill">layered</span></div>
+    </div>
+    <div class="nom-row">
+      <span class="nom-lbl">Border</span>
+      <div class="nom-pills"><span class="pill">none</span><span class="pill on">light</span><span class="pill">thick</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ INTRO ══════════════════════════════════════════════ -->
+<div class="intro">
+  <div class="intro-left">
+    <p class="intro-quote">"A tool for writers demands typography that knows how to step aside."</p>
+    <p class="intro-body">BlogHub sits between the writer and their audience. The interface must be confident enough to feel professional, and restrained enough to disappear during focused work. The typographic energy is <strong>editorial authority held at arm's length</strong> — present, structured, never loud.</p>
+    <p class="intro-body">Every font choice here is a different answer to the same question: how do you make writers trust their workspace without the interface competing with what they wrote?</p>
+  </div>
+  <div class="intro-right">
+
+    <div class="energy-row">
+      <span class="energy-tag">01 Interface</span>
+      <div>
+        <p class="energy-name">Functional clarity</p>
+        <p class="energy-desc">System fonts read at zero latency. No character, no friction — the UI becomes invisible and the article status and platform data occupy exactly the attention they deserve. The viewer feels: this is a professional workspace. Best for dense, data-forward screens.</p>
+      </div>
+    </div>
+
+    <div class="energy-row">
+      <span class="energy-tag active">02 Editorial · active</span>
+      <div>
+        <p class="energy-name active">Warmth with discipline</p>
+        <p class="energy-desc">Georgia italic in headlines introduces a human hand — it says "articles are crafted things, not just content." The sans body keeps the workspace efficient. Together they tell the viewer: what's written here is worth publishing, and published with care. The mood is a quality notebook.</p>
+      </div>
+    </div>
+
+    <div class="energy-row">
+      <span class="energy-tag">03 Technical</span>
+      <div>
+        <p class="energy-name">Signal over style</p>
+        <p class="energy-desc">All-monospace collapses the distinction between data and prose, treating both as equal information streams. Creates a terminal-like authority. The viewer reads: this tool is for people who want to see what's real. Best for developer-facing or status-first screens.</p>
+      </div>
+    </div>
+
+    <div class="energy-row">
+      <span class="energy-tag">04 Luxury</span>
+      <div>
+        <p class="energy-name">Reverential distance</p>
+        <p class="energy-desc">Palatino's generous letterforms slow the reader down intentionally. Combined with sparse layout, the signal is: this content is worth your full attention. Works only when surface area per article is large and image-forward. Collapses under density.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ ROW 1: SCALE · PAIRINGS · READABILITY ═════════════ -->
+<div class="grid">
+
+  <!-- 01 Type Scale -->
+  <div class="cell">
+    <p class="sec">01 — Type Scale · system-ui</p>
+
+    <div class="scale-row">
+      <span class="scale-lbl">Display</span>
+      <span style="font-size:32px;font-weight:300;line-height:1;letter-spacing:-0.02em;color:var(--ink);">Grounded clarity</span>
+      <span class="scale-spec">32px · 300<br>lh 1.15 · ls −.02</span>
+    </div>
+    <div class="scale-row">
+      <span class="scale-lbl">Heading</span>
+      <span style="font-size:24px;font-weight:500;line-height:1;color:var(--ink);">Section title</span>
+      <span class="scale-spec">24px · 500<br>lh 1.25</span>
+    </div>
+    <div class="scale-row">
+      <span class="scale-lbl">Sub-heading</span>
+      <span style="font-size:18px;font-weight:500;line-height:1;color:var(--ink);">Card group label</span>
+      <span class="scale-spec">18px · 500<br>lh 1.30</span>
+    </div>
+    <div class="scale-row">
+      <span class="scale-lbl">Body Large</span>
+      <span style="font-size:14px;font-weight:400;line-height:1;color:var(--ink);">Article card title, primary actions</span>
+      <span class="scale-spec">14px · 400<br>lh 1.55</span>
+    </div>
+    <div class="scale-row">
+      <span class="scale-lbl">Body</span>
+      <span style="font-size:13px;font-weight:400;line-height:1;color:var(--ink2);">Excerpt, description, form labels</span>
+      <span class="scale-spec">13px · 400<br>lh 1.60</span>
+    </div>
+    <div class="scale-row">
+      <span class="scale-lbl">Caption</span>
+      <span style="font-size:11px;font-weight:400;line-height:1;color:var(--ink3);">Timestamps · metadata · platform status</span>
+      <span class="scale-spec">11px · 400<br>lh 1.50</span>
+    </div>
+    <div class="scale-row">
+      <span class="scale-lbl">Label</span>
+      <span style="font-size:10px;font-weight:700;line-height:1;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink2);">Section header · badge text</span>
+      <span class="scale-spec">10px · 700<br>CAPS · ls .10</span>
+    </div>
+    <div class="scale-row">
+      <span class="scale-lbl">Mono</span>
+      <span style="font-family:ui-monospace,monospace;font-size:13px;line-height:1;color:var(--ink);">2 847 · draft · #design</span>
+      <span class="scale-spec">9–24px · 400<br>ui-mono · always</span>
+    </div>
+
+  </div>
+
+  <!-- 02 Font Pairings -->
+  <div class="cell">
+    <p class="sec">02 — Font Pairings</p>
+
+    <div class="pair-row">
+      <div class="pair-glyph">
+        <span style="font-size:48px;font-family:system-ui,sans-serif;font-weight:300;line-height:1;color:var(--ink);">Aa</span>
+        <span class="pair-num">01</span>
+      </div>
+      <div>
+        <p class="pair-name">Interface · Default</p>
+        <p class="pair-stack">
+          Title — <em>system-ui 14px/500</em><br>
+          Body — <em>system-ui 13px/400</em><br>
+          Data — <em>ui-monospace 11px/400</em>
+        </p>
+        <p class="pair-when">Zero web fonts. Fastest, most neutral.</p>
+      </div>
+    </div>
+
+    <div class="pair-row">
+      <div class="pair-glyph">
+        <span style="font-size:48px;font-family:Georgia,serif;font-style:italic;font-weight:400;line-height:1;color:var(--ink);">Aa</span>
+        <span class="pair-num">02</span>
+      </div>
+      <div>
+        <p class="pair-name">Editorial · Recommended</p>
+        <p class="pair-stack">
+          Title — <em>Georgia 14px italic/400</em><br>
+          Body — <em>system-ui 13px/400</em><br>
+          Data — <em>ui-monospace 10px/400</em>
+        </p>
+        <p class="pair-when">Zero web fonts. Warm, authoritative, readable.</p>
+      </div>
+    </div>
+
+    <div class="pair-row">
+      <div class="pair-glyph">
+        <span style="font-size:40px;font-family:ui-monospace,monospace;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;line-height:1;color:var(--ink);">Aa</span>
+        <span class="pair-num">03</span>
+      </div>
+      <div>
+        <p class="pair-name">Technical</p>
+        <p class="pair-stack">
+          Title — <em>ui-mono 12px/700 CAPS</em><br>
+          Body — <em>ui-mono 11px/400</em><br>
+          Data — <em>ui-mono 10px CAPS</em>
+        </p>
+        <p class="pair-when">Dense screens only. Terminal authority.</p>
+      </div>
+    </div>
+
+    <div class="pair-row">
+      <div class="pair-glyph">
+        <span style="font-size:48px;font-family:'Palatino Linotype',Palatino,serif;font-weight:400;letter-spacing:0.02em;line-height:1;color:var(--ink);">Aa</span>
+        <span class="pair-num">04</span>
+      </div>
+      <div>
+        <p class="pair-name">Luxury</p>
+        <p class="pair-stack">
+          Title — <em>Palatino 16px/400</em><br>
+          Body — <em>Georgia 12px italic</em><br>
+          Data — <em>ui-mono 9px CAPS</em>
+        </p>
+        <p class="pair-when">Sparse, image-forward layouts only.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 03 Readability -->
+  <div class="cell">
+    <p class="sec">03 — Readability</p>
+
+    <div class="tip-row">
+      <span class="tip-icon">⟷</span>
+      <div>
+        <p class="tip-title">Line length</p>
+        <p class="tip-body">45–75 characters per line. Beyond 75 the eye loses the return.</p>
+        <span class="tip-val">≈ 560–700px @ 14px</span>
+      </div>
+    </div>
+    <div class="tip-row">
+      <span class="tip-icon">↕</span>
+      <div>
+        <p class="tip-title">Line height</p>
+        <p class="tip-body">Headings need less air than body. Mono is dense — always add more.</p>
+        <span class="tip-val">Heading 1.20 · Body 1.55 · Mono 1.65</span>
+      </div>
+    </div>
+    <div class="tip-row">
+      <span class="tip-icon" style="font-size:12px;font-weight:600;">Tt</span>
+      <div>
+        <p class="tip-title">Minimum size</p>
+        <p class="tip-body">Nothing visible below 9px. Below 11px add UPPERCASE + letter-spacing.</p>
+        <span class="tip-val">Min 9px · &lt;11px → CAPS + ls +.08</span>
+      </div>
+    </div>
+    <div class="tip-row">
+      <span class="tip-icon">◑</span>
+      <div>
+        <p class="tip-title">Contrast</p>
+        <p class="tip-body">WCAG AA: 4.5:1 for normal text, 3:1 for large (≥18px or ≥14px bold).</p>
+        <span class="tip-val">Normal ≥ 4.5:1 · Large ≥ 3:1</span>
+      </div>
+    </div>
+    <div class="tip-row">
+      <span class="tip-icon" style="font-size:11px;font-weight:700;">W</span>
+      <div>
+        <p class="tip-title">Weight discipline</p>
+        <p class="tip-body">Max 3 weights per screen. Pair weight + size — size alone barely registers.</p>
+        <span class="tip-val">300 · 400 · 500 · (600 accent only)</span>
+      </div>
+    </div>
+    <div class="tip-row">
+      <span class="tip-icon">⋮</span>
+      <div>
+        <p class="tip-title">Spacing rhythm</p>
+        <p class="tip-body">All type margins and gaps are multiples of 4px without exception.</p>
+        <span class="tip-val">4 · 8 · 12 · 16 · 24 · 32 · 48px</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ ROW 2: DOS · IN CONTEXT · SHOWCASE ════════════════ -->
+<div class="grid">
+
+  <!-- 04 Dos & Don'ts -->
+  <div class="cell">
+    <p class="sec">04 — Dos &amp; Don'ts</p>
+    <div class="dd-cols">
+      <div>
+        <p class="dd-head">Do</p>
+        <div class="dd-item"><span class="dd-icon">✓</span><span class="dd-text"><strong>Scale only</strong>No off-scale sizes. If 13px is too small, raise weight or spacing, not the number.</span></div>
+        <div class="dd-item"><span class="dd-icon">✓</span><span class="dd-text"><strong>Mono for all data</strong>Numbers, statuses, tags, timestamps — always monospace, every time.</span></div>
+        <div class="dd-item"><span class="dd-icon">✓</span><span class="dd-text"><strong>Left-align body</strong>Center only for single-word labels or empty states.</span></div>
+        <div class="dd-item"><span class="dd-icon">✓</span><span class="dd-text"><strong>Weight + size together</strong>14px/500 over 12px/400 reads as clear hierarchy.</span></div>
+        <div class="dd-item"><span class="dd-icon">✓</span><span class="dd-text"><strong>Test 1× and 2×</strong>Retina-clean can blur or feel heavy at 96 dpi.</span></div>
+      </div>
+      <div>
+        <p class="dd-head">Don't</p>
+        <div class="dd-item"><span class="dd-icon">✕</span><span class="dd-text"><strong>Mix 3+ typefaces</strong>Sans + Mono is the base. Serif is optional. Never all three on one card.</span></div>
+        <div class="dd-item"><span class="dd-icon">✕</span><span class="dd-text"><strong>weight 700 for body</strong>700 is titles only. 500–600 for emphasis.</span></div>
+        <div class="dd-item"><span class="dd-icon">✕</span><span class="dd-text"><strong>All-caps long strings</strong>Two words max in CAPS. Article titles in uppercase are illegible.</span></div>
+        <div class="dd-item"><span class="dd-icon">✕</span><span class="dd-text"><strong>Body below 11px</strong>Tags may reach 9px with CAPS. Excerpts and platform names stay ≥11px.</span></div>
+        <div class="dd-item"><span class="dd-icon">✕</span><span class="dd-text"><strong>Off-grid spacing</strong>One 10px margin breaks the vertical rhythm for everything below it.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 In Context -->
+  <div class="cell">
+    <p class="sec">05 — In Context · Article Card</p>
+
+    <div class="ctx-card">
+      <div class="ctx-cover"></div>
+      <div class="ctx-right">
+        <div style="display:flex;justify-content:space-between;align-items:start;gap:6px;margin-bottom:2px;">
+          <p style="font-family:Georgia,serif;font-size:13px;font-style:italic;font-weight:400;line-height:1.4;color:var(--ink);">Building a Scalable Design System</p>
+          <span style="font-size:13px;color:var(--ink4);flex-shrink:0;">⋯</span>
+        </div>
+        <div class="ctx-div"></div>
+        <p style="font-size:11px;color:var(--ink3);line-height:1.6;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden;margin-bottom:8px;">Design tokens are the single source of truth for your visual language. Centralizing spacing, color, and type into a token layer.</p>
+        <div style="display:flex;flex-direction:column;gap:3px;flex:1;">
+          <div style="display:flex;align-items:center;gap:5px;">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--ink3);flex-shrink:0;"></span>
+            <span style="width:52px;font-size:10px;font-family:ui-monospace,monospace;color:var(--ink3);">Medium</span>
+            <span style="font-size:10px;font-family:ui-monospace,monospace;color:var(--ink3);">draft</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:5px;">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--ink3);flex-shrink:0;"></span>
+            <span style="width:52px;font-size:10px;font-family:ui-monospace,monospace;color:var(--ink3);">Hashnode</span>
+            <span style="font-size:10px;font-family:ui-monospace,monospace;color:var(--ink3);">draft</span>
+          </div>
+        </div>
+        <div class="ctx-foot">
+          <span style="font-size:8px;font-weight:700;font-family:ui-monospace,monospace;color:var(--ink3);background:#eeecea;padding:2px 6px;border-radius:3px;">#design</span>
+          <span style="font-size:8px;font-weight:700;font-family:ui-monospace,monospace;color:var(--ink3);background:#eeecea;padding:2px 6px;border-radius:3px;">#systems</span>
+          <span style="font-size:9px;font-family:ui-monospace,monospace;color:var(--ink3);margin-left:auto;">2 847 words</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ctx-leg">
+      <div class="ctx-item"><span class="ctx-lbl">Title</span><span class="ctx-spc">Georgia 13px italic · lh 1.4</span></div>
+      <div class="ctx-item"><span class="ctx-lbl">Excerpt</span><span class="ctx-spc">11px/400 · lh 1.6 · 2-line clamp</span></div>
+      <div class="ctx-item"><span class="ctx-lbl">Platform</span><span class="ctx-spc">ui-mono 10px/400</span></div>
+      <div class="ctx-item"><span class="ctx-lbl">Status</span><span class="ctx-spc">ui-mono 10px/400</span></div>
+      <div class="ctx-item"><span class="ctx-lbl">Tags</span><span class="ctx-spc">ui-mono 8px/700 · bg pill</span></div>
+      <div class="ctx-item"><span class="ctx-lbl">Word count</span><span class="ctx-spc">ui-mono 9px/400</span></div>
+    </div>
+  </div>
+
+  <!-- 06 Pairing Showcase -->
+  <div class="cell">
+    <p class="sec">06 — Same Content · 4 Pairings</p>
+
+    <div class="sh-row">
+      <p class="sh-lbl">01 Interface</p>
+      <div>
+        <p style="font-size:13px;font-weight:500;font-family:system-ui,sans-serif;color:var(--ink);">Building a Design System</p>
+        <p style="font-size:10px;color:var(--ink3);font-family:system-ui,sans-serif;margin-top:2px;">Design tokens are the single source of truth.</p>
+        <p class="sh-data">draft · #design · 2847 words</p>
+      </div>
+    </div>
+
+    <div class="sh-row">
+      <p class="sh-lbl">02 Editorial</p>
+      <div>
+        <p style="font-size:14px;font-weight:400;font-style:italic;font-family:Georgia,serif;color:var(--ink);">Building a Design System</p>
+        <p style="font-size:10px;color:var(--ink3);font-family:system-ui,sans-serif;margin-top:2px;">Design tokens are the single source of truth.</p>
+        <p class="sh-data">draft · #design · 2847 words</p>
+      </div>
+    </div>
+
+    <div class="sh-row">
+      <p class="sh-lbl">03 Technical</p>
+      <div>
+        <p style="font-size:10px;font-weight:700;font-family:ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);">BUILDING A DESIGN SYSTEM</p>
+        <p style="font-size:10px;color:var(--ink3);font-family:ui-monospace,monospace;margin-top:2px;">Design tokens are the single source of truth.</p>
+        <p class="sh-data" style="text-transform:uppercase;letter-spacing:.04em;">DRAFT · #DESIGN · 2847 WDS</p>
+      </div>
+    </div>
+
+    <div class="sh-row">
+      <p class="sh-lbl">04 Luxury</p>
+      <div>
+        <p style="font-size:15px;font-weight:400;font-family:'Palatino Linotype',Palatino,serif;letter-spacing:.02em;color:var(--ink);">Building a Design System</p>
+        <p style="font-size:10px;font-family:Georgia,serif;font-style:italic;color:var(--ink3);margin-top:2px;">Design tokens are the single source of truth.</p>
+        <p class="sh-data" style="letter-spacing:.08em;font-size:7px;text-transform:uppercase;">draft · #design · 2847 words</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ══ WIDE BOTTOM: EDITORIAL FRONT PAGE SPECIMEN ════════ -->
+<div class="grid grid-full">
+  <div class="cell" style="padding:0;">
+
+    <div class="spec-header">
+      <p class="sec">07 — Editorial Front Page · Full Section Hierarchy · Editorial Pairing 02</p>
+      <p class="spec-desc">A real page context: nav → dark hero → two banded sections with display headings. Every type level in use, annotated inline.</p>
+    </div>
+
+    <!-- NAV -->
+    <div class="ep-nav-bar">
+      <span class="ep-logo">BlogHub<span class="ann-lbl">logo · 13px/700</span></span>
+      <span class="ep-nav-l on">Articles<span class="ann-lbl">nav active · 11px/500</span></span>
+      <span class="ep-nav-l">Queue</span>
+      <span class="ep-nav-l">Platforms</span>
+      <span class="ep-nav-l">Settings<span class="ann-lbl">nav · 11px/400</span></span>
+      <span class="ep-sp"></span>
+      <span class="ep-action">+ New Article<span class="ann-lbl" style="color:#6b6860;">action · 10px/600</span></span>
+    </div>
+
+    <!-- HERO -->
+    <div class="ep-hero">
+      <div>
+        <p class="ep-kicker">FEATURED · DRAFT · #DESIGN-SYSTEMS<span class="ann-lbl">kicker · mono 8px/700 · CAPS</span></p>
+        <h1 class="ep-title">Building a Scalable Design System with Tokens<span class="ann-lbl">display · Georgia 26px italic/400</span></h1>
+        <p class="ep-lead">Design tokens are the single source of truth for your visual language. Centralising spacing, colour, and typography into a shared token layer reduces inconsistency across every platform you publish to.<span class="ann-lbl">lead · 12px/400 · lh 1.65</span></p>
+        <div class="ep-hero-meta">
+          <span class="ep-tag-d">#design-systems<span class="ann-lbl">tag · mono 7px/700</span></span>
+          <span class="ep-tag-d">#frontend</span>
+          <span class="ep-wc">2 847 words<span class="ann-lbl">mono 9px/400</span></span>
+        </div>
+      </div>
+      <div>
+        <div class="ep-cover-dark"></div>
+        <div class="ep-stats">
+          <div>
+            <p class="ep-stat-n">2 847<span class="ann-lbl">stat · mono 20px/400</span></p>
+            <p class="ep-stat-l">words</p>
+          </div>
+          <div>
+            <p class="ep-stat-n">~11</p>
+            <p class="ep-stat-l">min read</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BAND: In Progress -->
+    <div class="ep-band">
+      <h2 class="ep-band-title">In Progress<span class="ann-lbl">heading · 28px/300</span></h2>
+      <span class="ep-band-count">3 articles<span class="ann-lbl">mono 9px/400</span></span>
+    </div>
+
+    <div class="ep-row">
+      <span class="ep-idx">01<span class="ann-lbl">idx · mono 10px</span></span>
+      <div>
+        <p class="ep-rt">Building a Scalable Design System with Tokens<span class="ann-lbl">body large · Georgia 14px italic</span></p>
+        <p class="ep-rx">Design tokens are the single source of truth for your visual language. Centralising spacing and colour into a shared token layer.<span class="ann-lbl">excerpt · 11px/400 · 2-line clamp</span></p>
+        <div class="ep-rf">
+          <span class="ep-rtag">#design-systems<span class="ann-lbl">tag · mono 7px/700</span></span>
+          <span class="ep-rtag">#frontend</span>
+        </div>
+      </div>
+      <div class="ep-rright">
+        <span class="ep-rwc">2 847 words<span class="ann-lbl">mono 9px</span></span>
+        <div class="ep-rplats">
+          <div class="ep-rplat"><span class="ep-rdot"></span><span class="ep-rpname">Medium<span class="ann-lbl">mono 8px</span></span><span class="ep-rpst">draft</span></div>
+          <div class="ep-rplat"><span class="ep-rdot"></span><span class="ep-rpname">Hashnode</span><span class="ep-rpst">draft</span></div>
+          <div class="ep-rplat"><span class="ep-rdot"></span><span class="ep-rpname">Dev.to</span><span class="ep-rpst">—</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ep-row">
+      <span class="ep-idx">02</span>
+      <div>
+        <p class="ep-rt">Why Developer Experience Matters More Than Features</p>
+        <p class="ep-rx">Teams that prioritise internal tooling ship twice as fast. The invisible investment that separates high-performance engineering organisations from the rest.</p>
+        <div class="ep-rf">
+          <span class="ep-rtag">#dx</span>
+          <span class="ep-rtag">#engineering</span>
+        </div>
+      </div>
+      <div class="ep-rright">
+        <span class="ep-rwc">3 120 words</span>
+        <div class="ep-rplats">
+          <div class="ep-rplat"><span class="ep-rdot"></span><span class="ep-rpname">Medium</span><span class="ep-rpst">ready</span></div>
+          <div class="ep-rplat"><span class="ep-rdot"></span><span class="ep-rpname">Dev.to</span><span class="ep-rpst">ready</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ep-row">
+      <span class="ep-idx">03</span>
+      <div>
+        <p class="ep-rt">The Case for Writing Every Day as a Software Engineer</p>
+        <p class="ep-rx">Writing forces clarity. Engineers who write regularly produce better architecture, clearer APIs, and more useful documentation without any extra effort.</p>
+        <div class="ep-rf">
+          <span class="ep-rtag">#writing</span>
+          <span class="ep-rtag">#productivity</span>
+        </div>
+      </div>
+      <div class="ep-rright">
+        <span class="ep-rwc">1 988 words</span>
+        <div class="ep-rplats">
+          <div class="ep-rplat"><span class="ep-rdot"></span><span class="ep-rpname">Medium</span><span class="ep-rpst">draft</span></div>
+          <div class="ep-rplat"><span class="ep-rdot"></span><span class="ep-rpname">Hashnode</span><span class="ep-rpst">draft</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BAND: Published -->
+    <div class="ep-band" style="border-top: 1px solid var(--line);">
+      <h2 class="ep-band-title">Published<span class="ann-lbl">heading · 28px/300</span></h2>
+      <span class="ep-band-count">12 articles</span>
+    </div>
+
+    <div class="ep-pub-grid">
+      <div class="ep-pub-item">
+        <div class="ep-pub-cover"></div>
+        <div>
+          <p class="ep-pub-title">Microservices Are Not the Answer<span class="ann-lbl">Georgia 12px italic</span></p>
+          <p class="ep-pub-meta">Medium · Hashnode · Dev.to<br>published · 2 341 words<span class="ann-lbl">mono 8px/400</span></p>
+        </div>
+      </div>
+      <div class="ep-pub-item">
+        <div class="ep-pub-cover"></div>
+        <div>
+          <p class="ep-pub-title">Writing Technical Specs That People Actually Read</p>
+          <p class="ep-pub-meta">Medium · Hashnode<br>published · 1 654 words</p>
+        </div>
+      </div>
+      <div class="ep-pub-item">
+        <div class="ep-pub-cover"></div>
+        <div>
+          <p class="ep-pub-title">The Art of the Code Review</p>
+          <p class="ep-pub-meta">Medium<br>published · 1 102 words</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div class="sim-legend">
+      <div class="leg-item">
+        <p class="leg-num">logo · nav · action</p>
+        <p class="leg-role">Navigation layer</p>
+        <p class="leg-spec">Logo 13px/700<br>Active 11px/500<br>Inactive 11px/400<br>Button 10px/600</p>
+      </div>
+      <div class="leg-item">
+        <p class="leg-num">kicker</p>
+        <p class="leg-role">Label / Badge</p>
+        <p class="leg-spec">ui-mono 8px/700<br>CAPS · ls .18<br>dark bg pill</p>
+      </div>
+      <div class="leg-item">
+        <p class="leg-num">display · lead</p>
+        <p class="leg-role">Hero copy</p>
+        <p class="leg-spec">Display Georgia 26px italic<br>Lead 12px/400 · lh 1.65</p>
+      </div>
+      <div class="leg-item">
+        <p class="leg-num">heading · band count</p>
+        <p class="leg-role">Section band</p>
+        <p class="leg-spec">Heading 28px/300<br>Count ui-mono 9px/400</p>
+      </div>
+      <div class="leg-item">
+        <p class="leg-num">body large · excerpt</p>
+        <p class="leg-role">Article list row</p>
+        <p class="leg-spec">Title Georgia 14px italic<br>Excerpt 11px/400 · 2-clamp<br>Index ui-mono 10px</p>
+      </div>
+      <div class="leg-item">
+        <p class="leg-num">tag · word count · platform · status</p>
+        <p class="leg-role">Data layer</p>
+        <p class="leg-spec">Tag ui-mono 7px/700<br>Count ui-mono 9px<br>Platform ui-mono 8px</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ FOOTER ══════════════════════════════════════════════ -->
+<div class="footer-strip">
+  <strong>Five rules:</strong>
+  <span>Sans for prose · Mono for all data</span>
+  <span>Never below 9px</span>
+  <span>All spacing on 4px grid</span>
+  <span>Max 3 weights per screen</span>
+  <span>Weight + size together, never size alone</span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant UI as Overview Screen
+    participant A as Articles Service
+    participant J as Jobs Service
+
+    UI->>A: POST /api/articles/{id}/inspect
+    A->>J: create job { id: job_yyy, type: inspect, status: running }
+    A-->>UI: 202 { jobId: "job_yyy", status: "running" }
+
+    Note over A,J: gate check runs (word count · section integrity · …)
+    A->>J: update job { status: done, result: { gate: "warn" } }
+
+    UI->>J: GET /api/jobs/job_yyy
+    J-->>UI: { status: "done", result: { gate: "warn" } }
+    UI->>A: GET /api/articles?page=1
+    A-->>UI: refreshed row with gate = warn badge

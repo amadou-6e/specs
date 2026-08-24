@@ -1,0 +1,48 @@
+{
+  "name": "Background fill",
+  "type": "text.background_fill",
+  "description": "Removes text or residual smears by replacing selected text-like pixels with an estimated or explicitly chosen background color.",
+  "fields": [
+    {
+      "name": "mode",
+      "type": "select",
+      "description": "Controls how replacement pixels are chosen. Auto estimates a locally monotonic background from pixels surrounding the selection; manual uses the explicit background color.",
+      "default": "auto",
+      "options": [
+        {
+          "name": "Auto",
+          "value": "auto",
+          "description": "Estimates the background color from clean neighboring pixels and fills only pixels classified as foreground text or smear."
+        },
+        {
+          "name": "Manual",
+          "value": "manual",
+          "description": "Uses the selected background color without automatic color estimation."
+        }
+      ]
+    },
+    {
+      "name": "selected_region",
+      "type": "rectangle",
+      "description": "Defines the image-space rectangle to analyze and clean. The rectangle limits classification and fill; it does not mean every pixel inside the rectangle will be overwritten.",
+      "required": true,
+      "properties": {
+        "x": "Left coordinate in source-image pixels.",
+        "y": "Top coordinate in source-image pixels.",
+        "width": "Selection width in source-image pixels.",
+        "height": "Selection height in source-image pixels."
+      }
+    },
+    {
+      "name": "background_color",
+      "type": "color",
+      "description": "Shows or overrides the RGB color used to replace classified text pixels. In Auto mode it displays the locally estimated background; in Manual mode it is the user-selected fill color.",
+      "default": "#F4F2ED"
+    }
+  ],
+  "action": {
+    "name": "Fill selected region",
+    "type": "action",
+    "description": "Classifies text-like pixels inside the selected rectangle and replaces only those pixels with the configured background color, producing a reversible edit."
+  }
+}

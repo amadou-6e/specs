@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BlogHub — Editorial · Grid Principles</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #f8f6f2;
+  --ink:     #1a1917;
+  --ink2:    #4a4845;
+  --ink3:    #8a887f;
+  --ink4:    #b0aea8;
+  --line:    #dddad4;
+  --lmed:    #cccac4;
+  --pad:     24px;
+  --gap:     1px;
+  --col-bg:  rgba(214,52,36,.055);
+  --col-ln:  rgba(214,52,36,.22);
+  --bl-ln:   rgba(214,52,36,.08);
+  --col-gap: 16px;
+  --mg:      32px;
+  --bl:      24px;
+}
+
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size: 11px; line-height: 1.45; -webkit-font-smoothing: antialiased;
+}
+
+/* ── layout ── */
+.g3  { display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap); background:var(--line); border-top:var(--gap) solid var(--line); }
+.g21 { display:grid; grid-template-columns:2fr 1fr;       gap:var(--gap); background:var(--line); border-top:var(--gap) solid var(--line); }
+.g2  { display:grid; grid-template-columns:1fr 1fr;       gap:var(--gap); background:var(--line); border-top:var(--gap) solid var(--line); }
+.g3+.g3,.g21+.g3,.g3+.g21,.g21+.g21,.g2+.g3,.g3+.g2 { border-top:none; }
+.cell { background:var(--bg); padding:var(--pad); display:flex; flex-direction:column; }
+.sec  { font-size:8px; font-weight:700; letter-spacing:.22em; text-transform:uppercase;
+        color:var(--ink4); padding-bottom:12px; border-bottom:1px solid var(--line); margin-bottom:16px; }
+
+/* ── header ── */
+.hd { background:var(--ink); display:grid; grid-template-columns:1fr 1fr; }
+.hd-l {
+  padding:36px 40px 32px; border-right:1px solid #2e2d2a;
+  display:flex; flex-direction:column; justify-content:space-between; gap:24px;
+}
+.hd-kicker { font-size:9px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:#4a4845; }
+.hd-title  { font-family:Georgia,serif; font-size:40px; font-weight:400; font-style:italic; line-height:1.1; color:#f4f2ee; }
+.hd-sub    { font-size:11px; color:#6b6860; line-height:1.6; max-width:380px; }
+.hd-r      { padding:28px 36px; display:flex; flex-direction:column; justify-content:center; gap:0; }
+.hd-fact   { display:grid; grid-template-columns:116px 1fr; gap:4px; padding:8px 0; border-bottom:1px solid #2e2d2a; }
+.hd-fact:last-child { border-bottom:none; }
+.hfl { font-size:8px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:#4a4845; padding-top:2px; }
+.hfv { font-size:10px; color:#9a9890; line-height:1.5; }
+.hfv strong { color:#f4f2ee; font-weight:600; }
+.hfv em { font-family:ui-monospace,monospace; font-style:normal; font-size:8px; color:#5a5852; }
+
+/* ── intro ── */
+.intro-l {
+  background:var(--bg); padding:32px 40px;
+  display:flex; flex-direction:column; justify-content:center; gap:14px;
+}
+.quote { font-family:Georgia,serif; font-size:20px; font-weight:400; font-style:italic; line-height:1.4; color:var(--ink); max-width:400px; }
+.intro-body { font-size:11px; color:var(--ink2); line-height:1.7; max-width:420px; }
+.intro-r { background:var(--bg); padding:28px 36px; display:flex; flex-direction:column; gap:0; }
+.axiom { display:grid; grid-template-columns:20px 1fr; gap:10px; padding:11px 0; border-bottom:1px solid var(--line); }
+.axiom:last-child { border-bottom:none; padding-bottom:0; }
+.ax-n { font-family:ui-monospace,monospace; font-size:8px; color:var(--ink4); padding-top:2px; }
+.ax-t { font-size:10px; font-weight:600; color:var(--ink); margin-bottom:3px; }
+.ax-b { font-size:9px; color:var(--ink3); line-height:1.6; }
+.ax-b em { font-family:ui-monospace,monospace; font-style:normal; font-size:8px; background:#eeecea; padding:1px 4px; border-radius:2px; }
+
+/* ── column visualiser ── */
+.cv {
+  position:relative; height:216px;
+  display:grid; grid-template-columns:repeat(12,1fr); column-gap:var(--col-gap);
+  padding:0 var(--mg); overflow:hidden; margin-bottom:14px;
+}
+.cv-b { background:var(--col-bg); border-left:1px solid var(--col-ln); position:relative; }
+.cv-b:last-child { border-right:1px solid var(--col-ln); }
+.cv-n { position:absolute; bottom:5px; left:0; right:0; text-align:center; font-size:6px; font-family:ui-monospace,monospace; color:rgba(214,52,36,.45); }
+.cv-bl { position:absolute; inset:0; pointer-events:none; background-image:repeating-linear-gradient(to bottom,var(--bl-ln) 0,var(--bl-ln) 1px,transparent 1px,transparent var(--bl)); }
+.cv-mg { position:absolute; top:0; bottom:0; width:var(--mg); background:rgba(214,52,36,.03); }
+.cv-mg-l { left:0; border-right:1px dashed rgba(214,52,36,.22); }
+.cv-mg-r { right:0; border-left:1px dashed rgba(214,52,36,.22); }
+.cv-ct { position:absolute; inset:0; padding:0 var(--mg); display:grid; grid-template-columns:repeat(12,1fr); column-gap:var(--col-gap); pointer-events:none; }
+
+.gkey { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.gk   { display:flex; gap:8px; }
+.gk-sw { width:20px; height:12px; border-radius:2px; flex-shrink:0; margin-top:2px; }
+.gk-l  { font-size:9px; color:var(--ink2); line-height:1.5; }
+.gk-l b { display:block; font-size:8px; font-weight:700; color:var(--ink); }
+
+/* ── baseline rhythm ── */
+.blr { background-image:repeating-linear-gradient(to bottom,var(--bl-ln) 0,var(--bl-ln) 1px,transparent 1px,transparent var(--bl)); }
+.bl-row { display:grid; grid-template-columns:58px 1fr 72px; gap:8px; align-items:baseline; min-height:24px; }
+.bl-lbl  { font-size:7px; font-family:ui-monospace,monospace; color:var(--ink4); line-height:24px; white-space:nowrap; }
+.bl-spec { font-size:7px; font-family:ui-monospace,monospace; color:var(--ink4); text-align:right; line-height:24px; }
+
+/* ── splits ── */
+.split { margin-bottom:14px; padding-bottom:14px; border-bottom:1px solid var(--line); }
+.split:last-child { margin-bottom:0; border-bottom:none; padding-bottom:0; }
+.sp-name { font-size:8px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--ink3); margin-bottom:7px; }
+.sp-vis  { display:grid; grid-template-columns:repeat(12,1fr); column-gap:3px; height:28px; margin-bottom:5px; }
+.sv      { border-left:1px solid rgba(214,52,36,.18); }
+.za { background:rgba(214,52,36,.09); }
+.zb { background:rgba(214,52,36,.045); }
+.zc { background:rgba(214,52,36,.015); }
+.sp-ann  { display:grid; grid-template-columns:repeat(12,1fr); column-gap:3px; }
+.sa { font-size:6px; font-family:ui-monospace,monospace; color:rgba(214,52,36,.55); border-top:1px solid rgba(214,52,36,.2); padding-top:3px; white-space:nowrap; overflow:hidden; }
+.sp-desc { font-size:9px; color:var(--ink3); margin-top:5px; line-height:1.55; }
+
+/* ── colour zones ── */
+.cz { display:grid; grid-template-columns:76px 1fr; gap:12px; padding:10px 0; border-bottom:1px solid var(--line); }
+.cz:last-child { border-bottom:none; padding-bottom:0; }
+.cz-sw  { height:38px; border-radius:3px; border:1px solid rgba(0,0,0,.08); display:flex; align-items:flex-end; padding:4px 6px; }
+.cz-swl { font-size:6px; font-family:ui-monospace,monospace; letter-spacing:.06em; text-transform:uppercase; }
+.cz-r   { font-size:10px; font-weight:600; color:var(--ink); margin-bottom:2px; }
+.cz-d   { font-size:9px; color:var(--ink3); line-height:1.55; }
+.cz-t   { font-size:7px; font-family:ui-monospace,monospace; color:var(--ink4); margin-top:3px; line-height:1.8; }
+
+/* ── spacing ── */
+.spr { display:grid; grid-template-columns:38px 1fr 72px; gap:8px; align-items:center; padding:7px 0; border-bottom:1px solid var(--line); }
+.spr:last-child { border-bottom:none; }
+.sp-v { font-size:8px; font-family:ui-monospace,monospace; color:var(--ink3); }
+.sp-b { background:var(--lmed); height:10px; border-radius:1px; }
+.sp-r { font-size:8px; color:var(--ink4); }
+
+/* ── footer ── */
+.footer { background:var(--ink); color:#6b6860; font-size:9px; display:flex; flex-wrap:wrap; align-items:center; padding:11px 40px; border-top:1px solid #2e2d2a; }
+.footer strong { color:#f4f2ee; margin-right:8px; }
+.footer span   { padding:0 14px; border-left:1px solid #2e2d2a; }
+.footer span:first-of-type { border-left:none; padding-left:0; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hd">
+  <div class="hd-l">
+    <div>
+      <p class="hd-kicker">BlogHub · Design Language · Editorial · Grid Principles</p>
+      <p class="hd-title">Grid<br>Principles</p>
+    </div>
+    <p class="hd-sub">The five rules governing how the 12-column layout, 24px baseline, and editorial type stack work together — and why each rule exists.</p>
+  </div>
+  <div class="hd-r">
+    <div class="hd-fact"><span class="hfl">Columns</span><span class="hfv"><strong>12</strong> <em>equal · 1fr each</em></span></div>
+    <div class="hd-fact"><span class="hfl">Column gap</span><span class="hfv"><strong>16px</strong> <em>--col-gap · between cols</em></span></div>
+    <div class="hd-fact"><span class="hfl">Margin</span><span class="hfv"><strong>32px</strong> <em>--mg · outside col 1 &amp; 12</em></span></div>
+    <div class="hd-fact"><span class="hfl">Baseline unit</span><span class="hfv"><strong>24px</strong> <em>--bl · all heights × 24</em></span></div>
+    <div class="hd-fact"><span class="hfl">Spacing atom</span><span class="hfv"><strong>4px</strong> <em>all gaps multiples of 4</em></span></div>
+    <div class="hd-fact"><span class="hfl">Titles</span><span class="hfv"><strong>Georgia italic</strong> <em>content · warmth</em></span></div>
+    <div class="hd-fact"><span class="hfl">Body / chrome</span><span class="hfv"><strong>system-ui</strong> <em>efficient · disappears</em></span></div>
+    <div class="hd-fact"><span class="hfl">Data</span><span class="hfv"><strong>ui-monospace</strong> <em>all numbers · status · tags</em></span></div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="g2">
+  <div class="intro-l">
+    <p class="quote">"The grid is not a cage. It is a grammar — the rules that let type breathe in the right places."</p>
+    <p class="intro-body">The editorial design language uses a 12-column grid as a <strong>rhythm system</strong>, not a mechanical divider. Column lines define where Georgia italic headlines begin, where system-ui body text flows, and where monospace data anchors. The 24px baseline is the vertical grammar that ties them all together.</p>
+    <p class="intro-body">Every zone in BlogHub maps to a deliberate column span. Sidebars use cols 1–2. Content occupies 3–12. Labels use 3–5, inputs 6–12. Hero copy spans one half, article lists the other. Nothing is placed arbitrarily — if it can't be explained by a column split or baseline multiple, it is wrong.</p>
+  </div>
+  <div class="intro-r">
+    <div class="axiom">
+      <span class="ax-n">01</span>
+      <div>
+        <p class="ax-t">All heights are multiples of 24px</p>
+        <p class="ax-b">Nav = 48px. Section headings = 48px. Form rows = 48px. Bio / article / provider rows = 72px. Hero = 192px. A single off-grid height breaks vertical rhythm for everything below it.</p>
+      </div>
+    </div>
+    <div class="axiom">
+      <span class="ax-n">02</span>
+      <div>
+        <p class="ax-t">Text zones have <em>padding: 0</em> — columns do the aligning</p>
+        <p class="ax-b">Content zones carry no padding. Georgia italic titles start flush at the column left edge. The column line IS the margin. Adding padding moves type off the grid line and breaks the alignment claim.</p>
+      </div>
+    </div>
+    <div class="axiom">
+      <span class="ax-n">03</span>
+      <div>
+        <p class="ax-t">Georgia italic = content · system-ui = chrome · mono = data</p>
+        <p class="ax-b">Article titles and hero headlines → Georgia italic. Nav, labels, buttons, status text → system-ui. All numbers, tags, timestamps, platform names → ui-monospace. Never mix roles on one element.</p>
+      </div>
+    </div>
+    <div class="axiom">
+      <span class="ax-n">04</span>
+      <div>
+        <p class="ax-t">Non-text elements pin to baseline 2 with <em>padding-top: 24px</em></p>
+        <p class="ax-b">Pills, buttons, and status indicators use <em>align-items: flex-start</em> + <em>padding-top: 24px</em> rather than centering. This pins them to the second baseline in a 72px row — aligned with adjacent titles.</p>
+      </div>
+    </div>
+    <div class="axiom">
+      <span class="ax-n">05</span>
+      <div>
+        <p class="ax-t">Baseline overlay (<em>z-index: 9</em>) spans full width above all zone backgrounds</p>
+        <p class="ax-b">One <em>position:absolute; inset:0</em> div with <em>z-index:9</em> inside an <em>isolation:isolate</em> grid. Never applied per-zone — clipping at zone boundaries defeats the continuous horizontal rhythm.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ROW 1: COLUMN VISUALISER (wide) + BASELINE RHYTHM -->
+<div class="g21">
+
+  <!-- 01 Column visualiser -->
+  <div class="cell" style="padding:0;">
+    <div style="padding:var(--pad) var(--pad) 12px;">
+      <p class="sec">01 — 12-Column Grid · Editorial Type in Place</p>
+      <p style="font-size:9px;color:var(--ink3);margin-bottom:12px;">Three-layer overlay: column bands (z:-1) behind content, baseline grid (z:9) above zone backgrounds, column edge lines (z:10) topmost. Georgia italic headline flush to col 1. System-ui body in cols 1–6. Monospace data. Status column cols 9–12.</p>
+    </div>
+
+    <div class="cv">
+      <div class="cv-mg cv-mg-l"></div>
+      <div class="cv-mg cv-mg-r"></div>
+      <div class="cv-b"><span class="cv-n">1</span></div><div class="cv-b"><span class="cv-n">2</span></div>
+      <div class="cv-b"><span class="cv-n">3</span></div><div class="cv-b"><span class="cv-n">4</span></div>
+      <div class="cv-b"><span class="cv-n">5</span></div><div class="cv-b"><span class="cv-n">6</span></div>
+      <div class="cv-b"><span class="cv-n">7</span></div><div class="cv-b"><span class="cv-n">8</span></div>
+      <div class="cv-b"><span class="cv-n">9</span></div><div class="cv-b"><span class="cv-n">10</span></div>
+      <div class="cv-b"><span class="cv-n">11</span></div><div class="cv-b"><span class="cv-n">12</span></div>
+      <div class="cv-bl"></div>
+      <div class="cv-ct">
+        <div style="grid-column:1/7;padding-top:24px;font-family:Georgia,serif;font-size:20px;font-style:italic;font-weight:400;line-height:24px;color:var(--ink);">Building a Design System</div>
+        <div style="grid-column:1/7;font-size:11px;color:var(--ink3);line-height:24px;">Design tokens are the single source of truth for your visual language and spacing.</div>
+        <div style="grid-column:1/5;font-size:9px;font-family:ui-monospace,monospace;color:var(--ink4);line-height:24px;">#design-systems · 2 847 words · Jun 28</div>
+        <div style="grid-column:9/13;padding-top:24px;display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:center;gap:5px;line-height:24px;"><span style="width:5px;height:5px;border-radius:50%;background:#286228;flex-shrink:0;"></span><span style="font-size:8px;font-family:ui-monospace,monospace;color:var(--ink3);">Medium · published</span></div>
+          <div style="display:flex;align-items:center;gap:5px;line-height:24px;"><span style="width:5px;height:5px;border-radius:50%;background:#286228;flex-shrink:0;"></span><span style="font-size:8px;font-family:ui-monospace,monospace;color:var(--ink3);">Hashnode · published</span></div>
+          <div style="display:flex;align-items:center;gap:5px;line-height:24px;"><span style="width:5px;height:5px;border-radius:50%;background:var(--ink4);flex-shrink:0;"></span><span style="font-size:8px;font-family:ui-monospace,monospace;color:var(--ink4);">Dev.to · —</span></div>
+          <div style="font-size:8px;font-family:ui-monospace,monospace;color:var(--ink4);line-height:24px;">Jun 28 · 11 min read</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:0 var(--pad) var(--pad);">
+      <div class="gkey">
+        <div class="gk"><div class="gk-sw" style="background:var(--col-bg);border:1px solid var(--col-ln);"></div><div class="gk-l"><b>Column band z:-1</b>behind content · tinted fill</div></div>
+        <div class="gk"><div class="gk-sw" style="background:linear-gradient(to bottom,rgba(214,52,36,.09) 1px,transparent 1px) 0 0/4px 24px;border:1px solid rgba(214,52,36,.1);"></div><div class="gk-l"><b>Baseline grid z:9</b>above zone bg · full width · inset:0</div></div>
+        <div class="gk"><div class="gk-sw" style="background:transparent;border-left:1px solid var(--col-ln);"></div><div class="gk-l"><b>Column edge z:10</b>topmost structural line</div></div>
+        <div class="gk"><div class="gk-sw" style="background:rgba(214,52,36,.03);border:1px dashed rgba(214,52,36,.22);"></div><div class="gk-l"><b>Margin zone</b>32px · outside col 1 &amp; 12</div></div>
+        <div class="gk"><div class="gk-sw" style="border-top:1.5px dashed rgba(214,52,36,.65);"></div><div class="gk-l"><b>Local h-guide z:20</b>zone-specific baseline marker</div></div>
+        <div class="gk"><div class="gk-sw" style="border-left:1.5px solid rgba(214,52,36,.65);"></div><div class="gk-l"><b>Local v-guide z:20</b>inset within column</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 Baseline rhythm -->
+  <div class="cell">
+    <p class="sec">02 — Baseline Rhythm · 24px unit</p>
+    <div class="blr">
+      <div class="bl-row" style="min-height:72px;align-items:flex-end;">
+        <span class="bl-lbl">Display</span>
+        <span style="font-family:Georgia,serif;font-size:26px;font-style:italic;font-weight:400;line-height:24px;color:var(--ink);">Editorial</span>
+        <span class="bl-spec">26px/400<br>3×24=72px</span>
+      </div>
+      <div class="bl-row" style="min-height:48px;align-items:flex-end;">
+        <span class="bl-lbl">Heading</span>
+        <span style="font-family:Georgia,serif;font-size:19px;font-style:italic;font-weight:400;line-height:24px;color:var(--ink);">Section title</span>
+        <span class="bl-spec">19px/400<br>2×24=48px</span>
+      </div>
+      <div class="bl-row">
+        <span class="bl-lbl">Card title</span>
+        <span style="font-family:Georgia,serif;font-size:13px;font-style:italic;font-weight:400;line-height:24px;color:var(--ink);">Building a design system</span>
+        <span class="bl-spec">13px/400<br>1×24</span>
+      </div>
+      <div class="bl-row">
+        <span class="bl-lbl">Body</span>
+        <span style="font-size:11px;line-height:24px;color:var(--ink2);">Excerpt · description · labels</span>
+        <span class="bl-spec">11px/400<br>1×24</span>
+      </div>
+      <div class="bl-row">
+        <span class="bl-lbl">Caption</span>
+        <span style="font-size:9px;line-height:24px;color:var(--ink3);">Timestamps · metadata · hints</span>
+        <span class="bl-spec">9px/400<br>1×24</span>
+      </div>
+      <div class="bl-row">
+        <span class="bl-lbl">Label UC</span>
+        <span style="font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;line-height:24px;color:var(--ink3);">Section · Badge</span>
+        <span class="bl-spec">8px/700 UC<br>1×24</span>
+      </div>
+      <div class="bl-row">
+        <span class="bl-lbl">Mono</span>
+        <span style="font-family:ui-monospace,monospace;font-size:10px;line-height:24px;color:var(--ink2);">2 847 · draft · #design</span>
+        <span class="bl-spec">10px/400<br>1×24</span>
+      </div>
+      <div class="bl-row" style="min-height:48px;">
+        <span class="bl-lbl">Input</span>
+        <div style="height:48px;display:flex;align-items:center;">
+          <div style="height:36px;width:100%;border:1.5px solid var(--line);border-radius:3px;padding:0 10px;font-size:11px;line-height:34px;color:var(--ink2);">Display name</div>
+        </div>
+        <span class="bl-spec" style="padding-top:6px;">36px field<br>48px row</span>
+      </div>
+      <div class="bl-row">
+        <span class="bl-lbl">Pill</span>
+        <div style="display:flex;gap:6px;height:24px;align-items:center;">
+          <span style="font-size:8px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;line-height:16px;border-radius:10px;background:#1a1917;color:#f4f2ee;">Live</span>
+          <span style="font-size:8px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;line-height:16px;border-radius:10px;background:#d4ead4;color:#286228;">Ready</span>
+          <span style="font-size:8px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;line-height:16px;border-radius:10px;background:#e8e5e1;color:#8a887f;">Draft</span>
+        </div>
+        <span class="bl-spec">3+16+3=22px<br>in 24px slot</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ROW 2: COLUMN SPLITS · COLOUR ZONES · SPACING -->
+<div class="g3">
+
+  <!-- 03 Column splits -->
+  <div class="cell">
+    <p class="sec">03 — Column Split Patterns</p>
+
+    <div class="split">
+      <p class="sp-name">Full width · nav · hero bands</p>
+      <div class="sp-vis">
+        <div class="sv za"></div><div class="sv za"></div><div class="sv za"></div><div class="sv za"></div>
+        <div class="sv za"></div><div class="sv za"></div><div class="sv za"></div><div class="sv za"></div>
+        <div class="sv za"></div><div class="sv za"></div><div class="sv za"></div><div class="sv za"></div>
+      </div>
+      <div class="sp-ann"><div class="sa" style="grid-column:1/13;">col 1–12 · text flush at col 1</div></div>
+      <p class="sp-desc">Nav, full-width hero bands, dividers. No padding inside zones.</p>
+    </div>
+    <div class="split">
+      <p class="sp-name">Sidebar / Content · settings</p>
+      <div class="sp-vis">
+        <div class="sv za"></div><div class="sv za"></div>
+        <div class="sv zb"></div><div class="sv zb"></div><div class="sv zb"></div><div class="sv zb"></div>
+        <div class="sv zb"></div><div class="sv zb"></div><div class="sv zb"></div><div class="sv zb"></div>
+        <div class="sv zb"></div><div class="sv zb"></div>
+      </div>
+      <div class="sp-ann">
+        <div class="sa" style="grid-column:1/3;">1–2 sidebar</div>
+        <div class="sa" style="grid-column:3/13;">3–12 all content · flush to col 3</div>
+      </div>
+      <p class="sp-desc">Sidebar items 48px each. Col 2 right edge = structural boundary.</p>
+    </div>
+    <div class="split">
+      <p class="sp-name">Label / Input · form rows</p>
+      <div class="sp-vis">
+        <div class="sv" style="background:transparent;"></div><div class="sv" style="background:transparent;"></div>
+        <div class="sv za"></div><div class="sv za"></div><div class="sv za"></div>
+        <div class="sv zb"></div><div class="sv zb"></div><div class="sv zb"></div>
+        <div class="sv zb"></div><div class="sv zb"></div><div class="sv zb"></div><div class="sv zb"></div>
+      </div>
+      <div class="sp-ann">
+        <div class="sa" style="grid-column:1/3;color:transparent;">—</div>
+        <div class="sa" style="grid-column:3/6;">3–5 label</div>
+        <div class="sa" style="grid-column:6/13;">6–12 input</div>
+      </div>
+      <p class="sp-desc">Name, email, bio rows. Label flush to col 3. Input left edge at col 6.</p>
+    </div>
+    <div class="split">
+      <p class="sp-name">Provider row · identity / status / action</p>
+      <div class="sp-vis">
+        <div class="sv" style="background:transparent;"></div><div class="sv" style="background:transparent;"></div>
+        <div class="sv za"></div><div class="sv za"></div><div class="sv za"></div>
+        <div class="sv zb"></div><div class="sv zb"></div><div class="sv zb"></div>
+        <div class="sv zb"></div><div class="sv zb"></div>
+        <div class="sv zc"></div><div class="sv zc"></div>
+      </div>
+      <div class="sp-ann">
+        <div class="sa" style="grid-column:1/3;color:transparent;">—</div>
+        <div class="sa" style="grid-column:3/6;">3–5 identity</div>
+        <div class="sa" style="grid-column:6/11;">6–10 status</div>
+        <div class="sa" style="grid-column:11/13;">11–12 action</div>
+      </div>
+      <p class="sp-desc">72px rows. Action button at padding-top:24px (baseline 2).</p>
+    </div>
+    <div class="split">
+      <p class="sp-name">Two halves · overview hero</p>
+      <div class="sp-vis">
+        <div class="sv za"></div><div class="sv za"></div><div class="sv za"></div><div class="sv za"></div>
+        <div class="sv za"></div><div class="sv za"></div>
+        <div class="sv zb"></div><div class="sv zb"></div><div class="sv zb"></div><div class="sv zb"></div>
+        <div class="sv zb"></div><div class="sv zb"></div>
+      </div>
+      <div class="sp-ann">
+        <div class="sa" style="grid-column:1/7;">1–6 article list</div>
+        <div class="sa" style="grid-column:7/13;">7–12 hero · Georgia italic · dark</div>
+      </div>
+      <p class="sp-desc">Hero and article list share the same Y start. Georgia headline flush to col 7.</p>
+    </div>
+  </div>
+
+  <!-- 04 Colour zones -->
+  <div class="cell">
+    <p class="sec">04 — Colour Zones · Editorial Palette</p>
+    <div class="cz"><div class="cz-sw" style="background:#111110;"><span class="cz-swl" style="color:#4a4845;">nav</span></div><div><p class="cz-r">Navigation · Dark hero</p><p class="cz-d">Near-black shell. Logo and active nav in #f4f2ee. Inactive in #6b6860. Georgia italic hero title in white. Mono kickers in #4a4845.</p><p class="cz-t">#111110 · text #f4f2ee · muted #6b6860</p></div></div>
+    <div class="cz"><div class="cz-sw" style="background:#f8f6f2;border-color:#dddad4;"><span class="cz-swl" style="color:#8a887f;">bg</span></div><div><p class="cz-r">Page surface · Sidebar</p><p class="cz-d">Warm off-white. Page body, sidebar, label zones. Never pure white — that contrast is reserved for cards and inputs.</p><p class="cz-t">--bg #f8f6f2 · --ink #1a1917 body text</p></div></div>
+    <div class="cz"><div class="cz-sw" style="background:#ffffff;border-color:#dddad4;"><span class="cz-swl" style="color:#b0aea8;">white</span></div><div><p class="cz-r">Cards · Inputs</p><p class="cz-d">Pure white signals interactivity. Article cards, form inputs, provider status zones. Subtle lift above bg without shadow.</p><p class="cz-t">#ffffff · border --line #dddad4</p></div></div>
+    <div class="cz"><div class="cz-sw" style="background:#f0ede8;border-color:#dddad4;"><span class="cz-swl" style="color:#8a887f;">shade</span></div><div><p class="cz-r">Active state · Divider rows</p><p class="cz-d">Slightly darker than bg. Active sidebar items, section dividers, ruler rows. Active item gets --ink border-left.</p><p class="cz-t">#f0ede8 · active border --ink</p></div></div>
+    <div class="cz"><div class="cz-sw" style="background:#1a1917;"><span class="cz-swl" style="color:#4a4845;">pub</span></div><div><p class="cz-r">Published pill · Primary CTA</p><p class="cz-d">Ink as filled surface. Maximum contrast. "Live" status pills and primary buttons only. Never used for large areas.</p><p class="cz-t">bg --ink #1a1917 · fg #f4f2ee</p></div></div>
+    <div class="cz"><div class="cz-sw" style="background:#d4ead4;"><span class="cz-swl" style="color:#286228;">ready</span></div><div><p class="cz-r">Ready pill · Connected</p><p class="cz-d">Muted green. "Ready" status and connection success. Text #286228 ensures WCAG AA on this background.</p><p class="cz-t">bg #d4ead4 · fg #286228</p></div></div>
+    <div class="cz"><div class="cz-sw" style="background:#e8e5e1;"><span class="cz-swl" style="color:#8a887f;">draft</span></div><div><p class="cz-r">Draft pill · Disabled</p><p class="cz-d">Neutral warm grey. "Draft" status and disabled actions. Text --ink3. Never used as a body surface.</p><p class="cz-t">bg #e8e5e1 · fg --ink3 #8a887f</p></div></div>
+  </div>
+
+  <!-- 05 Spacing -->
+  <div class="cell">
+    <p class="sec">05 — Spacing Scale · 4px atom</p>
+    <div class="spr"><span class="sp-v">4px</span><div><div class="sp-b" style="width:4px;"></div></div><span class="sp-r">icon gap · pill dot</span></div>
+    <div class="spr"><span class="sp-v">8px</span><div><div class="sp-b" style="width:8px;"></div></div><span class="sp-r">pill pad · small gap</span></div>
+    <div class="spr"><span class="sp-v">12px</span><div><div class="sp-b" style="width:12px;"></div></div><span class="sp-r">sidebar inset · tag row</span></div>
+    <div class="spr"><span class="sp-v">16px</span><div><div class="sp-b" style="width:16px;"></div></div><span class="sp-r">column gap</span></div>
+    <div class="spr"><span class="sp-v">24px</span><div><div class="sp-b" style="width:24px;background:rgba(214,52,36,.4);"></div></div><span class="sp-r">baseline unit --bl</span></div>
+    <div class="spr"><span class="sp-v">32px</span><div><div class="sp-b" style="width:32px;"></div></div><span class="sp-r">margin zone</span></div>
+    <div class="spr"><span class="sp-v">40px</span><div><div class="sp-b" style="width:40px;"></div></div><span class="sp-r">section / cell padding</span></div>
+    <div class="spr"><span class="sp-v">48px</span><div><div class="sp-b" style="width:48px;background:rgba(214,52,36,.18);"></div></div><span class="sp-r">nav · 2×bl row</span></div>
+    <div class="spr"><span class="sp-v">72px</span><div><div class="sp-b" style="width:72px;background:rgba(214,52,36,.12);"></div></div><span class="sp-r">article / provider · 3×bl</span></div>
+    <div class="spr"><span class="sp-v">192px</span><div style="flex:1;"><div class="sp-b" style="width:100%;background:rgba(214,52,36,.06);"></div></div><span class="sp-r">hero · 8×bl</span></div>
+
+    <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--line);">
+      <p style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink4);margin-bottom:10px;">Row height reference</p>
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <div style="display:grid;grid-template-columns:40px 1fr 90px;gap:6px;align-items:center;">
+          <span style="font-size:7px;font-family:ui-monospace,monospace;color:var(--ink4);">24px</span>
+          <div style="height:24px;background:rgba(214,52,36,.07);border:1px solid rgba(214,52,36,.14);"></div>
+          <span style="font-size:8px;color:var(--ink3);">ruler · divider</span>
+        </div>
+        <div style="display:grid;grid-template-columns:40px 1fr 90px;gap:6px;align-items:center;">
+          <span style="font-size:7px;font-family:ui-monospace,monospace;color:var(--ink4);">48px</span>
+          <div style="height:48px;background:rgba(214,52,36,.07);border:1px solid rgba(214,52,36,.14);"></div>
+          <span style="font-size:8px;color:var(--ink3);">nav · hd · form row</span>
+        </div>
+        <div style="display:grid;grid-template-columns:40px 1fr 90px;gap:6px;align-items:center;">
+          <span style="font-size:7px;font-family:ui-monospace,monospace;color:var(--ink4);">72px</span>
+          <div style="height:72px;background:rgba(214,52,36,.07);border:1px solid rgba(214,52,36,.14);"></div>
+          <span style="font-size:8px;color:var(--ink3);">article · bio · provider</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <strong>Editorial grid rules:</strong>
+  <span>12 cols · 16px gap · 32px margin</span>
+  <span>All heights ×24px</span>
+  <span>padding:0 on text zones</span>
+  <span>Georgia = content · system-ui = chrome · mono = data</span>
+  <span>Buttons at padding-top:24px not align:center</span>
+</div>
+
+</body>
+</html>

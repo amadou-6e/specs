@@ -1,0 +1,150 @@
+openapi: "3.0.3"
+info:
+  title: BlogHub Comments API
+  version: "0.1.0"
+
+paths:
+  /api/articles/{article_id}/comments:
+    get:
+      operationId: listComments
+      summary: List all comments on an article
+      parameters:
+        - name: article_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Comment list
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [comments]
+                properties:
+                  comments:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Comment"
+        "404":
+          description: Article not found
+    post:
+      operationId: createComment
+      summary: Add a comment to an article
+      parameters:
+        - name: article_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCommentRequest"
+      responses:
+        "201":
+          description: Created comment
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comment"
+        "404":
+          description: Article not found
+
+  /api/articles/{article_id}/comments/{comment_id}:
+    patch:
+      operationId: updateComment
+      summary: Resolve or edit a comment
+      parameters:
+        - name: article_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: comment_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateCommentRequest"
+      responses:
+        "200":
+          description: Updated comment
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comment"
+        "404":
+          description: Article or comment not found
+    delete:
+      operationId: deleteComment
+      summary: Delete a comment
+      parameters:
+        - name: article_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: comment_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Deleted
+        "404":
+          description: Article or comment not found
+
+components:
+  schemas:
+    Comment:
+      type: object
+      required: [id, articleId, author, text, resolved, hasPatch, createdAt]
+      properties:
+        id:
+          type: string
+        articleId:
+          type: string
+        author:
+          type: string
+        text:
+          type: string
+        resolved:
+          type: boolean
+        hasPatch:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+
+    CreateCommentRequest:
+      type: object
+      required: [text]
+      properties:
+        text:
+          type: string
+        author:
+          type: string
+          nullable: true
+        anchor:
+          type: string
+          nullable: true
+
+    UpdateCommentRequest:
+      type: object
+      properties:
+        resolved:
+          type: boolean
+          nullable: true
+        text:
+          type: string
+          nullable: true

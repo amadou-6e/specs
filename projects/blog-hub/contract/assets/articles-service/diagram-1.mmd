@@ -1,0 +1,30 @@
+sequenceDiagram
+    participant UI as Overview Screen
+    participant B as Articles Service
+    participant J as Jobs Service
+    participant P as Platform APIs (Medium · Hashnode · Dev.to)
+
+    UI->>B: POST /api/articles/{id}/push { "platforms": ["medium", "hashnode"] }
+    B->>B: create job_id; set destination status → pending; append TimelineEvent
+    B-->>UI: 202 { jobId: "job_xxx", status: "running" }
+    UI->>UI: show spinner on destination pills
+
+    Note over B,P: background job runs (simulated sync in dev backend)
+    B->>P: POST article content to each platform API
+    P-->>B: draft created (or error)
+    B->>B: update destination status → draft | error; append TimelineEvent per outcome
+    B->>B: mark job_id → done
+
+    loop every 2 s (max 60 s)
+        UI->>J: GET /api/jobs/job_xxx
+        alt running
+            J-->>UI: { status: "running" }
+        else done
+            J-->>UI: { status: "done", result: { platforms: ["medium","hashnode"] } }
+            UI->>B: GET /api/articles?page=… (refresh)
+            B-->>UI: updated list with new destination pills
+        else error
+            J-->>UI: { status: "error", error: "Medium push failed — auth expired" }
+            UI->>UI: show error toast; refresh article row
+        end
+    end

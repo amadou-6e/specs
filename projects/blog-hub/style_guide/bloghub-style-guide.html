@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BlogHub UI Style Guide</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  /* Ink scale */
+  --ink:   #1a1917;
+  --ink2:  #4a4845;
+  --ink3:  #8a887f;
+  --ink4:  #b0aea8;
+  --line:  #dddad4;
+  --bg:    #f8f6f2;
+  --white: #ffffff;
+
+  /* Accent */
+  --pub-bg:  #1a1917;
+  --pub-fg:  #f4f2ee;
+  --rdy-bg:  #d4ead4;
+  --rdy-fg:  #286228;
+  --dft-bg:  #e8e5e1;
+  --dft-fg:  #8a887f;
+  --err-bg:  #fde8e8;
+  --err-fg:  #c03030;
+  --wrn-bg:  #fef3cd;
+  --wrn-fg:  #7a5800;
+  --inf-bg:  #e4eeff;
+  --inf-fg:  #1a4fa8;
+
+  /* Grid overlay */
+  --col-ln: rgba(0,0,0,.07);
+  --bl-ln:  rgba(0,0,0,.04);
+}
+
+html{background:#eceae6;}
+
+body{
+  font-family:system-ui,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  color:var(--ink);
+  background:var(--bg);
+  max-width:780px;
+  margin:48px auto;
+  border:1px solid #c4c0ba;
+  position:relative;
+}
+
+/* ── Background grid ──────────────────────────────────────────────── */
+.bg-grid{
+  position:fixed;top:0;left:50%;transform:translateX(-50%);
+  width:780px;height:100%;pointer-events:none;z-index:0;
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  column-gap:16px;
+  padding:0 40px;
+}
+.bg-grid>div{border-left:1px solid var(--col-ln);}
+.bg-grid>div:last-child{border-right:1px solid var(--col-ln);}
+
+/* ── Registration marks ──────────────────────────────────────────── */
+.reg{
+  position:absolute;pointer-events:none;z-index:50;
+  width:24px;height:24px;
+}
+.reg::before,.reg::after{content:'';position:absolute;background:var(--ink3);}
+.reg::before{width:1px;height:12px;left:11px;top:6px;}
+.reg::after {width:12px;height:1px;left:6px;top:11px;}
+.reg-circle{
+  position:absolute;pointer-events:none;z-index:50;
+  width:10px;height:10px;
+  border:1px solid var(--ink3);border-radius:50%;
+}
+/* corner marks */
+.r-tl{top:16px;left:16px;}
+.r-tr{top:16px;right:16px;}
+.r-bl{bottom:16px;left:16px;}
+.r-br{bottom:16px;right:16px;}
+/* edge tick pairs */
+.tick{position:absolute;pointer-events:none;z-index:50;}
+.tick::before,.tick::after{content:'';position:absolute;background:var(--ink4);}
+.t-top{top:0;left:50%;transform:translateX(-50%);}
+.t-top::before{width:1px;height:8px;left:0;top:8px;}
+.t-bot{bottom:0;left:50%;transform:translateX(-50%);}
+.t-bot::before{width:1px;height:8px;left:0;bottom:8px;}
+/* crosshair target at center */
+.xhair{
+  position:absolute;pointer-events:none;z-index:50;
+  width:20px;height:20px;
+  left:50%;top:400px;
+  transform:translateX(-50%);
+}
+.xhair::before,.xhair::after{content:'';position:absolute;background:var(--ink3);}
+.xhair::before{width:1px;height:20px;left:9px;top:0;}
+.xhair::after {width:20px;height:1px;top:9px;left:0;}
+.xhair-c{
+  position:absolute;z-index:51;
+  width:6px;height:6px;
+  border:1.5px solid var(--ink3);border-radius:50%;
+  left:50%;top:400px;
+  transform:translate(-50%,-50%) translateY(10px);
+}
+
+/* ── Hero ─────────────────────────────────────────────────────────── */
+.hero{
+  padding:56px 48px 40px;
+  border-bottom:2px solid var(--ink);
+  position:relative;
+}
+.hero-label{
+  font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:12px;
+}
+.hero-title{
+  font-size:clamp(52px,9vw,80px);
+  font-weight:800;line-height:.92;
+  letter-spacing:-.03em;
+  color:var(--ink);
+  text-transform:uppercase;
+}
+.hero-meta{
+  margin-top:24px;
+  display:flex;gap:32px;
+  font-size:9px;font-family:ui-monospace,monospace;
+  color:var(--ink3);
+}
+
+/* ── Layout ──────────────────────────────────────────────────────── */
+.cols{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-bottom:1px solid var(--line);
+}
+.col-l{border-right:1px solid var(--line);}
+.section{padding:24px 32px 28px;}
+.section-full{padding:24px 32px 28px;border-bottom:1px solid var(--line);}
+.sec-hd{
+  font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:18px;
+  padding-bottom:8px;border-bottom:1px solid var(--line);
+}
+
+/* ── Color Tokens ────────────────────────────────────────────────── */
+.swatch-grid{display:flex;flex-wrap:wrap;gap:8px;}
+.swatch{border-radius:4px;overflow:hidden;flex-shrink:0;}
+.sw-color{height:56px;width:96px;}
+.sw-color.wide{width:112px;}
+.sw-label{padding:5px 7px;background:var(--white);border:1px solid var(--line);border-top:none;}
+.sw-name{font-size:8px;font-weight:600;color:var(--ink);display:block;}
+.sw-val {font-size:7px;color:var(--ink3);font-family:ui-monospace,monospace;display:block;}
+
+.ink-row{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px;}
+.ink-sw{border-radius:3px;overflow:hidden;}
+.ink-sw-c{height:36px;}
+.ink-sw-l{padding:4px 6px;border:1px solid var(--line);border-top:none;}
+.ink-sw-n{font-size:7px;font-weight:600;display:block;}
+.ink-sw-v{font-size:6px;color:var(--ink3);font-family:ui-monospace,monospace;}
+
+.accent-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;}
+.ac-sw{border-radius:3px;overflow:hidden;}
+.ac-sw-c{height:28px;display:flex;align-items:center;justify-content:center;}
+.ac-lbl{font-size:7px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;}
+.ac-sw-l{padding:3px 6px;border:1px solid var(--line);border-top:none;}
+.ac-sw-n{font-size:7px;font-weight:600;display:block;}
+
+/* ── Typography ──────────────────────────────────────────────────── */
+.type-row{
+  display:flex;align-items:baseline;gap:12px;
+  border-bottom:1px solid var(--line);padding:10px 0;
+}
+.type-row:first-child{padding-top:0;}
+.type-row:last-child{border-bottom:none;padding-bottom:0;}
+.type-sample{flex:1;color:var(--ink);}
+.type-meta{font-size:7px;font-family:ui-monospace,monospace;color:var(--ink3);white-space:nowrap;}
+
+/* ── Spacing ─────────────────────────────────────────────────────── */
+.sp-grid{display:flex;flex-direction:column;gap:6px;}
+.sp-row{display:flex;align-items:center;gap:10px;}
+.sp-bar{background:var(--line);height:100%;border-radius:1px;flex-shrink:0;}
+.sp-val{font-size:7px;font-family:ui-monospace,monospace;color:var(--ink3);white-space:nowrap;}
+
+/* ── Radius ──────────────────────────────────────────────────────── */
+.rad-grid{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;}
+.rad-box{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.rad-sq{width:40px;height:40px;border:1.5px solid var(--ink3);background:var(--white);}
+.rad-val{font-size:7px;font-family:ui-monospace,monospace;color:var(--ink3);}
+
+/* ── Elevation ───────────────────────────────────────────────────── */
+.elev-stack{display:flex;flex-direction:column;gap:8px;}
+.elev-card{
+  background:var(--white);
+  font-size:9px;font-weight:600;color:var(--ink);
+  padding:10px 14px;border-radius:4px;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────── */
+.btn-group{margin-bottom:16px;}
+.btn-group:last-child{margin-bottom:0;}
+.btn-group-hd{font-size:7px;color:var(--ink4);margin-bottom:8px;letter-spacing:.06em;text-transform:uppercase;}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;}
+.btn{
+  font-size:10px;font-weight:600;letter-spacing:.01em;
+  padding:0 14px;height:32px;line-height:32px;
+  border-radius:4px;display:inline-flex;align-items:center;white-space:nowrap;
+  border:none;cursor:default;
+}
+.btn-primary{background:var(--ink);color:#f4f2ee;}
+.btn-primary.hover{background:#2a2925;}
+.btn-primary.disabled{background:#ccc9c4;color:#f4f2ee;opacity:.7;}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);}
+.btn-ghost.hover{background:var(--bg);border-color:var(--ink3);}
+.btn-ghost.disabled{color:var(--ink4);border-color:var(--line);opacity:.6;}
+.btn-danger{background:#fde8e8;color:#c03030;border:1.5px solid #f5c0c0;}
+.btn-sm{height:24px;line-height:24px;font-size:9px;padding:0 10px;}
+.state-lbl{font-size:7px;color:var(--ink4);display:block;margin-bottom:4px;letter-spacing:.05em;text-transform:uppercase;}
+
+/* ── Inputs ──────────────────────────────────────────────────────── */
+.inp-group{margin-bottom:14px;}
+.inp-group:last-child{margin-bottom:0;}
+.inp-lbl{font-size:8px;font-weight:600;color:var(--ink2);margin-bottom:5px;display:block;}
+.inp-hint{font-size:7px;color:var(--ink4);margin-bottom:5px;display:block;}
+.inp-wrap{position:relative;}
+.inp-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--ink4);}
+.inp{
+  width:100%;height:36px;
+  border:1.5px solid var(--line);border-radius:4px;
+  font-size:11px;line-height:24px;
+  padding:0 10px;
+  color:var(--ink);background:var(--white);
+  font-family:inherit;
+  display:flex;align-items:center;
+}
+.inp.has-icon{padding-left:30px;}
+.inp.focus{border-color:var(--ink);outline:3px solid rgba(26,25,23,.12);}
+.inp.error{border-color:#c03030;}
+.inp-placeholder{color:var(--ink4);}
+.textarea{
+  width:100%;height:60px;
+  border:1.5px solid var(--line);border-radius:4px;
+  font-size:11px;line-height:24px;padding:6px 10px;
+  color:var(--ink3);
+}
+
+/* ── Pills / Chips ───────────────────────────────────────────────── */
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px;}
+.pill{
+  font-size:8px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:3px 8px;line-height:16px;border-radius:10px;
+  display:inline-flex;align-items:center;gap:4px;
+}
+.p-live {background:var(--pub-bg);color:var(--pub-fg);}
+.p-ready{background:var(--rdy-bg);color:var(--rdy-fg);}
+.p-draft{background:var(--dft-bg);color:var(--dft-fg);}
+.p-error{background:var(--err-bg);color:var(--err-fg);}
+.p-info {background:var(--inf-bg);color:var(--inf-fg);}
+.pill-dot{width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0;}
+
+/* ── Tabs ────────────────────────────────────────────────────────── */
+.tab-bar{display:flex;border-bottom:1.5px solid var(--line);gap:0;}
+.tab{
+  font-size:11px;color:var(--ink3);
+  padding:0 14px;line-height:36px;
+  border-bottom:2px solid transparent;margin-bottom:-1.5px;
+  cursor:default;white-space:nowrap;
+}
+.tab.on{color:var(--ink);font-weight:600;border-bottom-color:var(--ink);}
+
+/* ── Alerts ──────────────────────────────────────────────────────── */
+.alert{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:10px 12px;border-radius:4px;
+  margin-bottom:8px;border:1px solid transparent;
+}
+.alert:last-child{margin-bottom:0;}
+.alert-icon{font-size:14px;line-height:20px;flex-shrink:0;}
+.alert-body{flex:1;}
+.alert-title{font-size:10px;font-weight:600;line-height:20px;}
+.alert-sub{font-size:9px;line-height:16px;margin-top:1px;}
+.a-success{background:#edf7ed;border-color:#b8deb8;color:#1a5c1a;}
+.a-warning{background:#fef9ec;border-color:#f0d88a;color:#6b4c00;}
+.a-error  {background:var(--err-bg);border-color:#f5c0c0;color:#9a2020;}
+.a-info   {background:var(--inf-bg);border-color:#b8cffa;color:#1a3a8a;}
+
+/* ── Cards ───────────────────────────────────────────────────────── */
+.card{
+  background:var(--white);border-radius:6px;
+  border:1px solid var(--line);
+  overflow:hidden;
+}
+.card-body{padding:16px;}
+.card-plat{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px;}
+.card-title{font-size:13px;font-weight:700;color:var(--ink);line-height:20px;margin-bottom:4px;}
+.card-excerpt{font-size:10px;color:var(--ink3);line-height:16px;margin-bottom:12px;}
+.card-footer{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 16px;
+  border-top:1px solid var(--line);
+  background:var(--bg);
+}
+.card-meta{font-size:9px;color:var(--ink3);}
+.card-actions{display:flex;gap:6px;}
+
+/* ── Icon glyph helpers ──────────────────────────────────────────── */
+.ic{font-style:normal;font-size:13px;line-height:1;}
+
+/* ── Section rule dividers ───────────────────────────────────────── */
+.rule{height:1px;background:var(--line);margin:0 32px;}
+
+/* ── Footer ──────────────────────────────────────────────────────── */
+.footer{
+  padding:20px 32px 24px;
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:2px solid var(--ink);
+}
+.footer-l{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);}
+.footer-r{font-size:8px;font-family:ui-monospace,monospace;color:var(--ink4);}
+</style>
+</head>
+<body>
+
+<!-- Background grid columns -->
+<div class="bg-grid">
+  <div></div><div></div><div></div><div></div>
+  <div></div><div></div><div></div><div></div>
+  <div></div><div></div><div></div><div></div>
+</div>
+
+<!-- Registration marks -->
+<div class="reg r-tl"></div>
+<div class="reg r-tr" style="transform:rotate(0deg);"></div>
+<div class="reg r-bl"></div>
+<div class="reg r-br"></div>
+<div class="tick t-top"></div>
+<div class="tick t-bot"></div>
+<!-- crosshair at page mid -->
+<div class="xhair"></div>
+<div class="xhair-c"></div>
+
+<!-- ── HERO ─────────────────────────────────────────────────────── -->
+<div class="hero">
+  <div class="hero-label">BlogHub · Design System · v1</div>
+  <div class="hero-title">UI<br>Style<br>Guide</div>
+  <div class="hero-meta">
+    <span>12-col grid · 16px gap · 32px margin</span>
+    <span>24px baseline · system-ui</span>
+    <span>2026-07-02</span>
+  </div>
+</div>
+
+<!-- ── ROW 1: COLOR + TYPOGRAPHY ──────────────────────────────── -->
+<div class="cols">
+
+  <!-- COLOR TOKENS -->
+  <div class="section col-l">
+    <div class="sec-hd">Color Tokens</div>
+
+    <!-- Ink scale -->
+    <div class="ink-row">
+      <div class="ink-sw">
+        <div class="ink-sw-c" style="background:#1a1917;"></div>
+        <div class="ink-sw-l">
+          <span class="ink-sw-n" style="color:#f4f2ee;background:#1a1917;display:block;margin:-4px -6px 2px;padding:2px 6px;">ink</span>
+          <span class="ink-sw-v">#1a1917</span>
+        </div>
+      </div>
+      <div class="ink-sw">
+        <div class="ink-sw-c" style="background:#4a4845;"></div>
+        <div class="ink-sw-l">
+          <span class="ink-sw-n">ink2</span>
+          <span class="ink-sw-v">#4a4845</span>
+        </div>
+      </div>
+      <div class="ink-sw">
+        <div class="ink-sw-c" style="background:#8a887f;"></div>
+        <div class="ink-sw-l">
+          <span class="ink-sw-n">ink3</span>
+          <span class="ink-sw-v">#8a887f</span>
+        </div>
+      </div>
+      <div class="ink-sw">
+        <div class="ink-sw-c" style="background:#b0aea8;"></div>
+        <div class="ink-sw-l">
+          <span class="ink-sw-n">ink4</span>
+          <span class="ink-sw-v">#b0aea8</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Surface + line swatches -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:14px;">
+      <div class="ink-sw">
+        <div class="ink-sw-c" style="background:#f8f6f2;border:1px solid #e8e5e0;"></div>
+        <div class="ink-sw-l"><span class="ink-sw-n">bg</span><span class="ink-sw-v">#f8f6f2</span></div>
+      </div>
+      <div class="ink-sw">
+        <div class="ink-sw-c" style="background:#ffffff;border:1px solid #e8e5e0;"></div>
+        <div class="ink-sw-l"><span class="ink-sw-n">white</span><span class="ink-sw-v">#ffffff</span></div>
+      </div>
+      <div class="ink-sw">
+        <div class="ink-sw-c" style="background:#dddad4;"></div>
+        <div class="ink-sw-l"><span class="ink-sw-n">line</span><span class="ink-sw-v">#dddad4</span></div>
+      </div>
+    </div>
+
+    <!-- Status accent colours -->
+    <div style="font-size:7px;color:var(--ink4);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;">Status accents</div>
+    <div class="accent-row">
+      <div class="ac-sw">
+        <div class="ac-sw-c" style="background:#1a1917;">
+          <span class="ac-lbl" style="color:#f4f2ee;">Live</span>
+        </div>
+        <div class="ac-sw-l"><span class="ac-sw-n">published</span></div>
+      </div>
+      <div class="ac-sw">
+        <div class="ac-sw-c" style="background:#d4ead4;">
+          <span class="ac-lbl" style="color:#286228;">Ready</span>
+        </div>
+        <div class="ac-sw-l"><span class="ac-sw-n">ready</span></div>
+      </div>
+      <div class="ac-sw">
+        <div class="ac-sw-c" style="background:#e8e5e1;">
+          <span class="ac-lbl" style="color:#8a887f;">Draft</span>
+        </div>
+        <div class="ac-sw-l"><span class="ac-sw-n">draft</span></div>
+      </div>
+      <div class="ac-sw">
+        <div class="ac-sw-c" style="background:#fde8e8;">
+          <span class="ac-lbl" style="color:#c03030;">Error</span>
+        </div>
+        <div class="ac-sw-l"><span class="ac-sw-n">error</span></div>
+      </div>
+      <div class="ac-sw">
+        <div class="ac-sw-c" style="background:#fef3cd;">
+          <span class="ac-lbl" style="color:#7a5800;">Warn</span>
+        </div>
+        <div class="ac-sw-l"><span class="ac-sw-n">warning</span></div>
+      </div>
+      <div class="ac-sw">
+        <div class="ac-sw-c" style="background:#e4eeff;">
+          <span class="ac-lbl" style="color:#1a4fa8;">Info</span>
+        </div>
+        <div class="ac-sw-l"><span class="ac-sw-n">info</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TYPOGRAPHY SCALE -->
+  <div class="section">
+    <div class="sec-hd">Typography Scale</div>
+
+    <div class="type-row">
+      <div class="type-sample" style="font-size:40px;font-weight:800;line-height:44px;letter-spacing:-.03em;">Display</div>
+      <div class="type-meta">XXL · 40/44 · 800</div>
+    </div>
+    <div class="type-row">
+      <div class="type-sample" style="font-size:28px;font-weight:700;line-height:32px;letter-spacing:-.02em;">Headline 1</div>
+      <div class="type-meta">XL · 28/32 · 700</div>
+    </div>
+    <div class="type-row">
+      <div class="type-sample" style="font-size:20px;font-weight:700;line-height:24px;letter-spacing:-.015em;">Headline 2</div>
+      <div class="type-meta">L · 20/24 · 700</div>
+    </div>
+    <div class="type-row">
+      <div class="type-sample" style="font-size:14px;font-weight:600;line-height:24px;">Title</div>
+      <div class="type-meta">M · 14/24 · 600</div>
+    </div>
+    <div class="type-row">
+      <div class="type-sample" style="font-size:12px;font-weight:400;line-height:24px;color:var(--ink2);">Body — articles, descriptions, UI copy</div>
+      <div class="type-meta">S · 12/24 · 400</div>
+    </div>
+    <div class="type-row">
+      <div class="type-sample" style="font-size:10px;font-weight:400;line-height:16px;color:var(--ink3);">Small — meta, dates, secondary info</div>
+      <div class="type-meta">XS · 10/16 · 400</div>
+    </div>
+    <div class="type-row">
+      <div class="type-sample" style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;line-height:16px;color:var(--ink3);">Label / Caption</div>
+      <div class="type-meta">2XS · 8/16 · 700 · UC</div>
+    </div>
+    <div class="type-row" style="padding-bottom:0;">
+      <div class="type-sample" style="font-size:10px;font-family:ui-monospace,monospace;line-height:16px;color:var(--ink2);">mono — tokens, paths, code</div>
+      <div class="type-meta">Mono · 10/16</div>
+    </div>
+  </div>
+
+</div><!-- /cols row 1 -->
+
+<!-- ── ROW 2: SPACING + RADIUS + ELEVATION ─────────────────────── -->
+<div class="cols" style="border-top:1px solid var(--line);">
+
+  <!-- SPACING -->
+  <div class="section col-l">
+    <div class="sec-hd">Spacing</div>
+    <div class="sp-grid">
+      <div class="sp-row">
+        <div class="sp-bar" style="width:4px;height:12px;"></div>
+        <div class="sp-val">4px</div>
+        <div style="font-size:7px;color:var(--ink4);">icon gap, tight padding</div>
+      </div>
+      <div class="sp-row">
+        <div class="sp-bar" style="width:8px;height:12px;"></div>
+        <div class="sp-val">8px</div>
+        <div style="font-size:7px;color:var(--ink4);">pill padding, small gap</div>
+      </div>
+      <div class="sp-row">
+        <div class="sp-bar" style="width:12px;height:12px;"></div>
+        <div class="sp-val">12px</div>
+        <div style="font-size:7px;color:var(--ink4);">card inset, sidebar item</div>
+      </div>
+      <div class="sp-row">
+        <div class="sp-bar" style="width:16px;height:12px;"></div>
+        <div class="sp-val">16px</div>
+        <div style="font-size:7px;color:var(--ink4);">column gap (--cg)</div>
+      </div>
+      <div class="sp-row">
+        <div class="sp-bar" style="width:24px;height:12px;"></div>
+        <div class="sp-val">24px</div>
+        <div style="font-size:7px;color:var(--ink4);">baseline unit (--bl)</div>
+      </div>
+      <div class="sp-row">
+        <div class="sp-bar" style="width:32px;height:12px;"></div>
+        <div class="sp-val">32px</div>
+        <div style="font-size:7px;color:var(--ink4);">section padding, card body</div>
+      </div>
+      <div class="sp-row">
+        <div class="sp-bar" style="width:40px;height:12px;"></div>
+        <div class="sp-val">40px</div>
+        <div style="font-size:7px;color:var(--ink4);">margin zone (--mg)</div>
+      </div>
+      <div class="sp-row">
+        <div class="sp-bar" style="width:48px;height:12px;"></div>
+        <div class="sp-val">48px</div>
+        <div style="font-size:7px;color:var(--ink4);">nav height, row height 2×</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RADIUS + ELEVATION -->
+  <div class="section">
+    <div class="sec-hd">Radius</div>
+    <div class="rad-grid" style="margin-bottom:28px;">
+      <div class="rad-box">
+        <div class="rad-sq" style="border-radius:0;"></div>
+        <div class="rad-val">0</div>
+        <div style="font-size:6px;color:var(--ink4);">none</div>
+      </div>
+      <div class="rad-box">
+        <div class="rad-sq" style="border-radius:2px;"></div>
+        <div class="rad-val">2px</div>
+        <div style="font-size:6px;color:var(--ink4);">tag</div>
+      </div>
+      <div class="rad-box">
+        <div class="rad-sq" style="border-radius:4px;"></div>
+        <div class="rad-val">4px</div>
+        <div style="font-size:6px;color:var(--ink4);">btn</div>
+      </div>
+      <div class="rad-box">
+        <div class="rad-sq" style="border-radius:6px;"></div>
+        <div class="rad-val">6px</div>
+        <div style="font-size:6px;color:var(--ink4);">card</div>
+      </div>
+      <div class="rad-box">
+        <div class="rad-sq" style="border-radius:10px;"></div>
+        <div class="rad-val">10px</div>
+        <div style="font-size:6px;color:var(--ink4);">pill</div>
+      </div>
+      <div class="rad-box">
+        <div class="rad-sq" style="border-radius:50%;"></div>
+        <div class="rad-val">full</div>
+        <div style="font-size:6px;color:var(--ink4);">avatar</div>
+      </div>
+    </div>
+
+    <div class="sec-hd">Elevation</div>
+    <div class="elev-stack">
+      <div class="elev-card" style="box-shadow:none;border:1px solid var(--line);">
+        <span style="font-size:7px;color:var(--ink4);text-transform:uppercase;letter-spacing:.08em;">Level 0</span>
+        <div>Surface — bg #f8f6f2</div>
+      </div>
+      <div class="elev-card" style="box-shadow:0 1px 3px rgba(0,0,0,.08);">
+        <span style="font-size:7px;color:var(--ink4);text-transform:uppercase;letter-spacing:.08em;">Level 1</span>
+        <div>Card — 0 1px 3px / 8%</div>
+      </div>
+      <div class="elev-card" style="box-shadow:0 4px 12px rgba(0,0,0,.10);">
+        <span style="font-size:7px;color:var(--ink4);text-transform:uppercase;letter-spacing:.08em;">Level 2</span>
+        <div>Dropdown — 0 4px 12px / 10%</div>
+      </div>
+      <div class="elev-card" style="box-shadow:0 8px 24px rgba(0,0,0,.14);">
+        <span style="font-size:7px;color:var(--ink4);text-transform:uppercase;letter-spacing:.08em;">Level 3</span>
+        <div>Modal — 0 8px 24px / 14%</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /cols row 2 -->
+
+<!-- ── ROW 3: BUTTONS + INPUTS ─────────────────────────────────── -->
+<div class="cols" style="border-top:1px solid var(--line);">
+
+  <!-- BUTTONS -->
+  <div class="section col-l">
+    <div class="sec-hd">Buttons</div>
+
+    <div class="btn-group">
+      <div class="state-lbl">Primary</div>
+      <div class="btn-row">
+        <div>
+          <div class="state-lbl">Default</div>
+          <div class="btn btn-primary">Save changes</div>
+        </div>
+        <div>
+          <div class="state-lbl">Hover</div>
+          <div class="btn btn-primary hover">Save changes</div>
+        </div>
+        <div>
+          <div class="state-lbl">Disabled</div>
+          <div class="btn btn-primary disabled">Save changes</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-group">
+      <div class="state-lbl">Ghost / Secondary</div>
+      <div class="btn-row">
+        <div>
+          <div class="state-lbl">Default</div>
+          <div class="btn btn-ghost">Cancel</div>
+        </div>
+        <div>
+          <div class="state-lbl">Hover</div>
+          <div class="btn btn-ghost hover">Cancel</div>
+        </div>
+        <div>
+          <div class="state-lbl">Disabled</div>
+          <div class="btn btn-ghost disabled">Cancel</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-group">
+      <div class="state-lbl">Danger · Small</div>
+      <div class="btn-row">
+        <div class="btn btn-danger btn-sm">Disconnect</div>
+        <div class="btn btn-ghost btn-sm">New article</div>
+        <div class="btn btn-primary btn-sm">Publish</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INPUTS -->
+  <div class="section">
+    <div class="sec-hd">Inputs</div>
+
+    <div class="inp-group">
+      <div class="inp-lbl">Text — default</div>
+      <div class="inp-wrap">
+        <div class="inp">
+          <span class="inp-placeholder">Article title</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="inp-group">
+      <div class="inp-lbl">Text — with icon</div>
+      <div class="inp-wrap">
+        <span class="inp-icon">⌕</span>
+        <div class="inp has-icon">
+          <span class="inp-placeholder">Search articles</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="inp-group">
+      <div class="inp-lbl">Text — focus state</div>
+      <div class="inp focus">How to ship faster</div>
+    </div>
+
+    <div class="inp-group">
+      <div class="inp-lbl">Text — error state</div>
+      <div class="inp-hint" style="color:var(--err-fg);">Title is required</div>
+      <div class="inp error">
+        <span class="inp-placeholder">Article title</span>
+      </div>
+    </div>
+
+    <div class="inp-group">
+      <div class="inp-lbl">Textarea</div>
+      <div class="textarea">A practical guide to deployment strategies, feature flags, and the art of knowing when to merge.</div>
+    </div>
+  </div>
+
+</div><!-- /cols row 3 -->
+
+<!-- ── ROW 4: PILLS + TABS ─────────────────────────────────────── -->
+<div class="cols" style="border-top:1px solid var(--line);">
+
+  <!-- PILLS / STATUS CHIPS -->
+  <div class="section col-l">
+    <div class="sec-hd">Pills · Status Chips</div>
+
+    <div style="font-size:7px;color:var(--ink4);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;">Article status</div>
+    <div class="pill-row">
+      <div class="pill p-live"><span class="pill-dot"></span>Live</div>
+      <div class="pill p-ready"><span class="pill-dot"></span>Ready</div>
+      <div class="pill p-draft"><span class="pill-dot"></span>Draft</div>
+      <div class="pill p-error"><span class="pill-dot"></span>Error</div>
+    </div>
+
+    <div style="font-size:7px;color:var(--ink4);margin-bottom:6px;margin-top:14px;text-transform:uppercase;letter-spacing:.06em;">Connection status</div>
+    <div class="pill-row">
+      <div class="pill p-ready"><span class="pill-dot"></span>Connected</div>
+      <div class="pill p-draft">Not connected</div>
+      <div class="pill p-error"><span class="pill-dot"></span>Auth error</div>
+    </div>
+
+    <div style="font-size:7px;color:var(--ink4);margin-bottom:6px;margin-top:14px;text-transform:uppercase;letter-spacing:.06em;">Platform tags</div>
+    <div class="pill-row">
+      <div class="pill p-info">Medium</div>
+      <div class="pill p-info">Hashnode</div>
+      <div class="pill p-info">Dev.to</div>
+    </div>
+
+    <div style="font-size:7px;color:var(--ink4);margin-bottom:6px;margin-top:14px;text-transform:uppercase;letter-spacing:.06em;">Anatomy · height 22px = 3px+16px+3px</div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div class="pill p-ready" style="padding:3px 8px;line-height:16px;">Pill label</div>
+      <div style="font-size:7px;font-family:ui-monospace,monospace;color:var(--ink3);">
+        3px + 16px lh + 3px = 22px<br>
+        border-radius: 10px<br>
+        font: 8px / 700 / UC / +.06em
+      </div>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="section">
+    <div class="sec-hd">Tabs</div>
+
+    <div style="font-size:7px;color:var(--ink4);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;">Navigation tabs · 48px height</div>
+    <div class="tab-bar" style="margin-bottom:20px;">
+      <div class="tab">Articles</div>
+      <div class="tab">Queue</div>
+      <div class="tab on">Platforms</div>
+      <div class="tab">Settings</div>
+    </div>
+
+    <div style="font-size:7px;color:var(--ink4);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;">Section tabs · 36px height</div>
+    <div class="tab-bar" style="margin-bottom:20px;">
+      <div class="tab on" style="line-height:28px;">Overview</div>
+      <div class="tab" style="line-height:28px;">Connections</div>
+      <div class="tab" style="line-height:28px;">API</div>
+    </div>
+
+    <div style="font-size:7px;color:var(--ink4);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;">Sidebar nav · 48px items</div>
+    <div style="border:1px solid var(--line);border-radius:4px;overflow:hidden;">
+      <div style="font-size:11px;color:var(--ink3);line-height:40px;padding:0 12px;border-bottom:1px solid var(--line);">General</div>
+      <div style="font-size:11px;color:var(--ink);font-weight:600;line-height:40px;padding:0 12px;background:#f0ede8;border-left:3px solid var(--ink);border-bottom:1px solid var(--line);">Profile</div>
+      <div style="font-size:11px;color:var(--ink3);line-height:40px;padding:0 12px;border-bottom:1px solid var(--line);">Connections</div>
+      <div style="font-size:11px;color:var(--ink3);line-height:40px;padding:0 12px;">Appearance</div>
+    </div>
+  </div>
+
+</div><!-- /cols row 4 -->
+
+<!-- ── ROW 5: ALERTS + CARDS ───────────────────────────────────── -->
+<div class="cols" style="border-top:1px solid var(--line);">
+
+  <!-- ALERTS -->
+  <div class="section col-l">
+    <div class="sec-hd">Alerts · Notifications</div>
+
+    <div class="alert a-success">
+      <span class="alert-icon">✓</span>
+      <div class="alert-body">
+        <div class="alert-title">Article published</div>
+        <div class="alert-sub">Pushed to Medium and Hashnode successfully.</div>
+      </div>
+    </div>
+    <div class="alert a-warning">
+      <span class="alert-icon">⚠</span>
+      <div class="alert-body">
+        <div class="alert-title">Rate limit reached</div>
+        <div class="alert-sub">OpenAI device flow — wait ~15 min before retrying.</div>
+      </div>
+    </div>
+    <div class="alert a-error">
+      <span class="alert-icon">✕</span>
+      <div class="alert-body">
+        <div class="alert-title">Authentication failed</div>
+        <div class="alert-sub">Token exchange error — please reconnect your account.</div>
+      </div>
+    </div>
+    <div class="alert a-info">
+      <span class="alert-icon">ℹ</span>
+      <div class="alert-body">
+        <div class="alert-title">Loopback OAuth</div>
+        <div class="alert-sub">Copy the redirect URL from your browser's address bar and paste it below.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARDS -->
+  <div class="section">
+    <div class="sec-hd">Cards</div>
+
+    <!-- Article card -->
+    <div style="font-size:7px;color:var(--ink4);margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em;">Article card</div>
+    <div class="card" style="margin-bottom:16px;">
+      <div class="card-body">
+        <div class="card-plat">Medium · Hashnode</div>
+        <div class="card-title">The hidden cost of over-engineering your stack</div>
+        <div class="card-excerpt">Why simplicity compounds over time — and how to resist the pull of premature abstraction.</div>
+        <div style="display:flex;gap:6px;align-items:center;">
+          <div class="pill p-live"><span class="pill-dot"></span>Live</div>
+          <div style="font-size:9px;color:var(--ink3);">Technology · Jun 28</div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="card-meta">5 min read · 2 platforms</div>
+        <div class="card-actions">
+          <div class="btn btn-ghost btn-sm">Edit</div>
+          <div class="btn btn-primary btn-sm">Publish</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Provider card -->
+    <div style="font-size:7px;color:var(--ink4);margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em;">Provider connection card</div>
+    <div class="card">
+      <div class="card-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+          <div>
+            <div class="card-plat">AI Provider</div>
+            <div class="card-title" style="margin-bottom:2px;">Anthropic</div>
+            <div style="font-size:9px;color:var(--ink3);font-family:ui-monospace,monospace;">Claude 3.5 Sonnet · claude auth login</div>
+          </div>
+          <div class="pill p-ready" style="flex-shrink:0;"><span class="pill-dot"></span>Connected</div>
+        </div>
+        <div style="margin-top:10px;font-size:9px;color:var(--ink3);">amadou.6e@googlemail.com · OAuth · 12 days ago</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /cols row 5 -->
+
+<!-- ── FOOTER ────────────────────────────────────────────────────── -->
+<div class="footer">
+  <div class="footer-l">BlogHub · UI Style Guide · v1</div>
+  <div class="footer-r">system-ui · 12col · 24px baseline · © 2026</div>
+</div>
+
+</body>
+</html>

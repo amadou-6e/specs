@@ -1,0 +1,69 @@
+{
+  "image": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\layouts\\005.png",
+  "background_color": "#141414",
+  "searched_colors": [
+    "#ECE4DC",
+    "#7C7C54",
+    "#7C7C5C",
+    "#544434",
+    "#E4E4DC",
+    "#5C4C3C",
+    "#847C5C",
+    "#5C4C34",
+    "#4C3C2C",
+    "#64543C",
+    "#645444"
+  ],
+  "region_count": 3,
+  "regions": [
+    {
+      "id": 1,
+      "color": "#7C7C5C",
+      "threshold": 14,
+      "x": 61,
+      "y": 58,
+      "width": 323,
+      "height": 386,
+      "area_pixels": 117097,
+      "bbox_area": 124678,
+      "extent": 0.9392,
+      "solidity": 0.9642,
+      "confidence": 0.9631,
+      "svg_path": "M 67 60 L 64 438 L 366 442 L 362 375 L 383 373 L 378 358 L 363 361 L 369 107 L 356 74 L 366 60 Z"
+    },
+    {
+      "id": 2,
+      "color": "#5C4C34",
+      "threshold": 32,
+      "x": 364,
+      "y": 58,
+      "width": 312,
+      "height": 281,
+      "area_pixels": 41958,
+      "bbox_area": 87672,
+      "extent": 0.4786,
+      "solidity": 0.5197,
+      "confidence": 0.6043,
+      "svg_path": "M 370 60 L 368 84 L 437 103 L 368 111 L 368 135 L 520 121 L 519 170 L 542 174 L 497 194 L 481 259 L 508 304 L 418 297 L 426 327 L 638 337 L 615 307 L 524 315 L 516 291 L 571 300 L 545 263 L 614 267 L 614 243 L 673 266 L 674 116 L 613 137 L 643 153 L 614 182 L 591 153 L 549 163 L 541 134 L 583 157 L 632 114 L 563 99 L 669 62 Z"
+    },
+    {
+      "id": 3,
+      "color": "#E4E4DC",
+      "threshold": 32,
+      "x": 61,
+      "y": 467,
+      "width": 614,
+      "height": 385,
+      "area_pixels": 106788,
+      "bbox_area": 236390,
+      "extent": 0.4517,
+      "solidity": 0.5405,
+      "confidence": 0.6504,
+      "svg_path": "M 62 474 L 64 533 L 309 536 L 310 850 L 389 849 L 393 629 L 615 630 L 618 849 L 672 845 L 668 469 Z"
+    }
+  ],
+  "notes": [
+    "This detector targets large layout/image regions and intentionally ignores small texture/text fragments.",
+    "Run scripts/detect_shapes.py for fine-grained color-island extraction."
+  ]
+}

@@ -1,0 +1,21 @@
+flowchart LR
+    subgraph "Articles Service"
+        AP[push.py / gate.py]
+    end
+
+    subgraph Store
+        JS[(_jobs)]
+    end
+
+    subgraph "Jobs Service"
+        JR[Router\njobs.py]
+    end
+
+    subgraph Frontend
+        UI[Overview / Queue Screen]
+    end
+
+    AP -->|create + update job| JS
+    JR -->|read job| JS
+    UI -->|GET /api/jobs/job_id| JR
+    JR -->|JobResponse| UI

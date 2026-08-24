@@ -1,0 +1,21 @@
+classDiagram
+    class PlatformConnection {
+        +String id
+        +String label
+        +bool connected
+        +String username
+    }
+
+    class PlatformListResponse {
+        +List~PlatformConnection~ platforms
+    }
+
+    class Platform {
+        <<enumeration>>
+        medium
+        hashnode
+        devto
+    }
+
+    PlatformListResponse "1" --> "3" PlatformConnection
+    PlatformConnection --> Platform

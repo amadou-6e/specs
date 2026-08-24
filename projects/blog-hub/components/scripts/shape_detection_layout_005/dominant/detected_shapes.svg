@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="736" height="920" viewBox="0 0 736 920">
+  <title>dominant detected shapes</title>
+  <rect width="100%" height="100%" fill="#141414"/>
+  <g id="detected-shapes" stroke-linejoin="round">
+    <path id="shape-6" d="M 67 60 L 63 437 L 367 443 L 363 390 L 403 342 L 363 345 L 391 291 L 363 265 L 382 74 Z" fill="#7C7C54" fill-opacity="0.72" stroke="#FF2E88" stroke-width="2"/>
+    <text x="65" y="70" font-family="monospace" font-size="9" fill="#FF2E88" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#6 L1 rounded_rect_or_complex_ui_shape 0.9553</text>
+    <path id="shape-10" d="M 67 60 L 63 437 L 369 443 L 383 351 L 363 306 L 391 291 L 362 266 L 369 59 Z" fill="#7C7C5C" fill-opacity="0.72" stroke="#00A8FF" stroke-width="2"/>
+    <text x="65" y="70" font-family="monospace" font-size="9" fill="#00A8FF" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#10 L1 rounded_rect_or_complex_ui_shape 0.9677</text>
+    <path id="shape-41" d="M 67 60 L 62 435 L 368 442 L 384 352 L 363 306 L 391 292 L 362 266 L 369 59 Z" fill="#847C5C" fill-opacity="0.72" stroke="#FFB000" stroke-width="2"/>
+    <text x="65" y="70" font-family="monospace" font-size="9" fill="#FFB000" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#41 L1 rounded_rect_or_complex_ui_shape 0.9673</text>
+    <path id="shape-4" d="M 63 473 L 63 533 L 308 535 L 310 851 L 389 850 L 401 628 L 615 630 L 618 849 L 672 845 L 666 468 Z" fill="#ECE4DC" fill-opacity="0.72" stroke="#00C853" stroke-width="2"/>
+    <text x="65" y="479" font-family="monospace" font-size="9" fill="#00C853" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#4 L1 rounded_rect_or_complex_ui_shape 0.7267</text>
+    <path id="shape-28" d="M 62 474 L 63 533 L 308 535 L 311 851 L 389 849 L 397 628 L 615 630 L 618 849 L 672 845 L 666 468 Z" fill="#E4E4DC" fill-opacity="0.72" stroke="#7C4DFF" stroke-width="2"/>
+    <text x="65" y="479" font-family="monospace" font-size="9" fill="#7C4DFF" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#28 L1 rounded_rect_or_complex_ui_shape 0.7249</text>
+    <path id="shape-36" d="M 305 535 L 269 538 L 259 741 L 277 738 L 284 718 L 292 736 L 307 730 L 300 725 Z" fill="#5C4C3C" fill-opacity="0.72" stroke="#FF5F1F" stroke-width="2"/>
+    <text x="262" y="547" font-family="monospace" font-size="9" fill="#FF5F1F" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#36 L1 rounded_rect_or_complex_ui_shape 0.8998</text>
+    <path id="shape-21" d="M 269 535 L 257 674 L 243 693 L 257 742 L 306 740 L 306 640 L 292 645 L 306 631 L 293 621 L 306 615 L 293 605 L 306 596 L 294 581 L 305 536 L 289 536 L 278 637 Z" fill="#544434" fill-opacity="0.72" stroke="#FF2E88" stroke-width="2"/>
+    <text x="247" y="547" font-family="monospace" font-size="9" fill="#FF2E88" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#21 L1 rounded_rect_or_complex_ui_shape 0.7896</text>
+    <path id="shape-50" d="M 296 535 L 274 536 L 254 717 L 259 742 L 306 738 L 306 600 L 294 595 Z" fill="#5C4C34" fill-opacity="0.72" stroke="#00A8FF" stroke-width="2"/>
+    <text x="258" y="547" font-family="monospace" font-size="9" fill="#00A8FF" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#50 L1 polygon 0.8685</text>
+    <path id="shape-44" d="M 368 78 L 496 99 L 579 84 L 579 70 L 600 84 L 620 73 L 650 79 L 639 58 L 484 70 L 378 58 Z" fill="#5C4C34" fill-opacity="0.72" stroke="#FFB000" stroke-width="2"/>
+    <text x="372" y="70" font-family="monospace" font-size="9" fill="#FFB000" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#44 L1 rounded_rect_or_complex_ui_shape 0.8107</text>
+    <path id="shape-24" d="M 305 771 L 239 773 L 292 806 L 265 828 L 61 841 L 303 851 Z" fill="#544434" fill-opacity="0.72" stroke="#00C853" stroke-width="2"/>
+    <text x="65" y="782" font-family="monospace" font-size="9" fill="#00C853" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#24 L1 polygon 0.6192</text>
+    <path id="shape-49" d="M 227 537 L 226 630 L 212 674 L 246 690 L 242 710 L 253 714 L 255 536 Z" fill="#5C4C34" fill-opacity="0.72" stroke="#7C4DFF" stroke-width="2"/>
+    <text x="216" y="547" font-family="monospace" font-size="9" fill="#7C4DFF" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#49 L1 polygon 0.8225</text>
+    <path id="shape-35" d="M 228 536 L 225 636 L 213 673 L 245 691 L 253 713 L 253 592 L 260 577 L 255 536 Z" fill="#5C4C3C" fill-opacity="0.72" stroke="#FF5F1F" stroke-width="2"/>
+    <text x="217" y="547" font-family="monospace" font-size="9" fill="#FF5F1F" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#35 L1 rounded_rect_or_complex_ui_shape 0.8314</text>
+    <path id="shape-30" d="M 364 75 L 382 80 L 400 68 L 486 94 L 521 79 L 582 83 L 579 71 L 607 82 L 623 59 L 483 70 L 462 58 L 384 58 L 381 72 Z" fill="#5C4C3C" fill-opacity="0.72" stroke="#FF2E88" stroke-width="2"/>
+    <text x="368" y="70" font-family="monospace" font-size="9" fill="#FF2E88" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#30 L1 rounded_rect_or_complex_ui_shape 0.7316</text>
+    <path id="shape-55" d="M 305 793 L 239 775 L 283 804 L 267 823 L 61 840 L 298 848 Z" fill="#5C4C34" fill-opacity="0.72" stroke="#00A8FF" stroke-width="2"/>
+    <text x="65" y="787" font-family="monospace" font-size="9" fill="#00A8FF" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#55 L1 polygon 0.587</text>
+    <path id="shape-15" d="M 66 535 L 61 754 L 82 749 L 86 720 L 82 622 L 73 614 L 78 596 Z" fill="#544434" fill-opacity="0.72" stroke="#FFB000" stroke-width="2"/>
+    <text x="65" y="547" font-family="monospace" font-size="9" fill="#FFB000" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#15 L1 polygon 0.8718</text>
+    <path id="shape-37" d="M 74 535 L 61 536 L 65 755 L 81 734 L 83 615 Z" fill="#5C4C3C" fill-opacity="0.72" stroke="#00C853" stroke-width="2"/>
+    <text x="65" y="547" font-family="monospace" font-size="9" fill="#00C853" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#37 L1 polygon 0.8865</text>
+    <path id="shape-51" d="M 74 535 L 61 540 L 65 755 L 78 748 L 83 727 Z" fill="#5C4C34" fill-opacity="0.72" stroke="#7C4DFF" stroke-width="2"/>
+    <text x="65" y="547" font-family="monospace" font-size="9" fill="#7C4DFF" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#51 L1 polygon 0.858</text>
+    <path id="shape-12" d="M 364 69 L 368 83 L 388 77 L 472 101 L 564 95 L 589 84 L 575 80 L 572 66 L 555 79 L 487 89 L 405 70 L 395 58 Z" fill="#544434" fill-opacity="0.72" stroke="#FF5F1F" stroke-width="2"/>
+    <text x="368" y="70" font-family="monospace" font-size="9" fill="#FF5F1F" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#12 L1 rounded_rect_or_complex_ui_shape 0.6651</text>
+    <path id="shape-40" d="M 305 797 L 239 776 L 280 802 L 255 826 L 61 840 L 205 844 L 304 831 Z" fill="#5C4C3C" fill-opacity="0.72" stroke="#FF2E88" stroke-width="2"/>
+    <text x="65" y="788" font-family="monospace" font-size="9" fill="#FF2E88" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#40 L1 polygon 0.5703</text>
+    <path id="shape-5" d="M 0 915 L 735 919 Z" fill="#ECE4DC" fill-opacity="0.72" stroke="#00A8FF" stroke-width="2"/>
+    <text x="4" y="927" font-family="monospace" font-size="9" fill="#00A8FF" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#5 L1 polygon 0.9186</text>
+    <path id="shape-29" d="M 0 915 L 735 919 Z" fill="#E4E4DC" fill-opacity="0.72" stroke="#FFB000" stroke-width="2"/>
+    <text x="4" y="927" font-family="monospace" font-size="9" fill="#FFB000" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#29 L1 polygon 0.9186</text>
+    <path id="shape-23" d="M 125 595 L 118 618 L 107 619 L 100 657 L 99 754 L 128 693 Z" fill="#544434" fill-opacity="0.72" stroke="#00C853" stroke-width="2"/>
+    <text x="100" y="607" font-family="monospace" font-size="9" fill="#00C853" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#23 L1 polygon 0.7919</text>
+    <path id="shape-22" d="M 145 536 L 144 580 L 132 597 L 130 691 L 156 683 L 153 548 Z" fill="#544434" fill-opacity="0.72" stroke="#7C4DFF" stroke-width="2"/>
+    <text x="133" y="548" font-family="monospace" font-size="9" fill="#7C4DFF" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#22 L1 polygon 0.7933</text>
+    <path id="shape-45" d="M 443 123 L 479 111 L 495 114 L 502 124 L 576 119 L 604 132 L 625 116 L 594 107 L 450 106 Z" fill="#5C4C34" fill-opacity="0.72" stroke="#FF5F1F" stroke-width="2"/>
+    <text x="447" y="116" font-family="monospace" font-size="9" fill="#FF5F1F" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#45 L1 rounded_rect_or_complex_ui_shape 0.701</text>
+    <path id="shape-1" d="M 250 273 L 236 283 L 231 296 L 232 309 L 243 325 L 264 328 L 271 325 L 280 314 L 281 290 L 271 276 Z" fill="#ECE4DC" fill-opacity="0.72" stroke="#FF2E88" stroke-width="2"/>
+    <text x="235" y="285" font-family="monospace" font-size="9" fill="#FF2E88" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#1 L1 circle 0.8982</text>
+    <path id="shape-25" d="M 250 273 L 240 278 L 234 286 L 231 296 L 233 313 L 247 327 L 264 328 L 271 325 L 280 314 L 281 290 L 271 276 Z" fill="#E4E4DC" fill-opacity="0.72" stroke="#00A8FF" stroke-width="2"/>
+    <text x="235" y="285" font-family="monospace" font-size="9" fill="#00A8FF" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#25 L1 circle 0.8964</text>
+    <path id="shape-53" d="M 129 595 L 123 599 L 125 605 L 120 615 L 124 622 L 118 688 L 121 698 L 143 687 L 146 681 L 145 601 Z" fill="#5C4C34" fill-opacity="0.72" stroke="#FFB000" stroke-width="2"/>
+    <text x="122" y="607" font-family="monospace" font-size="9" fill="#FFB000" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#53 L1 rounded_rect_or_complex_ui_shape 0.8365</text>
+    <path id="shape-47" d="M 165 535 L 153 537 L 151 685 L 175 677 L 162 656 L 167 638 Z" fill="#5C4C34" fill-opacity="0.72" stroke="#00C853" stroke-width="2"/>
+    <text x="154" y="547" font-family="monospace" font-size="9" fill="#00C853" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#47 L1 polygon 0.7064</text>
+    <path id="shape-54" d="M 108 614 L 103 616 L 98 731 L 102 753 L 107 744 L 103 730 L 118 704 L 115 631 L 119 620 Z" fill="#5C4C34" fill-opacity="0.72" stroke="#7C4DFF" stroke-width="2"/>
+    <text x="102" y="626" font-family="monospace" font-size="9" fill="#7C4DFF" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#54 L1 rounded_rect_or_complex_ui_shape 0.805</text>
+    <path id="shape-32" d="M 163 535 L 155 535 L 151 684 L 174 677 L 161 653 L 168 637 L 164 558 L 169 550 Z" fill="#5C4C3C" fill-opacity="0.72" stroke="#FF5F1F" stroke-width="2"/>
+    <text x="154" y="547" font-family="monospace" font-size="9" fill="#FF5F1F" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#32 L1 rounded_rect_or_complex_ui_shape 0.7125</text>
+    <path id="shape-13" d="M 444 113 L 447 118 L 476 106 L 538 112 L 569 124 L 579 119 L 588 131 L 598 120 L 611 124 L 625 115 L 583 104 L 453 104 Z" fill="#544434" fill-opacity="0.72" stroke="#FF2E88" stroke-width="2"/>
+    <text x="448" y="116" font-family="monospace" font-size="9" fill="#FF2E88" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#13 L1 rounded_rect_or_complex_ui_shape 0.6209</text>
+    <path id="shape-38" d="M 132 596 L 131 617 L 124 623 L 120 673 L 123 698 L 143 687 L 146 681 L 144 612 Z" fill="#5C4C3C" fill-opacity="0.72" stroke="#00A8FF" stroke-width="2"/>
+    <text x="124" y="608" font-family="monospace" font-size="9" fill="#00A8FF" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#38 L1 rounded_rect_or_complex_ui_shape 0.815</text>
+    <path id="shape-14" d="M 445 388 L 449 394 L 589 392 L 561 387 L 553 369 L 544 369 L 548 377 L 528 382 L 526 369 L 496 370 L 503 381 Z" fill="#544434" fill-opacity="0.72" stroke="#FFB000" stroke-width="2"/>
+    <text x="449" y="381" font-family="monospace" font-size="9" fill="#FFB000" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#14 L1 rounded_rect_or_complex_ui_shape 0.6891</text>
+    <path id="shape-39" d="M 109 618 L 103 626 L 101 680 L 95 685 L 100 690 L 102 752 L 106 747 L 103 729 L 114 719 L 118 704 L 114 621 Z" fill="#5C4C3C" fill-opacity="0.72" stroke="#00C853" stroke-width="2"/>
+    <text x="99" y="630" font-family="monospace" font-size="9" fill="#00C853" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#39 L1 rounded_rect_or_complex_ui_shape 0.7321</text>
+    <path id="shape-8" d="M 436 431 L 440 439 L 529 438 L 545 430 L 530 428 L 527 421 L 506 421 L 503 428 L 488 429 L 483 420 L 476 420 L 471 429 L 464 424 L 454 429 L 442 423 Z" fill="#7C7C54" fill-opacity="0.72" stroke="#7C4DFF" stroke-width="2"/>
+    <text x="440" y="432" font-family="monospace" font-size="9" fill="#7C4DFF" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#8 L1 rounded_rect_or_complex_ui_shape 0.7308</text>
+    <path id="shape-11" d="M 252 279 L 241 288 L 239 307 L 247 320 L 261 322 L 268 319 L 272 314 L 275 296 L 272 287 L 265 280 Z" fill="#7C7C5C" fill-opacity="0.72" stroke="#FF5F1F" stroke-width="2"/>
+    <text x="243" y="291" font-family="monospace" font-size="9" fill="#FF5F1F" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#11 L1 rounded_rect_or_complex_ui_shape 0.876</text>
+    <path id="shape-42" d="M 252 279 L 241 288 L 239 307 L 247 320 L 262 322 L 271 316 L 274 309 L 274 291 L 265 280 Z" fill="#847C5C" fill-opacity="0.72" stroke="#FF2E88" stroke-width="2"/>
+    <text x="243" y="291" font-family="monospace" font-size="9" fill="#FF2E88" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#42 L1 rounded_rect_or_complex_ui_shape 0.8723</text>
+    <path id="shape-7" d="M 252 279 L 246 282 L 240 291 L 240 311 L 247 320 L 261 322 L 268 319 L 272 314 L 275 296 L 272 287 L 266 281 Z" fill="#7C7C54" fill-opacity="0.72" stroke="#00A8FF" stroke-width="2"/>
+    <text x="243" y="291" font-family="monospace" font-size="9" fill="#00A8FF" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#7 L1 rounded_rect_or_complex_ui_shape 0.873</text>
+    <path id="shape-52" d="M 179 535 L 175 540 L 175 554 L 168 556 L 169 634 L 184 623 L 184 559 L 178 554 Z" fill="#5C4C34" fill-opacity="0.72" stroke="#FFB000" stroke-width="2"/>
+    <text x="172" y="547" font-family="monospace" font-size="9" fill="#FFB000" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#52 L1 rounded_rect_or_complex_ui_shape 0.803</text>
+    <path id="shape-31" d="M 464 108 L 466 112 L 494 111 L 509 119 L 514 130 L 521 120 L 559 122 L 565 128 L 565 139 L 572 122 L 565 108 L 558 113 L 510 106 Z" fill="#5C4C3C" fill-opacity="0.72" stroke="#00C853" stroke-width="2"/>
+    <text x="468" y="118" font-family="monospace" font-size="9" fill="#00C853" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#31 L1 rounded_rect_or_complex_ui_shape 0.6011</text>
+    <path id="shape-17" d="M 183 535 L 168 536 L 170 634 L 180 625 L 177 621 L 177 572 L 183 567 Z" fill="#544434" fill-opacity="0.72" stroke="#7C4DFF" stroke-width="2"/>
+    <text x="172" y="547" font-family="monospace" font-size="9" fill="#7C4DFF" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#17 L1 polygon 0.7542</text>
+    <path id="shape-46" d="M 594 385 L 571 388 L 545 381 L 540 385 L 535 381 L 490 382 L 469 390 L 589 393 Z" fill="#5C4C34" fill-opacity="0.72" stroke="#FF5F1F" stroke-width="2"/>
+    <text x="473" y="393" font-family="monospace" font-size="9" fill="#FF5F1F" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#46 L1 rounded_rect_or_complex_ui_shape 0.7411</text>
+    <path id="shape-20" d="M 242 535 L 234 680 L 243 675 Z" fill="#544434" fill-opacity="0.72" stroke="#FF2E88" stroke-width="2"/>
+    <text x="237" y="547" font-family="monospace" font-size="9" fill="#FF2E88" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#20 L1 triangle 0.7514</text>
+    <path id="shape-16" d="M 163 535 L 157 536 L 158 682 L 165 679 Z" fill="#544434" fill-opacity="0.72" stroke="#00A8FF" stroke-width="2"/>
+    <text x="160" y="547" font-family="monospace" font-size="9" fill="#00A8FF" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#16 L1 rectangle 0.6822</text>
+    <path id="shape-19" d="M 233 535 L 227 536 L 226 639 L 221 651 L 228 676 Z" fill="#544434" fill-opacity="0.72" stroke="#FFB000" stroke-width="2"/>
+    <text x="225" y="547" font-family="monospace" font-size="9" fill="#FFB000" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#19 L1 polygon 0.6785</text>
+    <path id="shape-43" d="M 255 801 L 233 787 L 225 797 L 232 800 L 231 807 L 219 808 L 192 825 L 218 823 L 241 816 L 255 809 Z" fill="#847C5C" fill-opacity="0.72" stroke="#00C853" stroke-width="2"/>
+    <text x="196" y="799" font-family="monospace" font-size="9" fill="#00C853" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#43 L1 rounded_rect_or_complex_ui_shape 0.6979</text>
+    <path id="shape-34" d="M 216 535 L 211 631 L 221 640 L 224 536 Z" fill="#5C4C3C" fill-opacity="0.72" stroke="#7C4DFF" stroke-width="2"/>
+    <text x="215" y="547" font-family="monospace" font-size="9" fill="#7C4DFF" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#34 L1 rectangle 0.7474</text>
+    <path id="shape-9" d="M 258 800 L 234 786 L 227 795 L 235 794 L 243 800 L 242 811 L 222 817 L 216 810 L 190 826 L 218 825 L 242 818 L 258 808 Z" fill="#7C7C54" fill-opacity="0.72" stroke="#FF5F1F" stroke-width="2"/>
+    <text x="194" y="798" font-family="monospace" font-size="9" fill="#FF5F1F" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#9 L1 rounded_rect_or_complex_ui_shape 0.6123</text>
+    <path id="shape-48" d="M 217 535 L 211 630 L 220 645 L 223 536 Z" fill="#5C4C34" fill-opacity="0.72" stroke="#FF2E88" stroke-width="2"/>
+    <text x="215" y="547" font-family="monospace" font-size="9" fill="#FF2E88" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#48 L1 rectangle 0.7374</text>
+    <path id="shape-27" d="M 181 274 L 180 326 L 185 326 L 185 306 L 191 301 L 214 303 L 217 326 L 221 327 L 221 275 L 216 275 L 214 297 L 190 298 L 185 294 L 185 275 Z" fill="#E4E4DC" fill-opacity="0.72" stroke="#00A8FF" stroke-width="2"/>
+    <text x="184" y="286" font-family="monospace" font-size="9" fill="#00A8FF" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#27 L1 rounded_rect_or_complex_ui_shape 0.538</text>
+    <path id="shape-3" d="M 181 274 L 180 326 L 185 326 L 185 306 L 191 301 L 214 303 L 217 326 L 221 327 L 221 275 L 216 275 L 215 297 L 190 298 L 185 294 L 185 275 Z" fill="#ECE4DC" fill-opacity="0.72" stroke="#FFB000" stroke-width="2"/>
+    <text x="184" y="286" font-family="monospace" font-size="9" fill="#FFB000" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#3 L1 rounded_rect_or_complex_ui_shape 0.5342</text>
+    <path id="shape-2" d="M 80 274 L 79 326 L 114 327 L 114 323 L 85 321 L 86 303 L 113 299 L 86 297 L 84 282 L 115 275 Z" fill="#ECE4DC" fill-opacity="0.72" stroke="#00C853" stroke-width="2"/>
+    <text x="83" y="286" font-family="monospace" font-size="9" fill="#00C853" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#2 L1 rounded_rect_or_complex_ui_shape 0.5489</text>
+    <path id="shape-26" d="M 80 274 L 79 326 L 112 327 L 113 323 L 85 321 L 86 303 L 112 299 L 86 297 L 84 282 L 115 275 Z" fill="#E4E4DC" fill-opacity="0.72" stroke="#7C4DFF" stroke-width="2"/>
+    <text x="83" y="286" font-family="monospace" font-size="9" fill="#7C4DFF" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#26 L1 rounded_rect_or_complex_ui_shape 0.5474</text>
+    <path id="shape-18" d="M 222 535 L 216 540 L 212 630 L 220 645 Z" fill="#544434" fill-opacity="0.72" stroke="#FF5F1F" stroke-width="2"/>
+    <text x="216" y="547" font-family="monospace" font-size="9" fill="#FF5F1F" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#18 L1 rectangle 0.7257</text>
+    <path id="shape-33" d="M 203 535 L 203 626 L 208 629 L 212 536 Z" fill="#5C4C3C" fill-opacity="0.72" stroke="#FF2E88" stroke-width="2"/>
+    <text x="206" y="547" font-family="monospace" font-size="9" fill="#FF2E88" stroke="#FFFFFF" stroke-width="0.8" paint-order="stroke">#33 L1 rectangle 0.7825</text>
+  </g>
+</svg>

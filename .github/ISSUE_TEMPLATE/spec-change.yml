@@ -1,0 +1,37 @@
+name: Specification change
+description: Propose a new capability or a change to intended behavior.
+title: "spec: "
+labels: [specification]
+body:
+  - type: input
+    id: project
+    attributes:
+      label: Project
+      placeholder: blog-hub
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or feedback
+      description: Describe current behavior, affected users, and supporting evidence.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      placeholder: "- [ ] Observable outcome"
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: References and dependencies
+

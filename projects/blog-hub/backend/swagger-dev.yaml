@@ -1,0 +1,65 @@
+openapi: "3.1.0"
+info:
+  title: BlogHub — Dev / Test API
+  description: |
+    Internal endpoints used **only** by the Playwright test suite and local development tooling.
+
+    **Do not expose in production.** In a real deployment these routes would be
+    gated behind an environment flag (e.g. `APP_ENV=dev`).
+
+    **Service group:** `dev`
+    **Router prefix:** `/api/dev`
+  version: "0.1.0"
+
+servers:
+  - url: http://localhost:8000
+    description: Local dev (uvicorn)
+
+tags:
+  - name: dev
+    description: Test-isolation and dev-tooling helpers.
+
+paths:
+
+  /api/dev/reset:
+    post:
+      operationId: devReset
+      tags: [dev]
+      summary: Reset store to seed state
+      description: |
+        Restores `_articles` and `_jobs` to their seeded defaults.
+        Called in Playwright `beforeEach` hooks to guarantee a clean slate between tests.
+
+        **Connection credentials are NOT reset** — they survive this call by design,
+        mirroring the real-world expectation that credentials outlive article state.
+      responses:
+        "200":
+          description: Store reset.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: { type: string, example: reset }
+              example:
+                status: reset
+
+  /health:
+    get:
+      operationId: healthCheck
+      tags: [dev]
+      summary: Health check
+      description: |
+        Returns `{"status": "ok"}` if the server is up.
+        Used by `playwright.config.js → webServer.url` to know when the server is ready.
+      responses:
+        "200":
+          description: Server is healthy.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: { type: string, example: ok }
+              example:
+                status: ok

@@ -1,0 +1,32 @@
+graph TB
+    subgraph "Articles Service  (/api/articles)"
+        A1[List / filter / sort]
+        A2[Create]
+        A3[Bulk delete]
+        A4[Push to platforms — async]
+        A5[Gate inspect — async]
+    end
+
+    subgraph "Jobs Service  (/api/jobs)"
+        J1[Poll job status]
+    end
+
+    subgraph "Connections Service  (/api/connections)"
+        C1[List all connections]
+        C2[Save API token]
+        C3[Disconnect]
+        C4[Provider OAuth popup]
+        C5[CLI browser login + poll]
+    end
+
+    subgraph "Platforms Service  (/api/platforms)"
+        P1[Nav-bar count — legacy]
+    end
+
+    subgraph "Dev Service  (/api/dev + /health)"
+        D1[Reset store to seed]
+        D2[Health check]
+    end
+
+    A4 --> J1
+    A5 --> J1

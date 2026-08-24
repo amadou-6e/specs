@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant UI as Settings Screen
+    participant B as Connections Service
+
+    UI->>B: GET /api/connections
+    B-->>UI: 200 { connections: [ {id, label, type, auth_method, status, username, connected_at} … ] }
+    Note over UI: render PlatformCards (blog) + AI provider cards
+
+    alt backend unreachable
+        B--xUI: network error / timeout
+        UI->>UI: build static fallback from CONN_META; show "Not configured" for all
+    end

@@ -1,0 +1,43 @@
+classDiagram
+    class Job {
+        +String jobId
+        +JobType type
+        +JobStatus status
+        +String article_id
+        +Dict result
+        +String error
+    }
+
+    class JobType {
+        <<enumeration>>
+        push
+        inspect
+    }
+
+    class JobStatus {
+        <<enumeration>>
+        running
+        done
+        error
+    }
+
+    class PushResult {
+        +List~String~ platforms
+    }
+
+    class InspectResult {
+        +GateStatus gate
+    }
+
+    class GateStatus {
+        <<enumeration>>
+        pass
+        warn
+        fail
+    }
+
+    Job --> JobType
+    Job --> JobStatus
+    Job --> PushResult : result (push jobs)
+    Job --> InspectResult : result (inspect jobs)
+    InspectResult --> GateStatus

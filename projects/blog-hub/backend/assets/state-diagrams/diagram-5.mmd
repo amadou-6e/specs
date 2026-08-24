@@ -1,0 +1,8 @@
+stateDiagram-v2
+  [*] --> pending : Agent writes Patch record\n(Comment.hasPatch = true)
+
+  pending --> accepted : POST /api/patches/{id}/accept\n(diff applied to Article.body)
+  pending --> rejected : POST /api/patches/{id}/reject
+
+  accepted --> [*]
+  rejected --> [*]

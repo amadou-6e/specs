@@ -1,0 +1,60 @@
+{
+  "name": "Export text to HTML",
+  "type": "text.html_export",
+  "description": "Converts recognized image text into editable HTML elements with CSS positioning, typography, and optional image assets.",
+  "fields": [
+    {
+      "name": "grouping",
+      "type": "select",
+      "description": "Controls how OCR words and lines become HTML elements. Paragraphs consolidates compatible neighboring OCR results into editable text blocks; lines and words preserve progressively finer geometry.",
+      "default": "paragraphs",
+      "options": [
+        {
+          "name": "Paragraphs",
+          "value": "paragraphs",
+          "description": "Combines compatible words and lines into paragraph-level HTML elements."
+        },
+        {
+          "name": "Lines",
+          "value": "lines",
+          "description": "Creates one positioned HTML element per detected text line."
+        },
+        {
+          "name": "Words",
+          "value": "words",
+          "description": "Creates one positioned HTML element per detected word for maximum geometric fidelity."
+        }
+      ]
+    },
+    {
+      "name": "absolute_positioning",
+      "type": "boolean",
+      "description": "When enabled, emits CSS coordinates that reproduce each text block's image-space position. When disabled, emits text in document flow and cannot preserve the original layout exactly.",
+      "default": true
+    },
+    {
+      "name": "include_background",
+      "type": "boolean",
+      "description": "Includes the erased or original image as a background asset behind the exported HTML text so non-text artwork remains visible.",
+      "default": true
+    },
+    {
+      "name": "responsive_conversion",
+      "type": "boolean",
+      "description": "Attempts to translate fixed image-space coordinates into responsive layout rules. This improves resizing behavior but may alter exact pixel alignment.",
+      "default": false
+    },
+    {
+      "name": "output",
+      "type": "artifact",
+      "description": "Represents the generated archive containing HTML, CSS, and referenced image or font assets.",
+      "readOnly": true,
+      "format": "zip"
+    }
+  ],
+  "action": {
+    "name": "Generate HTML",
+    "type": "action",
+    "description": "Transforms current OCR results and selected typography into an HTML/CSS document and packages all required assets."
+  }
+}

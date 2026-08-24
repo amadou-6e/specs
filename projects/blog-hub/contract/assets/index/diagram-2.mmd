@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant UI
+    participant B as Backend
+    UI->>B: POST /api/articles/{id}/push  (or /inspect)
+    B-->>UI: 202 { jobId, status: "running" }
+    loop every 2 s (max 60 s)
+        UI->>B: GET /api/jobs/{jobId}
+        alt still running
+            B-->>UI: { status: "running" }
+        else done
+            B-->>UI: { status: "done", result }
+            UI->>UI: stop polling; refresh data
+        else error
+            B-->>UI: { status: "error", error }
+            UI->>UI: stop polling; show error toast
+        end
+    end

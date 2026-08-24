@@ -1,0 +1,13 @@
+stateDiagram-v2
+    [*] --> Disconnected : initial
+    Disconnected --> PendingOAuth : oauth-start called\nstate nonce stored
+    PendingOAuth --> Connected : callback received\nstate valid + not expired\ntoken stored
+    PendingOAuth --> Disconnected : state missing / expired / mismatch\n→ 400 error
+    Disconnected --> PendingCLI : cli oauth-start\nsubprocess spawned
+    PendingCLI --> Connected : whoami exits 0\nusername stored
+    PendingCLI --> Disconnected : TTL 5 min exceeded\n→ error status
+    Disconnected --> Connected : PUT token saved
+    Connected --> Disconnected : DELETE disconnect
+    Connected --> Error : token revoked\nor platform rejects it
+    Error --> Disconnected : DELETE disconnect
+    Error --> Connected : PUT valid token

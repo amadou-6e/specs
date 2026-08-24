@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant PW as Playwright / CI
+    participant B as Dev Service
+
+    loop until 200 or timeout
+        PW->>B: GET /health
+        alt server not yet ready
+            B--xPW: connection refused / 5xx
+            Note over PW: wait 200 ms; retry
+        else server ready
+            B-->>PW: 200 { status: "ok" }
+            Note over PW: proceed with test suite
+        end
+    end

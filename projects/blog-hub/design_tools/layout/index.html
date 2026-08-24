@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BlogHub · Layout Tool · Overview</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="tool">
+
+  <!-- ── Canvas side ── -->
+  <div class="canvas-side">
+    <div class="ruler-wrap">
+      <div class="ruler">
+        <div class="r-mg"></div>
+        <div class="r-inner" id="ruler"></div>
+        <div class="r-mg"></div>
+      </div>
+    </div>
+    <div class="canvas-scroll">
+      <div id="canvas">
+        <div class="col-bg"></div>
+        <div class="col-lines"></div>
+        <!-- SVG clip-path definitions for compound shapes -->
+        <svg style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none">
+          <defs id="clip-defs"></defs>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Panel ── -->
+  <div class="panel">
+    <div class="panel-hd">
+      <div class="panel-title">BlogHub · Design Tools</div>
+      <div class="panel-page">Overview page layout</div>
+      <div class="panel-steps">
+        <div class="step active">1 Layout</div>
+        <div class="step">2 Color</div>
+        <div class="step">3 Shapes</div>
+        <div class="step">4 Text</div>
+      </div>
+    </div>
+
+    <div class="panel-body" id="panelBody">
+      <div class="sec-label">Zones</div>
+      <div class="zone-list" id="zoneList"></div>
+      <div class="zone-actions">
+        <button class="btn-add" id="addZoneBtn">+ Add zone</button>
+      </div>
+
+      <div class="sec-label" style="margin-top:14px;">Shapes</div>
+      <div class="zone-list" id="shapeList"></div>
+      <div class="zone-actions">
+        <button class="btn-add" id="addShapeBtn">+ Add shape</button>
+      </div>
+      <div class="d-divider"></div>
+      <div id="zoneDetail"><p class="nd">Click a zone to see its proposal.</p></div>
+    </div>
+
+    <div class="panel-ft">
+      <div class="ft-label">JSON state — copy to share · paste from chat then Load</div>
+      <textarea id="jsonArea" spellcheck="false"></textarea>
+      <div class="ft-actions">
+        <button id="copyJsonBtn">Copy JSON</button>
+        <button id="loadJsonBtn">Paste &amp; Load</button>
+      </div>
+      <div class="ft-msg" id="ftMsg"></div>
+    </div>
+  </div>
+
+</div>
+<script type="module" src="main.js"></script>
+</body>
+</html>

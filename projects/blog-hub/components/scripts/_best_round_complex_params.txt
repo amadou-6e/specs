@@ -1,0 +1,1 @@
+((1000000000, 1000000000), {'card_x': 4, 'card_y': 5, 'card_w': 299, 'card_h': 160, 'card_r': 16, 'cut_tr_cx': 256, 'cut_tr_cy': 36, 'cut_tr_r': 32, 'cut_bl_cx': 86, 'cut_bl_cy': 126, 'cut_bl_r': 32, 'btn_x': 264, 'btn_y': 5, 'btn_w': 39, 'btn_h': 34, 'btn_r': 10, 'chip_x': 5, 'chip_y': 131, 'chip_w': 84, 'chip_h': 34, 'chip_r': 17})

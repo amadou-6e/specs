@@ -1,0 +1,312 @@
+{
+  "name": "Reconstruct shapes",
+  "type": "layout.shape_reconstruction",
+  "description": "Detects monotonic-color regions and fits editable geometry in one tool. Detected masks remain visible and editable, and fitting can be rerun from modified masks without repeating background detection.",
+  "stages": [
+    {
+      "name": "Detect regions",
+      "type": "pipeline_stage",
+      "description": "Creates connected, color-aware region masks from the text-erased image and confirmed background."
+    },
+    {
+      "name": "Fit shapes",
+      "type": "pipeline_stage",
+      "description": "Fits standard primitives or additive rectangle unions to the current region masks."
+    },
+    {
+      "name": "Edit masks and refit",
+      "type": "pipeline_stage",
+      "description": "Lets the user correct mask membership and rerun fitting against corrected masks."
+    }
+  ],
+  "fields": [
+    {
+      "name": "segmentation_method",
+      "type": "select",
+      "description": "Selects connected-background segmentation, dominant-color plateau splitting, or automatic dispatch between them.",
+      "default": "auto",
+      "options": [
+        {
+          "name": "Auto",
+          "value": "auto",
+          "description": "Uses simple connected components and enables plateau splitting only for ambiguous multimodal regions."
+        },
+        {
+          "name": "Connected components",
+          "value": "connected_components",
+          "description": "Segments pixels by distance from the confirmed background and separates connected foreground components."
+        },
+        {
+          "name": "Dominant-color plateaus",
+          "value": "dominant_color_plateaus",
+          "description": "Discovers locally monotonic color planes and splits touching differently colored shapes."
+        }
+      ]
+    },
+    {
+      "name": "background_tolerance",
+      "type": "number",
+      "description": "Sets the minimum RGB distance from the confirmed background required for a pixel to count as foreground.",
+      "default": 26,
+      "minimum": 0
+    },
+    {
+      "name": "minimum_region_area",
+      "type": "integer",
+      "description": "Rejects connected regions smaller than this pixel area as noise.",
+      "default": 100,
+      "minimum": 1,
+      "unit": "px²"
+    },
+    {
+      "name": "plateau_color_tolerance",
+      "type": "number",
+      "description": "Controls how close pixels must be in RGB space to form one monotonic color plateau.",
+      "default": 12,
+      "minimum": 0,
+      "visible_when": {
+        "segmentation_method": [
+          "auto",
+          "dominant_color_plateaus"
+        ]
+      }
+    },
+    {
+      "name": "minimum_plateau_fraction",
+      "type": "number",
+      "description": "Requires the largest discovered plateau to cover this fraction of an ambiguous region before it may be split, reducing photographic false positives.",
+      "default": 0.4,
+      "minimum": 0,
+      "maximum": 1,
+      "visible_when": {
+        "segmentation_method": [
+          "auto",
+          "dominant_color_plateaus"
+        ]
+      }
+    },
+    {
+      "name": "fit_mode",
+      "type": "select",
+      "description": "Controls additive reconstruction. Off restricts fitting to standard primitives; On permits additive fitting; Auto tries a simple primitive first and dispatches to additive reconstruction when quality is insufficient.",
+      "default": "auto",
+      "options": [
+        {
+          "name": "Auto",
+          "value": "auto",
+          "description": "Uses the simplest adequate primitive and escalates complex regions to additive reconstruction."
+        },
+        {
+          "name": "Standard only",
+          "value": "off",
+          "description": "Fits rectangles, rounded rectangles, circles, or ellipses without additive decomposition."
+        },
+        {
+          "name": "Additive enabled",
+          "value": "on",
+          "description": "Allows complex regions to be reconstructed as overlapping inscribed rectangles."
+        }
+      ]
+    },
+    {
+      "name": "maximum_pieces",
+      "type": "integer",
+      "description": "Limits how many additive rectangle pieces may be accepted for one region before fitting stops.",
+      "default": 6,
+      "minimum": 1,
+      "visible_when": {
+        "fit_mode": [
+          "auto",
+          "on"
+        ]
+      }
+    },
+    {
+      "name": "minimum_piece_area",
+      "type": "integer",
+      "description": "Stops additive decomposition when the next largest unexplained inscribed rectangle is smaller than this area.",
+      "default": 1500,
+      "minimum": 1,
+      "unit": "px²",
+      "visible_when": {
+        "fit_mode": [
+          "auto",
+          "on"
+        ]
+      }
+    },
+    {
+      "name": "fit_outer_corners",
+      "type": "boolean",
+      "description": "Fits radii for eligible outer corners after additive pieces are assembled. Structural notch corners are not rounded merely because they lie on the union boundary.",
+      "default": true
+    },
+    {
+      "name": "simple_fit_quality_threshold",
+      "type": "number",
+      "description": "Defines the minimum accepted quality for a standard primitive before Auto mode considers additive reconstruction.",
+      "default": 0.98,
+      "minimum": 0,
+      "maximum": 1,
+      "visible_when": {
+        "fit_mode": "auto"
+      }
+    },
+    {
+      "name": "selected_region",
+      "type": "region_reference",
+      "description": "References the active detected region whose mask and fitted geometry are displayed for inspection or editing.",
+      "default": null
+    },
+    {
+      "name": "mask_edit_mode",
+      "type": "select",
+      "description": "Chooses how canvas interaction changes the selected region mask. Mask edits change fitting input but do not directly edit fitted geometry.",
+      "default": "inspect",
+      "options": [
+        {
+          "name": "Inspect",
+          "value": "inspect",
+          "description": "Selects and inspects regions without changing mask pixels."
+        },
+        {
+          "name": "Add to mask",
+          "value": "add",
+          "description": "Paints or selects pixels that should belong to the active region."
+        },
+        {
+          "name": "Erase from mask",
+          "value": "erase",
+          "description": "Removes painted or selected pixels from the active region."
+        },
+        {
+          "name": "Merge regions",
+          "value": "merge",
+          "description": "Combines selected region masks into one fitting input."
+        },
+        {
+          "name": "Split region",
+          "value": "split",
+          "description": "Divides one mask into separate region proposals using a user-defined boundary."
+        }
+      ]
+    },
+    {
+      "name": "mask_brush_size_px",
+      "type": "number",
+      "description": "Sets the diameter of the add or erase brush in source-image pixels.",
+      "default": 12,
+      "minimum": 1,
+      "unit": "px",
+      "visible_when": {
+        "mask_edit_mode": [
+          "add",
+          "erase"
+        ]
+      }
+    },
+    {
+      "name": "diagnostic_view",
+      "type": "select",
+      "description": "Controls the non-mutating canvas view. Selected Mask shows the exact editable pixels supplied to shape fitting.",
+      "default": "mask_and_fit",
+      "options": [
+        {
+          "name": "Text-erased image",
+          "value": "source",
+          "description": "Shows the raster image supplied to reconstruction."
+        },
+        {
+          "name": "Foreground mask",
+          "value": "foreground_mask",
+          "description": "Shows all pixels classified as non-background."
+        },
+        {
+          "name": "Region masks",
+          "value": "region_masks",
+          "description": "Shows each detected region mask with a distinct display color."
+        },
+        {
+          "name": "Selected mask",
+          "value": "selected_mask",
+          "description": "Shows the exact editable mask for the active region."
+        },
+        {
+          "name": "Fitted shapes",
+          "value": "fitted_shapes",
+          "description": "Shows fitted geometry without mask pixels."
+        },
+        {
+          "name": "Mask + fit",
+          "value": "mask_and_fit",
+          "description": "Overlays fitted geometry on the active mask so fitting errors are visible."
+        },
+        {
+          "name": "Fit residual",
+          "value": "fit_residual",
+          "description": "Highlights uncovered mask pixels and shape overclaim."
+        },
+        {
+          "name": "Additive steps",
+          "value": "additive_steps",
+          "description": "Shows ordered rectangle pieces and the unexplained mask at every additive iteration."
+        }
+      ]
+    },
+    {
+      "name": "preserve_intermediate_steps",
+      "type": "boolean",
+      "description": "Stores detected masks, user mask edits, additive steps, residuals, pre-rounding geometry, and final fits as separate recoverable states.",
+      "default": true
+    }
+  ],
+  "actions": [
+    {
+      "name": "Detect and fit shapes",
+      "type": "analysis_action",
+      "description": "Runs region detection from the confirmed background and then fits geometry to every eligible detected mask."
+    },
+    {
+      "name": "Rerun region detection",
+      "type": "analysis_action",
+      "description": "Regenerates automatic masks from the image and segmentation settings while retaining manual mask history."
+    },
+    {
+      "name": "Apply mask edit",
+      "type": "edit_action",
+      "description": "Creates a new selected-mask version from paint, erase, merge, or split operations and marks that region fit as stale."
+    },
+    {
+      "name": "Rerun shape fitting",
+      "type": "analysis_action",
+      "description": "Fits geometry to current masks, including manual corrections, without repeating background estimation or automatic region detection."
+    },
+    {
+      "name": "Restore automatic mask",
+      "type": "history_action",
+      "description": "Restores the original automatically detected mask as a new editable mask version."
+    }
+  ],
+  "invalidation": [
+    {
+      "name": "mask_change",
+      "type": "invalidation_rule",
+      "description": "A mask edit invalidates only the fit derived from that region; other region fits remain valid."
+    },
+    {
+      "name": "segmentation_change",
+      "type": "invalidation_rule",
+      "description": "Changing segmentation settings invalidates automatic masks and every fit derived from them."
+    },
+    {
+      "name": "fitting_change",
+      "type": "invalidation_rule",
+      "description": "Changing fitting settings invalidates fitted geometry while preserving current automatic or edited masks."
+    }
+  ],
+  "output": {
+    "name": "shape_reconstruction_proposals",
+    "type": "reconstruction_region_list",
+    "description": "Returns versioned masks, mask edits, fill estimates, boxes, fitted geometry, additive pieces, residuals, confidence, IoU, overclaim, and uncovered pixels."
+  }
+}

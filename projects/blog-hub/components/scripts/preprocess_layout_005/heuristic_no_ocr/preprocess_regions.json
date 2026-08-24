@@ -1,0 +1,91 @@
+{
+  "image": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\layouts\\005.png",
+  "width": 736,
+  "height": 920,
+  "ocr_error": null,
+  "image_detector": "heuristic",
+  "image_detector_error": null,
+  "text_region_count": 0,
+  "image_region_count": 7,
+  "text_regions": [],
+  "image_regions": [
+    {
+      "id": 1,
+      "source": "heuristic_texture",
+      "label": "embedded_image_candidate",
+      "confidence": 0.2535,
+      "x": 297,
+      "y": 52,
+      "width": 385,
+      "height": 523
+    },
+    {
+      "id": 2,
+      "source": "heuristic_texture",
+      "label": "embedded_image_candidate",
+      "confidence": 0.2027,
+      "x": 76,
+      "y": 69,
+      "width": 156,
+      "height": 137
+    },
+    {
+      "id": 3,
+      "source": "heuristic_texture",
+      "label": "embedded_image_candidate",
+      "confidence": 0.2402,
+      "x": 76,
+      "y": 269,
+      "width": 210,
+      "height": 94
+    },
+    {
+      "id": 4,
+      "source": "heuristic_texture",
+      "label": "embedded_image_candidate",
+      "confidence": 0.4189,
+      "x": 72,
+      "y": 529,
+      "width": 78,
+      "height": 97
+    },
+    {
+      "id": 5,
+      "source": "heuristic_texture",
+      "label": "embedded_image_candidate",
+      "confidence": 0.4384,
+      "x": 301,
+      "y": 531,
+      "width": 158,
+      "height": 56
+    },
+    {
+      "id": 6,
+      "source": "heuristic_texture",
+      "label": "embedded_image_candidate",
+      "confidence": 0.3227,
+      "x": 383,
+      "y": 616,
+      "width": 242,
+      "height": 243
+    },
+    {
+      "id": 7,
+      "source": "heuristic_texture",
+      "label": "embedded_image_candidate",
+      "confidence": 0.2779,
+      "x": 135,
+      "y": 618,
+      "width": 112,
+      "height": 111
+    }
+  ],
+  "outputs": {
+    "text_mask": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\scripts\\preprocess_layout_005\\heuristic_no_ocr\\text_mask.png",
+    "image_mask": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\scripts\\preprocess_layout_005\\heuristic_no_ocr\\image_mask.png",
+    "combined_mask": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\scripts\\preprocess_layout_005\\heuristic_no_ocr\\combined_mask.png",
+    "masked_background": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\scripts\\preprocess_layout_005\\heuristic_no_ocr\\masked_background.png",
+    "inpainted": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\scripts\\preprocess_layout_005\\heuristic_no_ocr\\inpainted.png",
+    "overlay": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\scripts\\preprocess_layout_005\\heuristic_no_ocr\\detected_regions_overlay.png"
+  }
+}

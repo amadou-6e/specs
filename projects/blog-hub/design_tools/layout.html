@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BlogHub · Layout Tool · Overview</title>
+<style>
+/* ── Reset ───────────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ── Root ────────────────────────────────────────────────────── */
+:root{
+  --ink:#1a1917; --ink2:#4a4845; --ink3:#8a887f; --ink4:#b0aea8;
+  --line:#dddad4;
+  --bg-tool:#d0cdc8;
+  --bg-panel:#f0ede8;
+  --bg-panel-hd:#e6e3de;
+  --bg-panel-ft:#e0ddd8;
+  --sel:rgba(59,130,246,.8);
+  --sel-h:rgba(59,130,246,.3);
+  --col-band:rgba(214,52,36,.055);
+  --col-ln:rgba(214,52,36,.22);
+  --bl-ln:rgba(214,52,36,.07);
+  --accent:rgba(214,52,36,.65);
+  /* grid */
+  --G-col:48px; --G-gap:16px; --G-unit:64px; --G-mg:32px; --G-bl:24px;
+  --canvas-w:816px;
+}
+
+body{
+  font-family:system-ui,-apple-system,sans-serif;
+  font-size:11px; color:var(--ink);
+  background:var(--bg-tool);
+  height:100vh; overflow:hidden;
+}
+
+/* ── Tool shell ──────────────────────────────────────────────── */
+.tool{display:grid;grid-template-columns:1fr 320px;height:100vh;}
+
+/* ── Canvas side ─────────────────────────────────────────────── */
+.canvas-side{display:flex;flex-direction:column;overflow:hidden;}
+
+.ruler-wrap{
+  flex-shrink:0;
+  background:var(--bg-panel-hd);
+  border-bottom:2px solid #b8b4ae;
+  overflow:hidden;
+}
+.ruler{
+  width:var(--canvas-w);
+  height:24px;
+  display:flex;
+  align-items:stretch;
+}
+.r-mg{width:var(--G-mg);flex-shrink:0;background:rgba(214,52,36,.03);}
+.r-inner{
+  flex:0 0 752px;
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  column-gap:var(--G-gap);
+}
+.r-col{
+  display:flex;align-items:center;justify-content:center;
+  font-size:7px;font-family:ui-monospace,monospace;
+  color:var(--accent);
+  border-left:1px solid var(--col-ln);
+}
+.r-col:last-child{border-right:1px solid var(--col-ln);}
+
+.canvas-scroll{
+  flex:1;overflow:auto;
+  padding:32px 64px 80px;
+  background:var(--bg-tool);
+}
+
+/* ── Canvas ──────────────────────────────────────────────────── */
+#canvas{
+  width:var(--canvas-w);
+  position:relative;
+  background-color:#ffffff;
+  background-image:repeating-linear-gradient(
+    to bottom,
+    var(--bl-ln) 0,var(--bl-ln) 1px,
+    transparent 1px,transparent var(--G-bl)
+  );
+  min-height:432px;
+  border:1px solid #b8b4ae;
+  box-shadow:0 2px 12px rgba(0,0,0,.12);
+  user-select:none;
+}
+
+.col-bg{
+  position:absolute;left:var(--G-mg);right:var(--G-mg);top:0;bottom:0;
+  pointer-events:none;z-index:1;
+  background-image:repeating-linear-gradient(to right,
+    var(--col-band) 0,var(--col-band) var(--G-col),
+    transparent var(--G-col),transparent var(--G-unit)
+  );
+}
+.col-lines{
+  position:absolute;left:var(--G-mg);right:var(--G-mg);top:0;bottom:0;
+  pointer-events:none;z-index:3;
+  background-image:repeating-linear-gradient(to right,
+    var(--col-ln) 0,var(--col-ln) 1px,
+    transparent 1px,transparent var(--G-unit)
+  );
+  box-shadow:inset -1px 0 0 var(--col-ln);
+}
+
+/* ── Zones ───────────────────────────────────────────────────── */
+.zone{
+  position:absolute;z-index:2;
+  outline:2px solid transparent;outline-offset:-2px;
+  cursor:grab;
+  transition:outline-color .1s;
+}
+.zone:hover{outline-color:var(--sel-h);}
+.zone.sel{outline-color:var(--sel);cursor:grab;}
+.zone.dragging{cursor:grabbing;opacity:.92;}
+
+.z-inner{
+  position:absolute;inset:0;bottom:6px;
+  display:flex;align-items:center;
+  padding:0 8px;gap:8px;
+  pointer-events:none;
+  overflow:hidden;
+}
+.z-name{
+  font-size:8px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;font-family:ui-monospace,monospace;
+  white-space:nowrap;
+}
+.z-spec{
+  font-size:7px;font-weight:400;font-family:ui-monospace,monospace;
+  opacity:.55;white-space:nowrap;
+}
+.z-rh{
+  position:absolute;bottom:0;left:0;right:0;height:8px;
+  cursor:ns-resize;pointer-events:all;
+  display:flex;align-items:flex-end;justify-content:center;
+  padding-bottom:2px;
+}
+.z-rh::after{
+  content:'';display:block;
+  width:28px;height:3px;
+  background:currentColor;opacity:.2;border-radius:2px;
+}
+.z-rh:hover::after{opacity:.5;}
+
+/* ── Panel ───────────────────────────────────────────────────── */
+.panel{
+  background:var(--bg-panel);
+  border-left:1px solid #c8c4be;
+  display:flex;flex-direction:column;
+  height:100vh;overflow:hidden;
+}
+
+.panel-hd{
+  flex-shrink:0;
+  background:var(--bg-panel-hd);
+  border-bottom:1px solid var(--line);
+  padding:12px 16px 10px;
+}
+.panel-title{
+  font-size:8px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink3);
+  font-family:ui-monospace,monospace;
+  margin-bottom:4px;
+}
+.panel-page{
+  font-size:13px;font-weight:600;color:var(--ink);
+  margin-bottom:10px;
+}
+.panel-steps{
+  display:flex;gap:2px;
+}
+.step{
+  font-size:8px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;font-family:ui-monospace,monospace;
+  padding:3px 8px;border-radius:3px;
+  color:var(--ink4);background:transparent;
+  border:1px solid var(--line);
+}
+.step.active{
+  color:#ffffff;background:#1a1917;border-color:#1a1917;
+}
+
+.panel-body{
+  flex:1;overflow-y:auto;
+  padding:12px;
+}
+
+.sec-label{
+  font-size:7px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink4);
+  font-family:ui-monospace,monospace;
+  margin-bottom:6px;margin-top:14px;
+}
+.sec-label:first-child{margin-top:0;}
+
+/* Zone list */
+.zone-list{display:flex;flex-direction:column;gap:2px;}
+.zl-item{
+  display:flex;align-items:center;gap:8px;
+  padding:5px 8px;border-radius:3px;
+  cursor:pointer;border:1px solid transparent;
+}
+.zl-item:hover{background:rgba(0,0,0,.05);}
+.zl-item.sel{background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.3);}
+.zl-sw{
+  width:12px;height:12px;border-radius:2px;flex-shrink:0;
+  outline:1px solid rgba(0,0,0,.12);outline-offset:-1px;
+}
+.zl-name{flex:1;font-size:10px;font-weight:500;}
+.zl-spec{font-size:7px;font-family:ui-monospace,monospace;color:var(--ink4);}
+
+.zone-actions{margin-top:8px;}
+.btn-add{
+  font-size:9px;font-weight:600;color:var(--ink3);
+  background:transparent;border:1px dashed var(--line);
+  padding:5px 10px;border-radius:3px;cursor:pointer;width:100%;
+}
+.btn-add:hover{border-color:var(--ink3);color:var(--ink);}
+
+/* Zone detail */
+.nd{font-size:10px;color:var(--ink4);padding:8px 0;}
+
+.d-divider{
+  height:1px;background:var(--line);
+  margin:14px 0;
+}
+
+.d-row{margin-bottom:8px;}
+.d-row label{
+  display:block;font-size:7px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink4);font-family:ui-monospace,monospace;
+  margin-bottom:3px;
+}
+.d-input{
+  width:100%;background:#ffffff;
+  border:1px solid var(--line);border-radius:3px;
+  padding:4px 8px;font-size:10px;color:var(--ink);
+  font-family:inherit;
+}
+.d-input:focus{outline:2px solid rgba(59,130,246,.4);border-color:rgba(59,130,246,.5);}
+.d-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;}
+.d-input.sm{font-family:ui-monospace,monospace;}
+
+.d-my{
+  background:#fffde7;border-radius:4px;
+  border:1px solid #f0d000;
+  padding:10px;margin:10px 0;
+}
+.d-my-hd{
+  font-size:7px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:#8a6800;
+  font-family:ui-monospace,monospace;margin-bottom:8px;
+}
+.d-my-item{margin-bottom:8px;}
+.d-my-item:last-child{margin-bottom:0;}
+.d-my-k{
+  font-size:7px;font-weight:600;color:#8a6800;
+  font-family:ui-monospace,monospace;text-transform:uppercase;
+  letter-spacing:.06em;margin-bottom:2px;
+}
+.d-my-v{font-size:9px;color:#5a4800;line-height:15px;}
+
+.d-user{
+  background:#f0f7ff;border-radius:4px;
+  border:1px solid #bfdbfe;padding:10px;margin:10px 0;
+}
+.d-user-hd{
+  font-size:7px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:#1e4090;
+  font-family:ui-monospace,monospace;margin-bottom:6px;
+}
+.d-user-ta{
+  width:100%;min-height:72px;resize:vertical;
+  background:#ffffff;border:1px solid #bfdbfe;border-radius:3px;
+  padding:6px 8px;font-size:9px;color:var(--ink);
+  font-family:inherit;line-height:15px;
+}
+.d-user-ta:focus{outline:2px solid rgba(59,130,246,.3);border-color:rgba(59,130,246,.5);}
+.d-user-ta::placeholder{color:var(--ink4);}
+
+.btn-del{
+  font-size:9px;color:#c0392b;background:transparent;
+  border:1px solid #f5b7b1;border-radius:3px;
+  padding:4px 10px;cursor:pointer;width:100%;
+}
+.btn-del:hover{background:#fef0ef;}
+
+/* Panel footer — JSON */
+.panel-ft{
+  flex-shrink:0;
+  background:var(--bg-panel-ft);
+  border-top:1px solid var(--line);
+  padding:10px 12px 12px;
+}
+.ft-label{
+  font-size:7px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink4);
+  font-family:ui-monospace,monospace;margin-bottom:6px;
+}
+#jsonArea{
+  width:100%;height:90px;resize:none;
+  background:#1a1917;color:#9aef9a;
+  border:1px solid #3a3830;border-radius:3px;
+  padding:6px 8px;font-size:8px;
+  font-family:ui-monospace,monospace;line-height:13px;
+  margin-bottom:6px;
+}
+#jsonArea:focus{outline:none;}
+.ft-actions{display:flex;gap:6px;}
+.ft-actions button{
+  flex:1;font-size:9px;font-weight:600;
+  padding:5px 8px;border-radius:3px;cursor:pointer;
+  border:1px solid var(--line);background:#ffffff;color:var(--ink);
+}
+.ft-actions button:hover{background:#f0ede8;}
+#copyJsonBtn{background:#1a1917;color:#f4f2ee;border-color:#1a1917;}
+#copyJsonBtn:hover{background:#2a2925;}
+.ft-msg{
+  font-size:8px;color:#16a34a;font-family:ui-monospace,monospace;
+  height:14px;margin-top:4px;
+}
+</style>
+</head>
+<body>
+<div class="tool">
+
+  <!-- ── Canvas side ── -->
+  <div class="canvas-side">
+    <div class="ruler-wrap">
+      <div class="ruler">
+        <div class="r-mg"></div>
+        <div class="r-inner" id="ruler"></div>
+        <div class="r-mg"></div>
+      </div>
+    </div>
+    <div class="canvas-scroll">
+      <div id="canvas">
+        <div class="col-bg"></div>
+        <div class="col-lines"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Panel ── -->
+  <div class="panel">
+    <div class="panel-hd">
+      <div class="panel-title">BlogHub · Design Tools</div>
+      <div class="panel-page">Overview page layout</div>
+      <div class="panel-steps">
+        <div class="step active">1 Layout</div>
+        <div class="step">2 Color</div>
+        <div class="step">3 Shapes</div>
+        <div class="step">4 Text</div>
+      </div>
+    </div>
+
+    <div class="panel-body" id="panelBody">
+      <div class="sec-label">Zones</div>
+      <div class="zone-list" id="zoneList"></div>
+      <div class="zone-actions">
+        <button class="btn-add" id="addZoneBtn">+ Add zone</button>
+      </div>
+
+      <div class="d-divider"></div>
+      <div id="zoneDetail"><p class="nd">Click a zone to see its proposal.</p></div>
+    </div>
+
+    <div class="panel-ft">
+      <div class="ft-label">JSON state — copy to share · paste from chat then Load</div>
+      <textarea id="jsonArea" spellcheck="false"></textarea>
+      <div class="ft-actions">
+        <button id="copyJsonBtn">Copy JSON</button>
+        <button id="loadJsonBtn">Paste &amp; Load</button>
+      </div>
+      <div class="ft-msg" id="ftMsg"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── Grid constants ──────────────────────────────────────────── */
+const G = { col:48, gap:16, unit:64, mg:32, bl:24 };
+const colX  = c      => G.mg + (c-1)*G.unit;
+const colW  = (c1,c2)=> (c2-c1)*G.unit - G.gap;
+const rowY  = r      => r*G.bl;
+const rowH  = h      => h*G.bl;
+
+/* ── Initial zones — MY PROPOSAL for overview page ──────────── */
+const PROPOSAL = [
+  {
+    id:'nav', name:'Navigation',
+    col1:1, col2:13, row:0, h:2,
+    bg:'#111110', fg:'#f4f2ee',
+    why:'Global chrome. The nav persists across every page and provides access to all major sections. A dark surface creates a hard visual boundary between product shell and content — users know immediately they\'re inside the app.',
+    size:'48px = 2×24. Nav links need line-height:48px to fill the full bar without using align-items:center. Avatar (24×24 = 1 baseline) sits at padding-top:0. The "+ New Article" button uses line-height:48px so it fills the full height.',
+    place:'col 1–12, full bleed. Navigation always spans the full viewport — no partial or column-constrained treatment.',
+    note:''
+  },
+  {
+    id:'sep1', name:'Separator',
+    col1:1, col2:13, row:2, h:1,
+    bg:'#f0ede8', fg:'#8a887f',
+    why:'Visual breathing room between the nav (dark, heavy) and the stat bar (light, informational). A background shift signals a section boundary without a hard border line — editorial rather than utilitarian.',
+    size:'24px = 1×24. The minimum baseline-aligned height. One baseline is enough to register as a section break.',
+    place:'col 1–12, full bleed. Separators cannot be partial.',
+    note:''
+  },
+  {
+    id:'stats', name:'Stat Bar',
+    col1:1, col2:13, row:3, h:2,
+    bg:'#f8f6f2', fg:'#1a1917',
+    why:'At-a-glance summary before users engage with the article list. Total articles, published, drafts, and connected platform count. The "dashboard at a glance" beat.',
+    size:'48px = 2×24. Large mono number (18px, line-height:24px) occupies baseline 1. Label (8px/700 UC) + sub-label (7px mono) fill baseline 2. Exactly 2 baselines.',
+    place:'col 1–12. 4 equal tiles, each 3 cols wide. Three-column tiles give room for number + label side-by-side at these type sizes.',
+    note:''
+  },
+  {
+    id:'sep2', name:'Separator',
+    col1:1, col2:13, row:5, h:1,
+    bg:'#f0ede8', fg:'#8a887f',
+    why:'Separates the summary section (nav + stats) from the action section (filters + list). Reinforces the page\'s two-part structure: glance above, browse below.',
+    size:'24px = 1×24. Matches sep1.',
+    place:'col 1–12, full bleed.',
+    note:''
+  },
+  {
+    id:'filters', name:'Filter Bar',
+    col1:1, col2:13, row:6, h:1,
+    bg:'#ffffff', fg:'#1a1917',
+    why:'Platform and status filters let users narrow the article list. White surface signals an interactive control row vs. the informational zones above. The "All" pill is active by default.',
+    size:'24px = 1×24. Filter chips are exactly 24px (line-height:24px, no vertical padding). One baseline is right — this is a control strip, not a content zone.',
+    place:'col 1–12. Directly above the article list — the spatial link between filter state and list content must be immediate.',
+    note:''
+  },
+  {
+    id:'row1', name:'Article Row 1',
+    col1:1, col2:13, row:7, h:3,
+    bg:'#ffffff', fg:'#1a1917',
+    why:'Each article needs platform indicator, title, and meta visible in one scannable row. Three text lines is the minimum representation without reverting to a card layout.',
+    size:'72px = 3×24. Line 1: platform monospace. Line 2: Georgia italic title. Line 3: category · word count. Three baselines, no spare space.',
+    place:'col 1–12. Internal split: platform col 1–2, body col 3–9, word count col 10, status pill col 11 (padding-top:24px), date col 12.',
+    note:''
+  },
+  {
+    id:'row2', name:'Article Row 2',
+    col1:1, col2:13, row:10, h:3,
+    bg:'#f8f6f2', fg:'#1a1917',
+    why:'Alternating stripe — warmer background helps scan longer lists without a visible dividing border. Same structure as row 1.',
+    size:'72px = 3×24.',
+    place:'col 1–12.',
+    note:''
+  },
+  {
+    id:'row3', name:'Article Row 3',
+    col1:1, col2:13, row:13, h:3,
+    bg:'#ffffff', fg:'#1a1917',
+    why:'Returns to white for the alternating stripe. This row pattern repeats for however many articles exist.',
+    size:'72px = 3×24.',
+    place:'col 1–12.',
+    note:''
+  }
+];
+
+/* ── State ───────────────────────────────────────────────────── */
+let zones = PROPOSAL.map(z => ({...z}));
+let sel   = null;
+let drag  = null;
+
+/* ── DOM refs ────────────────────────────────────────────────── */
+const canvas    = document.getElementById('canvas');
+const ruler     = document.getElementById('ruler');
+const zoneList  = document.getElementById('zoneList');
+const zoneDetail= document.getElementById('zoneDetail');
+const jsonArea  = document.getElementById('jsonArea');
+const ftMsg     = document.getElementById('ftMsg');
+
+/* ── Ruler ───────────────────────────────────────────────────── */
+function buildRuler(){
+  ruler.innerHTML = Array.from({length:12},(_,i)=>
+    `<div class="r-col">${i+1}</div>`
+  ).join('');
+}
+
+/* ── Canvas zone rendering ───────────────────────────────────── */
+function renderCanvas(){
+  canvas.querySelectorAll('.zone').forEach(z => z.remove());
+  zones.forEach(z => {
+    const div = document.createElement('div');
+    div.className = 'zone' + (z.id===sel ? ' sel' : '');
+    div.dataset.id = z.id;
+    div.style.cssText = [
+      `left:${colX(z.col1)}px`,
+      `top:${rowY(z.row)}px`,
+      `width:${colW(z.col1,z.col2)}px`,
+      `height:${rowH(z.h)}px`,
+      `background:${z.bg}`,
+      `color:${z.fg}`
+    ].join(';');
+
+    const hLabel = z.h===1
+      ? `<span class="z-name">${esc(z.name)}</span>`
+      : `<span class="z-name">${esc(z.name)}</span>
+         <span class="z-spec">col ${z.col1}–${z.col2-1} · ${z.h}×24=${z.h*24}px</span>`;
+
+    div.innerHTML = `<div class="z-inner">${hLabel}</div><div class="z-rh"></div>`;
+    canvas.appendChild(div);
+  });
+  updateCanvasHeight();
+}
+
+function updateCanvasHeight(){
+  const maxBottom = Math.max(...zones.map(z => (z.row+z.h)*G.bl), 0);
+  canvas.style.minHeight = (maxBottom + 48) + 'px';
+}
+
+/* ── Panel rendering ─────────────────────────────────────────── */
+function renderPanel(){
+  renderZoneList();
+  renderZoneDetail();
+}
+
+function renderZoneList(){
+  zoneList.innerHTML = zones.map(z => `
+    <div class="zl-item${z.id===sel ? ' sel' : ''}" data-id="${z.id}">
+      <div class="zl-sw" style="background:${z.bg};"></div>
+      <span class="zl-name">${esc(z.name)}</span>
+      <span class="zl-spec">${z.h}×24</span>
+    </div>
+  `).join('');
+  zoneList.querySelectorAll('.zl-item').forEach(el => {
+    el.addEventListener('click', () => { sel = el.dataset.id; render(); });
+  });
+}
+
+function renderZoneDetail(){
+  const z = zones.find(z => z.id === sel);
+  if(!z){ zoneDetail.innerHTML = '<p class="nd">Click a zone to see its proposal.</p>'; return; }
+
+  zoneDetail.innerHTML = `
+    <div class="sec-label">Selected: ${esc(z.name)}</div>
+
+    <div class="d-row">
+      <label>Name</label>
+      <input class="d-input" id="d-name" value="${esc(z.name)}">
+    </div>
+    <div class="d-cols">
+      <div class="d-row">
+        <label>Col start</label>
+        <input class="d-input sm" id="d-c1" type="number" min="1" max="12" value="${z.col1}">
+      </div>
+      <div class="d-row">
+        <label>Col end</label>
+        <input class="d-input sm" id="d-c2" type="number" min="2" max="13" value="${z.col2}">
+      </div>
+      <div class="d-row">
+        <label>Height ×24</label>
+        <input class="d-input sm" id="d-h" type="number" min="1" max="30" value="${z.h}">
+      </div>
+    </div>
+
+    <div class="d-my">
+      <div class="d-my-hd">My proposal</div>
+      ${z.why ? `<div class="d-my-item"><div class="d-my-k">Why</div><div class="d-my-v">${esc(z.why)}</div></div>` : ''}
+      ${z.size ? `<div class="d-my-item"><div class="d-my-k">Sizing</div><div class="d-my-v">${esc(z.size)}</div></div>` : ''}
+      ${z.place ? `<div class="d-my-item"><div class="d-my-k">Placement</div><div class="d-my-v">${esc(z.place)}</div></div>` : ''}
+    </div>
+
+    <div class="d-user">
+      <div class="d-user-hd">Your notes</div>
+      <textarea class="d-user-ta" id="d-note" placeholder="Disagreements, questions, suggestions…">${esc(z.note)}</textarea>
+    </div>
+
+    <button class="btn-del" id="delZoneBtn">Delete this zone</button>
+  `;
+
+  bind('d-name',  'change', e => { z.name  = e.target.value;        render(); });
+  bind('d-c1',   'change', e => { z.col1   = clamp(int(e),1,12);    render(); });
+  bind('d-c2',   'change', e => { z.col2   = clamp(int(e),2,13);    render(); });
+  bind('d-h',    'change', e => { z.h      = clamp(int(e),1,30);    render(); });
+  bind('d-note', 'input',  e => { z.note   = e.target.value; updateJson(); });
+  bind('delZoneBtn','click', () => {
+    zones = zones.filter(z2 => z2.id !== z.id);
+    sel = null; render();
+  });
+}
+
+/* ── JSON ────────────────────────────────────────────────────── */
+let jsonFocused = false;
+jsonArea.addEventListener('focus', () => { jsonFocused = true; });
+jsonArea.addEventListener('blur',  () => { jsonFocused = false; });
+
+function updateJson(){
+  if(jsonFocused) return;
+  const state = {
+    page:'overview',
+    tool:'layout',
+    zones: zones.map(z => ({
+      id:z.id, name:z.name,
+      col1:z.col1, col2:z.col2,
+      row:z.row, h:z.h,
+      bg:z.bg, fg:z.fg,
+      note:z.note
+    }))
+  };
+  jsonArea.value = JSON.stringify(state, null, 2);
+}
+
+function loadJson(text){
+  try {
+    const data = JSON.parse(text);
+    if(!data.zones) throw new Error('No zones array');
+    // Merge incoming zones with PROPOSAL to preserve my reasoning
+    const propMap = Object.fromEntries(PROPOSAL.map(z=>[z.id,z]));
+    zones = data.zones.map(z => ({
+      ...(propMap[z.id] || {}),
+      ...z
+    }));
+    sel = null; render();
+    flash('JSON loaded ✓');
+  } catch(e) {
+    flash('Error: ' + e.message);
+  }
+}
+
+/* ── Drag ────────────────────────────────────────────────────── */
+canvas.addEventListener('mousedown', e => {
+  const zEl = e.target.closest('[data-id]');
+  if(!zEl) return;
+
+  const id = zEl.dataset.id;
+  sel = id;
+
+  const isResize = e.target.classList.contains('z-rh');
+  const z = zones.find(z => z.id===id);
+
+  drag = {
+    type: isResize ? 'resize' : 'move',
+    id,
+    startClientY: e.clientY,
+    startRow: z.row,
+    startH: z.h
+  };
+  zEl.classList.add('dragging');
+  e.preventDefault();
+  render();
+});
+
+window.addEventListener('mousemove', e => {
+  if(!drag) return;
+  const z = zones.find(z => z.id===drag.id);
+  const dbl = Math.round((e.clientY - drag.startClientY) / G.bl);
+  if(drag.type==='move')   z.row = Math.max(0, drag.startRow + dbl);
+  else                     z.h   = Math.max(1, drag.startH  + dbl);
+  renderCanvas();
+  updateJson();
+});
+
+window.addEventListener('mouseup', () => {
+  if(!drag) return;
+  drag = null;
+  render();
+});
+
+/* ── Add zone ────────────────────────────────────────────────── */
+document.getElementById('addZoneBtn').addEventListener('click', () => {
+  const maxBottom = zones.length
+    ? Math.max(...zones.map(z => z.row+z.h))
+    : 0;
+  const newZ = {
+    id:'zone_'+Date.now(), name:'New Zone',
+    col1:1, col2:13, row:maxBottom, h:2,
+    bg:'#e8f4ff', fg:'#1a1917',
+    why:'', size:'', place:'', note:''
+  };
+  zones.push(newZ);
+  sel = newZ.id;
+  render();
+});
+
+/* ── Export/Import ───────────────────────────────────────────── */
+document.getElementById('copyJsonBtn').addEventListener('click', () => {
+  navigator.clipboard.writeText(jsonArea.value)
+    .then(() => flash('Copied to clipboard ✓'))
+    .catch(() => { jsonArea.select(); flash('Select all + copy manually'); });
+});
+
+document.getElementById('loadJsonBtn').addEventListener('click', () => {
+  loadJson(jsonArea.value);
+});
+
+/* ── Helpers ─────────────────────────────────────────────────── */
+function render(){ renderCanvas(); renderPanel(); updateJson(); }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+function bind(id, ev, fn){ const el=document.getElementById(id); if(el) el.addEventListener(ev,fn); }
+function int(e){ return parseInt(e.target.value)||1; }
+function clamp(v,mn,mx){ return Math.max(mn,Math.min(mx,v)); }
+function flash(msg){ ftMsg.textContent=msg; clearTimeout(flash._t); flash._t=setTimeout(()=>{ftMsg.textContent='';},2500); }
+
+/* ── Boot ────────────────────────────────────────────────────── */
+buildRuler();
+render();
+</script>
+</body>
+</html>

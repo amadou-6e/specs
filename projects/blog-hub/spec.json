@@ -1,0 +1,9 @@
+{
+  "name": "BlogHub",
+  "slug": "blog-hub",
+  "source_repository": "https://github.com/amadou-6e/blog-hub",
+  "status": "active",
+  "description": "Product, architecture, contract, storage, security, and UI specifications for BlogHub.",
+  "legacy_layout": true
+}
+

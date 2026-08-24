@@ -1,0 +1,22 @@
+sequenceDiagram
+    participant UI
+    participant J as Jobs Service
+
+    Note over UI: after receiving 202 from push or inspect
+    loop every 2 s (max 60 s)
+        UI->>J: GET /api/jobs/{jobId}
+        alt status: running
+            J-->>UI: { jobId, type: "push"|"inspect", status: "running", result: null }
+            Note over UI: keep spinner active
+        else status: done
+            J-->>UI: { jobId, type, status: "done", result: { … } }
+            Note over UI: stop polling; apply result to UI
+        else status: error
+            J-->>UI: { jobId, type, status: "error", error: "message" }
+            Note over UI: stop polling; show error toast
+        else jobId not found
+            J-->>UI: 404
+            Note over UI: treat as error; stop polling
+        end
+    end
+    Note over UI: timeout after 60 s — show "Operation taking too long" toast

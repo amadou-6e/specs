@@ -1,0 +1,74 @@
+classDiagram
+    class Article {
+        +String id
+        +String title
+        +String canonical_content
+        +int word_count
+        +int version
+        +GateStatus gate
+        +datetime created_at
+        +datetime updated_at
+        +Dict~Platform, DestinationDraft~ destinations
+        +List~TimelineEvent~ timeline
+    }
+
+    class DestinationDraft {
+        +PlatformStatus status
+        +String label
+        +String url
+        +String error_message
+    }
+
+    class TimelineEvent {
+        +datetime timestamp
+        +String event
+    }
+
+    class Job {
+        +String jobId
+        +JobType type
+        +JobStatus status
+        +String article_id
+        +Dict result
+        +String error
+    }
+
+    class GateStatus {
+        <<enumeration>>
+        pass
+        warn
+        fail
+        pending
+    }
+
+    class PlatformStatus {
+        <<enumeration>>
+        none
+        draft
+        review
+        ready
+        pending
+        error
+        published
+    }
+
+    class JobType {
+        <<enumeration>>
+        push
+        inspect
+    }
+
+    class JobStatus {
+        <<enumeration>>
+        running
+        done
+        error
+    }
+
+    Article "1" --> "0..3" DestinationDraft : destinations
+    Article "1" --> "*" TimelineEvent : timeline
+    Article --> GateStatus
+    DestinationDraft --> PlatformStatus
+    Job --> JobType
+    Job --> JobStatus
+    Job --> Article : article_id

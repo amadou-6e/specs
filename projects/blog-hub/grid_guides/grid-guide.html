@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BlogHub — Grid Guide</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#f8f6f2; --ink:#1a1917; --ink2:#4a4845; --ink3:#8a887f;
+  --ink4:#b0aea8; --line:#dddad4;
+  --gap:1px;
+  /* column overlay color */
+  --gc:rgba(210,50,35,0.10);
+  --gl:rgba(210,50,35,0.30);
+  /* gutter between columns, at wireframe scale */
+  --cg:3px;
+}
+
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:system-ui,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── HEADER ── */
+.hd{background:var(--ink);display:grid;grid-template-columns:1fr 1fr;}
+.hd-l{padding:36px 40px 32px;border-right:1px solid #2e2d2a;display:flex;flex-direction:column;gap:20px;}
+.hd-kicker{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#3a3835;}
+.hd-title{font-size:44px;font-weight:300;letter-spacing:-.035em;line-height:1;color:#f4f2ee;}
+.hd-sub{font-size:11px;color:#5a5855;line-height:1.65;max-width:340px;}
+.hd-r{padding:24px 36px;display:flex;flex-direction:column;}
+.sr{display:grid;grid-template-columns:170px 1fr;padding:9px 0;border-bottom:1px solid #2a2927;gap:8px;}
+.sr:first-child{border-top:1px solid #2a2927;}
+.sl{font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#3a3835;}
+.sv{font-family:ui-monospace,monospace;font-size:9px;color:#c8c5c0;}
+.sv em{font-style:normal;color:#4a4845;}
+
+/* ── PAGE GRID ── */
+.prow{display:grid;gap:var(--gap);background:var(--line);border-top:var(--gap) solid var(--line);}
+.prow-3{grid-template-columns:repeat(3,1fr);}
+.prow-2{grid-template-columns:repeat(2,1fr);}
+
+/* ── CELL ── */
+.pcell{background:var(--bg);display:flex;flex-direction:column;}
+.pbar{display:flex;align-items:baseline;gap:10px;padding:11px 16px 9px;border-bottom:1px solid var(--line);}
+.pnum{font-size:8px;font-family:ui-monospace,monospace;color:var(--ink4);}
+.pname{font-size:13px;font-weight:600;color:var(--ink);flex:1;}
+.ptype{font-size:8px;font-family:ui-monospace,monospace;color:var(--ink3);}
+
+/* ── WIREFRAME OUTER SHELL ── */
+.wf{overflow:hidden;border-bottom:1px solid var(--line);}
+.wf-sm{height:270px;}
+.wf-lg{height:316px;}
+
+/* ──────────────────────────────────────────
+   THE CORE GRID SYSTEM
+
+   .g12 is the 12-column CSS grid.
+   It is also position:relative so that
+   .col-ov (absolute) sizes to match it.
+   Both use identical column-gap: var(--cg)
+   so overlay lines land on real column edges.
+────────────────────────────────────────────*/
+.g12{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  column-gap:var(--cg);
+  position:relative;
+  height:100%;
+}
+
+/* Column overlay: 12 children, one per column.
+   SAME grid definition as .g12 so they align. */
+.col-ov{
+  position:absolute;inset:0;
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  grid-template-rows:1fr;
+  column-gap:var(--cg);
+  pointer-events:none;
+  z-index:50;
+}
+.col-ov>div{
+  background:var(--gc);
+  border-left:1px solid var(--gl);
+}
+.col-ov>div:last-child{border-right:1px solid var(--gl);}
+
+/* Column number ruler (optional strip at very top of wireframe) */
+.col-ruler{
+  position:absolute;top:0;left:0;right:0;
+  height:10px;
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  column-gap:var(--cg);
+  pointer-events:none;
+  z-index:60;
+}
+.col-ruler>span{
+  font-size:5px;font-family:ui-monospace,monospace;
+  color:rgba(210,50,35,0.55);
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,0.7);
+  border-left:1px solid rgba(210,50,35,0.2);
+}
+.col-ruler>span:last-child{border-right:1px solid rgba(210,50,35,0.2);}
+
+/* ── ZONE BLOCKS ──
+   Every zone uses grid-column: X / Y in inline style.
+   That guarantees left and right edges land on column lines. */
+.z{
+  display:flex;flex-direction:column;
+  padding:4px 5px;
+  gap:3px;
+  overflow:hidden;
+  position:relative;
+}
+/* zone label */
+.zl{
+  font-size:6px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;font-family:ui-monospace,monospace;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  flex-shrink:0;
+}
+/* span annotation below label: "col 1–6" */
+.zs{
+  font-size:5px;font-family:ui-monospace,monospace;
+  opacity:.55;white-space:nowrap;flex-shrink:0;
+}
+/* placeholder text lines inside zone */
+.ph{height:3px;border-radius:2px;background:currentColor;opacity:.22;flex-shrink:0;}
+.ph.h{height:6px;opacity:.3;}
+.ph.hh{height:9px;opacity:.3;}
+.ph.s{width:72%;}
+.ph.xs{width:50%;}
+.ph.xxs{width:35%;}
+
+/* Zone background palette */
+.z-nav  {background:#111110;color:#f4f2ee;}
+.z-cover{background:#c8c5c0;color:#1a1917;}
+.z-hero {background:#f4f2ee;color:#1a1917;border-left:1px solid var(--line);}
+.z-band {background:#f0ede8;color:#4a4845;flex-direction:row;align-items:center;gap:8px;}
+.z-band .zl{color:#8a887f;}
+.z-band-ct{font-size:8px;font-family:ui-monospace,monospace;color:#b0aea8;margin-left:auto;padding-right:2px;}
+.z-thumb{background:#dddad4;color:#1a1917;}
+.z-body {background:#ffffff;color:#1a1917;border-bottom:1px solid #f0ede8;border-right:1px solid #f0ede8;}
+.z-body .ph{background:#1a1917;}
+.z-status{background:#f4f2ee;color:#8a887f;display:flex;align-items:center;justify-content:center;border-bottom:1px solid #f0ede8;}
+.z-date {background:#f4f2ee;color:#8a887f;display:flex;align-items:center;justify-content:center;border-bottom:1px solid #f0ede8;}
+.z-marg {background:#e8e6e2;color:#8a887f;}
+.z-filter{background:#f0ede8;color:#4a4845;flex-direction:row;align-items:center;gap:4px;}
+.z-sidebar{background:#e8e5e1;color:#4a4845;}
+.z-content{background:#f8f6f2;color:#1a1917;}
+.z-content .ph{background:#1a1917;}
+.z-toolbar{background:#111110;color:#f4f2ee;flex-direction:row;align-items:center;gap:4px;}
+.z-canvas {background:#ffffff;color:#1a1917;}
+.z-canvas .ph{background:#1a1917;}
+.z-outline{background:#f0ede8;color:#4a4845;}
+.z-panel  {background:#f4f2ee;color:#4a4845;}
+
+/* filter pill mockups */
+.fpill{height:9px;border-radius:10px;background:#e0ddd8;flex-shrink:0;}
+.fpill.on{background:#1a1917;}
+.finput{height:10px;border-radius:2px;border:1px solid var(--line);background:#fff;width:48px;flex-shrink:0;}
+.fsp{flex:1;}
+
+/* platform dots inside article rows */
+.dot-row{display:flex;gap:2px;align-items:center;}
+.dot{width:5px;height:5px;border-radius:50%;background:#c8c5c0;flex-shrink:0;}
+.dot.on{background:#8a887f;}
+
+/* status badge */
+.badge{height:9px;border-radius:10px;background:#e0ddd8;width:26px;}
+
+/* toolbar buttons */
+.tbtn{width:10px;height:10px;border-radius:2px;background:#2e2d2a;flex-shrink:0;}
+.tgrp{display:flex;gap:2px;padding-right:4px;border-right:1px solid #252523;flex-shrink:0;}
+.tgrp:last-of-type{border-right:none;}
+.tsp{flex:1;}
+.tpub{width:32px;height:11px;border-radius:3px;background:#4a4845;flex-shrink:0;}
+
+/* feed post blocks (nested inside the post column zone) */
+.post{background:#fff;border:1px solid var(--line);border-radius:2px;overflow:hidden;flex-shrink:0;}
+.post-img{background:#dddad4;}
+.post-body{padding:5px 6px;display:flex;flex-direction:column;gap:3px;}
+.post-plat{display:flex;gap:2px;}
+.post-ptag{height:7px;border-radius:2px;background:#eeece8;flex-shrink:0;}
+.post-title{height:6px;border-radius:2px;background:#c0bdb8;}
+.post-exc{height:3px;border-radius:2px;background:#e0ddd8;}
+.post-foot{display:flex;gap:3px;align-items:center;margin-top:1px;}
+.post-wc{height:3px;width:18px;border-radius:2px;background:#e8e5e1;margin-left:auto;}
+
+/* spec pills */
+.pspecs{padding:9px 14px;display:flex;gap:5px;flex-wrap:wrap;}
+.sp{font-size:7px;font-family:ui-monospace,monospace;color:var(--ink2);background:#eeece8;padding:3px 8px;border-radius:20px;border:1px solid var(--line);}
+.sp.hi{background:var(--ink);color:#f4f2ee;border-color:var(--ink);}
+
+/* legend */
+.legend{display:flex;align-items:center;gap:16px;padding:10px 20px;border-top:var(--gap) solid var(--line);}
+.li{display:flex;align-items:center;gap:5px;}
+.ll{font-size:7px;font-family:ui-monospace,monospace;color:var(--ink3);letter-spacing:.06em;}
+
+/* footer */
+.footer{background:var(--ink);color:#5a5855;font-size:9px;display:flex;align-items:center;flex-wrap:wrap;padding:11px 40px;gap:0;border-top:var(--gap) solid #2a2927;}
+.footer strong{color:#f4f2ee;margin-right:10px;}
+.footer span{padding:0 12px;border-left:1px solid #2a2927;}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hd">
+  <div class="hd-l">
+    <div>
+      <p class="hd-kicker">BlogHub · Design System · v1</p>
+      <p class="hd-title">Grid<br>Guide</p>
+    </div>
+    <p class="hd-sub">Column grid for five screen types at desktop (>1280px). Every zone block starts and ends on a real column edge — the red overlay and the layout grid share the same CSS <code>grid-template-columns</code>.</p>
+  </div>
+  <div class="hd-r">
+    <div class="sr"><span class="sl">Base unit</span><span class="sv">4px</span></div>
+    <div class="sr"><span class="sl">Column system</span><span class="sv">12 col · 24px gutter</span></div>
+    <div class="sr"><span class="sl">Max content width</span><span class="sv">1400px <em>· centered</em></span></div>
+    <div class="sr"><span class="sl">Page margin</span><span class="sv">32px desktop · 20px tablet</span></div>
+    <div class="sr"><span class="sl">Nav bar</span><span class="sv">48px <em>· position: fixed</em></span></div>
+    <div class="sr"><span class="sl">Filter / toolbar</span><span class="sv">52px <em>· position: sticky</em></span></div>
+    <div class="sr"><span class="sl">Sidebar</span><span class="sv">col 1–2 · ≈200px at 1400px</span></div>
+    <div class="sr"><span class="sl">Properties panel</span><span class="sv">col 11–12 · ≈280px at 1400px</span></div>
+  </div>
+</div>
+
+<div class="legend">
+  <span style="font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-right:4px;">Key</span>
+  <div class="li">
+    <div style="width:24px;height:12px;background:var(--gc);border-left:1px solid var(--gl);border-right:1px solid var(--gl);"></div>
+    <span class="ll">Column band (red = grid line)</span>
+  </div>
+  <div class="li">
+    <div style="width:14px;height:10px;border-radius:2px;background:#c8c5c0;"></div>
+    <span class="ll">Image / cover zone</span>
+  </div>
+  <div class="li">
+    <div style="width:14px;height:10px;border-radius:2px;background:#fff;border:1px solid var(--line);"></div>
+    <span class="ll">Text / content zone</span>
+  </div>
+  <div class="li">
+    <div style="width:14px;height:10px;border-radius:2px;background:#111110;"></div>
+    <span class="ll">Nav / toolbar (dark)</span>
+  </div>
+  <div class="li">
+    <div style="width:14px;height:10px;border-radius:2px;background:#e8e6e2;border:1px solid var(--line);"></div>
+    <span class="ll">Margin / empty col</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     ROW 1 · 3 cells
+══════════════════════════════════ -->
+<div class="prow prow-3">
+
+  <!-- ── 01 OVERVIEW ── -->
+  <div class="pcell">
+    <div class="pbar">
+      <span class="pnum">01</span>
+      <span class="pname">Overview / Welcome</span>
+      <span class="ptype">12 col · featured hero + list rows</span>
+    </div>
+
+    <!--
+      grid-template-rows:
+        10px  ← col ruler
+        28px  ← nav (row 2)
+        82px  ← featured hero (row 3)
+        16px  ← "all articles" band (row 4)
+        1fr × 5 ← article list rows (rows 5–9)
+    -->
+    <div class="wf wf-sm">
+      <div class="g12" style="grid-template-rows:10px 28px 82px 16px repeat(5,1fr);">
+
+        <!-- Column overlay: 12 bands sharing same grid -->
+        <div class="col-ov">
+          <div></div><div></div><div></div><div></div>
+          <div></div><div></div><div></div><div></div>
+          <div></div><div></div><div></div><div></div>
+        </div>
+
+        <!-- Col ruler (row 1, all 12 cols) -->
+        <div class="col-ruler" style="position:static;display:contents;"><!-- rendered by col-ruler children below --></div>
+        <!-- ruler strip -->
+        <div style="grid-column:1/13;grid-row:1;display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--cg);position:relative;z-index:55;">
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">1</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">2</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">3</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">4</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">5</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">6</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">7</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">8</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">9</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">10</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">11</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);border-right:1px solid rgba(210,50,35,.2);">12</span>
+        </div>
+
+        <!-- ROW 2: NAV · col 1–12 -->
+        <div class="z z-nav" style="grid-column:1/13;grid-row:2;">
+          <div style="display:flex;align-items:center;height:100%;gap:7px;">
+            <span style="font-size:8px;font-weight:700;color:#f4f2ee;letter-spacing:.05em;">BH</span>
+            <div style="height:4px;border-radius:2px;background:#f4f2ee;width:28px;"></div>
+            <div style="height:4px;border-radius:2px;background:#2e2d2a;width:22px;"></div>
+            <div style="height:4px;border-radius:2px;background:#2e2d2a;width:26px;"></div>
+            <div style="height:4px;border-radius:2px;background:#2e2d2a;width:20px;"></div>
+            <div style="flex:1;"></div>
+            <div style="height:12px;border-radius:3px;background:#f4f2ee;width:32px;"></div>
+          </div>
+          <span class="zl" style="position:absolute;bottom:3px;left:5px;opacity:.4;">Nav · col 1–12 · fixed 48px</span>
+        </div>
+
+        <!-- ROW 3: FEATURED HERO · left=cover (col 1–6), right=title (col 7–12) -->
+        <div class="z z-cover" style="grid-column:1/7;grid-row:3;">
+          <span class="zl">Cover image</span>
+          <span class="zs">col 1 – 6</span>
+        </div>
+        <div class="z z-hero" style="grid-column:7/13;grid-row:3;justify-content:center;">
+          <div class="ph xxs" style="background:#8a887f;"></div>
+          <div class="ph hh" style="background:#1a1917;"></div>
+          <div class="ph h" style="background:#1a1917;width:80%;"></div>
+          <div style="height:4px;"></div>
+          <div class="ph s" style="background:#8a887f;"></div>
+          <div class="ph" style="background:#8a887f;"></div>
+          <div class="ph xs" style="background:#8a887f;"></div>
+          <div style="height:4px;"></div>
+          <div style="display:flex;gap:3px;">
+            <div style="height:9px;width:28px;border-radius:10px;background:#e0ddd8;"></div>
+            <div style="height:9px;width:22px;border-radius:10px;background:#e0ddd8;"></div>
+            <div style="height:9px;width:24px;border-radius:10px;background:#e0ddd8;"></div>
+          </div>
+          <span class="zs" style="margin-top:auto;">col 7 – 12</span>
+        </div>
+
+        <!-- ROW 4: BAND · col 1–12 -->
+        <div class="z z-band" style="grid-column:1/13;grid-row:4;">
+          <span class="zl">All articles</span>
+          <span class="z-band-ct">32</span>
+          <div style="display:flex;gap:3px;margin-left:8px;">
+            <div style="height:10px;width:32px;border-radius:3px;background:#e0ddd8;border:1px solid var(--line);"></div>
+          </div>
+        </div>
+
+        <!-- ROWS 5–9: ARTICLE LIST
+             Each row: thumb(1–3) · body(3–10) · status(10–12) · date(12–13) -->
+        <!-- Row 5 -->
+        <div class="z z-thumb" style="grid-column:1/3;grid-row:5;"><span class="zl" style="font-size:5px;">Thumb</span></div>
+        <div class="z z-body"  style="grid-column:3/10;grid-row:5;justify-content:center;">
+          <div class="ph h"></div><div class="ph s"></div>
+        </div>
+        <div class="z z-status" style="grid-column:10/12;grid-row:5;">
+          <div class="badge"></div>
+        </div>
+        <div class="z z-date" style="grid-column:12/13;grid-row:5;">
+          <div style="height:3px;width:90%;background:#e0ddd8;border-radius:2px;"></div>
+        </div>
+
+        <!-- Row 6 -->
+        <div class="z z-thumb" style="grid-column:1/3;grid-row:6;"></div>
+        <div class="z z-body"  style="grid-column:3/10;grid-row:6;justify-content:center;">
+          <div class="ph h" style="width:80%;"></div><div class="ph xs"></div>
+        </div>
+        <div class="z z-status" style="grid-column:10/12;grid-row:6;">
+          <div class="badge" style="background:#c8c5c0;"></div>
+        </div>
+        <div class="z z-date" style="grid-column:12/13;grid-row:6;">
+          <div style="height:3px;width:90%;background:#e0ddd8;border-radius:2px;"></div>
+        </div>
+
+        <!-- Row 7 -->
+        <div class="z z-thumb" style="grid-column:1/3;grid-row:7;"></div>
+        <div class="z z-body"  style="grid-column:3/10;grid-row:7;justify-content:center;">
+          <div class="ph h" style="width:90%;"></div><div class="ph"></div>
+        </div>
+        <div class="z z-status" style="grid-column:10/12;grid-row:7;">
+          <div class="badge"></div>
+        </div>
+        <div class="z z-date" style="grid-column:12/13;grid-row:7;">
+          <div style="height:3px;width:90%;background:#e0ddd8;border-radius:2px;"></div>
+        </div>
+
+        <!-- Row 8 -->
+        <div class="z z-thumb" style="grid-column:1/3;grid-row:8;"></div>
+        <div class="z z-body"  style="grid-column:3/10;grid-row:8;justify-content:center;">
+          <div class="ph h" style="width:65%;"></div><div class="ph xxs"></div>
+        </div>
+        <div class="z z-status" style="grid-column:10/12;grid-row:8;">
+          <div class="badge"></div>
+        </div>
+        <div class="z z-date" style="grid-column:12/13;grid-row:8;">
+          <div style="height:3px;width:90%;background:#e0ddd8;border-radius:2px;"></div>
+        </div>
+
+        <!-- Row 9 -->
+        <div class="z z-thumb" style="grid-column:1/3;grid-row:9;"></div>
+        <div class="z z-body"  style="grid-column:3/10;grid-row:9;justify-content:center;">
+          <div class="ph h" style="width:75%;"></div><div class="ph s"></div>
+        </div>
+        <div class="z z-status" style="grid-column:10/12;grid-row:9;">
+          <div class="badge"></div>
+        </div>
+        <div class="z z-date" style="grid-column:12/13;grid-row:9;">
+          <div style="height:3px;width:90%;background:#e0ddd8;border-radius:2px;"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="pspecs">
+      <span class="sp hi">12 col</span>
+      <span class="sp">hero: col 1–6 cover · col 7–12 title</span>
+      <span class="sp">list rows: thumb col 1–2 · body col 3–9 · status col 10–11 · date col 12</span>
+      <span class="sp">nav fixed 48px</span>
+    </div>
+  </div><!-- /01 -->
+
+
+  <!-- ── 02 FEED (Instagram/Facebook style) ── -->
+  <div class="pcell">
+    <div class="pbar">
+      <span class="pnum">02</span>
+      <span class="pname">Feed</span>
+      <span class="ptype">12 col · posts in col 3–10 · side margins 1–2 &amp; 11–12</span>
+    </div>
+
+    <!--
+      grid-template-rows:
+        10px  ruler
+        28px  nav
+        20px  filter
+        1fr   feed body (margin | post-col | margin)
+    -->
+    <div class="wf wf-sm">
+      <div class="g12" style="grid-template-rows:10px 28px 20px 1fr;">
+
+        <div class="col-ov">
+          <div></div><div></div><div></div><div></div>
+          <div></div><div></div><div></div><div></div>
+          <div></div><div></div><div></div><div></div>
+        </div>
+
+        <!-- ruler -->
+        <div style="grid-column:1/13;grid-row:1;display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--cg);z-index:55;">
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">1</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">2</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">3</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">4</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">5</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">6</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">7</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">8</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">9</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">10</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">11</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);border-right:1px solid rgba(210,50,35,.2);">12</span>
+        </div>
+
+        <!-- NAV: col 1–12 -->
+        <div class="z z-nav" style="grid-column:1/13;grid-row:2;">
+          <div style="display:flex;align-items:center;height:100%;gap:7px;">
+            <span style="font-size:8px;font-weight:700;color:#f4f2ee;letter-spacing:.05em;">BH</span>
+            <div style="height:4px;border-radius:2px;background:#2e2d2a;width:28px;"></div>
+            <div style="height:4px;border-radius:2px;background:#f4f2ee;width:20px;"></div>
+            <div style="height:4px;border-radius:2px;background:#2e2d2a;width:24px;"></div>
+            <div style="flex:1;"></div>
+            <div style="height:12px;border-radius:3px;background:#f4f2ee;width:28px;"></div>
+          </div>
+          <span class="zl" style="position:absolute;bottom:3px;left:5px;opacity:.4;">Nav · col 1–12 · fixed 48px</span>
+        </div>
+
+        <!-- FILTER: col 1–12 · sticky -->
+        <div class="z z-filter" style="grid-column:1/13;grid-row:3;">
+          <div class="finput"></div>
+          <div class="fpill on" style="width:20px;"></div>
+          <div class="fpill" style="width:20px;"></div>
+          <div class="fpill" style="width:20px;"></div>
+          <div class="fpill" style="width:20px;"></div>
+          <div class="fpill" style="width:20px;"></div>
+          <div class="fsp"></div>
+          <div style="height:10px;width:36px;border-radius:2px;background:#e0ddd8;border:1px solid var(--line);"></div>
+          <span class="zl" style="position:absolute;bottom:2px;left:5px;font-size:5px;opacity:.55;">Filter · col 1–12 · sticky 52px</span>
+        </div>
+
+        <!-- FEED BODY: left margin (1–2), post col (3–10), right margin (11–12) -->
+        <!-- Left margin -->
+        <div class="z z-marg" style="grid-column:1/3;grid-row:4;align-items:center;justify-content:center;">
+          <span class="zl" style="font-size:5px;writing-mode:vertical-rl;transform:rotate(180deg);opacity:.5;">margin · col 1–2</span>
+        </div>
+
+        <!-- Post column: col 3–10 (8 of 12) -->
+        <div style="grid-column:3/11;grid-row:4;background:#f0ede8;display:flex;flex-direction:column;gap:6px;padding:6px;overflow:hidden;">
+          <!-- Post 1 -->
+          <div class="post">
+            <div class="post-img" style="height:64px;"></div>
+            <div class="post-body">
+              <div class="post-plat">
+                <div class="post-ptag" style="width:22px;"></div>
+                <div class="post-ptag" style="width:18px;margin-left:3px;"></div>
+              </div>
+              <div class="post-title" style="width:90%;"></div>
+              <div class="post-title" style="width:65%;"></div>
+              <div class="post-exc" style="width:100%;"></div>
+              <div class="post-exc" style="width:80%;"></div>
+              <div class="post-foot">
+                <div class="dot on"></div><div class="dot on"></div><div class="dot"></div>
+                <div style="height:3px;width:24px;border-radius:2px;background:#e0ddd8;margin-left:4px;"></div>
+                <div class="post-wc"></div>
+              </div>
+            </div>
+          </div>
+          <!-- Post 2 -->
+          <div class="post">
+            <div class="post-img" style="height:48px;"></div>
+            <div class="post-body">
+              <div class="post-plat">
+                <div class="post-ptag" style="width:22px;"></div>
+              </div>
+              <div class="post-title" style="width:85%;"></div>
+              <div class="post-title" style="width:58%;"></div>
+              <div class="post-exc" style="width:100%;"></div>
+              <div class="post-foot">
+                <div class="dot on"></div><div class="dot"></div><div class="dot"></div>
+                <div style="height:3px;width:24px;border-radius:2px;background:#e0ddd8;margin-left:4px;"></div>
+                <div class="post-wc"></div>
+              </div>
+            </div>
+          </div>
+          <!-- Post 3 partial (fade) -->
+          <div class="post" style="opacity:.45;">
+            <div class="post-img" style="height:24px;"></div>
+          </div>
+          <span class="zl" style="position:absolute;bottom:4px;left:50%;transform:translateX(-50%);font-size:5px;white-space:nowrap;color:#8a887f;background:rgba(240,237,232,.8);padding:1px 4px;border-radius:2px;">Post col · col 3–10 · scrollable</span>
+        </div>
+
+        <!-- Right margin -->
+        <div class="z z-marg" style="grid-column:11/13;grid-row:4;align-items:center;justify-content:center;">
+          <span class="zl" style="font-size:5px;writing-mode:vertical-rl;opacity:.5;">margin · col 11–12</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="pspecs">
+      <span class="sp hi">12 col</span>
+      <span class="sp">posts: col 3–10 (8 of 12)</span>
+      <span class="sp">side margins: col 1–2 &amp; col 11–12</span>
+      <span class="sp">posts: tall image → platform tags → title → excerpt → footer</span>
+      <span class="sp">filter 52px sticky</span>
+    </div>
+  </div><!-- /02 -->
+
+
+  <!-- ── 03 LOGIN ── -->
+  <div class="pcell">
+    <div class="pbar">
+      <span class="pnum">03</span>
+      <span class="pname">Login</span>
+      <span class="ptype">no nav · centered card · max-w 400px</span>
+    </div>
+
+    <!--
+      grid-template-rows:
+        10px  ruler
+        1fr   main (margins | card | margins)
+    -->
+    <div class="wf wf-sm" style="background:#f4f2ee;">
+      <div class="g12" style="grid-template-rows:10px 1fr;">
+
+        <div class="col-ov">
+          <div></div><div></div><div></div><div></div>
+          <div></div><div></div><div></div><div></div>
+          <div></div><div></div><div></div><div></div>
+        </div>
+
+        <!-- ruler -->
+        <div style="grid-column:1/13;grid-row:1;display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--cg);z-index:55;">
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">1</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">2</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">3</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">4</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">5</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">6</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">7</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">8</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">9</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">10</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">11</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);border-right:1px solid rgba(210,50,35,.2);">12</span>
+        </div>
+
+        <!-- Left outer margin: col 1–3 -->
+        <div class="z z-marg" style="grid-column:1/3;grid-row:2;justify-content:center;align-items:center;">
+          <span class="zl" style="font-size:5px;writing-mode:vertical-rl;transform:rotate(180deg);opacity:.5;">margin</span>
+        </div>
+
+        <!-- Login card: col 3–11 (8 cols, centered) -->
+        <div style="grid-column:3/11;grid-row:2;background:#f4f2ee;display:flex;align-items:center;justify-content:center;padding:12px;">
+          <div style="width:100%;max-width:260px;display:flex;flex-direction:column;gap:8px;">
+            <!-- Logo -->
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:4px;">
+              <div style="width:28px;height:6px;background:#1a1917;border-radius:2px;"></div>
+              <div class="ph h" style="width:55%;background:#c8c5c0;"></div>
+              <div class="ph s" style="background:#dddad4;"></div>
+            </div>
+            <!-- Card -->
+            <div style="background:#fff;border:1px solid var(--line);border-radius:5px;padding:12px 10px;display:flex;flex-direction:column;gap:7px;">
+              <div style="display:flex;flex-direction:column;gap:2px;">
+                <div class="ph xxs" style="background:#dddad4;height:3px;"></div>
+                <div style="height:14px;background:#f4f2ee;border:1px solid var(--line);border-radius:3px;"></div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:2px;">
+                <div class="ph xxs" style="background:#dddad4;height:3px;"></div>
+                <div style="height:14px;background:#f4f2ee;border:1px solid var(--line);border-radius:3px;"></div>
+              </div>
+              <div style="height:14px;background:#1a1917;border-radius:3px;"></div>
+              <div style="height:1px;background:var(--line);"></div>
+              <div style="height:14px;background:#f4f2ee;border:1px solid var(--line);border-radius:3px;display:flex;align-items:center;gap:4px;padding:0 5px;">
+                <div style="width:7px;height:7px;border-radius:50%;background:#e0ddd8;"></div>
+                <div class="ph xs" style="background:#e0ddd8;height:3px;"></div>
+              </div>
+            </div>
+            <span class="zl" style="text-align:center;font-size:5px;color:#8a887f;">Login card · col 3–10 · vertically centered</span>
+          </div>
+        </div>
+
+        <!-- Right outer margin: col 11–12 -->
+        <div class="z z-marg" style="grid-column:11/13;grid-row:2;justify-content:center;align-items:center;">
+          <span class="zl" style="font-size:5px;writing-mode:vertical-rl;opacity:.5;">margin</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="pspecs">
+      <span class="sp hi">no nav · bare page</span>
+      <span class="sp">card: col 3–10 (8 of 12)</span>
+      <span class="sp">outer margins col 1–2 &amp; col 11–12</span>
+      <span class="sp">max-w 400px · vertically centered</span>
+    </div>
+  </div><!-- /03 -->
+
+</div><!-- /prow-3 -->
+
+
+<!-- ══════════════════════════════════
+     ROW 2 · 2 cells
+══════════════════════════════════ -->
+<div class="prow prow-2">
+
+  <!-- ── 04 SETTINGS ── -->
+  <div class="pcell">
+    <div class="pbar">
+      <span class="pnum">04</span>
+      <span class="pname">Settings</span>
+      <span class="ptype">12 col · sidebar col 1–2 · content col 3–12</span>
+    </div>
+
+    <!--
+      grid-template-rows:
+        10px  ruler
+        28px  nav
+        1fr   sidebar | content
+    -->
+    <div class="wf wf-lg">
+      <div class="g12" style="grid-template-rows:10px 28px 1fr;">
+
+        <div class="col-ov">
+          <div></div><div></div><div></div><div></div>
+          <div></div><div></div><div></div><div></div>
+          <div></div><div></div><div></div><div></div>
+        </div>
+
+        <!-- ruler -->
+        <div style="grid-column:1/13;grid-row:1;display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--cg);z-index:55;">
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">1</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">2</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">3</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">4</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">5</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">6</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">7</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">8</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">9</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">10</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);">11</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border-left:1px solid rgba(210,50,35,.2);border-right:1px solid rgba(210,50,35,.2);">12</span>
+        </div>
+
+        <!-- NAV: col 1–12 -->
+        <div class="z z-nav" style="grid-column:1/13;grid-row:2;">
+          <div style="display:flex;align-items:center;height:100%;gap:7px;">
+            <span style="font-size:8px;font-weight:700;color:#f4f2ee;letter-spacing:.05em;">BH</span>
+            <div style="height:4px;border-radius:2px;background:#2e2d2a;width:26px;"></div>
+            <div style="height:4px;border-radius:2px;background:#2e2d2a;width:20px;"></div>
+            <div style="height:4px;border-radius:2px;background:#2e2d2a;width:24px;"></div>
+            <div style="height:4px;border-radius:2px;background:#f4f2ee;width:24px;"></div>
+            <div style="flex:1;"></div>
+            <div style="height:12px;border-radius:3px;background:#f4f2ee;width:32px;"></div>
+          </div>
+          <span class="zl" style="position:absolute;bottom:3px;left:5px;opacity:.4;">Nav · col 1–12 · fixed 48px</span>
+        </div>
+
+        <!-- SIDEBAR: col 1–2 -->
+        <div class="z z-sidebar" style="grid-column:1/3;grid-row:3;gap:4px;padding:8px 5px;">
+          <span class="zl">Settings nav</span>
+          <span class="zs">col 1–2 · ≈200px</span>
+          <div style="height:6px;"></div>
+          <div style="height:11px;border-radius:2px;background:#1a1917;"></div>
+          <div style="height:11px;border-radius:2px;background:#d8d5d0;"></div>
+          <div style="height:11px;border-radius:2px;background:#d8d5d0;"></div>
+          <div style="height:11px;border-radius:2px;background:#d8d5d0;"></div>
+          <div style="height:1px;background:var(--line);margin:3px 0;"></div>
+          <div style="height:11px;border-radius:2px;background:#d8d5d0;"></div>
+          <div style="height:11px;border-radius:2px;background:#d8d5d0;"></div>
+          <div style="height:1px;background:var(--line);margin:3px 0;"></div>
+          <div style="height:11px;border-radius:2px;background:#d8d5d0;width:75%;"></div>
+        </div>
+
+        <!-- CONTENT: col 3–12 -->
+        <div class="z z-content" style="grid-column:3/13;grid-row:3;padding:10px 12px;gap:7px;">
+          <span class="zl">Content area</span>
+          <span class="zs">col 3–12 · 10 cols</span>
+          <div style="height:1px;background:var(--line);"></div>
+          <!-- form rows -->
+          <div style="display:grid;grid-template-columns:36% 1fr;gap:6px;align-items:center;">
+            <div class="ph xs" style="background:#1a1917;"></div>
+            <div style="height:13px;background:#f4f2ee;border:1px solid var(--line);border-radius:3px;"></div>
+          </div>
+          <div style="display:grid;grid-template-columns:36% 1fr;gap:6px;align-items:center;">
+            <div class="ph xxs" style="background:#1a1917;"></div>
+            <div style="height:13px;background:#f4f2ee;border:1px solid var(--line);border-radius:3px;"></div>
+          </div>
+          <div style="display:grid;grid-template-columns:36% 1fr;gap:6px;align-items:center;">
+            <div class="ph s" style="background:#1a1917;"></div>
+            <div style="height:13px;background:#f4f2ee;border:1px solid var(--line);border-radius:3px;"></div>
+          </div>
+          <div style="height:1px;background:var(--line);"></div>
+          <div class="ph xxs" style="background:#8a887f;height:5px;"></div>
+          <div style="height:1px;background:var(--line);"></div>
+          <!-- platform cards 2-col -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;">
+            <div style="height:32px;background:#f4f2ee;border:1px solid var(--line);border-radius:3px;padding:5px;display:flex;align-items:center;gap:4px;">
+              <div style="width:8px;height:8px;border-radius:50%;background:#dddad4;flex-shrink:0;"></div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:2px;">
+                <div class="ph xs" style="background:#c8c5c0;height:3px;"></div>
+                <div class="ph xxs" style="background:#dddad4;height:3px;"></div>
+              </div>
+              <div style="width:16px;height:8px;border-radius:10px;background:#1a1917;"></div>
+            </div>
+            <div style="height:32px;background:#f4f2ee;border:1px solid var(--line);border-radius:3px;padding:5px;display:flex;align-items:center;gap:4px;">
+              <div style="width:8px;height:8px;border-radius:50%;background:#dddad4;flex-shrink:0;"></div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:2px;">
+                <div class="ph xs" style="background:#c8c5c0;height:3px;"></div>
+                <div class="ph xxs" style="background:#dddad4;height:3px;"></div>
+              </div>
+              <div style="width:16px;height:8px;border-radius:10px;background:#dddad4;"></div>
+            </div>
+            <div style="height:32px;background:#f4f2ee;border:1px solid var(--line);border-radius:3px;padding:5px;display:flex;align-items:center;gap:4px;">
+              <div style="width:8px;height:8px;border-radius:50%;background:#dddad4;flex-shrink:0;"></div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:2px;">
+                <div class="ph xs" style="background:#c8c5c0;height:3px;"></div>
+                <div class="ph xxs" style="background:#dddad4;height:3px;"></div>
+              </div>
+              <div style="width:16px;height:8px;border-radius:10px;background:#dddad4;"></div>
+            </div>
+          </div>
+          <div style="height:12px;background:#1a1917;border-radius:3px;width:28%;margin-top:2px;"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="pspecs">
+      <span class="sp hi">12 col</span>
+      <span class="sp">sidebar: col 1–2 (≈200px at 1400px)</span>
+      <span class="sp">content: col 3–12 (10 cols)</span>
+      <span class="sp">section + form row layout in content area</span>
+    </div>
+  </div><!-- /04 -->
+
+
+  <!-- ── 05 TEXT EDITOR ── -->
+  <div class="pcell">
+    <div class="pbar">
+      <span class="pnum">05</span>
+      <span class="pname">Text Editor</span>
+      <span class="ptype">3-pane fixed: outline 200px · canvas flex · panel 280px</span>
+    </div>
+
+    <!--
+      Editor uses a 3-pane fixed layout, not a standard 12-col grid.
+      Custom grid-template-columns to show the 3 zones.
+      Column overlay uses the same 3-column definition.
+    -->
+    <div class="wf wf-lg">
+      <div style="height:100%;display:grid;grid-template-columns:14fr 58fr 18fr;grid-template-rows:10px 28px 1fr;position:relative;">
+
+        <!-- Pane overlay: 3 bands matching the 3 columns -->
+        <div style="position:absolute;inset:0;display:grid;grid-template-columns:14fr 58fr 18fr;grid-template-rows:1fr;pointer-events:none;z-index:50;">
+          <div style="background:rgba(210,50,35,.08);border-left:1px solid rgba(210,50,35,.3);border-right:1px solid rgba(210,50,35,.3);"></div>
+          <div style="background:rgba(210,50,35,.04);"></div>
+          <div style="background:rgba(210,50,35,.08);border-left:1px solid rgba(210,50,35,.3);border-right:1px solid rgba(210,50,35,.3);"></div>
+        </div>
+
+        <!-- Pane ruler -->
+        <div style="grid-column:1/4;grid-row:1;display:grid;grid-template-columns:14fr 58fr 18fr;z-index:55;">
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.6);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.8);border-left:1px solid rgba(210,50,35,.25);border-right:1px solid rgba(210,50,35,.25);">outline · 200px</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.6);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.8);">canvas · flex</span>
+          <span style="font-size:5px;font-family:ui-monospace,monospace;color:rgba(210,50,35,.6);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.8);border-left:1px solid rgba(210,50,35,.25);border-right:1px solid rgba(210,50,35,.25);">panel · 280px</span>
+        </div>
+
+        <!-- TOOLBAR: spans all 3 panes -->
+        <div class="z z-toolbar" style="grid-column:1/4;grid-row:2;">
+          <div class="tgrp"><div class="tbtn"></div><div class="tbtn"></div><div class="tbtn"></div></div>
+          <div class="tgrp"><div class="tbtn" style="width:14px;"></div><div class="tbtn" style="width:14px;"></div><div class="tbtn" style="width:14px;"></div></div>
+          <div class="tgrp"><div class="tbtn" style="width:16px;"></div><div class="tbtn" style="width:16px;"></div></div>
+          <div class="tgrp"><div class="tbtn" style="width:18px;"></div></div>
+          <div class="tsp"></div>
+          <span style="font-size:6px;font-family:ui-monospace,monospace;color:#3a3835;margin-right:4px;">draft · saved</span>
+          <div class="tpub"></div>
+        </div>
+
+        <!-- OUTLINE PANE -->
+        <div class="z z-outline" style="grid-column:1/2;grid-row:3;padding:7px 5px;gap:4px;">
+          <span class="zl">Outline</span>
+          <span class="zs">200px fixed</span>
+          <div style="height:5px;"></div>
+          <div style="height:5px;border-radius:2px;background:#c8c5c0;width:82%;"></div>
+          <div style="height:4px;border-radius:2px;background:#d8d5d0;width:68%;margin-left:5px;"></div>
+          <div style="height:4px;border-radius:2px;background:#e0ddd8;width:55%;margin-left:10px;"></div>
+          <div style="height:4px;border-radius:2px;background:#e0ddd8;width:48%;margin-left:10px;"></div>
+          <div style="height:4px;border-radius:2px;background:#d8d5d0;width:72%;margin-left:5px;"></div>
+          <div style="height:4px;border-radius:2px;background:#e0ddd8;width:58%;margin-left:10px;"></div>
+          <div style="height:4px;border-radius:2px;background:#d8d5d0;width:65%;margin-left:5px;"></div>
+          <div style="height:4px;border-radius:2px;background:#e0ddd8;width:50%;margin-left:10px;"></div>
+          <div style="height:4px;border-radius:2px;background:#e0ddd8;width:45%;margin-left:10px;"></div>
+          <div style="height:4px;border-radius:2px;background:#d8d5d0;width:78%;margin-left:5px;"></div>
+        </div>
+
+        <!-- CANVAS: has horizontal baseline grid lines -->
+        <div class="z z-canvas" style="grid-column:2/3;grid-row:3;padding:16px 20px;gap:5px;
+          background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 11px,rgba(210,50,35,0.06) 11px,rgba(210,50,35,0.06) 12px);">
+          <span class="zl" style="background:rgba(255,255,255,.8);padding:1px 3px;border-radius:2px;position:relative;z-index:2;">Canvas</span>
+          <span class="zs" style="background:rgba(255,255,255,.8);padding:1px 3px;border-radius:2px;position:relative;z-index:2;">flex · baseline grid 12px</span>
+          <div style="height:6px;"></div>
+          <div style="height:10px;border-radius:2px;background:#c8c5c0;width:72%;"></div>
+          <div style="height:4px;"></div>
+          <div style="height:6px;border-radius:2px;background:#dddad4;width:48%;"></div>
+          <div class="ph" style="background:#1a1917;"></div>
+          <div class="ph" style="background:#1a1917;"></div>
+          <div class="ph s" style="background:#1a1917;"></div>
+          <div style="height:4px;"></div>
+          <div style="height:6px;border-radius:2px;background:#dddad4;width:38%;"></div>
+          <div class="ph" style="background:#1a1917;"></div>
+          <div class="ph" style="background:#1a1917;"></div>
+          <div class="ph xs" style="background:#1a1917;"></div>
+          <div style="display:flex;align-items:center;gap:2px;margin-top:2px;">
+            <div class="ph" style="background:#1a1917;width:40%;"></div>
+            <div style="width:1px;height:10px;background:#1a1917;"></div>
+          </div>
+        </div>
+
+        <!-- PROPERTIES PANEL -->
+        <div class="z z-panel" style="grid-column:3/4;grid-row:3;padding:8px 7px;gap:5px;">
+          <span class="zl">Properties</span>
+          <span class="zs">280px fixed</span>
+          <div style="height:5px;"></div>
+          <!-- Title field -->
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <div class="ph xxs" style="background:#8a887f;height:3px;"></div>
+            <div style="height:12px;background:#fff;border:1px solid var(--line);border-radius:2px;"></div>
+          </div>
+          <div style="height:1px;background:var(--line);"></div>
+          <!-- Status pills -->
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <div class="ph xxs" style="background:#8a887f;height:3px;"></div>
+            <div style="display:flex;gap:2px;">
+              <div style="height:9px;width:24px;border-radius:10px;background:#1a1917;"></div>
+              <div style="height:9px;width:24px;border-radius:10px;background:#e8e5e1;"></div>
+              <div style="height:9px;width:24px;border-radius:10px;background:#e8e5e1;"></div>
+            </div>
+          </div>
+          <div style="height:1px;background:var(--line);"></div>
+          <!-- Cover -->
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <div class="ph xxs" style="background:#8a887f;height:3px;"></div>
+            <div style="height:36px;background:#eeece8;border:1px solid var(--line);border-radius:2px;display:flex;align-items:center;justify-content:center;">
+              <div class="ph xs" style="background:#dddad4;"></div>
+            </div>
+          </div>
+          <div style="height:1px;background:var(--line);"></div>
+          <!-- Platforms -->
+          <div style="display:flex;flex-direction:column;gap:3px;">
+            <div class="ph xxs" style="background:#8a887f;height:3px;"></div>
+            <div style="display:flex;align-items:center;gap:3px;">
+              <div style="width:6px;height:6px;border-radius:50%;background:#c8c5c0;"></div>
+              <div class="ph xs" style="background:#dddad4;height:3px;flex:1;"></div>
+              <div style="width:14px;height:7px;border-radius:10px;background:#1a1917;"></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:3px;">
+              <div style="width:6px;height:6px;border-radius:50%;background:#c8c5c0;"></div>
+              <div class="ph xxs" style="background:#dddad4;height:3px;flex:1;"></div>
+              <div style="width:14px;height:7px;border-radius:10px;background:#dddad4;"></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:3px;">
+              <div style="width:6px;height:6px;border-radius:50%;background:#c8c5c0;"></div>
+              <div class="ph s" style="background:#dddad4;height:3px;flex:1;"></div>
+              <div style="width:14px;height:7px;border-radius:10px;background:#1a1917;"></div>
+            </div>
+          </div>
+          <!-- Publish button pinned to bottom -->
+          <div style="margin-top:auto;">
+            <div style="height:13px;background:#1a1917;border-radius:3px;"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="pspecs">
+      <span class="sp hi">3-pane (not 12-col)</span>
+      <span class="sp">outline 200px fixed left</span>
+      <span class="sp">canvas flex · white · baseline grid</span>
+      <span class="sp">properties 280px fixed right</span>
+      <span class="sp">toolbar 48px fixed top</span>
+    </div>
+  </div><!-- /05 -->
+
+</div><!-- /prow-2 -->
+
+
+<!-- FOOTER -->
+<div class="footer">
+  <strong>Grid</strong>
+  <span>12-column · 24px gutter · 32px margin</span>
+  <span>4px base unit · all layout on 4px grid</span>
+  <span>Nav 48px fixed · Filter 52px sticky</span>
+  <span>Sidebar col 1–2 ≈200px · Panel col 11–12 ≈280px</span>
+  <span>Feed &amp; Login: 8 of 12 cols centered</span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+sequenceDiagram
+    participant UI as Overview Screen
+    participant B as Articles Service
+    participant J as Jobs Service
+
+    UI->>B: POST /api/articles/{id}/inspect
+    B->>B: create job_id; gate → pending; append TimelineEvent "Inspection started"
+    B-->>UI: 202 { jobId: "job_yyy", status: "running" }
+    UI->>UI: gate badge → spinner
+
+    Note over B: inspection logic runs (word count ≥ 500 → pass, else warn)
+    B->>B: gate = pass | warn | fail; append TimelineEvent "Inspection passed (gate: warn)"
+    B->>B: mark job_yyy → done
+
+    loop every 2 s (max 60 s)
+        UI->>J: GET /api/jobs/job_yyy
+        alt running
+            J-->>UI: { status: "running" }
+        else done
+            J-->>UI: { status: "done", result: { gate: "warn" } }
+            UI->>B: GET /api/articles?page=…
+            B-->>UI: updated row with gate = warn badge
+        end
+    end

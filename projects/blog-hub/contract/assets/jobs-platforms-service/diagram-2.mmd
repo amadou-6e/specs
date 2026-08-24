@@ -1,0 +1,11 @@
+sequenceDiagram
+    participant UI as Overview Screen (nav bar)
+    participant P as Platforms Service
+
+    Note over UI: on mount (older screen versions)
+    UI->>P: GET /api/platforms
+    P-->>UI: { platforms: [ {id, label, connected, username} × 3 ] }
+    UI->>UI: count = platforms.filter(p => p.connected).length
+    Note over UI: render "3 platforms connected" badge
+
+    Note over UI: new screens use GET /api/connections instead

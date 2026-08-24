@@ -1,0 +1,43 @@
+flowchart LR
+    subgraph Frontend
+        OV[Overview Screen]
+        ED[Editor Screen]
+    end
+
+    subgraph "Articles Service"
+        R[Router\narticles.py]
+        G[Gate checker\ngate.py]
+        P[Push orchestrator\npush.py]
+    end
+
+    subgraph Store
+        AS[(_articles)]
+        JS[(_jobs)]
+    end
+
+    subgraph External
+        ME[Medium API]
+        HN[Hashnode API]
+        DV[Dev.to API]
+    end
+
+    OV -->|GET /api/articles| R
+    OV -->|POST /api/articles| R
+    OV -->|DELETE /api/articles| R
+    OV -->|POST .../push| R
+    OV -->|POST .../inspect| R
+    ED -->|POST .../inspect| R
+
+    R -->|CRUD| AS
+    R -->|create job| JS
+    R --> P
+    R --> G
+
+    P --> ME
+    P --> HN
+    P --> DV
+    P -->|update status| AS
+    P -->|mark done| JS
+
+    G -->|update gate| AS
+    G -->|mark done| JS

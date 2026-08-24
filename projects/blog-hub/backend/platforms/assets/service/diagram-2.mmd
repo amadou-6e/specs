@@ -1,0 +1,4 @@
+flowchart LR
+    OLD["GET /api/platforms\n(legacy — 3 blog platforms only)"]
+    NEW["GET /api/connections\n(current — all 5 connections, credential-aware)"]
+    OLD -. "migrate to" .-> NEW

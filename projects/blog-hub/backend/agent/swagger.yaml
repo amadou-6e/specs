@@ -1,0 +1,236 @@
+openapi: "3.1.0"
+info:
+  title: BlogHub — Agent API
+  description: |
+    AI-powered content generation, regeneration, and patch creation.
+
+    **Service group:** `agent`
+    **Router prefix:** `/api/agent`
+    **Subprocess:** Claude CLI (`claude`) or Codex CLI (`codex`) depending on the
+    `provider` field. Credentials are resolved from the Connections store before
+    any subprocess is spawned.
+
+    All operations are asynchronous — they return `202 Accepted` with a `jobId`.
+    Poll `GET /api/jobs/{jobId}` until `status` is `done` or `error`.
+  version: "0.1.0"
+
+servers:
+  - url: http://localhost:8000
+    description: Local dev (uvicorn)
+
+tags:
+  - name: generation
+    description: Full-article generation from a brief (create-article wizard).
+  - name: regeneration
+    description: Re-run generation on an existing article (editor CLI `regenerate`).
+  - name: patch-generation
+    description: AI-generated diff patch for an unresolved comment ("Fix with AI").
+
+paths:
+
+  /api/agent/generate:
+    post:
+      operationId: generateArticle
+      tags: [generation]
+      summary: Generate a new article from a brief
+      description: |
+        Called when the user clicks **Generate ✦** on the create-article wizard's
+        third step. The backend:
+
+        1. Creates a blank `Article` record and receives an `article_id`.
+        2. Registers a `Job` (status = `running`).
+        3. Assembles the prompt from `brief`, selected `skill` system-prompt,
+           and optional `context_text` (contents of the uploaded `.md` file).
+        4. Spawns a Claude or Codex CLI subprocess.
+        5. On CLI exit-0: writes body → article store, recalculates `wordCount`,
+           runs the gate check, sets job `status = done`.
+        6. On CLI error: sets job `status = error` + `error` message.
+
+        **Simulation:** the in-memory backend skips the subprocess and writes a
+        static placeholder body after a 3-second `asyncio.sleep`.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/GenerateRequest" }
+            example:
+              brief: "A practical guide to zero-downtime Postgres migrations using pg_repack."
+              skill: "tutorial"
+              provider: "claude"
+              wordCount: 1500
+              destinations: ["medium"]
+              contextText: ""
+      responses:
+        "202":
+          description: Generation job accepted.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/GenerateAccepted" }
+              example:
+                jobId: "job_k9x2m"
+                status: "running"
+                articleId: "art_a1b2c3d4"
+        "400":
+          description: Provider credential not configured.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ErrorResponse" }
+              example: { error: "Claude credential not found. Add it in Settings → AI providers." }
+        "422":
+          description: Validation error (brief empty, unknown skill, etc.).
+
+  /api/agent/regenerate/{article_id}:
+    post:
+      operationId: regenerateArticle
+      tags: [regeneration]
+      summary: Re-run generation on an existing article
+      description: |
+        Triggered from the editor CLI command `regenerate`. Re-passes the article's
+        current body through the specified provider with a revision system-prompt
+        that preserves structure but improves clarity and incorporates open comments.
+
+        On completion the article body, `wordCount`, and gate status are updated.
+        The previous body is **not** versioned in the current simulation.
+      parameters:
+        - name: article_id
+          in: path
+          required: true
+          schema: { type: string }
+          example: art_001
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                provider:
+                  type: string
+                  enum: [claude, codex]
+                  default: claude
+                  description: Override the provider for this regeneration pass.
+            example: {}
+      responses:
+        "202":
+          description: Regeneration job accepted.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/AsyncAccepted" }
+              example: { jobId: "job_r4s5t6u7", status: "running" }
+        "400":
+          description: Provider credential not configured.
+        "404":
+          description: Article not found.
+
+  /api/agent/generate-patch/{article_id}/comments/{comment_id}:
+    post:
+      operationId: generatePatch
+      tags: [patch-generation]
+      summary: Generate a diff patch for an unresolved comment
+      description: |
+        Triggered when the user clicks **Fix with AI** on a comment card in the
+        editor's Comments panel. The comment's `text` (the instruction) and
+        `anchor` (the selected source text that triggered the comment) are used
+        to build a targeted fix prompt.
+
+        On completion:
+        - A `Patch` record `{ removed, added, state: pending }` is written.
+        - `Comment.hasPatch` is set to `true`.
+        - The patch appears in the Patches panel for Accept / Reject.
+      parameters:
+        - name: article_id
+          in: path
+          required: true
+          schema: { type: string }
+          example: art_001
+        - name: comment_id
+          in: path
+          required: true
+          schema: { type: string }
+          example: c_001
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                provider: { type: string, enum: [claude, codex], default: claude }
+            example: {}
+      responses:
+        "202":
+          description: Patch generation job accepted.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/AsyncAccepted" }
+              example: { jobId: "job_p1q2r3s4", status: "running" }
+        "400":
+          description: Provider credential not configured.
+        "404":
+          description: Article or comment not found.
+        "409":
+          description: Comment already has a patch (hasPatch = true).
+
+components:
+  schemas:
+
+    GenerateRequest:
+      type: object
+      required: [brief, skill, provider, wordCount, destinations]
+      properties:
+        brief:
+          type: string
+          minLength: 1
+          description: The user-written article brief from the prompt textarea.
+          example: "A practical guide to zero-downtime Postgres migrations using pg_repack."
+        skill:
+          type: string
+          enum: [deep-dive, tutorial, comparison, opinion]
+          description: >
+            Article format. Maps to a system-prompt template:
+            `deep-dive` → in-depth with code;
+            `tutorial` → step-by-step walkthrough;
+            `comparison` → side-by-side evaluation;
+            `opinion` → author perspective piece.
+          example: tutorial
+        provider:
+          type: string
+          enum: [claude, codex]
+          description: AI provider for this generation job.
+          example: claude
+        wordCount:
+          type: integer
+          minimum: 500
+          maximum: 4000
+          description: Target word count from the length slider (500–4000, step 100).
+          example: 1500
+        destinations:
+          type: array
+          items: { type: string, enum: [medium, hashnode, devto] }
+          description: Platforms selected in step 3; stored on the article for later push.
+          example: ["medium"]
+        contextText:
+          type: string
+          description: Text content of the optional .md context file, if uploaded.
+          default: ""
+
+    GenerateAccepted:
+      type: object
+      required: [jobId, status, articleId]
+      properties:
+        jobId:     { type: string, example: "job_k9x2m" }
+        status:    { type: string, enum: [running], example: running }
+        articleId: { type: string, example: "art_a1b2c3d4" }
+
+    AsyncAccepted:
+      type: object
+      required: [jobId, status]
+      properties:
+        jobId:  { type: string, example: "job_a1b2c3d4" }
+        status: { type: string, enum: [running], example: running }
+
+    ErrorResponse:
+      type: object
+      required: [error]
+      properties:
+        error: { type: string }

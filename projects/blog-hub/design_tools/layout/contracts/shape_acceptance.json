@@ -1,0 +1,41 @@
+{
+  "name": "Accept reconstructed shapes",
+  "type": "layout.shape_acceptance",
+  "description": "Converts accepted proposals into ordinary editable shape layers while preserving provenance and associations with extracted HTML text.",
+  "fields": [
+    {
+      "name": "accepted_proposals",
+      "type": "shape_reference_list",
+      "description": "Lists reviewed proposals selected for conversion into editor shape layers.",
+      "default": []
+    },
+    {
+      "name": "preserve_source_masks",
+      "type": "boolean",
+      "description": "Keeps original detector masks and automatic fits linked to accepted layers for diagnostics, comparison, and later restoration.",
+      "default": true
+    },
+    {
+      "name": "associate_html_text",
+      "type": "boolean",
+      "description": "Links spatially related HTML text elements to their reconstructed parent shapes without rasterizing the text.",
+      "default": true
+    },
+    {
+      "name": "create_new_version",
+      "type": "boolean",
+      "description": "Creates a recoverable editor version instead of replacing the existing canvas state.",
+      "default": true
+    }
+  ],
+  "action": {
+    "name": "Create editable shapes",
+    "type": "commit_action",
+    "description": "Creates shape layers from accepted geometry and fill estimates, records provenance, preserves prior proposals, and hands the layers to the basic shape editor."
+  },
+  "output": {
+    "name": "editable_shape_layers",
+    "type": "shape_layer_list",
+    "description": "Returns editor layers ready for borders, shadows, gradients, alpha, images, textures, rotation, perspective, SVG paths, semantics, nesting, and grid conversion."
+  }
+}

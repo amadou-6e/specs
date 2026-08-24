@@ -1,0 +1,11 @@
+stateDiagram-v2
+  [*] --> open : POST /api/articles/{id}/comments
+        note right of open : created via /comment cmd\nor text-selection popover
+
+  open --> open_patched : Agent writes Patch\n(hasPatch = true)
+  open_patched --> open_patched : Agent rewrites Patch
+
+  open --> resolved : POST /comments/{id}/resolve
+  open_patched --> resolved : POST /comments/{id}/resolve
+
+  resolved --> [*]

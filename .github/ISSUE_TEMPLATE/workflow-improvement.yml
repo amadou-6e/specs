@@ -1,0 +1,23 @@
+name: Specification workflow improvement
+description: Improve how specifications are created, reviewed, or maintained.
+title: "workflow: "
+labels: [workflow]
+body:
+  - type: textarea
+    id: friction
+    attributes:
+      label: Current friction
+      description: What takes too long, causes ambiguity, or is difficult to review?
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+

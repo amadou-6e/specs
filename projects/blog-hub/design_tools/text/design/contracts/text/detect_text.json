@@ -1,0 +1,105 @@
+{
+  "name": "Detect text",
+  "type": "text.detect",
+  "description": "Finds text in an image and returns OCR regions, polygons, confidence scores, and optionally recognized text. Detection does not erase or regroup text; downstream tools may consume its output.",
+  "fields": [
+    {
+      "name": "ocr_engine",
+      "type": "select",
+      "description": "Selects the OCR implementation used to detect text. PaddleOCR is the installed default and returns oriented text polygons, recognized text, and confidence scores. Tesseract and Keras-OCR are optional adapters and are selectable only when their dependencies are installed.",
+      "default": "paddleocr",
+      "options": [
+        {
+          "name": "PaddleOCR",
+          "value": "paddleocr",
+          "description": "Uses PaddleOCR for text detection and recognition, including quadrilateral text polygons."
+        },
+        {
+          "name": "Tesseract",
+          "value": "tesseract",
+          "description": "Uses Tesseract OCR when installed; its word or line boxes are normalized to the common detection result format."
+        },
+        {
+          "name": "Keras-OCR",
+          "value": "keras_ocr",
+          "description": "Uses Keras-OCR when installed; its detected word polygons and recognized strings are normalized to the common detection result format."
+        }
+      ]
+    },
+    {
+      "name": "processing",
+      "type": "select",
+      "description": "Controls whether the OCR engine only locates text geometry or also recognizes the characters inside each detected region. Recognition is required for HTML export and text modification; detection-only mode is sufficient when geometry alone will drive erasure.",
+      "default": "detect_and_recognize",
+      "options": [
+        {
+          "name": "Detect + recognize",
+          "value": "detect_and_recognize",
+          "description": "Returns text polygons together with recognized strings and confidence scores."
+        },
+        {
+          "name": "Detect only",
+          "value": "detect_only",
+          "description": "Returns text polygons without running character recognition, reducing work when the text content is not needed."
+        }
+      ]
+    },
+    {
+      "name": "scope",
+      "type": "select",
+      "description": "Defines which image area is sent to OCR. Full page scans the entire image. Selected region restricts OCR to a user-drawn area and maps returned polygons back into full-image coordinates.",
+      "default": "full_page",
+      "options": [
+        {
+          "name": "Full page",
+          "value": "full_page",
+          "description": "Runs OCR across the complete image."
+        },
+        {
+          "name": "Selected region",
+          "value": "selected_region",
+          "description": "Runs OCR only inside the active selection."
+        }
+      ]
+    },
+    {
+      "name": "overlay",
+      "type": "select",
+      "description": "Controls how detection results are drawn in the editor. This changes only the preview overlay and does not change OCR processing or its results.",
+      "default": "polygons_and_text",
+      "options": [
+        {
+          "name": "Polygons + text",
+          "value": "polygons_and_text",
+          "description": "Draws each detected polygon and its recognized string."
+        },
+        {
+          "name": "Polygons",
+          "value": "polygons",
+          "description": "Draws detected polygons without recognized strings."
+        },
+        {
+          "name": "Text",
+          "value": "text",
+          "description": "Shows recognized strings without polygon outlines."
+        },
+        {
+          "name": "Hidden",
+          "value": "hidden",
+          "description": "Keeps detection results available to tools but hides them on the canvas."
+        }
+      ]
+    },
+    {
+      "name": "advanced_thresholds",
+      "type": "object",
+      "description": "Exposes engine-specific detection thresholds such as PaddleOCR box confidence, box threshold, and polygon expansion ratio. These settings tune which candidate regions PaddleOCR accepts; they do not perform paragraph grouping.",
+      "default": {}
+    }
+  ],
+  "action": {
+    "name": "Run OCR",
+    "type": "action",
+    "description": "Runs the selected OCR engine with the configured processing mode and scope, stores normalized detection results, and refreshes the chosen overlay."
+  }
+}

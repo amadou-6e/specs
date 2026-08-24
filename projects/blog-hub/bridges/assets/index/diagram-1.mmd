@@ -1,0 +1,26 @@
+flowchart LR
+    OV([Overview])
+    CA([Create Article])
+    IA([Import Article])
+    ED([Editor])
+    ST([Settings])
+
+    OV -->|"New Article button"| CA
+    OV -->|"Import from platform dropdown"| IA
+    OV -->|"Upload .md dropdown"| IA
+    OV -->|"Settings nav"| ST
+
+    CA -->|"article created — new-article path"| ED
+    CA -->|"existing content — upload"| ED
+    CA -->|"import from platform"| IA
+    CA -->|"Articles nav"| OV
+    CA -->|"Add in Settings link"| ST
+
+    IA -->|"draft fetched ok"| ED
+    IA -->|"cancel"| CA
+
+    ED -->|"Articles breadcrumb"| OV
+    ED -->|"Settings nav"| ST
+
+    ST -->|"Articles nav"| OV
+    ST -->|"after connect — return to referrer"| CA

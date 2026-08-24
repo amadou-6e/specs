@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant UI as Settings Screen
+    participant B as Connections Service
+
+    UI->>UI: user clicks "Remove" / "Disconnect" → confirm popover
+    UI->>UI: user confirms
+    UI->>B: DELETE /api/connections/{id}
+    B->>B: clear token; status → disconnected
+    B-->>UI: 200 { status: "disconnected" }
+    UI->>UI: refresh connection card (back to not-configured state)
+
+    alt unknown conn_id
+        B-->>UI: 404 Not found
+    end

@@ -1,0 +1,13 @@
+{
+    "name":  "Text tool contracts",
+    "type":  "tool_contract_collection",
+    "description":  "Lists the canonical contracts used to generate and execute the text-tool sidebar. Each referenced file defines one tool, its typed controls, and its action.",
+    "contracts":  [
+                      "detect_text.json",
+                      "erase_text.json",
+                      "background_fill.json",
+                      "font_match.json",
+                      "html_export.json",
+                      "edit_text.json"
+                  ]
+}

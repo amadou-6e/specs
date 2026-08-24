@@ -1,0 +1,11 @@
+flowchart TD
+    Start([AI API call needed]) --> CLI{CLI whoami\nexit 0?}
+    CLI -->|yes| UseCLI[Use CLI active session\nno credential injected]
+    CLI -->|no| Token{_connections token\nnon-empty?}
+    Token -->|yes| UseToken[Inject ANTHROPIC_API_KEY\nor OPENAI_API_KEY as env var]
+    Token -->|no| Env{Env var set?\nANTHROPIC_API_KEY /\nOPENAI_API_KEY}
+    Env -->|yes| UseEnv[Pass env var to subprocess]
+    Env -->|no| Fail([501 Not configured])
+    UseCLI --> Spawn[spawn CLI subprocess\nwith allow-listed env]
+    UseToken --> Spawn
+    UseEnv --> Spawn

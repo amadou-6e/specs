@@ -1,0 +1,72 @@
+{
+  "name": "Detect background",
+  "type": "layout.background_detection",
+  "description": "Estimates the dominant page background from boundary-connected pixels and requires user confirmation before region detection.",
+  "fields": [
+    {
+      "name": "estimated_color",
+      "type": "color",
+      "description": "Displays the automatically estimated RGB background color selected from the dominant boundary-connected color cluster.",
+      "readOnly": true,
+      "default": null
+    },
+    {
+      "name": "confirmed_color",
+      "type": "color",
+      "description": "Stores the color approved by the user. It initially mirrors the estimate but may be replaced by a sampled or manually entered color.",
+      "default": null
+    },
+    {
+      "name": "confidence",
+      "type": "number",
+      "description": "Measures confidence in the automatic estimate from zero to one using cluster dominance, boundary connectivity, and color consistency.",
+      "readOnly": true,
+      "minimum": 0,
+      "maximum": 1
+    },
+    {
+      "name": "boundary_coverage",
+      "type": "number",
+      "description": "Reports the fraction of sampled boundary pixels supporting the proposed background cluster.",
+      "readOnly": true,
+      "minimum": 0,
+      "maximum": 1
+    },
+    {
+      "name": "sample_radius_px",
+      "type": "integer",
+      "description": "Controls the radius of a manual image sample so compression noise and individual anomalous pixels do not determine the color.",
+      "default": 3,
+      "minimum": 0,
+      "unit": "px"
+    },
+    {
+      "name": "confirmed",
+      "type": "boolean",
+      "description": "Indicates that the user has approved the background color. Region detection remains unavailable until this is true.",
+      "default": false
+    }
+  ],
+  "actions": [
+    {
+      "name": "Estimate background",
+      "type": "analysis_action",
+      "description": "Samples boundary-connected pixels, clusters near-identical colors, rejects isolated foreground objects, and proposes the dominant background."
+    },
+    {
+      "name": "Pick from image",
+      "type": "canvas_sampling_action",
+      "description": "Samples a user-selected pixel neighborhood and assigns its robust average as the proposed confirmed color."
+    },
+    {
+      "name": "Confirm background",
+      "type": "confirmation_action",
+      "description": "Commits the selected background color as a recoverable workflow state and enables region detection."
+    }
+  ],
+  "invalidation": {
+    "name": "background_change",
+    "type": "invalidation_rule",
+    "description": "Changing a confirmed background invalidates all region masks, automatic fits, and derived diagnostics while retaining prior versions."
+  }
+}

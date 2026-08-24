@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant PW as Playwright Test
+    participant D as Dev Service
+    participant S as Store (memory.py)
+
+    Note over PW: test suite startup
+    loop until 200
+        PW->>D: GET /health
+        D-->>PW: 200 { status: "ok" }
+    end
+
+    Note over PW: beforeEach
+    PW->>D: POST /api/dev/reset
+    D->>S: _articles = deepcopy(SEED_ARTICLES)
+    D->>S: _jobs = {}
+    D-->>PW: 200 { status: "reset" }
+    Note over PW: test executes with 6 clean articles

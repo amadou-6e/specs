@@ -1,0 +1,11 @@
+flowchart TD
+    Req([AI task request]) --> CLI{claude whoami\nexit 0?}
+    CLI -->|yes| UseSession[Use CLI active session\nno credential passed to subprocess]
+    CLI -->|no| Token{_connections token\nnon-empty?}
+    Token -->|yes| InjectToken[Inject ANTHROPIC_API_KEY\nas env var in subprocess]
+    Token -->|no| EnvVar{Env var set?\nANTHROPIC_API_KEY}
+    EnvVar -->|yes| InjectEnv[Pass env var to subprocess]
+    EnvVar -->|no| Fail([501 Not Configured])
+    UseSession --> Spawn[spawn CLI in allow-listed env]
+    InjectToken --> Spawn
+    InjectEnv --> Spawn

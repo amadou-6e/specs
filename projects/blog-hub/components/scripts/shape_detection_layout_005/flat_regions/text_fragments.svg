@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="736" height="920" viewBox="0 0 736 920">
+  <rect width="100%" height="100%" fill="#141414"/>
+  <g id="flat-regions" stroke-width="2" stroke-linejoin="round">
+    <path id="flat-region-2" d="M 565 74 L 558 71 L 549 75 L 538 68 L 529 68 L 523 81 L 509 79 L 503 88 L 496 89 L 489 81 L 477 89 L 469 84 L 462 86 L 455 82 L 448 85 L 448 94 L 455 98 L 462 95 L 470 100 L 479 95 L 492 95 L 499 100 L 508 93 L 512 95 L 524 91 L 531 97 L 543 98 L 546 87 L 553 85 L 559 89 L 565 85 Z" fill="#524F2B" fill-opacity="0.72" stroke="#2F80ED"/>
+    <text x="452" y="82" font-family="monospace" font-size="10" fill="#2F80ED" stroke="#fff" stroke-width="1" paint-order="stroke">#2 text_fragment 0.7327</text>
+    <path id="flat-region-3" d="M 186 292 L 187 296 L 215 296 L 214 281 L 217 272 L 223 274 L 224 290 L 230 290 L 236 280 L 247 272 L 265 271 L 277 279 L 286 269 L 280 264 L 267 269 L 260 254 L 249 258 L 233 253 L 223 256 L 217 252 L 210 255 L 210 265 L 202 270 L 201 280 L 187 282 Z" fill="#7F7D5A" fill-opacity="0.72" stroke="#2F80ED"/>
+    <text x="190" y="266" font-family="monospace" font-size="10" fill="#2F80ED" stroke="#fff" stroke-width="1" paint-order="stroke">#3 text_fragment 0.7212</text>
+    <path id="flat-region-4" d="M 182 272 L 170 268 L 167 257 L 148 254 L 128 256 L 126 266 L 118 270 L 112 268 L 110 256 L 86 256 L 83 271 L 117 274 L 115 280 L 86 280 L 86 296 L 109 296 L 114 280 L 125 284 L 137 272 L 160 273 L 169 283 L 178 283 L 178 274 Z" fill="#7F7D5A" fill-opacity="0.72" stroke="#2F80ED"/>
+    <text x="87" y="268" font-family="monospace" font-size="10" fill="#2F80ED" stroke="#fff" stroke-width="1" paint-order="stroke">#4 text_fragment 0.7199</text>
+    <path id="flat-region-5" d="M 357 443 L 356 433 L 335 428 L 331 412 L 328 419 L 299 419 L 298 404 L 287 407 L 293 423 L 287 435 L 266 430 L 89 434 L 70 428 L 72 417 L 61 408 L 60 431 L 70 443 Z" fill="#7E7D59" fill-opacity="0.72" stroke="#2F80ED"/>
+    <text x="64" y="418" font-family="monospace" font-size="10" fill="#2F80ED" stroke="#fff" stroke-width="1" paint-order="stroke">#5 text_fragment 0.6671</text>
+    <path id="flat-region-10" d="M 505 616 L 507 630 L 601 630 L 601 618 L 596 615 L 589 618 L 582 615 L 575 618 L 568 615 L 561 618 L 554 615 L 547 618 L 540 615 L 532 618 L 527 615 L 520 617 L 511 614 Z" fill="#E7E3DA" fill-opacity="0.72" stroke="#2F80ED"/>
+    <text x="509" y="628" font-family="monospace" font-size="10" fill="#2F80ED" stroke="#fff" stroke-width="1" paint-order="stroke">#10 text_fragment 0.8255</text>
+    <path id="flat-region-12" d="M 498 634 L 502 639 L 499 649 L 503 655 L 496 662 L 496 665 L 503 672 L 511 667 L 517 670 L 524 667 L 532 670 L 540 667 L 549 671 L 552 670 L 557 651 L 563 644 L 565 631 L 552 631 L 552 641 L 546 646 L 546 654 L 540 659 L 528 652 L 529 645 L 524 640 L 513 644 L 506 633 L 511 631 Z" fill="#A2A38B" fill-opacity="0.72" stroke="#2F80ED"/>
+    <text x="500" y="645" font-family="monospace" font-size="10" fill="#2F80ED" stroke="#fff" stroke-width="1" paint-order="stroke">#12 text_fragment 0.7566</text>
+    <path id="flat-region-15" d="M 125 824 L 168 826 L 169 815 L 176 811 L 182 814 L 190 808 L 193 788 L 182 784 L 181 796 L 173 800 L 167 796 L 166 786 L 159 784 L 153 787 L 149 784 L 142 784 L 140 787 L 141 796 L 146 799 L 150 797 L 158 799 L 160 811 L 154 815 L 145 810 L 139 812 L 133 810 L 125 814 Z" fill="#0C0A05" fill-opacity="0.72" stroke="#2F80ED"/>
+    <text x="129" y="797" font-family="monospace" font-size="10" fill="#2F80ED" stroke="#fff" stroke-width="1" paint-order="stroke">#15 text_fragment 0.7313</text>
+    <path id="flat-region-16" d="M 60 833 L 61 839 L 62 838 L 64 841 L 73 836 L 77 836 L 86 841 L 93 837 L 103 836 L 114 845 L 122 846 L 132 841 L 142 842 L 146 827 L 88 823 L 81 821 L 77 823 L 61 822 Z" fill="#6B5C42" fill-opacity="0.72" stroke="#2F80ED"/>
+    <text x="64" y="835" font-family="monospace" font-size="10" fill="#2F80ED" stroke="#fff" stroke-width="1" paint-order="stroke">#16 text_fragment 0.7013</text>
+  </g>
+</svg>

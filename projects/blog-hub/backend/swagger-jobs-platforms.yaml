@@ -1,0 +1,158 @@
+openapi: "3.1.0"
+info:
+  title: BlogHub — Jobs & Platforms API
+  description: |
+    Two small infrastructure groups:
+
+    - **jobs** — poll the status of an async operation started by `/push` or `/inspect`.
+    - **platforms** — legacy list of blog platform connectivity from the seeded store
+      (superseded by `/api/connections` for credential management; kept for the nav-bar
+      platform-count widget on older screen versions).
+
+    **Router prefixes:** `/api/jobs`, `/api/platforms`
+    **Store:** `backend/store/memory.py`
+  version: "0.1.0"
+
+servers:
+  - url: http://localhost:8000
+    description: Local dev (uvicorn)
+
+tags:
+  - name: jobs
+    description: Async job status polling.
+  - name: platforms
+    description: Legacy platform connectivity list (nav-bar count).
+
+paths:
+
+  /api/jobs/{job_id}:
+    get:
+      operationId: getJob
+      tags: [jobs]
+      summary: Get job status
+      description: |
+        Poll this endpoint (every 2 s recommended) after receiving a `202 Accepted`
+        from `/push` or `/inspect`. Stop when `status` is `done` or `error`.
+
+        **Simulation note (in-memory backend):** the job is already `done` immediately;
+        the first poll always returns a terminal status.
+      parameters:
+        - name: job_id
+          in: path
+          required: true
+          schema: { type: string }
+          example: job_a1b2c3d4
+      responses:
+        "200":
+          description: Job record.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/JobResponse" }
+              examples:
+                push_done:
+                  summary: Completed push job
+                  value:
+                    jobId: job_a1b2c3d4
+                    type: push
+                    status: done
+                    articleId: art_001
+                    result: { platforms: [medium, hashnode, devto] }
+                    error: null
+                inspect_done:
+                  summary: Completed inspect job
+                  value:
+                    jobId: job_e5f6g7h8
+                    type: inspect
+                    status: done
+                    articleId: art_002
+                    result: { gate: warn }
+                    error: null
+                running:
+                  summary: Still in progress
+                  value:
+                    jobId: job_x9y0z1a2
+                    type: push
+                    status: running
+                    articleId: art_003
+                    result: null
+                    error: null
+        "404":
+          description: Job ID not found (expired or never created).
+
+  /api/platforms:
+    get:
+      operationId: listPlatforms
+      tags: [platforms]
+      summary: List platform connectivity (legacy)
+      description: |
+        Returns the hardcoded seed-state connectivity list used by the nav-bar
+        "platforms connected" counter on `overview/v1–v3.html`.
+
+        **Prefer `/api/connections`** for any new UI work — it is live and credential-aware.
+      responses:
+        "200":
+          description: Platform list.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/PlatformListResponse" }
+              example:
+                platforms:
+                  - id: medium
+                    label: "Medium"
+                    connected: true
+                    username: "@acisse"
+                  - id: hashnode
+                    label: "Hashnode"
+                    connected: true
+                    username: "acisse.hashnode.dev"
+                  - id: devto
+                    label: "Dev.to"
+                    connected: true
+                    username: "acisse"
+
+components:
+  schemas:
+
+    JobType:
+      type: string
+      enum: [inspect, push]
+
+    JobStatus:
+      type: string
+      enum: [running, done, error]
+
+    JobResponse:
+      type: object
+      required: [jobId, type, status, articleId]
+      properties:
+        jobId:     { type: string, example: "job_a1b2c3d4" }
+        type:      { $ref: "#/components/schemas/JobType" }
+        status:    { $ref: "#/components/schemas/JobStatus" }
+        articleId: { type: string, example: "art_001" }
+        result:
+          type: object
+          nullable: true
+          description: |
+            For `push` jobs: `{ platforms: string[] }`.
+            For `inspect` jobs: `{ gate: "pass" | "warn" | "fail" }`.
+        error:
+          type: string
+          nullable: true
+          example: "Medium push failed — auth expired"
+
+    PlatformConnection:
+      type: object
+      required: [id, label, connected]
+      properties:
+        id:        { type: string, enum: [medium, hashnode, devto] }
+        label:     { type: string, example: "Medium" }
+        connected: { type: boolean }
+        username:  { type: string, nullable: true, example: "@acisse" }
+
+    PlatformListResponse:
+      type: object
+      required: [platforms]
+      properties:
+        platforms:
+          type: array
+          items: { $ref: "#/components/schemas/PlatformConnection" }

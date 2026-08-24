@@ -1,0 +1,122 @@
+{
+    "name":  "Edit text",
+    "type":  "text.edit",
+    "description":  "Provides standard text editing and typography controls in a right-side extension tab. Selecting a text layer opens this extension so content, font, size, color, alignment, spacing, and clipboard behavior can be edited.",
+    "activation":  {
+                       "name":  "Select text layer",
+                       "type":  "tool_activation",
+                       "description":  "Opens or focuses the Edit Text extension when a text layer is selected. Double-clicking or pressing Enter places a caret for direct content editing while the extension displays formatting controls for the active selection."
+                   },
+    "fields":  [
+                   {
+                       "name":  "content",
+                       "type":  "rich_text",
+                       "description":  "Contains the editable text content of the selected text layer. Typing replaces the active selection or inserts at the caret, and line breaks remain editable like text in a conventional document editor."
+                   },
+                   {
+                       "name":  "selection",
+                       "type":  "text_range",
+                       "description":  "Stores the caret or selected character range inside the active text layer. Formatting commands apply only to the selected range; with no range selected they define formatting for newly typed text."
+                   },
+                   {
+                       "name":  "clipboard",
+                       "type":  "clipboard",
+                       "description":  "Supports standard Cut, Copy, and Paste behavior. Copy places selected text and supported formatting on the clipboard; paste inserts compatible rich text or falls back to plain text without requiring a sidebar tool."
+                   },
+                   {
+                       "name":  "font_family",
+                       "type":  "font_family",
+                       "description":  "Selects the font family for the selected text or the current typing style. The control lists available fonts and may accept a font identified by the font-matching workflow."
+                   },
+                   {
+                       "name":  "font_size_px",
+                       "type":  "number",
+                       "description":  "Sets font size directly in pixels for selected text or newly typed text. The user can choose a preset, enter an exact value, or increment and decrement the current value.",
+                       "minimum":  1,
+                       "unit":  "px"
+                   },
+                   {
+                       "name":  "font_weight",
+                       "type":  "select",
+                       "description":  "Sets the available font weight, such as Regular, Medium, SemiBold, or Bold, for the selected text."
+                   },
+                   {
+                       "name":  "font_style",
+                       "type":  "select",
+                       "description":  "Toggles typographic styles such as italic when the selected font family supports them."
+                   },
+                   {
+                       "name":  "text_decoration",
+                       "type":  "multi_select",
+                       "description":  "Applies underline or strikethrough decoration to the selected text without rasterizing it."
+                   },
+                   {
+                       "name":  "text_color",
+                       "type":  "color",
+                       "description":  "Sets the foreground color of selected characters or newly typed text. The control supports visual color selection, exact color values, and sampling a color from the canvas."
+                   },
+                   {
+                       "name":  "alignment",
+                       "type":  "select",
+                       "description":  "Aligns text within its text box to the left, center, right, or justified edge. This changes paragraph layout rather than moving the text box itself."
+                   },
+                   {
+                       "name":  "line_height",
+                       "type":  "number",
+                       "description":  "Controls vertical distance between baselines for paragraphs in the selected text box. It may be expressed as a multiplier or an exact pixel value."
+                   },
+                   {
+                       "name":  "letter_spacing_px",
+                       "type":  "number",
+                       "description":  "Adjusts horizontal tracking between characters in the selected range or text layer.",
+                       "unit":  "px"
+                   },
+                   {
+                       "name":  "text_box",
+                       "type":  "rectangle",
+                       "description":  "Stores the editable text layer bounds in canvas coordinates. Dragging handles resizes the box; text reflows within it according to the current fitting behavior."
+                   },
+                   {
+                       "name":  "overflow_behavior",
+                       "type":  "select",
+                       "description":  "Determines what happens when content exceeds its text box: automatically grow the box, wrap and preserve the box, shrink text to fit, or allow visible overflow."
+                   },
+                   {
+                       "name":  "undo_redo",
+                       "type":  "history_control",
+                       "description":  "Provides standard undo and redo for content changes, formatting changes, paste operations, and text-box geometry changes as part of the editor history."
+                   }
+               ],
+    "commands":  [
+                     {
+                         "name":  "cut",
+                         "type":  "keyboard_command",
+                         "description":  "Removes the selected text and places it on the clipboard."
+                     },
+                     {
+                         "name":  "copy",
+                         "type":  "keyboard_command",
+                         "description":  "Copies selected text and compatible formatting to the clipboard without changing the layer."
+                     },
+                     {
+                         "name":  "paste",
+                         "type":  "keyboard_command",
+                         "description":  "Inserts clipboard text at the caret or replaces the current selection, retaining compatible formatting where possible."
+                     },
+                     {
+                         "name":  "select_all",
+                         "type":  "keyboard_command",
+                         "description":  "Selects all text in the active text layer when editing text; outside text-editing mode it selects editor objects according to the global editor behavior."
+                     },
+                     {
+                         "name":  "undo",
+                         "type":  "keyboard_command",
+                         "description":  "Reverts the most recent editor transaction, including typing, formatting, paste, or geometry changes."
+                     },
+                     {
+                         "name":  "redo",
+                         "type":  "keyboard_command",
+                         "description":  "Reapplies the most recently undone editor transaction."
+                     }
+                 ]
+}

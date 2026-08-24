@@ -1,0 +1,17 @@
+flowchart LR
+    subgraph "Connections Service"
+        CS[(\"_connections\")]
+    end
+
+    subgraph "Platforms Service"
+        PR[Router\nplatforms.py]
+    end
+
+    subgraph Frontend
+        NAV[Nav bar\n\"N connected\" badge]
+    end
+
+    CS -->|read blog platforms| PR
+    NAV -->|GET /api/platforms| PR
+    PR -->|PlatformListResponse| NAV
+    NAV -->|"count = filter(connected).length"| NAV

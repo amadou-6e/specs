@@ -1,0 +1,109 @@
+openapi: "3.1.0"
+info:
+  title: BlogHub — Jobs API
+  description: |
+    Async job status polling.
+
+    **Service group:** `jobs`
+    **Router prefix:** `/api/jobs`
+    **Store:** `backend/store/memory.py → _jobs`
+
+    Jobs are created by POST /api/articles/{id}/push, POST /api/articles/{id}/inspect,
+    and POST /api/agent/generate.
+    Poll this service until `status` is `done` or `error`. Recommended interval: 2 s.
+    Client-side timeout: 60 s.
+
+    **Simulation note (in-memory backend):** jobs complete synchronously; the first poll
+    always returns a terminal status.
+  version: "0.1.0"
+
+servers:
+  - url: http://localhost:8000
+    description: Local dev (uvicorn)
+
+tags:
+  - name: jobs
+    description: Async job status polling.
+
+paths:
+
+  /api/jobs/{job_id}:
+    get:
+      operationId: getJob
+      tags: [jobs]
+      summary: Get job status
+      description: |
+        Stop when `status` is `done` or `error`. Applies to jobs created by
+        `/push`, `/inspect`, and `/api/agent/generate`.
+      parameters:
+        - name: job_id
+          in: path
+          required: true
+          schema: { type: string }
+          example: job_a1b2c3d4
+      responses:
+        "200":
+          description: Job record.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/JobResponse" }
+              examples:
+                push_done:
+                  summary: Completed push job
+                  value:
+                    jobId: job_a1b2c3d4
+                    type: push
+                    status: done
+                    articleId: art_001
+                    result: { platforms: [medium, hashnode, devto] }
+                    error: null
+                inspect_done:
+                  summary: Completed inspect job
+                  value:
+                    jobId: job_e5f6g7h8
+                    type: inspect
+                    status: done
+                    articleId: art_002
+                    result: { gate: warn }
+                    error: null
+                running:
+                  summary: Still in progress
+                  value:
+                    jobId: job_x9y0z1a2
+                    type: push
+                    status: running
+                    articleId: art_003
+                    result: null
+                    error: null
+        "404":
+          description: Job ID not found (expired or never created).
+
+components:
+  schemas:
+
+    JobType:
+      type: string
+      enum: [inspect, push, generate]
+
+    JobStatus:
+      type: string
+      enum: [running, done, error]
+
+    JobResponse:
+      type: object
+      required: [jobId, type, status, articleId]
+      properties:
+        jobId:     { type: string, example: "job_a1b2c3d4" }
+        type:      { $ref: "#/components/schemas/JobType" }
+        status:    { $ref: "#/components/schemas/JobStatus" }
+        articleId: { type: string, example: "art_001" }
+        result:
+          type: object
+          nullable: true
+          description: |
+            For `push` jobs: `{ platforms: string[] }`.
+            For `inspect` jobs: `{ gate: "pass" | "warn" | "fail" }`.
+        error:
+          type: string
+          nullable: true
+          example: "Medium push failed — auth expired"

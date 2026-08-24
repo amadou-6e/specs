@@ -1,0 +1,20 @@
+stateDiagram-v2
+  [*] --> blank : POST /api/agent/generate → article created
+
+  blank --> generating : job status = running
+  generating --> draft : job status = done (body written)
+  generating --> error : job status = error
+
+  draft --> draft : PATCH /api/articles/{id} (autosave)
+  draft --> draft : POST /api/agent/regenerate (body rewritten)
+  draft --> inspecting : POST /api/articles/{id}/inspect
+
+  inspecting --> draft : gate = pass | warn (inspection complete)
+  inspecting --> draft : gate = fail (inspection complete)
+
+  draft --> pushing : POST /api/articles/{id}/push
+  pushing --> draft : push job done (destinations updated)
+  pushing --> draft : push job error (destination.status = error)
+
+  error --> [*] : DELETE /api/articles
+  draft --> [*] : DELETE /api/articles

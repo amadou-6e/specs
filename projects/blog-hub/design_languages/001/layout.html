@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Superdry — Layout Regions (deterministic)</title>
+<style>
+  /* Every bbox + fill color below comes from flatten_regions.py —
+     background-inversion + connected-components against 001.jpg,
+     scaled 1.6x. One deterministic pass, no manual seed points, no
+     eyeballing. See .spec/design_languages/tools/regions_auto.json
+     for the raw (unscaled) data this was built from. */
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #000002; font-family: monospace; }
+
+  .canvas {
+    position: relative;
+    width: 1186px;
+    height: 763px;
+    background: #000002;
+  }
+
+  .card {
+    position: absolute;
+    border: 1px solid rgba(255,255,255,.08);
+  }
+
+  /* promo-bar UI elements: not full cards, small high-fill-ratio blobs
+     detected directly in the background-inversion pass */
+  .promo-mark { position: absolute; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+
+  <!-- promo bar left cluster (button/text group): (33,39,239,17) fill #bfaeb4 -->
+  <div class="promo-mark" style="left:53px; top:62px; width:382px; height:27px; background:#bfaeb4;"></div>
+  <!-- promo bar right text block: (646,32,52,17) fill #d9d9d9 -->
+  <div class="promo-mark" style="left:1034px; top:51px; width:83px; height:27px; background:#d9d9d9;"></div>
+
+  <!-- header: (33,61,665,66) fill #f0f0f0 -->
+  <div class="card" style="left:53px; top:98px; width:1064px; height:106px; background:#f0f0f0; border-radius:9px;"></div>
+
+  <!-- sidebar: (33,131,129,320) fill #f0f0f0 -->
+  <div class="card" style="left:53px; top:210px; width:206px; height:512px; background:#f0f0f0; border-radius:9px;"></div>
+
+  <!-- buy-row: (168,131,389,38) fill #ecebea -->
+  <div class="card" style="left:269px; top:210px; width:622px; height:61px; background:#ecebea; border-radius:6px;"></div>
+
+  <!-- cream spec/delivery card: (168,173,389,278) fill #feda9c — one
+       connected blob now, divider line no longer splits it -->
+  <div class="card" style="left:269px; top:277px; width:622px; height:445px; background:#feda9c; border-radius:8px;"></div>
+
+  <!-- right rail, all from the same deterministic pass -->
+  <!-- tile 1: (562,131,66,59) fill #bcb2b8 (photo, medium grey median) -->
+  <div class="card" style="left:899px; top:210px; width:106px; height:94px; background:#bcb2b8; border-radius:7px;"></div>
+
+  <!-- tile 2 orange, double height: (632,131,67,123) fill #f83c01 -->
+  <div class="card" style="left:1011px; top:210px; width:107px; height:197px; background:#f83c01; border-radius:7px;"></div>
+
+  <!-- tile 3: (562,194,66,60) fill #e0dde3 (near-white photo) -->
+  <div class="card" style="left:899px; top:310px; width:106px; height:96px; background:#e0dde3; border-radius:7px;"></div>
+
+  <!-- tile 4: mostly matched background (dark tile), with a small
+       genuinely-detected cream accent mark inset — (580,273,31,31)
+       fill #f4d798 — instead of the fabricated full-tile guess used
+       before -->
+  <div class="card" style="left:899px; top:413px; width:106px; height:94px; background:#161616; border-radius:7px;"></div>
+  <div class="card" style="left:928px; top:437px; width:50px; height:50px; background:#f4d798; border-radius:5px;"></div>
+
+  <!-- tile 5: (633,258,65,59) fill #d9bac4 (pink-toned photo) -->
+  <div class="card" style="left:1013px; top:413px; width:104px; height:94px; background:#d9bac4; border-radius:7px;"></div>
+
+  <!-- bottom promo tile spanning both rail columns: (562,322,136,129)
+       fill #e4e3e1 — measured near-white, NOT the khaki I'd guessed
+       before -->
+  <div class="card" style="left:899px; top:515px; width:218px; height:206px; background:#e4e3e1; border-radius:7px;"></div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,311 @@
+openapi: "3.1.0"
+info:
+  title: BlogHub — Comments & Patches API
+  description: |
+    Manages inline article comments and AI-generated diff patches.
+
+    **Service group:** `comments-patches`
+    **Router prefixes:**
+      - `/api/articles/{article_id}/comments` — comment CRUD
+      - `/api/patches/{patch_id}` — patch accept / reject
+
+    **Store:** `backend/store/memory.py` — comments and patches keyed by `article_id`.
+    **Reset:** `POST /api/dev/reset` restores seed state.
+
+    Comments are created from two editor behaviours:
+    1. Typing `/comment <text>` in the editor body (`onInput()` command detection).
+    2. Selecting text and clicking **Add comment** from the selection popover
+       (`addCommentFromSel()`).
+
+    Patches are written exclusively by the Agent service and surfaced here as
+    pending diff cards for the author to Accept or Reject.
+  version: "0.1.0"
+
+servers:
+  - url: http://localhost:8000
+    description: Local dev (uvicorn)
+
+tags:
+  - name: comments
+    description: Comment creation, listing, and resolution.
+  - name: patches
+    description: Patch listing, accept, and reject.
+
+paths:
+
+  /api/articles/{article_id}/comments:
+    get:
+      operationId: listComments
+      tags: [comments]
+      summary: List comments for an article
+      description: |
+        Returns all comments for the article ordered oldest-first.
+        Resolution status (`resolved`) and patch linkage (`hasPatch`) are
+        included so the Comments panel can render the correct dot colour and
+        action buttons.
+      parameters:
+        - name: article_id
+          in: path
+          required: true
+          schema: { type: string }
+          example: art_001
+        - name: resolved
+          in: query
+          required: false
+          schema: { type: boolean }
+          description: Filter by resolved state. Omit to return all.
+      responses:
+        "200":
+          description: Comment list.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Comment" }
+              example:
+                - id: "c_001"
+                  article_id: "art_001"
+                  author: "Mina"
+                  text: "Worth mentioning pg_repack here."
+                  anchor: "Lock timeout: 3 seconds."
+                  createdAt: "2026-04-02T13:30:00Z"
+                  resolved: true
+                  hasPatch: false
+                - id: "c_002"
+                  article_id: "art_001"
+                  author: "Dana"
+                  text: "Could expand the health-check section."
+                  anchor: null
+                  createdAt: "2026-04-02T13:46:00Z"
+                  resolved: false
+                  hasPatch: true
+        "404":
+          description: Article not found.
+
+    post:
+      operationId: createComment
+      tags: [comments]
+      summary: Create a comment
+      description: |
+        Creates a new open comment on the article. Two editor entry points map here:
+
+        - **Inline command:** `/comment <text>` in the editor body; the backend
+          detects and strips the `/comment` prefix and stores the rest as `text`.
+          No `anchor` in this case.
+        - **Text selection:** selecting text and clicking **Add comment** in the
+          popover (`addCommentFromSel()`); the selected text is sent as `anchor`.
+
+        In the current simulation the `author` field is hardcoded to `"You"`. In
+        a production build this is resolved from the auth session.
+      parameters:
+        - name: article_id
+          in: path
+          required: true
+          schema: { type: string }
+          example: art_001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/CreateCommentRequest" }
+            example:
+              text: "Health check detail needs expanding."
+              anchor: "Lock timeout: 5 seconds."
+      responses:
+        "201":
+          description: Comment created.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Comment" }
+        "404":
+          description: Article not found.
+        "422":
+          description: Validation error (text empty).
+
+  /api/articles/{article_id}/comments/{comment_id}/resolve:
+    post:
+      operationId: resolveComment
+      tags: [comments]
+      summary: Mark a comment as resolved
+      description: |
+        Sets `resolved = true` on the comment. Triggered by the **Resolve** button
+        in the Comments panel. Idempotent — resolving an already-resolved comment
+        is a no-op.
+      parameters:
+        - name: article_id
+          in: path
+          required: true
+          schema: { type: string }
+          example: art_001
+        - name: comment_id
+          in: path
+          required: true
+          schema: { type: string }
+          example: c_002
+      responses:
+        "200":
+          description: Comment resolved.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Comment" }
+        "404":
+          description: Article or comment not found.
+
+  /api/articles/{article_id}/patches:
+    get:
+      operationId: listPatches
+      tags: [patches]
+      summary: List patches for an article
+      description: |
+        Returns all patches for the article. The Patches panel renders
+        pending patches as diff cards (minus / plus lines) with Accept / Reject
+        buttons. Accepted and rejected patches are shown as collapsed status rows.
+      parameters:
+        - name: article_id
+          in: path
+          required: true
+          schema: { type: string }
+          example: art_001
+        - name: state
+          in: query
+          required: false
+          schema: { type: string, enum: [pending, accepted, rejected] }
+          description: Filter by patch state. Omit to return all.
+      responses:
+        "200":
+          description: Patch list.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Patch" }
+              example:
+                - id: "p_001"
+                  articleId: "art_001"
+                  comment_id: "c_002"
+                  label: "Health check detail"
+                  removed: "Lock timeout: 3 seconds."
+                  added: "Lock timeout: 5 seconds."
+                  state: "pending"
+        "404":
+          description: Article not found.
+
+  /api/patches/{patch_id}/accept:
+    post:
+      operationId: acceptPatch
+      tags: [patches]
+      summary: Accept a patch
+      description: |
+        Applies the patch diff to `Article.body` (first-occurrence string replace
+        of `removed` → `added`) and sets `patch.state = accepted`.
+
+        Triggered by:
+        - The **Accept** button on a diff card in the Patches panel.
+        - The editor CLI command `patch apply <patch_id>`.
+
+        The article's `wordCount` is recalculated after the body is updated.
+        The associated comment's `resolved` state is **not** automatically set —
+        the author resolves it separately.
+      parameters:
+        - name: patch_id
+          in: path
+          required: true
+          schema: { type: string }
+          example: p_001
+      responses:
+        "200":
+          description: Patch accepted and applied to article body.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Patch" }
+        "404":
+          description: Patch not found.
+        "409":
+          description: Patch already accepted or rejected.
+
+  /api/patches/{patch_id}/reject:
+    post:
+      operationId: rejectPatch
+      tags: [patches]
+      summary: Reject a patch
+      description: |
+        Sets `patch.state = rejected`. The article body is unchanged.
+        Triggered by the **Reject** button on a diff card or the editor CLI.
+      parameters:
+        - name: patch_id
+          in: path
+          required: true
+          schema: { type: string }
+          example: p_001
+      responses:
+        "200":
+          description: Patch rejected.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Patch" }
+        "404":
+          description: Patch not found.
+        "409":
+          description: Patch already accepted or rejected.
+
+components:
+  schemas:
+
+    Comment:
+      type: object
+      required: [id, articleId, author, text, createdAt, resolved, hasPatch]
+      properties:
+        id:        { type: string, example: "c_a1b2c3d4" }
+        articleId: { type: string, example: "art_001" }
+        author:    { type: string, example: "Dana" }
+        text:      { type: string, example: "Worth mentioning pg_repack here." }
+        anchor:
+          type: string
+          nullable: true
+          description: The selected source text the comment was created from, if any.
+          example: "Lock timeout: 3 seconds."
+        createdAt: { type: string, format: date-time }
+        resolved:  { type: boolean, example: false }
+        hasPatch:
+          type: boolean
+          description: True if the Agent has generated a Patch for this comment.
+          example: true
+
+    CreateCommentRequest:
+      type: object
+      required: [text]
+      properties:
+        text:
+          type: string
+          minLength: 1
+          maxLength: 2000
+          description: Comment body. The `/comment ` prefix is stripped server-side.
+        anchor:
+          type: string
+          nullable: true
+          description: Selected source text that triggered the comment (selection popover path).
+
+    Patch:
+      type: object
+      required: [id, articleId, label, removed, added, state]
+      properties:
+        id:        { type: string, example: "p_a1b2c3d4" }
+        articleId: { type: string, example: "art_001" }
+        commentId:
+          type: string
+          nullable: true
+          description: The comment this patch addresses, if any.
+          example: "c_002"
+        label:   { type: string, example: "Health check detail" }
+        removed:
+          type: string
+          description: "Original text being replaced (diff −)."
+          example: "Lock timeout: 3 seconds."
+        added:
+          type: string
+          description: "Replacement text (diff +)."
+          example: "Lock timeout: 5 seconds."
+        state:
+          type: string
+          enum: [pending, accepted, rejected]
+          example: pending

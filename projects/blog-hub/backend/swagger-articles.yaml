@@ -1,0 +1,284 @@
+openapi: "3.1.0"
+info:
+  title: BlogHub — Articles API
+  description: |
+    CRUD and async actions for articles.
+
+    **Service group:** `articles`
+    **Router prefix:** `/api/articles`
+    **Store:** `backend/store/memory.py` — in-memory, seeded with 6 articles on startup.
+    **Reset:** `POST /api/dev/reset` restores seed state (used by Playwright tests).
+  version: "0.1.0"
+
+servers:
+  - url: http://localhost:8000
+    description: Local dev (uvicorn)
+
+tags:
+  - name: articles
+    description: Article list, creation, and deletion.
+  - name: article-actions
+    description: Async push and inspect actions on a single article.
+
+paths:
+
+  /api/articles:
+
+    get:
+      operationId: listArticles
+      tags: [articles]
+      summary: List articles
+      description: |
+        Returns a paginated, filtered, sorted list of article summaries.
+        Each item includes per-platform destination state and a tail of recent timeline events.
+      parameters:
+        - name: q
+          in: query
+          description: Full-text match on title (substring, case-insensitive).
+          schema: { type: string }
+        - name: gate
+          in: query
+          schema: { $ref: "#/components/schemas/GateStatus" }
+        - name: status
+          in: query
+          description: Match articles where any platform has this destination status.
+          schema: { $ref: "#/components/schemas/PlatformStatus" }
+        - name: platform
+          in: query
+          description: Narrow the `status` filter to a specific platform.
+          schema: { $ref: "#/components/schemas/Platform" }
+        - name: page
+          in: query
+          schema: { type: integer, minimum: 1, default: 1 }
+        - name: pageSize
+          in: query
+          schema: { type: integer, minimum: 1, maximum: 100, default: 20 }
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+            enum: [updatedAt, createdAt, title]
+            default: updatedAt
+        - name: sortDir
+          in: query
+          schema:
+            type: string
+            enum: [asc, desc]
+            default: desc
+      responses:
+        "200":
+          description: Paginated article list.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ArticleListResponse" }
+              example:
+                total: 6
+                page: 1
+                pageSize: 20
+                items:
+                  - id: art_001
+                    title: "Building a Vector DB from Scratch with pgvector"
+                    updatedAt: "2026-04-02T12:00:00Z"
+                    wordCount: 1820
+                    gate: pass
+                    destinations:
+                      medium:   { status: draft,    label: "Draft v2" }
+                      hashnode: { status: pending,  label: "Pending" }
+                      devto:    { status: draft,    label: "Draft v1" }
+                    recentTimeline:
+                      - timestamp: "2026-04-02T14:02:00Z"
+                        event: "Draft pushed to Medium"
+
+    post:
+      operationId: createArticle
+      tags: [articles]
+      summary: Create article
+      description: |
+        Creates a blank article with the supplied title. The caller is expected
+        to navigate to the editor immediately after receiving the new `id`.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/CreateArticleRequest" }
+            example: { title: "Untitled" }
+      responses:
+        "201":
+          description: Article created.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/CreateArticleResponse" }
+        "422":
+          description: Validation error (title empty or > 500 chars).
+
+    delete:
+      operationId: deleteArticles
+      tags: [articles]
+      summary: Delete articles (bulk)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/DeleteArticleRequest" }
+            example: { ids: ["art_004"], force: false }
+      responses:
+        "204":
+          description: All articles deleted.
+        "409":
+          description: |
+            One or more articles are published. Pass `force: true` to override.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:     { type: string }
+                  blocked_ids: { type: array, items: { type: string } }
+
+  /api/articles/{article_id}/push:
+    post:
+      operationId: pushArticle
+      tags: [article-actions]
+      summary: Push drafts to platforms
+      description: |
+        Kicks off a background push job for the article's connected destinations.
+        Returns immediately with `202 Accepted` and a `jobId` to poll.
+
+        **Simulation (in-memory backend):** push completes synchronously;
+        the job is already `done` by the time the first poll fires.
+      parameters:
+        - name: article_id
+          in: path
+          required: true
+          schema: { type: string }
+          example: art_001
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                platforms:
+                  type: array
+                  items: { $ref: "#/components/schemas/Platform" }
+                  description: Subset of platforms to push. Defaults to all connected.
+            example: {}
+      responses:
+        "202":
+          description: Push job accepted.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/AsyncAccepted" }
+              example: { jobId: "job_a1b2c3d4", status: "running" }
+        "404":
+          description: Article not found.
+
+  /api/articles/{article_id}/inspect:
+    post:
+      operationId: inspectArticle
+      tags: [article-actions]
+      summary: Run gate inspection
+      description: |
+        Runs the gate check (word count ≥ 500 → pass, else warn in the current simulation).
+        Returns immediately; poll `/api/jobs/{jobId}` for the result.
+      parameters:
+        - name: article_id
+          in: path
+          required: true
+          schema: { type: string }
+          example: art_001
+      responses:
+        "202":
+          description: Inspect job accepted.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/AsyncAccepted" }
+              example: { jobId: "job_e5f6g7h8", status: "running" }
+        "404":
+          description: Article not found.
+
+components:
+  schemas:
+
+    Platform:
+      type: string
+      enum: [medium, hashnode, devto]
+
+    PlatformStatus:
+      type: string
+      enum: [none, draft, review, ready, pending, error, published]
+
+    GateStatus:
+      type: string
+      enum: [pass, warn, fail, pending]
+
+    PlatformSummary:
+      type: object
+      required: [status, label]
+      properties:
+        status: { $ref: "#/components/schemas/PlatformStatus" }
+        label:  { type: string, example: "Draft v2" }
+        url:    { type: string, nullable: true, example: "https://medium.com/@user/article" }
+        error:  { type: string, nullable: true, example: "code block split" }
+
+    TimelineEvent:
+      type: object
+      required: [timestamp, event]
+      properties:
+        timestamp: { type: string, format: date-time }
+        event:     { type: string, example: "Draft pushed to Medium" }
+
+    ArticleSummary:
+      type: object
+      required: [id, title, updatedAt, wordCount, gate, destinations, recentTimeline]
+      properties:
+        id:        { type: string, example: art_001 }
+        title:     { type: string, example: "Building a Vector DB from Scratch with pgvector" }
+        updatedAt: { type: string, format: date-time }
+        wordCount: { type: integer, example: 1820 }
+        gate:      { $ref: "#/components/schemas/GateStatus" }
+        destinations:
+          type: object
+          additionalProperties: { $ref: "#/components/schemas/PlatformSummary" }
+        recentTimeline:
+          type: array
+          items: { $ref: "#/components/schemas/TimelineEvent" }
+          description: Last 5 events, newest first.
+
+    ArticleListResponse:
+      type: object
+      required: [items, total, page, pageSize]
+      properties:
+        items:    { type: array, items: { $ref: "#/components/schemas/ArticleSummary" } }
+        total:    { type: integer, example: 6 }
+        page:     { type: integer, example: 1 }
+        pageSize: { type: integer, example: 20 }
+
+    CreateArticleRequest:
+      type: object
+      required: [title]
+      properties:
+        title: { type: string, minLength: 1, maxLength: 500, example: "Untitled" }
+
+    CreateArticleResponse:
+      type: object
+      required: [id, title, createdAt]
+      properties:
+        id:        { type: string, example: "art_a1b2c3d4" }
+        title:     { type: string, example: "Untitled" }
+        createdAt: { type: string, format: date-time }
+
+    DeleteArticleRequest:
+      type: object
+      required: [ids]
+      properties:
+        ids:   { type: array, items: { type: string }, minItems: 1 }
+        force: { type: boolean, default: false, description: "Delete even if published." }
+
+    AsyncAccepted:
+      type: object
+      required: [jobId, status]
+      properties:
+        jobId:  { type: string, example: "job_a1b2c3d4" }
+        status: { type: string, enum: [running], example: running }

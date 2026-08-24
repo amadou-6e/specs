@@ -1,0 +1,50 @@
+{
+  "name": "Text-removal prerequisite",
+  "type": "layout.text_prerequisite",
+  "description": "Checks whether text has been extracted and removed before shape reconstruction. It warns about degraded shape detection but never erases text from inside the Layout tool.",
+  "fields": [
+    {
+      "name": "text_state",
+      "type": "status",
+      "description": "Reports whether text is removed, still detected, or not yet checked. Removed permits automatic continuation; detected requires an explicit decision; unknown offers a text check.",
+      "readOnly": true,
+      "values": ["removed", "detected", "unknown"]
+    },
+    {
+      "name": "html_text_layer",
+      "type": "layer_reference",
+      "description": "References the editable HTML text layer produced by the Text tool so it can be restored above reconstructed shapes.",
+      "readOnly": true,
+      "default": null
+    },
+    {
+      "name": "continue_with_text",
+      "type": "boolean",
+      "description": "Records explicit user consent to continue while raster text remains. Enabling this lowers reconstruction confidence and does not remove or modify text.",
+      "default": false,
+      "visible_when": {"text_state": "detected"}
+    }
+  ],
+  "actions": [
+    {
+      "name": "Open Text tool",
+      "type": "navigation_action",
+      "description": "Switches to the Text tool while preserving the current image and layout workflow state."
+    },
+    {
+      "name": "Check for text",
+      "type": "analysis_action",
+      "description": "Runs text detection only to determine prerequisite status; it does not erase text."
+    },
+    {
+      "name": "Continue anyway",
+      "type": "confirmation_action",
+      "description": "Allows layout reconstruction with raster text present and marks resulting proposals as lower-confidence."
+    }
+  ],
+  "output": {
+    "name": "prerequisite_result",
+    "type": "object",
+    "description": "Stores prerequisite status, the optional HTML layer reference, user override, and confidence penalty applied downstream."
+  }
+}

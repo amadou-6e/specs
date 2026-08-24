@@ -1,0 +1,55 @@
+{
+  "name": "Match typography",
+  "type": "text.font_match",
+  "description": "Ranks installed or indexed fonts by visual similarity to a selected text sample so recognized text can be recreated with matching typography.",
+  "fields": [
+    {
+      "name": "sample_region",
+      "type": "rectangle",
+      "description": "Defines the image region containing the typography to analyze. The matcher derives glyph shape, weight, spacing, and other visual features from this crop.",
+      "required": true
+    },
+    {
+      "name": "sample_text",
+      "type": "string",
+      "description": "Contains the characters visible in the sample region. Known text allows the matcher to render the same characters in candidate fonts, making visual comparison more reliable.",
+      "default": ""
+    },
+    {
+      "name": "candidates",
+      "type": "font_candidate_list",
+      "description": "Displays candidate fonts ordered by similarity score. Each result identifies a font face and reports a relative match score; the score ranks candidates and is not a probability that the original font has been identified.",
+      "readOnly": true,
+      "item": {
+        "name": "font_candidate",
+        "type": "object",
+        "description": "A single ranked font match.",
+        "properties": {
+          "font_family": {
+            "type": "string",
+            "description": "The candidate font-family name."
+          },
+          "font_style": {
+            "type": "string",
+            "description": "The candidate weight and style, such as SemiBold or Italic."
+          },
+          "match_score": {
+            "type": "number",
+            "description": "The candidate's normalized visual-similarity score used for ranking."
+          }
+        }
+      }
+    },
+    {
+      "name": "selected_font",
+      "type": "font",
+      "description": "Stores the candidate chosen for later HTML export or text replacement.",
+      "default": null
+    }
+  ],
+  "action": {
+    "name": "Use selected font",
+    "type": "action",
+    "description": "Assigns the selected candidate to the active text region without modifying the image until a text replacement or export action is run."
+  }
+}

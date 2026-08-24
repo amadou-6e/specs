@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Palette Mood Board</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: #0f0f0f;
+      padding: 48px 28px 64px;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 44px;
+    }
+
+    .page-header h1 {
+      color: #b8b0a0;
+      font-size: 10px;
+      font-weight: normal;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+    }
+
+    .page-header p {
+      color: #5a5650;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1500px;
+      margin: 0 auto;
+    }
+
+    /* ── CARD ── */
+    .card {
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── TOP BAR ── */
+    .bar {
+      padding: 11px 16px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .bar-logo {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .bar-nav {
+      display: flex;
+      gap: 14px;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      opacity: 0.6;
+    }
+
+    /* ── BODY ── */
+    .body {
+      padding: 18px 16px 14px;
+      flex: 1;
+      min-height: 108px;
+    }
+
+    .body-index {
+      font-family: 'Courier New', monospace;
+      font-size: 8px;
+      letter-spacing: 0.22em;
+      opacity: 0.38;
+      margin-bottom: 7px;
+    }
+
+    .body-title {
+      font-size: 16px;
+      font-weight: normal;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .body-desc {
+      font-size: 10.5px;
+      line-height: 1.65;
+      opacity: 0.62;
+    }
+
+    /* ── SWATCHES ── */
+    .swatches {
+      display: flex;
+      flex-shrink: 0;
+    }
+
+    .sw {
+      flex: 1;
+      height: 44px;
+      position: relative;
+      cursor: default;
+      transition: flex 0.2s ease;
+    }
+
+    .sw:hover {
+      flex: 1.6;
+    }
+
+    .sw::after {
+      content: attr(data-hex);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Courier New', monospace;
+      font-size: 6.5px;
+      letter-spacing: 0.04em;
+      padding-bottom: 5px;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+
+    .sw:hover::after { opacity: 1; }
+    .sw.lt::after { color: rgba(0,0,0,0.7); }
+    .sw.dk::after { color: rgba(255,255,255,0.82); }
+  </style>
+</head>
+<body>
+
+<header class="page-header">
+  <h1>Website Design · Color Palette Mood Board</h1>
+  <p>Hover swatches to reveal hex values</p>
+</header>
+
+<div class="grid">
+
+  <!-- ────────────────────────────── 000 · WARM NAVY & FLAME ── -->
+  <div class="card">
+    <div class="bar" style="background:#2C3B4D; color:#EEE9DF;">
+      <span class="bar-logo">Studio</span>
+      <span class="bar-nav"><span>Work</span><span>About</span><span>Contact</span></span>
+    </div>
+    <div class="body" style="background:#EEE9DF; color:#2C3B4D;">
+      <div class="body-index">000</div>
+      <div class="body-title">Warm Navy & Flame</div>
+      <p class="body-desc">Deep navy anchors a warm cream canvas. Burnt orange and rust provide tension against the cool blue tones.</p>
+    </div>
+    <div class="swatches">
+      <div class="sw lt" style="background:#EEE9DF" data-hex="#EEE9DF"></div>
+      <div class="sw lt" style="background:#C9C1B1" data-hex="#C9C1B1"></div>
+      <div class="sw lt" style="background:#FFB162" data-hex="#FFB162"></div>
+      <div class="sw dk" style="background:#A35139" data-hex="#A35139"></div>
+      <div class="sw dk" style="background:#2C3B4D" data-hex="#2C3B4D"></div>
+      <div class="sw dk" style="background:#1B2632" data-hex="#1B2632"></div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────────── 001 · MILK & STONE ── -->
+  <div class="card">
+    <div class="bar" style="background:#464443; color:#F8F3EB;">
+      <span class="bar-logo">Atelier</span>
+      <span class="bar-nav"><span>Work</span><span>About</span><span>Contact</span></span>
+    </div>
+    <div class="body" style="background:#F8F3EB; color:#464443;">
+      <div class="body-index">001</div>
+      <div class="body-title">Milk & Stone</div>
+      <p class="body-desc">Clean and minimal. Warm cream pairs with light stone and desert clay, grounded in dark graphite.</p>
+    </div>
+    <div class="swatches">
+      <div class="sw lt" style="background:#F8F3EB" data-hex="#F8F3EB"></div>
+      <div class="sw lt" style="background:#C4B9A6" data-hex="#C4B9A6"></div>
+      <div class="sw dk" style="background:#B5715A" data-hex="#B5715A"></div>
+      <div class="sw dk" style="background:#464443" data-hex="#464443"></div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────── 002 · EARTHY FOREST ── -->
+  <div class="card">
+    <div class="bar" style="background:#494C3B; color:#F6F2E9;">
+      <span class="bar-logo">Grove</span>
+      <span class="bar-nav"><span>Work</span><span>About</span><span>Contact</span></span>
+    </div>
+    <div class="body" style="background:#F6F2E9; color:#494C3B;">
+      <div class="body-index">002</div>
+      <div class="body-title">Earthy Forest</div>
+      <p class="body-desc">Forest green meets alabaster white. Brick and linseed gold add warmth against a cool ash grey backdrop.</p>
+    </div>
+    <div class="swatches">
+      <div class="sw dk" style="background:#494C3B" data-hex="#494C3B"></div>
+      <div class="sw lt" style="background:#CBCBBF" data-hex="#CBCBBF"></div>
+      <div class="sw dk" style="background:#9D4D27" data-hex="#9D4D27"></div>
+      <div class="sw lt" style="background:#F6F2E9" data-hex="#F6F2E9"></div>
+      <div class="sw lt" style="background:#9F9B8A" data-hex="#9F9B8A"></div>
+      <div class="sw lt" style="background:#C58848" data-hex="#C58848"></div>
+      <div class="sw dk" style="background:#111213" data-hex="#111213"></div>
+    </div>
+  </div>
+
+  <!-- ──────────────────────────────── 003 · WORDLY NATURALS ── -->
+  <div class="card">
+    <div class="bar" style="background:#212E40; color:#E1D9C9;">
+      <span class="bar-logo">Wordly</span>
+      <span class="bar-nav"><span>Work</span><span>About</span><span>Contact</span></span>
+    </div>
+    <div class="body" style="background:#E1D9C9; color:#212E40;">
+      <div class="body-index">003</div>
+      <div class="body-title">Wordly Naturals</div>
+      <p class="body-desc">Sand and stone blend with ochre browns. Moss, forest, and basalt navy bring depth to the earthy warm tones.</p>
+    </div>
+    <div class="swatches">
+      <div class="sw lt" style="background:#E1D9C9" data-hex="#E1D9C9"></div>
+      <div class="sw lt" style="background:#AE9372" data-hex="#AE9372"></div>
+      <div class="sw dk" style="background:#B27D57" data-hex="#B27D57"></div>
+      <div class="sw dk" style="background:#7F4B30" data-hex="#7F4B30"></div>
+      <div class="sw lt" style="background:#7D8769" data-hex="#7D8769"></div>
+      <div class="sw dk" style="background:#424C21" data-hex="#424C21"></div>
+      <div class="sw dk" style="background:#173125" data-hex="#173125"></div>
+      <div class="sw dk" style="background:#212E40" data-hex="#212E40"></div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────── 004 · STUDIO NATURALS ── -->
+  <div class="card">
+    <div class="bar" style="background:#293A28; color:#EDE8DE;">
+      <span class="bar-logo">Furey</span>
+      <span class="bar-nav"><span>Work</span><span>About</span><span>Contact</span></span>
+    </div>
+    <div class="body" style="background:#EDE8DE; color:#293A28;">
+      <div class="body-index">004</div>
+      <div class="body-title">Studio Naturals</div>
+      <p class="body-desc">Nine editorial combinations spanning forest green, warm cream, terracotta, sage, and warm graphite.</p>
+    </div>
+    <div class="swatches">
+      <div class="sw dk" style="background:#293A28" data-hex="#293A28"></div>
+      <div class="sw dk" style="background:#1D1915" data-hex="#1D1915"></div>
+      <div class="sw lt" style="background:#EDE8DE" data-hex="#EDE8DE"></div>
+      <div class="sw lt" style="background:#C8A882" data-hex="#C8A882"></div>
+      <div class="sw dk" style="background:#B5705A" data-hex="#B5705A"></div>
+      <div class="sw dk" style="background:#5E7A5C" data-hex="#5E7A5C"></div>
+      <div class="sw lt" style="background:#D4B5A0" data-hex="#D4B5A0"></div>
+      <div class="sw dk" style="background:#A54840" data-hex="#A54840"></div>
+      <div class="sw dk" style="background:#888070" data-hex="#888070"></div>
+    </div>
+  </div>
+
+  <!-- ──────────────────────────── 005 · TERRACOTTA HARVEST ── -->
+  <div class="card">
+    <div class="bar" style="background:#4C362D; color:#EBE1D5;">
+      <span class="bar-logo">Harvest</span>
+      <span class="bar-nav"><span>Work</span><span>About</span><span>Contact</span></span>
+    </div>
+    <div class="body" style="background:#EBE1D5; color:#4C362D;">
+      <div class="body-index">005</div>
+      <div class="body-title">Terracotta Harvest</div>
+      <p class="body-desc">Warm terracotta and toasted almond over linen white. Muted sage offers a cool counterpoint to the earth tones.</p>
+    </div>
+    <div class="swatches">
+      <div class="sw dk" style="background:#A46447" data-hex="#A46447"></div>
+      <div class="sw lt" style="background:#CEB59E" data-hex="#CEB59E"></div>
+      <div class="sw dk" style="background:#4C362D" data-hex="#4C362D"></div>
+      <div class="sw lt" style="background:#88937B" data-hex="#88937B"></div>
+      <div class="sw lt" style="background:#EBE1D5" data-hex="#EBE1D5"></div>
+    </div>
+  </div>
+
+  <!-- ──────────────────────────── 006 · CHINESE VINTAGE ── -->
+  <div class="card">
+    <div class="bar" style="background:#4E6851; color:#DCC9A9;">
+      <span class="bar-logo">Vintage</span>
+      <span class="bar-nav"><span>Work</span><span>About</span><span>Contact</span></span>
+    </div>
+    <div class="body" style="background:#DCC9A9; color:#4E6851;">
+      <div class="body-index">006</div>
+      <div class="body-title">Chinese Vintage</div>
+      <p class="body-desc">Retro palette inspired by mid-century poster design. Forest green and brick red against warm parchment.</p>
+    </div>
+    <div class="swatches">
+      <div class="sw lt" style="background:#DCC9A9" data-hex="#DCC9A9"></div>
+      <div class="sw dk" style="background:#B83A2D" data-hex="#B83A2D"></div>
+      <div class="sw dk" style="background:#4E6851" data-hex="#4E6851"></div>
+    </div>
+  </div>
+
+  <!-- ──────────────────────────────── 007 · CHINESE BLACK ── -->
+  <div class="card">
+    <div class="bar" style="background:#21211C; color:#CD9575;">
+      <span class="bar-logo">Noir</span>
+      <span class="bar-nav"><span>Work</span><span>About</span><span>Contact</span></span>
+    </div>
+    <div class="body" style="background:#E8E4D8; color:#21211C;">
+      <div class="body-index">007</div>
+      <div class="body-title">Chinese Black</div>
+      <p class="body-desc">Near-black and jungle green set a moody base. Coffee and antique brass add warmth against the deep tones.</p>
+    </div>
+    <div class="swatches">
+      <div class="sw dk" style="background:#21211C" data-hex="#21211C"></div>
+      <div class="sw dk" style="background:#1A2B1F" data-hex="#1A2B1F"></div>
+      <div class="sw dk" style="background:#383838" data-hex="#383838"></div>
+      <div class="sw dk" style="background:#6F4E37" data-hex="#6F4E37"></div>
+      <div class="sw lt" style="background:#CD9575" data-hex="#CD9575"></div>
+      <div class="sw lt" style="background:#E8E4D8" data-hex="#E8E4D8"></div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────── 008 · RAISIN & BRASS ── -->
+  <div class="card">
+    <div class="bar" style="background:#202B1E; color:#E4DDD2;">
+      <span class="bar-logo">Raisin</span>
+      <span class="bar-nav"><span>Work</span><span>About</span><span>Contact</span></span>
+    </div>
+    <div class="body" style="background:#E4DDD2; color:#202B1E;">
+      <div class="body-index">008</div>
+      <div class="body-title">Raisin & Brass</div>
+      <p class="body-desc">Dark raisin black meets cambridge blue and pearl. Warm ruddy brown and saddle brown round out the palette.</p>
+    </div>
+    <div class="swatches">
+      <div class="sw dk" style="background:#202B1E" data-hex="#202B1E"></div>
+      <div class="sw lt" style="background:#89A0A4" data-hex="#89A0A4"></div>
+      <div class="sw lt" style="background:#E4DDD2" data-hex="#E4DDD2"></div>
+      <div class="sw dk" style="background:#A25040" data-hex="#A25040"></div>
+      <div class="sw dk" style="background:#8B5E3C" data-hex="#8B5E3C"></div>
+    </div>
+  </div>
+
+  <!-- ──────────────────────────────── 009 · GREEN HARVEST ── -->
+  <div class="card">
+    <div class="bar" style="background:#484E21; color:#F9F4E3;">
+      <span class="bar-logo">Grove</span>
+      <span class="bar-nav"><span>Work</span><span>About</span><span>Contact</span></span>
+    </div>
+    <div class="body" style="background:#F9F4E3; color:#484E21;">
+      <div class="body-index">009</div>
+      <div class="body-title">Green Harvest</div>
+      <p class="body-desc">Dark moss and Pakistan green anchor a warm harvest palette. Earth yellow and tiger's eye bring golden warmth.</p>
+    </div>
+    <div class="swatches">
+      <div class="sw dk" style="background:#484E21" data-hex="#484E21"></div>
+      <div class="sw dk" style="background:#456021" data-hex="#456021"></div>
+      <div class="sw lt" style="background:#F9F4E3" data-hex="#F9F4E3"></div>
+      <div class="sw lt" style="background:#D49040" data-hex="#D49040"></div>
+      <div class="sw dk" style="background:#B86A28" data-hex="#B86A28"></div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────── 010 · BURGUNDY WINE ── -->
+  <div class="card">
+    <div class="bar" style="background:#401216; color:#FFEDDA;">
+      <span class="bar-logo">Cellar</span>
+      <span class="bar-nav"><span>Work</span><span>About</span><span>Contact</span></span>
+    </div>
+    <div class="body" style="background:#FFEDDA; color:#401216;">
+      <div class="body-index">010</div>
+      <div class="body-title">Burgundy Wine</div>
+      <p class="body-desc">Deep wine and burgundy anchor this sophisticated palette. Mocha and rose blush soften the dark red base.</p>
+    </div>
+    <div class="swatches">
+      <div class="sw dk" style="background:#401216" data-hex="#401216"></div>
+      <div class="sw dk" style="background:#63333A" data-hex="#63333A"></div>
+      <div class="sw lt" style="background:#9C7961" data-hex="#9C7961"></div>
+      <div class="sw lt" style="background:#FFEDDA" data-hex="#FFEDDA"></div>
+      <div class="sw lt" style="background:#D5BCAD" data-hex="#D5BCAD"></div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────── 011 · MAHOGANY & MEADOW ── -->
+  <div class="card">
+    <div class="bar" style="background:#7A0F14; color:#FDEAD8;">
+      <span class="bar-logo">Meadow</span>
+      <span class="bar-nav"><span>Work</span><span>About</span><span>Contact</span></span>
+    </div>
+    <div class="body" style="background:#FDEAD8; color:#7A0F14;">
+      <div class="body-index">011</div>
+      <div class="body-title">Mahogany & Meadow</div>
+      <p class="body-desc">Rich mahogany jam against almond cream. Meadow mist and olive grove bring in natural greens to balance the warmth.</p>
+    </div>
+    <div class="swatches">
+      <div class="sw dk" style="background:#7A0F14" data-hex="#7A0F14"></div>
+      <div class="sw lt" style="background:#99ABA6" data-hex="#99ABA6"></div>
+      <div class="sw lt" style="background:#FDEAD8" data-hex="#FDEAD8"></div>
+      <div class="sw lt" style="background:#F3EEEE" data-hex="#F3EEEE"></div>
+      <div class="sw lt" style="background:#ACB890" data-hex="#ACB890"></div>
+      <div class="sw dk" style="background:#6F6C43" data-hex="#6F6C43"></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

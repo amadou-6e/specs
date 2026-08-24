@@ -1,0 +1,8 @@
+stateDiagram-v2
+  [*] --> running : job registered by agent / articles service
+
+  running --> done : CLI subprocess exits 0\n(result written to store)
+  running --> error : CLI subprocess exits ≠ 0\nor timeout exceeded
+
+  done --> [*]
+  error --> [*]

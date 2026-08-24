@@ -1,0 +1,737 @@
+{
+  "image": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\layouts\\005.png",
+  "width": 736,
+  "height": 920,
+  "ocr_error": null,
+  "image_detector": "heuristic",
+  "image_detector_error": null,
+  "text_region_count": 25,
+  "image_region_count": 4,
+  "text_regions": [
+    {
+      "id": 1,
+      "text": "ARCH.MONO",
+      "confidence": 0.9997884035110474,
+      "polygon": [
+        [
+          76,
+          68
+        ],
+        [
+          150,
+          68
+        ],
+        [
+          150,
+          82
+        ],
+        [
+          76,
+          82
+        ]
+      ],
+      "x": 76,
+      "y": 68,
+      "width": 75,
+      "height": 15
+    },
+    {
+      "id": 2,
+      "text": "MENU",
+      "confidence": 0.9998168349266052,
+      "polygon": [
+        [
+          348,
+          67
+        ],
+        [
+          387,
+          67
+        ],
+        [
+          387,
+          82
+        ],
+        [
+          348,
+          82
+        ]
+      ],
+      "x": 348,
+      "y": 67,
+      "width": 40,
+      "height": 16
+    },
+    {
+      "id": 3,
+      "text": "BAG SHOP",
+      "confidence": 0.9995286464691162,
+      "polygon": [
+        [
+          578,
+          68
+        ],
+        [
+          660,
+          68
+        ],
+        [
+          660,
+          82
+        ],
+        [
+          578,
+          82
+        ]
+      ],
+      "x": 578,
+      "y": 68,
+      "width": 83,
+      "height": 15
+    },
+    {
+      "id": 4,
+      "text": "ECHO PROJECT",
+      "confidence": 0.9856235384941101,
+      "polygon": [
+        [
+          76,
+          101
+        ],
+        [
+          134,
+          101
+        ],
+        [
+          134,
+          111
+        ],
+        [
+          76,
+          111
+        ]
+      ],
+      "x": 76,
+      "y": 101,
+      "width": 59,
+      "height": 11
+    },
+    {
+      "id": 5,
+      "text": "2022",
+      "confidence": 0.9999561905860901,
+      "polygon": [
+        [
+          76,
+          111
+        ],
+        [
+          95,
+          111
+        ],
+        [
+          95,
+          119
+        ],
+        [
+          76,
+          119
+        ]
+      ],
+      "x": 76,
+      "y": 111,
+      "width": 20,
+      "height": 9
+    },
+    {
+      "id": 6,
+      "text": "AWARD WINNING",
+      "confidence": 0.9966825842857361,
+      "polygon": [
+        [
+          76,
+          148
+        ],
+        [
+          232,
+          148
+        ],
+        [
+          232,
+          174
+        ],
+        [
+          76,
+          174
+        ]
+      ],
+      "x": 76,
+      "y": 148,
+      "width": 157,
+      "height": 27
+    },
+    {
+      "id": 7,
+      "text": "PROJECT 2022",
+      "confidence": 0.9592692852020264,
+      "polygon": [
+        [
+          74,
+          175
+        ],
+        [
+          207,
+          175
+        ],
+        [
+          207,
+          202
+        ],
+        [
+          74,
+          202
+        ]
+      ],
+      "x": 74,
+      "y": 175,
+      "width": 134,
+      "height": 28
+    },
+    {
+      "id": 8,
+      "text": "ECHO",
+      "confidence": 0.9999520778656006,
+      "polygon": [
+        [
+          68,
+          263
+        ],
+        [
+          292,
+          263
+        ],
+        [
+          292,
+          337
+        ],
+        [
+          68,
+          337
+        ]
+      ],
+      "x": 68,
+      "y": 263,
+      "width": 225,
+      "height": 75
+    },
+    {
+      "id": 9,
+      "text": "STEP BACK IN TIME WITH OUR LATEST",
+      "confidence": 0.9062426686286926,
+      "polygon": [
+        [
+          77,
+          341
+        ],
+        [
+          171,
+          341
+        ],
+        [
+          171,
+          348
+        ],
+        [
+          77,
+          348
+        ]
+      ],
+      "x": 77,
+      "y": 341,
+      "width": 95,
+      "height": 8
+    },
+    {
+      "id": 10,
+      "text": "PURINITURE COLLECTION A HONMACE TO THE",
+      "confidence": 0.8544992208480835,
+      "polygon": [
+        [
+          77,
+          347
+        ],
+        [
+          187,
+          347
+        ],
+        [
+          187,
+          354
+        ],
+        [
+          77,
+          354
+        ]
+      ],
+      "x": 77,
+      "y": 347,
+      "width": 111,
+      "height": 8
+    },
+    {
+      "id": 11,
+      "text": "PORTFOLIO",
+      "confidence": 0.9828781485557556,
+      "polygon": [
+        [
+          296,
+          403
+        ],
+        [
+          332,
+          403
+        ],
+        [
+          332,
+          413
+        ],
+        [
+          296,
+          413
+        ]
+      ],
+      "x": 296,
+      "y": 403,
+      "width": 37,
+      "height": 11
+    },
+    {
+      "id": 12,
+      "text": "APRCHMONO",
+      "confidence": 0.9400337934494019,
+      "polygon": [
+        [
+          296,
+          411
+        ],
+        [
+          335,
+          411
+        ],
+        [
+          335,
+          421
+        ],
+        [
+          296,
+          421
+        ]
+      ],
+      "x": 296,
+      "y": 411,
+      "width": 40,
+      "height": 11
+    },
+    {
+      "id": 13,
+      "text": "ARCH.MONO",
+      "confidence": 0.9998166561126709,
+      "polygon": [
+        [
+          74,
+          477
+        ],
+        [
+          148,
+          477
+        ],
+        [
+          148,
+          491
+        ],
+        [
+          74,
+          491
+        ]
+      ],
+      "x": 74,
+      "y": 477,
+      "width": 75,
+      "height": 15
+    },
+    {
+      "id": 14,
+      "text": "MENU",
+      "confidence": 0.9996973276138306,
+      "polygon": [
+        [
+          348,
+          477
+        ],
+        [
+          386,
+          477
+        ],
+        [
+          386,
+          491
+        ],
+        [
+          348,
+          491
+        ]
+      ],
+      "x": 348,
+      "y": 477,
+      "width": 39,
+      "height": 15
+    },
+    {
+      "id": 15,
+      "text": "BAG",
+      "confidence": 0.9999728202819824,
+      "polygon": [
+        [
+          574,
+          477
+        ],
+        [
+          613,
+          477
+        ],
+        [
+          613,
+          491
+        ],
+        [
+          574,
+          491
+        ]
+      ],
+      "x": 574,
+      "y": 477,
+      "width": 40,
+      "height": 15
+    },
+    {
+      "id": 16,
+      "text": "SHOP",
+      "confidence": 0.9999874830245972,
+      "polygon": [
+        [
+          623,
+          477
+        ],
+        [
+          659,
+          477
+        ],
+        [
+          659,
+          491
+        ],
+        [
+          623,
+          491
+        ]
+      ],
+      "x": 623,
+      "y": 477,
+      "width": 37,
+      "height": 15
+    },
+    {
+      "id": 17,
+      "text": "Alora",
+      "confidence": 0.9999712109565735,
+      "polygon": [
+        [
+          527,
+          528
+        ],
+        [
+          641,
+          528
+        ],
+        [
+          641,
+          572
+        ],
+        [
+          527,
+          572
+        ]
+      ],
+      "x": 527,
+      "y": 528,
+      "width": 115,
+      "height": 45
+    },
+    {
+      "id": 18,
+      "text": "Lamp",
+      "confidence": 0.9999939799308777,
+      "polygon": [
+        [
+          76,
+          556
+        ],
+        [
+          131,
+          556
+        ],
+        [
+          131,
+          577
+        ],
+        [
+          76,
+          577
+        ]
+      ],
+      "x": 76,
+      "y": 556,
+      "width": 56,
+      "height": 22
+    },
+    {
+      "id": 19,
+      "text": "dynamic spinit of the ena. Vibrant hues lia neon",
+      "confidence": 0.881303071975708,
+      "polygon": [
+        [
+          323,
+          554
+        ],
+        [
+          445,
+          554
+        ],
+        [
+          445,
+          561
+        ],
+        [
+          323,
+          561
+        ]
+      ],
+      "x": 323,
+      "y": 554,
+      "width": 123,
+      "height": 8
+    },
+    {
+      "id": 20,
+      "text": "tables, each meticulously designed to echo the",
+      "confidence": 0.9160178899765015,
+      "polygon": [
+        [
+          324,
+          547
+        ],
+        [
+          445,
+          547
+        ],
+        [
+          445,
+          554
+        ],
+        [
+          324,
+          554
+        ]
+      ],
+      "x": 324,
+      "y": 547,
+      "width": 122,
+      "height": 8
+    },
+    {
+      "id": 21,
+      "text": "greenn, electric bluen, and mtro oranges takue center",
+      "confidence": 0.7716167569160461,
+      "polygon": [
+        [
+          321,
+          560
+        ],
+        [
+          456,
+          559
+        ],
+        [
+          456,
+          569
+        ],
+        [
+          321,
+          570
+        ]
+      ],
+      "x": 321,
+      "y": 559,
+      "width": 136,
+      "height": 12
+    },
+    {
+      "id": 22,
+      "text": "Lumina",
+      "confidence": 0.9999929070472717,
+      "polygon": [
+        [
+          74,
+          578
+        ],
+        [
+          145,
+          580
+        ],
+        [
+          145,
+          601
+        ],
+        [
+          74,
+          599
+        ]
+      ],
+      "x": 74,
+      "y": 578,
+      "width": 72,
+      "height": 24
+    },
+    {
+      "id": 23,
+      "text": "and exctament.",
+      "confidence": 0.8430889248847961,
+      "polygon": [
+        [
+          322,
+          575
+        ],
+        [
+          367,
+          575
+        ],
+        [
+          367,
+          582
+        ],
+        [
+          322,
+          582
+        ]
+      ],
+      "x": 322,
+      "y": 575,
+      "width": 46,
+      "height": 8
+    },
+    {
+      "id": 24,
+      "text": "by Gans Design",
+      "confidence": 0.7859030365943909,
+      "polygon": [
+        [
+          76,
+          611
+        ],
+        [
+          120,
+          611
+        ],
+        [
+          120,
+          621
+        ],
+        [
+          76,
+          621
+        ]
+      ],
+      "x": 76,
+      "y": 611,
+      "width": 45,
+      "height": 11
+    },
+    {
+      "id": 25,
+      "text": "Penthouse",
+      "confidence": 0.9999970197677612,
+      "polygon": [
+        [
+          403,
+          640
+        ],
+        [
+          502,
+          643
+        ],
+        [
+          502,
+          664
+        ],
+        [
+          403,
+          662
+        ]
+      ],
+      "x": 403,
+      "y": 640,
+      "width": 100,
+      "height": 25
+    }
+  ],
+  "image_regions": [
+    {
+      "id": 1,
+      "source": "heuristic_texture",
+      "label": "embedded_image_candidate",
+      "confidence": 0.307,
+      "x": 359,
+      "y": 53,
+      "width": 323,
+      "height": 428
+    },
+    {
+      "id": 2,
+      "source": "heuristic_texture",
+      "label": "embedded_image_candidate",
+      "confidence": 0.4853,
+      "x": 301,
+      "y": 531,
+      "width": 158,
+      "height": 48
+    },
+    {
+      "id": 3,
+      "source": "heuristic_texture",
+      "label": "embedded_image_candidate",
+      "confidence": 0.3227,
+      "x": 383,
+      "y": 616,
+      "width": 242,
+      "height": 243
+    },
+    {
+      "id": 4,
+      "source": "heuristic_texture",
+      "label": "embedded_image_candidate",
+      "confidence": 0.2779,
+      "x": 135,
+      "y": 618,
+      "width": 112,
+      "height": 111
+    }
+  ],
+  "outputs": {
+    "text_mask": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\scripts\\preprocess_layout_005\\heuristic_with_ocr\\text_mask.png",
+    "image_mask": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\scripts\\preprocess_layout_005\\heuristic_with_ocr\\image_mask.png",
+    "combined_mask": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\scripts\\preprocess_layout_005\\heuristic_with_ocr\\combined_mask.png",
+    "masked_background": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\scripts\\preprocess_layout_005\\heuristic_with_ocr\\masked_background.png",
+    "inpainted": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\scripts\\preprocess_layout_005\\heuristic_with_ocr\\inpainted.png",
+    "overlay": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\scripts\\preprocess_layout_005\\heuristic_with_ocr\\detected_regions_overlay.png"
+  }
+}

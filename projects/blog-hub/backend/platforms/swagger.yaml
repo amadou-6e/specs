@@ -1,0 +1,76 @@
+openapi: "3.1.0"
+info:
+  title: BlogHub — Platforms API (Legacy)
+  description: |
+    Legacy read-only list of blog platform connectivity.
+
+    **Service group:** `platforms`
+    **Router prefix:** `/api/platforms`
+    **Store:** `backend/store/memory.py → _connections` (read-only projection)
+
+    Returns connectivity state for Medium, Hashnode, and Dev.to only.
+    Used by the nav-bar "N platforms connected" counter on overview/v1–v3.
+
+    **Prefer `/api/connections`** for any new UI work — it is live, credential-aware,
+    and covers all 5 connection types (blog + AI).
+  version: "0.1.0"
+
+servers:
+  - url: http://localhost:8000
+    description: Local dev (uvicorn)
+
+tags:
+  - name: platforms
+    description: Legacy platform connectivity list (nav-bar count).
+
+paths:
+
+  /api/platforms:
+    get:
+      operationId: listPlatforms
+      deprecated: true
+      tags: [platforms]
+      summary: List platform connectivity (legacy)
+      description: |
+        Returns the connectivity list used by the nav-bar "platforms connected" counter.
+        **Prefer `/api/connections`** for any new UI work.
+      responses:
+        "200":
+          description: Platform list.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/PlatformListResponse" }
+              example:
+                platforms:
+                  - id: medium
+                    label: "Medium"
+                    connected: true
+                    username: "@acisse"
+                  - id: hashnode
+                    label: "Hashnode"
+                    connected: true
+                    username: "acisse.hashnode.dev"
+                  - id: devto
+                    label: "Dev.to"
+                    connected: true
+                    username: "acisse"
+
+components:
+  schemas:
+
+    PlatformConnection:
+      type: object
+      required: [id, label, connected]
+      properties:
+        id:        { type: string, enum: [medium, hashnode, devto] }
+        label:     { type: string, example: "Medium" }
+        connected: { type: boolean }
+        username:  { type: string, nullable: true, example: "@acisse" }
+
+    PlatformListResponse:
+      type: object
+      required: [platforms]
+      properties:
+        platforms:
+          type: array
+          items: { $ref: "#/components/schemas/PlatformConnection" }

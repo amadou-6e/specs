@@ -1,0 +1,21 @@
+sequenceDiagram
+    participant U as User
+    participant UI as Overview UI
+    participant B as Backend
+
+    U->>UI: click "Inspect"
+    UI->>B: POST /api/articles/{id}/inspect
+    B->>B: gate = 'pending'; append TimelineEvent
+    B-->>UI: 202 { jobId, status: "running" }
+
+    loop every 2 s (max 60 s)
+        UI->>B: GET /api/jobs/{jobId}
+        B-->>UI: { status: "running" }
+    end
+
+    Note over B: inspection completes
+    B->>B: gate = pass | warn | fail; append TimelineEvent
+    UI->>B: GET /api/jobs/{jobId}
+    B-->>UI: { status: "done", result }
+    UI->>B: GET /api/articles?page=…
+    B-->>UI: updated article list with new gate badge

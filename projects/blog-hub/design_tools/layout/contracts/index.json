@@ -1,0 +1,12 @@
+{
+  "name": "Layout reconstruction contracts",
+  "type": "workflow_contract_collection",
+  "description": "Defines the ordered contracts for turning a text-erased raster design into reviewed, editable shape layers.",
+  "contracts": [
+    "text_prerequisite.json",
+    "background_detection.json",
+    "shape_reconstruction.json",
+    "geometry_review.json",
+    "shape_acceptance.json"
+  ]
+}

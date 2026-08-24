@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant UI as Settings Screen
+    participant B as Connections Service
+
+    UI->>UI: user pastes token into expand-row input; clicks Save
+    UI->>B: PUT /api/connections/{id} { "token": "hshpat_abc…" }
+    B->>B: strip whitespace; reject empty / control chars (422)
+    B->>B: store token; status → connected
+    B-->>UI: 200 { id, status: "connected", username: null, error_message: null }
+    UI->>UI: collapse expand-row; refresh connection card
+
+    alt token empty or invalid format
+        B-->>UI: 422 Validation error
+        UI->>UI: show inline error on input
+    end
+
+    alt unknown conn_id
+        B-->>UI: 404 Not found
+    end

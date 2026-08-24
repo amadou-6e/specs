@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="736" height="920" viewBox="0 0 736 920">
+  <rect width="100%" height="100%" fill="#141414"/>
+  <g id="layout-regions" stroke-linejoin="round">
+    <path id="region-1" d="M 67 60 L 64 438 L 366 442 L 362 375 L 383 373 L 378 358 L 363 361 L 369 107 L 356 74 L 366 60 Z" fill="#7C7C5C" fill-opacity="0.55" stroke="#FF2E88" stroke-width="3"/>
+    <text x="67" y="76" font-family="monospace" font-size="14" fill="#FF2E88" stroke="#fff" stroke-width="1.5" paint-order="stroke">#1 323x386</text>
+    <path id="region-2" d="M 370 60 L 368 84 L 437 103 L 368 111 L 368 135 L 520 121 L 519 170 L 542 174 L 497 194 L 481 259 L 508 304 L 418 297 L 426 327 L 638 337 L 615 307 L 524 315 L 516 291 L 571 300 L 545 263 L 614 267 L 614 243 L 673 266 L 674 116 L 613 137 L 643 153 L 614 182 L 591 153 L 549 163 L 541 134 L 583 157 L 632 114 L 563 99 L 669 62 Z" fill="#5C4C34" fill-opacity="0.55" stroke="#00A8FF" stroke-width="3"/>
+    <text x="370" y="76" font-family="monospace" font-size="14" fill="#00A8FF" stroke="#fff" stroke-width="1.5" paint-order="stroke">#2 312x281</text>
+    <path id="region-3" d="M 62 474 L 64 533 L 309 536 L 310 850 L 389 849 L 393 629 L 615 630 L 618 849 L 672 845 L 668 469 Z" fill="#E4E4DC" fill-opacity="0.55" stroke="#FFB000" stroke-width="3"/>
+    <text x="67" y="485" font-family="monospace" font-size="14" fill="#FFB000" stroke="#fff" stroke-width="1.5" paint-order="stroke">#3 614x385</text>
+  </g>
+</svg>

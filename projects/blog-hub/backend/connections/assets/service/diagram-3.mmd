@@ -1,0 +1,60 @@
+classDiagram
+    class ConnectionInfo {
+        +ConnectionId id
+        +String label
+        +ConnectionType type
+        +AuthMethod auth_method
+        +ConnectionStatus status
+        +String username
+        +datetime connected_at
+        +String error_message
+        +String token
+    }
+
+    class OAuthPendingEntry {
+        +String state
+        +ConnectionId conn_id
+        +float expires
+    }
+
+    class CliLoginPendingEntry {
+        +int pid
+        +String state_token
+        +float started_at
+    }
+
+    class ConnectionId {
+        <<enumeration>>
+        medium
+        hashnode
+        devto
+        anthropic
+        openai
+    }
+
+    class ConnectionType {
+        <<enumeration>>
+        blog
+        ai
+    }
+
+    class AuthMethod {
+        <<enumeration>>
+        token
+        oauth_or_token
+        cli_browser
+    }
+
+    class ConnectionStatus {
+        <<enumeration>>
+        disconnected
+        connected
+        error
+    }
+
+    ConnectionInfo --> ConnectionId
+    ConnectionInfo --> ConnectionType
+    ConnectionInfo --> AuthMethod
+    ConnectionInfo --> ConnectionStatus
+    OAuthPendingEntry --> ConnectionId
+    CliLoginPendingEntry --> ConnectionId

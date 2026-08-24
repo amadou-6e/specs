@@ -1,0 +1,11 @@
+sequenceDiagram
+    participant T as Playwright Test
+    participant B as Dev Service
+
+    Note over T: beforeEach hook
+    T->>B: POST /api/dev/reset
+    B->>B: _articles ← seed_articles (6 articles)
+    B->>B: _jobs ← {}
+    Note over B: _connections untouched
+    B-->>T: 200 { status: "reset" }
+    Note over T: test starts with known-good state

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BlogHub — Editorial · Overview Page Grid</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #f8f6f2;
+  --ink:     #1a1917;
+  --ink2:    #4a4845;
+  --ink3:    #8a887f;
+  --ink4:    #b0aea8;
+  --line:    #dddad4;
+  --shade:   #f0ede8;
+  --col-bg:  rgba(214,52,36,.055);
+  --col-ln:  rgba(214,52,36,.22);
+  --bl-ln:   rgba(214,52,36,.08);
+  --lg:      rgba(214,52,36,.65);
+  --col-gap: 16px;
+  --mg:      32px;
+  --bl:      24px;
+}
+
+body {
+  background: #eceae6; color: var(--ink);
+  font-family: system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size: 11px; line-height: 1.45; -webkit-font-smoothing: antialiased;
+  padding: 40px 24px 80px;
+}
+
+/* ── Page header ── */
+.pg-hd { max-width:1100px;margin:0 auto 24px;display:flex;justify-content:space-between;align-items:baseline; }
+.pg-hd-title { font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3); }
+.pg-hd-meta  { display:flex;gap:0; }
+.pg-hd-meta span { font-size:8px;font-family:ui-monospace,monospace;color:var(--ink4);padding:0 12px;border-left:1px solid var(--line); }
+.pg-hd-meta span:first-child { border-left:none; }
+
+/* ── Wireframe shell ── */
+.shell { max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 112px;align-items:start; }
+.wf    { background:#fff;border:1px solid #c4c0ba;display:flex; }
+.wf-mg { width:var(--mg);flex-shrink:0;background:rgba(214,52,36,.04);border-right:1px dashed rgba(214,52,36,.18);display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px; }
+.wf-mg.r { border-right:none;border-left:1px dashed rgba(214,52,36,.18); }
+.wf-mg span { font-size:6px;font-family:ui-monospace,monospace;color:rgba(214,52,36,.4);writing-mode:vertical-rl;transform:rotate(180deg); }
+
+/* ── Content grid ── */
+.wf-grid {
+  flex:1; display:grid;
+  grid-template-columns:repeat(12,1fr);
+  column-gap:var(--col-gap); row-gap:0;
+  position:relative; isolation:isolate;
+  grid-template-rows:
+    [ruler-s] 24px
+    [ruler-e nav-s] 48px
+    [nav-e sep1-s] 24px
+    [sep1-e stat-s] 48px
+    [stat-e sep2-s] 24px
+    [sep2-e filt-s] 24px
+    [filt-e r1-s] 72px
+    [r1-e r2-s] 72px
+    [r2-e r3-s] 72px [r3-e];
+}
+
+/* overlays */
+.col-bands { position:absolute;inset:0;pointer-events:none;z-index:-1;display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:1fr;column-gap:var(--col-gap); }
+.col-bands>div { background:var(--col-bg); }
+.bl-ov { position:absolute;inset:0;pointer-events:none;z-index:9;background-image:repeating-linear-gradient(to bottom,var(--bl-ln) 0,var(--bl-ln) 1px,transparent 1px,transparent var(--bl)); }
+.col-lines { position:absolute;inset:0;pointer-events:none;z-index:10;display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:1fr;column-gap:var(--col-gap); }
+.col-lines>div { border-left:1px solid var(--col-ln); }
+.col-lines>div:last-child { border-right:1px solid var(--col-ln); }
+.lg-h { position:absolute;height:0;border-top:1px dashed var(--lg);pointer-events:none;z-index:20;left:0;right:0; }
+
+/* ruler */
+.ruler { grid-column:1/13;grid-row:ruler-s/ruler-e;display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--col-gap);background:var(--shade);border-bottom:1px solid var(--line);z-index:5; }
+.ruler>span { display:flex;align-items:center;justify-content:center;font-size:7px;font-family:ui-monospace,monospace;color:rgba(214,52,36,.5);border-left:1px solid rgba(214,52,36,.14); }
+.ruler>span:last-child { border-right:1px solid rgba(214,52,36,.14); }
+
+/* ── NAV ── */
+.z-nav { grid-column:1/13;grid-row:nav-s/nav-e;background:#111110;display:flex;align-items:flex-start;padding:0;z-index:1;position:relative; }
+/* avatar: 24px = 1 baseline, sits at baseline 1 */
+.nav-avatar { width:24px;height:24px;border-radius:50%;background:#3a3830;border:1px solid #4a4845;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-right:10px; }
+.nav-avatar span { font-size:9px;font-weight:700;color:#9a9890;line-height:24px; }
+/* logo and links: line-height:48px fills the full row, text appears centered */
+.nav-logo  { font-size:13px;font-weight:700;color:#f4f2ee;line-height:48px;margin-right:20px;flex-shrink:0; }
+.nav-link  { font-size:11px;color:#6b6860;line-height:48px;padding:0 10px;flex-shrink:0; }
+.nav-link.on { color:#f4f2ee; }
+.nav-sp    { flex:1; }
+/* button: line-height:48px fills full nav height, no border-radius needed */
+.nav-btn   { font-size:10px;font-weight:600;color:#111110;background:#f4f2ee;line-height:48px;padding:0 14px;flex-shrink:0; }
+
+/* annotation */
+.ann { font-size:7px;font-family:ui-monospace,monospace;color:rgba(214,52,36,.55);vertical-align:super;margin-left:2px;font-weight:400; }
+
+/* ── SEPARATOR ── */
+.z-sep { grid-column:1/13;background:var(--shade);border-top:1px solid var(--line);border-bottom:1px solid var(--line);z-index:1;position:relative; }
+
+/* ── STAT BAR ── */
+.z-stat-bar { grid-column:1/13;grid-row:stat-s/stat-e;background:var(--bg);display:grid;grid-template-columns:repeat(4,1fr);column-gap:0;z-index:1;position:relative; }
+.stat-tile { display:flex;align-items:flex-start;gap:10px;padding:0;border-right:1px solid var(--line); }
+.stat-tile:last-child { border-right:none; }
+.stat-n { font-family:ui-monospace,monospace;font-size:18px;font-weight:700;color:var(--ink);line-height:var(--bl);flex-shrink:0; }
+.stat-info { display:flex;flex-direction:column; }
+.stat-lbl { font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);line-height:var(--bl); }
+.stat-sub { font-size:7px;font-family:ui-monospace,monospace;color:var(--ink4);line-height:var(--bl); }
+
+/* ── FILTER BAR ── */
+.z-filt { grid-column:1/13;grid-row:filt-s/filt-e;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;align-items:flex-start;z-index:1;position:relative;gap:0;padding:0; }
+/* label + chips + dropdown: all 24px tall, sit on baseline 1 of the 24px filter row */
+.filt-lbl { font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);line-height:24px;margin-right:8px;flex-shrink:0; }
+.filt-chip { font-size:9px;line-height:24px;padding:0 10px;border-radius:12px;margin-right:4px;flex-shrink:0;white-space:nowrap;box-sizing:border-box; }
+.fc-on  { background:var(--ink);color:#f4f2ee; }
+.fc-off { color:var(--ink3);outline:1px solid var(--line); }
+.filt-sp { flex:1; }
+.filt-dd { font-size:9px;color:var(--ink2);line-height:24px;padding:0 10px;border:1px solid var(--line);border-radius:3px;box-sizing:border-box;display:flex;align-items:center;gap:4px;flex-shrink:0; }
+.filt-dd-arr { font-size:7px;color:var(--ink4);line-height:24px; }
+
+/* ── ARTICLE ROWS ── */
+.z-art { grid-column:1/13;background:#fff;border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--col-gap);position:relative;z-index:1;align-items:start; }
+
+/* article cols */
+.ac-plat   { grid-column:1/3;padding:0;display:flex;flex-direction:column;justify-content:flex-start; }
+.ac-body   { grid-column:3/10;padding:0;display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden; }
+.ac-wc     { grid-column:10/11;padding:0;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-end; }
+.ac-status { grid-column:11/12;padding:0;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding-top:24px; }
+.ac-date   { grid-column:12/13;padding:0;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-end;padding-top:24px; }
+
+.art-plat-lbl { font-size:8px;font-weight:700;font-family:ui-monospace,monospace;color:var(--ink3);line-height:var(--bl);letter-spacing:.05em;text-transform:uppercase;white-space:nowrap; }
+.art-icon { width:14px;height:14px;border-radius:2px;background:var(--shade);display:inline-block;margin-right:3px;vertical-align:middle;border:1px solid var(--line); }
+.art-title { font-family:Georgia,serif;font-size:12px;font-style:italic;font-weight:400;color:var(--ink);line-height:var(--bl);white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+.art-cat   { font-size:9px;color:var(--ink3);line-height:var(--bl); }
+.art-wc    { font-family:ui-monospace,monospace;font-size:9px;color:var(--ink4);line-height:var(--bl);white-space:nowrap; }
+.art-min   { font-family:ui-monospace,monospace;font-size:7px;color:var(--ink4);line-height:var(--bl); }
+.art-date  { font-family:ui-monospace,monospace;font-size:9px;color:var(--ink3);line-height:var(--bl); }
+
+/* pills */
+.pill { font-size:7px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 6px;line-height:16px;border-radius:10px;text-align:center;width:100%;box-sizing:border-box;white-space:nowrap; }
+.p-live  { background:#1a1917;color:#f4f2ee; }
+.p-ready { background:#d4ead4;color:#286228; }
+.p-draft { background:#e8e5e1;color:#8a887f; }
+
+/* ── Annotation column ── */
+.ann-col { padding-left:10px;display:flex;flex-direction:column; }
+.ann-sp  { flex-shrink:0; }
+.brk     { display:flex;align-items:stretch;gap:6px;flex-shrink:0; }
+.brk-bar { width:6px;flex-shrink:0;border-top:1px solid var(--ink3);border-bottom:1px solid var(--ink3);border-left:1px solid var(--ink3); }
+.brk-lbl { display:flex;flex-direction:column;justify-content:center;gap:1px; }
+.brk-lbl b { font-size:8px;font-weight:600;color:var(--ink2); }
+.brk-lbl s { font-size:7px;font-family:ui-monospace,monospace;color:var(--ink3);text-decoration:none;white-space:nowrap; }
+
+/* ── Span annotations ── */
+.span-row  { display:flex;max-width:1100px;margin:0 auto; }
+.span-mg   { width:calc(var(--mg)+1px);flex-shrink:0; }
+.span-grid { flex:1;display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--col-gap); }
+.sc { border-top:2px solid rgba(214,52,36,.28);padding-top:4px;font-size:6px;font-family:ui-monospace,monospace;color:rgba(214,52,36,.6);white-space:nowrap;overflow:hidden; }
+
+/* ── Legend ── */
+.legend { max-width:1100px;margin:28px auto 0; }
+.legend-title { font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink4);margin-bottom:10px; }
+.legend-grid  { display:grid;grid-template-columns:repeat(3,1fr);gap:1px 24px;background:var(--line); }
+.leg-cell { background:var(--bg);padding:12px 14px; }
+.leg-n    { font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);margin-bottom:3px; }
+.leg-role { font-size:10px;font-weight:600;color:var(--ink);margin-bottom:2px; }
+.leg-spec { font-size:7px;font-family:ui-monospace,monospace;color:var(--ink3);line-height:1.8; }
+</style>
+</head>
+<body>
+
+<!-- Page header -->
+<div class="pg-hd">
+  <span class="pg-hd-title">BlogHub · Editorial · Grid Guide · Overview Page</span>
+  <div class="pg-hd-meta">
+    <span>12 col · 16px gap · 32px margin</span>
+    <span>24px baseline</span>
+    <span>nav · sep · stats · sep · filters · article rows</span>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="wf">
+    <div class="wf-mg"><span>margin · 32px</span></div>
+
+    <div class="wf-grid">
+      <!-- overlays -->
+      <div class="col-bands"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div class="bl-ov"></div>
+      <div class="col-lines"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+      <!-- RULER -->
+      <div class="ruler">
+        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
+        <span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span>
+      </div>
+
+      <!-- NAV: 48px · user avatar at left, links, + New at right -->
+      <div class="z-nav">
+        <div class="lg-h" style="top:10px;"></div>
+        <div class="lg-h" style="top:38px;"></div>
+        <div class="nav-avatar"><span>MC</span></div>
+        <span class="nav-logo">BlogHub<span class="ann">13px/700</span></span>
+        <span class="nav-link on">Articles<span class="ann">active</span></span>
+        <span class="nav-link">Queue</span>
+        <span class="nav-link">Platforms</span>
+        <span class="nav-link">Settings</span>
+        <span class="nav-sp"></span>
+        <span class="nav-btn">+ New Article</span>
+      </div>
+
+      <!-- SEPARATOR 1: 24px · shade bg -->
+      <div class="z-sep" style="grid-column:1/13;grid-row:sep1-s/sep1-e;"></div>
+
+      <!-- STAT BAR: 48px · 4 equal tiles across 12 cols -->
+      <div class="z-stat-bar">
+        <div class="lg-h" style="top:24px;"></div>
+        <div class="stat-tile">
+          <span class="stat-n">24<span class="ann">mono 18px</span></span>
+          <div class="stat-info"><span class="stat-lbl">Articles</span><span class="stat-sub">12 this month</span></div>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-n">18</span>
+          <div class="stat-info"><span class="stat-lbl">Published</span><span class="stat-sub">across 3 platforms</span></div>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-n">6</span>
+          <div class="stat-info"><span class="stat-lbl">Drafts</span><span class="stat-sub">3 ready to publish</span></div>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-n">3</span>
+          <div class="stat-info"><span class="stat-lbl">AI Platforms</span><span class="stat-sub">Claude · Codex</span></div>
+        </div>
+      </div>
+
+      <!-- SEPARATOR 2: 24px -->
+      <div class="z-sep" style="grid-column:1/13;grid-row:sep2-s/sep2-e;"></div>
+
+      <!-- FILTER BAR: 48px · chips left · sort dropdown right -->
+      <div class="z-filt">
+        <div class="lg-h" style="top:24px;"></div>
+        <span class="filt-lbl">Filter<span class="ann">8px/700 UC</span></span>
+        <span class="filt-chip fc-on">All<span class="ann">active</span></span>
+        <span class="filt-chip fc-off">Medium</span>
+        <span class="filt-chip fc-off">Hashnode</span>
+        <span class="filt-chip fc-off">Dev.to</span>
+        <span class="filt-chip fc-off">Draft</span>
+        <span class="filt-chip fc-off">Published</span>
+        <span class="filt-sp"></span>
+        <div class="filt-dd">Sort: Recent <span class="filt-dd-arr">▾</span></div>
+      </div>
+
+      <!-- ARTICLE ROW 1: 72px · full 12 cols -->
+      <div class="z-art" style="grid-row:r1-s/r1-e;">
+        <div class="lg-h" style="top:24px;"></div>
+        <div class="lg-h" style="top:48px;"></div>
+        <div class="ac-plat">
+          <span class="art-plat-lbl">Medium<span class="ann">mono 8/700</span></span>
+          <span class="art-plat-lbl">Hashnode</span>
+          <span class="art-plat-lbl">Dev.to</span>
+        </div>
+        <div class="ac-body">
+          <span style="font-size:8px;font-family:ui-monospace,monospace;color:var(--ink4);line-height:var(--bl);letter-spacing:.04em;">#design-systems<span class="ann">tag mono 8px</span></span>
+          <span class="art-title">The hidden cost of over-engineering your stack<span class="ann">Georgia 12px italic</span></span>
+          <span class="art-cat">Technology · 2 847 words<span class="ann">9px/400</span></span>
+        </div>
+        <div class="ac-wc">
+          <span class="art-wc">2 847</span>
+          <span class="art-min">11 min</span>
+          <span class="art-wc">&nbsp;</span>
+        </div>
+        <div class="ac-status">
+          <span class="pill p-live">Live<span class="ann">pt:24</span></span>
+        </div>
+        <div class="ac-date">
+          <span class="art-date">Jun 28</span>
+        </div>
+      </div>
+
+      <!-- ARTICLE ROW 2 -->
+      <div class="z-art" style="grid-row:r2-s/r2-e;">
+        <div class="lg-h" style="top:24px;"></div>
+        <div class="lg-h" style="top:48px;"></div>
+        <div class="ac-plat">
+          <span class="art-plat-lbl">Medium</span>
+          <span class="art-plat-lbl" style="color:transparent;">—</span>
+          <span class="art-plat-lbl" style="color:transparent;">—</span>
+        </div>
+        <div class="ac-body">
+          <span style="font-size:8px;font-family:ui-monospace,monospace;color:var(--ink4);line-height:var(--bl);letter-spacing:.04em;">#developer-experience</span>
+          <span class="art-title">Why Developer Experience matters more than feature velocity</span>
+          <span class="art-cat">Engineering · 1 920 words</span>
+        </div>
+        <div class="ac-wc">
+          <span class="art-wc">1 920</span>
+          <span class="art-min">8 min</span>
+          <span class="art-wc">&nbsp;</span>
+        </div>
+        <div class="ac-status">
+          <span class="pill p-ready">Ready</span>
+        </div>
+        <div class="ac-date">
+          <span class="art-date">Jun 24</span>
+        </div>
+      </div>
+
+      <!-- ARTICLE ROW 3 -->
+      <div class="z-art" style="grid-row:r3-s/r3-e;">
+        <div class="lg-h" style="top:24px;"></div>
+        <div class="lg-h" style="top:48px;"></div>
+        <div class="ac-plat">
+          <span class="art-plat-lbl">Medium</span>
+          <span class="art-plat-lbl">Hashnode</span>
+          <span class="art-plat-lbl" style="color:transparent;">—</span>
+        </div>
+        <div class="ac-body">
+          <span style="font-size:8px;font-family:ui-monospace,monospace;color:var(--ink4);line-height:var(--bl);letter-spacing:.04em;">#architecture</span>
+          <span class="art-title">Microservices are not the answer to every scaling problem</span>
+          <span class="art-cat">Engineering · 3 100 words</span>
+        </div>
+        <div class="ac-wc">
+          <span class="art-wc">3 100</span>
+          <span class="art-min">13 min</span>
+          <span class="art-wc">&nbsp;</span>
+        </div>
+        <div class="ac-status">
+          <span class="pill p-draft">Draft</span>
+        </div>
+        <div class="ac-date">
+          <span class="art-date">Jun 20</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="wf-mg r"><span>margin · 32px</span></div>
+  </div>
+
+  <!-- Annotation column -->
+  <div class="ann-col">
+    <div class="ann-sp" style="height:24px;"></div><!-- ruler -->
+    <div class="brk" style="height:48px;"><div class="brk-bar"></div><div class="brk-lbl"><b>Nav</b><s>48px · 2×24</s><s>avatar + logo + links</s></div></div>
+    <div class="brk" style="height:24px;"><div class="brk-bar"></div><div class="brk-lbl"><b>Sep</b><s>24px · 1×24</s></div></div>
+    <div class="brk" style="height:48px;"><div class="brk-bar"></div><div class="brk-lbl"><b>Stats</b><s>48px · 2×24</s><s>4 tiles · 3 cols each</s></div></div>
+    <div class="brk" style="height:24px;"><div class="brk-bar"></div><div class="brk-lbl"><b>Sep</b><s>24px · 1×24</s></div></div>
+    <div class="brk" style="height:24px;"><div class="brk-bar"></div><div class="brk-lbl"><b>Filters</b><s>24px · 1×24</s></div></div>
+    <div class="brk" style="height:72px;"><div class="brk-bar"></div><div class="brk-lbl"><b>Row 1</b><s>72px · 3×24</s><s>col 1–12 full</s></div></div>
+    <div class="brk" style="height:72px;"><div class="brk-bar"></div><div class="brk-lbl"><b>Row 2</b><s>72px · 3×24</s></div></div>
+    <div class="brk" style="height:72px;"><div class="brk-bar"></div><div class="brk-lbl"><b>Row 3</b><s>72px · 3×24</s></div></div>
+  </div>
+</div>
+
+<!-- Span annotations -->
+<div class="span-row" style="margin-top:16px;margin-bottom:4px;">
+  <div class="span-mg"></div>
+  <div class="span-grid">
+    <div class="sc" style="grid-column:1/13;">nav · sep · stat bar · sep · filter bar · article rows — all col 1–12 full width</div>
+  </div>
+</div>
+<div class="span-row" style="margin-top:4px;margin-bottom:4px;">
+  <div class="span-mg"></div>
+  <div class="span-grid">
+    <div class="sc" style="grid-column:1/3;">1–2 · platform</div>
+    <div class="sc" style="grid-column:3/10;">3–9 · tag + Georgia title + category · text flush col 3</div>
+    <div class="sc" style="grid-column:10/11;">10 · word count</div>
+    <div class="sc" style="grid-column:11/12;">11 · status pill · pt:24</div>
+    <div class="sc" style="grid-column:12/13;">12 · date</div>
+  </div>
+</div>
+
+<!-- Legend -->
+<div class="legend">
+  <p class="legend-title">Zone map</p>
+  <div class="legend-grid">
+    <div class="leg-cell">
+      <p class="leg-n">nav · col 1–12</p><p class="leg-role">Global navigation</p>
+      <p class="leg-spec">48px · 2×24 · bg #111110<br>Left: avatar 28px circle + BlogHub 13px/700<br>Middle: nav links 11px<br>Right: + New Article button</p>
+    </div>
+    <div class="leg-cell">
+      <p class="leg-n">separator · col 1–12</p><p class="leg-role">Visual break</p>
+      <p class="leg-spec">24px · 1×24 · bg --shade #f0ede8<br>border-top + border-bottom: 1px --line<br>Two separators: after nav, after stat bar<br>Signals section boundary, no content</p>
+    </div>
+    <div class="leg-cell">
+      <p class="leg-n">stat bar · col 1–12</p><p class="leg-role">Quick dashboard stats</p>
+      <p class="leg-spec">48px · 2×24 · 4 equal tiles<br>Each tile: 3 cols · large mono number<br>Label 8px/700 UC · sub 7px mono<br>Tile border-right: 1px --line</p>
+    </div>
+    <div class="leg-cell">
+      <p class="leg-n">filter bar · col 1–12</p><p class="leg-role">Content filters</p>
+      <p class="leg-spec">48px · 2×24 · bg #fff<br>Left: "Filter" label + platform/status chips<br>Right: sort dropdown<br>Active chip: bg --ink · text #f4f2ee</p>
+    </div>
+    <div class="leg-cell">
+      <p class="leg-n">article row · col 1–12</p><p class="leg-role">Article list item</p>
+      <p class="leg-spec">72px · 3×24 · bg #fff<br>Col 1–2 platform · col 3–9 body<br>Col 10 word count · col 11 status<br>Col 12 date · status at padding-top:24px</p>
+    </div>
+    <div class="leg-cell">
+      <p class="leg-n">article body · col 3–9</p><p class="leg-role">Title + metadata</p>
+      <p class="leg-spec">Line 1: tag mono 8px · --ink4<br>Line 2: Georgia 12px italic · flush col 3<br>Line 3: category · word count · 9px/400<br>overflow: hidden · text-overflow: ellipsis</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

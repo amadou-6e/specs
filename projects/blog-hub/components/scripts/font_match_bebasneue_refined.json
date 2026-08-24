@@ -1,0 +1,151 @@
+{
+  "image": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\components\\row_card\\round_complex.png",
+  "crop": [
+    81,
+    71,
+    228,
+    102
+  ],
+  "text": "DUSTY MOSS",
+  "font_count": 1,
+  "skipped_fonts": 0,
+  "rendered_variants": 39,
+  "scored_variants": 78975,
+  "target_geometry": {
+    "width": 142,
+    "height": 27
+  },
+  "workers": 1,
+  "results": [
+    {
+      "score": 0.90921,
+      "mse": 0.022796,
+      "overlap": 0.932006,
+      "font_path": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\fonts\\third_party\\google-fonts\\ofl\\bebasneue\\BebasNeue-Regular.ttf",
+      "font_size": 39,
+      "tracking": 0,
+      "x_scale": 0.9643,
+      "y_scale": 0.9498,
+      "offset_x": 0,
+      "offset_y": -1,
+      "glyph_pixels": 2000
+    },
+    {
+      "score": 0.90921,
+      "mse": 0.022796,
+      "overlap": 0.932006,
+      "font_path": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\fonts\\third_party\\google-fonts\\ofl\\bebasneue\\BebasNeue-Regular.ttf",
+      "font_size": 39,
+      "tracking": 0,
+      "x_scale": 0.9643,
+      "y_scale": 0.9546,
+      "offset_x": 0,
+      "offset_y": -1,
+      "glyph_pixels": 2000
+    },
+    {
+      "score": 0.90921,
+      "mse": 0.022796,
+      "overlap": 0.932006,
+      "font_path": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\fonts\\third_party\\google-fonts\\ofl\\bebasneue\\BebasNeue-Regular.ttf",
+      "font_size": 39,
+      "tracking": 0,
+      "x_scale": 0.9643,
+      "y_scale": 0.9643,
+      "offset_x": 0,
+      "offset_y": -1,
+      "glyph_pixels": 2000
+    },
+    {
+      "score": 0.90921,
+      "mse": 0.022796,
+      "overlap": 0.932006,
+      "font_path": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\fonts\\third_party\\google-fonts\\ofl\\bebasneue\\BebasNeue-Regular.ttf",
+      "font_size": 39,
+      "tracking": 0,
+      "x_scale": 0.9643,
+      "y_scale": 0.9595,
+      "offset_x": 0,
+      "offset_y": -1,
+      "glyph_pixels": 2000
+    },
+    {
+      "score": 0.90921,
+      "mse": 0.022796,
+      "overlap": 0.932006,
+      "font_path": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\fonts\\third_party\\google-fonts\\ofl\\bebasneue\\BebasNeue-Regular.ttf",
+      "font_size": 39,
+      "tracking": 0,
+      "x_scale": 0.9643,
+      "y_scale": 0.9691,
+      "offset_x": 0,
+      "offset_y": -1,
+      "glyph_pixels": 2000
+    },
+    {
+      "score": 0.90921,
+      "mse": 0.022796,
+      "overlap": 0.932006,
+      "font_path": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\fonts\\third_party\\google-fonts\\ofl\\bebasneue\\BebasNeue-Regular.ttf",
+      "font_size": 39,
+      "tracking": 0,
+      "x_scale": 0.9691,
+      "y_scale": 0.9595,
+      "offset_x": 0,
+      "offset_y": -1,
+      "glyph_pixels": 2000
+    },
+    {
+      "score": 0.90921,
+      "mse": 0.022796,
+      "overlap": 0.932006,
+      "font_path": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\fonts\\third_party\\google-fonts\\ofl\\bebasneue\\BebasNeue-Regular.ttf",
+      "font_size": 39,
+      "tracking": 0,
+      "x_scale": 0.9643,
+      "y_scale": 0.9739,
+      "offset_x": 0,
+      "offset_y": -1,
+      "glyph_pixels": 2000
+    },
+    {
+      "score": 0.90921,
+      "mse": 0.022796,
+      "overlap": 0.932006,
+      "font_path": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\fonts\\third_party\\google-fonts\\ofl\\bebasneue\\BebasNeue-Regular.ttf",
+      "font_size": 39,
+      "tracking": 0,
+      "x_scale": 0.9691,
+      "y_scale": 0.9546,
+      "offset_x": 0,
+      "offset_y": -1,
+      "glyph_pixels": 2000
+    },
+    {
+      "score": 0.90921,
+      "mse": 0.022796,
+      "overlap": 0.932006,
+      "font_path": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\fonts\\third_party\\google-fonts\\ofl\\bebasneue\\BebasNeue-Regular.ttf",
+      "font_size": 39,
+      "tracking": 0,
+      "x_scale": 0.9643,
+      "y_scale": 0.9787,
+      "offset_x": 0,
+      "offset_y": -1,
+      "glyph_pixels": 2000
+    },
+    {
+      "score": 0.90921,
+      "mse": 0.022796,
+      "overlap": 0.932006,
+      "font_path": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\fonts\\third_party\\google-fonts\\ofl\\bebasneue\\BebasNeue-Regular.ttf",
+      "font_size": 39,
+      "tracking": 0,
+      "x_scale": 0.9691,
+      "y_scale": 0.9498,
+      "offset_x": 0,
+      "offset_y": -1,
+      "glyph_pixels": 2000
+    }
+  ]
+}

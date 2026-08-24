@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BlogHub — Editorial · Settings Page Grid</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #f8f6f2;
+  --ink:     #1a1917;
+  --ink2:    #4a4845;
+  --ink3:    #8a887f;
+  --ink4:    #b0aea8;
+  --line:    #dddad4;
+  --col-bg:  rgba(214,52,36,.055);
+  --col-ln:  rgba(214,52,36,.22);
+  --bl-ln:   rgba(214,52,36,.08);
+  --lg:      rgba(214,52,36,.65);
+  --col-gap: 16px;
+  --mg:      32px;
+  --bl:      24px;
+}
+
+body {
+  background: #eceae6; color: var(--ink);
+  font-family: system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size: 11px; line-height: 1.45; -webkit-font-smoothing: antialiased;
+  padding: 40px 24px 80px;
+}
+
+/* ── Page header ── */
+.pg-hd { max-width:1100px;margin:0 auto 24px;display:flex;justify-content:space-between;align-items:baseline; }
+.pg-hd-title { font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3); }
+.pg-hd-meta  { display:flex;gap:0; }
+.pg-hd-meta span { font-size:8px;font-family:ui-monospace,monospace;color:var(--ink4);padding:0 12px;border-left:1px solid var(--line); }
+.pg-hd-meta span:first-child { border-left:none; }
+
+/* ── Shell ── */
+.shell { max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 112px;align-items:start; }
+.wf   { background:#fff;border:1px solid #c4c0ba;display:flex; }
+.wf-mg { width:var(--mg);flex-shrink:0;background:rgba(214,52,36,.04);border-right:1px dashed rgba(214,52,36,.18);display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px; }
+.wf-mg.r { border-right:none;border-left:1px dashed rgba(214,52,36,.18); }
+.wf-mg span { font-size:6px;font-family:ui-monospace,monospace;color:rgba(214,52,36,.4);writing-mode:vertical-rl;transform:rotate(180deg); }
+
+/* ── Content grid ── */
+.wf-grid {
+  flex:1; display:grid;
+  grid-template-columns:repeat(12,1fr);
+  column-gap:var(--col-gap); row-gap:0;
+  position:relative; isolation:isolate;
+  grid-template-rows:
+    [ruler-s] 24px
+    [ruler-e nav-s] 48px
+    [nav-e hd-s] 48px
+    [hd-e s1hd-s] 48px
+    [s1hd-e nm-s] 48px
+    [nm-e em-s] 48px
+    [em-e bio-s] 72px
+    [bio-e div-s] 24px
+    [div-e s2hd-s] 48px
+    [s2hd-e cl-s] 72px
+    [cl-e oa-s] 72px
+    [oa-e sv-s] 72px [sv-e];
+}
+
+/* overlays */
+.col-bands { position:absolute;inset:0;pointer-events:none;z-index:-1;display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:1fr;column-gap:var(--col-gap); }
+.col-bands>div { background:var(--col-bg); }
+.bl-ov { position:absolute;inset:0;pointer-events:none;z-index:9;background-image:repeating-linear-gradient(to bottom,var(--bl-ln) 0,var(--bl-ln) 1px,transparent 1px,transparent var(--bl)); }
+.col-lines { position:absolute;inset:0;pointer-events:none;z-index:10;display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:1fr;column-gap:var(--col-gap); }
+.col-lines>div { border-left:1px solid var(--col-ln); }
+.col-lines>div:last-child { border-right:1px solid var(--col-ln); }
+.lg-h { position:absolute;height:0;border-top:1px dashed var(--lg);pointer-events:none;z-index:20; }
+
+/* ruler */
+.ruler { grid-column:1/13;grid-row:ruler-s/ruler-e;display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--col-gap);background:#f0ede8;border-bottom:1px solid var(--line);z-index:5; }
+.ruler>span { display:flex;align-items:center;justify-content:center;font-size:7px;font-family:ui-monospace,monospace;color:rgba(214,52,36,.5);border-left:1px solid rgba(214,52,36,.14); }
+.ruler>span:last-child { border-right:1px solid rgba(214,52,36,.14); }
+
+/* nav */
+.z-nav { grid-column:1/13;grid-row:nav-s/nav-e;background:#111110;display:flex;align-items:center;padding:0;z-index:1; }
+.nav-logo { font-size:13px;font-weight:700;color:#f4f2ee;line-height:48px;margin-right:12px;flex-shrink:0; }
+.nav-link { font-size:11px;color:#6b6860;line-height:48px;padding:0 10px; }
+.nav-link.on { color:#f4f2ee; }
+.nav-sp { flex:1; }
+.nav-btn { font-size:10px;font-weight:600;color:#111110;background:#f4f2ee;line-height:28px;padding:0 10px;border-radius:3px;flex-shrink:0; }
+
+/* sidebar: col 1–2, full content height */
+.z-sb { grid-column:1/3;grid-row:hd-s/sv-e;background:var(--bg);border-right:1px solid var(--line);display:flex;flex-direction:column;z-index:1; }
+.sb-item { font-size:11px;color:var(--ink3);line-height:48px;padding-left:10px;border-left:3px solid transparent;border-bottom:1px solid var(--line);white-space:nowrap;overflow:hidden;flex-shrink:0; }
+.sb-item.on { color:var(--ink);font-weight:600;background:#f0ede8;border-left-color:var(--ink); }
+
+/* page header: col 3–12, 48px */
+.z-pg-hd { grid-column:3/13;grid-row:hd-s/hd-e;background:var(--bg);border-bottom:1px solid var(--line);padding:0;z-index:1;display:flex;flex-direction:column;justify-content:flex-start; }
+.pg-title { font-size:14px;font-weight:700;color:var(--ink);line-height:var(--bl); }
+.pg-sub   { font-size:9px;color:var(--ink3);line-height:var(--bl); }
+
+/* section heading: col 3–12, 48px */
+.z-sec-hd { background:#fff;border-bottom:1px solid var(--line);padding:0;z-index:1;display:flex;flex-direction:column;justify-content:flex-start; }
+.sec-title { font-size:10px;font-weight:700;color:var(--ink);line-height:var(--bl); }
+.sec-sub   { font-size:8px;color:var(--ink3);line-height:var(--bl); }
+
+/* form label: col 3–5, no padding */
+.z-lbl { background:var(--bg);border-bottom:1px solid #eeece8;padding:0;z-index:1;position:relative;display:flex;flex-direction:column;justify-content:flex-start; }
+.fl-key  { font-size:11px;font-weight:600;color:var(--ink);line-height:var(--bl);display:block; }
+.fl-hint { font-size:8px;color:var(--ink3);line-height:var(--bl);display:block; }
+
+/* form input: col 6–12, no padding */
+.z-val { background:#fff;border-bottom:1px solid #eeece8;border-left:1px solid #eeece8;padding:0;z-index:1;display:flex;align-items:center;position:relative; }
+.inp-f { height:36px;width:100%;border:1.5px solid var(--line);border-radius:3px;font-size:11px;line-height:24px;padding:0 10px;color:var(--ink2); }
+.textarea-f { height:72px;width:100%;border:1.5px solid var(--line);border-radius:3px;font-size:10px;line-height:24px;padding:6px 10px;color:var(--ink2);overflow:hidden; }
+
+/* section divider */
+.z-div { grid-column:3/13;background:#f0ede8;border-top:1px solid var(--line);border-bottom:1px solid var(--line);z-index:1; }
+
+/* provider identity: col 3–5 */
+.z-pv-id { background:var(--bg);border-bottom:1px solid #eeece8;border-right:1px solid #eeece8;padding:0;z-index:1;position:relative;display:flex;flex-direction:column;justify-content:flex-start; }
+.pv-name  { font-size:11px;font-weight:600;color:var(--ink);line-height:var(--bl);display:block; }
+.pv-model { font-size:9px;color:var(--ink3);line-height:var(--bl);display:block; }
+.pv-flow  { font-size:8px;font-family:ui-monospace,monospace;color:var(--ink4);line-height:var(--bl);display:block; }
+
+/* provider status: col 6–10 */
+.z-pv-st { background:#fff;border-bottom:1px solid #eeece8;border-left:1px solid #eeece8;border-right:1px solid #eeece8;padding:0;z-index:1;position:relative;display:flex;flex-direction:column;justify-content:flex-start; }
+.ps-conn { font-size:10px;font-weight:600;color:#286228;line-height:var(--bl);display:flex;align-items:center;gap:5px; }
+.ps-dot  { width:6px;height:6px;border-radius:50%;background:#286228;flex-shrink:0; }
+.ps-info { font-size:8px;font-family:ui-monospace,monospace;color:var(--ink3);line-height:var(--bl);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+.ps-sub  { font-size:7px;color:var(--ink4);line-height:var(--bl);display:block; }
+.ps-disc { font-size:10px;color:var(--ink3);line-height:var(--bl); }
+
+/* provider action: col 11–12 */
+.z-pv-ac { background:var(--bg);border-bottom:1px solid #eeece8;display:flex;align-items:flex-start;justify-content:center;padding:24px 6px 0;z-index:1; }
+.ac-btn  { font-size:7px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 0;line-height:16px;border-radius:10px;text-align:center;width:100%;box-sizing:border-box;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
+.ac-dis  { background:#e8e5e1;color:var(--ink3); }
+.ac-con  { background:#1a1917;color:#f4f2ee; }
+
+/* save row */
+.z-sv-lbl { background:var(--bg);border-top:1px solid var(--line);z-index:1; }
+.z-sv { background:#fff;border-top:1px solid var(--line);border-left:1px solid #eeece8;display:flex;align-items:flex-start;gap:8px;padding:24px 0 0;z-index:1; }
+.btn-primary { font-size:10px;font-weight:700;color:#f4f2ee;background:#1a1917;line-height:24px;padding:0 14px;border-radius:4px;white-space:nowrap; }
+.btn-ghost   { font-size:10px;font-weight:600;color:var(--ink3);line-height:24px;padding:0 10px;border:1px solid var(--line);border-radius:4px;white-space:nowrap; }
+
+/* ── Annotations ── */
+.ann-col { padding-left:10px;display:flex;flex-direction:column; }
+.ann-sp  { height:24px;flex-shrink:0; }
+.brk     { display:flex;align-items:stretch;gap:6px;flex-shrink:0; }
+.brk-bar { width:6px;flex-shrink:0;border-top:1px solid var(--ink3);border-bottom:1px solid var(--ink3);border-left:1px solid var(--ink3); }
+.brk-lbl { display:flex;flex-direction:column;justify-content:center;gap:1px; }
+.brk-lbl b { font-size:8px;font-weight:600;color:var(--ink2); }
+.brk-lbl s { font-size:7px;font-family:ui-monospace,monospace;color:var(--ink3);text-decoration:none;white-space:nowrap; }
+
+.span-row  { display:flex;max-width:1100px;margin:0 auto; }
+.span-mg   { width:calc(var(--mg)+1px);flex-shrink:0; }
+.span-grid { flex:1;display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--col-gap); }
+.sc { border-top:2px solid rgba(214,52,36,.28);padding-top:4px;font-size:6px;font-family:ui-monospace,monospace;color:rgba(214,52,36,.6);white-space:nowrap;overflow:hidden; }
+
+.legend { max-width:1100px;margin:28px auto 0; }
+.legend-title { font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink4);margin-bottom:10px; }
+.legend-grid  { display:grid;grid-template-columns:repeat(3,1fr);gap:var(--line) 24px;background:var(--line); }
+.leg-cell { background:var(--bg);padding:12px 14px; }
+.leg-n    { font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);margin-bottom:3px; }
+.leg-role { font-size:10px;font-weight:600;color:var(--ink);margin-bottom:2px; }
+.leg-spec { font-size:7px;font-family:ui-monospace,monospace;color:var(--ink3);line-height:1.8; }
+
+.ann { font-size:7px;font-family:ui-monospace,monospace;color:rgba(214,52,36,.55);vertical-align:super;margin-left:2px;font-weight:400;letter-spacing:.04em; }
+</style>
+</head>
+<body>
+
+<div class="pg-hd">
+  <span class="pg-hd-title">BlogHub · Editorial · Grid Guide · Settings Page</span>
+  <div class="pg-hd-meta">
+    <span>12 col · 16px gap · 32px margin</span>
+    <span>24px baseline</span>
+    <span>sidebar col 1–2 · content col 3–12</span>
+    <span>label 3–5 · input 6–12 · action 11–12</span>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="wf">
+    <div class="wf-mg"><span>margin · 32px</span></div>
+
+    <div class="wf-grid">
+      <div class="col-bands"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div class="bl-ov"></div>
+      <div class="col-lines"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+      <!-- RULER -->
+      <div class="ruler">
+        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
+        <span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span>
+      </div>
+
+      <!-- NAV -->
+      <div class="z-nav">
+        <span class="nav-logo">BlogHub<span class="ann">13px/700</span></span>
+        <span class="nav-link">Articles</span>
+        <span class="nav-link">Queue</span>
+        <span class="nav-link">Platforms</span>
+        <span class="nav-link on">Settings<span class="ann">11px active</span></span>
+        <span class="nav-sp"></span>
+        <span class="nav-btn">+ New Article</span>
+      </div>
+
+      <!-- SIDEBAR: col 1–2, spans all content rows -->
+      <div class="z-sb">
+        <div class="sb-item">General</div>
+        <div class="sb-item on">Profile<span class="ann">active</span></div>
+        <div class="sb-item">Connections</div>
+        <div class="sb-item">Appearance</div>
+        <div class="sb-item">Notifications</div>
+        <div class="sb-item">API &amp; Billing</div>
+      </div>
+
+      <!-- PAGE HEADER: col 3–12, 48px -->
+      <div class="z-pg-hd">
+        <span class="pg-title">Profile<span class="ann">14px/700 · flush col 3</span></span>
+        <span class="pg-sub">Manage your account information and preferences<span class="ann">9px/400</span></span>
+      </div>
+
+      <!-- SECTION 1 HEADING: col 3–12, 48px -->
+      <div class="z-sec-hd" style="grid-column:3/13;grid-row:s1hd-s/s1hd-e;">
+        <span class="sec-title">Personal information</span>
+        <span class="sec-sub">Your name and bio are shown on published articles</span>
+      </div>
+
+      <!-- NAME ROW: 48px -->
+      <div class="z-lbl" style="grid-column:3/6;grid-row:nm-s/nm-e;">
+        <span class="fl-key">Display name<span class="ann">11px/600 · flush col 3</span></span>
+        <span class="fl-hint">Shown on all published articles</span>
+      </div>
+      <div class="z-val" style="grid-column:6/13;grid-row:nm-s/nm-e;">
+        <div class="lg-h" style="top:6px;left:0;right:0;"></div>
+        <div class="inp-f">Marcus Chen<span class="ann">flush col 6</span></div>
+      </div>
+
+      <!-- EMAIL ROW: 48px -->
+      <div class="z-lbl" style="grid-column:3/6;grid-row:em-s/em-e;">
+        <span class="fl-key">Email address</span>
+        <span class="fl-hint">Used for login and notifications</span>
+      </div>
+      <div class="z-val" style="grid-column:6/13;grid-row:em-s/em-e;">
+        <div class="inp-f" style="color:var(--ink3);">amadou.6e@googlemail.com</div>
+      </div>
+
+      <!-- BIO ROW: 72px = 3 text lines -->
+      <div class="z-lbl" style="grid-column:3/6;grid-row:bio-s/bio-e;">
+        <div class="lg-h" style="top:24px;left:0;right:0;"></div>
+        <div class="lg-h" style="top:48px;left:0;right:0;"></div>
+        <span class="fl-key">Bio<span class="ann">3×24 = 72px row</span></span>
+        <span class="fl-hint">Tell readers who you are</span>
+        <span class="fl-hint">Max 280 characters</span>
+      </div>
+      <div class="z-val" style="grid-column:6/13;grid-row:bio-s/bio-e;align-items:flex-start;">
+        <div class="textarea-f">Software engineer &amp; technical writer. I write about backend architecture, distributed systems, and the craft of writing software that actually ships.</div>
+      </div>
+
+      <!-- SECTION DIVIDER: 24px -->
+      <div class="z-div" style="grid-row:div-s/div-e;"></div>
+
+      <!-- SECTION 2 HEADING: col 3–12, 48px -->
+      <div class="z-sec-hd" style="grid-column:3/13;grid-row:s2hd-s/s2hd-e;">
+        <span class="sec-title">AI providers</span>
+        <span class="sec-sub">Authentication for AI-assisted writing features</span>
+      </div>
+
+      <!-- ANTHROPIC ROW: 72px -->
+      <div class="z-pv-id" style="grid-column:3/6;grid-row:cl-s/cl-e;">
+        <div class="lg-h" style="top:24px;left:0;right:0;"></div>
+        <div class="lg-h" style="top:48px;left:0;right:0;"></div>
+        <span class="pv-name">Anthropic<span class="ann">11px/600 · flush col 3</span></span>
+        <span class="pv-model">Claude 3.5 Sonnet</span>
+        <span class="pv-flow">claude auth login</span>
+      </div>
+      <div class="z-pv-st" style="grid-column:6/11;grid-row:cl-s/cl-e;">
+        <div class="ps-conn"><span class="ps-dot"></span>Connected<span class="ann">flush col 6</span></div>
+        <span class="ps-info">amadou.6e@googlemail.com</span>
+        <span class="ps-sub">OAuth · authenticated 12 days ago</span>
+      </div>
+      <div class="z-pv-ac" style="grid-column:11/13;grid-row:cl-s/cl-e;">
+        <div class="ac-btn ac-dis">Disconnect<span class="ann">pt:24px</span></div>
+      </div>
+
+      <!-- OPENAI ROW: 72px -->
+      <div class="z-pv-id" style="grid-column:3/6;grid-row:oa-s/oa-e;">
+        <div class="lg-h" style="top:24px;left:0;right:0;"></div>
+        <div class="lg-h" style="top:48px;left:0;right:0;"></div>
+        <span class="pv-name">OpenAI</span>
+        <span class="pv-model">Codex CLI</span>
+        <span class="pv-flow">codex login --device-auth</span>
+      </div>
+      <div class="z-pv-st" style="grid-column:6/11;grid-row:oa-s/oa-e;">
+        <div class="ps-disc">Not connected</div>
+        <span class="ps-info">No account linked</span>
+        <span class="ps-sub">Device-code flow · RFC 8628</span>
+      </div>
+      <div class="z-pv-ac" style="grid-column:11/13;grid-row:oa-s/oa-e;">
+        <div class="ac-btn ac-con">Connect</div>
+      </div>
+
+      <!-- SAVE ROW: 72px -->
+      <div class="z-sv-lbl" style="grid-column:3/6;grid-row:sv-s/sv-e;"></div>
+      <div class="z-sv" style="grid-column:6/13;grid-row:sv-s/sv-e;">
+        <div class="btn-primary">Save changes<span class="ann">pt:24px · flush col 6</span></div>
+        <div class="btn-ghost">Cancel</div>
+      </div>
+    </div>
+
+    <div class="wf-mg r"><span>margin · 32px</span></div>
+  </div>
+
+  <!-- Annotation column -->
+  <div class="ann-col">
+    <div class="ann-sp"></div><!-- ruler -->
+    <div class="brk" style="height:48px;"><div class="brk-bar"></div><div class="brk-lbl"><b>Nav</b><s>48px · 2×24</s></div></div>
+    <div class="brk" style="height:48px;"><div class="brk-bar"></div><div class="brk-lbl"><b>Page hd</b><s>48px · 2×24</s></div></div>
+    <div class="brk" style="height:48px;"><div class="brk-bar"></div><div class="brk-lbl"><b>Sec hd</b><s>48px · 2×24</s></div></div>
+    <div class="brk" style="height:48px;"><div class="brk-bar"></div><div class="brk-lbl"><b>Name</b><s>48px · 2×24</s></div></div>
+    <div class="brk" style="height:48px;"><div class="brk-bar"></div><div class="brk-lbl"><b>Email</b><s>48px · 2×24</s></div></div>
+    <div class="brk" style="height:72px;"><div class="brk-bar"></div><div class="brk-lbl"><b>Bio</b><s>72px · 3×24</s></div></div>
+    <div class="brk" style="height:24px;"><div class="brk-bar"></div><div class="brk-lbl"><b>Div</b><s>24px · 1×24</s></div></div>
+    <div class="brk" style="height:48px;"><div class="brk-bar"></div><div class="brk-lbl"><b>Sec hd</b><s>48px · 2×24</s></div></div>
+    <div class="brk" style="height:72px;"><div class="brk-bar"></div><div class="brk-lbl"><b>Anthropic</b><s>72px · 3×24</s></div></div>
+    <div class="brk" style="height:72px;"><div class="brk-bar"></div><div class="brk-lbl"><b>OpenAI</b><s>72px · 3×24</s></div></div>
+    <div class="brk" style="height:72px;"><div class="brk-bar"></div><div class="brk-lbl"><b>Save</b><s>72px · 3×24</s></div></div>
+  </div>
+</div>
+
+<!-- Span annotation rows -->
+<div class="span-row" style="margin-top:16px;margin-bottom:4px;">
+  <div class="span-mg"></div>
+  <div class="span-grid">
+    <div class="sc" style="grid-column:1/3;">col 1–2 sidebar · 48px items</div>
+    <div class="sc" style="grid-column:3/13;">col 3–12 · all content zones · text flush to col 3</div>
+  </div>
+</div>
+<div class="span-row" style="margin-top:4px;margin-bottom:4px;">
+  <div class="span-mg"></div>
+  <div class="span-grid">
+    <div class="sc" style="grid-column:1/3;color:transparent;">—</div>
+    <div class="sc" style="grid-column:3/6;">col 3–5 · label · key + hint · flush col 3</div>
+    <div class="sc" style="grid-column:6/13;">col 6–12 · input / value · left edge at col 6</div>
+  </div>
+</div>
+<div class="span-row" style="margin-top:4px;margin-bottom:4px;">
+  <div class="span-mg"></div>
+  <div class="span-grid">
+    <div class="sc" style="grid-column:1/3;color:transparent;">—</div>
+    <div class="sc" style="grid-column:3/6;">col 3–5 · provider identity</div>
+    <div class="sc" style="grid-column:6/11;">col 6–10 · connection status</div>
+    <div class="sc" style="grid-column:11/13;">col 11–12 · action · padding-top:24px</div>
+  </div>
+</div>
+
+<!-- Legend -->
+<div class="legend">
+  <p class="legend-title">Zone map</p>
+  <div class="legend-grid">
+    <div class="leg-cell">
+      <p class="leg-n">sidebar · col 1–2</p><p class="leg-role">Settings navigation</p>
+      <p class="leg-spec">Spans all content rows<br>Items 48px each = 2×24<br>Active: bg #f0ede8 · border-left --ink<br>Text flush to col 1 left edge</p>
+    </div>
+    <div class="leg-cell">
+      <p class="leg-n">page header · col 3–12</p><p class="leg-role">Section title</p>
+      <p class="leg-spec">48px · 2×24 · bg --bg<br>Title 14px/700 · flush col 3<br>Sub 9px/400 · --ink3</p>
+    </div>
+    <div class="leg-cell">
+      <p class="leg-n">section heading · col 3–12</p><p class="leg-role">Sub-section label</p>
+      <p class="leg-spec">48px · 2×24 · bg #fff<br>Title 10px/700 · flush col 3<br>Sub 8px/400 · --ink3</p>
+    </div>
+    <div class="leg-cell">
+      <p class="leg-n">form label · col 3–5</p><p class="leg-role">Field label + hint</p>
+      <p class="leg-spec">48px (field) · 72px (bio)<br>padding:0 · text flush col 3<br>Key 11px/600 · hint 8px/400<br>bg --bg · border-right</p>
+    </div>
+    <div class="leg-cell">
+      <p class="leg-n">form input · col 6–12</p><p class="leg-role">Text field / textarea</p>
+      <p class="leg-spec">Input: 36px field in 48px row<br>Textarea: 72px = 3×24<br>padding:0 · left edge at col 6<br>border 1.5px --line · radius 3px</p>
+    </div>
+    <div class="leg-cell">
+      <p class="leg-n">provider action · col 11–12</p><p class="leg-role">Connect / Disconnect</p>
+      <p class="leg-spec">72px · 3×24<br>align-items:flex-start<br>padding-top:24px → baseline 2<br>pill 7px/700 UC · width:100%</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

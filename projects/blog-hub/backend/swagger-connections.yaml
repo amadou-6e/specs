@@ -1,0 +1,234 @@
+openapi: "3.1.0"
+info:
+  title: BlogHub — Connections API
+  description: |
+    Manages credentials for blog publishing platforms and AI providers.
+
+    **Service group:** `connections`
+    **Router prefix:** `/api/connections`
+    **Store:** `backend/store/memory.py → _connections` dict.
+    Connections survive `POST /api/dev/reset` — they hold user secrets, not article state.
+
+    ### Supported connections
+
+    | ID          | Type | Auth method           |
+    |-------------|------|-----------------------|
+    | `medium`    | blog | OAuth 2.0 **or** token |
+    | `hashnode`  | blog | Personal Access Token |
+    | `devto`     | blog | API Key               |
+    | `anthropic` | ai   | API Key               |
+    | `openai`    | ai   | API Key               |
+
+    ### Medium OAuth popup flow
+
+    1. Frontend calls `GET /api/connections/medium/oauth-start`.
+    2. If `MEDIUM_CLIENT_ID` is set, a popup is opened to the returned `url`.
+    3. Medium redirects to `GET /api/connections/medium/oauth-callback?code=…`.
+    4. Backend exchanges the code for an access token (requires `MEDIUM_CLIENT_SECRET`),
+       fetches `/v1/me` for the username, stores the token, and responds with a tiny HTML page
+       that calls `window.opener.postMessage(...)` and closes itself.
+    5. The opener page receives the `oauth-complete` message and refreshes the connections list.
+  version: "0.1.0"
+
+servers:
+  - url: http://localhost:8000
+    description: Local dev (uvicorn)
+
+tags:
+  - name: connections
+    description: Credential management for platforms and AI providers.
+  - name: connections-oauth
+    description: Medium OAuth 2.0 popup flow.
+
+paths:
+
+  /api/connections:
+    get:
+      operationId: listConnections
+      tags: [connections]
+      summary: List all connections
+      description: Returns all 5 known connections (blog + AI) with their current status.
+      responses:
+        "200":
+          description: Connection list.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ConnectionListResponse" }
+              example:
+                connections:
+                  - id: medium
+                    label: "Medium"
+                    type: blog
+                    auth_method: oauth_or_token
+                    status: connected
+                    username: "@acisse"
+                    connected_at: "2026-04-03T09:00:00Z"
+                    error_message: null
+                  - id: anthropic
+                    label: "Claude (Anthropic)"
+                    type: ai
+                    auth_method: token
+                    status: disconnected
+                    username: null
+                    connected_at: null
+                    error_message: null
+
+  /api/connections/{conn_id}:
+
+    put:
+      operationId: saveToken
+      tags: [connections]
+      summary: Save API token
+      description: |
+        Stores the token and marks the connection as `connected`.
+        Works for all 5 connection IDs.
+        For Medium, use this when you have an Integration Token;
+        for the OAuth flow, use the dedicated `/oauth-start` endpoint instead.
+      parameters:
+        - name: conn_id
+          in: path
+          required: true
+          schema: { $ref: "#/components/schemas/ConnectionId" }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/SaveTokenRequest" }
+            example: { token: "hshpat_abc123…" }
+      responses:
+        "200":
+          description: Token saved; connection marked connected.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/SaveTokenResponse" }
+              example: { id: hashnode, status: connected, username: null, error_message: null }
+        "404":
+          description: Unknown connection ID.
+        "422":
+          description: Validation error (token empty).
+
+    delete:
+      operationId: disconnectConnection
+      tags: [connections]
+      summary: Disconnect
+      description: Removes the stored token and marks the connection as `disconnected`.
+      parameters:
+        - name: conn_id
+          in: path
+          required: true
+          schema: { $ref: "#/components/schemas/ConnectionId" }
+      responses:
+        "200":
+          description: Disconnected.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: { type: string, example: disconnected }
+        "404":
+          description: Unknown connection ID.
+
+  /api/connections/medium/oauth-start:
+    get:
+      operationId: oauthStart
+      tags: [connections-oauth]
+      summary: Get Medium OAuth URL
+      description: |
+        Returns the Medium authorization URL to open in a popup window.
+        When `MEDIUM_CLIENT_ID` is not configured, returns `available: false`
+        so the frontend can disable the OAuth button and prompt for a token instead.
+      responses:
+        "200":
+          description: OAuth start info.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/OAuthStartResponse" }
+              examples:
+                configured:
+                  value:
+                    available: true
+                    url: "https://medium.com/m/oauth/authorize?client_id=…"
+                not_configured:
+                  value:
+                    available: false
+                    url: null
+
+  /api/connections/medium/oauth-callback:
+    get:
+      operationId: oauthCallback
+      tags: [connections-oauth]
+      summary: Medium OAuth redirect handler
+      description: |
+        Medium redirects here with `?code=…` after the user grants access.
+        The backend exchanges the code for an access token, fetches the user's profile,
+        stores the token, and responds with an HTML page that posts a `postMessage`
+        to `window.opener` and closes the popup.
+
+        **Never call this endpoint directly from client code.**
+        It is the redirect_uri registered in the Medium OAuth application.
+      parameters:
+        - name: code
+          in: query
+          schema: { type: string }
+          description: Authorization code from Medium.
+        - name: error
+          in: query
+          schema: { type: string }
+          description: Error code when the user denies access (e.g. `access_denied`).
+      responses:
+        "200":
+          description: HTML page that closes the popup via postMessage.
+          content:
+            text/html:
+              schema: { type: string }
+
+components:
+  schemas:
+
+    ConnectionId:
+      type: string
+      enum: [medium, hashnode, devto, anthropic, openai]
+
+    ConnectionInfo:
+      type: object
+      required: [id, label, type, auth_method, status]
+      properties:
+        id:            { $ref: "#/components/schemas/ConnectionId" }
+        label:         { type: string, example: "Hashnode" }
+        type:          { type: string, enum: [blog, ai] }
+        auth_method:   { type: string, enum: [token, oauth_or_token] }
+        status:        { type: string, enum: [disconnected, connected, error] }
+        username:      { type: string, nullable: true, example: "@acisse" }
+        connected_at:  { type: string, format: date-time, nullable: true }
+        error_message: { type: string, nullable: true }
+
+    ConnectionListResponse:
+      type: object
+      required: [connections]
+      properties:
+        connections:
+          type: array
+          items: { $ref: "#/components/schemas/ConnectionInfo" }
+
+    SaveTokenRequest:
+      type: object
+      required: [token]
+      properties:
+        token: { type: string, minLength: 1 }
+
+    SaveTokenResponse:
+      type: object
+      required: [id, status]
+      properties:
+        id:            { type: string }
+        status:        { type: string, enum: [connected, error] }
+        username:      { type: string, nullable: true }
+        error_message: { type: string, nullable: true }
+
+    OAuthStartResponse:
+      type: object
+      required: [available]
+      properties:
+        available: { type: boolean }
+        url:       { type: string, nullable: true }

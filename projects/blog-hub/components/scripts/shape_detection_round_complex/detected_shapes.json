@@ -1,0 +1,39 @@
+{
+  "image": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\website-design-board\\components\\row_card\\round_complex.png",
+  "background_color": "#EBDFC7",
+  "searched_colors": [
+    {
+      "layer": "1",
+      "color": "#566129"
+    }
+  ],
+  "shape_count": 1,
+  "shapes": [
+    {
+      "id": 1,
+      "layer": 1,
+      "color": "#566129",
+      "kind": "rectangle",
+      "x": 5,
+      "y": 6,
+      "width": 298,
+      "height": 159,
+      "area_pixels": 46698,
+      "contour_area": 46238.0,
+      "perimeter": 952.79,
+      "vertices": 4,
+      "circularity": 0.64,
+      "solidity": 0.988,
+      "extent": 0.9759,
+      "estimated_radius": 99.36,
+      "text_overlap_ratio": 0.1189,
+      "confidence": 0.991,
+      "svg_path": "M 5 13 L 10 163 L 302 156 L 297 6 Z"
+    }
+  ],
+  "notes": [
+    "Text-like pixels are masked as non-background pixels that are not close to the active shape color.",
+    "Shape masks are morphologically closed and hole-filled to bridge text occlusions.",
+    "Docling/SAM hooks can be added as region proposals, but this run uses deterministic OpenCV flat-color geometry."
+  ]
+}

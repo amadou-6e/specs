@@ -1,0 +1,71 @@
+{
+  "name": "Review shape geometry",
+  "type": "layout.geometry_review",
+  "description": "Lets the user correct proposed shape geometry at the complete-union or individual-piece level without overwriting automatic detection.",
+  "fields": [
+    {
+      "name": "selected_shape",
+      "type": "shape_reference",
+      "description": "References the active automatic or manually adjusted shape proposal shown on the canvas.",
+      "default": null
+    },
+    {
+      "name": "editing_level",
+      "type": "select",
+      "description": "Chooses whether handles and numeric controls transform the complete shape union or one additive piece.",
+      "default": "union",
+      "options": [
+        {"name": "Complete shape", "value": "union", "description": "Moves or scales the full primitive or composite union."},
+        {"name": "Individual piece", "value": "piece", "description": "Edits one rectangle within an additive composite."}
+      ]
+    },
+    {
+      "name": "bounds",
+      "type": "rectangle",
+      "description": "Stores exact image-space x, y, width, and height for the selected shape or additive piece.",
+      "required": true
+    },
+    {
+      "name": "primitive_type",
+      "type": "select",
+      "description": "Changes the selected proposal among rectangle, rounded rectangle, circle, ellipse, composite, or irregular mask when automatic classification is wrong.",
+      "options": [
+        {"name": "Rectangle", "value": "rectangle", "description": "Uses a sharp-cornered axis-aligned rectangle."},
+        {"name": "Rounded rectangle", "value": "rounded_rectangle", "description": "Uses a rectangle with editable outer corner radii."},
+        {"name": "Circle", "value": "circle", "description": "Uses a circular primitive."},
+        {"name": "Ellipse", "value": "ellipse", "description": "Uses an axis-aligned elliptical primitive."},
+        {"name": "Composite", "value": "composite", "description": "Uses a union of editable additive rectangles."},
+        {"name": "Irregular mask", "value": "irregular_mask", "description": "Preserves the detected raster mask without forcing a primitive."}
+      ]
+    },
+    {
+      "name": "corner_radii",
+      "type": "corner_radii",
+      "description": "Stores independently editable top-left, top-right, bottom-right, and bottom-left outer radii.",
+      "default": {"top_left": 0, "top_right": 0, "bottom_right": 0, "bottom_left": 0}
+    },
+    {
+      "name": "status",
+      "type": "select",
+      "description": "Records whether the proposal needs review, is accepted, or is rejected as a false positive.",
+      "default": "needs_review",
+      "options": [
+        {"name": "Needs review", "value": "needs_review", "description": "Keeps the proposal pending."},
+        {"name": "Accepted", "value": "accepted", "description": "Marks the geometry ready for shape-layer creation."},
+        {"name": "Rejected", "value": "rejected", "description": "Hides the false-positive proposal while keeping it recoverable."}
+      ]
+    }
+  ],
+  "actions": [
+    {"name": "Add piece", "type": "edit_action", "description": "Adds an editable rectangle to the selected composite proposal."},
+    {"name": "Remove piece", "type": "edit_action", "description": "Removes the selected additive rectangle while preserving proposal history."},
+    {"name": "Merge regions", "type": "edit_action", "description": "Creates a new composite proposal from selected regions."},
+    {"name": "Split region", "type": "edit_action", "description": "Creates separate proposals from a user-defined division of one region."},
+    {"name": "Restore proposal", "type": "history_action", "description": "Restores a rejected or previously superseded proposal as a new version."}
+  ],
+  "output": {
+    "name": "manual_shape_proposal",
+    "type": "versioned_shape",
+    "description": "Stores corrected geometry separately from the immutable detector mask and automatic fit."
+  }
+}

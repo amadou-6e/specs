@@ -1,0 +1,43 @@
+sequenceDiagram
+    participant UI as Settings Screen
+    participant Pop as Popup Window
+    participant B as Connections Service
+    participant C as CLI Process (claude / openai)
+    participant P as Provider (Anthropic / OpenAI)
+
+    UI->>B: GET /api/connections/anthropic/oauth-start
+    B->>B: resolve CLI binary (env var → PATH → well-known paths)
+
+    alt CLI binary not found
+        B-->>UI: 200 { available: false }
+        UI->>UI: hide "Login with browser"; show API key input only
+    end
+
+    B->>C: spawn: claude login --print-login-url  (non-blocking)
+    C-->>B: auth URL (first stdout line)
+    B->>B: store { pid, state_token, started_at } in _cli_login_pending[conn_id]
+    B-->>UI: 200 { available: true, flow: "cli_browser", url, poll_url: ".../cli-login-status" }
+
+    UI->>Pop: window.open(url, 600×700 popup)
+    Note over Pop,P: user completes auth in provider's browser tab
+    P->>C: auth completion signal
+    C->>C: write credentials to ~/.claude/ or ~/.config/openai/
+
+    loop every 2 s (max 5 min)
+        UI->>B: GET /api/connections/anthropic/cli-login-status
+        B->>C: claude whoami (probe)
+        alt whoami exits non-zero
+            C-->>B: error
+            B-->>UI: { status: "pending" }
+        else whoami exits 0
+            C-->>B: 0 + username
+            B->>B: status → connected; clear _cli_login_pending entry
+            B-->>UI: { status: "connected", username: "acisse@…" }
+            UI->>Pop: popup.close()  (if still open)
+            UI->>B: GET /api/connections
+            B-->>UI: updated list; Anthropic card → connected
+        else TTL exceeded (5 min)
+            B-->>UI: { status: "error", error_message: "Login timed out" }
+            UI->>UI: show error; offer retry
+        end
+    end

@@ -1,0 +1,167 @@
+{
+    "name":  "Erase text",
+    "type":  "text.erase",
+    "description":  "Removes text from an image using one sidebar tab with selectable Hybrid pipeline, TMIM, or ViT Eraser methods. Shared detection and scope controls remain stable while method-specific controls appear only when relevant.",
+    "fields":  [
+                   {
+                       "name":  "method",
+                       "type":  "select",
+                       "description":  "Selects the text-removal strategy used by this tab. Hybrid pipeline combines monotonic-background fill with TMIM reconstruction and is the validated default. TMIM runs direct mask-aware reconstruction without hybrid prefill. ViT Eraser runs the alternate vision-transformer model.",
+                       "default":  "hybrid_pipeline",
+                       "options":  [
+                                       {
+                                           "name":  "Hybrid pipeline",
+                                           "value":  "hybrid_pipeline",
+                                           "description":  "Classifies consolidated text regions, prefills qualifying monotonic backgrounds, and reconstructs the remaining masked regions with TMIM."
+                                       },
+                                       {
+                                           "name":  "TMIM",
+                                           "value":  "tmim",
+                                           "description":  "Runs direct TMIM reconstruction on the configured text mask without monotonic prefill."
+                                       },
+                                       {
+                                           "name":  "ViT Eraser",
+                                           "value":  "vit_eraser",
+                                           "description":  "Runs the alternate vision-transformer erasure model on the configured text mask."
+                                       }
+                                   ]
+                   },
+                   {
+                       "name":  "detection",
+                       "type":  "select",
+                       "description":  "Selects the detection preset that supplies text regions to erasure. Accurate favors recall so small, faint, or low-contrast words are less likely to remain, at the cost of additional OCR work.",
+                       "default":  "accurate",
+                       "options":  [
+                                       {
+                                           "name":  "Accurate",
+                                           "value":  "accurate",
+                                           "description":  "Uses the high-recall OCR configuration and consolidated text-region processing."
+                                       },
+                                       {
+                                           "name":  "Fast",
+                                           "value":  "fast",
+                                           "description":  "Uses a faster OCR configuration that may miss small or low-contrast text."
+                                       },
+                                       {
+                                           "name":  "Existing detections",
+                                           "value":  "existing_detections",
+                                           "description":  "Reuses text polygons already stored by the Detect text tool without rerunning OCR."
+                                       }
+                                   ]
+                   },
+                   {
+                       "name":  "apply_scope",
+                       "type":  "select",
+                       "description":  "Limits where the selected erasure method may replace source pixels. OCR regions confines changes to masks derived from detected text, while full image permits broader model reconstruction and can modify pixels outside detected regions.",
+                       "default":  "ocr_regions",
+                       "options":  [
+                                       {
+                                           "name":  "OCR regions",
+                                           "value":  "ocr_regions",
+                                           "description":  "Applies TMIM only within masks derived from detected text regions."
+                                       },
+                                       {
+                                           "name":  "Full image",
+                                           "value":  "full_image",
+                                           "description":  "Runs TMIM across the complete image, allowing broader reconstruction but increasing the risk of changing non-text content."
+                                       }
+                                   ]
+                   },
+                   {
+                       "name":  "background_handling",
+                       "type":  "select",
+                       "description":  "Controls how the pipeline handles text on locally uniform backgrounds. Auto classification estimates background variation per consolidated text region, fills only text-like enclosed pixels in monotonic regions, and sends variable regions to neural reconstruction.",
+                       "default":  "auto_classify_and_monotonic_fill",
+                       "options":  [
+                                       {
+                                           "name":  "Auto classify + monotonic fill",
+                                           "value":  "auto_classify_and_monotonic_fill",
+                                           "description":  "Classifies each consolidated region and prefills text pixels when the surrounding background is locally monotonic before TMIM runs."
+                                       },
+                                       {
+                                           "name":  "TMIM only",
+                                           "value":  "tmim_only",
+                                           "description":  "Skips monotonic prefill and sends all detected text regions directly to TMIM."
+                                       },
+                                       {
+                                           "name":  "Monotonic fill only",
+                                           "value":  "monotonic_fill_only",
+                                           "description":  "Uses estimated background-color fill for qualifying regions and does not run TMIM."
+                                       }
+                                   ],
+                       "visible_when":  {
+                                            "method":  "hybrid_pipeline"
+                                        }
+                   },
+                   {
+                       "name":  "mask_source",
+                       "type":  "select",
+                       "description":  "Chooses the geometry used to identify pixels that the selected model should reconstruct. OCR plus paragraph uses detected text and consolidation logic so neighboring words can be treated as a coherent region.",
+                       "default":  "ocr_and_paragraph",
+                       "options":  [
+                                       {
+                                           "name":  "OCR + paragraph",
+                                           "value":  "ocr_and_paragraph",
+                                           "description":  "Builds the mask from OCR detections after merging compatible neighboring words and lines into text regions."
+                                       },
+                                       {
+                                           "name":  "OCR polygons",
+                                           "value":  "ocr_polygons",
+                                           "description":  "Uses the OCR polygons directly without paragraph-level consolidation."
+                                       },
+                                       {
+                                           "name":  "Manual mask",
+                                           "value":  "manual_mask",
+                                           "description":  "Uses the mask painted or selected by the user."
+                                       }
+                                   ],
+                       "visible_when":  {
+                                            "method":  [
+                                                           "tmim",
+                                                           "vit_eraser"
+                                                       ]
+                                        }
+                   },
+                   {
+                       "name":  "mask_expansion_px",
+                       "type":  "integer",
+                       "description":  "Expands the mask outward by this many pixels before reconstruction so antialiased glyph edges and nearby text smears are included. Larger values remove more residual text but can consume surrounding details.",
+                       "default":  8,
+                       "minimum":  0,
+                       "maximum":  64,
+                       "unit":  "px",
+                       "visible_when":  {
+                                            "method":  [
+                                                           "hybrid_pipeline",
+                                                           "tmim"
+                                                       ]
+                                        }
+                   },
+                   {
+                       "name":  "preview_quality",
+                       "type":  "select",
+                       "description":  "Balances ViT Eraser preview latency against reconstruction detail. Fast uses reduced inference settings for mask iteration; Detailed uses the full configured resolution and inference budget.",
+                       "default":  "detailed",
+                       "options":  [
+                                       {
+                                           "name":  "Fast",
+                                           "value":  "fast",
+                                           "description":  "Produces a lower-cost ViT Eraser preview for rapid mask adjustment."
+                                       },
+                                       {
+                                           "name":  "Detailed",
+                                           "value":  "detailed",
+                                           "description":  "Uses the higher-quality ViT Eraser inference configuration for final evaluation."
+                                       }
+                                   ],
+                       "visible_when":  {
+                                            "method":  "vit_eraser"
+                                        }
+                   }
+               ],
+    "action":  {
+                   "name":  "Run text erasure",
+                   "type":  "action",
+                   "description":  "Runs the selected erasure method with the configured detection, mask, scope, and method-specific settings, then creates a non-destructive output version for comparison or acceptance."
+               }
+}

@@ -1,0 +1,39 @@
+flowchart TB
+    subgraph Frontend
+        ST[Settings Screen]
+    end
+
+    subgraph "Connections Service"
+        R[Router\nconnections.py]
+        OA[OAuth handler\noauth.py]
+        CL[CLI login\ncli_login.py]
+    end
+
+    subgraph Store
+        CS[(_connections)]
+        OP[(_oauth_pending)]
+        LP[(_cli_login_pending)]
+    end
+
+    subgraph External
+        ME[Medium OAuth\n/v1/oauth/token\n/v1/me]
+        AN[claude CLI]
+        OI[openai CLI]
+    end
+
+    ST -->|list / save token / disconnect| R
+    ST -->|oauth-start / oauth-callback| R
+    ST -->|cli-login-status poll| R
+
+    R --> CS
+    R --> OA
+    R --> CL
+
+    OA --> OP
+    OA <-->|code exchange + whoami| ME
+    OA --> CS
+
+    CL --> LP
+    CL <-->|spawn + probe| AN
+    CL <-->|spawn + probe| OI
+    CL --> CS

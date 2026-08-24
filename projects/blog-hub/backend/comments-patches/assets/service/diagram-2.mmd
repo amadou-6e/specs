@@ -1,0 +1,40 @@
+classDiagram
+  class Comment {
+    +str id
+    +str article_id
+    +str author
+    +str text
+    +str anchor
+    +datetime createdAt
+    +bool resolved
+    +bool hasPatch
+  }
+  class Patch {
+    +str id
+    +str article_id
+    +str comment_id
+    +str label
+    +str removed
+    +str added
+    +PatchState state
+  }
+  class PatchState {
+    <<enumeration>>
+    pending
+    accepted
+    rejected
+  }
+  class CommentsService {
+    +list_comments(article_id) list~Comment~
+    +create_comment(article_id, author, text, anchor) Comment
+    +resolve_comment(article_id, comment_id) Comment
+  }
+  class PatchesService {
+    +list_patches(article_id) list~Patch~
+    +accept_patch(patch_id) Patch
+    +reject_patch(patch_id) Patch
+  }
+
+  Patch --> PatchState
+  CommentsService --> Comment
+  PatchesService --> Patch

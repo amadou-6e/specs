@@ -1,0 +1,1198 @@
+{
+  "image": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\py-dockerdb\\blog-hub\\.spec\\design_tools\\text\\jobs\\ac8d459dd6964969a1df89c16c0166ca\\input.png",
+  "ocr_json": "C:\\Users\\acisse\\Documents\\CodeWorkspace\\py-dockerdb\\blog-hub\\.spec\\design_tools\\text\\jobs\\ac8d459dd6964969a1df89c16c0166ca\\baseline_51.ocr.json",
+  "tmim_scope": "full",
+  "horizontal_overlap": 0.25,
+  "line_gap_scale": 1.15,
+  "max_text_height": 102,
+  "ocr_regions": 51,
+  "prefill": [
+    {
+      "region_id": 1,
+      "text": " ",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 0.0,
+      "dominant_fraction": 0.9405526992287918,
+      "edited_pixels": 75
+    },
+    {
+      "region_id": 2,
+      "text": "O\u0111o he",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 0.0,
+      "dominant_fraction": 1.0,
+      "edited_pixels": 880
+    },
+    {
+      "region_id": 3,
+      "text": "",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 0.0,
+      "dominant_fraction": 1.0,
+      "edited_pixels": 1132
+    },
+    {
+      "region_id": 4,
+      "text": "Sranbl",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 0.0,
+      "dominant_fraction": 1.0,
+      "edited_pixels": 665
+    },
+    {
+      "region_id": 5,
+      "text": "",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 0.0,
+      "dominant_fraction": 1.0,
+      "edited_pixels": 718
+    },
+    {
+      "region_id": 6,
+      "text": " .",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 183.26210021972656,
+      "dominant_fraction": 0.7281971059835745,
+      "edited_pixels": 17708
+    },
+    {
+      "region_id": 7,
+      "text": "   .",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 52.028839111328125,
+      "dominant_fraction": 0.7498085758039816,
+      "edited_pixels": 37
+    },
+    {
+      "region_id": 8,
+      "text": "  \u2014    .",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 148.82122802734375,
+      "dominant_fraction": 0.6554054054054054,
+      "edited_pixels": 64
+    },
+    {
+      "region_id": 9,
+      "text": "  .",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 23.21205711364746,
+      "dominant_fraction": 0.7914817465998568,
+      "edited_pixels": 24499
+    },
+    {
+      "region_id": 10,
+      "text": "  ",
+      "method": "fill",
+      "background_rgb": [
+        32,
+        25,
+        22
+      ],
+      "color_spread": 8.124038696289062,
+      "dominant_fraction": 0.8122614503816794,
+      "edited_pixels": 33
+    },
+    {
+      "region_id": 11,
+      "text": "7",
+      "method": "tmim",
+      "background_rgb": [
+        74,
+        68,
+        58
+      ],
+      "color_spread": 257.7261962890625,
+      "dominant_fraction": 0.04195804195804196,
+      "edited_pixels": 976
+    },
+    {
+      "region_id": 12,
+      "text": "HNTFUL OF HOL",
+      "method": "fill",
+      "background_rgb": [
+        85,
+        84,
+        84
+      ],
+      "color_spread": 76.71896362304688,
+      "dominant_fraction": 0.6020136215575955,
+      "edited_pixels": 45
+    },
+    {
+      "region_id": 13,
+      "text": "U",
+      "method": "tmim",
+      "background_rgb": [
+        162,
+        134,
+        95
+      ],
+      "color_spread": 152.56570434570312,
+      "dominant_fraction": 0.057648401826484015,
+      "edited_pixels": 2352
+    },
+    {
+      "region_id": 14,
+      "text": "0",
+      "method": "fill",
+      "background_rgb": [
+        217,
+        174,
+        123
+      ],
+      "color_spread": 12.206555366516113,
+      "dominant_fraction": 0.7911073825503355,
+      "edited_pixels": 0
+    },
+    {
+      "region_id": 15,
+      "text": "A",
+      "method": "tmim",
+      "background_rgb": [
+        196,
+        172,
+        139
+      ],
+      "color_spread": 103.70149230957031,
+      "dominant_fraction": 0.14820359281437126,
+      "edited_pixels": 1378
+    },
+    {
+      "region_id": 16,
+      "text": "TF",
+      "method": "tmim",
+      "background_rgb": [
+        48,
+        33,
+        19
+      ],
+      "color_spread": 212.05374145507812,
+      "dominant_fraction": 0.18513513513513513,
+      "edited_pixels": 3715
+    },
+    {
+      "region_id": 17,
+      "text": "!    ,",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 3.1622776985168457,
+      "dominant_fraction": 0.9413064493854439,
+      "edited_pixels": 16444
+    },
+    {
+      "region_id": 18,
+      "text": "  .    ",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 5.385164737701416,
+      "dominant_fraction": 0.9422853828306265,
+      "edited_pixels": 10748
+    },
+    {
+      "region_id": 19,
+      "text": "   ",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 4.242640495300293,
+      "dominant_fraction": 0.9430584281282316,
+      "edited_pixels": 23959
+    },
+    {
+      "region_id": 20,
+      "text": "  ",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 0.0,
+      "dominant_fraction": 0.9674845573095402,
+      "edited_pixels": 7602
+    },
+    {
+      "region_id": 21,
+      "text": " ",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 0.0,
+      "dominant_fraction": 0.9526986951364176,
+      "edited_pixels": 8892
+    },
+    {
+      "region_id": 22,
+      "text": "  ",
+      "method": "fill",
+      "background_rgb": [
+        30,
+        25,
+        23
+      ],
+      "color_spread": 12.806248664855957,
+      "dominant_fraction": 0.7613041408852927,
+      "edited_pixels": 3311
+    },
+    {
+      "region_id": 23,
+      "text": " ",
+      "method": "fill",
+      "background_rgb": [
+        222,
+        101,
+        54
+      ],
+      "color_spread": 5.099019527435303,
+      "dominant_fraction": 0.8594006568144499,
+      "edited_pixels": 61
+    },
+    {
+      "region_id": 24,
+      "text": " ",
+      "method": "fill",
+      "background_rgb": [
+        222,
+        101,
+        54
+      ],
+      "color_spread": 4.123105525970459,
+      "dominant_fraction": 0.8586337760910816,
+      "edited_pixels": 73
+    },
+    {
+      "region_id": 25,
+      "text": " ",
+      "method": "fill",
+      "background_rgb": [
+        222,
+        101,
+        54
+      ],
+      "color_spread": 80.90117645263672,
+      "dominant_fraction": 0.628060263653484,
+      "edited_pixels": 61
+    },
+    {
+      "region_id": 26,
+      "text": " ",
+      "method": "fill",
+      "background_rgb": [
+        222,
+        101,
+        54
+      ],
+      "color_spread": 68.09111785888672,
+      "dominant_fraction": 0.678968253968254,
+      "edited_pixels": 43
+    },
+    {
+      "region_id": 27,
+      "text": " ",
+      "method": "fill",
+      "background_rgb": [
+        222,
+        101,
+        54
+      ],
+      "color_spread": 29.24028778076172,
+      "dominant_fraction": 0.7219626168224299,
+      "edited_pixels": 142
+    },
+    {
+      "region_id": 28,
+      "text": "  ",
+      "method": "fill",
+      "background_rgb": [
+        222,
+        101,
+        54
+      ],
+      "color_spread": 16.192541122436523,
+      "dominant_fraction": 0.7602357320099256,
+      "edited_pixels": 55
+    },
+    {
+      "region_id": 29,
+      "text": "   ",
+      "method": "fill",
+      "background_rgb": [
+        222,
+        101,
+        54
+      ],
+      "color_spread": 49.75539779663086,
+      "dominant_fraction": 0.692054794520548,
+      "edited_pixels": 65
+    },
+    {
+      "region_id": 30,
+      "text": "   ",
+      "method": "fill",
+      "background_rgb": [
+        222,
+        101,
+        54
+      ],
+      "color_spread": 58.75706100463867,
+      "dominant_fraction": 0.6938997821350763,
+      "edited_pixels": 73
+    },
+    {
+      "region_id": 31,
+      "text": "",
+      "method": "fill",
+      "background_rgb": [
+        228,
+        223,
+        204
+      ],
+      "color_spread": 158.28456115722656,
+      "dominant_fraction": 0.7015971316818774,
+      "edited_pixels": 209
+    },
+    {
+      "region_id": 32,
+      "text": "  ",
+      "method": "fill",
+      "background_rgb": [
+        228,
+        223,
+        204
+      ],
+      "color_spread": 129.4258575439453,
+      "dominant_fraction": 0.7178469355350905,
+      "edited_pixels": 2738
+    },
+    {
+      "region_id": 33,
+      "text": "",
+      "method": "fill",
+      "background_rgb": [
+        30,
+        25,
+        22
+      ],
+      "color_spread": 3.0,
+      "dominant_fraction": 0.8563253012048193,
+      "edited_pixels": 3046
+    },
+    {
+      "region_id": 34,
+      "text": "",
+      "method": "fill",
+      "background_rgb": [
+        30,
+        25,
+        22
+      ],
+      "color_spread": 0.0,
+      "dominant_fraction": 0.8669284467713787,
+      "edited_pixels": 4954
+    },
+    {
+      "region_id": 35,
+      "text": "  ",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 0.0,
+      "dominant_fraction": 1.0,
+      "edited_pixels": 13509
+    },
+    {
+      "region_id": 36,
+      "text": "  \u2014   ",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 113.3490219116211,
+      "dominant_fraction": 0.6662908680947013,
+      "edited_pixels": 38
+    },
+    {
+      "region_id": 37,
+      "text": ",     .",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 108.69586944580078,
+      "dominant_fraction": 0.6854838709677419,
+      "edited_pixels": 54
+    },
+    {
+      "region_id": 38,
+      "text": "   ",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 0.0,
+      "dominant_fraction": 1.0,
+      "edited_pixels": 6536
+    },
+    {
+      "region_id": 39,
+      "text": "  \u2014  ",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 5.099019527435303,
+      "dominant_fraction": 0.8427807486631016,
+      "edited_pixels": 3483
+    },
+    {
+      "region_id": 40,
+      "text": "01",
+      "method": "fill",
+      "background_rgb": [
+        238,
+        232,
+        210
+      ],
+      "color_spread": 24.24871063232422,
+      "dominant_fraction": 0.7022727272727273,
+      "edited_pixels": 349
+    },
+    {
+      "region_id": 41,
+      "text": ",   .",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 39.31920623779297,
+      "dominant_fraction": 0.6846153846153846,
+      "edited_pixels": 2945
+    },
+    {
+      "region_id": 42,
+      "text": "    ,",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 11.357816696166992,
+      "dominant_fraction": 0.8052367288378766,
+      "edited_pixels": 70
+    },
+    {
+      "region_id": 43,
+      "text": "02",
+      "method": "tmim",
+      "background_rgb": [
+        152,
+        146,
+        132
+      ],
+      "color_spread": 203.99386596679688,
+      "dominant_fraction": 0.012569832402234637,
+      "edited_pixels": 1618
+    },
+    {
+      "region_id": 44,
+      "text": "  ",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 0.0,
+      "dominant_fraction": 1.0,
+      "edited_pixels": 6176
+    },
+    {
+      "region_id": 45,
+      "text": "   ",
+      "method": "tmim",
+      "background_rgb": [
+        233,
+        228,
+        208
+      ],
+      "color_spread": 146.71742248535156,
+      "dominant_fraction": 0.49122807017543857,
+      "edited_pixels": 8720
+    },
+    {
+      "region_id": 46,
+      "text": "  .",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 123.2791748046875,
+      "dominant_fraction": 0.6496175908221797,
+      "edited_pixels": 154
+    },
+    {
+      "region_id": 47,
+      "text": "   ",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 13.45362377166748,
+      "dominant_fraction": 0.795727136431784,
+      "edited_pixels": 3446
+    },
+    {
+      "region_id": 48,
+      "text": "03",
+      "method": "fill",
+      "background_rgb": [
+        238,
+        232,
+        210
+      ],
+      "color_spread": 17.32050895690918,
+      "dominant_fraction": 0.7515151515151515,
+      "edited_pixels": 392
+    },
+    {
+      "region_id": 49,
+      "text": "   ",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 0.0,
+      "dominant_fraction": 1.0,
+      "edited_pixels": 6766
+    },
+    {
+      "region_id": 50,
+      "text": "  7-10   ",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        232,
+        211
+      ],
+      "color_spread": 45.639896392822266,
+      "dominant_fraction": 0.6453323903818954,
+      "edited_pixels": 3562
+    },
+    {
+      "region_id": 51,
+      "text": ".",
+      "method": "fill",
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "color_spread": 30.675724029541016,
+      "dominant_fraction": 0.755,
+      "edited_pixels": 1360
+    }
+  ],
+  "paragraphs": [
+    {
+      "box": [
+        323,
+        277,
+        475,
+        307
+      ],
+      "member_count": 1,
+      "monotonic": true,
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "perimeter_fraction": 0.9389880952380952,
+      "interior_fraction": 0.6853070175438597,
+      "side_count": 4
+    },
+    {
+      "box": [
+        1082,
+        277,
+        1160,
+        307
+      ],
+      "member_count": 1,
+      "monotonic": true,
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "perimeter_fraction": 1.0,
+      "interior_fraction": 1.0,
+      "side_count": 4
+    },
+    {
+      "box": [
+        1172,
+        277,
+        1269,
+        307
+      ],
+      "member_count": 1,
+      "monotonic": true,
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "perimeter_fraction": 1.0,
+      "interior_fraction": 1.0,
+      "side_count": 4
+    },
+    {
+      "box": [
+        1280,
+        278,
+        1344,
+        306
+      ],
+      "member_count": 1,
+      "monotonic": true,
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "perimeter_fraction": 1.0,
+      "interior_fraction": 1.0,
+      "side_count": 4
+    },
+    {
+      "box": [
+        1352,
+        277,
+        1419,
+        308
+      ],
+      "member_count": 1,
+      "monotonic": true,
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "perimeter_fraction": 1.0,
+      "interior_fraction": 1.0,
+      "side_count": 4
+    },
+    {
+      "box": [
+        267,
+        434,
+        1032,
+        602
+      ],
+      "member_count": 2,
+      "monotonic": true,
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "perimeter_fraction": 1.0,
+      "interior_fraction": 1.0,
+      "side_count": 4
+    },
+    {
+      "box": [
+        1234,
+        448,
+        1543,
+        502
+      ],
+      "member_count": 2,
+      "monotonic": true,
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "perimeter_fraction": 1.0,
+      "interior_fraction": 0.6706220783890687,
+      "side_count": 4
+    },
+    {
+      "box": [
+        1264,
+        531,
+        1480,
+        567
+      ],
+      "member_count": 1,
+      "monotonic": false,
+      "background_rgb": [
+        239,
+        233,
+        213
+      ],
+      "perimeter_fraction": 0.8390022675736961,
+      "interior_fraction": 0.0,
+      "side_count": 2
+    },
+    {
+      "box": [
+        384,
+        963,
+        446,
+        998
+      ],
+      "member_count": 1,
+      "monotonic": false,
+      "background_rgb": [
+        182,
+        158,
+        116
+      ],
+      "perimeter_fraction": 0.511990407673861,
+      "interior_fraction": 0.8622119815668203,
+      "side_count": 3
+    },
+    {
+      "box": [
+        519,
+        956,
+        553,
+        984
+      ],
+      "member_count": 1,
+      "monotonic": true,
+      "background_rgb": [
+        218,
+        177,
+        124
+      ],
+      "perimeter_fraction": 0.7948717948717948,
+      "interior_fraction": 0.7615546218487395,
+      "side_count": 4
+    },
+    {
+      "box": [
+        282,
+        978,
+        321,
+        1010
+      ],
+      "member_count": 1,
+      "monotonic": false,
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "perimeter_fraction": 0.4306784660766962,
+      "interior_fraction": 0.12259615384615384,
+      "side_count": 2
+    },
+    {
+      "box": [
+        315,
+        963,
+        403,
+        1011
+      ],
+      "member_count": 1,
+      "monotonic": false,
+      "background_rgb": [
+        41,
+        28,
+        13
+      ],
+      "perimeter_fraction": 0.42134831460674155,
+      "interior_fraction": 0.1259469696969697,
+      "side_count": 2
+    },
+    {
+      "box": [
+        403,
+        1238,
+        1433,
+        1495
+      ],
+      "member_count": 5,
+      "monotonic": true,
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "perimeter_fraction": 1.0,
+      "interior_fraction": 0.8535491670129576,
+      "side_count": 4
+    },
+    {
+      "box": [
+        785,
+        1522,
+        1002,
+        1558
+      ],
+      "member_count": 1,
+      "monotonic": false,
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "perimeter_fraction": 0.8406779661016949,
+      "interior_fraction": 0.0,
+      "side_count": 2
+    },
+    {
+      "box": [
+        942,
+        1688,
+        1202,
+        1748
+      ],
+      "member_count": 2,
+      "monotonic": true,
+      "background_rgb": [
+        222,
+        101,
+        54
+      ],
+      "perimeter_fraction": 1.0,
+      "interior_fraction": 0.762948717948718,
+      "side_count": 4
+    },
+    {
+      "box": [
+        1261,
+        1687,
+        1479,
+        1747
+      ],
+      "member_count": 2,
+      "monotonic": true,
+      "background_rgb": [
+        222,
+        101,
+        54
+      ],
+      "perimeter_fraction": 1.0,
+      "interior_fraction": 0.7841743119266055,
+      "side_count": 4
+    },
+    {
+      "box": [
+        943,
+        1934,
+        1128,
+        1995
+      ],
+      "member_count": 2,
+      "monotonic": true,
+      "background_rgb": [
+        222,
+        101,
+        54
+      ],
+      "perimeter_fraction": 1.0,
+      "interior_fraction": 0.7029685423128046,
+      "side_count": 4
+    },
+    {
+      "box": [
+        1263,
+        1937,
+        1447,
+        1995
+      ],
+      "member_count": 2,
+      "monotonic": true,
+      "background_rgb": [
+        222,
+        101,
+        54
+      ],
+      "perimeter_fraction": 1.0,
+      "interior_fraction": 0.7019302848575713,
+      "side_count": 4
+    },
+    {
+      "box": [
+        309,
+        2024,
+        628,
+        2128
+      ],
+      "member_count": 2,
+      "monotonic": true,
+      "background_rgb": [
+        228,
+        223,
+        204
+      ],
+      "perimeter_fraction": 1.0,
+      "interior_fraction": 0.7222389679286231,
+      "side_count": 4
+    },
+    {
+      "box": [
+        318,
+        2328,
+        519,
+        2450
+      ],
+      "member_count": 2,
+      "monotonic": true,
+      "background_rgb": [
+        30,
+        25,
+        22
+      ],
+      "perimeter_fraction": 1.0,
+      "interior_fraction": 1.0,
+      "side_count": 4
+    },
+    {
+      "box": [
+        272,
+        3276,
+        787,
+        3347
+      ],
+      "member_count": 1,
+      "monotonic": true,
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "perimeter_fraction": 1.0,
+      "interior_fraction": 1.0,
+      "side_count": 4
+    },
+    {
+      "box": [
+        1233,
+        3275,
+        1543,
+        3336
+      ],
+      "member_count": 2,
+      "monotonic": true,
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "perimeter_fraction": 1.0,
+      "interior_fraction": 0.7002644103648863,
+      "side_count": 4
+    },
+    {
+      "box": [
+        372,
+        3450,
+        782,
+        3503
+      ],
+      "member_count": 1,
+      "monotonic": true,
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "perimeter_fraction": 1.0,
+      "interior_fraction": 1.0,
+      "side_count": 4
+    },
+    {
+      "box": [
+        1233,
+        3446,
+        1539,
+        3505
+      ],
+      "member_count": 2,
+      "monotonic": true,
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "perimeter_fraction": 1.0,
+      "interior_fraction": 1.0,
+      "side_count": 4
+    },
+    {
+      "box": [
+        1233,
+        3575,
+        1538,
+        3657
+      ],
+      "member_count": 3,
+      "monotonic": true,
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "perimeter_fraction": 1.0,
+      "interior_fraction": 0.7007996801279488,
+      "side_count": 4
+    },
+    {
+      "box": [
+        376,
+        3592,
+        701,
+        3638
+      ],
+      "member_count": 1,
+      "monotonic": true,
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "perimeter_fraction": 1.0,
+      "interior_fraction": 1.0,
+      "side_count": 4
+    },
+    {
+      "box": [
+        1234,
+        3714,
+        1543,
+        3797
+      ],
+      "member_count": 3,
+      "monotonic": true,
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "perimeter_fraction": 1.0,
+      "interior_fraction": 1.0,
+      "side_count": 4
+    },
+    {
+      "box": [
+        297,
+        3739,
+        336,
+        3770
+      ],
+      "member_count": 1,
+      "monotonic": true,
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "perimeter_fraction": 0.9642857142857143,
+      "interior_fraction": 1.0,
+      "side_count": 4
+    },
+    {
+      "box": [
+        378,
+        3732,
+        797,
+        3781
+      ],
+      "member_count": 1,
+      "monotonic": true,
+      "background_rgb": [
+        239,
+        233,
+        211
+      ],
+      "perimeter_fraction": 1.0,
+      "interior_fraction": 1.0,
+      "side_count": 4
+    }
+  ]
+}

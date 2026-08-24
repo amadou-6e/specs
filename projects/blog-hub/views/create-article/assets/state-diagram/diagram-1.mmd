@@ -1,0 +1,65 @@
+flowchart TD
+    START(( )) --> PA & PB
+
+    %% ── Path A: New article ───────────────────────────────────────────
+    subgraph PA ["✦  New Article"]
+        direction TB
+        A1[Write brief] --> A2{Add context?}
+        A2 -->|upload .md doc| A3[Doc uploaded]
+        A2 -->|link website URL| A4[URL linked]
+        A2 -->|enable web search| A5[Web search on]
+        A2 -->|skip| BR
+        A3 & A4 & A5 --> BR([Brief ready])
+    end
+
+    %% ── Path B: Existing content ──────────────────────────────────────
+    subgraph PB ["⬤  Existing Content"]
+        direction TB
+        B1{Source?}
+        B1 -->|upload .md file| B2[File selected]
+        B2 -->|valid markdown| CR
+        B2 -->|bad format| B2E[Error] --> B2
+
+        B1 -->|import from platform| B3[Choose platform]
+        B3 --> B4[Choose draft]
+        B4 -->|fetch ok| CR
+        B4 -->|fetch failed| B4E[Error] --> B4
+
+        CR([Content ready])
+    end
+
+    %% ── New article only: Configure then Generate ─────────────────────
+    BR --> CFG
+
+    subgraph CFG ["⚙  Configure"]
+        direction LR
+        C1[Pick format] --> C2[Pick AI provider] --> C3[Set word count]
+    end
+
+    CFG --> GEN
+
+    subgraph GEN ["◈  Generate"]
+        direction LR
+        G1[Call AI CLI] -->|exit 0 + output| G2([Article body])
+        G1 -->|error / empty| GE[Show error - retry from Configure]
+    end
+
+    %% ── Both paths land in Done ───────────────────────────────────────
+    G2 & CR --> DONE
+
+    subgraph DONE ["✓  Article Created"]
+        direction LR
+        S0[Pick destinations] -->|toggle on/off| S0
+        S0 --> S1[Store in memory]
+        S1 -->|destinations selected| S2[Push drafts]
+        S1 -->|no destinations| S3
+        S2 --> S3([Done])
+    end
+
+    S3 --> END(( ))
+
+    style START fill:#6366f1,stroke:none
+    style END   fill:#6366f1,stroke:none
+    style GE    fill:#2a1515,stroke:#7f1d1d,color:#f87171
+    style B2E   fill:#2a1515,stroke:#7f1d1d,color:#f87171
+    style B4E   fill:#2a1515,stroke:#7f1d1d,color:#f87171

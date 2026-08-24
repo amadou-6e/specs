@@ -1,0 +1,27 @@
+sequenceDiagram
+    participant F as Frontend (Settings)
+    participant B as Backend
+    participant C as CLI (claude / openai)
+    participant P as Provider
+
+    F->>B: GET /api/connections/{id}/oauth-start
+    B->>B: resolve CLI binary (PATH / env override)
+    alt CLI binary not found
+        B-->>F: { available: false }
+        Note over F: fall back to API key form
+    else CLI available
+        B->>C: spawn: claude login --print-login-url
+        C-->>B: auth URL (first stdout line)
+        B-->>F: { available: true, flow: "cli_browser", url, poll_url }
+        F->>P: open popup to url
+        Note over P: User grants permission
+        P->>C: auth completion signal
+        C->>C: write credentials to config dir
+        loop every 2 s (max 5 min)
+            F->>B: GET /api/connections/{id}/cli-login-status
+            B->>C: claude whoami / openai whoami
+            C-->>B: exit 0 + username
+            B-->>F: { status: "connected", username }
+        end
+        F->>F: close popup; refresh connection card
+    end

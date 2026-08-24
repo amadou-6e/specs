@@ -1,0 +1,12 @@
+stateDiagram-v2
+  [*] --> none : platform added to article
+
+  none --> pending : POST /api/articles/{id}/push (job running)
+  pending --> draft : push job done (draft created on platform)
+  pending --> error : push job error (auth failure, rate limit, etc.)
+
+  draft --> pending : re-push triggered
+  error --> pending : retry push
+
+  draft --> published : platform publishes the draft (external action)
+  published --> [*]

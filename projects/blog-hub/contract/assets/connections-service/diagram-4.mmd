@@ -1,0 +1,30 @@
+sequenceDiagram
+    participant UI as Settings Screen
+    participant Pop as Popup Window
+    participant B as Connections Service
+    participant M as Medium API
+
+    UI->>B: GET /api/connections/medium/oauth-start
+    B->>B: generate state = secrets.token_urlsafe(32); store with 10-min TTL
+    B-->>UI: 200 { available: true, url: "https://medium.com/m/oauth/authorize?state=…" }
+
+    alt MEDIUM_CLIENT_ID not configured
+        B-->>UI: 200 { available: false, url: null }
+        UI->>UI: hide OAuth button; show API key input only
+    end
+
+    UI->>Pop: window.open(url, 600×700 popup)
+    Note over Pop,M: user grants permission in Medium tab
+    M->>B: GET /api/connections/medium/oauth-callback?code=abc&state=xyz
+    B->>B: entry = _oauth_pending.pop(state)  ← single-use; validate; check TTL
+    B->>M: POST /v1/oauth/token { code, client_id, client_secret }
+    M-->>B: { access_token, refresh_token }
+    B->>M: GET /v1/me (fetch username)
+    M-->>B: { data: { username } }
+    B->>B: store token; status → connected; username saved
+    B-->>Pop: 200 HTML page (postMessage script)
+    Pop->>UI: window.opener.postMessage({ type: "oauth-complete", platform: "medium" }, APP_ORIGIN)
+    Pop->>Pop: window.close()
+    Note over UI: listener validates e.origin === window.location.origin
+    UI->>B: GET /api/connections
+    B-->>UI: updated connection list; Medium card → connected

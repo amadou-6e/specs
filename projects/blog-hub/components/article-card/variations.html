@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Article Card — 10 Variations</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ══════════════════════════════════════════
+   THEME TOKENS — greyscale only
+   ══════════════════════════════════════════ */
+.dark {
+  --page:     #111111;
+  --bg:       #1e1e1e;
+  --bg-hi:    #252525;
+  --border:   #2e2e2e;
+  --border-hi:#505050;
+  --t1:       #eeeeee;
+  --t2:       #666666;
+  --t3:       #333333;
+  --cover-a:  #141414;
+  --cover-b:  #1a1a1a;
+  --tag-bg:   #252525;
+  --shadow:   rgba(0,0,0,0.55);
+}
+.light {
+  --page:     #e4e4e4;
+  --bg:       #ffffff;
+  --bg-hi:    #f6f6f6;
+  --border:   #e0e0e0;
+  --border-hi:#aaaaaa;
+  --t1:       #111111;
+  --t2:       #888888;
+  --t3:       #d8d8d8;
+  --cover-a:  #c8c8c8;
+  --cover-b:  #d8d8d8;
+  --tag-bg:   #f0f0f0;
+  --shadow:   rgba(0,0,0,0.10);
+}
+
+/* ══════════════════════════════════════════
+   BASE CARD STRUCTURE
+   ══════════════════════════════════════════ */
+.article-card {
+  display: flex;
+  flex-direction: row;
+  height: 168px;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.card-cover       { flex-shrink: 0; width: 180px; position: relative; }
+.card-cover-fill  { width: 100%; height: 100%; background: linear-gradient(145deg, var(--cover-a), var(--cover-b)); background-size: cover; }
+.card-right       { flex: 1; display: flex; flex-direction: column; padding: 14px 16px; min-width: 0; }
+.card-meta        { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.card-title       { font-size: 14px; font-weight: 500; color: var(--t1); line-height: 1.4; font-family: system-ui, sans-serif; }
+.card-menu        { font-size: 16px; color: var(--t2); flex-shrink: 0; opacity: 0.5; }
+.card-divider     { height: 2px; border-radius: 2px; background: var(--border); margin-bottom: 8px; flex-shrink: 0; }
+.card-excerpt     { font-size: 11px; color: var(--t2); line-height: 1.6; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; margin-bottom: 10px; font-family: system-ui, sans-serif; }
+.card-destinations{ display: flex; flex-direction: column; gap: 5px; flex: 1; }
+.plat-row         { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--t2); font-family: ui-monospace, monospace; }
+.plat-dot         { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; background: var(--border-hi); }
+.plat-dot.none    { background: var(--t3); }
+.plat-name        { width: 58px; flex-shrink: 0; }
+.plat-dash        { color: var(--t3); }
+.card-footer      { display: flex; align-items: center; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.tag              { font-size: 10px; font-family: ui-monospace, monospace; color: var(--t2); background: var(--tag-bg); padding: 2px 7px; border-radius: 4px; border: 1px solid var(--border); }
+.word-count       { font-size: 10px; font-family: ui-monospace, monospace; color: var(--t2); margin-left: auto; }
+
+/* ══════════════════════════════════════════
+   V1 — EDITORIAL
+   text-centric · gradient · round complex · layered · serif
+   ══════════════════════════════════════════ */
+.v1 .article-card {
+  border-radius: 20px;
+  box-shadow: 0 10px 40px var(--shadow), inset 0 1px 0 rgba(255,255,255,0.04);
+  border-color: transparent;
+}
+.v1 .card-cover::after {
+  content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 90px;
+  background: linear-gradient(to right, transparent, var(--bg));
+}
+.v1 .card-title   { font-family: Georgia, serif; font-size: 16px; font-weight: 400; font-style: italic; }
+.v1 .card-excerpt { font-family: Georgia, serif; font-style: italic; -webkit-line-clamp: 3; line-height: 1.75; font-size: 12px; }
+.v1 .plat-row     { font-family: Georgia, serif; font-style: italic; font-size: 10px; }
+.v1 .tag          { font-family: Georgia, serif; font-style: italic; border-radius: 12px; border-color: var(--border); }
+.v1 .word-count   { font-family: Georgia, serif; font-style: italic; }
+.v1 .card-divider { height: 1px; }
+.v1 .card-right   { padding: 18px 20px 16px 10px; }
+
+/* ══════════════════════════════════════════
+   V2 — FUTURISTIC
+   stat-centric · line · sharp · dense · monospace
+   ══════════════════════════════════════════ */
+.v2 .article-card {
+  border-radius: 0;
+  border: none;
+  border-left: 3px solid var(--border-hi);
+}
+.v2 .card-cover::before {
+  content: 'DRAFT'; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%) rotate(-90deg);
+  font-family: ui-monospace, monospace; font-size: 8px; letter-spacing: 0.4em;
+  color: var(--border-hi); white-space: nowrap; opacity: 0.4;
+}
+.v2 .card-cover::after {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 5px);
+}
+.v2 .card-title   { font-family: ui-monospace, monospace; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+.v2 .card-excerpt { font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: 0.02em; }
+.v2 .card-divider { height: 1px; background: var(--border); }
+.v2 .plat-dot     { border-radius: 1px; width: 6px; height: 6px; }
+.v2 .plat-name    { text-transform: uppercase; font-size: 9px; letter-spacing: 0.1em; color: var(--t2); }
+.v2 .tag          { border-radius: 0; text-transform: uppercase; letter-spacing: 0.08em; font-size: 9px; }
+.v2 .stat-bar     { display: flex; gap: 16px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+.v2 .stat-item    { font-family: ui-monospace, monospace; font-size: 9px; color: var(--t2); }
+.v2 .stat-item strong { font-size: 16px; display: block; color: var(--t1); line-height: 1.1; margin-bottom: 2px; letter-spacing: -0.02em; }
+
+/* ══════════════════════════════════════════
+   V3 — LUXURY
+   image-centric · shade · open · serif · sparse
+   ══════════════════════════════════════════ */
+.v3 .article-card {
+  border-radius: 14px;
+  border: none;
+  box-shadow: 0 24px 64px var(--shadow);
+}
+.v3 .card-cover::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to right, transparent 45%, var(--bg) 100%);
+}
+.v3 .card-right   { padding: 22px 22px 18px 8px; justify-content: space-between; }
+.v3 .card-title   { font-family: 'Palatino Linotype', Palatino, Georgia, serif; font-size: 17px; font-weight: 400; letter-spacing: 0.02em; line-height: 1.45; }
+.v3 .card-excerpt { font-family: Georgia, serif; font-style: italic; line-height: 1.8; font-size: 12px; }
+.v3 .card-divider { height: 1px; }
+.v3 .plat-name    { text-transform: uppercase; font-size: 9px; letter-spacing: 0.12em; }
+.v3 .tag          { border: none; background: transparent; text-transform: uppercase; font-size: 8px; letter-spacing: 0.14em; padding-left: 0; }
+.v3 .word-count   { font-size: 9px; letter-spacing: 0.1em; }
+
+/* ══════════════════════════════════════════
+   V4 — BRUTALIST
+   functional · sharp · thick border · offset shadow · bold
+   ══════════════════════════════════════════ */
+.v4 .article-card {
+  border-radius: 0;
+  border: 3px solid var(--t1);
+  box-shadow: 6px 6px 0 var(--t1);
+}
+.v4 .card-cover { border-right: 3px solid var(--t1); }
+.v4 .card-title   { font-family: 'Arial Black', Impact, sans-serif; font-size: 13px; font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; line-height: 1.2; }
+.v4 .card-menu    { font-weight: 900; font-size: 20px; opacity: 1; }
+.v4 .card-divider { height: 3px; background: var(--t1); border-radius: 0; }
+.v4 .card-excerpt { font-family: Arial, sans-serif; font-size: 10px; }
+.v4 .plat-dot     { border-radius: 0; width: 8px; height: 8px; background: var(--t1) !important; }
+.v4 .plat-dot.none{ background: var(--t2) !important; }
+.v4 .plat-name    { font-weight: 700; text-transform: uppercase; font-size: 9px; color: var(--t1); }
+.v4 .plat-dash    { color: var(--t2); }
+.v4 .tag          { background: var(--t1); color: var(--bg); border-color: var(--t1); border-radius: 0; font-size: 9px; }
+.v4 .word-count   { font-weight: 700; color: var(--t1); }
+
+/* ══════════════════════════════════════════
+   V5 — PLAYFUL
+   round · floating · bold · soft shadow
+   ══════════════════════════════════════════ */
+.v5 .article-card {
+  border-radius: 24px;
+  border: none;
+  box-shadow: 0 8px 48px var(--shadow), 0 2px 8px var(--shadow);
+}
+.v5 .card-cover   { border-radius: 0; }
+.v5 .card-title   { font-size: 15px; font-weight: 700; }
+.v5 .card-divider { height: 2px; border-radius: 2px; }
+.v5 .card-excerpt { line-height: 1.6; }
+.v5 .tag          { border-radius: 20px; }
+.v5 .plat-dot     { box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px var(--border-hi); }
+
+/* ══════════════════════════════════════════
+   V6 — CORPORATE
+   functional · bottom line · slight radius · balanced
+   ══════════════════════════════════════════ */
+.v6 .article-card {
+  border-radius: 5px;
+  border-bottom: 3px solid var(--border-hi);
+}
+.v6 .card-title   { font-size: 13px; font-weight: 600; letter-spacing: -0.01em; }
+.v6 .card-divider { height: 1px; border-radius: 0; }
+.v6 .plat-badge   { display: inline-block; font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 1px 5px; border-radius: 3px; background: var(--tag-bg); color: var(--t2); border: 1px solid var(--border); }
+.v6 .tag          { border-radius: 3px; font-size: 9px; }
+
+/* ══════════════════════════════════════════
+   V7 — RETRO
+   monospace · scanlines · dashed separator · stat block
+   ══════════════════════════════════════════ */
+.v7 .article-card {
+  border-radius: 8px;
+  box-shadow: 0 4px 24px var(--shadow);
+}
+.v7 .card-cover::before {
+  content: ''; position: absolute; inset: 0; z-index: 1;
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,0.12) 0px, rgba(0,0,0,0.12) 1px, transparent 1px, transparent 4px);
+}
+.v7 .card-title   { font-family: 'Courier New', Courier, monospace; font-size: 13px; font-weight: 700; line-height: 1.35; }
+.v7 .card-excerpt { font-family: 'Courier New', monospace; font-size: 10px; line-height: 1.65; }
+.v7 .card-divider { height: 1px; border-style: dashed; background: none; border-top: 1px dashed var(--border-hi); }
+.v7 .plat-row     { font-family: 'Courier New', monospace; font-size: 10px; }
+.v7 .plat-name::before { content: '['; }
+.v7 .plat-name::after  { content: ']'; }
+.v7 .tag          { font-family: 'Courier New', monospace; border-radius: 0; font-size: 9px; }
+.v7 .word-count   { font-family: 'Courier New', monospace; }
+.v7 .retro-stats  { display: flex; gap: 16px; margin-top: 8px; padding-top: 7px; border-top: 1px dashed var(--border); }
+.v7 .retro-stat   { font-family: 'Courier New', monospace; font-size: 9px; color: var(--t2); }
+.v7 .retro-stat strong { display: block; font-size: 15px; color: var(--t1); line-height: 1.1; margin-bottom: 2px; }
+
+/* ══════════════════════════════════════════
+   V8 — MINIMAL
+   no card · no cover · pure typography · open
+   ══════════════════════════════════════════ */
+.v8 .article-card {
+  background: transparent;
+  border: none;
+  border-top: 1px solid var(--border);
+  border-radius: 0;
+  box-shadow: none;
+}
+.v8 .card-cover { display: none; }
+.v8 .card-right  { padding: 0; }
+.v8 .card-meta   { margin-bottom: 12px; }
+.v8 .card-title  { font-family: Georgia, serif; font-size: 16px; font-weight: 400; line-height: 1.35; }
+.v8 .card-divider{ display: none; }
+.v8 .card-excerpt{ font-family: Georgia, serif; font-size: 12px; line-height: 1.65; -webkit-line-clamp: 2; margin-bottom: 10px; }
+.v8 .plat-dot    { display: none; }
+.v8 .plat-name   { width: auto; color: var(--border-hi); margin-right: 4px; }
+.v8 .tag         { background: transparent; border: none; padding: 0; font-family: Georgia, serif; font-style: italic; font-size: 12px; color: var(--t2); }
+.v8 .tag::before { content: '#'; }
+.v8 .word-count  { font-family: Georgia, serif; font-style: italic; font-size: 12px; }
+
+/* ══════════════════════════════════════════
+   V9 — TECHNICAL
+   left accent · monospace · narrow cover · dense
+   ══════════════════════════════════════════ */
+.v9 .article-card {
+  border-radius: 5px;
+  border-left: 3px solid var(--border-hi);
+}
+.v9 .card-cover::before {
+  content: 'STATUS\A─────\A DRAFT'; white-space: pre;
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  font-family: ui-monospace, monospace; font-size: 7px;
+  letter-spacing: 0.1em; color: var(--border-hi);
+  text-align: center; line-height: 1.8; opacity: 0.6;
+}
+.v9 .card-title   { font-family: ui-monospace, monospace; font-size: 12px; font-weight: 500; }
+.v9 .card-divider { height: 1px; border-radius: 0; }
+.v9 .card-excerpt { font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: 0.01em; }
+.v9 .plat-dot     { border-radius: 1px; width: 6px; height: 6px; }
+.v9 .plat-name    { color: var(--t2); }
+.v9 .tag          { border-radius: 20px; font-size: 9px; }
+.v9 .tech-meta    { margin-top: 7px; padding-top: 7px; border-top: 1px solid var(--border); font-family: ui-monospace, monospace; font-size: 9px; color: var(--t2); }
+.v9 .tech-meta em { color: var(--t1); font-style: normal; }
+
+/* ══════════════════════════════════════════
+   V10 — DARK LUXURY (structural)
+   wide cover · gradient overlay · serif · deep shadow · sparse
+   ══════════════════════════════════════════ */
+.v10 .article-card {
+  border-radius: 22px;
+  border: none;
+  box-shadow: 0 32px 80px var(--shadow), 0 0 0 1px var(--border);
+}
+.v10 .card-cover::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to right, transparent 50%, var(--bg) 100%);
+}
+.v10 .card-right   { padding: 24px 24px 20px 10px; justify-content: space-between; }
+.v10 .card-title   { font-family: 'Palatino Linotype', Palatino, Georgia, serif; font-size: 18px; font-weight: 400; letter-spacing: 0.03em; line-height: 1.4; }
+.v10 .card-excerpt { font-family: Georgia, serif; font-style: italic; font-size: 12px; line-height: 1.8; }
+.v10 .card-divider { height: 1px; margin: 16px 0; }
+.v10 .plat-name    { text-transform: uppercase; font-size: 8px; letter-spacing: 0.15em; }
+.v10 .plat-dot     { width: 5px; height: 5px; }
+.v10 .tag          { background: transparent; border-radius: 2px; text-transform: uppercase; font-size: 8px; letter-spacing: 0.14em; }
+.v10 .word-count   { font-size: 9px; letter-spacing: 0.08em; }
+
+/* ══════════════════════════════════════════
+   PAGE LAYOUT
+   ══════════════════════════════════════════ */
+body { background: #181818; padding: 40px 24px 64px; font-family: system-ui, sans-serif; }
+
+.page-header {
+  max-width: 1280px; margin: 0 auto 40px;
+  font-family: ui-monospace, monospace; font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase; color: #404040;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.col-headers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1280px;
+  margin: 0 auto 2px;
+  gap: 2px;
+}
+.col-header {
+  font-family: ui-monospace, monospace;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  color: #404040;
+}
+.col-header.dark  { background: #111; }
+.col-header.light { background: #d8d8d8; color: #888; }
+
+.row-label {
+  grid-column: 1 / -1;
+  font-family: ui-monospace, monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #383838;
+  padding: 22px 20px 10px;
+  background: #181818;
+  margin-top: 2px;
+}
+.row-label strong { color: #505050; font-size: 10px; margin-right: 12px; }
+
+.cell {
+  padding: 20px;
+}
+.cell.dark  { background: #111111; }
+.cell.light { background: #e4e4e4; }
+</style>
+</head>
+<body>
+
+<div class="page-header">Article Card · 10 Structural Variations · Draft State · Greyscale</div>
+
+<div class="col-headers">
+  <div class="col-header dark">Dark</div>
+  <div class="col-header light">Light</div>
+</div>
+
+<div class="grid">
+
+  <!-- ─────────────────── V1 EDITORIAL ─────────────────── -->
+  <div class="row-label"><strong>01 — Editorial</strong> text-centric · gradient fade · round complex · serif italic · layered</div>
+
+  <div class="cell dark v1">
+    <div class="article-card">
+      <div class="card-cover"><div class="card-cover-fill"></div></div>
+      <div class="card-right">
+        <div class="card-meta"><p class="card-title">Building a Scalable Design System with Tokens</p><span class="card-menu">⋯</span></div>
+        <div class="card-divider"></div>
+        <p class="card-excerpt">Design tokens are the single source of truth for your visual language. Centralizing spacing, color, and typography into a token layer lets you propagate changes across all platforms without touching component code.</p>
+        <div class="card-destinations">
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Medium</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Hashnode</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot none"></span><span class="plat-name">Dev.to</span><span class="plat-dash">—</span></div>
+        </div>
+        <div class="card-footer"><span class="tag">#design-systems</span><span class="tag">#frontend</span><span class="word-count">2 847 words</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cell light v1">
+    <div class="article-card">
+      <div class="card-cover"><div class="card-cover-fill"></div></div>
+      <div class="card-right">
+        <div class="card-meta"><p class="card-title">Building a Scalable Design System with Tokens</p><span class="card-menu">⋯</span></div>
+        <div class="card-divider"></div>
+        <p class="card-excerpt">Design tokens are the single source of truth for your visual language. Centralizing spacing, color, and typography into a token layer lets you propagate changes across all platforms without touching component code.</p>
+        <div class="card-destinations">
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Medium</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Hashnode</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot none"></span><span class="plat-name">Dev.to</span><span class="plat-dash">—</span></div>
+        </div>
+        <div class="card-footer"><span class="tag">#design-systems</span><span class="tag">#frontend</span><span class="word-count">2 847 words</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────── V2 FUTURISTIC ─────────────────── -->
+  <div class="row-label"><strong>02 — Futuristic</strong> stat-centric · left border line · sharp · monospace · dense</div>
+
+  <div class="cell dark v2">
+    <div class="article-card">
+      <div class="card-cover"><div class="card-cover-fill"></div></div>
+      <div class="card-right">
+        <div class="card-meta"><p class="card-title">Building a Scalable Design System with Tokens</p><span class="card-menu">⋯</span></div>
+        <div class="card-divider"></div>
+        <p class="card-excerpt">Design tokens are the single source of truth for your visual language. Centralizing spacing, color, and typography into a token layer lets you propagate changes across all platforms without touching component code.</p>
+        <div class="card-destinations">
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Medium</span><span>DRAFT</span></div>
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Hashnode</span><span>DRAFT</span></div>
+          <div class="plat-row"><span class="plat-dot none"></span><span class="plat-name">Dev.to</span><span class="plat-dash">N/A</span></div>
+        </div>
+        <div class="stat-bar">
+          <div class="stat-item"><strong>2 847</strong>words</div>
+          <div class="stat-item"><strong>0</strong>live</div>
+          <div class="stat-item"><strong>3</strong>targets</div>
+        </div>
+        <div class="card-footer"><span class="tag">#design-systems</span><span class="tag">#frontend</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cell light v2">
+    <div class="article-card">
+      <div class="card-cover"><div class="card-cover-fill"></div></div>
+      <div class="card-right">
+        <div class="card-meta"><p class="card-title">Building a Scalable Design System with Tokens</p><span class="card-menu">⋯</span></div>
+        <div class="card-divider"></div>
+        <p class="card-excerpt">Design tokens are the single source of truth for your visual language. Centralizing spacing, color, and typography into a token layer lets you propagate changes across all platforms without touching component code.</p>
+        <div class="card-destinations">
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Medium</span><span>DRAFT</span></div>
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Hashnode</span><span>DRAFT</span></div>
+          <div class="plat-row"><span class="plat-dot none"></span><span class="plat-name">Dev.to</span><span class="plat-dash">N/A</span></div>
+        </div>
+        <div class="stat-bar">
+          <div class="stat-item"><strong>2 847</strong>words</div>
+          <div class="stat-item"><strong>0</strong>live</div>
+          <div class="stat-item"><strong>3</strong>targets</div>
+        </div>
+        <div class="card-footer"><span class="tag">#design-systems</span><span class="tag">#frontend</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────── V3 LUXURY ─────────────────── -->
+  <div class="row-label"><strong>03 — Luxury</strong> image-centric · shade overlay · wide cover · open round · serif · sparse</div>
+
+  <div class="cell dark v3">
+    <div class="article-card">
+      <div class="card-cover"><div class="card-cover-fill"></div></div>
+      <div class="card-right">
+        <div class="card-meta"><p class="card-title">Building a Scalable Design System with Tokens</p><span class="card-menu">⋯</span></div>
+        <div class="card-divider"></div>
+        <p class="card-excerpt">Design tokens are the single source of truth for your visual language. Centralizing spacing, color, and typography into a token layer lets you propagate changes without touching component code.</p>
+        <div class="card-destinations">
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Medium</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Hashnode</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot none"></span><span class="plat-name">Dev.to</span><span class="plat-dash">—</span></div>
+        </div>
+        <div class="card-footer"><span class="tag">#design-systems</span><span class="tag">#frontend</span><span class="word-count">2 847 words</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cell light v3">
+    <div class="article-card">
+      <div class="card-cover"><div class="card-cover-fill"></div></div>
+      <div class="card-right">
+        <div class="card-meta"><p class="card-title">Building a Scalable Design System with Tokens</p><span class="card-menu">⋯</span></div>
+        <div class="card-divider"></div>
+        <p class="card-excerpt">Design tokens are the single source of truth for your visual language. Centralizing spacing, color, and typography into a token layer lets you propagate changes without touching component code.</p>
+        <div class="card-destinations">
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Medium</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Hashnode</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot none"></span><span class="plat-name">Dev.to</span><span class="plat-dash">—</span></div>
+        </div>
+        <div class="card-footer"><span class="tag">#design-systems</span><span class="tag">#frontend</span><span class="word-count">2 847 words</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────── V4 BRUTALIST ─────────────────── -->
+  <div class="row-label"><strong>04 — Brutalist</strong> functional · thick border · offset shadow · sharp · bold uppercase</div>
+
+  <div class="cell dark v4">
+    <div class="article-card">
+      <div class="card-cover"><div class="card-cover-fill"></div></div>
+      <div class="card-right">
+        <div class="card-meta"><p class="card-title">Building a Scalable Design System with Tokens</p><span class="card-menu">✕</span></div>
+        <div class="card-divider"></div>
+        <p class="card-excerpt">Design tokens are the single source of truth for your visual language. Centralizing spacing, color, and typography into a token layer lets you propagate changes across all platforms.</p>
+        <div class="card-destinations">
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">MEDIUM</span><span>DRAFT</span></div>
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">HASHNODE</span><span>DRAFT</span></div>
+          <div class="plat-row"><span class="plat-dot none"></span><span class="plat-name">DEV.TO</span><span class="plat-dash">—</span></div>
+        </div>
+        <div class="card-footer"><span class="tag">#design-systems</span><span class="tag">#frontend</span><span class="word-count">2847 WDS</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cell light v4">
+    <div class="article-card">
+      <div class="card-cover"><div class="card-cover-fill"></div></div>
+      <div class="card-right">
+        <div class="card-meta"><p class="card-title">Building a Scalable Design System with Tokens</p><span class="card-menu">✕</span></div>
+        <div class="card-divider"></div>
+        <p class="card-excerpt">Design tokens are the single source of truth for your visual language. Centralizing spacing, color, and typography into a token layer lets you propagate changes across all platforms.</p>
+        <div class="card-destinations">
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">MEDIUM</span><span>DRAFT</span></div>
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">HASHNODE</span><span>DRAFT</span></div>
+          <div class="plat-row"><span class="plat-dot none"></span><span class="plat-name">DEV.TO</span><span class="plat-dash">—</span></div>
+        </div>
+        <div class="card-footer"><span class="tag">#design-systems</span><span class="tag">#frontend</span><span class="word-count">2847 WDS</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────── V5 PLAYFUL ─────────────────── -->
+  <div class="row-label"><strong>05 — Playful</strong> image-centric · round complex · floating shadow · bold weight · ring dots</div>
+
+  <div class="cell dark v5">
+    <div class="article-card">
+      <div class="card-cover"><div class="card-cover-fill"></div></div>
+      <div class="card-right">
+        <div class="card-meta"><p class="card-title">Building a Scalable Design System with Tokens</p><span class="card-menu">⋯</span></div>
+        <div class="card-divider"></div>
+        <p class="card-excerpt">Design tokens are the single source of truth for your visual language. Centralizing spacing, color, and typography into a token layer lets you propagate changes across all platforms without touching component code.</p>
+        <div class="card-destinations">
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Medium</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Hashnode</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot none"></span><span class="plat-name">Dev.to</span><span class="plat-dash">—</span></div>
+        </div>
+        <div class="card-footer"><span class="tag">#design-systems</span><span class="tag">#frontend</span><span class="word-count">2 847 words</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cell light v5">
+    <div class="article-card">
+      <div class="card-cover"><div class="card-cover-fill"></div></div>
+      <div class="card-right">
+        <div class="card-meta"><p class="card-title">Building a Scalable Design System with Tokens</p><span class="card-menu">⋯</span></div>
+        <div class="card-divider"></div>
+        <p class="card-excerpt">Design tokens are the single source of truth for your visual language. Centralizing spacing, color, and typography into a token layer lets you propagate changes across all platforms without touching component code.</p>
+        <div class="card-destinations">
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Medium</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Hashnode</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot none"></span><span class="plat-name">Dev.to</span><span class="plat-dash">—</span></div>
+        </div>
+        <div class="card-footer"><span class="tag">#design-systems</span><span class="tag">#frontend</span><span class="word-count">2 847 words</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────── V6 CORPORATE ─────────────────── -->
+  <div class="row-label"><strong>06 — Corporate</strong> functional · bottom line · slight radius · badge status · balanced</div>
+
+  <div class="cell dark v6">
+    <div class="article-card">
+      <div class="card-cover"><div class="card-cover-fill"></div></div>
+      <div class="card-right">
+        <div class="card-meta"><p class="card-title">Building a Scalable Design System with Tokens</p><span class="card-menu">⋯</span></div>
+        <div class="card-divider"></div>
+        <p class="card-excerpt">Design tokens are the single source of truth for your visual language. Centralizing spacing, color, and typography into a token layer lets you propagate changes across all platforms without touching component code.</p>
+        <div class="card-destinations">
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Medium</span><span class="plat-badge">draft</span></div>
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Hashnode</span><span class="plat-badge">draft</span></div>
+          <div class="plat-row"><span class="plat-dot none"></span><span class="plat-name">Dev.to</span><span class="plat-dash">—</span></div>
+        </div>
+        <div class="card-footer"><span class="tag">#design-systems</span><span class="tag">#frontend</span><span class="word-count">2 847 words</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cell light v6">
+    <div class="article-card">
+      <div class="card-cover"><div class="card-cover-fill"></div></div>
+      <div class="card-right">
+        <div class="card-meta"><p class="card-title">Building a Scalable Design System with Tokens</p><span class="card-menu">⋯</span></div>
+        <div class="card-divider"></div>
+        <p class="card-excerpt">Design tokens are the single source of truth for your visual language. Centralizing spacing, color, and typography into a token layer lets you propagate changes across all platforms without touching component code.</p>
+        <div class="card-destinations">
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Medium</span><span class="plat-badge">draft</span></div>
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Hashnode</span><span class="plat-badge">draft</span></div>
+          <div class="plat-row"><span class="plat-dot none"></span><span class="plat-name">Dev.to</span><span class="plat-dash">—</span></div>
+        </div>
+        <div class="card-footer"><span class="tag">#design-systems</span><span class="tag">#frontend</span><span class="word-count">2 847 words</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────── V7 RETRO ─────────────────── -->
+  <div class="row-label"><strong>07 — Retro</strong> stat-centric · scanlines · monospace · dashed separator · bracket labels</div>
+
+  <div class="cell dark v7">
+    <div class="article-card">
+      <div class="card-cover"><div class="card-cover-fill"></div></div>
+      <div class="card-right">
+        <div class="card-meta"><p class="card-title">Building a Scalable Design System with Tokens</p><span class="card-menu">⋯</span></div>
+        <div class="card-divider"></div>
+        <p class="card-excerpt">Design tokens are the single source of truth for your visual language. Centralizing spacing, color, and typography into a token layer lets you propagate changes across all platforms.</p>
+        <div class="card-destinations">
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Medium</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Hashnode</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot none"></span><span class="plat-name">Dev.to</span><span class="plat-dash">—</span></div>
+        </div>
+        <div class="retro-stats">
+          <div class="retro-stat"><strong>2 847</strong>words</div>
+          <div class="retro-stat"><strong>0</strong>live</div>
+          <div class="retro-stat"><strong>2</strong>platforms</div>
+        </div>
+        <div class="card-footer"><span class="tag">#design-systems</span><span class="tag">#frontend</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cell light v7">
+    <div class="article-card">
+      <div class="card-cover"><div class="card-cover-fill"></div></div>
+      <div class="card-right">
+        <div class="card-meta"><p class="card-title">Building a Scalable Design System with Tokens</p><span class="card-menu">⋯</span></div>
+        <div class="card-divider"></div>
+        <p class="card-excerpt">Design tokens are the single source of truth for your visual language. Centralizing spacing, color, and typography into a token layer lets you propagate changes across all platforms.</p>
+        <div class="card-destinations">
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Medium</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Hashnode</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot none"></span><span class="plat-name">Dev.to</span><span class="plat-dash">—</span></div>
+        </div>
+        <div class="retro-stats">
+          <div class="retro-stat"><strong>2 847</strong>words</div>
+          <div class="retro-stat"><strong>0</strong>live</div>
+          <div class="retro-stat"><strong>2</strong>platforms</div>
+        </div>
+        <div class="card-footer"><span class="tag">#design-systems</span><span class="tag">#frontend</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────── V8 MINIMAL ─────────────────── -->
+  <div class="row-label"><strong>08 — Minimal</strong> text-centric · no card · no cover · pure typography · open · flat</div>
+
+  <div class="cell dark v8">
+    <div class="article-card">
+      <div class="card-cover"><div class="card-cover-fill"></div></div>
+      <div class="card-right">
+        <div class="card-meta"><p class="card-title">Building a Scalable Design System with Tokens</p><span class="card-menu">⋯</span></div>
+        <div class="card-divider"></div>
+        <p class="card-excerpt">Design tokens are the single source of truth for your visual language. Centralizing spacing, color, and typography into a token layer lets you propagate changes across all platforms without touching component code.</p>
+        <div class="card-destinations">
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Medium</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Hashnode</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot none"></span><span class="plat-name">Dev.to</span><span class="plat-dash">—</span></div>
+        </div>
+        <div class="card-footer"><span class="tag">design-systems</span><span class="tag">frontend</span><span class="word-count">2 847 words</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cell light v8">
+    <div class="article-card">
+      <div class="card-cover"><div class="card-cover-fill"></div></div>
+      <div class="card-right">
+        <div class="card-meta"><p class="card-title">Building a Scalable Design System with Tokens</p><span class="card-menu">⋯</span></div>
+        <div class="card-divider"></div>
+        <p class="card-excerpt">Design tokens are the single source of truth for your visual language. Centralizing spacing, color, and typography into a token layer lets you propagate changes across all platforms without touching component code.</p>
+        <div class="card-destinations">
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Medium</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Hashnode</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot none"></span><span class="plat-name">Dev.to</span><span class="plat-dash">—</span></div>
+        </div>
+        <div class="card-footer"><span class="tag">design-systems</span><span class="tag">frontend</span><span class="word-count">2 847 words</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────── V9 TECHNICAL ─────────────────── -->
+  <div class="row-label"><strong>09 — Technical</strong> stat-centric · left accent border · narrow cover · monospace · dense meta</div>
+
+  <div class="cell dark v9">
+    <div class="article-card">
+      <div class="card-cover"><div class="card-cover-fill"></div></div>
+      <div class="card-right">
+        <div class="card-meta"><p class="card-title">Building a Scalable Design System with Tokens</p><span class="card-menu">⋯</span></div>
+        <div class="card-divider"></div>
+        <p class="card-excerpt">Design tokens are the single source of truth for your visual language. Centralizing spacing, color, and typography into a token layer lets you propagate changes across all platforms.</p>
+        <div class="card-destinations">
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">medium</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">hashnode</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot none"></span><span class="plat-name">dev.to</span><span class="plat-dash">—</span></div>
+        </div>
+        <div class="tech-meta">2847 words · <em>~11 min read</em> · 3 platforms · 0 published</div>
+        <div class="card-footer"><span class="tag">#design-systems</span><span class="tag">#frontend</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cell light v9">
+    <div class="article-card">
+      <div class="card-cover"><div class="card-cover-fill"></div></div>
+      <div class="card-right">
+        <div class="card-meta"><p class="card-title">Building a Scalable Design System with Tokens</p><span class="card-menu">⋯</span></div>
+        <div class="card-divider"></div>
+        <p class="card-excerpt">Design tokens are the single source of truth for your visual language. Centralizing spacing, color, and typography into a token layer lets you propagate changes across all platforms.</p>
+        <div class="card-destinations">
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">medium</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">hashnode</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot none"></span><span class="plat-name">dev.to</span><span class="plat-dash">—</span></div>
+        </div>
+        <div class="tech-meta">2847 words · <em>~11 min read</em> · 3 platforms · 0 published</div>
+        <div class="card-footer"><span class="tag">#design-systems</span><span class="tag">#frontend</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────── V10 DEEP LUXURY ─────────────────── -->
+  <div class="row-label"><strong>10 — Deep Luxury</strong> image-centric · very wide cover · gradient overlay · round complex · serif · deep shadow · sparse</div>
+
+  <div class="cell dark v10">
+    <div class="article-card">
+      <div class="card-cover"><div class="card-cover-fill"></div></div>
+      <div class="card-right">
+        <div class="card-meta"><p class="card-title">Building a Scalable Design System with Tokens</p><span class="card-menu">⋯</span></div>
+        <div class="card-divider"></div>
+        <p class="card-excerpt">Design tokens are the single source of truth for your visual language. Centralizing spacing, color, and typography into a token layer lets you propagate changes without touching component code.</p>
+        <div class="card-destinations">
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Medium</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Hashnode</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot none"></span><span class="plat-name">Dev.to</span><span class="plat-dash">—</span></div>
+        </div>
+        <div class="card-footer"><span class="tag">#design-systems</span><span class="tag">#frontend</span><span class="word-count">2 847 words</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cell light v10">
+    <div class="article-card">
+      <div class="card-cover"><div class="card-cover-fill"></div></div>
+      <div class="card-right">
+        <div class="card-meta"><p class="card-title">Building a Scalable Design System with Tokens</p><span class="card-menu">⋯</span></div>
+        <div class="card-divider"></div>
+        <p class="card-excerpt">Design tokens are the single source of truth for your visual language. Centralizing spacing, color, and typography into a token layer lets you propagate changes without touching component code.</p>
+        <div class="card-destinations">
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Medium</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot"></span><span class="plat-name">Hashnode</span><span>draft</span></div>
+          <div class="plat-row"><span class="plat-dot none"></span><span class="plat-name">Dev.to</span><span class="plat-dash">—</span></div>
+        </div>
+        <div class="card-footer"><span class="tag">#design-systems</span><span class="tag">#frontend</span><span class="word-count">2 847 words</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
