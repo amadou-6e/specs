@@ -16,6 +16,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("source_page")
     parser.add_argument("--offset-y", type=float, required=True)
     parser.add_argument("--section", required=True)
+    parser.add_argument(
+        "--id-prefix",
+        default="",
+        help="Prefix imported cell IDs and their parent/source/target references",
+    )
     return parser.parse_args()
 
 
@@ -46,14 +51,24 @@ def main() -> None:
 
     target_ids = {cell.get("id") for cell in target_root}
     source_cells = [cell for cell in source_root if cell.get("id") not in {"0", "1"}]
+    id_mapping = {
+        cell.get("id"): f"{args.id_prefix}{cell.get('id')}" for cell in source_cells
+    }
     collisions = sorted(
-        cell.get("id") for cell in source_cells if cell.get("id") in target_ids
+        id_mapping[cell.get("id")]
+        for cell in source_cells
+        if id_mapping[cell.get("id")] in target_ids
     )
     if collisions:
         raise SystemExit(f"Cell ID collisions: {', '.join(collisions)}")
 
     for source_cell in source_cells:
         cell = copy.deepcopy(source_cell)
+        cell.set("id", id_mapping[source_cell.get("id")])
+        for attribute in ("parent", "source", "target"):
+            reference = cell.get(attribute)
+            if reference in id_mapping:
+                cell.set(attribute, id_mapping[reference])
         cell.set("bloghubSection", args.section)
         geometry = cell.find("mxGeometry")
         if (

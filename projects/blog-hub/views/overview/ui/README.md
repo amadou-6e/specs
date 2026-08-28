@@ -2,9 +2,9 @@
 
 Written specification: [Overview view](../layout.md)
 
-The current full-page implementation is preserved in `references/overview.png`. New
-editable geometry is owned by the component studies below; the former combined page
-workshop is retained only in the [UI archive](../../../ui/archive/current-pages/README.md).
+The canonical [Overview Draw.io](../overview.drawio) contains the full-page implementation,
+article-card states, details-sidebar study, and interaction lifecycle on one tab. The
+running implementation screenshot is preserved in `references/overview.png`.
 
 | ID | Component |
 |---|---|

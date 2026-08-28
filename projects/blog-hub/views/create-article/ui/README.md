@@ -2,7 +2,9 @@
 
 Written specification: [Create article view](../layout.md)
 
-The current implementation states are stored in `references/`. A canonical Draw.io
-reconstruction has not yet been isolated from the retired combined-page workshop.
+The canonical [Create Article Draw.io](../create-article.drawio) contains separate tabs
+for Prompt & Context, Configure, and Destinations. Each tab includes its editable
+transition logic beneath the full screen. Current implementation screenshots remain in
+`references/`.
 
 State ID prefix: `CREATE-ARTICLE-*`.

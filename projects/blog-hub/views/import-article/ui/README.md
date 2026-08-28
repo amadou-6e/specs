@@ -2,8 +2,8 @@
 
 Written specification: [Import article view](../layout.md)
 
-The import and review implementation states are stored in `references/`. A canonical
-Draw.io reconstruction has not yet been isolated from the retired combined-page
-workshop.
+The canonical [Import Article Draw.io](../import-article.drawio) contains separate Upload
+and Review tabs with editable transition logic beneath each full screen. The import and
+review implementation screenshots remain in `references/`.
 
 State ID prefix: `IMPORT-ARTICLE-*`.
