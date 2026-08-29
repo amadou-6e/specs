@@ -1,5 +1,8 @@
 # Inspection — UI Tests Spec
 
+> Design blocked: these are historical test ideas, not an authoritative test contract.
+> Derive the suite from `inspection.drawio` after that artifact is created and reviewed.
+
 ---
 
 ## Summary bar

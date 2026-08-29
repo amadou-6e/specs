@@ -1,5 +1,8 @@
 # Inspection — Layout Spec
 
+> Design blocked: no authoritative `inspection.drawio` exists. Treat the layout below as
+> historical planning input only.
+
 ## Purpose
 Shows the per-platform gate result after a draft has been created. The user diagnoses failures and decides whether to proceed to publish.
 

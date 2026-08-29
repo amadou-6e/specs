@@ -1,5 +1,8 @@
 # Settings — UI Tests Spec
 
+> Test authority: [settings.drawio](settings.drawio). Tests project its represented states
+> and `ST-*` transitions; they must not create new UI requirements.
+
 ---
 
 ## Settings nav

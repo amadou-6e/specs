@@ -527,25 +527,25 @@
         <mxCell id="flow-h-sync" value="Immediate import +&#10;15-minute schedule" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#2B3141;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="platform-login-workshop">
           <mxGeometry as="geometry" x="2370" y="3920.0" width="260" height="82" />
         </mxCell>
-        <mxCell id="edge-h-1" value="Connect" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="flow-h-disconnected" target="flow-h-method" bloghubSection="platform-login-workshop">
+        <mxCell id="edge-h-1" value="ST-07 · Connect" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="flow-h-disconnected" target="flow-h-method" bloghubSection="platform-login-workshop">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge-h-2" value="Browser" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="flow-h-method" target="flow-h-waiting" bloghubSection="platform-login-workshop">
+        <mxCell id="edge-h-2" value="ST-08 · Browser" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="flow-h-method" target="flow-h-waiting" bloghubSection="platform-login-workshop">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge-h-3" value="Tab closed" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="flow-h-waiting" target="flow-h-verifying" bloghubSection="platform-login-workshop">
+        <mxCell id="edge-h-3" value="SYSTEM · tab closed" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="flow-h-waiting" target="flow-h-verifying" bloghubSection="platform-login-workshop">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge-h-4" value="Verified" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="flow-h-verifying" target="flow-h-connected" bloghubSection="platform-login-workshop">
+        <mxCell id="edge-h-4" value="SYSTEM · verified" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="flow-h-verifying" target="flow-h-connected" bloghubSection="platform-login-workshop">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="edge-h-fail" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="flow-h-verifying" target="flow-h-failed" bloghubSection="platform-login-workshop">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge-h-retry" value="Retry" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="flow-h-failed" target="flow-h-method" bloghubSection="platform-login-workshop">
+        <mxCell id="edge-h-retry" value="ST-19 · Retry" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="flow-h-failed" target="flow-h-method" bloghubSection="platform-login-workshop">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge-h-sync" value="Durable job" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="flow-h-connected" target="flow-h-sync" bloghubSection="platform-login-workshop">
+        <mxCell id="edge-h-sync" value="SYSTEM · durable job" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="flow-h-connected" target="flow-h-sync" bloghubSection="platform-login-workshop">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="flow-medium-label" value="MEDIUM" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;fontSize=12;fontColor=#747970;fontStyle=1;locked=1;" vertex="1" parent="1" bloghubSection="platform-login-workshop">
@@ -569,22 +569,22 @@
         <mxCell id="flow-m-sync" value="Immediate import +&#10;15-minute schedule" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#2B3141;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="platform-login-workshop">
           <mxGeometry as="geometry" x="2370" y="4270.0" width="260" height="82" />
         </mxCell>
-        <mxCell id="edge-m-1" value="Connect" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="flow-m-disconnected" target="flow-m-waiting" bloghubSection="platform-login-workshop">
+        <mxCell id="edge-m-1" value="ST-08 · Connect" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="flow-m-disconnected" target="flow-m-waiting" bloghubSection="platform-login-workshop">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge-m-2" value="Tab closed" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="flow-m-waiting" target="flow-m-verifying" bloghubSection="platform-login-workshop">
+        <mxCell id="edge-m-2" value="SYSTEM · tab closed" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="flow-m-waiting" target="flow-m-verifying" bloghubSection="platform-login-workshop">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge-m-3" value="Verified" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="flow-m-verifying" target="flow-m-connected" bloghubSection="platform-login-workshop">
+        <mxCell id="edge-m-3" value="SYSTEM · verified" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="flow-m-verifying" target="flow-m-connected" bloghubSection="platform-login-workshop">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="edge-m-fail" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="flow-m-verifying" target="flow-m-failed" bloghubSection="platform-login-workshop">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge-m-retry" value="Retry" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="flow-m-failed" target="flow-m-waiting" bloghubSection="platform-login-workshop">
+        <mxCell id="edge-m-retry" value="ST-19 · Retry" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="flow-m-failed" target="flow-m-waiting" bloghubSection="platform-login-workshop">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge-m-sync" value="Durable job" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="flow-m-connected" target="flow-m-sync" bloghubSection="platform-login-workshop">
+        <mxCell id="edge-m-sync" value="SYSTEM · durable job" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="flow-m-connected" target="flow-m-sync" bloghubSection="platform-login-workshop">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="return-title" value="RETURN TRANSITIONS" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;fontSize=12;fontColor=#747970;fontStyle=1;locked=1;" vertex="1" parent="1" bloghubSection="platform-login-workshop">
@@ -592,6 +592,102 @@
         </mxCell>
         <mxCell id="return-contract" value="Hashnode API token saved: Method choice → Connected&lt;br&gt;&lt;br&gt;Cancel: Waiting → Disconnected&lt;br&gt;&lt;br&gt;Disconnect: Connected → Disconnected&lt;br&gt;&lt;br&gt;Sync job failure: remain Connected; retry durably" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;fontSize=15;fontColor=#4F554D;fontStyle=0;locked=1;" vertex="1" parent="1" bloghubSection="platform-login-workshop">
           <mxGeometry as="geometry" x="2850" y="3980.0" width="620" height="250" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-badge-0" value="ST-01" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="700" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-badge-1" value="ST-02" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="875" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-badge-2" value="ST-03" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="1040" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-badge-3" value="ST-04" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="220" y="160" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-badge-4" value="ST-05" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="220" y="205" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-badge-5" value="ST-06" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="220" y="330" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-badge-6" value="ST-07" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="1280" y="260" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-badge-7" value="ST-14" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="1110" y="360" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-badge-8" value="ST-15" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="1200" y="445" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-badge-9" value="ST-16" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="1290" y="445" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-badge-10" value="ST-07" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="2370" y="1585" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-badge-11" value="ST-08" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="2480" y="2245" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-badge-12" value="ST-12/18" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="2370" y="2525" width="92" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-badge-13" value="ST-16/17" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="2430" y="3250" width="92" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-badge-14" value="ST-19" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="2370" y="3545" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-legend-background" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="1900" y="40" width="1660" height="810" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-legend-title" value="INTERACTION INDEX" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=18;fontColor=#171914;fontStyle=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="1928" y="60" width="1604" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-legend-help" value="Amber IDs mark interactive geometry. Matching edge IDs show the user action; SYSTEM marks automatic work." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#747970;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="1928" y="94" width="1604" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-badge-1000" value="ST-01–06" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="1928.0" y="145.0" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-legend-text-0" value="Navigation and Settings sections" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="2028.0" y="143.0" width="694.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-badge-1001" value="ST-07" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="1928.0" y="318.0" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-legend-text-1" value="Open connection method" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="2028.0" y="316.0" width="694.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-badge-1002" value="ST-08" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="1928.0" y="491.0" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-legend-text-2" value="Start browser login" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="2028.0" y="489.0" width="694.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-badge-1003" value="ST-09–13" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="1928.0" y="664.0" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-legend-text-3" value="Enter, save, cancel, or learn about token" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="2028.0" y="662.0" width="694.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-badge-1004" value="ST-14/15" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="2730.0" y="145.0" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-legend-text-4" value="Test or update connection" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="2830.0" y="143.0" width="694.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-badge-1005" value="ST-16–18" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="2730.0" y="318.0" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-legend-text-5" value="Disconnect confirmation" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="2830.0" y="316.0" width="694.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-badge-1006" value="ST-19" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="2730.0" y="491.0" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-platforms-legend-text-6" value="Reconnect expired connection" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-platforms">
+          <mxGeometry x="2830.0" y="489.0" width="694.0" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
@@ -757,22 +853,22 @@
         <mxCell id="ai-key-failed" value="&lt;b&gt;Validation failed&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Show reason · keep key form&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#2B3141;fontFamily=Arial;fontSize=16;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="ai-provider-transitions">
           <mxGeometry x="1540" y="1800.0" width="300" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="ai-key-1" value="Add API key" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-key-disconnected" target="ai-key-form" bloghubSection="ai-provider-transitions">
+        <mxCell id="ai-key-1" value="ST-21 · Add API key" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-key-disconnected" target="ai-key-form" bloghubSection="ai-provider-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ai-key-2" value="Save" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-key-form" target="ai-key-validating" bloghubSection="ai-provider-transitions">
+        <mxCell id="ai-key-2" value="ST-22 · Save" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-key-form" target="ai-key-validating" bloghubSection="ai-provider-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ai-key-3" value="Valid" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-key-validating" target="ai-key-connected" bloghubSection="ai-provider-transitions">
+        <mxCell id="ai-key-3" value="SYSTEM · valid" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-key-validating" target="ai-key-connected" bloghubSection="ai-provider-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ai-key-fail" value="Rejected" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="ai-key-validating" target="ai-key-failed" bloghubSection="ai-provider-transitions">
+        <mxCell id="ai-key-fail" value="SYSTEM · rejected" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="ai-key-validating" target="ai-key-failed" bloghubSection="ai-provider-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ai-key-retry" value="Edit + retry" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="ai-key-failed" target="ai-key-form" bloghubSection="ai-provider-transitions">
+        <mxCell id="ai-key-retry" value="ST-22 · edit / retry" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="ai-key-failed" target="ai-key-form" bloghubSection="ai-provider-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ai-key-cancel" value="Cancel" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="ai-key-form" target="ai-key-disconnected" bloghubSection="ai-provider-transitions">
+        <mxCell id="ai-key-cancel" value="ST-23 · Cancel" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="ai-key-form" target="ai-key-disconnected" bloghubSection="ai-provider-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="ai-browser-band" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;" vertex="1" parent="1" bloghubSection="ai-provider-transitions">
@@ -799,13 +895,13 @@
         <mxCell id="ai-anthropic-poll" value="&lt;b&gt;Polling&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Check CLI login every 2 seconds&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=16;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="ai-provider-transitions">
           <mxGeometry x="1980" y="2160.0" width="300" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="ai-anthropic-1" value="Browser authorized" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-anthropic-start" target="ai-anthropic-callback" bloghubSection="ai-provider-transitions">
+        <mxCell id="ai-anthropic-1" value="SYSTEM · authorized" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-anthropic-start" target="ai-anthropic-callback" bloghubSection="ai-provider-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ai-anthropic-2" value="Submit" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-anthropic-callback" target="ai-anthropic-submit" bloghubSection="ai-provider-transitions">
+        <mxCell id="ai-anthropic-2" value="ST-26 · Submit" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-anthropic-callback" target="ai-anthropic-submit" bloghubSection="ai-provider-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ai-anthropic-3" value="Accepted" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-anthropic-submit" target="ai-anthropic-poll" bloghubSection="ai-provider-transitions">
+        <mxCell id="ai-anthropic-3" value="SYSTEM · accepted" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-anthropic-submit" target="ai-anthropic-poll" bloghubSection="ai-provider-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="ai-openai-label" value="OPENAI · DEVICE CODE" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;locked=1;fontSize=12;fontColor=#747970;fontStyle=1;" vertex="1" parent="1" bloghubSection="ai-provider-transitions">
@@ -820,10 +916,10 @@
         <mxCell id="ai-openai-poll" value="&lt;b&gt;Polling&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Check CLI login every 2 seconds&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=16;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="ai-provider-transitions">
           <mxGeometry x="1500" y="2480.0" width="300" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="ai-openai-1" value="Open URL" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-openai-start" target="ai-openai-browser" bloghubSection="ai-provider-transitions">
+        <mxCell id="ai-openai-1" value="ST-20 · Open URL" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-openai-start" target="ai-openai-browser" bloghubSection="ai-provider-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ai-openai-2" value="User approved" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-openai-browser" target="ai-openai-poll" bloghubSection="ai-provider-transitions">
+        <mxCell id="ai-openai-2" value="SYSTEM · approved" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-openai-browser" target="ai-openai-poll" bloghubSection="ai-provider-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="ai-browser-connected" value="&lt;b&gt;Connected&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Reload provider card&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#2B3141;fontFamily=Arial;fontSize=16;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="ai-provider-transitions">
@@ -832,19 +928,19 @@
         <mxCell id="ai-browser-failed" value="&lt;b&gt;Login failed&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Error or timeout · try again&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#2B3141;fontFamily=Arial;fontSize=16;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="ai-provider-transitions">
           <mxGeometry x="2580" y="2610.0" width="300" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="ai-browser-anthropic-ok" value="Connected" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-anthropic-poll" target="ai-browser-connected" bloghubSection="ai-provider-transitions">
+        <mxCell id="ai-browser-anthropic-ok" value="SYSTEM · connected" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-anthropic-poll" target="ai-browser-connected" bloghubSection="ai-provider-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ai-browser-openai-ok" value="Connected" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-openai-poll" target="ai-browser-connected" bloghubSection="ai-provider-transitions">
+        <mxCell id="ai-browser-openai-ok" value="SYSTEM · connected" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-openai-poll" target="ai-browser-connected" bloghubSection="ai-provider-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ai-browser-anthropic-fail" value="Error / timeout" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="ai-anthropic-poll" target="ai-browser-failed" bloghubSection="ai-provider-transitions">
+        <mxCell id="ai-browser-anthropic-fail" value="SYSTEM · error / timeout" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="ai-anthropic-poll" target="ai-browser-failed" bloghubSection="ai-provider-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ai-browser-openai-fail" value="Error / timeout" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="ai-openai-poll" target="ai-browser-failed" bloghubSection="ai-provider-transitions">
+        <mxCell id="ai-browser-openai-fail" value="SYSTEM · error / timeout" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="ai-openai-poll" target="ai-browser-failed" bloghubSection="ai-provider-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ai-browser-retry" value="Try again" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="ai-browser-failed" target="ai-key-disconnected" bloghubSection="ai-provider-transitions">
+        <mxCell id="ai-browser-retry" value="ST-20 · Try again" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="ai-browser-failed" target="ai-key-disconnected" bloghubSection="ai-provider-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="ai-connected-band" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;" vertex="1" parent="1" bloghubSection="ai-provider-transitions">
@@ -874,29 +970,104 @@
         <mxCell id="ai-maint-disconnected" value="&lt;b&gt;Not configured&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Provider unavailable to agents&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#2B3141;fontFamily=Arial;fontSize=16;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="ai-provider-transitions">
           <mxGeometry x="2520" y="3110.0" width="300" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="ai-maint-1" value="Test" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-maint-connected" target="ai-maint-testing" bloghubSection="ai-provider-transitions">
+        <mxCell id="ai-maint-1" value="ST-32 · Test" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-maint-connected" target="ai-maint-testing" bloghubSection="ai-provider-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ai-maint-2" value="Response" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-maint-testing" target="ai-maint-result" bloghubSection="ai-provider-transitions">
+        <mxCell id="ai-maint-2" value="SYSTEM · response" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-maint-testing" target="ai-maint-result" bloghubSection="ai-provider-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ai-maint-3" value="Remain connected" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="ai-maint-result" target="ai-maint-connected" bloghubSection="ai-provider-transitions">
+        <mxCell id="ai-maint-3" value="SYSTEM · remain connected" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="ai-maint-result" target="ai-maint-connected" bloghubSection="ai-provider-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ai-maint-4" value="Update key" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-maint-connected" target="ai-maint-key" bloghubSection="ai-provider-transitions">
+        <mxCell id="ai-maint-4" value="ST-33 · Update key" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-maint-connected" target="ai-maint-key" bloghubSection="ai-provider-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ai-maint-5" value="Valid key" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-maint-key" target="ai-maint-connected" bloghubSection="ai-provider-transitions">
+        <mxCell id="ai-maint-5" value="ST-22 · valid key" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-maint-key" target="ai-maint-connected" bloghubSection="ai-provider-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ai-maint-6" value="Remove" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-maint-connected" target="ai-maint-confirm" bloghubSection="ai-provider-transitions">
+        <mxCell id="ai-maint-6" value="ST-34 · Remove" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-maint-connected" target="ai-maint-confirm" bloghubSection="ai-provider-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ai-maint-7" value="Cancel" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="ai-maint-confirm" target="ai-maint-connected" bloghubSection="ai-provider-transitions">
+        <mxCell id="ai-maint-7" value="ST-36 · Cancel" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="ai-maint-confirm" target="ai-maint-connected" bloghubSection="ai-provider-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ai-maint-8" value="Confirm remove" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-maint-confirm" target="ai-maint-disconnected" bloghubSection="ai-provider-transitions">
+        <mxCell id="ai-maint-8" value="ST-35 · Confirm remove" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="ai-maint-confirm" target="ai-maint-disconnected" bloghubSection="ai-provider-transitions">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-badge-0" value="ST-01" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="700" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-badge-1" value="ST-02" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="875" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-badge-2" value="ST-03" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="1040" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-badge-3" value="ST-04" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="220" y="160" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-badge-4" value="ST-05" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="220" y="205" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-badge-5" value="ST-06" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="220" y="330" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-badge-6" value="ST-20" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="840" y="325" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-badge-7" value="ST-21" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="1040" y="325" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-badge-8" value="ST-20" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="840" y="500" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-badge-9" value="ST-21" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="1040" y="500" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-legend-background" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="1900" y="40" width="1660" height="810" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-legend-title" value="INTERACTION INDEX" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=18;fontColor=#171914;fontStyle=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="1928" y="60" width="1604" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-legend-help" value="Amber IDs mark interactive geometry. Matching edge IDs show the user action; SYSTEM marks automatic work." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#747970;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="1928" y="94" width="1604" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-badge-1000" value="ST-20" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="1928.0" y="145.0" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-legend-text-0" value="Start provider browser login" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="2028.0" y="143.0" width="694.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-badge-1001" value="ST-21–24" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="1928.0" y="375.66666666666663" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-legend-text-1" value="Add, save, cancel, or learn about API key" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="2028.0" y="373.66666666666663" width="694.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-badge-1002" value="ST-25–28" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="1928.0" y="606.3333333333333" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-legend-text-2" value="Anthropic callback and polling" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="2028.0" y="604.3333333333333" width="694.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-badge-1003" value="ST-29–31" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="2730.0" y="145.0" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-legend-text-3" value="OpenAI device code and polling" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="2830.0" y="143.0" width="694.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-badge-1004" value="ST-32/33" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="2730.0" y="375.66666666666663" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-legend-text-4" value="Test or update provider" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="2830.0" y="373.66666666666663" width="694.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-badge-1005" value="ST-34–36" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="2730.0" y="606.3333333333333" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-ai-providers-legend-text-5" value="Remove confirmation" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-ai-providers">
+          <mxGeometry x="2830.0" y="604.3333333333333" width="694.0" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
@@ -971,6 +1142,57 @@
         </mxCell>
         <mxCell id="576" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=12.6;fontColor=#5A6080;fontStyle=0;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="Account settings coming soon." vertex="1">
           <mxGeometry height="30" width="500" x="752.5" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-account-badge-0" value="ST-01" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-account">
+          <mxGeometry x="700" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-account-badge-1" value="ST-02" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-account">
+          <mxGeometry x="875" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-account-badge-2" value="ST-03" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-account">
+          <mxGeometry x="1040" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-account-badge-3" value="ST-04" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-account">
+          <mxGeometry x="220" y="160" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-account-badge-4" value="ST-05" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-account">
+          <mxGeometry x="220" y="205" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-account-badge-5" value="ST-06" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-account">
+          <mxGeometry x="220" y="330" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-account-legend-background" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-account">
+          <mxGeometry x="700" y="500" width="900" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-account-legend-title" value="INTERACTION INDEX" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=18;fontColor=#171914;fontStyle=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-account">
+          <mxGeometry x="728" y="520" width="844" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-account-legend-help" value="Amber IDs mark interactive geometry. Matching edge IDs show the user action; SYSTEM marks automatic work." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#747970;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-account">
+          <mxGeometry x="728" y="554" width="844" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-account-badge-1000" value="ST-01–03" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-account">
+          <mxGeometry x="728.0" y="605.0" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-account-legend-text-0" value="Primary navigation" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-account">
+          <mxGeometry x="828.0" y="603.0" width="314.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-account-badge-1001" value="ST-04" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-account">
+          <mxGeometry x="728.0" y="726.0" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-account-legend-text-1" value="Open Platforms" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-account">
+          <mxGeometry x="828.0" y="724.0" width="314.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-account-badge-1002" value="ST-05" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-account">
+          <mxGeometry x="1150.0" y="605.0" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-account-legend-text-2" value="Open AI Providers" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-account">
+          <mxGeometry x="1250.0" y="603.0" width="314.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-account-badge-1003" value="ST-06" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-account">
+          <mxGeometry x="1150.0" y="726.0" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-settings-account-legend-text-3" value="Open Account" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-settings-account">
+          <mxGeometry x="1250.0" y="724.0" width="314.0" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

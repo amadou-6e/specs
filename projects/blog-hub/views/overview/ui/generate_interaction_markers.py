@@ -1,3 +1,9 @@
+"""Regenerate the managed contract regions in the authoritative Overview Draw.io.
+
+The Draw.io remains the sole authority; this helper is only a deterministic editor for
+tagged geometry and must be reviewed through the resulting Draw.io diff.
+"""
+
 from __future__ import annotations
 
 from pathlib import Path

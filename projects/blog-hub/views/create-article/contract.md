@@ -1,5 +1,8 @@
 # Create Article — API Contract
 
+> Scope: this file defines service requests and payloads. UI geometry, visible states,
+> interaction IDs, and transitions are governed by [create-article.drawio](create-article.drawio).
+
 ---
 
 ## GET /platforms

@@ -33,16 +33,16 @@ and use branches and commits to preserve design history.
 
 ## Views
 
-| View | UI specification |
-|---|---|
-| Overview | [views/overview/ui](../views/overview/ui/README.md) |
-| Editor | [views/editor/ui](../views/editor/ui/README.md) |
-| Create article | [views/create-article/ui](../views/create-article/ui/README.md) |
-| Import article | [views/import-article/ui](../views/import-article/ui/README.md) |
-| Settings | [views/settings/ui](../views/settings/ui/README.md) |
-| Login | [views/login/ui](../views/login/ui/README.md) |
-| Inspection | [views/inspection/ui](../views/inspection/ui/README.md) |
-| Publish schedule | [views/publish-schedule/ui](../views/publish-schedule/ui/README.md) |
+| View | UI specification | Status |
+|---|---|---|
+| Overview | [views/overview/ui](../views/overview/ui/README.md) | Draw.io authority present |
+| Editor | [views/editor/ui](../views/editor/ui/README.md) | Draw.io authority present |
+| Create article | [views/create-article/ui](../views/create-article/ui/README.md) | Draw.io authority present |
+| Import article | [views/import-article/ui](../views/import-article/ui/README.md) | Draw.io authority present |
+| Settings | [views/settings/ui](../views/settings/ui/README.md) | Draw.io authority present |
+| Login | [views/login/ui](../views/login/ui/README.md) | Design blocked: Draw.io missing |
+| Inspection | [views/inspection/ui](../views/inspection/ui/README.md) | Design blocked: Draw.io missing |
+| Publish schedule | [views/publish-schedule/ui](../views/publish-schedule/ui/README.md) | Design blocked: Draw.io missing |
 
 See [application navigation](flows/application-navigation/README.md) for the current
 cross-view transition diagram and [the archive](archive/current-pages/README.md) for

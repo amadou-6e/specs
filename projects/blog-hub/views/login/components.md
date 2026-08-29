@@ -1,5 +1,8 @@
 # Login View — Components
 
+> Design blocked: no authoritative `login.drawio` exists. Treat the component notes
+> below as historical planning input only.
+
 ---
 
 ## 1. BrandMark

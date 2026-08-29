@@ -1,5 +1,8 @@
 # Editor — Components Spec
 
+> UI authority: [editor.drawio](editor.drawio). This component inventory is a searchable
+> projection and must not introduce states absent from the Draw.io.
+
 ---
 
 ## EditorPane

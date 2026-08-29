@@ -1,5 +1,8 @@
 # Settings — Layout Spec
 
+> UI authority: [settings.drawio](settings.drawio). This layout is a derived reading aid,
+> not an independent source of UI behavior.
+
 ## Purpose
 One-time and occasional configuration: connecting publishing platforms, configuring AI providers, managing account.
 

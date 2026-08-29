@@ -1,5 +1,8 @@
 # Import Article — API Contract
 
+> Scope: this file defines service requests and payloads. UI geometry, visible states,
+> interaction IDs, and transitions are governed by [import-article.drawio](import-article.drawio).
+
 All requests use `Authorization: Bearer <token>`.
 Base URL: `http://localhost:8000/api/v1` (development).
 

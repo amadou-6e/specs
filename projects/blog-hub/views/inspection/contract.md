@@ -1,5 +1,8 @@
 # Inspection — API Contract
 
+> Scope: this file describes service requests and payloads only. No Inspection UI
+> behavior is authoritative until `inspection.drawio` exists and is reviewed.
+
 ---
 
 ## GET /articles/:id/inspection

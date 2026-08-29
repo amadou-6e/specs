@@ -1,5 +1,8 @@
 # Import Article — Layout Spec
 
+> UI authority: [import-article.drawio](import-article.drawio). This layout is a derived
+> reading aid, not an independent source of UI behavior.
+
 ## Purpose
 Standalone screen for bringing existing content into BlogHub. Handles two modes selected via query param:
 - `mode=platform` — pick a draft from a connected blog platform

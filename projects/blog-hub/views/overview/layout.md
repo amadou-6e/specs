@@ -1,5 +1,8 @@
 # Overview - Layout Spec
 
+> UI authority: [overview.drawio](overview.drawio). This layout is a derived reading aid,
+> not an independent source of UI behavior.
+
 ## Purpose
 Entry point and daily driver. The user sees all articles and their per-platform state at a glance.
 

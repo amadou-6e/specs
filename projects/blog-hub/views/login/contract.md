@@ -1,5 +1,8 @@
 # Login View — API Contract
 
+> Scope: this file describes service requests and payloads only. No Login UI behavior is
+> authoritative until `login.drawio` exists and is reviewed.
+
 Backend lives at the same origin (no CORS needed in production).
 Dev backend: `http://localhost:8082`.
 

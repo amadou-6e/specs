@@ -1,5 +1,8 @@
 # Publish / Schedule — Layout Spec
 
+> Design blocked: no authoritative `publish-schedule.drawio` exists. Treat the layout
+> below as historical planning input only.
+
 ## Purpose
 The final step before content goes live. The user selects destinations, picks a time, and confirms.
 

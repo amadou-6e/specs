@@ -1,5 +1,8 @@
 # Publish / Schedule — UI Tests Spec
 
+> Design blocked: these are historical test ideas, not an authoritative test contract.
+> Derive the suite from `publish-schedule.drawio` after that artifact is created and reviewed.
+
 ---
 
 ## Destination rows

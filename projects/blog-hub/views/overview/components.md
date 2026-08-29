@@ -1,5 +1,8 @@
 # Overview - Components Spec
 
+> UI authority: [overview.drawio](overview.drawio). This component inventory is a
+> searchable projection; the Draw.io wins if geometry, state, or interaction details differ.
+
 The components below describe the approved desktop geometry in `overview.drawio`.
 Gate badges and card context menus are deferred to blog-hub issue #98.
 

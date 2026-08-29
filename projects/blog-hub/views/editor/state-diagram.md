@@ -1,18 +1,37 @@
-# Editor — State Diagram
+# Editor - State Diagram Index
 
-Write mode is the default after load. Review mode is a toggle. The comment and patch flow is a sub-flow that starts in Write mode and returns to it on completion.
+The `ARTICLE EDITOR · INTERACTION LIFECYCLE` region on the `Editor · Full assembly`
+page of [editor.drawio](editor.drawio) is the sole authority. This file is a searchable
+projection and must not add behavior absent from that Draw.io region.
 
-![diagram-1](assets/state-diagram/diagram-1.png)
+## Load and autosave
 
-## State summary
+| State | Draw.io behavior |
+|---|---|
+| Load article | Requests the article by ID |
+| Write - saved | Editor is ready at the current revision |
+| Unsaved | `ED-02/24` changed content and armed the two-second debounce |
+| Autosave | Optimistic PATCH is in flight with the current revision |
+| Saved revision | Save succeeded and the returned revision becomes current |
+| Conflict / failure | Local changes remain available for edit or retry |
 
-| State | Description |
-|-------|-------------|
-| Write — Idle | No pending changes. |
-| Write — Unsaved | Edit made, autosave armed (2 s debounce). Amber dot visible. |
-| Write — Autosaving | PATCH in flight. |
-| Write — Save error | PATCH failed. Dot stays. Retries on next keystroke. |
-| Review | Comment anchors active. Overlay with Done/Dismiss actions. |
-| Comment | Anchor placed, thread open. Fix with AI or Resolve. |
-| Patch Pending | AI-generated diff visible. Accept applies; Reject discards. |
-| Preview | Right pane showing rendered markdown. Orthogonal to Write/Review. |
+## Review, comments, patches, and preview
+
+| State | Draw.io behavior |
+|---|---|
+| Write mode | Canonical Markdown editing surface |
+| Review mode | Comment anchors are active |
+| Comment | Can be resolved or sent to Fix with AI |
+| Patch pending | Generated diff waits for explicit review |
+| Accept | Applies the diff and returns through automatic applied state |
+| Reject | Keeps the comment open and returns to writing |
+| Preview | `ED-43` toggles rendered Markdown beside the editor |
+
+## Exit routes
+
+| Destination | Trigger |
+|---|---|
+| Inspection | `ED-04/40` runs article checks |
+| Articles | `ED-01` returns to Overview |
+
+Both exits preserve the latest accepted or autosaved revision represented in Draw.io.

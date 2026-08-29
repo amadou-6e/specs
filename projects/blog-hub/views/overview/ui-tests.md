@@ -1,5 +1,8 @@
 # Overview - UI Tests Spec
 
+> Test authority: [overview.drawio](overview.drawio). Tests project its represented states
+> and `OV-*`/`OV-S*` transitions; they must not create new UI requirements.
+
 These browser-level tests map directly to the IDs in `interactions.md`. Use deterministic
 API fixtures for state transitions and real browser behavior for navigation. Mobile
 sidebar behavior is not part of this suite.

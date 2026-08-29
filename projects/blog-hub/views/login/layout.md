@@ -1,5 +1,8 @@
 # Login View — Layout
 
+> Design blocked: no authoritative `login.drawio` exists. Treat the layout below as
+> historical planning input only.
+
 ## Purpose
 
 Entry point for all unauthenticated users. Serves both login and registration.

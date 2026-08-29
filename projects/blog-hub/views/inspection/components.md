@@ -1,5 +1,8 @@
 # Inspection — Components Spec
 
+> Design blocked: no authoritative `inspection.drawio` exists. Treat the component notes
+> below as historical planning input only.
+
 ---
 
 ## GateSummaryBar

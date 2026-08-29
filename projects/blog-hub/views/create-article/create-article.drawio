@@ -212,17 +212,95 @@
         <mxCell id="create-prompt-transitions-error" value="&lt;b&gt;Context error&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Explain and remain here&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#2B3141;fontFamily=Arial;fontSize=15;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="create-prompt-transitions">
           <mxGeometry x="850" y="1820.0" width="270" height="92" as="geometry" />
         </mxCell>
-        <mxCell id="create-prompt-transitions-edge-1" value="Optional" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="create-prompt-transitions-brief" target="create-prompt-transitions-context" bloghubSection="create-prompt-transitions">
+        <mxCell id="create-prompt-transitions-edge-1" value="CA-09/10 · add context" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="create-prompt-transitions-brief" target="create-prompt-transitions-context" bloghubSection="create-prompt-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="create-prompt-transitions-edge-2" value="Valid or skipped" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="create-prompt-transitions-context" target="create-prompt-transitions-ready" bloghubSection="create-prompt-transitions">
+        <mxCell id="create-prompt-transitions-edge-2" value="CA-12 · Next" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="create-prompt-transitions-context" target="create-prompt-transitions-ready" bloghubSection="create-prompt-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="create-prompt-transitions-edge-3" value="Invalid" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="create-prompt-transitions-context" target="create-prompt-transitions-error" bloghubSection="create-prompt-transitions">
+        <mxCell id="create-prompt-transitions-edge-3" value="SYSTEM · invalid file" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="create-prompt-transitions-context" target="create-prompt-transitions-error" bloghubSection="create-prompt-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="create-prompt-transitions-edge-4" value="Retry" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="create-prompt-transitions-error" target="create-prompt-transitions-context" bloghubSection="create-prompt-transitions">
+        <mxCell id="create-prompt-transitions-edge-4" value="CA-11 · remove / retry" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="create-prompt-transitions-error" target="create-prompt-transitions-context" bloghubSection="create-prompt-transitions">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-badge-0" value="CA-01" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="700" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-badge-1" value="CA-02" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="875" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-badge-2" value="CA-03" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="1040" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-badge-3" value="CA-04" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="1405" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-badge-4" value="CA-05" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="1080" y="430" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-badge-5" value="CA-06/07" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="690" y="655" width="92" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-badge-6" value="CA-08" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="1045" y="655" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-badge-7" value="CA-09/10" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="1050" y="765" width="92" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-badge-8" value="CA-12" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="1710" y="1185" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-legend-background" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="1220" y="585" width="570" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-legend-title" value="INTERACTION INDEX" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=18;fontColor=#171914;fontStyle=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="1248" y="605" width="514" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-legend-help" value="Amber IDs mark interactive geometry. Matching edge IDs show the user action; SYSTEM marks automatic work." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#747970;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="1248" y="639" width="514" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-badge-1000" value="CA-01–04" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="1248.0" y="690.0" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-legend-text-0" value="Navigation and reset" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="1348.0" y="688.0" width="406.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-badge-1001" value="CA-05" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="1248.0" y="744.5714285714286" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-legend-text-1" value="Edit article brief" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="1348.0" y="742.5714285714286" width="406.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-badge-1002" value="CA-06/07" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="1248.0" y="799.1428571428571" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-legend-text-2" value="Load a brief template" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="1348.0" y="797.1428571428571" width="406.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-badge-1003" value="CA-08" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="1248.0" y="853.7142857142858" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-legend-text-3" value="Save current template" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="1348.0" y="851.7142857142858" width="406.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-badge-1004" value="CA-09/10" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="1248.0" y="908.2857142857142" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-legend-text-4" value="Browse for or drop context" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="1348.0" y="906.2857142857142" width="406.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-badge-1005" value="CA-11" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="1248.0" y="962.8571428571429" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-legend-text-5" value="Remove uploaded context" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="1348.0" y="960.8571428571429" width="406.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-badge-1006" value="CA-12" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="1248.0" y="1017.4285714285714" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-prompt-legend-text-6" value="Continue to Configure" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-prompt">
+          <mxGeometry x="1348.0" y="1015.4285714285714" width="406.0" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
@@ -520,20 +598,98 @@
         <mxCell id="create-configure-transitions-settings" value="&lt;b&gt;AI Settings&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Configure a provider&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=15;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="create-configure-transitions">
           <mxGeometry x="720" y="1820.0" width="270" height="92" as="geometry" />
         </mxCell>
-        <mxCell id="create-configure-transitions-edge-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="create-configure-transitions-format" target="create-configure-transitions-provider" bloghubSection="create-configure-transitions">
+        <mxCell id="create-configure-transitions-edge-1" value="CA-13 · format" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="create-configure-transitions-format" target="create-configure-transitions-provider" bloghubSection="create-configure-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="create-configure-transitions-edge-2" value="Configured" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="create-configure-transitions-provider" target="create-configure-transitions-options" bloghubSection="create-configure-transitions">
+        <mxCell id="create-configure-transitions-edge-2" value="CA-14/15 · provider" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="create-configure-transitions-provider" target="create-configure-transitions-options" bloghubSection="create-configure-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="create-configure-transitions-edge-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="create-configure-transitions-provider" target="create-configure-transitions-settings" bloghubSection="create-configure-transitions">
+        <mxCell id="create-configure-transitions-edge-3" value="CA-16 · Settings" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="create-configure-transitions-provider" target="create-configure-transitions-settings" bloghubSection="create-configure-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="create-configure-transitions-edge-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="create-configure-transitions-settings" target="create-configure-transitions-provider" bloghubSection="create-configure-transitions">
+        <mxCell id="create-configure-transitions-edge-4" value="SYSTEM · return" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="create-configure-transitions-settings" target="create-configure-transitions-provider" bloghubSection="create-configure-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="create-configure-transitions-edge-5" value="Next" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="create-configure-transitions-options" target="create-configure-transitions-next" bloghubSection="create-configure-transitions">
+        <mxCell id="create-configure-transitions-edge-5" value="CA-17/19 · Next" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="create-configure-transitions-options" target="create-configure-transitions-next" bloghubSection="create-configure-transitions">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-badge-0" value="CA-01" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="700" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-badge-1" value="CA-02" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="875" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-badge-2" value="CA-03" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="1040" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-badge-3" value="CA-04" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="1405" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-badge-4" value="CA-13" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="1080" y="420" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-badge-5" value="CA-14/15" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="1050" y="785" width="92" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-badge-6" value="CA-17" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="1070" y="980" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-badge-7" value="CA-18" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="75" y="1185" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-badge-8" value="CA-19" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="1710" y="1185" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-legend-background" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="1220" y="585" width="570" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-legend-title" value="INTERACTION INDEX" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=18;fontColor=#171914;fontStyle=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="1248" y="605" width="514" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-legend-help" value="Amber IDs mark interactive geometry. Matching edge IDs show the user action; SYSTEM marks automatic work." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#747970;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="1248" y="639" width="514" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-badge-1000" value="CA-01–04" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="1248.0" y="690.0" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-legend-text-0" value="Navigation and reset" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="1348.0" y="688.0" width="406.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-badge-1001" value="CA-13" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="1248.0" y="744.5714285714286" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-legend-text-1" value="Choose article format" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="1348.0" y="742.5714285714286" width="406.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-badge-1002" value="CA-14/15" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="1248.0" y="799.1428571428571" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-legend-text-2" value="Choose AI provider" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="1348.0" y="797.1428571428571" width="406.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-badge-1003" value="CA-16" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="1248.0" y="853.7142857142858" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-legend-text-3" value="Open AI Settings" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="1348.0" y="851.7142857142858" width="406.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-badge-1004" value="CA-17" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="1248.0" y="908.2857142857142" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-legend-text-4" value="Set target word count" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="1348.0" y="906.2857142857142" width="406.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-badge-1005" value="CA-18" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="1248.0" y="962.8571428571429" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-legend-text-5" value="Return to Prompt" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="1348.0" y="960.8571428571429" width="406.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-badge-1006" value="CA-19" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="1248.0" y="1017.4285714285714" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-configure-legend-text-6" value="Continue to Destinations" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-configure">
+          <mxGeometry x="1348.0" y="1015.4285714285714" width="406.0" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
@@ -735,20 +891,107 @@
         <mxCell id="create-destinations-transitions-error" value="&lt;b&gt;Generation failed&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Show error · retry&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#2B3141;fontFamily=Arial;fontSize=15;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="create-destinations-transitions">
           <mxGeometry x="1020" y="1840.0" width="270" height="92" as="geometry" />
         </mxCell>
-        <mxCell id="create-destinations-transitions-edge-1" value="Generate" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="create-destinations-transitions-dest" target="create-destinations-transitions-generate" bloghubSection="create-destinations-transitions">
+        <mxCell id="create-destinations-transitions-edge-1" value="CA-20–23/27 · Generate" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="create-destinations-transitions-dest" target="create-destinations-transitions-generate" bloghubSection="create-destinations-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="create-destinations-transitions-edge-2" value="202" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="create-destinations-transitions-generate" target="create-destinations-transitions-poll" bloghubSection="create-destinations-transitions">
+        <mxCell id="create-destinations-transitions-edge-2" value="SYSTEM · 202" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="create-destinations-transitions-generate" target="create-destinations-transitions-poll" bloghubSection="create-destinations-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="create-destinations-transitions-edge-3" value="Done" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="create-destinations-transitions-poll" target="create-destinations-transitions-editor" bloghubSection="create-destinations-transitions">
+        <mxCell id="create-destinations-transitions-edge-3" value="SYSTEM · done" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="create-destinations-transitions-poll" target="create-destinations-transitions-editor" bloghubSection="create-destinations-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="create-destinations-transitions-edge-4" value="Error" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="create-destinations-transitions-poll" target="create-destinations-transitions-error" bloghubSection="create-destinations-transitions">
+        <mxCell id="create-destinations-transitions-edge-4" value="SYSTEM · error" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="create-destinations-transitions-poll" target="create-destinations-transitions-error" bloghubSection="create-destinations-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="create-destinations-transitions-edge-5" value="Retry" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="create-destinations-transitions-error" target="create-destinations-transitions-generate" bloghubSection="create-destinations-transitions">
+        <mxCell id="create-destinations-transitions-edge-5" value="CA-28 · Retry" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="create-destinations-transitions-error" target="create-destinations-transitions-generate" bloghubSection="create-destinations-transitions">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-badge-0" value="CA-01" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="700" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-badge-1" value="CA-02" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="875" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-badge-2" value="CA-03" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="1040" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-badge-3" value="CA-04" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="1405" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-badge-4" value="CA-20/21" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="1000" y="420" width="92" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-badge-5" value="CA-22" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="1000" y="510" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-badge-6" value="CA-23" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="1000" y="600" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-badge-7" value="CA-25" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="680" y="455" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-badge-8" value="CA-26" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="75" y="1185" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-badge-9" value="CA-27" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="935" y="1185" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-legend-background" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="1140" y="330" width="650" height="650" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-legend-title" value="INTERACTION INDEX" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=18;fontColor=#171914;fontStyle=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="1168" y="350" width="594" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-legend-help" value="Amber IDs mark interactive geometry. Matching edge IDs show the user action; SYSTEM marks automatic work." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#747970;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="1168" y="384" width="594" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-badge-1000" value="CA-01–04" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="1168.0" y="435.0" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-legend-text-0" value="Navigation and reset" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="1268.0" y="433.0" width="486.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-badge-1001" value="CA-20/21" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="1168.0" y="501.5" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-legend-text-1" value="Toggle Medium" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="1268.0" y="499.5" width="486.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-badge-1002" value="CA-22" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="1168.0" y="568.0" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-legend-text-2" value="Toggle Hashnode" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="1268.0" y="566.0" width="486.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-badge-1003" value="CA-23" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="1168.0" y="634.5" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-legend-text-3" value="Toggle Dev.to" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="1268.0" y="632.5" width="486.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-badge-1004" value="CA-24/25" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="1168.0" y="701.0" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-legend-text-4" value="Reconnect or configure platform" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="1268.0" y="699.0" width="486.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-badge-1005" value="CA-26" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="1168.0" y="767.5" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-legend-text-5" value="Return to Configure" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="1268.0" y="765.5" width="486.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-badge-1006" value="CA-27" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="1168.0" y="834.0" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-legend-text-6" value="Generate article" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="1268.0" y="832.0" width="486.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-badge-1007" value="CA-28" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="1168.0" y="900.5" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-create-destinations-legend-text-7" value="Retry failed generation" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-create-destinations">
+          <mxGeometry x="1268.0" y="898.5" width="486.0" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

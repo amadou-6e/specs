@@ -1,5 +1,8 @@
 # Publish / Schedule — Components Spec
 
+> Design blocked: no authoritative `publish-schedule.drawio` exists. Treat the component
+> notes below as historical planning input only.
+
 ---
 
 ## ArticleHeaderStrip
