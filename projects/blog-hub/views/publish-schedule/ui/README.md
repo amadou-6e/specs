@@ -1,12 +1,11 @@
 # Publish schedule UI
 
-## Authority status
+The [Publish Schedule Draw.io](../publish-schedule.drawio) is the sole authority. Its
+Configure page contains destination controls, supporting states, stable `PS-*`
+interaction IDs, and the publish lifecycle. Its Outcome page defines mixed and
+all-failed results.
 
-Design blocked: no authoritative Draw.io exists yet. [layout.md](../layout.md),
-[components.md](../components.md), and [ui-tests.md](../ui-tests.md) are historical
-planning inputs, not approved UI geometry, states, interactions, or transitions.
+Markdown files in this view are searchable projections. API contracts govern service
+requests and payloads only.
 
-Create and review `publish-schedule.drawio` before an implementation ticket relies on
-this UI.
-
-State ID prefix: `PUBLISH-SCHEDULE-*`.
+Interaction ID prefix: `PS-*`.

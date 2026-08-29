@@ -1,11 +1,10 @@
 # Login UI
 
-## Authority status
+The [Login Draw.io](../login.drawio) is the sole authority. Its Authentication page
+contains the full sign-in screen, verified card states, stable `LI-*` interaction IDs,
+and the authentication lifecycle.
 
-Design blocked: no authoritative Draw.io exists yet. [layout.md](../layout.md),
-[components.md](../components.md), and [contract.md](../contract.md) are historical
-planning inputs, not approved UI geometry, states, interactions, or transitions.
+Markdown files in this view are searchable projections. API contracts govern service
+requests and payloads only.
 
-Create and review `login.drawio` before an implementation ticket relies on this UI.
-
-State ID prefix: `LOGIN-*`.
+Interaction ID prefix: `LI-*`.

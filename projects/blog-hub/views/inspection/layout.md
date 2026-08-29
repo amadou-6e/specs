@@ -1,7 +1,7 @@
 # Inspection — Layout Spec
 
-> Design blocked: no authoritative `inspection.drawio` exists. Treat the layout below as
-> historical planning input only.
+> UI authority: [inspection.drawio](inspection.drawio). This layout is a derived reading
+> aid, not an independent source of UI behavior.
 
 ## Purpose
 Shows the per-platform gate result after a draft has been created. The user diagnoses failures and decides whether to proceed to publish.

@@ -1,7 +1,7 @@
 # Inspection — UI Tests Spec
 
-> Design blocked: these are historical test ideas, not an authoritative test contract.
-> Derive the suite from `inspection.drawio` after that artifact is created and reviewed.
+> Test authority: [inspection.drawio](inspection.drawio). Tests project its represented
+> states and `IN-*` transitions; they must not create new UI requirements.
 
 ---
 

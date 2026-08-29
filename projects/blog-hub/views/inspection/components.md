@@ -1,7 +1,7 @@
 # Inspection — Components Spec
 
-> Design blocked: no authoritative `inspection.drawio` exists. Treat the component notes
-> below as historical planning input only.
+> UI authority: [inspection.drawio](inspection.drawio). This component inventory is a
+> searchable projection and must not introduce states absent from the Draw.io.
 
 ---
 

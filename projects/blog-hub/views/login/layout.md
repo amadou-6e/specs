@@ -1,7 +1,7 @@
 # Login View — Layout
 
-> Design blocked: no authoritative `login.drawio` exists. Treat the layout below as
-> historical planning input only.
+> UI authority: [login.drawio](login.drawio). This layout is a derived reading aid, not
+> an independent source of UI behavior.
 
 ## Purpose
 

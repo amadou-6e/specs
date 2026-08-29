@@ -40,9 +40,9 @@ and use branches and commits to preserve design history.
 | Create article | [views/create-article/ui](../views/create-article/ui/README.md) | Draw.io authority present |
 | Import article | [views/import-article/ui](../views/import-article/ui/README.md) | Draw.io authority present |
 | Settings | [views/settings/ui](../views/settings/ui/README.md) | Draw.io authority present |
-| Login | [views/login/ui](../views/login/ui/README.md) | Design blocked: Draw.io missing |
-| Inspection | [views/inspection/ui](../views/inspection/ui/README.md) | Design blocked: Draw.io missing |
-| Publish schedule | [views/publish-schedule/ui](../views/publish-schedule/ui/README.md) | Design blocked: Draw.io missing |
+| Login | [views/login/ui](../views/login/ui/README.md) | Draw.io authority present |
+| Inspection | [views/inspection/ui](../views/inspection/ui/README.md) | Draw.io authority present |
+| Publish schedule | [views/publish-schedule/ui](../views/publish-schedule/ui/README.md) | Draw.io authority present |
 
 See [application navigation](flows/application-navigation/README.md) for the current
 cross-view transition diagram and [the archive](archive/current-pages/README.md) for

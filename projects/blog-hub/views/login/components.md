@@ -1,7 +1,7 @@
 # Login View — Components
 
-> Design blocked: no authoritative `login.drawio` exists. Treat the component notes
-> below as historical planning input only.
+> UI authority: [login.drawio](login.drawio). This component inventory is a searchable
+> projection and must not introduce states absent from the Draw.io.
 
 ---
 

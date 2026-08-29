@@ -1,7 +1,7 @@
 # Publish / Schedule — UI Tests Spec
 
-> Design blocked: these are historical test ideas, not an authoritative test contract.
-> Derive the suite from `publish-schedule.drawio` after that artifact is created and reviewed.
+> Test authority: [publish-schedule.drawio](publish-schedule.drawio). Tests project its
+> represented states and `PS-*` transitions; they must not create new UI requirements.
 
 ---
 

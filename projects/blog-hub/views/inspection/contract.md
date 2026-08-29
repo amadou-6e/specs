@@ -1,7 +1,7 @@
 # Inspection — API Contract
 
-> Scope: this file describes service requests and payloads only. No Inspection UI
-> behavior is authoritative until `inspection.drawio` exists and is reviewed.
+> Scope: this file defines service requests and payloads. UI geometry, visible states,
+> interaction IDs, and transitions are governed by [inspection.drawio](inspection.drawio).
 
 ---
 

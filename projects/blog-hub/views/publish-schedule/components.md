@@ -1,7 +1,7 @@
 # Publish / Schedule — Components Spec
 
-> Design blocked: no authoritative `publish-schedule.drawio` exists. Treat the component
-> notes below as historical planning input only.
+> UI authority: [publish-schedule.drawio](publish-schedule.drawio). This component
+> inventory is a searchable projection and must not introduce states absent from Draw.io.
 
 ---
 
