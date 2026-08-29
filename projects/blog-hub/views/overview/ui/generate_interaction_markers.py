@@ -16,6 +16,8 @@ PAGE_ID = "overview-main"
 SECTION = "overview-interaction-markers"
 TRANSITION_SECTION = "overview-transitions"
 CONTROL_SECTION = "overview-contract-controls"
+ACTION_SECTION = "overview-card-actions"
+JOB_STUDY_SECTION = "overview-job-state-study"
 
 
 def geometry(cell: ET.Element, x: float, y: float, width: float, height: float) -> None:
@@ -74,6 +76,155 @@ def badge(root: ET.Element, cell_id: str, label: str, x: float, y: float, width:
         width,
         24,
     )
+
+
+def gate_badge(
+    root: ET.Element,
+    cell_id: str,
+    label: str,
+    x: float,
+    y: float,
+    *,
+    fill: str,
+    stroke: str,
+    text: str,
+    width: float = 104,
+) -> None:
+    vertex(
+        root,
+        cell_id,
+        label,
+        "rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=" + fill + ";"
+        "strokeColor=" + stroke + ";strokeWidth=2;fontFamily=Arial;fontSize=11;"
+        "fontStyle=1;fontColor=" + text + ";align=center;verticalAlign=middle;"
+        "spacing=0;locked=1;",
+        x,
+        y,
+        width,
+        28,
+        section=ACTION_SECTION,
+    )
+
+
+def study_panel(
+    root: ET.Element,
+    cell_id: str,
+    title: str,
+    detail: str,
+    x: float,
+    y: float,
+    *,
+    color: str = "#1F2740",
+    status: str = "",
+) -> None:
+    vertex(
+        root,
+        cell_id,
+        "",
+        "rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#10131C;"
+        "strokeColor=#2B3141;strokeWidth=2;locked=1;",
+        x,
+        y,
+        500,
+        250,
+        section=JOB_STUDY_SECTION,
+    )
+    vertex(root, cell_id + "-title", title, text_style(16, "#E8EAF2", bold=True), x + 24, y + 22, 450, 32, section=JOB_STUDY_SECTION)
+    vertex(root, cell_id + "-detail", detail, text_style(13, "#8991AA"), x + 24, y + 62, 450, 70, section=JOB_STUDY_SECTION)
+    vertex(
+        root,
+        cell_id + "-status",
+        status,
+        "rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=" + color + ";"
+        "strokeColor=#2B3141;fontFamily=Arial;fontSize=12;fontStyle=1;"
+        "fontColor=#E8EAF2;align=left;verticalAlign=middle;spacingLeft=14;locked=1;",
+        x + 24,
+        y + 148,
+        452,
+        54,
+        section=JOB_STUDY_SECTION,
+    )
+
+
+def add_gate_and_context_study(root: ET.Element) -> None:
+    # Live card controls on the reconstructed first article.
+    gate_badge(root, "overview-main-gate-pass", "PASS - INSPECT", 1248, 277, fill="#173127", stroke="#22C55E", text="#86EFAC", width=126)
+    vertex(
+        root,
+        "overview-main-context-trigger",
+        "...",
+        "rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;"
+        "strokeColor=#2B3141;fontFamily=Arial;fontSize=16;fontStyle=1;"
+        "fontColor=#C9CFE0;align=center;verticalAlign=middle;locked=1;",
+        1510,
+        277,
+        42,
+        32,
+        section=ACTION_SECTION,
+    )
+
+    # Isolated component states sit in unused canvas space, beside the approved card studies.
+    vertex(root, "overview-actions-background", "", "rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;", 2500, 920, 1060, 1000, section=ACTION_SECTION)
+    vertex(root, "overview-actions-title", "GATE BADGES AND CARD CONTEXT ACTIONS", text_style(22, "#171914", bold=True), 2540, 950, 960, 38, section=ACTION_SECTION)
+    vertex(root, "overview-actions-help", "Faithful card states for issue #98. Gate status is visible without opening the menu; only completed Pass, Warn, and Fail gates navigate to Inspection.", text_style(14, "#747970"), 2540, 995, 940, 56, section=ACTION_SECTION)
+
+    gate_badge(root, "overview-gate-pass", "PASS", 2540, 1080, fill="#173127", stroke="#22C55E", text="#86EFAC")
+    gate_badge(root, "overview-gate-warn", "WARN", 2670, 1080, fill="#302A17", stroke="#FBBF24", text="#FDE68A")
+    gate_badge(root, "overview-gate-fail", "FAIL", 2800, 1080, fill="#302027", stroke="#EF4444", text="#FCA5A5")
+    gate_badge(root, "overview-gate-pending", "PENDING", 2930, 1080, fill="#181C27", stroke="#5A6080", text="#8991AA", width=118)
+    vertex(root, "overview-gate-note", "OV-S15 renders gate data. OV-35 opens Inspection for Pass / Warn / Fail. Pending is passive.", text_style(13, "#4F554D"), 3080, 1072, 420, 46, section=ACTION_SECTION)
+
+    vertex(root, "overview-context-card", "<b>RAG Pipeline with Neo4j and LangChain</b><br><font color=\"#8991AA\">Apr 5 - 2,100 words</font>", "rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#10131C;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=left;verticalAlign=top;spacing=18;locked=1;", 2540, 1160, 620, 150, section=ACTION_SECTION)
+    gate_badge(root, "overview-context-card-gate", "WARN", 2560, 1258, fill="#302A17", stroke="#FBBF24", text="#FDE68A")
+    vertex(root, "overview-context-trigger", "...", "rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#C9CFE0;align=center;verticalAlign=middle;locked=1;", 3092, 1178, 42, 32, section=ACTION_SECTION)
+    vertex(root, "overview-context-menu", "<b>Edit</b><br><br>Duplicate<br><br>Archive<br><br><font color=\"#FCA5A5\">Delete</font>", "rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#3A4155;fontFamily=Arial;fontSize=14;fontColor=#C9CFE0;align=left;verticalAlign=top;spacing=16;locked=1;", 3180, 1160, 320, 240, section=ACTION_SECTION)
+    for cell_id, label, x, y in (
+        ("overview-marker-ov37", "OV-37", 3400, 1180),
+        ("overview-marker-ov38", "OV-38", 3400, 1232),
+        ("overview-marker-ov39", "OV-39", 3400, 1284),
+        ("overview-marker-ov40", "OV-40", 3400, 1336),
+    ):
+        badge(root, cell_id, label, x, y, 72)
+
+    vertex(root, "overview-delete-confirm", "<b>Delete this article?</b><br><font color=\"#8991AA\">Published copies are not removed.</font>", "rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#EF4444;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=left;verticalAlign=top;spacing=16;locked=1;", 2540, 1440, 460, 160, section=ACTION_SECTION)
+    vertex(root, "overview-delete-cancel", "Cancel", "rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#3A4155;fontFamily=Arial;fontSize=13;fontColor=#C9CFE0;align=center;verticalAlign=middle;locked=1;", 2710, 1545, 110, 36, section=ACTION_SECTION)
+    vertex(root, "overview-delete-confirm-button", "Delete", "rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#EF4444;strokeColor=#DC2626;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=#FFFFFF;align=center;verticalAlign=middle;locked=1;", 2830, 1545, 140, 36, section=ACTION_SECTION)
+    badge(root, "overview-marker-ov42", "OV-42", 2700, 1588, 72)
+    badge(root, "overview-marker-ov41", "OV-41", 2864, 1588, 72)
+
+    vertex(root, "overview-context-conflict", "<b>Cannot delete published article</b><br><font color=\"#FCA5A5\">Remove its live destinations first. The article and history remain unchanged.</font>", "rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#EF4444;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=left;verticalAlign=middle;spacing=16;locked=1;", 3040, 1440, 460, 160, section=ACTION_SECTION)
+    vertex(root, "overview-context-error-note", "404, 409, and other mutation failures replace the action row with an inline card message. No alert or modal is used.", text_style(13, "#4F554D"), 2540, 1660, 960, 58, section=ACTION_SECTION)
+
+
+def add_job_state_study(root: ET.Element) -> None:
+    vertex(root, "overview-job-study-background", "", "rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;", 1650, 4520, 1910, 1880, section=JOB_STUDY_SECTION)
+    vertex(root, "overview-job-study-title", "DURABLE ARTICLE ACTION - PANEL STATES", text_style(22, "#171914", bold=True), 1690, 4550, 1800, 38, section=JOB_STUDY_SECTION)
+    vertex(root, "overview-job-study-help", "The selected panel remains open. The same visible operation, job ID, and idempotency key survive polling and reload recovery.", text_style(14, "#747970"), 1690, 4595, 1760, 54, section=JOB_STUDY_SECTION)
+
+    panels = (
+        ("submitting", "Submitting action", "Push drafts is being accepted. Action buttons are disabled before the first response.", "#1F2740", "Submitting - duplicate actions disabled"),
+        ("queued", "Queued", "Job 7F2A is durable. Polling continues at the documented interval.", "#1F2740", "Queued - waiting for a worker"),
+        ("running", "Running", "Job 7F2A is publishing to Medium and Hashnode.", "#1F2740", "Running - 2 of 3 destinations"),
+        ("recovering", "Recovering after reload", "Overview is discovering the selected article's active durable job.", "#302A17", "Checking durable jobs..."),
+        ("retrying", "Retrying", "The failed job is being retried through its durable retry endpoint.", "#302A17", "Retrying - action buttons disabled"),
+        ("failed", "Failed", "Hashnode authentication expired. Failure remains visible until retry or another action.", "#302027", "Failed - authentication required"),
+        ("canceled", "Canceled", "The backend reports a terminal cancellation. Retry remains available when supported.", "#302027", "Canceled - no work is running"),
+        ("completed", "Completed", "Fresh article and destination data replace the stale panel copy.", "#173127", "Completed - collection refreshed"),
+        ("recovery-warning", "Recovery unavailable", "Active-job discovery failed. Keep the article selected and allow an explicit retry.", "#302A17", "Could not restore job status"),
+    )
+    for index, (slug, title, detail, color, status) in enumerate(panels):
+        column = index % 3
+        row = index // 3
+        study_panel(root, "overview-job-study-" + slug, title, detail, 1690 + column * 610, 4670 + row * 330, color=color, status=status)
+
+    for cell_id, label, x, y, marker_id, marker_label, marker_x in (
+        ("overview-job-study-failed-retry", "Retry", 3270, 5210, "overview-job-study-retry-failed", "OV-33", 3185),
+        ("overview-job-study-canceled-retry", "Retry", 2050, 5540, "overview-job-study-retry-canceled", "OV-33", 1965),
+        ("overview-job-study-recovery-retry", "Retry recovery", 3230, 5540, "overview-marker-ov43", "OV-43", 3145),
+    ):
+        vertex(root, cell_id, label, "rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#3A4155;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#C9CFE0;align=center;verticalAlign=middle;locked=1;", x, y, 116 if label == "Retry" else 156, 34, section=JOB_STUDY_SECTION)
+        badge(root, marker_id, marker_label, marker_x, y + 5, 72)
+    vertex(root, "overview-job-study-rule", "Duplicate prevention: OV-29 and OV-31 are disabled in Submitting, Queued, Running, Recovering, and Retrying. A repeated idempotency key reattaches to the existing job through OV-S22 and never creates another job.", text_style(13, "#4F554D"), 1690, 5690, 1760, 88, section=JOB_STUDY_SECTION)
 
 
 def legend_row(root: ET.Element, index: int, label: str, description: str, x: float, y: float) -> None:
@@ -229,37 +380,76 @@ def add_transition_contract(root: ET.Element) -> None:
     edge(root, 14, "page-loading", "page-failed", "OV-S08 - failed", dashed=True)
     edge(root, 15, "page-failed", "page-loading", "OV-27 - Retry", dashed=True)
 
-    band(root, 3, "DURABLE ARTICLE JOB", "Queued, running, completed, failed, retained, and removed outcomes remain explicit.", 7740, 420)
-    state(root, "overview-transitions-job-selected", "Selected - open", "OV-29 primary / OV-31 inspect", 470, 7880)
-    state(root, "overview-transitions-job-queued", "Job queued", "OV-S09 - accepted", 850, 7880, color="#1F2740")
-    state(root, "overview-transitions-job-running", "Job running", "OV-S10 - polling", 1230, 7880, color="#1F2740")
-    state(root, "overview-transitions-job-failed", "Job failed", "OV-S12 - retryable", 1610, 7800, color="#302027")
-    state(root, "overview-transitions-job-done", "Job completed", "OV-S11 - refresh", 1610, 7960, color="#173127")
-    state(root, "overview-transitions-job-retained", "Selection retained", "OV-S13 - repopulate", 1990, 7960, color="#173127")
-    state(root, "overview-transitions-job-removed", "Selection cleared", "OV-S14 - article absent", 2370, 7960)
-    edge(root, 16, "job-selected", "job-queued", "OV-S09 - 202")
-    edge(root, 17, "job-queued", "job-running", "OV-S10 - running")
-    edge(root, 18, "job-running", "job-failed", "OV-S12 - error", dashed=True)
-    edge(root, 19, "job-failed", "job-queued", "OV-33 - Retry", dashed=True)
-    edge(root, 20, "job-running", "job-done", "OV-S11 - done")
-    edge(root, 21, "job-done", "job-retained", "OV-S13 - still present")
-    edge(root, 22, "job-done", "job-removed", "OV-S14 - absent", dashed=True)
+    band(root, 3, "GATE AND CONTEXT ACTIONS", "Gate navigation is separate from card selection. Context mutations keep confirmation and failures inline.", 7740, 500)
+    state(root, "overview-transitions-card", "Article card", "Gate + context available", 470, 7900)
+    state(root, "overview-transitions-inspection", "Inspection", "OV-35 - completed gate", 850, 7820, color="#1F2740")
+    state(root, "overview-transitions-context-open", "Context open", "OV-36 - menu", 850, 7980, color="#1F2740")
+    state(root, "overview-transitions-mutation", "Mutation pending", "OV-38 / OV-39 / OV-41", 1230, 7980, color="#1F2740")
+    state(root, "overview-transitions-delete-confirm", "Delete confirmation", "OV-40 - inline", 1230, 7820, color="#302A17")
+    state(root, "overview-transitions-mutation-done", "Collection refreshed", "OV-S16 / OV-S17 / OV-S18", 1610, 7980, color="#173127")
+    state(root, "overview-transitions-mutation-missing", "Article not found", "OV-S19 - inline 404", 1990, 7820, color="#302027")
+    state(root, "overview-transitions-mutation-conflict", "Delete conflict", "OV-S20 - inline 409", 1990, 7980, color="#302027")
+    state(root, "overview-transitions-mutation-error", "Action failed", "OV-S21 - inline error", 1990, 8140, color="#302027")
+    edge(root, 31, "card", "inspection", "OV-35")
+    edge(root, 32, "card", "context-open", "OV-36")
+    edge(root, 33, "context-open", "delete-confirm", "OV-40")
+    edge(root, 34, "delete-confirm", "context-open", "OV-42", dashed=True)
+    edge(root, 35, "context-open", "mutation", "OV-38 / OV-39")
+    edge(root, 36, "delete-confirm", "mutation", "OV-41")
+    edge(root, 37, "mutation", "mutation-done", "OV-S16 / S17 / S18")
+    edge(root, 38, "mutation", "mutation-missing", "OV-S19", dashed=True)
+    edge(root, 39, "mutation", "mutation-conflict", "OV-S20", dashed=True)
+    edge(root, 40, "mutation", "mutation-error", "OV-S21", dashed=True)
+    edge(root, 51, "context-open", "card", "OV-36 / Esc / outside", dashed=True)
 
-    band(root, 4, "VIEW EXITS", "Only Visit leaves BlogHub; preview tabs remain in Overview.", 8180, 400)
-    state(root, "overview-transitions-overview", "Overview", "Current desktop state", 470, 8310)
-    state(root, "overview-transitions-queue", "Publish Queue", "OV-02 / OV-32", 850, 8240, color="#1F2740")
-    state(root, "overview-transitions-platforms", "Platforms", "OV-03", 1230, 8240, color="#1F2740")
-    state(root, "overview-transitions-settings", "Settings", "OV-04", 1610, 8240, color="#1F2740")
-    state(root, "overview-transitions-create", "Create Article", "OV-05 / OV-25", 1990, 8240, color="#1F2740")
-    state(root, "overview-transitions-import", "Import Article", "OV-07 / OV-08", 850, 8400, color="#1F2740")
-    state(root, "overview-transitions-editor", "Editor", "OV-23 / OV-30", 1230, 8400, color="#1F2740")
-    state(root, "overview-transitions-remote", "Remote article", "OV-22 - new tab", 1610, 8400, color="#173127")
+    band(root, 4, "DURABLE ARTICLE JOB", "Submission, idempotency, polling, cancellation, retry, and reload recovery remain visible in the selected panel.", 8260, 940)
+    state(root, "overview-transitions-job-selected", "Selected - open", "OV-29 primary / OV-31 inspect", 470, 8400)
+    state(root, "overview-transitions-job-submitting", "Submitting", "Actions disabled", 850, 8400, color="#1F2740")
+    state(root, "overview-transitions-job-queued", "Job queued", "OV-S09 / OV-S22", 1230, 8400, color="#1F2740")
+    state(root, "overview-transitions-job-running", "Job running", "OV-S10 - durable polling", 1610, 8400, color="#1F2740")
+    state(root, "overview-transitions-job-failed", "Job failed", "OV-S12 / OV-S30", 1990, 8320, color="#302027")
+    state(root, "overview-transitions-job-done", "Job completed", "OV-S11 - refresh", 1990, 8480, color="#173127")
+    state(root, "overview-transitions-job-canceled", "Job canceled", "OV-S23 - terminal", 1990, 8640, color="#302027")
+    state(root, "overview-transitions-job-retrying", "Retrying", "OV-33 - actions disabled", 2370, 8320, color="#302A17")
+    state(root, "overview-transitions-job-retained", "Selection retained", "OV-S13 - fresh detail", 2370, 8480, color="#173127")
+    state(root, "overview-transitions-job-removed", "Selection cleared", "OV-S14 - article absent", 2750, 8480)
+    state(root, "overview-transitions-job-recovering", "Recovering after reload", "OV-S26 - discover active jobs", 470, 8820, color="#302A17")
+    state(root, "overview-transitions-job-recovery-warning", "Recovery unavailable", "OV-S29 - inline retry", 850, 8820, color="#302A17")
+    state(root, "overview-transitions-job-no-active", "No active job", "OV-S28 - fresh selected state", 1230, 8820, color="#173127")
+    edge(root, 16, "job-selected", "job-submitting", "OV-29 / OV-31")
+    edge(root, 17, "job-submitting", "job-queued", "OV-S09")
+    edge(root, 18, "job-submitting", "job-queued", "OV-S22", dashed=True)
+    edge(root, 19, "job-queued", "job-running", "OV-S10")
+    edge(root, 20, "job-running", "job-failed", "OV-S12 / OV-S30", dashed=True)
+    edge(root, 21, "job-running", "job-done", "OV-S11")
+    edge(root, 22, "job-running", "job-canceled", "OV-S23", dashed=True)
+    edge(root, 41, "job-failed", "job-retrying", "OV-33", dashed=True)
+    edge(root, 42, "job-canceled", "job-retrying", "OV-33", dashed=True)
+    edge(root, 43, "job-retrying", "job-queued", "OV-S24")
+    edge(root, 44, "job-retrying", "job-failed", "OV-S25", dashed=True)
+    edge(root, 45, "job-done", "job-retained", "OV-S13")
+    edge(root, 46, "job-done", "job-removed", "OV-S14", dashed=True)
+    edge(root, 47, "job-recovering", "job-queued", "OV-S27 queued", dashed=True)
+    edge(root, 48, "job-recovering", "job-running", "OV-S27 running", dashed=True)
+    edge(root, 49, "job-recovering", "job-no-active", "OV-S28")
+    edge(root, 50, "job-recovering", "job-recovery-warning", "OV-S29", dashed=True)
+    edge(root, 52, "job-recovery-warning", "job-recovering", "OV-43", dashed=True)
+
+    band(root, 5, "VIEW EXITS", "Only Visit leaves BlogHub externally; preview tabs remain in Overview.", 9220, 400)
+    state(root, "overview-transitions-overview", "Overview", "Current desktop state", 470, 9350)
+    state(root, "overview-transitions-queue", "Publish Queue", "OV-02 / OV-32", 850, 9280, color="#1F2740")
+    state(root, "overview-transitions-platforms", "Platforms", "OV-03", 1230, 9280, color="#1F2740")
+    state(root, "overview-transitions-settings", "Settings", "OV-04", 1610, 9280, color="#1F2740")
+    state(root, "overview-transitions-create", "Create Article", "OV-05 / OV-25", 1990, 9280, color="#1F2740")
+    state(root, "overview-transitions-import", "Import Article", "OV-07 / OV-08", 850, 9440, color="#1F2740")
+    state(root, "overview-transitions-editor", "Editor", "OV-23 / OV-30 / OV-37", 1230, 9440, color="#1F2740")
+    state(root, "overview-transitions-remote", "Remote article", "OV-22 - new tab", 1610, 9440, color="#173127")
     edge(root, 24, "overview", "queue", "OV-02 / OV-32")
     edge(root, 25, "overview", "platforms", "OV-03")
     edge(root, 26, "overview", "settings", "OV-04")
     edge(root, 27, "overview", "create", "OV-05 / OV-25")
     edge(root, 28, "overview", "import", "OV-07 / OV-08")
-    edge(root, 29, "overview", "editor", "OV-23 / OV-30")
+    edge(root, 29, "overview", "editor", "OV-23 / OV-30 / OV-37")
     edge(root, 30, "overview", "remote", "OV-22 - external")
 
 
@@ -269,10 +459,18 @@ def main() -> None:
     diagram = next(page for page in file_root.findall("diagram") if page.get("id") == PAGE_ID)
     root = diagram.find("mxGraphModel/root")
     for cell in list(root):
-        if cell.get("bloghubSection") in {SECTION, TRANSITION_SECTION, CONTROL_SECTION}:
+        if cell.get("bloghubSection") in {
+            SECTION,
+            TRANSITION_SECTION,
+            CONTROL_SECTION,
+            ACTION_SECTION,
+            JOB_STUDY_SECTION,
+        }:
             root.remove(cell)
 
     add_contract_controls(root)
+    add_gate_and_context_study(root)
+    add_job_state_study(root)
 
     # Markers on the reconstructed screen.
     markers = (
@@ -290,6 +488,8 @@ def main() -> None:
         ("overview-marker-ov21", "OV-21", 735, 185, 68),
         ("overview-marker-ov22", "OV-22", 1398, 497, 68),
         ("overview-marker-ov23", "OV-23", 1507, 497, 68),
+        ("overview-marker-ov35", "OV-35", 1268, 242, 68),
+        ("overview-marker-ov36", "OV-36", 1498, 242, 68),
         ("overview-marker-ov28", "OV-28", 903, 5409, 68),
         ("overview-marker-ov29", "OV-29", 1450, 6106, 68),
         ("overview-marker-ov30", "OV-30", 1062, 6275, 68),
@@ -308,7 +508,7 @@ def main() -> None:
         1900,
         40,
         1660,
-        820,
+        860,
     )
     vertex(root, "overview-marker-legend-title", "OVERVIEW · INTERACTION INDEX", text_style(24, "#171914", bold=True), 1940, 72, 1500, 40)
     vertex(
@@ -356,16 +556,25 @@ def main() -> None:
         ("OV-32", "Schedule selected article"),
         ("OV-33", "Retry failed article job"),
         ("OV-34", "Retry initial collection load"),
+        ("OV-35", "Open completed gate inspection"),
+        ("OV-36", "Toggle card context menu"),
+        ("OV-37", "Edit from card context"),
+        ("OV-38", "Duplicate article once"),
+        ("OV-39", "Archive article"),
+        ("OV-40", "Open inline delete confirmation"),
+        ("OV-41", "Confirm article deletion"),
+        ("OV-42", "Cancel article deletion"),
+        ("OV-43", "Retry active-job recovery"),
     )
     for index, (label, description) in enumerate(rows):
-        column = index // 12
-        row = index % 12
-        legend_row(root, index, label, description, 1940 + column * 535, 190 + row * 54)
+        column = index // 15
+        row = index % 15
+        legend_row(root, index, label, description, 1940 + column * 535, 190 + row * 48)
 
     add_transition_contract(root)
 
     model = diagram.find("mxGraphModel")
-    model.set("pageHeight", "8660")
+    model.set("pageHeight", "9700")
 
     ET.indent(tree, space="  ")
     tree.write(DRAWIO, encoding="UTF-8", xml_declaration=True)

@@ -4,7 +4,6 @@
 > searchable projection; the Draw.io wins if geometry, state, or interaction details differ.
 
 The components below describe the approved desktop geometry in `overview.drawio`.
-Gate badges and card context menus are deferred to blog-hub issue #98.
 
 ## ArticleCard
 
@@ -32,6 +31,8 @@ The primary unit of the centered, single-column article list.
 - `wordCount: number`
 - `destinations: Record<Platform, DestinationPreview>`
 - `activePreviewPlatform: Platform`
+- `gate: { result: pass | warn | fail | pending, reportUrl: string | null }`
+- `mutation: idle | pending | not_found | conflict | failed`
 
 ### States
 
@@ -56,6 +57,23 @@ The primary unit of the centered, single-column article list.
 - `Edit` (`OV-23`) opens the article in Editor.
 - Neither action bubbles into card selection.
 
+### GateBadge
+
+- Pass, Warn, Fail, and Pending have distinct labels, borders, and colors.
+- `OV-35` is present only for Pass, Warn, or Fail with a report URL and opens Inspection.
+- Pending remains visible but passive; interactivity is never implied by color alone.
+- Gate interaction does not select the article card.
+
+### CardContext
+
+- `OV-36` opens one accessible menu containing Edit (`OV-37`), Duplicate (`OV-38`),
+  Archive (`OV-39`), and Delete (`OV-40`).
+- Escape, outside click, or toggling `OV-36` closes it.
+- Delete first renders inline confirmation with Confirm (`OV-41`) and Cancel (`OV-42`).
+- Duplicate, archive, and confirmed delete run once and disable the menu while pending.
+- Mutation errors replace the action row inside the affected card. Published-article
+  conflicts are persistent and do not use alerts or modals.
+
 ## DetailsPanel
 
 - Hidden when no article is selected.
@@ -73,6 +91,18 @@ The primary unit of the centered, single-column article list.
 - `OV-31`: start inspection job.
 - `OV-32`: open Publish Queue with selected article.
 - `OV-33`: retry a retryable failed job.
+- `OV-43`: retry active-job discovery after reload recovery fails.
+
+### Durable action presentation
+
+- Submitting, queued, running, recovering, and retrying keep the panel open and disable
+  `OV-29` and `OV-31`.
+- Queued, running, failed, canceled, and retrying show the durable job identity and the
+  current visible operation.
+- Completion refreshes both cards and selected detail before leaving the completed state.
+- Reload recovery reattaches to queued/running work; a recovery failure preserves the
+  selected article and exposes `OV-43`.
+- Failed and canceled states expose `OV-33` only when the backend marks the job retryable.
 
 ## PaginationRegion
 

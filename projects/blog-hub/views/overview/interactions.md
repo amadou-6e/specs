@@ -23,6 +23,10 @@ Mobile sidebar behavior is explicitly out of scope.
 - Archive, delete, or remote removal also clears selection after the refreshed collection no longer contains the article.
 - Platform tabs select platform-specific preview content. They never navigate.
 - `Visit` opens the active platform's remote URL and is disabled when that URL is unavailable.
+- Gate badges do not select the card. Completed Pass, Warn, and Fail badges open
+  Inspection; Pending is passive.
+- Card-context controls never select the card. Only one context menu is open at a time,
+  and outside click or Escape returns it to the closed card state.
 
 ## User interactions
 
@@ -78,6 +82,24 @@ status, and platform criteria combine with AND semantics.
 Clicks on a preview tab, Visit, or Edit stop propagation and do not change selection.
 The same article's preview selection survives card-list re-renders during the view session.
 
+### Gate and card context actions
+
+| ID | Selector | Preconditions | Trigger | Outcome | Type |
+|---|---|---|---|---|---|
+| `OV-35` | `.card-gate[data-state="pass|warn|fail"]` | Gate inspection is complete and has a report URL | Click gate badge | Opens Inspection for this article | Navigate |
+| `OV-36` | `.card-context-trigger` | Card is rendered | Click context trigger | Opens or closes this card's context menu | Self |
+| `OV-37` | Context Edit | Context menu is open | Click Edit | Opens Editor for this article | Navigate |
+| `OV-38` | Context Duplicate | Context menu is open and no mutation is pending | Click Duplicate | Starts one idempotent duplicate request | Async |
+| `OV-39` | Context Archive | Context menu is open and no mutation is pending | Click Archive | Starts archive and retains article history | Async |
+| `OV-40` | Context Delete | Context menu is open | Click Delete | Replaces the action row with inline confirmation | Self |
+| `OV-41` | Inline Confirm delete | Delete confirmation is visible and no mutation is pending | Click Delete | Starts deletion | Async |
+| `OV-42` | Inline Cancel delete | Delete confirmation is visible | Click Cancel | Restores the context action row without a request | Self |
+
+The Pending gate is visually distinct but has no `OV-*` marker because it is not
+interactive. Duplicate, archive, and delete disable all context actions until their
+single request settles. A `404`, published-article `409`, or other mutation failure is
+shown inside that card and never via an alert.
+
 ### Details panel
 
 | ID | Selector | Preconditions | Trigger | Outcome | Type |
@@ -89,6 +111,7 @@ The same article's preview selection survives card-list re-renders during the vi
 | `OV-32` | Details-panel Schedule | An article is selected | Click Schedule | Opens Publish Queue with the article preselected | Navigate |
 | `OV-33` | Failed-job Retry | A panel job failed and is retryable | Click Retry | Restarts the failed operation | Async |
 | `OV-34` | Collection Load Error Retry | Initial collection load failed | Click Retry | Starts the initial collection request again | Async |
+| `OV-43` | Recovery-unavailable Retry | Active-job discovery failed | Click Retry recovery | Repeats active-job discovery without closing the selected panel | Async |
 
 `OV-29` must expose one concrete action at a time. Its label, enabled state, and behavior
 come from the article action model; the same button must not silently change behavior
@@ -114,9 +137,24 @@ System IDs are unique and are never reused as user IDs.
 | `OV-S12` | Job reports error | Enters Job Failed and exposes retry when supported |
 | `OV-S13` | Refresh still contains the selected article | Preserves selection and open/collapsed panel state |
 | `OV-S14` | Filter or refresh excludes/removes the selected article | Clears selection and returns to Browse or Filtered Browse |
+| `OV-S15` | Article data loads or refreshes | Renders Pass, Warn, Fail, or Pending gate state; only completed states with a report URL enable `OV-35` |
+| `OV-S16` | Duplicate succeeds | Inserts and selects the one returned copy, then refreshes the collection |
+| `OV-S17` | Archive succeeds | Removes the article from the active collection, retains history, and clears selection when needed |
+| `OV-S18` | Delete succeeds | Removes the article and clears selection when needed |
+| `OV-S19` | A context mutation returns `404` | Keeps the card and displays an inline not-found result until refresh or another action |
+| `OV-S20` | Delete returns published-article `409` | Keeps the article and displays the inline conflict without dismissing it automatically |
+| `OV-S21` | A context mutation otherwise fails | Keeps the article and displays an inline action error |
+| `OV-S22` | Submission returns an existing job for the same idempotency key | Reattaches to that job and enters Job Queued or Job Running without creating work |
+| `OV-S23` | Polling reports `canceled` | Enters Job Canceled and exposes `OV-33` only when retry is supported |
+| `OV-S24` | Durable retry is accepted | Enters Job Queued with the returned job identity |
+| `OV-S25` | Durable retry is rejected | Returns to Job Failed with the rejection detail still visible |
+| `OV-S26` | Overview reloads with a selected article | Enters Recovering and requests active durable jobs for that article |
+| `OV-S27` | Recovery finds an active queued or running job | Reattaches to the job and resumes polling in its reported state |
+| `OV-S28` | Recovery finds no active job or only a terminal job | Refreshes article detail and returns to Selected Open |
+| `OV-S29` | Active-job discovery fails | Keeps selection open and shows Recovery Unavailable with `OV-43` |
+| `OV-S30` | Backend reports its durable timeout as a terminal failure | Enters Job Failed with the backend reason; the browser never invents a five-second timeout |
 
-## Deferred controls
-
-Gate badges and card context actions are not present in the approved Overview visual
-baseline. Their contract belongs to blog-hub issue #98; they must receive new IDs when
-they are introduced rather than reusing IDs in this document.
+`OV-29` and `OV-31` first enter Submitting. They are disabled in Submitting, Job
+Queued, Job Running, Recovering, and Retrying. Submission always carries a stable
+idempotency key for the visible operation; `OV-S22` handles a repeated request by
+reattaching rather than enqueuing another job.
