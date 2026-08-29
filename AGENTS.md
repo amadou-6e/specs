@@ -17,6 +17,11 @@ that make intent, behavior, constraints, and verification clearer.
   `ui/archive/`. Do not track Draw.io exports; generate them temporarily for visual
   inspection and discard them after review.
 - Use editable geometry for UI proposals; screenshots are references, not substitutes.
+- Treat each view's Draw.io as the sole authority for UI geometry, component states,
+  interaction IDs, and transitions. Markdown, screenshots, and test plans are derived
+  indexes or evidence and must not introduce behavior absent from the Draw.io.
+- When an implementation issue needs a new UI control, state, or transition, update and
+  review the owning Draw.io before implementation or in a stacked specification PR.
 - Visually inspect Draw.io changes at component level and at full-page scale.
 - Record unresolved decisions explicitly instead of inventing product behavior.
 - Never add credentials, browser profiles, cookies, tokens, or captured login URLs.

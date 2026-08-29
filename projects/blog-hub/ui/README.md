@@ -14,9 +14,16 @@ View-specific sources live with the written specification under `views/<view>/ui
 
 ## Artifact rules
 
-- `*.drawio`: canonical editable geometry stored as uncompressed XML.
-- `references/`: screenshots of the running application or user-provided visual truth.
-- `README.md`: state IDs, ownership, source paths, and implementation status.
+- `*.drawio`: the sole authority for UI geometry, component states, interaction IDs,
+  and transitions; stored as uncompressed XML.
+- `references/`: fidelity evidence from the running application or user feedback, not
+  an alternate specification.
+- `README.md` and other Markdown: searchable indexes, implementation notes, and test
+  projections derived from the owning Draw.io.
+
+An implementation ticket must not infer a control or state from stale Markdown. If its
+required behavior is absent from the owning Draw.io, update and review the Draw.io first
+or provide that specification change as a stacked PR before implementation.
 
 Draw.io exports are temporary inspection artifacts. Do not commit them: they can drift
 from the editable source and create a second, unreliable representation of the design.
