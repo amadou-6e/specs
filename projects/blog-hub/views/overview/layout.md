@@ -1,46 +1,45 @@
-# Overview — Layout Spec
+# Overview - Layout Spec
 
 ## Purpose
 Entry point and daily driver. The user sees all articles and their per-platform state at a glance.
 
 ---
 
-## Page Zones
+## Desktop page zones
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│  ZONE A: Top nav (fixed, 48px)                                  │
-├─────────────────────────────────────────────────────────────────┤
-│  ZONE B: Filter bar (sticky, 52px)                              │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│  ZONE C: Card grid (scrollable, fills remaining height)         │
-│                                                                 │
-│   [Card]  [Card]  [Card]                                        │
-│   [Card]  [Card]  [Card]                                        │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
++-----------------------------------------------------------------+
+| ZONE A: Top nav, 48 px                                          |
++----------------------------------------------------+------------+
+| ZONE B: Filter bar                                 | ZONE D     |
++----------------------------------------------------+ Details    |
+|                                                    | panel      |
+| ZONE C: centered article list, max 750 px          | 300 px     |
+|                                                    | or 12 px   |
+|                    [Card]                          | strip      |
+|                    [Card]                          |            |
+|                    [Pagination]                    |            |
++----------------------------------------------------+------------+
 ```
 
-Zone A and B are fixed/sticky. Zone C scrolls independently.
+Zone A is fixed. Zone B remains above the independently scrolling Zone C. Zone D is
+absent with no selection, 300 px when open, and 12 px when collapsed.
 
 ---
 
-## Grid
+## Article list
 
-- Desktop (>1280px): 3 columns, 24px gap
-- Tablet (768–1280px): 2 columns, 20px gap
-- Mobile (<768px): 1 column, 16px gap
-
-Max content width: 1400px, centered.
-Horizontal padding: 32px desktop, 20px tablet, 16px mobile.
+- One centered column, `minmax(0, 750px)`.
+- 12 px vertical gap between cards.
+- 24 px vertical and 32 px horizontal scroll-area padding.
+- Opening the panel reduces available list space; it does not create another card column.
 
 ---
 
 ## Zone A: Top Nav
 
-Left: logo/wordmark, then primary nav links (Articles active, Queue, Platforms, Settings).
-Right: platform health indicator, New Article button.
+Left: logo/wordmark. Center: Articles, Queue, Platforms, Settings. Right: passive
+platform health indicator and New article split button.
 
 Height: 48px. Background: surface color with bottom border. Does not scroll.
 
@@ -56,11 +55,12 @@ Left to right:
 5. Platform toggle pills: Medium, Hashnode, Dev.to
 6. Right edge: article count label
 
-Height: 52px. Sticks to top below Zone A when scrolling.
+The approved desktop bar uses 18 px top, 8 px bottom, and 32 px horizontal padding.
+It does not scroll with the article list.
 
 ---
 
-## Zone C: Card Grid
+## Zone C: Article list
 
 Cards are sorted by urgency:
 1. Error state (any platform)
@@ -69,23 +69,19 @@ Cards are sorted by urgency:
 4. Ready / scheduled
 5. Published (all platforms)
 
-Empty state: centered illustration + "No articles yet" + New Article button.
-Loading state: skeleton cards (same dimensions as real cards).
+First-run and filtered-empty states are centered in this zone. Initial loading uses five
+card skeletons. Pagination progress or failure appears after existing cards.
 
 ---
 
-## Above the Fold (1080px screen)
+## Zone D: Details panel
 
-At typical desktop height, the user sees:
-- Zone A and B in full
-- First 2 rows of cards (6 cards at 3-col)
+- Open: 300 px fixed width with populated content.
+- Collapsed: 12 px strip; content is not rendered visibly.
+- Hidden: no selected article, so Zone C uses all available body width.
+- Selecting a different article opens the panel and updates it in place.
 
-No action should require scrolling on first load if the article list is non-empty.
+## Scope boundary
 
----
-
-## Responsive Notes
-
-- On mobile, filter pills collapse into a single "Filter" button that opens a bottom sheet.
-- Card grid becomes single column.
-- New Article button collapses to icon-only on mobile.
+This specification defines desktop behavior. Mobile sidebar/drawer behavior is explicitly
+excluded from issue #95 and must not be inferred from the desktop widths above.

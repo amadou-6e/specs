@@ -1,17 +1,31 @@
-# Overview — State Diagram
+# Overview - State Diagram
 
-The view has two stable states: browsing the article list (with optional filter) and an article selected with the side panel open. Async jobs (push, inspect) run from the selected state and return to it on completion.
+The `OVERVIEW - INTERACTION LIFECYCLE` region on the `Overview - Articles` page of
+[overview.drawio](overview.drawio) is the sole authoritative state diagram. User
+transitions use `OV-*`; automatic API, debounce, refresh, and polling transitions use
+the distinct `OV-S*` namespace.
 
-![diagram-1](assets/state-diagram/diagram-1.png)
+This file is a searchable index of the states represented there. It must not introduce
+states or transitions that are absent from the Draw.io. Mobile sidebar behavior is out
+of scope.
 
-## State summary
+## Stable states
 
-| State | Description |
-|-------|-------------|
-| Browse | Article list visible, no selection. Filters apply immediately via debounced reload. |
-| Side Panel | One article selected. Push and Inspect actions available. |
-| Push Job | Async: POST + job poll. Returns to Side Panel on done or error. |
-| Inspect Job | Async: POST + job poll. Returns to Side Panel on done or error. |
+| State | Required presentation |
+|---|---|
+| Loading | Five card-shaped skeletons; filters remain visible but do not show stale counts |
+| Browse | Loaded article list with no selected article and no details panel |
+| Filtered Browse | Loaded filtered list with criteria and count visible |
+| First-run Empty | No stored articles; New article action is available |
+| Filtered Empty | Articles may exist, but none match; Clear filters is available |
+| Load Error | Collection-level failure with a retry path; no false empty state |
+| Selected Open | Selected card and populated 300 px details panel |
+| Selected Collapsed | Selected card and 12 px side strip; panel content hidden |
+| Page Loading | Existing cards remain visible; pagination region shows progress |
+| Page Failed | Existing cards remain visible; pagination region shows error and Retry |
+| Job Queued | Selected action accepted; queued status visible in panel |
+| Job Running | Selected action progress visible; duplicate submission prevented |
+| Job Failed | Failure visible in panel with retry when supported |
 
-Clicking the gate badge navigates to the Inspection view (out of scope here).
-Clicking New Article navigates to Create Article (out of scope here).
+Navigation destinations are exits from Overview, not additional rendered Overview
+states. Preview tabs remain inside the current state; only `Visit` is external.
