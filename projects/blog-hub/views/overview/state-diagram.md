@@ -26,6 +26,14 @@ of scope.
 | Job Queued | Selected action accepted; queued status visible in panel |
 | Job Running | Selected action progress visible; duplicate submission prevented |
 | Job Failed | Failure visible in panel with retry when supported |
+| Connected Blogs Resolved | Connected Hashnode and Medium records are the source of truth for synchronization |
+| Schedule Repaired | Each connected blog has an enabled internal 60-second schedule |
+| Sync Queued | Overview reload or a due schedule has queued one idempotent sync job per platform |
+| Sync Running | The durable worker is retrieving and reconciling remote articles |
+| Collection Refreshed | Successful remote upserts are followed by a local collection refresh |
+| Sync Failed | Existing cards remain visible; durable retry or the next recurrence may recover |
 
 Navigation destinations are exits from Overview, not additional rendered Overview
 states. Preview tabs remain inside the current state; only `Visit` is external.
+Synchronization is automatic system behavior and does not introduce a manual Overview
+button.

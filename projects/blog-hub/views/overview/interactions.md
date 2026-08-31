@@ -114,6 +114,15 @@ System IDs are unique and are never reused as user IDs.
 | `OV-S12` | Job reports error | Enters Job Failed and exposes retry when supported |
 | `OV-S13` | Refresh still contains the selected article | Preserves selection and open/collapsed panel state |
 | `OV-S14` | Filter or refresh excludes/removes the selected article | Clears selection and returns to Browse or Filtered Browse |
+| `OV-S15` | Application startup or Overview reload resolves connected blogs | Uses connected Hashnode and Medium records as the synchronization source of truth |
+| `OV-S16` | A connected blog lacks a valid recurring schedule | Creates or repairs its enabled 60-second internal schedule |
+| `OV-S17` | Overview reload completes its local load, or a schedule becomes due | Queues one idempotent sync job per connected platform |
+| `OV-S18` | The durable worker claims a sync job | Retrieves and reconciles the platform's remote articles |
+| `OV-S19` | Remote synchronization succeeds | Upserts remote articles and refreshes the Overview collection |
+| `OV-S20` | Remote synchronization fails | Retains current cards and allows durable retry or the next recurrence to recover |
+
+The schedule is internal infrastructure. It is created and repaired from connected-blog
+state and must not appear as a manual sync control on the Overview page.
 
 ## Deferred controls
 
