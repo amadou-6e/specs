@@ -1,13 +1,21 @@
 # Editor UI
 
-Written specification: [Editor view](../layout.md)
+Derived written layout index: [Editor view](../layout.md)
 
-## Canonical sources
+## Authoritative source
 
-| ID | Artifact | Purpose |
-|---|---|---|
-| `EDITOR-VIEW-ASSEMBLY` | [editor.drawio](../editor.drawio) | Complete editor assembly, transition logic, and locked screenshot reference |
-| `EDITOR-COMPONENT-WORKSHOP` | [editor components](components/editor-workshop/README.md) | Isolated controls, workspaces, specimens, and dropdown contents beneath the assembly |
+[editor.drawio](../editor.drawio) is the sole authority. It contains the complete
+assembly, interaction lifecycle, and isolated component workshop. The
+[component README](components/editor-workshop/README.md) is a searchable index only.
 
 Live implementation screenshots belong in `references/`. Draw.io exports and fidelity
 crops are temporary review artifacts and are not tracked.
+
+## Interaction markers
+
+Amber `ED-*` badges in the Draw.io are the stable interaction IDs;
+[interactions.md](../interactions.md) is their searchable projection.
+They mark the primary assembly and the isolated component state where an action is
+visible. User-triggered transition edges repeat the triggering ID; `SYSTEM` labels
+identify autosave timing and backend results. Regenerate managed annotations with
+`python3 tools/generate_bloghub_interaction_markers.py`.

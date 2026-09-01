@@ -1,7 +1,11 @@
 # Publish schedule UI
 
-Written specification: [Publish schedule view](../layout.md)
+The [Publish Schedule Draw.io](../publish-schedule.drawio) is the sole authority. Its
+Configure page contains destination controls, supporting states, stable `PS-*`
+interaction IDs, and the publish lifecycle. Its Outcome page defines mixed and
+all-failed results.
 
-No canonical Draw.io source or reference screenshot is registered yet.
+Markdown files in this view are searchable projections. API contracts govern service
+requests and payloads only.
 
-State ID prefix: `PUBLISH-SCHEDULE-*`.
+Interaction ID prefix: `PS-*`.

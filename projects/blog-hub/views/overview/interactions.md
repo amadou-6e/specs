@@ -1,109 +1,131 @@
-# Overview — Interactions
+# Overview - Interactions
 
-Source: `screens/overview/v3.html`
+The `Overview - Articles` page in `overview.drawio` is the sole authority. This file is
+a searchable projection of its desktop interaction IDs and must follow the Draw.io.
+Mobile sidebar behavior is explicitly out of scope.
 
-**Type key:**
-- **Self** — stays on view, no navigation
-- **Navigate** — moves to another view
-- **Async** — fires API call + polls job on same view; spinner/status shown in panel
-- **External** — opens new tab
+## Type key
 
----
+- **Self** - changes state within Overview.
+- **Navigate** - opens another BlogHub view.
+- **Async** - starts an API operation and observes its job.
+- **External** - opens a remote platform URL in a new tab.
+- **System** - is triggered by loading, polling, or refreshed data rather than a user.
 
-## Global precondition
+## Selection rules represented in Draw.io
 
-The overview view loads with no authentication gate. All filter and search operations are available immediately. Operations that require a selected article are disabled (buttons absent or inert) when no article is selected.
+- Selecting an article opens its details panel.
+- Selecting another article replaces the selection and opens the panel.
+- Selecting the current article again keeps it selected and keeps the current panel state.
+- `OV-28` is the only user action that collapses or expands the panel. Collapse keeps the selection.
+- The approved panel has no separate close or deselect button.
+- A filter or refresh clears selection when the selected article is no longer present.
+- Archive, delete, or remote removal also clears selection after the refreshed collection no longer contains the article.
+- Platform tabs select platform-specific preview content. They never navigate.
+- `Visit` opens the active platform's remote URL and is disabled when that URL is unavailable.
 
-The nav bar is present on every screen. OV-01 through OV-05 cover all nav bar elements; the same elements appear verbatim on Create-article, Editor, Settings, and Import-article screens.
+## User interactions
 
----
-
-## Navigation bar
-
-| ID | Selector | Trigger | Preconditions | Outcome | Type |
-|---|---|---|---|---|---|
-| OV-01 | `#nav-articles` | Click "Articles" nav button | — | Active tab (no-op, already on view); `#nav-articles` border-bottom becomes indigo | Self |
-| OV-02 | `#nav-queue` | Click "Queue" nav button | — | → Publish Queue view | Navigate |
-| OV-03 | `#nav-settings` | Click "Settings" nav button | — | → Settings view | Navigate |
-| OV-04 | `.split-left` (New Article button) | Click "New Article" | — | → Create Article wizard (`screens/create-article/v1.html`) | Navigate |
-| OV-05 | `#create-menu-btn` | Click split-button chevron (▾) | — | Toggles `#import-menu` dropdown open/closed | Self |
-| OV-06 | `#import-menu button:nth-child(1)` | Click "Import from platform" (inside dropdown) | `#import-menu` is open | → Import Article view with `?mode=platform` | Navigate |
-| OV-07 | `#import-menu button:nth-child(2)` | Click "Upload .md file" (inside dropdown) | `#import-menu` is open | → Import Article view with `?mode=upload` | Navigate |
-
----
-
-## Filter bar
+### Navigation and creation
 
 | ID | Selector | Trigger | Preconditions | Outcome | Type |
 |---|---|---|---|---|---|
-| OV-08 | `#search-input` | Type in search box | — | `applyFilters()` on each input; article list re-renders to matches | Self |
-| OV-09 | `#sf-all` | Click "All" status filter | — | Removes status filter; all articles shown; pill gets `active` class | Self |
-| OV-10 | `#sf-drafting` | Click "Drafting" status filter | — | Shows only drafting articles; pill gets `active` class | Self |
-| OV-11 | `#sf-ready` | Click "Ready" status filter | — | Shows only ready articles | Self |
-| OV-12 | `#sf-error` | Click "Error" status filter | — | Shows only articles with errors | Self |
-| OV-13 | `#sf-published` | Click "Published" status filter | — | Shows only published articles | Self |
-| OV-14 | `#pf-medium` | Click "Medium" platform filter | — | Toggles Medium platform filter on/off; pill border toggles indigo | Self |
-| OV-15 | `#pf-hashnode` | Click "Hashnode" platform filter | — | Toggles Hashnode filter | Self |
-| OV-16 | `#pf-devto` | Click "Dev.to" platform filter | — | Toggles Dev.to filter | Self |
+| `OV-01` | `#nav-articles` | Click Articles | - | Keeps Overview active | Self |
+| `OV-02` | `#nav-queue` | Click Queue | - | Opens Publish Queue | Navigate |
+| `OV-03` | `#nav-platforms` | Click Platforms | - | Opens platform connections | Navigate |
+| `OV-04` | `#nav-settings` | Click Settings | - | Opens Settings | Navigate |
+| `OV-05` | New article split-button primary action | Click New article | - | Opens Create Article | Navigate |
+| `OV-06` | `#create-menu-btn` | Click split-button chevron | - | Opens or closes the import menu | Self |
+| `OV-07` | First `#import-menu` action | Click Import from platform | Menu is open | Opens Import Article in platform mode | Navigate |
+| `OV-08` | Second `#import-menu` action | Click Upload `.md` file | Menu is open | Opens Import Article in upload mode | Navigate |
 
 ---
 
-## Article table
+### Filters
 
 | ID | Selector | Trigger | Preconditions | Outcome | Type |
 |---|---|---|---|---|---|
-| OV-17 | `.article-card` | Click article row | — | Row gets `.selected` class (indigo border/bg); Side Panel opens with article detail | Self |
-| OV-18 | `.article-card` (other) | Click a different row | A row is already `.selected` | Previous `.selected` removed; new row selected; Panel updates | Self |
-| OV-19 | `.plat-tab` inside card | Click platform destination pill | Destination has a URL | Opens destination URL in new tab | External |
-| OV-20 | `.gate-badge` inside card | Click gate badge (Pass/Warn/Fail) | Article has a gate result (not `pending`) | → Inspection view for this article | Navigate |
-| OV-21 | `.ctx-trigger` button | Click ⋯ context menu button | — | Context menu appears with Edit / Duplicate / Archive / Delete options | Self |
-| OV-22 | `.ctx-item:nth-child(1)` ("Edit") | Click "Edit" in context menu | Context menu is open | → Editor view with `?id={article.id}` | Navigate |
-| OV-23 | `.ctx-item:nth-child(2)` ("Duplicate") | Click "Duplicate" in context menu | Context menu is open | Duplicates article; article list reloads | Async |
-| OV-24 | `.ctx-item:nth-child(3)` ("Archive") | Click "Archive" in context menu | Context menu is open | Archives article; article removed from active list | Async |
-| OV-25 | `.ctx-item.danger` ("Delete") | Click "Delete" in context menu | Context menu is open | Deletes article; article removed from list | Async |
+| `OV-09` | `#search-input` | Enter or clear search text | - | Schedules a filtered collection load | Self |
+| `OV-10` | `#sf-all` | Click All | - | Clears the status filter | Self |
+| `OV-11` | `#sf-drafting` | Click Drafting | - | Selects the drafting status | Self |
+| `OV-12` | `#sf-ready` | Click Ready | - | Selects the ready status | Self |
+| `OV-13` | `#sf-error` | Click Error | - | Selects the error status | Self |
+| `OV-14` | `#sf-published` | Click Published | - | Selects the published status | Self |
+| `OV-15` | `#pf-medium` | Toggle Medium | - | Adds or removes Medium from the platform filter | Self |
+| `OV-16` | `#pf-hashnode` | Toggle Hashnode | - | Adds or removes Hashnode from the platform filter | Self |
+| `OV-17` | `#pf-devto` | Toggle Dev.to | - | Adds or removes Dev.to from the platform filter | Self |
+
+Status is single-select. Platform filters are multi-select with OR semantics. Search,
+status, and platform criteria combine with AND semantics.
 
 ---
 
-## Empty-state actions (shown only when no articles match)
+### Article cards and collection states
 
-| ID | Selector | Trigger | Preconditions | Outcome | Type |
+| ID | Selector | Preconditions | Trigger | Outcome | Type |
 |---|---|---|---|---|---|
-| OV-26 | `button[onclick*="clearFilters"]` | Click "Clear filters" | Empty-state row is shown | Resets `q`, status (`all`), platform (`null`); `applyFilters()` reruns | Self |
-| OV-27 | `button[onclick*="create-article"]` (empty state) | Click "+ New article" in empty state | Empty-state row is shown | → Create Article wizard | Navigate |
+| `OV-18` | `.article-card` | Article is not selected | Click card body | Selects article and opens details | Self |
+| `OV-19` | `.plat-tab[data-platform="medium"]` | Card is rendered | Click Medium tab | Renders Medium preview in this card | Self |
+| `OV-20` | `.plat-tab[data-platform="hashnode"]` | Card is rendered | Click Hashnode tab | Renders Hashnode preview in this card | Self |
+| `OV-21` | `.plat-tab[data-platform="devto"]` | Card is rendered | Click Dev.to tab | Renders Dev.to preview in this card | Self |
+| `OV-22` | `.card-visit` | Active platform has a remote URL | Click Visit | Opens that URL in a new tab | External |
+| `OV-23` | `.card-edit` | Card is rendered | Click Edit | Opens Editor for the article | Navigate |
+| `OV-24` | Filtered-empty Clear filters | Filters produce no results | Click Clear filters | Restores unfiltered browse | Self |
+| `OV-25` | First-run New article | No articles exist | Click New article | Opens Create Article | Navigate |
+| `OV-26` | `#load-more-button` | Another page exists | Click Load more | Requests the next page | Async |
+| `OV-27` | `.load-more-retry-btn` | Page request failed | Click Retry | Retries the same page request | Async |
 
----
+Clicks on a preview tab, Visit, or Edit stop propagation and do not change selection.
+The same article's preview selection survives card-list re-renders during the view session.
 
-## Side strip
+### Details panel
 
-| ID | Selector | Trigger | Preconditions | Outcome | Type |
+| ID | Selector | Preconditions | Trigger | Outcome | Type |
 |---|---|---|---|---|---|
-| OV-28 | `#side-strip` | Click collapse/expand strip | — | Toggles details panel open/closed; strip arrow flips | Self |
+| `OV-28` | `#side-strip` | An article is selected | Click strip | Toggles open/collapsed; selection remains | Self |
+| `OV-29` | `#panel-primary-btn` | An article is selected and its derived action is enabled | Click primary action | Starts the derived push, resume, retry, inspect, view, or schedule behavior | Async or Navigate |
+| `OV-30` | Details-panel Edit | An article is selected | Click Edit | Opens Editor for the selected article | Navigate |
+| `OV-31` | `#panel-inspect-btn` | An article is selected | Click Inspect | Starts an inspection job | Async |
+| `OV-32` | Details-panel Schedule | An article is selected | Click Schedule | Opens Publish Queue with the article preselected | Navigate |
+| `OV-33` | Failed-job Retry | A panel job failed and is retryable | Click Retry | Restarts the failed operation | Async |
+| `OV-34` | Collection Load Error Retry | Initial collection load failed | Click Retry | Starts the initial collection request again | Async |
 
----
+`OV-29` must expose one concrete action at a time. Its label, enabled state, and behavior
+come from the article action model; the same button must not silently change behavior
+without changing its visible label.
 
-## Side panel (opens when an article is selected)
+## System transitions
 
-| ID | Selector | Trigger | Preconditions | Outcome | Type |
-|---|---|---|---|---|---|
-| OV-29 | `button[onclick*="deselectCard"], .panel-close` | Click "×" close button | Panel is open | Calls `deselectCard()`; deselects article; hides panel | Self |
-| OV-30 | `#panel-primary-btn` | Click primary action button ("Push drafts" / "Resume" etc.) | Article is selected; at least one destination must be connected | `POST /api/articles/:id/push` → 202 → polls job; on completion reloads list and refreshes panel | Async |
-| OV-31 | `button[onclick*="runArticleAction"]` ("Inspect") | Click "Inspect" button in panel | Article is selected | `POST /api/articles/:id/inspect` → 202 → polls job; on completion reloads article list | Async |
-| OV-32 | `button[onclick*="Edit"]` (in panel) | Click "Edit" button in panel | Article is selected | → Editor view with `?id={article.id}` | Navigate |
-| OV-33 | `button:has-text("Schedule")` (in panel) | Click "Schedule" button in panel | Article is selected | → Publish Queue view with article pre-selected | Navigate |
-| OV-34 | `#panel-inspect-btn` | Click "Inspect" icon button in panel footer | Article is selected | Same as OV-31 | Async |
+System IDs are unique and are never reused as user IDs.
 
-### Precondition detail for OV-16 (Push drafts)
+| ID | Trigger | Outcome |
+|---|---|---|
+| `OV-S01` | View mounts, or `OV-34` requests another initial load | Enters Loading and requests the first page |
+| `OV-S02` | Initial collection request succeeds with articles | Enters Browse |
+| `OV-S03` | Initial collection request succeeds with zero articles | Enters First-run Empty |
+| `OV-S04` | Initial collection request fails | Enters Load Error |
+| `OV-S05` | Filter debounce expires | Requests the filtered collection and enters Filtered Browse when it succeeds |
+| `OV-S06` | Filtered request succeeds with zero matches | Enters Filtered Empty |
+| `OV-S07` | Next-page request succeeds | Appends unique articles and returns to the prior browse/selection state |
+| `OV-S08` | Next-page request fails | Shows inline pagination failure without replacing existing articles |
+| `OV-S09` | Article action is accepted (`202`) | Enters Job Queued for the selected article |
+| `OV-S10` | Job reports running | Enters Job Running and keeps the panel visible |
+| `OV-S11` | Job reports done | Refreshes the article collection and selected detail |
+| `OV-S12` | Job reports error | Enters Job Failed and exposes retry when supported |
+| `OV-S13` | Refresh still contains the selected article | Preserves selection and open/collapsed panel state |
+| `OV-S14` | Filter or refresh excludes/removes the selected article | Clears selection and returns to Browse or Filtered Browse |
+| `OV-S15` | Application startup or Overview reload resolves connected blogs | Uses connected Hashnode and Medium records as the synchronization source of truth |
+| `OV-S16` | A connected blog lacks a valid recurring schedule | Creates or repairs its enabled 60-second internal schedule |
+| `OV-S17` | Overview reload completes its local load, or a schedule becomes due | Queues one idempotent sync job per connected platform |
+| `OV-S18` | The durable worker claims a sync job | Retrieves and reconciles the platform's remote articles |
+| `OV-S19` | Remote synchronization succeeds | Upserts remote articles and refreshes the Overview collection |
+| `OV-S20` | Remote synchronization fails | Retains current cards and allows durable retry or the next recurrence to recover |
 
-- Medium: user must have connected their Medium account (OAuth or integration token) in Settings / Platforms.
-- Hashnode: valid Hashnode personal access token saved in Settings / Platforms.
-- Dev.to: valid Dev.to API key saved in Settings / Platforms.
-- If none of the selected article's destinations have a connected platform, the push completes but produces no published output (server-side behaviour, not blocked by the UI).
+The schedule is internal infrastructure. It is created and repaired from connected-blog
+state and must not appear as a manual sync control on the Overview page.
 
----
+## Deferred controls
 
-## Job polling (after OV-16 or OV-17)
-
-| ID | Trigger | Preconditions | Outcome | Type |
-|---|---|---|---|---|
-| OV-18 | Job status becomes `done` | Polling interval active | Clears interval; reloads article list; refreshes panel if article still selected | Self |
-| OV-19 | Job status becomes `error` | Polling interval active | Clears interval; reloads article list; panel shows error state | Self |
+Gate badges and card context actions are not present in the approved Overview visual
+baseline. Their contract belongs to blog-hub issue #98; they must receive new IDs when
+they are introduced rather than reusing IDs in this document.

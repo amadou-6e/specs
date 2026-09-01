@@ -1,5 +1,8 @@
 # Inspection — API Contract
 
+> Scope: this file defines service requests and payloads. UI geometry, visible states,
+> interaction IDs, and transitions are governed by [inspection.drawio](inspection.drawio).
+
 ---
 
 ## GET /articles/:id/inspection

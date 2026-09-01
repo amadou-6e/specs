@@ -1,5 +1,8 @@
 # Settings — API Contract
 
+> Scope: this file defines service requests and payloads. UI geometry, visible states,
+> interaction IDs, and transitions are governed by [settings.drawio](settings.drawio).
+
 ---
 
 ## GET /platforms

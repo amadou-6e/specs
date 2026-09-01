@@ -1,5 +1,8 @@
 # Login View — Layout
 
+> UI authority: [login.drawio](login.drawio). This layout is a derived reading aid, not
+> an independent source of UI behavior.
+
 ## Purpose
 
 Entry point for all unauthenticated users. Serves both login and registration.

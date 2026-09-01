@@ -1,5 +1,8 @@
 # Editor — API Contract
 
+> Scope: this file defines service requests and payloads. UI geometry, visible states,
+> interaction IDs, and transitions are governed by [editor.drawio](editor.drawio).
+
 ---
 
 ## GET /articles/:id

@@ -1,7 +1,10 @@
 # Inspection UI
 
-Written specification: [Inspection view](../layout.md)
+The [Inspection Draw.io](../inspection.drawio) is the sole authority. Its Report page
+contains the desktop screen, supporting states, stable `IN-*` interaction IDs, and the
+inspection lifecycle. Its Tablet page defines the evidence drawer below 1024 px.
 
-No canonical Draw.io source or reference screenshot is registered yet.
+Markdown files in this view are searchable projections. API contracts govern service
+requests and payloads only.
 
-State ID prefix: `INSPECTION-*`.
+Interaction ID prefix: `IN-*`.

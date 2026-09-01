@@ -1,7 +1,10 @@
 # Login UI
 
-Written specification: [Login view](../layout.md)
+The [Login Draw.io](../login.drawio) is the sole authority. Its Authentication page
+contains the full sign-in screen, verified card states, stable `LI-*` interaction IDs,
+and the authentication lifecycle.
 
-No canonical Draw.io source or reference screenshot is registered yet.
+Markdown files in this view are searchable projections. API contracts govern service
+requests and payloads only.
 
-State ID prefix: `LOGIN-*`.
+Interaction ID prefix: `LI-*`.

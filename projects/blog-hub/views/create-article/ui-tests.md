@@ -1,5 +1,8 @@
 # Create Article — UI Tests Spec
 
+> Test authority: [create-article.drawio](create-article.drawio). Tests project its
+> represented states and `CA-*` transitions; they must not create new UI requirements.
+
 ---
 
 ## Step indicator

@@ -1,5 +1,8 @@
 # Inspection — UI Tests Spec
 
+> Test authority: [inspection.drawio](inspection.drawio). Tests project its represented
+> states and `IN-*` transitions; they must not create new UI requirements.
+
 ---
 
 ## Summary bar

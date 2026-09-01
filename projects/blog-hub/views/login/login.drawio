@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mxfile host="app.diagrams.net" modified="2026-08-29T00:00:00.000Z" agent="Codex" version="24.7.17" type="device" compressed="false">
+  <diagram id="login-auth" name="Login · Authentication">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1880" pageHeight="2800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="login-spec-title" value="LOGIN · AUTHENTICATION" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=24;fontColor=#171914;fontStyle=1;align=left;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="24" width="1760" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="login-spec-subtitle" value="Complete sign-in, registration, validation, and recovery states. Amber LI IDs identify user actions." style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=13;fontColor=#747970;fontStyle=0;align=left;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="65" width="1760" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="login-screen-frame" value="" style="rounded=1;arcSize=0;whiteSpace=wrap;html=1;fillColor=#0F1117;strokeColor=#202431;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="1800" height="990" as="geometry" />
+        </mxCell>
+        <mxCell id="login-screen-nav" value="" style="rounded=1;arcSize=0;whiteSpace=wrap;html=1;fillColor=#10131B;strokeColor=#202431;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="1800" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="login-screen-brand" value="BlogHub" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=18;fontColor=#E8EAF2;fontStyle=1;align=left;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="120" width="170" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="login-screen-title" value="" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=15;fontColor=#E8EAF2;fontStyle=1;align=center;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="120" width="880" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="login-brand-mark" value="B" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=48;fontColor=#5B5CE2;fontStyle=1;align=center;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="865" y="185" width="150" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="login-wordmark" value="BlogHub" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=27;fontColor=#E8EAF2;fontStyle=1;align=center;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="740" y="270" width="400" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="login-card" value="" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="650" y="340" width="580" height="690" as="geometry" />
+        </mxCell>
+        <mxCell id="login-card-title" value="Welcome back" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=22;fontColor=#E8EAF2;fontStyle=1;align=center;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="382" width="480" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="login-card-subtitle" value="Sign in to continue to your articles" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=13;fontColor=#8991AA;fontStyle=0;align=center;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="423" width="480" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="login-tabs" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#131722;strokeColor=#2B3141;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="475" width="480" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="login-tab-active" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#5B5CE2;strokeColor=#5B5CE2;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="704" y="479" width="234" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="login-tab-login" value="Sign in" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;fontStyle=1;align=center;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="704" y="479" width="234" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="login-tab-register" value="Register" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=14;fontColor=#8991AA;fontStyle=0;align=center;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="942" y="479" width="234" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="login-marker-01" value="LI-01" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=#FFF1C7;strokeColor=#B98500;fontFamily=Arial;fontSize=12;fontColor=#5A4100;fontStyle=1;align=center;verticalAlign=middle;spacing=2;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="1092" y="452" width="72" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="login-email-label" value="Email" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=13;fontColor=#8991AA;fontStyle=0;align=left;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="555" width="480" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="login-email-input" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#131722;strokeColor=#2B3141;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="585" width="480" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="login-email-value" value="you@example.com" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=14;fontColor=#8991AA;fontStyle=0;align=left;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="714" y="585" width="452" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="login-password-label" value="Password" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=13;fontColor=#8991AA;fontStyle=0;align=left;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="665" width="480" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="login-password-input" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#131722;strokeColor=#2B3141;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="695" width="480" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="login-password-value" value="••••••••••••" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=14;fontColor=#8991AA;fontStyle=0;align=left;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="714" y="695" width="452" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="login-password-eye" value="◉" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=16;fontColor=#8991AA;fontStyle=0;align=center;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="1128" y="695" width="34" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="login-marker-02" value="LI-02" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=#FFF1C7;strokeColor=#B98500;fontFamily=Arial;fontSize=12;fontColor=#5A4100;fontStyle=1;align=center;verticalAlign=middle;spacing=2;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="1105" y="650" width="72" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="login-remember-box" value="" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;fillColor=#131722;strokeColor=#2B3141;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="785" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="login-remember" value="Remember me for 30 days" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=13;fontColor=#8991AA;fontStyle=0;align=left;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="732" y="775" width="250" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="login-marker-03" value="LI-03" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=#FFF1C7;strokeColor=#B98500;fontFamily=Arial;fontSize=12;fontColor=#5A4100;fontStyle=1;align=center;verticalAlign=middle;spacing=2;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="990" y="781" width="72" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="login-submit" value="Sign in" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#5B5CE2;strokeColor=#5B5CE2;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;fontStyle=1;align=center;verticalAlign=middle;spacing=8;locked=1;opacity=100;" vertex="1" parent="1">
+          <mxGeometry x="700" y="835" width="480" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="login-marker-04" value="LI-04" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=#FFF1C7;strokeColor=#B98500;fontFamily=Arial;fontSize=12;fontColor=#5A4100;fontStyle=1;align=center;verticalAlign=middle;spacing=2;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="1095" y="812" width="72" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="login-switch" value="No account? Register" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=13;fontColor=#8D8EFF;fontStyle=0;align=center;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="910" width="480" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="login-marker-05" value="LI-05" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=#FFF1C7;strokeColor=#B98500;fontFamily=Arial;fontSize=12;fontColor=#5A4100;fontStyle=1;align=center;verticalAlign=middle;spacing=2;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="1085" y="912" width="72" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimens-title" value="AUTH CARD · VERIFIED STATES" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=22;fontColor=#171914;fontStyle=1;align=left;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1170" width="1760" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimens-sub" value="Registration, validation, API failure, and in-flight states preserve the same card footprint." style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=13;fontColor=#747970;fontStyle=0;align=left;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1208" width="1760" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-0" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1260" width="400" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-0-title" value="Register" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=17;fontColor=#E8EAF2;fontStyle=1;align=left;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="84" y="1288" width="352" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-0-sub" value="Email · password · create account" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=12;fontColor=#8991AA;fontStyle=0;align=left;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="84" y="1322" width="352" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-0-field-a" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#131722;strokeColor=#2B3141;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="84" y="1390" width="352" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-0-field-b" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#131722;strokeColor=#2B3141;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="84" y="1450" width="352" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-0-button" value="Create account" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#5B5CE2;strokeColor=#5B5CE2;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;fontStyle=1;align=center;verticalAlign=middle;spacing=8;locked=1;opacity=100;" vertex="1" parent="1">
+          <mxGeometry x="84" y="1580" width="352" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-1" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="1260" width="400" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-1-title" value="Field error" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=17;fontColor=#E8EAF2;fontStyle=1;align=left;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="524" y="1288" width="352" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-1-sub" value="Invalid email · password too short" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=12;fontColor=#8991AA;fontStyle=0;align=left;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="524" y="1322" width="352" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-1-field-a" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#131722;strokeColor=#D65C5C;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="524" y="1390" width="352" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-1-field-b" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#131722;strokeColor=#D65C5C;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="524" y="1450" width="352" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-1-error" value="Check the highlighted information and try again." style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=12;fontColor=#D65C5C;fontStyle=0;align=left;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="524" y="1503" width="352" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-1-button" value="Try again" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#5B5CE2;strokeColor=#5B5CE2;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;fontStyle=1;align=center;verticalAlign=middle;spacing=8;locked=1;opacity=100;" vertex="1" parent="1">
+          <mxGeometry x="524" y="1580" width="352" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-2" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="940" y="1260" width="400" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-2-title" value="Authentication failed" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=17;fontColor=#E8EAF2;fontStyle=1;align=left;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="964" y="1288" width="352" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-2-sub" value="Invalid email or password" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=12;fontColor=#8991AA;fontStyle=0;align=left;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="964" y="1322" width="352" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-2-field-a" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#131722;strokeColor=#2B3141;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="964" y="1390" width="352" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-2-field-b" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#131722;strokeColor=#2B3141;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="964" y="1450" width="352" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-2-error" value="Check the highlighted information and try again." style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=12;fontColor=#D65C5C;fontStyle=0;align=left;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="964" y="1503" width="352" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-2-button" value="Try again" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#5B5CE2;strokeColor=#5B5CE2;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;fontStyle=1;align=center;verticalAlign=middle;spacing=8;locked=1;opacity=100;" vertex="1" parent="1">
+          <mxGeometry x="964" y="1580" width="352" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-3" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="1260" width="400" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-3-title" value="Submitting" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=17;fontColor=#E8EAF2;fontStyle=1;align=left;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="1404" y="1288" width="352" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-3-sub" value="Primary action disabled · spinner" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=12;fontColor=#8991AA;fontStyle=0;align=left;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="1404" y="1322" width="352" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-3-field-a" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#131722;strokeColor=#2B3141;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="1404" y="1390" width="352" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-3-field-b" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#131722;strokeColor=#2B3141;locked=1;" vertex="1" parent="1">
+          <mxGeometry x="1404" y="1450" width="352" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="login-specimen-3-button" value="Signing in…" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#202431;strokeColor=#303544;fontFamily=Arial;fontSize=14;fontColor=#8991AA;fontStyle=1;align=center;verticalAlign=middle;spacing=8;locked=1;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="1404" y="1580" width="352" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="login-flow-title" value="LOGIN · AUTHORITATIVE LIFECYCLE" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=22;fontColor=#171914;fontStyle=1;align=left;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1" bloghubSection="login-auth-lifecycle">
+          <mxGeometry x="60" y="1770" width="1760" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="login-flow-sub" value="Session check redirects authenticated users; sign-in and registration share validation and recovery." style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=13;fontColor=#747970;fontStyle=0;align=left;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1" bloghubSection="login-auth-lifecycle">
+          <mxGeometry x="60" y="1810" width="1760" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="login-flow-load" value="&lt;b&gt;Session check&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;GET /api/auth/me&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="login-auth-lifecycle">
+          <mxGeometry x="100" y="1940" width="260" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="login-flow-signin" value="&lt;b&gt;Sign in&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Email · password · remember&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="login-auth-lifecycle">
+          <mxGeometry x="430" y="1880" width="260" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="login-flow-register" value="&lt;b&gt;Register&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Email · password&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="login-auth-lifecycle">
+          <mxGeometry x="430" y="2040" width="260" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="login-flow-submit" value="&lt;b&gt;Submitting&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Auth request in flight&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="login-auth-lifecycle">
+          <mxGeometry x="780" y="1960" width="260" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="login-flow-overview" value="&lt;b&gt;Overview&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Session cookie accepted&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="login-auth-lifecycle">
+          <mxGeometry x="1130" y="1880" width="260" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="login-flow-error" value="&lt;b&gt;Recoverable error&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Field or API message&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="login-auth-lifecycle">
+          <mxGeometry x="1130" y="2080" width="260" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="login-edge-01" value="SYSTEM · 200" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8991AA;fontFamily=Arial;fontSize=12;fontColor=#8991AA;labelBackgroundColor=#FFFFFF;endArrow=block;endFill=1;dashed=0;locked=1;" edge="1" parent="1" source="login-flow-load" target="login-flow-overview" bloghubSection="login-auth-lifecycle">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="230" y="1850" />
+              <mxPoint x="1260" y="1850" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="login-edge-02" value="SYSTEM · 401" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8991AA;fontFamily=Arial;fontSize=12;fontColor=#8991AA;labelBackgroundColor=#FFFFFF;endArrow=block;endFill=1;dashed=0;locked=1;" edge="1" parent="1" source="login-flow-load" target="login-flow-signin" bloghubSection="login-auth-lifecycle">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="login-edge-03" value="LI-01/05" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8991AA;fontFamily=Arial;fontSize=12;fontColor=#8991AA;labelBackgroundColor=#FFFFFF;endArrow=block;endFill=1;dashed=1;locked=1;" edge="1" parent="1" source="login-flow-signin" target="login-flow-register" bloghubSection="login-auth-lifecycle">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="login-edge-04" value="LI-01/05" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8991AA;fontFamily=Arial;fontSize=12;fontColor=#8991AA;labelBackgroundColor=#FFFFFF;endArrow=block;endFill=1;dashed=1;locked=1;" edge="1" parent="1" source="login-flow-register" target="login-flow-signin" bloghubSection="login-auth-lifecycle">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="login-edge-05" value="LI-04" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8991AA;fontFamily=Arial;fontSize=12;fontColor=#8991AA;labelBackgroundColor=#FFFFFF;endArrow=block;endFill=1;dashed=0;locked=1;" edge="1" parent="1" source="login-flow-signin" target="login-flow-submit" bloghubSection="login-auth-lifecycle">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="login-edge-06" value="LI-06" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8991AA;fontFamily=Arial;fontSize=12;fontColor=#8991AA;labelBackgroundColor=#FFFFFF;endArrow=block;endFill=1;dashed=0;locked=1;" edge="1" parent="1" source="login-flow-register" target="login-flow-submit" bloghubSection="login-auth-lifecycle">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="login-edge-07" value="SYSTEM · success" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8991AA;fontFamily=Arial;fontSize=12;fontColor=#8991AA;labelBackgroundColor=#FFFFFF;endArrow=block;endFill=1;dashed=0;locked=1;" edge="1" parent="1" source="login-flow-submit" target="login-flow-overview" bloghubSection="login-auth-lifecycle">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="login-edge-08" value="SYSTEM · failed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8991AA;fontFamily=Arial;fontSize=12;fontColor=#8991AA;labelBackgroundColor=#FFFFFF;endArrow=block;endFill=1;dashed=1;locked=1;" edge="1" parent="1" source="login-flow-submit" target="login-flow-error" bloghubSection="login-auth-lifecycle">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="login-edge-09" value="LI-07" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8991AA;fontFamily=Arial;fontSize=12;fontColor=#8991AA;labelBackgroundColor=#FFFFFF;endArrow=block;endFill=1;dashed=1;locked=1;" edge="1" parent="1" source="login-flow-error" target="login-flow-signin" bloghubSection="login-auth-lifecycle">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="login-flow-note" value="LI-02 toggles password visibility. LI-03 changes session TTL without leaving the current state. Short viewports scroll the form region only." style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=13;fontColor=#4F554D;fontStyle=0;align=left;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1" bloghubSection="login-auth-lifecycle">
+          <mxGeometry x="100" y="2290" width="1560" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="login-decisions" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#F1F2EE;strokeColor=#CDD0C7;locked=1;" vertex="1" parent="1" bloghubSection="login-auth-lifecycle">
+          <mxGeometry x="60" y="2440" width="1760" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="login-decisions-title" value="DECISIONS RECORDED" style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=15;fontColor=#171914;fontStyle=1;align=left;verticalAlign=middle;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1" bloghubSection="login-auth-lifecycle">
+          <mxGeometry x="90" y="2470" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="login-decisions-copy" value="• One centred 580 px card; no decorative split panel.&#10;• Segmented Sign in / Register control remains visible in both modes.&#10;• Errors remain inside the card and never depend on transient toast-only feedback.&#10;• No social login is represented; adding it requires a Draw.io-first change." style="text=;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=14;fontColor=#4F554D;fontStyle=0;align=left;verticalAlign=top;spacing=0;letterSpacing=0;locked=1;" vertex="1" parent="1" bloghubSection="login-auth-lifecycle">
+          <mxGeometry x="90" y="2510" width="1640" height="250" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

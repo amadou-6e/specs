@@ -1,5 +1,8 @@
 # Publish / Schedule — Layout Spec
 
+> UI authority: [publish-schedule.drawio](publish-schedule.drawio). This layout is a
+> derived reading aid, not an independent source of UI behavior.
+
 ## Purpose
 The final step before content goes live. The user selects destinations, picks a time, and confirms.
 

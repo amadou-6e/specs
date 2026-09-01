@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Generate managed transition sections beneath BlogHub UI page geometry."""
+"""Regenerate managed transition regions inside authoritative BlogHub Draw.io files.
+
+The Draw.io files remain the sole authority. Review their diffs after running this
+helper. Overview is managed by its view-local generator and is intentionally excluded.
+"""
 
 from __future__ import annotations
 
@@ -183,65 +187,53 @@ def generate(section: Section) -> None:
 
 SECTIONS = (
     Section(
-        "projects/blog-hub/views/overview/overview.drawio", "overview-main", "overview-transitions", 7380, 3600,
-        "OVERVIEW · INTERACTION LIFECYCLE", "Browsing, detail actions, durable jobs, and cross-view navigation.",
-        (
-            Band("BROWSE AND SELECT", "Filters reload the article collection after a 300 ms debounce.", 130, 380,
-                (Node("load", "Load articles", "GET /api/articles", 520, 250), Node("browse", "Browse", "Search · status · platform", 970, 250), Node("panel", "Details panel", "Selected article visible", 1420, 250), Node("create", "Create Article", "New Article navigation", 1870, 250, "#1F2740")),
-                (Edge("load", "browse", "Rendered"), Edge("browse", "load", "Filter", True), Edge("browse", "panel", "Select card"), Edge("browse", "create", "New Article"), Edge("panel", "browse", "Close", True))),
-            Band("ARTICLE ACTION JOBS", "Push and Inspect remain in the panel while their jobs are polled every two seconds.", 540, 500,
-                (Node("action", "Details panel", "Choose article action", 520, 700), Node("push", "Push drafts", "POST push", 970, 630), Node("inspect", "Inspect", "POST inspect", 970, 810), Node("poll", "Poll job", "GET /api/jobs/:id", 1420, 700), Node("reload", "Reload table", "Job completed", 1870, 630, "#173127"), Node("error", "Inline error", "Keep panel open", 1870, 810, "#302027")),
-                (Edge("action", "push", "Push"), Edge("action", "inspect", "Inspect"), Edge("push", "poll", "202"), Edge("inspect", "poll", "202"), Edge("poll", "reload", "Done"), Edge("poll", "error", "Error", True), Edge("reload", "action", "Refresh", True), Edge("error", "action", "Retry", True))),
-        ),
-    ),
-    Section(
         "projects/blog-hub/views/create-article/create-article.drawio", "create-prompt", "create-prompt-transitions", 1370, 1880,
         "CREATE ARTICLE · PROMPT TRANSITIONS", "Brief and optional context become the input contract for configuration.",
         (Band("PROMPT AND CONTEXT", "Context may be a document, URL, web search, or omitted.", 130, 520,
             (Node("brief", "Write brief", "Required article intent", 450, 270), Node("context", "Add context", "File · URL · web search", 850, 270), Node("ready", "Brief ready", "Validated prompt", 1250, 270, "#173127"), Node("error", "Context error", "Explain and remain here", 850, 450, "#302027")),
-            (Edge("brief", "context", "Optional"), Edge("context", "ready", "Valid or skipped"), Edge("context", "error", "Invalid", True), Edge("error", "context", "Retry", True))),),
+                (Edge("brief", "context", "CA-09/10 · add context"), Edge("context", "ready", "CA-12 · Next"), Edge("context", "error", "SYSTEM · invalid file", True), Edge("error", "context", "CA-11 · remove / retry", True))),),
     ),
     Section(
         "projects/blog-hub/views/create-article/create-article.drawio", "create-configure", "create-configure-transitions", 1370, 1880,
         "CREATE ARTICLE · CONFIGURATION TRANSITIONS", "Format, provider, tone, and length must resolve before destinations.",
         (Band("CONFIGURE", "Back preserves the brief. Missing providers route to Settings.", 130, 520,
             (Node("format", "Choose format", "Article structure", 360, 270), Node("provider", "Choose provider", "Claude or Codex", 720, 270), Node("options", "Tone and length", "Generation controls", 1080, 270), Node("next", "Destinations", "Configuration valid", 1440, 270, "#173127"), Node("settings", "AI Settings", "Configure a provider", 720, 450, "#1F2740")),
-            (Edge("format", "provider"), Edge("provider", "options", "Configured"), Edge("provider", "settings", "", True), Edge("settings", "provider", "", True), Edge("options", "next", "Next"))),),
+            (Edge("format", "provider", "CA-13 · format"), Edge("provider", "options", "CA-14/15 · provider"), Edge("provider", "settings", "CA-16 · Settings", True), Edge("settings", "provider", "SYSTEM · return", True), Edge("options", "next", "CA-17/19 · Next"))),),
     ),
     Section(
         "projects/blog-hub/views/create-article/create-article.drawio", "create-destinations", "create-destinations-transitions", 1370, 1880,
         "CREATE ARTICLE · GENERATION TRANSITIONS", "Selected destinations accompany the generated canonical article into the Editor.",
         (Band("GENERATE", "The generation job disables navigation until it completes or fails.", 130, 560,
             (Node("dest", "Pick destinations", "Zero or more platforms", 280, 270), Node("generate", "Generate", "POST /api/agent/generate", 650, 270), Node("poll", "Poll job", "GET /api/jobs/:id", 1020, 270), Node("editor", "Editor", "Open generated article", 1390, 270, "#173127"), Node("error", "Generation failed", "Show error · retry", 1020, 470, "#302027")),
-            (Edge("dest", "generate", "Generate"), Edge("generate", "poll", "202"), Edge("poll", "editor", "Done"), Edge("poll", "error", "Error", True), Edge("error", "generate", "Retry", True))),),
+            (Edge("dest", "generate", "CA-20–23/27 · Generate"), Edge("generate", "poll", "SYSTEM · 202"), Edge("poll", "editor", "SYSTEM · done"), Edge("poll", "error", "SYSTEM · error", True), Edge("error", "generate", "CA-28 · Retry", True))),),
     ),
     Section(
         "projects/blog-hub/views/import-article/import-article.drawio", "import-upload", "import-upload-transitions", 1370, 2200,
         "IMPORT ARTICLE · SOURCE TRANSITIONS", "Upload and connected-platform paths converge on the same review state.",
         (Band("CHOOSE SOURCE", "Entry mode is fixed by the route; Cancel returns to the caller.", 130, 650,
             (Node("entry", "Entry mode", "Upload or platform", 430, 300), Node("file", "File drop", "Accept .md only", 800, 220), Node("platform", "Platform picker", "Connected platforms", 800, 420), Node("draft", "Draft list", "Select remote draft", 1170, 420), Node("review", "Review", "Editable title and preview", 1540, 300, "#173127"), Node("error", "Source error", "Stay and explain", 1170, 600, "#302027")),
-            (Edge("entry", "file", "Upload mode"), Edge("entry", "platform", "Platform mode"), Edge("file", "review", "Valid markdown"), Edge("platform", "draft", "Next"), Edge("draft", "review", "Fetched"), Edge("file", "error", "Invalid", True), Edge("draft", "error", "Fetch failed", True), Edge("error", "entry", "Retry", True))),),
+            (Edge("entry", "file", "IM-14/15 · upload"), Edge("entry", "platform", "IM-05 · platform"), Edge("file", "review", "SYSTEM · valid markdown"), Edge("platform", "draft", "SYSTEM · fetched"), Edge("draft", "review", "IM-11/24 · Next"), Edge("file", "error", "SYSTEM · invalid", True), Edge("draft", "error", "SYSTEM · fetch failed", True), Edge("error", "entry", "IM-17/21 · Retry", True))),),
     ),
     Section(
         "projects/blog-hub/views/import-article/import-article.drawio", "import-review", "import-review-transitions", 1370, 1880,
         "IMPORT ARTICLE · REVIEW TRANSITIONS", "Review commits the imported markdown as a BlogHub article before opening Editor.",
         (Band("REVIEW AND IMPORT", "All actions are disabled while the import request is in flight.", 130, 720,
             (Node("review", "Review", "Edit title · inspect markdown", 280, 270), Node("import", "Importing", "POST /api/articles/import", 650, 270, "#1F2740"), Node("editor", "Editor", "201 created", 1020, 270, "#173127"), Node("error", "Import failed", "Banner · Try again", 650, 470, "#302027"), Node("cancel", "Return", "Overview or Create", 280, 630)),
-            (Edge("review", "import", "Import"), Edge("import", "editor", "201"), Edge("import", "error", "4xx / 5xx", True), Edge("error", "review", "", True), Edge("review", "cancel", "Cancel", True))),),
+            (Edge("review", "import", "IM-25 · Import"), Edge("import", "editor", "SYSTEM · 201"), Edge("import", "error", "SYSTEM · 4xx / 5xx", True), Edge("error", "review", "IM-21 · Try again", True), Edge("review", "cancel", "IM-22/23 · return", True))),),
     ),
     Section(
         "projects/blog-hub/views/editor/editor.drawio", "article-editor-assembly", "editor-transitions", 17220, 3350,
         "ARTICLE EDITOR · INTERACTION LIFECYCLE", "Autosave, review, comments, patches, preview, and cross-view exits.",
         (
             Band("LOAD AND AUTOSAVE", "Typing marks the document unsaved; two seconds of inactivity starts optimistic autosave.", 130, 500,
-                (Node("load", "Load article", "GET /api/articles/:id", 500, 280), Node("idle", "Write · saved", "Editor ready", 920, 280, "#173127"), Node("dirty", "Unsaved", "Amber status", 1340, 280, "#302A18"), Node("save", "Autosave", "PATCH with revision", 1760, 280, "#1F2740"), Node("conflict", "Conflict / failure", "Keep local changes", 2180, 440, "#302027")),
-                (Edge("load", "idle", "OK"), Edge("idle", "dirty", "Type"), Edge("dirty", "save", "2s idle"), Edge("save", "idle", "Saved"), Edge("save", "conflict", "409 / error", True), Edge("conflict", "dirty", "Resolve / retry", True))),
+                (Node("load", "Load article", "GET /api/articles/:id", 400, 280), Node("idle", "Write · saved", "Editor ready", 800, 280, "#173127"), Node("dirty", "Unsaved", "Amber status", 1200, 280, "#302A18"), Node("save", "Autosave", "PATCH with revision", 1600, 280, "#1F2740"), Node("saved", "Saved revision", "New revision active", 2000, 280, "#173127"), Node("conflict", "Conflict / failure", "Keep local changes", 1600, 440, "#302027")),
+                (Edge("load", "idle", "SYSTEM · loaded"), Edge("idle", "dirty", "ED-02/24 · edit"), Edge("dirty", "save", "SYSTEM · 2s idle"), Edge("save", "saved", "SYSTEM · saved"), Edge("save", "conflict", "SYSTEM · 409 / error", True), Edge("conflict", "dirty", "ED-02/24 · edit / retry", True))),
             Band("REVIEW, COMMENTS, AND PATCHES", "Agent patches are reviewed explicitly; acceptance applies the diff and creates a new revision.", 660, 620,
                 (Node("write", "Write mode", "Canonical markdown", 500, 850), Node("review", "Review mode", "Comment anchors active", 920, 780), Node("comment", "Comment", "Resolve or Fix with AI", 1340, 780), Node("patch", "Patch pending", "Diff in Patches panel", 1760, 780, "#1F2740"), Node("accept", "Accept", "Apply diff", 2180, 730, "#173127"), Node("reject", "Reject", "Keep comment open", 2180, 930, "#302027"), Node("preview", "Preview", "Rendered markdown", 920, 1030)),
-                (Edge("write", "review", "Review"), Edge("review", "write", "Done", True), Edge("review", "comment", "Add comment"), Edge("comment", "patch", "Fix with AI"), Edge("patch", "accept", "Accept"), Edge("patch", "reject", "Reject"), Edge("accept", "write"), Edge("reject", "write", "Return", True), Edge("write", "preview", "Toggle"), Edge("preview", "write", "Toggle", True))),
+                (Edge("write", "review", "ED-03/06 · Review"), Edge("review", "write", "ED-26/27 · Done", True), Edge("review", "comment", "ED-19/23/25 · comment"), Edge("comment", "patch", "ED-34 · Fix with AI"), Edge("patch", "accept", "ED-36 · Accept"), Edge("patch", "reject", "ED-37 · Reject"), Edge("accept", "write", "SYSTEM · applied"), Edge("reject", "write", "SYSTEM · returned", True), Edge("write", "preview", "ED-43 · toggle"), Edge("preview", "write", "ED-43 · toggle", True))),
             Band("EXIT ROUTES", "Inspection and Articles navigation preserve the latest accepted or autosaved revision.", 1310, 380,
-                (Node("ready", "Editor", "Current revision", 700, 1450), Node("inspect", "Inspection", "Run article checks", 1200, 1450, "#1F2740"), Node("overview", "Articles", "Return to overview", 1700, 1450)),
-                (Edge("ready", "inspect", "Inspect"), Edge("ready", "overview", "Breadcrumb"))),
+                (Node("ready", "Editor", "Current revision", 700, 1450), Node("inspect", "Inspection", "Run article checks", 1200, 1370, "#1F2740"), Node("overview", "Articles", "Return to overview", 1200, 1530)),
+                (Edge("ready", "inspect", "ED-04/40 · Inspect"), Edge("ready", "overview", "ED-01 · back"))),
         ),
     ),
 )

@@ -1,5 +1,8 @@
 # Create Article — Components Spec
 
+> UI authority: [create-article.drawio](create-article.drawio). This component inventory is
+> a searchable projection and must not introduce states absent from the Draw.io.
+
 ---
 
 ## StepIndicator

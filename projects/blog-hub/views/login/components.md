@@ -1,5 +1,8 @@
 # Login View — Components
 
+> UI authority: [login.drawio](login.drawio). This component inventory is a searchable
+> projection and must not introduce states absent from the Draw.io.
+
 ---
 
 ## 1. BrandMark

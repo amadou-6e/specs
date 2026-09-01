@@ -1,5 +1,8 @@
 # Publish / Schedule — Components Spec
 
+> UI authority: [publish-schedule.drawio](publish-schedule.drawio). This component
+> inventory is a searchable projection and must not introduce states absent from Draw.io.
+
 ---
 
 ## ArticleHeaderStrip

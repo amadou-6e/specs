@@ -1,8 +1,8 @@
 # Application navigation flow
 
-Canonical source: [application-navigation.drawio](application-navigation.drawio)
+[application-navigation.drawio](application-navigation.drawio) is the sole authority for
+cross-view navigation. Its Authoritative workflow page repeats the trigger IDs from each
+owning view Draw.io.
 
-This cross-view diagram records navigation between BlogHub pages. It was extracted
-from the retired combined-page workshop so it can evolve independently from page
-geometry. Nodes should reference the stable state IDs declared in each view's UI
-README when those states are available.
+The first page is an archive-derived inventory of implemented screens. It is retained as
+historical implementation context and must not override the Authoritative workflow page.

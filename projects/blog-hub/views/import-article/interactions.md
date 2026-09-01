@@ -1,6 +1,9 @@
 # Import Article — Interactions
 
-Source: `screens/import-article/v1.html`
+Authority: [import-article.drawio](import-article.drawio). This table is a searchable
+projection and must not introduce behavior absent from the Draw.io.
+
+Implementation reference: `screens/import-article/v1.html`
 
 **Type key:**
 - **Self** — stays on view, no navigation

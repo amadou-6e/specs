@@ -1,6 +1,9 @@
 # Settings / Platforms — Interactions
 
-Source: `screens/settings/v2.html`
+Authority: [settings.drawio](settings.drawio). This table is a searchable projection and
+must not introduce behavior absent from the Draw.io.
+
+Implementation reference: `screens/settings/v2.html`
 
 **Type key:**
 - **Self** — stays on view, no navigation

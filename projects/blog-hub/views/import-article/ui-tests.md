@@ -1,5 +1,8 @@
 # Import Article — UI Tests
 
+> Test authority: [import-article.drawio](import-article.drawio). Tests project its
+> represented states and `IM-*` transitions; they must not create new UI requirements.
+
 ---
 
 ## Platform mode
