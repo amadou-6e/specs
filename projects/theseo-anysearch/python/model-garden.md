@@ -10,6 +10,10 @@ Architecture selection and scaling for 3D voxel inputs are investigated in
 discovery evidence; its proposed pyramid encoder is not part of this specification
 until its acceptance gates have been met and reviewed.
 
+The pre-policy experiment sequence and minimum checkpoint certification metrics are
+defined in [Standalone Voxel Encoder Pretraining](perception-encoder-pretraining.md).
+Those gates freeze the encoder and do not use RLlib or downstream navigation results.
+
 ---
 
 ## Motivation
