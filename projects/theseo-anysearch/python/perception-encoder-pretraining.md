@@ -7,6 +7,7 @@ Tracking issue: [specs#7](https://github.com/amadou-6e/specs/issues/7)
 Literature revision: [specs#9](https://github.com/amadou-6e/specs/issues/9)
 Methodology revision: [specs#11](https://github.com/amadou-6e/specs/issues/11)
 Related research: [Scalable 3D Voxel Perception Encoders](perception-encoders.md)
+Direction pilots: [Voxel Encoder Direction-Finding Pilots](perception-encoder-pilots.md)
 Governing specification: [Model Garden](model-garden.md)
 
 ## Decision boundary
@@ -709,6 +710,10 @@ two frozen rankings by more than 2 percentage points or 10% normalized error, ad
 both candidates and record that frozen ranking was non-predictive.
 
 ## Experiment stages
+
+Before spending the Stage 1-3 budgets below, run the bounded
+[direction-finding pilot sequence](perception-encoder-pilots.md). Pilot results order
+and prune the candidate queue but do not certify a model or weaken any exit rule here.
 
 ### Stage 0: Harness and target validation
 
