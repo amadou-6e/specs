@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <mxfile host="Electron" agent="Codex" pages="3">
   <diagram id="settings-platforms" name="Settings · Platforms">
-    <mxGraphModel dx="2002" dy="1380" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3600" pageHeight="5250" math="0" shadow="0">
+    <mxGraphModel dx="2002" dy="1380" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3600" pageHeight="6550" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -524,7 +524,7 @@
         <mxCell id="flow-h-failed" value="Failed" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#2B3141;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="platform-login-workshop">
           <mxGeometry as="geometry" x="1590" y="4430.0" width="260" height="82" />
         </mxCell>
-        <mxCell id="flow-h-sync" value="Immediate import +&#10;15-minute schedule" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#2B3141;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="platform-login-workshop">
+        <mxCell id="flow-h-sync" value="Immediate import +&#10;1-minute schedule" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#2B3141;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="platform-login-workshop">
           <mxGeometry as="geometry" x="2370" y="4280.0" width="260" height="82" />
         </mxCell>
         <mxCell id="edge-h-1" value="ST-07 · Connect" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="flow-h-disconnected" target="flow-h-method" bloghubSection="platform-login-workshop">
@@ -566,7 +566,7 @@
         <mxCell id="flow-m-failed" value="Failed" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#2B3141;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="platform-login-workshop">
           <mxGeometry as="geometry" x="1420" y="4780.0" width="260" height="82" />
         </mxCell>
-        <mxCell id="flow-m-sync" value="Immediate import +&#10;15-minute schedule" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#2B3141;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="platform-login-workshop">
+        <mxCell id="flow-m-sync" value="Immediate import +&#10;1-minute schedule" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#2B3141;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="platform-login-workshop">
           <mxGeometry as="geometry" x="2370" y="4630.0" width="260" height="82" />
         </mxCell>
         <mxCell id="edge-m-1" value="ST-08 · Connect" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=13;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="flow-m-disconnected" target="flow-m-waiting" bloghubSection="platform-login-workshop">
@@ -819,6 +819,91 @@
               <mxPoint x="1890" y="4750" />
             </Array>
           </mxGeometry>
+        </mxCell>
+
+        <mxCell id="health119-settings-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="40" y="5230" width="3520" height="1260" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-title" value="CONNECTION HEALTH · SHARED PLATFORM LIFECYCLE" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;fontSize=22;fontColor=#171914;fontStyle=1;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="75" y="5265" width="1500" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-subtitle" value="Stored credentials are hints. Only a live probe or successful remote operation proves that a platform is connected." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;fontSize=14;fontColor=#747970;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="75" y="5310" width="1900" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-cache" value="CACHE POLICY · user-facing proof is fresh for 5 minutes · connected blogs sync every 1 minute · idle verification target is 15 minutes" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD2DC;fontFamily=Arial;fontSize=14;fontColor=#4F554D;align=left;verticalAlign=middle;spacing=14;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="2200" y="5265" width="1260" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-evidence-label" value="EVIDENCE TO VERIFIED STATE" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;fontSize=12;fontColor=#747970;fontStyle=1;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="75" y="5380" width="500" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-hint" value="Saved profile / cookie hint" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#243047;strokeColor=#69708A;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="100" y="5420" width="300" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-stale" value="Verification stale&#10;live check required" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#3A3020;strokeColor=#8A6D2F;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="570" y="5420" width="300" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-connected" value="Connected&#10;authoritative proof" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#3D7658;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="1040" y="5420" width="300" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-unknown" value="Unknown&#10;ambiguous evidence" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#243047;strokeColor=#69708A;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="1510" y="5420" width="300" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-hint-edge" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="health119-settings-hint" target="health119-settings-stale" bloghubSection="connection-health-119">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-verify-edge" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="health119-settings-stale" target="health119-settings-connected" bloghubSection="connection-health-119">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-failure-label" value="REMOTE FAILURE CLASSIFICATION" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;fontSize=12;fontColor=#747970;fontStyle=1;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="75" y="5590" width="600" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-reauth" value="Reauthentication required&#10;pause remote jobs" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#8A3B4A;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="100" y="5630" width="360" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-blocked" value="Temporarily blocked&#10;retry after challenge" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#3A3020;strokeColor=#8A6D2F;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="620" y="5630" width="360" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-rate" value="Rate limited&#10;retry at provider time" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#3A3020;strokeColor=#8A6D2F;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="1140" y="5630" width="360" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-unavailable" value="Unavailable&#10;retry transport later" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#243047;strokeColor=#69708A;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="1660" y="5630" width="360" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-recovered" value="Connected&#10;successful operation" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#3D7658;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="2280" y="5630" width="360" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-trigger-label" value="TRIGGERS, LEASES, AND UI" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;fontSize=12;fontColor=#747970;fontStyle=1;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="75" y="5825" width="600" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-trigger" value="Settings load sees stale proof → POST /connection-health/verify → one 120-second verification lease → durable sync job. Concurrent tabs attach to the existing check." style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD2DC;fontFamily=Arial;fontSize=14;fontColor=#4F554D;align=left;verticalAlign=middle;spacing=14;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="75" y="5865" width="1060" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-sync" value="A successful list, retrieve, publish, or reconciliation operation records authoritative proof and clears the lease. Raw cookies, tokens, URLs, and browser errors are never persisted as diagnostics." style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD2DC;fontFamily=Arial;fontSize=14;fontColor=#4F554D;align=left;verticalAlign=middle;spacing=14;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="1225" y="5865" width="1060" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-reauth-note" value="Reauthentication keeps the durable schedule but prevents new remote jobs. Disconnect clears health; a fresh login returns to Verification stale until live work succeeds." style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD2DC;fontFamily=Arial;fontSize=14;fontColor=#4F554D;align=left;verticalAlign=middle;spacing=14;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="2375" y="5865" width="1085" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-card-label" value="SETTINGS CARD OUTPUT" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;fontSize=12;fontColor=#747970;fontStyle=1;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="75" y="6065" width="600" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-card-good" value="● Connected&#10;Browser session verified by a remote operation." style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#3D7658;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="75" y="6105" width="630" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-card-stale" value="● Verification needed&#10;Saved profile found; awaiting a live remote check." style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#3A3020;strokeColor=#8A6D2F;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="755" y="6105" width="630" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-card-reauth" value="● Sign-in expired&#10;Disconnect and sign in again to resume synchronization." style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#8A3B4A;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="1435" y="6105" width="630" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-card-retry" value="● Temporarily blocked / Rate limited&#10;BlogHub retries after retry_at." style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#3A3020;strokeColor=#8A6D2F;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="2115" y="6105" width="630" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-card-down" value="● Service unavailable&#10;BlogHub retries when the platform is available." style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#243047;strokeColor=#69708A;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="2795" y="6105" width="665" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-settings-authority" value="DRAW.IO AUTHORITY · These shared states apply to every browser blog extension. Provider adapters supply evidence; core owns persistence, cache timing, retry policy, and UI wording." style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD2DC;fontFamily=Arial;fontSize=14;fontColor=#4F554D;align=left;verticalAlign=middle;spacing=14;locked=1;" vertex="1" parent="1" bloghubSection="connection-health-119">
+          <mxGeometry x="75" y="6285" width="3385" height="105" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

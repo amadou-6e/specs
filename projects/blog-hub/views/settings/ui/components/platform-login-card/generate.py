@@ -235,7 +235,7 @@ def main() -> None:
         ("method", 460, 580, "STATE 02 · HASHNODE ONLY", "Choose login method", "Hashnode Plus can use a token; free accounts use the persistent browser path.", "hashnode-02-method-choice.png", "METHOD CONTRACT", "API token opens credential entry and then connects. Browser login opens one Skyvern tab and enters the pending state."),
         ("waiting", 1070, 300, "STATE 03", "Waiting for browser sign-in", "The provider tab is open. BlogHub waits for the user to finish and close it.", "hashnode-03-waiting.png", "USER CONTROL", "Close the tab after the provider confirms login. Cancel closes the session and returns to Disconnected. There is no Open login action."),
         ("verifying", 1400, 300, "STATE 04", "Saving and verifying", "BlogHub closes no tabs here; it saves and verifies the browser profile after the user closes it.", "hashnode-04-verifying.png", "ATOMIC HANDOFF", "No card action is available while verification runs. Success enters Connected; an invalid or unavailable profile enters Failed."),
-        ("connected", 1730, 330, "STATE 05", "Connected", "The verified method is explicit and synchronization is automatic.", "hashnode-05-connected.png", "BACKGROUND SYNC", "Connection queues an immediate durable import and a recurring 15-minute schedule. Disconnect is the only maintenance action."),
+        ("connected", 1730, 330, "STATE 05", "Connected", "The verified method is explicit and synchronization is automatic.", "hashnode-05-connected.png", "BACKGROUND SYNC", "Connection queues an immediate durable import and a recurring 1-minute schedule. Disconnect is the only maintenance action."),
         ("failed", 2090, 300, "STATE 06", "Login failed", "Failure explains what did not complete and returns to the normal provider entry action.", "hashnode-06-failed.png", "RECOVERY", "Hashnode Connect returns to method choice. Medium Connect starts a fresh browser login. Neither provider reopens a stale session."),
     ]
     for row in rows:
@@ -365,7 +365,7 @@ def main() -> None:
     for box_id, label, x in hash_boxes:
         add_flow_box(source_root, box_id, label, x, flow_y + 130)
     add_flow_box(source_root, "flow-h-failed", "Failed", 1590, flow_y + 280, color="#302027")
-    add_flow_box(source_root, "flow-h-sync", "Immediate import +\n15-minute schedule", 2370, flow_y + 130, color="#173127")
+    add_flow_box(source_root, "flow-h-sync", "Immediate import +\n1-minute schedule", 2370, flow_y + 130, color="#173127")
     add_edge(source_root, "edge-h-1", "flow-h-disconnected", "flow-h-method", "Connect")
     add_edge(source_root, "edge-h-2", "flow-h-method", "flow-h-waiting", "Browser")
     add_edge(source_root, "edge-h-3", "flow-h-waiting", "flow-h-verifying", "Tab closed")
@@ -379,7 +379,7 @@ def main() -> None:
     for box_id, label, x in medium_boxes:
         add_flow_box(source_root, box_id, label, x, flow_y + 480)
     add_flow_box(source_root, "flow-m-failed", "Failed", 1420, flow_y + 630, color="#302027")
-    add_flow_box(source_root, "flow-m-sync", "Immediate import +\n15-minute schedule", 2370, flow_y + 480, color="#173127")
+    add_flow_box(source_root, "flow-m-sync", "Immediate import +\n1-minute schedule", 2370, flow_y + 480, color="#173127")
     add_edge(source_root, "edge-m-1", "flow-m-disconnected", "flow-m-waiting", "Connect")
     add_edge(source_root, "edge-m-2", "flow-m-waiting", "flow-m-verifying", "Tab closed")
     add_edge(source_root, "edge-m-3", "flow-m-verifying", "flow-m-connected", "Verified")

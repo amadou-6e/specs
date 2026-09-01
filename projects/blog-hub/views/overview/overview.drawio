@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <mxfile host="Electron" agent="Codex" pages="1">
   <diagram id="overview-main" name="Overview · Articles">
-    <mxGraphModel dx="2002" dy="1380" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3600.0" pageHeight="9090" math="0" shadow="0">
+    <mxGraphModel dx="2002" dy="1380" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3600.0" pageHeight="10200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1930,6 +1930,85 @@
         </mxCell>
         <mxCell id="overview-transitions-sync-edge-5" value="OV-S20 - error" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-sync-running" target="overview-transitions-sync-failed" bloghubSection="overview-transitions">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="health119-overview-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="40" y="9090" width="3520" height="1050" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-title" value="OVERVIEW · REMOTE HEALTH AND REFRESH LIFECYCLE" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;fontSize=22;fontColor=#171914;fontStyle=1;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="75" y="9125" width="1600" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-subtitle" value="Overview reload requests synchronization for connected blogs, while normalized health prevents stale credentials from masquerading as usable remote connections." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;fontSize=14;fontColor=#747970;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="75" y="9170" width="2200" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-reload" value="OV-01 · Overview reload" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="90" y="9280" width="310" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-refresh" value="POST /jobs/sync-refresh&#10;connected platforms" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#243047;strokeColor=#69708A;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="560" y="9280" width="340" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-gate" value="Shared health gate&#10;status + retry_at" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#3A3020;strokeColor=#8A6D2F;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="1060" y="9280" width="340" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-operation" value="Remote list / retrieve&#10;authoritative evidence" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="1560" y="9280" width="350" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-store" value="Persist health + articles&#10;clear verification lease" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#3D7658;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="2070" y="9280" width="360" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-render" value="Reload cards + header&#10;show usable connections" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#3D7658;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="2590" y="9280" width="370" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-edge-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="health119-overview-reload" target="health119-overview-refresh" bloghubSection="overview-connection-health-119">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-edge-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="health119-overview-refresh" target="health119-overview-gate" bloghubSection="overview-connection-health-119">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-edge-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="health119-overview-gate" target="health119-overview-operation" bloghubSection="overview-connection-health-119">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-edge-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="health119-overview-operation" target="health119-overview-store" bloghubSection="overview-connection-health-119">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-edge-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="health119-overview-store" target="health119-overview-render" bloghubSection="overview-connection-health-119">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-paused" value="Reauthentication required&#10;do not enqueue remote work" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#8A3B4A;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="1060" y="9445" width="340" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-retry" value="Blocked / limited / unavailable&#10;wait until retry_at" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#3A3020;strokeColor=#8A6D2F;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="1560" y="9445" width="350" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-gate-pause" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;labelBackgroundColor=#F3F4F1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="health119-overview-gate" target="health119-overview-paused" bloghubSection="overview-connection-health-119">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-gate-retry" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;labelBackgroundColor=#F3F4F1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="health119-overview-gate" target="health119-overview-retry" bloghubSection="overview-connection-health-119">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-output-label" value="HEADER OUTPUT" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;fontSize=12;fontColor=#747970;fontStyle=1;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="75" y="9595" width="500" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-output-good" value="● 2 platforms connected" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#3D7658;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="90" y="9635" width="720" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-output-attention" value="● 1 connected · 1 checking · 1 needs attention" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#3A3020;strokeColor=#8A6D2F;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="900" y="9635" width="820" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-output-rule" value="Connected counts only usable browser/API connections. Reauthentication, blocking, rate limits, and outages move a platform to needs attention; verification-stale remains visible while its leased check runs." style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD2DC;fontFamily=Arial;fontSize=14;fontColor=#4F554D;align=left;verticalAlign=middle;spacing=14;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="1810" y="9635" width="1650" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-cache" value="CACHE / RETRY CONTRACT" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;fontSize=12;fontColor=#747970;fontStyle=1;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="75" y="9800" width="500" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-cache-note" value="Overview reload may request sync immediately. The recurring schedule runs every 1 minute. Five-minute UI freshness and a fifteen-minute idle target are upper-level health policy; successful remote work refreshes proof sooner." style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD2DC;fontFamily=Arial;fontSize=14;fontColor=#4F554D;align=left;verticalAlign=middle;spacing=14;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="75" y="9840" width="1050" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-safe-note" value="SAFETY · Only one verifier holds a lease per user and platform. Health failures do not delete schedules or local article data. Reauthentication pauses work; temporary failures preserve the next retry time." style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD2DC;fontFamily=Arial;fontSize=14;fontColor=#4F554D;align=left;verticalAlign=middle;spacing=14;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="1225" y="9840" width="1050" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-source-note" value="EVIDENCE · Saved cookies are non-authoritative hints. Live browser probes and successful remote list, retrieve, publish, or reconciliation operations are authoritative. Diagnostics are bounded and secret-free." style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD2DC;fontFamily=Arial;fontSize=14;fontColor=#4F554D;align=left;verticalAlign=middle;spacing=14;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="2375" y="9840" width="1085" height="125" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
