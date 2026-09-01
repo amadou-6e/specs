@@ -153,6 +153,17 @@ System IDs are unique and are never reused as user IDs.
 | `OV-S28` | Recovery finds no active job or only a terminal job | Refreshes article detail and returns to Selected Open |
 | `OV-S29` | Active-job discovery fails | Keeps selection open and shows Recovery Unavailable with `OV-43` |
 | `OV-S30` | Backend reports its durable timeout as a terminal failure | Enters Job Failed with the backend reason; the browser never invents a five-second timeout |
+| `OV-S31` | Application startup or Overview reload resolves connected blogs | Uses connected Hashnode and Medium records as the synchronization source of truth |
+| `OV-S32` | A connected blog has no recurring schedule | Creates its enabled 60-second internal schedule without changing an existing interval or paused state |
+| `OV-S33` | Overview reload sees an enabled schedule, or a schedule becomes due | Queues or reattaches to one idempotent sync job per connected platform; parked jobs do not suppress fresh work |
+| `OV-S34` | The durable worker claims a sync job | Retrieves and reconciles the platform's remote articles |
+| `OV-S35` | Remote synchronization succeeds | Upserts remote articles and refreshes the Overview collection |
+| `OV-S36` | Remote synchronization fails | Retains current cards and allows durable retry or the next recurrence to recover |
+
+The schedule is internal infrastructure. Startup and successful browser connection create
+missing schedules from connected-blog state. Overview refresh reads enabled schedules but
+does not rewrite configuration. Disconnect removes a schedule only when no connected API or
+browser path remains. No manual sync control appears on the Overview page.
 
 `OV-29` and `OV-31` first enter Submitting. They are disabled in Submitting, Job
 Queued, Job Running, Recovering, and Retrying. Submission always carries a stable

@@ -20,8 +20,22 @@ maintenance action absent from the Draw.io.
 | Connected | Verified method is visible; sync starts automatically; Disconnect is the maintenance action |
 | Failed | Explains failure and starts a fresh provider entry flow on Connect/Retry |
 
-Successful connection queues an immediate durable import and a recurring 15-minute
+Successful connection queues an immediate durable import and a recurring 1-minute
 schedule. Sync failure leaves the platform connected and retries as durable work.
+
+## Connection health
+
+The `CONNECTION HEALTH - SHARED PLATFORM LIFECYCLE` region applies to every
+browser blog extension. A saved profile or cookie is a non-authoritative hint and
+enters Verification stale. A live probe or successful remote operation enters
+Connected. Authoritative failures enter Reauthentication required, Temporarily
+blocked, Rate limited, Unavailable, or Unknown.
+
+User-facing proof is fresh for five minutes. Connected blogs synchronize every
+one minute, normally refreshing proof sooner; the idle verification target is
+fifteen minutes. Settings requests one leased verification when stale. A
+reauthentication result pauses remote jobs, while temporary failures retain their
+schedule and resume at `retry_at`. Disconnect clears the health record.
 
 ## AI provider API-key path
 
