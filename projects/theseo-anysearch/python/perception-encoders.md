@@ -7,6 +7,7 @@ Tracking issue: [specs#5](https://github.com/amadou-6e/specs/issues/5)
 Literature revision: [specs#9](https://github.com/amadou-6e/specs/issues/9)
 Pretraining methodology: [specs#11](https://github.com/amadou-6e/specs/issues/11)
 Governing specification: [Model Garden](model-garden.md)
+Direction pilots: [Voxel Encoder Direction-Finding Pilots](perception-encoder-pilots.md)
 Related implementation issues:
 [theseo-anysearch#16](https://github.com/amadou-6e/theseo-anysearch/issues/16),
 [theseo-anysearch#17](https://github.com/amadou-6e/theseo-anysearch/issues/17), and
