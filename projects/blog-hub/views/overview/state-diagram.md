@@ -27,9 +27,21 @@ of scope.
 | Job Queued | Selected action accepted; queued status visible in panel |
 | Job Running | Selected action progress visible; duplicate submission prevented |
 | Job Failed | Failure visible in panel with retry when supported |
+| Context Open | One card context menu is visible; card selection is unchanged |
+| Delete Confirmation | Confirmation replaces that card's action row; no modal is used |
+| Mutation Pending | Duplicate, archive, or delete is in flight once; context actions are disabled |
+| Article Not Found | Inline `404` remains on the affected card until refresh or another action |
+| Delete Conflict | Published-article `409` remains inline and article data is unchanged |
+| Action Failed | Another mutation failure remains inline on the affected card |
+| Submitting | Push or Inspect is awaiting acceptance with its idempotency key; duplicate actions are disabled |
+| Job Canceled | Backend-reported terminal cancellation remains visible, with Retry only when supported |
+| Retrying | Durable retry is being accepted; article actions remain disabled |
+| Recovering | Reload-time active-job discovery is in progress while the selected panel remains open |
+| Recovery Unavailable | Discovery failed; selection and article data remain visible with Retry recovery |
+| Job Completed | Completion is visible while fresh collection and selected-detail data replace stale copies |
 | Connected Blogs Resolved | Connected Hashnode and Medium records are the source of truth for synchronization |
-| Schedule Repaired | Each connected blog has an enabled internal 60-second schedule |
-| Sync Queued | Overview reload or a due schedule has queued one idempotent sync job per platform |
+| Schedule Available | A missing one-minute schedule is created; existing user interval and paused state are preserved |
+| Sync Queued | Overview reload with an enabled schedule or a due schedule queues one idempotent job per platform |
 | Sync Running | The durable worker is retrieving and reconciling remote articles |
 | Collection Refreshed | Successful remote upserts are followed by a local collection refresh |
 | Sync Failed | Existing cards remain visible; durable retry or the next recurrence may recover |
@@ -38,6 +50,11 @@ of scope.
 | Temporarily Blocked | Platform needs attention until its challenge retry time |
 | Rate Limited | Platform needs attention until the provider retry time |
 | Unavailable | Platform needs attention until transport retry succeeds |
+
+Gate status is a card substate rather than a collection state. Pass, Warn, Fail, and
+Pending must all be rendered; only completed gates with a report URL expose `OV-35`.
+The durable job lifecycle is keyed by the visible operation and idempotency key, so a
+repeated submission reattaches to the existing job instead of adding a duplicate state.
 
 Navigation destinations are exits from Overview, not additional rendered Overview
 states. Preview tabs remain inside the current state; only `Visit` is external.

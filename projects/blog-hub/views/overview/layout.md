@@ -72,6 +72,10 @@ Cards are sorted by urgency:
 4. Ready / scheduled
 5. Published (all platforms)
 
+Each card reserves stable space for a labeled gate badge and icon-only context trigger.
+Opening the context menu, inline delete confirmation, or an inline mutation error must
+not resize neighboring cards or shift the list horizontally.
+
 First-run and filtered-empty states are centered in this zone. Initial loading uses five
 card skeletons. Pagination progress or failure appears after existing cards.
 
@@ -83,6 +87,9 @@ card skeletons. Pagination progress or failure appears after existing cards.
 - Collapsed: 12 px strip; content is not rendered visibly.
 - Hidden: no selected article, so Zone C uses all available body width.
 - Selecting a different article opens the panel and updates it in place.
+- Durable action states replace the panel's action/status region in place; queued,
+  running, retrying, canceled, failed, recovery, and completed states do not change the
+  panel width or close it.
 
 ## Scope boundary
 

@@ -1,7 +1,7 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <mxfile host="Electron" agent="Codex" pages="1">
   <diagram id="overview-main" name="Overview · Articles">
-    <mxGraphModel dx="2002" dy="1380" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3600.0" pageHeight="10200" math="0" shadow="0">
+    <mxGraphModel dx="2002" dy="1380" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3600.0" pageHeight="11400" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1394,6 +1394,219 @@
         <mxCell id="overview-new-article-menu" value="v" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#6366F1;strokeColor=#4F52D9;fontFamily=Arial;fontSize=12.6;fontStyle=1;fontColor=#FFFFFF;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-contract-controls">
           <mxGeometry x="1770" y="52" width="34" height="36" as="geometry" />
         </mxCell>
+        <mxCell id="overview-main-gate-pass" value="PASS - INSPECT" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#22C55E;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#86EFAC;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-card-actions">
+          <mxGeometry x="1248" y="277" width="126" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-main-context-trigger" value="..." style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#C9CFE0;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-card-actions">
+          <mxGeometry x="1510" y="277" width="42" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-actions-background" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;" vertex="1" parent="1" bloghubSection="overview-card-actions">
+          <mxGeometry x="2500" y="920" width="1060" height="1000" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-actions-title" value="GATE BADGES AND CARD CONTEXT ACTIONS" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=22;fontColor=#171914;fontStyle=1;" vertex="1" parent="1" bloghubSection="overview-card-actions">
+          <mxGeometry x="2540" y="950" width="960" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-actions-help" value="Faithful card states for issue #98. Gate status is visible without opening the menu; only completed Pass, Warn, and Fail gates navigate to Inspection." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#747970;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-card-actions">
+          <mxGeometry x="2540" y="995" width="940" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-gate-pass" value="PASS" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#22C55E;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#86EFAC;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-card-actions">
+          <mxGeometry x="2540" y="1080" width="104" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-gate-warn" value="WARN" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#302A17;strokeColor=#FBBF24;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#FDE68A;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-card-actions">
+          <mxGeometry x="2670" y="1080" width="104" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-gate-fail" value="FAIL" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#EF4444;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#FCA5A5;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-card-actions">
+          <mxGeometry x="2800" y="1080" width="104" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-gate-pending" value="PENDING" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#5A6080;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#8991AA;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-card-actions">
+          <mxGeometry x="2930" y="1080" width="118" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-gate-note" value="OV-S15 renders gate data. OV-35 opens Inspection for Pass / Warn / Fail. Pending is passive." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=13;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-card-actions">
+          <mxGeometry x="3080" y="1072" width="420" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-context-card" value="&lt;b&gt;RAG Pipeline with Neo4j and LangChain&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Apr 5 - 2,100 words&lt;/font&gt;" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#10131C;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=left;verticalAlign=top;spacing=18;locked=1;" vertex="1" parent="1" bloghubSection="overview-card-actions">
+          <mxGeometry x="2540" y="1160" width="620" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-context-card-gate" value="WARN" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#302A17;strokeColor=#FBBF24;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#FDE68A;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-card-actions">
+          <mxGeometry x="2560" y="1258" width="104" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-context-trigger" value="..." style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#C9CFE0;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-card-actions">
+          <mxGeometry x="3092" y="1178" width="42" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-context-menu" value="&lt;b&gt;Edit&lt;/b&gt;&lt;br&gt;&lt;br&gt;Duplicate&lt;br&gt;&lt;br&gt;Archive&lt;br&gt;&lt;br&gt;&lt;font color=&quot;#FCA5A5&quot;&gt;Delete&lt;/font&gt;" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#3A4155;fontFamily=Arial;fontSize=14;fontColor=#C9CFE0;align=left;verticalAlign=top;spacing=16;locked=1;" vertex="1" parent="1" bloghubSection="overview-card-actions">
+          <mxGeometry x="3180" y="1160" width="320" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-ov37" value="OV-37" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="3400" y="1180" width="72" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-ov38" value="OV-38" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="3400" y="1232" width="72" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-ov39" value="OV-39" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="3400" y="1284" width="72" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-ov40" value="OV-40" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="3400" y="1336" width="72" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-delete-confirm" value="&lt;b&gt;Delete this article?&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Published copies are not removed.&lt;/font&gt;" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#EF4444;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=left;verticalAlign=top;spacing=16;locked=1;" vertex="1" parent="1" bloghubSection="overview-card-actions">
+          <mxGeometry x="2540" y="1440" width="460" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-delete-cancel" value="Cancel" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#3A4155;fontFamily=Arial;fontSize=13;fontColor=#C9CFE0;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-card-actions">
+          <mxGeometry x="2710" y="1545" width="110" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-delete-confirm-button" value="Delete" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#EF4444;strokeColor=#DC2626;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=#FFFFFF;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-card-actions">
+          <mxGeometry x="2830" y="1545" width="140" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-ov42" value="OV-42" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="2700" y="1588" width="72" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-ov41" value="OV-41" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="2864" y="1588" width="72" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-context-conflict" value="&lt;b&gt;Cannot delete published article&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#FCA5A5&quot;&gt;Remove its live destinations first. The article and history remain unchanged.&lt;/font&gt;" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#EF4444;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=left;verticalAlign=middle;spacing=16;locked=1;" vertex="1" parent="1" bloghubSection="overview-card-actions">
+          <mxGeometry x="3040" y="1440" width="460" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-context-error-note" value="404, 409, and other mutation failures replace the action row with an inline card message. No alert or modal is used." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=13;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-card-actions">
+          <mxGeometry x="2540" y="1660" width="960" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-background" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="1650" y="4520" width="1910" height="1880" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-title" value="DURABLE ARTICLE ACTION - PANEL STATES" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=22;fontColor=#171914;fontStyle=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="1690" y="4550" width="1800" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-help" value="The selected panel remains open. The same visible operation, job ID, and idempotency key survive polling and reload recovery." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#747970;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="1690" y="4595" width="1760" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-submitting" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#10131C;strokeColor=#2B3141;strokeWidth=2;locked=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="1690" y="4670" width="500" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-submitting-title" value="Submitting action" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=16;fontColor=#E8EAF2;fontStyle=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="1714" y="4692" width="450" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-submitting-detail" value="Push drafts is being accepted. Action buttons are disabled before the first response." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=13;fontColor=#8991AA;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="1714" y="4732" width="450" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-submitting-status" value="Submitting - duplicate actions disabled" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#E8EAF2;align=left;verticalAlign=middle;spacingLeft=14;locked=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="1714" y="4818" width="452" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-queued" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#10131C;strokeColor=#2B3141;strokeWidth=2;locked=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2300" y="4670" width="500" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-queued-title" value="Queued" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=16;fontColor=#E8EAF2;fontStyle=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2324" y="4692" width="450" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-queued-detail" value="Job 7F2A is durable. Polling continues at the documented interval." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=13;fontColor=#8991AA;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2324" y="4732" width="450" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-queued-status" value="Queued - waiting for a worker" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#E8EAF2;align=left;verticalAlign=middle;spacingLeft=14;locked=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2324" y="4818" width="452" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-running" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#10131C;strokeColor=#2B3141;strokeWidth=2;locked=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2910" y="4670" width="500" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-running-title" value="Running" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=16;fontColor=#E8EAF2;fontStyle=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2934" y="4692" width="450" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-running-detail" value="Job 7F2A is publishing to Medium and Hashnode." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=13;fontColor=#8991AA;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2934" y="4732" width="450" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-running-status" value="Running - 2 of 3 destinations" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#E8EAF2;align=left;verticalAlign=middle;spacingLeft=14;locked=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2934" y="4818" width="452" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-recovering" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#10131C;strokeColor=#2B3141;strokeWidth=2;locked=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="1690" y="5000" width="500" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-recovering-title" value="Recovering after reload" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=16;fontColor=#E8EAF2;fontStyle=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="1714" y="5022" width="450" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-recovering-detail" value="Overview is discovering the selected article's active durable job." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=13;fontColor=#8991AA;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="1714" y="5062" width="450" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-recovering-status" value="Checking durable jobs..." style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#302A17;strokeColor=#2B3141;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#E8EAF2;align=left;verticalAlign=middle;spacingLeft=14;locked=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="1714" y="5148" width="452" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-retrying" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#10131C;strokeColor=#2B3141;strokeWidth=2;locked=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2300" y="5000" width="500" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-retrying-title" value="Retrying" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=16;fontColor=#E8EAF2;fontStyle=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2324" y="5022" width="450" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-retrying-detail" value="The failed job is being retried through its durable retry endpoint." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=13;fontColor=#8991AA;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2324" y="5062" width="450" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-retrying-status" value="Retrying - action buttons disabled" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#302A17;strokeColor=#2B3141;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#E8EAF2;align=left;verticalAlign=middle;spacingLeft=14;locked=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2324" y="5148" width="452" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-failed" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#10131C;strokeColor=#2B3141;strokeWidth=2;locked=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2910" y="5000" width="500" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-failed-title" value="Failed" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=16;fontColor=#E8EAF2;fontStyle=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2934" y="5022" width="450" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-failed-detail" value="Hashnode authentication expired. Failure remains visible until retry or another action." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=13;fontColor=#8991AA;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2934" y="5062" width="450" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-failed-status" value="Failed - authentication required" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#2B3141;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#E8EAF2;align=left;verticalAlign=middle;spacingLeft=14;locked=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2934" y="5148" width="452" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-canceled" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#10131C;strokeColor=#2B3141;strokeWidth=2;locked=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="1690" y="5330" width="500" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-canceled-title" value="Canceled" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=16;fontColor=#E8EAF2;fontStyle=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="1714" y="5352" width="450" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-canceled-detail" value="The backend reports a terminal cancellation. Retry remains available when supported." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=13;fontColor=#8991AA;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="1714" y="5392" width="450" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-canceled-status" value="Canceled - no work is running" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#2B3141;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#E8EAF2;align=left;verticalAlign=middle;spacingLeft=14;locked=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="1714" y="5478" width="452" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-completed" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#10131C;strokeColor=#2B3141;strokeWidth=2;locked=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2300" y="5330" width="500" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-completed-title" value="Completed" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=16;fontColor=#E8EAF2;fontStyle=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2324" y="5352" width="450" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-completed-detail" value="Fresh article and destination data replace the stale panel copy." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=13;fontColor=#8991AA;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2324" y="5392" width="450" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-completed-status" value="Completed - collection refreshed" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#2B3141;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#E8EAF2;align=left;verticalAlign=middle;spacingLeft=14;locked=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2324" y="5478" width="452" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-recovery-warning" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#10131C;strokeColor=#2B3141;strokeWidth=2;locked=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2910" y="5330" width="500" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-recovery-warning-title" value="Recovery unavailable" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=16;fontColor=#E8EAF2;fontStyle=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2934" y="5352" width="450" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-recovery-warning-detail" value="Active-job discovery failed. Keep the article selected and allow an explicit retry." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=13;fontColor=#8991AA;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2934" y="5392" width="450" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-recovery-warning-status" value="Could not restore job status" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#302A17;strokeColor=#2B3141;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#E8EAF2;align=left;verticalAlign=middle;spacingLeft=14;locked=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2934" y="5478" width="452" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-failed-retry" value="Retry" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#3A4155;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#C9CFE0;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="3270" y="5210" width="116" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-retry-failed" value="OV-33" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="3185" y="5215" width="72" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-canceled-retry" value="Retry" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#3A4155;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#C9CFE0;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="2050" y="5540" width="116" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-retry-canceled" value="OV-33" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="1965" y="5545" width="72" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-recovery-retry" value="Retry recovery" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#3A4155;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#C9CFE0;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="3230" y="5540" width="156" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-ov43" value="OV-43" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="3145" y="5545" width="72" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-job-study-rule" value="Duplicate prevention: OV-29 and OV-31 are disabled in Submitting, Queued, Running, Recovering, and Retrying. A repeated idempotency key reattaches to the existing job through OV-S22 and never creates another job." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=13;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-job-state-study">
+          <mxGeometry x="1690" y="5690" width="1760" height="88" as="geometry" />
+        </mxCell>
         <mxCell id="overview-marker-ov01" value="OV-01" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
           <mxGeometry x="748" y="18" width="68" height="24" as="geometry" />
         </mxCell>
@@ -1436,6 +1649,12 @@
         <mxCell id="overview-marker-ov23" value="OV-23" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
           <mxGeometry x="1507" y="497" width="68" height="24" as="geometry" />
         </mxCell>
+        <mxCell id="overview-marker-ov35" value="OV-35" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="1268" y="242" width="68" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-ov36" value="OV-36" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="1498" y="242" width="68" height="24" as="geometry" />
+        </mxCell>
         <mxCell id="overview-marker-ov28" value="OV-28" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
           <mxGeometry x="903" y="5409" width="68" height="24" as="geometry" />
         </mxCell>
@@ -1452,7 +1671,7 @@
           <mxGeometry x="1412" y="6275" width="68" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-background" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="1900" y="40" width="1660" height="820" as="geometry" />
+          <mxGeometry x="1900" y="40" width="1660" height="860" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-title" value="OVERVIEW · INTERACTION INDEX" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=24;fontColor=#171914;fontStyle=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
           <mxGeometry x="1940" y="72" width="1500" height="40" as="geometry" />
@@ -1467,202 +1686,256 @@
           <mxGeometry x="2056" y="188" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-1" value="OV-02" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="1940" y="244" width="96" height="24" as="geometry" />
+          <mxGeometry x="1940" y="238" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-1" value="Open Publish Queue" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2056" y="242" width="390" height="30" as="geometry" />
+          <mxGeometry x="2056" y="236" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-2" value="OV-03" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="1940" y="298" width="96" height="24" as="geometry" />
+          <mxGeometry x="1940" y="286" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-2" value="Open Platforms" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2056" y="296" width="390" height="30" as="geometry" />
+          <mxGeometry x="2056" y="284" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-3" value="OV-04" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="1940" y="352" width="96" height="24" as="geometry" />
+          <mxGeometry x="1940" y="334" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-3" value="Open Settings" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2056" y="350" width="390" height="30" as="geometry" />
+          <mxGeometry x="2056" y="332" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-4" value="OV-05" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="1940" y="406" width="96" height="24" as="geometry" />
+          <mxGeometry x="1940" y="382" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-4" value="Create a new article" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2056" y="404" width="390" height="30" as="geometry" />
+          <mxGeometry x="2056" y="380" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-5" value="OV-06" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="1940" y="460" width="96" height="24" as="geometry" />
+          <mxGeometry x="1940" y="430" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-5" value="Toggle import menu" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2056" y="458" width="390" height="30" as="geometry" />
+          <mxGeometry x="2056" y="428" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-6" value="OV-07" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="1940" y="514" width="96" height="24" as="geometry" />
+          <mxGeometry x="1940" y="478" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-6" value="Import from platform" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2056" y="512" width="390" height="30" as="geometry" />
+          <mxGeometry x="2056" y="476" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-7" value="OV-08" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="1940" y="568" width="96" height="24" as="geometry" />
+          <mxGeometry x="1940" y="526" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-7" value="Upload a Markdown file" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2056" y="566" width="390" height="30" as="geometry" />
+          <mxGeometry x="2056" y="524" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-8" value="OV-09" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="1940" y="622" width="96" height="24" as="geometry" />
+          <mxGeometry x="1940" y="574" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-8" value="Search articles" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2056" y="620" width="390" height="30" as="geometry" />
+          <mxGeometry x="2056" y="572" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-9" value="OV-10" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="1940" y="676" width="96" height="24" as="geometry" />
+          <mxGeometry x="1940" y="622" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-9" value="Clear status filter" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2056" y="674" width="390" height="30" as="geometry" />
+          <mxGeometry x="2056" y="620" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-10" value="OV-11" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="1940" y="730" width="96" height="24" as="geometry" />
+          <mxGeometry x="1940" y="670" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-10" value="Filter Drafting" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2056" y="728" width="390" height="30" as="geometry" />
+          <mxGeometry x="2056" y="668" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-11" value="OV-12" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="1940" y="784" width="96" height="24" as="geometry" />
+          <mxGeometry x="1940" y="718" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-11" value="Filter Ready" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2056" y="782" width="390" height="30" as="geometry" />
+          <mxGeometry x="2056" y="716" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-12" value="OV-13" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2475" y="190" width="96" height="24" as="geometry" />
+          <mxGeometry x="1940" y="766" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-12" value="Filter Error" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2591" y="188" width="390" height="30" as="geometry" />
+          <mxGeometry x="2056" y="764" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-13" value="OV-14" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2475" y="244" width="96" height="24" as="geometry" />
+          <mxGeometry x="1940" y="814" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-13" value="Filter Published" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2591" y="242" width="390" height="30" as="geometry" />
+          <mxGeometry x="2056" y="812" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-14" value="OV-15" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2475" y="298" width="96" height="24" as="geometry" />
+          <mxGeometry x="1940" y="862" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-14" value="Toggle Medium filter" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2591" y="296" width="390" height="30" as="geometry" />
+          <mxGeometry x="2056" y="860" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-15" value="OV-16" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2475" y="352" width="96" height="24" as="geometry" />
+          <mxGeometry x="2475" y="190" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-15" value="Toggle Hashnode filter" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2591" y="350" width="390" height="30" as="geometry" />
+          <mxGeometry x="2591" y="188" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-16" value="OV-17" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2475" y="406" width="96" height="24" as="geometry" />
+          <mxGeometry x="2475" y="238" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-16" value="Toggle Dev.to filter" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2591" y="404" width="390" height="30" as="geometry" />
+          <mxGeometry x="2591" y="236" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-17" value="OV-18" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2475" y="460" width="96" height="24" as="geometry" />
+          <mxGeometry x="2475" y="286" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-17" value="Select or change article" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2591" y="458" width="390" height="30" as="geometry" />
+          <mxGeometry x="2591" y="284" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-18" value="OV-19" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2475" y="514" width="96" height="24" as="geometry" />
+          <mxGeometry x="2475" y="334" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-18" value="Show Medium preview" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2591" y="512" width="390" height="30" as="geometry" />
+          <mxGeometry x="2591" y="332" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-19" value="OV-20" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2475" y="568" width="96" height="24" as="geometry" />
+          <mxGeometry x="2475" y="382" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-19" value="Show Hashnode preview" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2591" y="566" width="390" height="30" as="geometry" />
+          <mxGeometry x="2591" y="380" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-20" value="OV-21" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2475" y="622" width="96" height="24" as="geometry" />
+          <mxGeometry x="2475" y="430" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-20" value="Show Dev.to preview" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2591" y="620" width="390" height="30" as="geometry" />
+          <mxGeometry x="2591" y="428" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-21" value="OV-22" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2475" y="676" width="96" height="24" as="geometry" />
+          <mxGeometry x="2475" y="478" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-21" value="Visit active remote article" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2591" y="674" width="390" height="30" as="geometry" />
+          <mxGeometry x="2591" y="476" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-22" value="OV-23" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2475" y="730" width="96" height="24" as="geometry" />
+          <mxGeometry x="2475" y="526" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-22" value="Edit card article" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2591" y="728" width="390" height="30" as="geometry" />
+          <mxGeometry x="2591" y="524" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-23" value="OV-24" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2475" y="784" width="96" height="24" as="geometry" />
+          <mxGeometry x="2475" y="574" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-23" value="Clear empty-result filters" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="2591" y="782" width="390" height="30" as="geometry" />
+          <mxGeometry x="2591" y="572" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-24" value="OV-25" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="3010" y="190" width="96" height="24" as="geometry" />
+          <mxGeometry x="2475" y="622" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-24" value="Create from first-run empty" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="3126" y="188" width="390" height="30" as="geometry" />
+          <mxGeometry x="2591" y="620" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-25" value="OV-26" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="3010" y="244" width="96" height="24" as="geometry" />
+          <mxGeometry x="2475" y="670" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-25" value="Load next article page" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="3126" y="242" width="390" height="30" as="geometry" />
+          <mxGeometry x="2591" y="668" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-26" value="OV-27" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="3010" y="298" width="96" height="24" as="geometry" />
+          <mxGeometry x="2475" y="718" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-26" value="Retry next-page load" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="3126" y="296" width="390" height="30" as="geometry" />
+          <mxGeometry x="2591" y="716" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-27" value="OV-28" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="3010" y="352" width="96" height="24" as="geometry" />
+          <mxGeometry x="2475" y="766" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-27" value="Collapse or expand details panel" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="3126" y="350" width="390" height="30" as="geometry" />
+          <mxGeometry x="2591" y="764" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-28" value="OV-29" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="3010" y="406" width="96" height="24" as="geometry" />
+          <mxGeometry x="2475" y="814" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-28" value="Run visible primary action" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="3126" y="404" width="390" height="30" as="geometry" />
+          <mxGeometry x="2591" y="812" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-29" value="OV-30" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="3010" y="460" width="96" height="24" as="geometry" />
+          <mxGeometry x="2475" y="862" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-29" value="Edit selected article" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="3126" y="458" width="390" height="30" as="geometry" />
+          <mxGeometry x="2591" y="860" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-30" value="OV-31" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="3010" y="514" width="96" height="24" as="geometry" />
+          <mxGeometry x="3010" y="190" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-30" value="Inspect selected article" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="3126" y="512" width="390" height="30" as="geometry" />
+          <mxGeometry x="3126" y="188" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-31" value="OV-32" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="3010" y="568" width="96" height="24" as="geometry" />
+          <mxGeometry x="3010" y="238" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-31" value="Schedule selected article" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="3126" y="566" width="390" height="30" as="geometry" />
+          <mxGeometry x="3126" y="236" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-32" value="OV-33" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="3010" y="622" width="96" height="24" as="geometry" />
+          <mxGeometry x="3010" y="286" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-32" value="Retry failed article job" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="3126" y="620" width="390" height="30" as="geometry" />
+          <mxGeometry x="3126" y="284" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-33" value="OV-34" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="3010" y="676" width="96" height="24" as="geometry" />
+          <mxGeometry x="3010" y="334" width="96" height="24" as="geometry" />
         </mxCell>
         <mxCell id="overview-marker-legend-text-33" value="Retry initial collection load" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
-          <mxGeometry x="3126" y="674" width="390" height="30" as="geometry" />
+          <mxGeometry x="3126" y="332" width="390" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-legend-34" value="OV-35" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="3010" y="382" width="96" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-legend-text-34" value="Open completed gate inspection" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="3126" y="380" width="390" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-legend-35" value="OV-36" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="3010" y="430" width="96" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-legend-text-35" value="Toggle card context menu" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="3126" y="428" width="390" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-legend-36" value="OV-37" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="3010" y="478" width="96" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-legend-text-36" value="Edit from card context" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="3126" y="476" width="390" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-legend-37" value="OV-38" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="3010" y="526" width="96" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-legend-text-37" value="Duplicate article once" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="3126" y="524" width="390" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-legend-38" value="OV-39" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="3010" y="574" width="96" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-legend-text-38" value="Archive article" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="3126" y="572" width="390" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-legend-39" value="OV-40" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="3010" y="622" width="96" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-legend-text-39" value="Open inline delete confirmation" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="3126" y="620" width="390" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-legend-40" value="OV-41" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="3010" y="670" width="96" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-legend-text-40" value="Confirm article deletion" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="3126" y="668" width="390" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-legend-41" value="OV-42" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="3010" y="718" width="96" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-legend-text-41" value="Cancel article deletion" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="3126" y="716" width="390" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-legend-42" value="OV-43" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="3010" y="766" width="96" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-marker-legend-text-42" value="Retry active-job recovery" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=14;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-interaction-markers">
+          <mxGeometry x="3126" y="764" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="overview-transitions-title" value="OVERVIEW - AUTHORITATIVE INTERACTION LIFECYCLE" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=24;fontColor=#171914;fontStyle=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
           <mxGeometry x="60" y="6525" width="3400" height="40" as="geometry" />
@@ -1785,88 +2058,208 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="overview-transitions-band-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="40" y="7740" width="3520" height="420" as="geometry" />
+          <mxGeometry x="40" y="7740" width="3520" height="500" as="geometry" />
         </mxCell>
-        <mxCell id="overview-transitions-band-3-label" value="DURABLE ARTICLE JOB" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=12;fontColor=#747970;fontStyle=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+        <mxCell id="overview-transitions-band-3-label" value="GATE AND CONTEXT ACTIONS" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=12;fontColor=#747970;fontStyle=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
           <mxGeometry x="75" y="7764" width="330" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="overview-transitions-band-3-detail" value="Queued, running, completed, failed, retained, and removed outcomes remain explicit." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=13;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="75" y="7795" width="330" height="345" as="geometry" />
+        <mxCell id="overview-transitions-band-3-detail" value="Gate navigation is separate from card selection. Context mutations keep confirmation and failures inline." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=13;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="75" y="7795" width="330" height="425" as="geometry" />
         </mxCell>
-        <mxCell id="overview-transitions-job-selected" value="&lt;b&gt;Selected - open&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-29 primary / OV-31 inspect&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="470" y="7880" width="260" height="76" as="geometry" />
+        <mxCell id="overview-transitions-card" value="&lt;b&gt;Article card&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Gate + context available&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="470" y="7900" width="260" height="76" as="geometry" />
         </mxCell>
-        <mxCell id="overview-transitions-job-queued" value="&lt;b&gt;Job queued&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S09 - accepted&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="850" y="7880" width="260" height="76" as="geometry" />
+        <mxCell id="overview-transitions-inspection" value="&lt;b&gt;Inspection&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-35 - completed gate&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="850" y="7820" width="260" height="76" as="geometry" />
         </mxCell>
-        <mxCell id="overview-transitions-job-running" value="&lt;b&gt;Job running&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S10 - polling&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="1230" y="7880" width="260" height="76" as="geometry" />
+        <mxCell id="overview-transitions-context-open" value="&lt;b&gt;Context open&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-36 - menu&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="850" y="7980" width="260" height="76" as="geometry" />
         </mxCell>
-        <mxCell id="overview-transitions-job-failed" value="&lt;b&gt;Job failed&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S12 - retryable&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="1610" y="7800" width="260" height="76" as="geometry" />
+        <mxCell id="overview-transitions-mutation" value="&lt;b&gt;Mutation pending&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-38 / OV-39 / OV-41&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="1230" y="7980" width="260" height="76" as="geometry" />
         </mxCell>
-        <mxCell id="overview-transitions-job-done" value="&lt;b&gt;Job completed&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S11 - refresh&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="1610" y="7960" width="260" height="76" as="geometry" />
+        <mxCell id="overview-transitions-delete-confirm" value="&lt;b&gt;Delete confirmation&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-40 - inline&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302A17;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="1230" y="7820" width="260" height="76" as="geometry" />
         </mxCell>
-        <mxCell id="overview-transitions-job-retained" value="&lt;b&gt;Selection retained&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S13 - repopulate&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="1990" y="7960" width="260" height="76" as="geometry" />
+        <mxCell id="overview-transitions-mutation-done" value="&lt;b&gt;Collection refreshed&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S16 / OV-S17 / OV-S18&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="1610" y="7980" width="260" height="76" as="geometry" />
         </mxCell>
-        <mxCell id="overview-transitions-job-removed" value="&lt;b&gt;Selection cleared&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S14 - article absent&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="2370" y="7960" width="260" height="76" as="geometry" />
+        <mxCell id="overview-transitions-mutation-missing" value="&lt;b&gt;Article not found&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S19 - inline 404&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="1990" y="7820" width="260" height="76" as="geometry" />
         </mxCell>
-        <mxCell id="overview-transitions-edge-16" value="OV-S09 - 202" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-job-selected" target="overview-transitions-job-queued" bloghubSection="overview-transitions">
+        <mxCell id="overview-transitions-mutation-conflict" value="&lt;b&gt;Delete conflict&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S20 - inline 409&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="1990" y="7980" width="260" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-mutation-error" value="&lt;b&gt;Action failed&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S21 - inline error&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="1990" y="8140" width="260" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-edge-31" value="OV-35" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-card" target="overview-transitions-inspection" bloghubSection="overview-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="overview-transitions-edge-17" value="OV-S10 - running" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-job-queued" target="overview-transitions-job-running" bloghubSection="overview-transitions">
+        <mxCell id="overview-transitions-edge-32" value="OV-36" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-card" target="overview-transitions-context-open" bloghubSection="overview-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="overview-transitions-edge-18" value="OV-S12 - error" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="overview-transitions-job-running" target="overview-transitions-job-failed" bloghubSection="overview-transitions">
+        <mxCell id="overview-transitions-edge-33" value="OV-40" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-context-open" target="overview-transitions-delete-confirm" bloghubSection="overview-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="overview-transitions-edge-19" value="OV-33 - Retry" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="overview-transitions-job-failed" target="overview-transitions-job-queued" bloghubSection="overview-transitions">
+        <mxCell id="overview-transitions-edge-34" value="OV-42" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="overview-transitions-delete-confirm" target="overview-transitions-context-open" bloghubSection="overview-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="overview-transitions-edge-20" value="OV-S11 - done" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-job-running" target="overview-transitions-job-done" bloghubSection="overview-transitions">
+        <mxCell id="overview-transitions-edge-35" value="OV-38 / OV-39" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-context-open" target="overview-transitions-mutation" bloghubSection="overview-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="overview-transitions-edge-21" value="OV-S13 - still present" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-job-done" target="overview-transitions-job-retained" bloghubSection="overview-transitions">
+        <mxCell id="overview-transitions-edge-36" value="OV-41" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-delete-confirm" target="overview-transitions-mutation" bloghubSection="overview-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="overview-transitions-edge-22" value="OV-S14 - absent" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="overview-transitions-job-done" target="overview-transitions-job-removed" bloghubSection="overview-transitions">
+        <mxCell id="overview-transitions-edge-37" value="OV-S16 / S17 / S18" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-mutation" target="overview-transitions-mutation-done" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-edge-38" value="OV-S19" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="overview-transitions-mutation" target="overview-transitions-mutation-missing" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-edge-39" value="OV-S20" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="overview-transitions-mutation" target="overview-transitions-mutation-conflict" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-edge-40" value="OV-S21" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="overview-transitions-mutation" target="overview-transitions-mutation-error" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-edge-51" value="OV-36 / Esc / outside" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="overview-transitions-context-open" target="overview-transitions-card" bloghubSection="overview-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="overview-transitions-band-4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="40" y="8180" width="3520" height="400" as="geometry" />
+          <mxGeometry x="40" y="8260" width="3520" height="940" as="geometry" />
         </mxCell>
-        <mxCell id="overview-transitions-band-4-label" value="VIEW EXITS" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=12;fontColor=#747970;fontStyle=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="75" y="8634" width="330" height="24" as="geometry" />
+        <mxCell id="overview-transitions-band-4-label" value="DURABLE ARTICLE JOB" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=12;fontColor=#747970;fontStyle=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="75" y="8284" width="330" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="overview-transitions-band-4-detail" value="Only Visit leaves BlogHub; preview tabs remain in Overview." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=13;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="75" y="8665" width="330" height="325" as="geometry" />
+        <mxCell id="overview-transitions-band-4-detail" value="Submission, idempotency, polling, cancellation, retry, and reload recovery remain visible in the selected panel." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=13;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="75" y="8315" width="330" height="865" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-job-selected" value="&lt;b&gt;Selected - open&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-29 primary / OV-31 inspect&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="470" y="8400" width="260" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-job-submitting" value="&lt;b&gt;Submitting&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Actions disabled&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="850" y="8400" width="260" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-job-queued" value="&lt;b&gt;Job queued&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S09 / OV-S22&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="1230" y="8400" width="260" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-job-running" value="&lt;b&gt;Job running&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S10 - durable polling&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="1610" y="8400" width="260" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-job-failed" value="&lt;b&gt;Job failed&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S12 / OV-S30&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="1990" y="8320" width="260" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-job-done" value="&lt;b&gt;Job completed&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S11 - refresh&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="1990" y="8480" width="260" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-job-canceled" value="&lt;b&gt;Job canceled&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S23 - terminal&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="1990" y="8640" width="260" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-job-retrying" value="&lt;b&gt;Retrying&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-33 - actions disabled&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302A17;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="2370" y="8320" width="260" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-job-retained" value="&lt;b&gt;Selection retained&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S13 - fresh detail&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="2370" y="8480" width="260" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-job-removed" value="&lt;b&gt;Selection cleared&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S14 - article absent&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="2750" y="8480" width="260" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-job-recovering" value="&lt;b&gt;Recovering after reload&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S26 - discover active jobs&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302A17;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="470" y="8820" width="260" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-job-recovery-warning" value="&lt;b&gt;Recovery unavailable&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S29 - inline retry&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302A17;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="850" y="8820" width="260" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-job-no-active" value="&lt;b&gt;No active job&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S28 - fresh selected state&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="1230" y="8820" width="260" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-edge-16" value="OV-29 / OV-31" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-job-selected" target="overview-transitions-job-submitting" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-edge-17" value="OV-S09" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-job-submitting" target="overview-transitions-job-queued" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-edge-18" value="OV-S22" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="overview-transitions-job-submitting" target="overview-transitions-job-queued" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-edge-19" value="OV-S10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-job-queued" target="overview-transitions-job-running" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-edge-20" value="OV-S12 / OV-S30" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="overview-transitions-job-running" target="overview-transitions-job-failed" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-edge-21" value="OV-S11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-job-running" target="overview-transitions-job-done" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-edge-22" value="OV-S23" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="overview-transitions-job-running" target="overview-transitions-job-canceled" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-edge-41" value="OV-33" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="overview-transitions-job-failed" target="overview-transitions-job-retrying" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-edge-42" value="OV-33" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="overview-transitions-job-canceled" target="overview-transitions-job-retrying" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-edge-43" value="OV-S24" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-job-retrying" target="overview-transitions-job-queued" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-edge-44" value="OV-S25" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="overview-transitions-job-retrying" target="overview-transitions-job-failed" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-edge-45" value="OV-S13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-job-done" target="overview-transitions-job-retained" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-edge-46" value="OV-S14" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="overview-transitions-job-done" target="overview-transitions-job-removed" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-edge-47" value="OV-S27 queued" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="overview-transitions-job-recovering" target="overview-transitions-job-queued" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-edge-48" value="OV-S27 running" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="overview-transitions-job-recovering" target="overview-transitions-job-running" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-edge-49" value="OV-S28" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-job-recovering" target="overview-transitions-job-no-active" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-edge-50" value="OV-S29" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="overview-transitions-job-recovering" target="overview-transitions-job-recovery-warning" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-edge-52" value="OV-43" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="overview-transitions-job-recovery-warning" target="overview-transitions-job-recovering" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-band-5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="40" y="9740.0" width="3520" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-band-5-label" value="VIEW EXITS" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=12;fontColor=#747970;fontStyle=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="75" y="9764.0" width="330" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-band-5-detail" value="Only Visit leaves BlogHub externally; preview tabs remain in Overview." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=13;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="75" y="9795.0" width="330" height="325" as="geometry" />
         </mxCell>
         <mxCell id="overview-transitions-overview" value="&lt;b&gt;Overview&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Current desktop state&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="470" y="8740" width="260" height="76" as="geometry" />
+          <mxGeometry x="470" y="9870.0" width="260" height="76" as="geometry" />
         </mxCell>
         <mxCell id="overview-transitions-queue" value="&lt;b&gt;Publish Queue&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-02 / OV-32&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="850" y="8670" width="260" height="76" as="geometry" />
+          <mxGeometry x="850" y="9800.0" width="260" height="76" as="geometry" />
         </mxCell>
         <mxCell id="overview-transitions-platforms" value="&lt;b&gt;Platforms&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-03&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="1230" y="8670" width="260" height="76" as="geometry" />
+          <mxGeometry x="1230" y="9800.0" width="260" height="76" as="geometry" />
         </mxCell>
         <mxCell id="overview-transitions-settings" value="&lt;b&gt;Settings&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-04&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="1610" y="8670" width="260" height="76" as="geometry" />
+          <mxGeometry x="1610" y="9800.0" width="260" height="76" as="geometry" />
         </mxCell>
         <mxCell id="overview-transitions-create" value="&lt;b&gt;Create Article&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-05 / OV-25&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="1990" y="8670" width="260" height="76" as="geometry" />
+          <mxGeometry x="1990" y="9800.0" width="260" height="76" as="geometry" />
         </mxCell>
         <mxCell id="overview-transitions-import" value="&lt;b&gt;Import Article&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-07 / OV-08&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="850" y="8830" width="260" height="76" as="geometry" />
+          <mxGeometry x="850" y="9960.0" width="260" height="76" as="geometry" />
         </mxCell>
-        <mxCell id="overview-transitions-editor" value="&lt;b&gt;Editor&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-23 / OV-30&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="1230" y="8830" width="260" height="76" as="geometry" />
+        <mxCell id="overview-transitions-editor" value="&lt;b&gt;Editor&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-23 / OV-30 / OV-37&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="1230" y="9960.0" width="260" height="76" as="geometry" />
         </mxCell>
         <mxCell id="overview-transitions-remote" value="&lt;b&gt;Remote article&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-22 - new tab&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="1610" y="8830" width="260" height="76" as="geometry" />
+          <mxGeometry x="1610" y="9960.0" width="260" height="76" as="geometry" />
         </mxCell>
         <mxCell id="overview-transitions-edge-24" value="OV-02 / OV-32" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-overview" target="overview-transitions-queue" bloghubSection="overview-transitions">
           <mxGeometry relative="1" as="geometry" />
@@ -1883,81 +2276,20 @@
         <mxCell id="overview-transitions-edge-28" value="OV-07 / OV-08" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-overview" target="overview-transitions-import" bloghubSection="overview-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="overview-transitions-edge-29" value="OV-23 / OV-30" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-overview" target="overview-transitions-editor" bloghubSection="overview-transitions">
+        <mxCell id="overview-transitions-edge-29" value="OV-23 / OV-30 / OV-37" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-overview" target="overview-transitions-editor" bloghubSection="overview-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="overview-transitions-edge-30" value="OV-22 - external" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-overview" target="overview-transitions-remote" bloghubSection="overview-transitions">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="overview-transitions-band-sync" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="40" y="6990" width="3520" height="410" as="geometry" />
-        </mxCell>
-        <mxCell id="overview-transitions-band-sync-label" value="CONNECTED BLOG SYNC" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=12;fontColor=#747970;fontStyle=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="75" y="7014" width="330" height="24" as="geometry" />
-        </mxCell>
-        <mxCell id="overview-transitions-band-sync-detail" value="Connected blogs are authoritative. Startup and Overview reload repair the internal one-minute schedule; no manual sync control is shown." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=13;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="75" y="7045" width="330" height="335" as="geometry" />
-        </mxCell>
-        <mxCell id="overview-transitions-sync-connected" value="&lt;b&gt;Connected blogs resolved&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S15 - startup / reload&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="470" y="8325" width="260" height="76" as="geometry" />
-        </mxCell>
-        <mxCell id="overview-transitions-sync-scheduled" value="&lt;b&gt;Schedule repaired&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S16 - 60 second recurrence&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="850" y="8325" width="260" height="76" as="geometry" />
-        </mxCell>
-        <mxCell id="overview-transitions-sync-queued" value="&lt;b&gt;Sync queued&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S17 - immediate or due&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="1230" y="8325" width="260" height="76" as="geometry" />
-        </mxCell>
-        <mxCell id="overview-transitions-sync-running" value="&lt;b&gt;Sync running&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S18 - durable worker&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="1610" y="8325" width="260" height="76" as="geometry" />
-        </mxCell>
-        <mxCell id="overview-transitions-sync-completed" value="&lt;b&gt;Collection refreshed&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S19 - remote upsert&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="1990" y="8250" width="260" height="76" as="geometry" />
-        </mxCell>
-        <mxCell id="overview-transitions-sync-failed" value="&lt;b&gt;Sync failed&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S20 - cards retained / retry&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
-          <mxGeometry x="1990" y="8400" width="260" height="76" as="geometry" />
-        </mxCell>
-        <mxCell id="overview-transitions-sync-edge-1" value="OV-S16 - repair" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-sync-connected" target="overview-transitions-sync-scheduled" bloghubSection="overview-transitions">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="overview-transitions-sync-edge-2" value="OV-S17 - enqueue" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-sync-scheduled" target="overview-transitions-sync-queued" bloghubSection="overview-transitions">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="overview-transitions-sync-edge-3" value="OV-S18 - claim" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-sync-queued" target="overview-transitions-sync-running" bloghubSection="overview-transitions">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="overview-transitions-sync-edge-4" value="OV-S19 - success" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-sync-running" target="overview-transitions-sync-completed" bloghubSection="overview-transitions">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="overview-transitions-sync-edge-5" value="OV-S20 - error" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-sync-running" target="overview-transitions-sync-failed" bloghubSection="overview-transitions">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
         <mxCell id="health119-overview-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
-          <mxGeometry x="40" y="9090" width="3520" height="1050" as="geometry" />
+          <mxGeometry x="40" y="10280.0" width="3520" height="1050" as="geometry" />
         </mxCell>
-        <mxCell id="health119-overview-title" value="OVERVIEW · REMOTE HEALTH AND REFRESH LIFECYCLE" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;fontSize=22;fontColor=#171914;fontStyle=1;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
-          <mxGeometry x="75" y="9125" width="1600" height="38" as="geometry" />
+        <mxCell id="health119-overview-cache" value="CACHE / RETRY CONTRACT" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;fontSize=12;fontColor=#747970;fontStyle=1;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="75" y="10990.0" width="500" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="health119-overview-subtitle" value="Overview reload requests synchronization for connected blogs, while normalized health prevents stale credentials from masquerading as usable remote connections." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;fontSize=14;fontColor=#747970;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
-          <mxGeometry x="75" y="9170" width="2200" height="34" as="geometry" />
-        </mxCell>
-        <mxCell id="health119-overview-reload" value="OV-01 · Overview reload" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
-          <mxGeometry x="90" y="9280" width="310" height="82" as="geometry" />
-        </mxCell>
-        <mxCell id="health119-overview-refresh" value="POST /jobs/sync-refresh&#10;connected platforms" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#243047;strokeColor=#69708A;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
-          <mxGeometry x="560" y="9280" width="340" height="82" as="geometry" />
-        </mxCell>
-        <mxCell id="health119-overview-gate" value="Shared health gate&#10;status + retry_at" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#3A3020;strokeColor=#8A6D2F;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
-          <mxGeometry x="1060" y="9280" width="340" height="82" as="geometry" />
-        </mxCell>
-        <mxCell id="health119-overview-operation" value="Remote list / retrieve&#10;authoritative evidence" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
-          <mxGeometry x="1560" y="9280" width="350" height="82" as="geometry" />
-        </mxCell>
-        <mxCell id="health119-overview-store" value="Persist health + articles&#10;clear verification lease" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#3D7658;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
-          <mxGeometry x="2070" y="9280" width="360" height="82" as="geometry" />
-        </mxCell>
-        <mxCell id="health119-overview-render" value="Reload cards + header&#10;show usable connections" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#3D7658;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
-          <mxGeometry x="2590" y="9280" width="370" height="82" as="geometry" />
+        <mxCell id="health119-overview-cache-note" value="Overview reload may request sync immediately. The recurring schedule runs every 1 minute. Five-minute UI freshness and a fifteen-minute idle target are upper-level health policy; successful remote work refreshes proof sooner." style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD2DC;fontFamily=Arial;fontSize=14;fontColor=#4F554D;align=left;verticalAlign=middle;spacing=14;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="75" y="11030.0" width="1050" height="125" as="geometry" />
         </mxCell>
         <mxCell id="health119-overview-edge-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="health119-overview-reload" target="health119-overview-refresh" bloghubSection="overview-connection-health-119">
           <mxGeometry relative="1" as="geometry" />
@@ -1974,11 +2306,8 @@
         <mxCell id="health119-overview-edge-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;labelBackgroundColor=#F3F4F1;" edge="1" parent="1" source="health119-overview-store" target="health119-overview-render" bloghubSection="overview-connection-health-119">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="health119-overview-paused" value="Reauthentication required&#10;do not enqueue remote work" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#8A3B4A;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
-          <mxGeometry x="1060" y="9445" width="340" height="82" as="geometry" />
-        </mxCell>
-        <mxCell id="health119-overview-retry" value="Blocked / limited / unavailable&#10;wait until retry_at" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#3A3020;strokeColor=#8A6D2F;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
-          <mxGeometry x="1560" y="9445" width="350" height="82" as="geometry" />
+        <mxCell id="health119-overview-gate" value="Shared health gate&#10;status + retry_at" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#3A3020;strokeColor=#8A6D2F;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="1060" y="10470.0" width="340" height="82" as="geometry" />
         </mxCell>
         <mxCell id="health119-overview-gate-pause" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;labelBackgroundColor=#F3F4F1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="health119-overview-gate" target="health119-overview-paused" bloghubSection="overview-connection-health-119">
           <mxGeometry relative="1" as="geometry" />
@@ -1986,29 +2315,92 @@
         <mxCell id="health119-overview-gate-retry" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;labelBackgroundColor=#F3F4F1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="health119-overview-gate" target="health119-overview-retry" bloghubSection="overview-connection-health-119">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="health119-overview-output-label" value="HEADER OUTPUT" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;fontSize=12;fontColor=#747970;fontStyle=1;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
-          <mxGeometry x="75" y="9595" width="500" height="24" as="geometry" />
-        </mxCell>
-        <mxCell id="health119-overview-output-good" value="● 2 platforms connected" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#3D7658;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
-          <mxGeometry x="90" y="9635" width="720" height="86" as="geometry" />
+        <mxCell id="health119-overview-operation" value="Remote list / retrieve&#10;authoritative evidence" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="1560" y="10470.0" width="350" height="82" as="geometry" />
         </mxCell>
         <mxCell id="health119-overview-output-attention" value="● 1 connected · 1 checking · 1 needs attention" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#3A3020;strokeColor=#8A6D2F;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
-          <mxGeometry x="900" y="9635" width="820" height="86" as="geometry" />
+          <mxGeometry x="900" y="10825.0" width="820" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-output-good" value="● 2 platforms connected" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#3D7658;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="90" y="10825.0" width="720" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-output-label" value="HEADER OUTPUT" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;fontSize=12;fontColor=#747970;fontStyle=1;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="75" y="10785.0" width="500" height="24" as="geometry" />
         </mxCell>
         <mxCell id="health119-overview-output-rule" value="Connected counts only usable browser/API connections. Reauthentication, blocking, rate limits, and outages move a platform to needs attention; verification-stale remains visible while its leased check runs." style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD2DC;fontFamily=Arial;fontSize=14;fontColor=#4F554D;align=left;verticalAlign=middle;spacing=14;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
-          <mxGeometry x="1810" y="9635" width="1650" height="86" as="geometry" />
+          <mxGeometry x="1810" y="10825.0" width="1650" height="86" as="geometry" />
         </mxCell>
-        <mxCell id="health119-overview-cache" value="CACHE / RETRY CONTRACT" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;fontSize=12;fontColor=#747970;fontStyle=1;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
-          <mxGeometry x="75" y="9800" width="500" height="24" as="geometry" />
+        <mxCell id="health119-overview-paused" value="Reauthentication required&#10;do not enqueue remote work" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#8A3B4A;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="1060" y="10635.0" width="340" height="82" as="geometry" />
         </mxCell>
-        <mxCell id="health119-overview-cache-note" value="Overview reload may request sync immediately. The recurring schedule runs every 1 minute. Five-minute UI freshness and a fifteen-minute idle target are upper-level health policy; successful remote work refreshes proof sooner." style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD2DC;fontFamily=Arial;fontSize=14;fontColor=#4F554D;align=left;verticalAlign=middle;spacing=14;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
-          <mxGeometry x="75" y="9840" width="1050" height="125" as="geometry" />
+        <mxCell id="health119-overview-refresh" value="POST /jobs/sync-refresh&#10;connected platforms" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#243047;strokeColor=#69708A;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="560" y="10470.0" width="340" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-reload" value="OV-01 · Overview reload" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="90" y="10470.0" width="310" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-render" value="Reload cards + header&#10;show usable connections" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#3D7658;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="2590" y="10470.0" width="370" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-retry" value="Blocked / limited / unavailable&#10;wait until retry_at" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#3A3020;strokeColor=#8A6D2F;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="1560" y="10635.0" width="350" height="82" as="geometry" />
         </mxCell>
         <mxCell id="health119-overview-safe-note" value="SAFETY · Only one verifier holds a lease per user and platform. Health failures do not delete schedules or local article data. Reauthentication pauses work; temporary failures preserve the next retry time." style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD2DC;fontFamily=Arial;fontSize=14;fontColor=#4F554D;align=left;verticalAlign=middle;spacing=14;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
-          <mxGeometry x="1225" y="9840" width="1050" height="125" as="geometry" />
+          <mxGeometry x="1225" y="11030.0" width="1050" height="125" as="geometry" />
         </mxCell>
         <mxCell id="health119-overview-source-note" value="EVIDENCE · Saved cookies are non-authoritative hints. Live browser probes and successful remote list, retrieve, publish, or reconciliation operations are authoritative. Diagnostics are bounded and secret-free." style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD2DC;fontFamily=Arial;fontSize=14;fontColor=#4F554D;align=left;verticalAlign=middle;spacing=14;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
-          <mxGeometry x="2375" y="9840" width="1085" height="125" as="geometry" />
+          <mxGeometry x="2375" y="11030.0" width="1085" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-store" value="Persist health + articles&#10;clear verification lease" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#3D7658;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#E8EAF2;align=center;verticalAlign=middle;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="2070" y="10470.0" width="360" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-subtitle" value="Overview reload requests synchronization for connected blogs, while normalized health prevents stale credentials from masquerading as usable remote connections." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;fontSize=14;fontColor=#747970;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="75" y="10360.0" width="2200" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="health119-overview-title" value="OVERVIEW · REMOTE HEALTH AND REFRESH LIFECYCLE" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;fontSize=22;fontColor=#171914;fontStyle=1;locked=1;" vertex="1" parent="1" bloghubSection="overview-connection-health-119">
+          <mxGeometry x="75" y="10315.0" width="1600" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-band-sync" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="40" y="9220.0" width="3520" height="410" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-band-sync-detail" value="Connected blogs are authoritative. Startup and successful browser connection create missing one-minute schedules without overwriting a user pause or interval. Overview reload reads enabled schedules and requests idempotent sync work." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=13;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="75" y="9275.0" width="330" height="335" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-band-sync-label" value="CONNECTED BLOG SYNC" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=12;fontColor=#747970;fontStyle=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="75" y="9244.0" width="330" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-sync-completed" value="&lt;b&gt;Collection refreshed&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S35 - remote upsert&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="1990" y="9280.0" width="260" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-sync-connected" value="&lt;b&gt;Connected blogs resolved&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S31 - startup / reload&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="470" y="9355.0" width="260" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-sync-edge-1" value="OV-S32 - ensure" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-sync-connected" target="overview-transitions-sync-scheduled" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-sync-edge-2" value="OV-S33 - enqueue" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-sync-scheduled" target="overview-transitions-sync-queued" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-sync-edge-3" value="OV-S34 - claim" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-sync-queued" target="overview-transitions-sync-running" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-sync-edge-4" value="OV-S35 - success" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-sync-running" target="overview-transitions-sync-completed" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-sync-edge-5" value="OV-S36 - error" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=11;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="overview-transitions-sync-running" target="overview-transitions-sync-failed" bloghubSection="overview-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-sync-failed" value="&lt;b&gt;Sync failed&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S36 - cards retained / retry&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="1990" y="9430.0" width="260" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-sync-queued" value="&lt;b&gt;Sync queued&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S33 - enabled reload or due&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="1230" y="9355.0" width="260" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-sync-running" value="&lt;b&gt;Sync running&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S34 - durable worker&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="1610" y="9355.0" width="260" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="overview-transitions-sync-scheduled" value="&lt;b&gt;Schedule available&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;OV-S32 - create only if missing&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=14;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="overview-transitions">
+          <mxGeometry x="850" y="9355.0" width="260" height="76" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

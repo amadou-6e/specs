@@ -12,7 +12,8 @@ implementation screenshot is preserved in `references/overview.png`.
 
 Amber `OV-*` badges identify interactive elements using the stable IDs from
 [interactions.md](../interactions.md). User-triggered transition edges repeat the same
-ID; automatic loading, API responses, and job polling use a `SYSTEM` label instead.
+ID; automatic loading, API responses, refresh, recovery, and job polling use stable
+`OV-S*` IDs.
 The interaction index to the right of the reconstructed screen maps each badge to its
 action. Run `python3 generate_interaction_markers.py` from this directory after changing
 marker placement or the index.
