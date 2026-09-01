@@ -367,6 +367,12 @@ are not allowed.
 
 ## Evaluation plan
 
+Standalone encoder certification is governed by
+[Standalone Voxel Encoder Pretraining](perception-encoder-pretraining.md). That plan
+freezes the encoder and excludes all policy, reward, RLlib, and end-to-end navigation
+metrics. The downstream measures below apply only after a checkpoint passes the
+standalone gates and are not part of model-garden pretraining validation.
+
 ### Baselines
 
 Benchmark at least:
