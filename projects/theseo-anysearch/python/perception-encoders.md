@@ -5,6 +5,7 @@ Owner: amadou-6e
 Last reviewed: 2026-09-01
 Tracking issue: [specs#5](https://github.com/amadou-6e/specs/issues/5)
 Literature revision: [specs#9](https://github.com/amadou-6e/specs/issues/9)
+Pretraining methodology: [specs#11](https://github.com/amadou-6e/specs/issues/11)
 Governing specification: [Model Garden](model-garden.md)
 Related implementation issues:
 [theseo-anysearch#16](https://github.com/amadou-6e/theseo-anysearch/issues/16),
@@ -92,6 +93,7 @@ feature.
 | [EfficientNet](https://arxiv.org/abs/1905.11946) | Depth, width, and resolution should be scaled jointly for a fixed resource budget. | Define capacity families, but do not treat voxel radius as ordinary image resolution. |
 | [RegNet](https://arxiv.org/abs/2003.13678) | Simple, regular stage-width rules can outperform heavily customized scaling at similar FLOPs. | Prefer a small explicit model family that can be benchmarked over ad hoc per-radius networks. |
 | [Masked Autoencoders](https://arxiv.org/abs/2111.06377) | A lightweight decoder and a heavily masked input can make self-supervised pretraining efficient while the decoder is discarded for transfer. | Use patch masking and disposable pretraining decoders; do not require the policy to load them. |
+| [SparK](https://arxiv.org/abs/2301.03580) and [ConvNeXt V2/FCMAE](https://arxiv.org/abs/2301.00808) | ConvNet masked modeling uses a sparse visible-input hierarchy and disposable dense decoder; ordinary dense convolution over filled mask cells does not provide the same isolation or efficiency. | Masked residual candidates require a sparse or explicitly mask-aware encoder path and leakage tests. |
 | [Value Iteration Networks](https://arxiv.org/abs/1602.02867) and [Gated Path Planning Networks](https://arxiv.org/abs/1806.06408) | Planning structure can be represented by differentiable convolutional or recurrent computation; the gated variant also reports optimization advantages. | Add planning-aware proxy tasks, but keep iterative planning in the downstream head or planner. |
 | [Cognitive Mapping and Planning](https://arxiv.org/abs/1702.03920) and [Neural A*](https://arxiv.org/abs/2009.07476) | Learned spatial maps or guidance fields can be coupled to explicit planning computation. | Preserve dense local features, but keep mapping memory and search outside the reusable observation encoder. |
 | [SwAV](https://arxiv.org/abs/2006.09882), [DINO](https://arxiv.org/abs/2104.14294), [DenseCL](https://arxiv.org/abs/2011.09157), [PixPro](https://arxiv.org/abs/2011.10043), and [VADeR](https://arxiv.org/abs/2011.05499) | Cross-view agreement can be learned globally or at corresponding dense locations; dense methods preserve spatial correspondence that global instance objectives can discard. | Align local voxel features over known physical overlap, not just whole-observation vectors. |
@@ -375,6 +377,9 @@ per-level grid size; it must not mean constructing the full dense radius cube.
    reconstruct occupied/free/unknown classes with a lightweight decoder. Bias patch
    selection toward obstacle boundaries and frontiers, report surface-only loss, and
    compare class-balanced cross-entropy with focal loss so empty space cannot dominate.
+   A convolutional encoder must remove hidden coordinates and use sparse visible-cell
+   convolutions, or pass the mask-aware dense fallback and hidden-region intervention
+   tests in the standalone pretraining plan. Zero-filled dense convolution is invalid.
 3. **Physically aligned cross-scale consistency**: transform both views into the same
    world or agent-centered coordinate frame, compute their exact valid overlap, pool
    fine local features into coarse cells with the declared conservative mapping, and

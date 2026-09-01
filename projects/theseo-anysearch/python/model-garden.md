@@ -886,6 +886,7 @@ runtime/garden/
 ```json
 {
   "name": "3dcnn_ae_v1",
+  "status": "experimental",
   "approach": "autoencoder",
   "architecture": "voxel_box_3dcnn",
   "latent_dim": 128,
@@ -895,9 +896,26 @@ runtime/garden/
   "epochs_trained": 87,
   "final_val_loss": 0.043,
   "created_at": "2026-03-20T17:00:00Z",
+  "certification": {
+    "report": null,
+    "failed_gates": [],
+    "unrun_gates": ["stage_7/full_certification"]
+  },
   "augmentation": { "cutout": {"count": 2, "min_size": 1, "max_size": 2}, "noise_prob": 0.05, "translation_jitter": 1 }
 }
 ```
+
+`status` is required for newly published checkpoints and has two allowed values:
+
+- `experimental`: the checkpoint passes the interim publication requirements in
+  [Standalone Voxel Encoder Pretraining](perception-encoder-pretraining.md), but has
+  failed or not yet run one or more final certification gates. It must not be selected
+  as a default, and `meta.json` must list the failed and unrun gates.
+- `validated`: the checkpoint passed the complete locked standalone certification
+  suite. Only validated checkpoints are eligible to become defaults.
+
+Existing garden entries without `status` are treated as `experimental` until they are
+recertified. Training loss alone never promotes a checkpoint to `validated`.
 
 ---
 
@@ -1090,7 +1108,8 @@ Output:
 
 ### `anysearch garden list`
 
-List all pre-trained encoder models in the garden store.
+List all pre-trained encoder models in the garden store. The table includes the
+`status` column so experimental artifacts cannot be mistaken for validated defaults.
 
 ```bash
 anysearch garden list
@@ -1098,19 +1117,20 @@ anysearch garden list
 
 Output (Rich `Table`):
 ```
- Name                 Approach       Arch          Latent  Val loss  Created
- ─────────────────── ─────────────  ────────────  ──────  ────────  ──────────
- 3dcnn_ae_v1          autoencoder    3dcnn         128     0.0431    2026-03-20
- 3dcnn_ae_v1_vae      vae            3dcnn         128     0.0389    2026-03-20
- 3dcnn_mvm_v1         mvmencoder     3dcnn         128     0.0521    2026-03-20
- triplanar_ae_v1      autoencoder    triplanar_2d  128     0.0612    2026-03-21
+ Name                 Status        Approach       Arch          Latent  Val loss  Created
+ ─────────────────── ───────────── ─────────────  ────────────  ──────  ────────  ──────────
+ 3dcnn_ae_v1          experimental  autoencoder    3dcnn         128     0.0431    2026-03-20
+ 3dcnn_ae_v1_vae      experimental  vae            3dcnn         128     0.0389    2026-03-20
+ 3dcnn_mvm_v1         validated     mvmencoder     3dcnn         128     0.0521    2026-03-20
+ triplanar_ae_v1      experimental  autoencoder    triplanar_2d  128     0.0612    2026-03-21
 ```
 
 ---
 
 ### `anysearch garden inspect <name>`
 
-Print detailed metadata and per-epoch loss curve for a model.
+Print detailed metadata and per-epoch loss curve for a model, including its status and
+failed or unrun certification gates.
 
 ```bash
 anysearch garden inspect 3dcnn_mvm_v1
@@ -1119,6 +1139,7 @@ anysearch garden inspect 3dcnn_mvm_v1
 Output:
 ```
 ╭─ 3dcnn_mvm_v1 ───────────────────────────────────────────────────────────╮
+│  status           validated                                              │
 │  approach         mvmencoder                                             │
 │  architecture     voxel_box_3dcnn                                        │
 │  latent_dim       128                                                    │
