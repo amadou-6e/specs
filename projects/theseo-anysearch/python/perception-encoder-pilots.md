@@ -1,15 +1,23 @@
-# Pilot Plan: Voxel Encoder Direction Finding
+# Preregistration: Voxel Encoder Direction-Finding Pilots
 
 Status: discovery
 Owner: amadou-6e
 Last reviewed: 2026-09-01
 Tracking issue: [specs#13](https://github.com/amadou-6e/specs/issues/13)
+Methodology revision: [specs#15](https://github.com/amadou-6e/specs/issues/15)
 Governing validation plan:
 [Standalone Voxel Encoder Pretraining](perception-encoder-pretraining.md)
 Architecture research:
 [Scalable 3D Voxel Perception Encoders](perception-encoders.md)
 
 ## Decision boundary
+
+This document is a preregistration: hypotheses, data partitions, budgets, metrics,
+decision rules, and validity limits are committed before results are opened. This
+separates planned comparisons from later exploratory analysis, following the
+[preregistration practice](https://doi.org/10.1073/pnas.1708274114) and the reporting
+principles in the
+[NeurIPS reproducibility program](https://jmlr.org/papers/v22/20-303.html).
 
 These pilots answer which architecture and pretraining directions deserve the larger
 Stage 1-3 budgets. They do not certify an encoder, set final hyperparameters, or use a
@@ -38,43 +46,84 @@ selection occurs on geometry IDs drawn from the parent training partition.
 | Q4 | How much multiscale context is useful before radius scaling? | Per-level side and number of active scales. |
 | Q5 | Does the objective ranking survive a change of architecture? | Whether recipe and architecture can be selected mostly independently. |
 | Q6 | Is the observed direction stable across fresh seeds and unseen pilot geometries? | Which configurations enter the larger experiment plan. |
+| Q7 | Can the winner execute at radius 128 without losing shared-radius quality? | Whether its architecture may be queued as a wide-context direction. |
+
+## Methodology basis
+
+- [Hyperband](https://www.jmlr.org/papers/v18/16-558.html) and
+  [ASHA](https://arxiv.org/abs/1810.05934) motivate escalating resources across a
+  shrinking candidate set. Their guarantees do not establish that a short-budget
+  ranking is the full-budget ranking, so this plan measures that proxy explicitly.
+- [Domhan et al.](https://www.ijcai.org/Proceedings/15/Papers/487.pdf) and
+  [LC-PFN](https://arxiv.org/abs/2310.20447) motivate probabilistic learning-curve
+  extrapolation. Extrapolation is used only when its interval calibration passes on
+  completed local curves; it may rescue an uncertain slow starter but never name a
+  winner by itself.
+- [Accounting for Variance in Machine Learning Benchmarks](https://proceedings.mlsys.org/paper_files/paper/2021/file/0184b0cd3cfb185989f858a1d9f5c1eb-Paper.pdf)
+  motivates varying initialization and reporting uncertainty over data and seed
+  sources. P1 and P4 therefore use two seeds, and all direction decisions use paired
+  geometry-cluster bootstrap intervals.
+- [Generalization in Adaptive Data Analysis](https://arxiv.org/abs/1506.02629) shows
+  the risk of repeatedly adapting to one holdout. Independent development pools are
+  opened at the objective, architecture, and interaction phases. A competition
+  [meta-analysis](https://proceedings.neurips.cc/paper_files/paper/2019/hash/ee39e503b6bedf0c98c388b7e8589aca-Abstract.html)
+  found limited aggregate overfitting in its setting, so repeated reuse is treated as
+  a risk to measure, not proof that this pilot must fail.
+- [Deep-learning data-scaling evidence](https://arxiv.org/abs/1712.00409) motivates a
+  targeted four-times-data sensitivity check. A low-data ranking is not assumed to
+  estimate the representation ceiling.
+- [A Metric Learning Reality Check](https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123700681.pdf)
+  motivates identical evaluation protocols, strong baselines, and component-level
+  reporting when comparing representation-learning methods.
 
 ## Pilot corpus
 
 Create `voxel-encoder-pilot-v1` only from geometry IDs assigned to the parent training
 split. Assign geometry IDs before sampling observations and store the assignment hash.
 
-| Nested split | Geometry IDs | Observations | Use |
+| Nested split | Geometry IDs | Base observations | Use |
 |---|---:|---:|---|
-| `pilot_train` | 64 | 24,000 | Encoder and probe training. |
-| `pilot_dev` | 16 | 6,000 | P1-P6 checkpoint and direction selection. |
-| `pilot_confirm` | 16 | 6,000 | Open once for P7 after the top two pairings are locked. |
+| `pilot_train` | 96 | 24,000 | Encoder and probe training; P4D alone expands this to 96,000 observations from the same IDs. |
+| `pilot_dev_early` | 24 | 6,000 | P1-P2 objective and training-mechanics decisions. |
+| `pilot_dev_arch` | 24 | 6,000 | Open after P3 for P4-P5 architecture/context decisions. |
+| `pilot_dev_interaction` | 24 | 6,000 | Open after P6 pairings are locked. |
+| `pilot_confirm` | 32 | 12,000 | Open once for P7 after the top two pairings are locked. |
 
-`pilot_train` and `pilot_dev` cover open rooms/boxes, thin walls/isolated obstacles,
-corridor/topology scenes, and imported geometry. In `pilot_confirm`, eight geometries
-come from the same families with new seeds, four use a held-out procedural topology
-template, and four come from an imported-geometry source absent from encoder
+`pilot_train` and every development pool cover open rooms/boxes, thin walls/isolated
+obstacles, corridor/topology scenes, and imported geometry. In `pilot_confirm`, 16
+geometries come from the same families with new seeds, eight use a held-out procedural
+topology template, and eight come from an imported-geometry source absent from encoder
 pretraining. Report these three confirmation groups separately; do not tune their
-weights after P7 begins.
+weights after P7 begins. The two eight-geometry out-of-family groups are stress smokes,
+not estimates of generalization to their source populations.
 
 Sample radii 8 and 16 equally for P0-P4. Generate radius-32 observations from the same
-IDs only when P5 starts. Balance boundary, topology, ordinary free-space, open-space,
-and unknown cases using the governing sampling shares. Within every nested split,
-balance low, medium, and high occupied fractions. No observation may move between
-nested splits, and no augmented view may cross a split.
+IDs only when P5 starts and radius-128 observations only after P7 is locked for P8.
+Balance boundary, topology, ordinary free-space, open-space, and unknown cases using
+the governing sampling shares. Within every nested split, balance low, medium, and
+high occupied fractions. No observation may move between nested splits, and no
+augmented view may cross a split.
 
 The frozen pilot probe set is smaller than certification:
 
-| Probe | Training examples | Dev/confirm examples | Maximum updates |
-|---|---:|---:|---:|
-| Global linear | 12,000 observations | 3,000 | 2,000 |
-| Occupancy/clearance coordinate | 100,000 queries | 20,000 | 5,000 |
-| Reachability/geodesic pair | 50,000 balanced pairs | 10,000 | 5,000 |
-| Topology decoder | 8,000 observations | 2,000 | 5,000 |
+| Probe | Training examples | Per-dev examples | Confirm examples | Maximum updates |
+|---|---:|---:|---:|---:|
+| Global linear | 12,000 observations | 3,000 | 6,000 | 2,000 |
+| Occupancy/clearance coordinate | 100,000 queries | 20,000 | 40,000 | 5,000 |
+| Reachability/geodesic pair | 50,000 balanced pairs | 10,000 | 20,000 | 5,000 |
+| Topology decoder | 8,000 observations | 2,000 | 4,000 | 5,000 |
 
 Probe architecture and optimizer are fixed after P0. Every coordinate and pair probe
 still runs the control-target, zero-embedding, and shuffled-embedding controls. Pilot
 queries and their stratum weights are immutable after their hashes are recorded.
+
+Partition each development pool into three geometry blocks of eight IDs. For each
+encoder checkpoint, select probe hyperparameters and checkpoint preference on two
+blocks and report on the third, rotating so every geometry has one out-of-fold
+prediction. Pool only those out-of-fold predictions for pilot decisions. This removes
+same-row checkpoint reporting bias but does not erase adaptive reuse of
+`pilot_dev_early` by P1-P2 or `pilot_dev_arch` by P4-P5; that residual risk is declared
+below.
 
 ## Common comparison contract
 
@@ -82,7 +131,8 @@ Unless a pilot says otherwise:
 
 - use the Tiny capacity family and a 192-dimensional global embedding;
 - initialize from scratch; no candidate receives a pretrained parent;
-- use seed 0 for direction finding and fresh seeds 1 and 2 for P7;
+- use seeds 0 and 1 for P1 and the base P4 architecture screen, seed 0 for P2,
+  P5, and P6, fresh seeds 2 and 3 for P7, and seed 4 for P8;
 - use the same ordered observation batches, augmentation draws, probe examples, and
   checkpoint steps within a paired comparison;
 - count encoder updates, observations, encoded valid voxels, accelerator-hours, peak
@@ -91,7 +141,7 @@ Unless a pilot says otherwise:
   when every candidate supports it reliably; otherwise use FP32 for the comparison;
 - compare trainable encoder parameters within 10%; report decoder, projector, and
   predictor parameters separately; and
-- evaluate frozen probes at 25%, 50%, and 100% of each run's update budget.
+- evaluate frozen probes at 10%, 25%, 50%, 75%, and 100% of each run's update budget.
 
 Do not stop a valid run merely because its early score is low. Early termination is
 allowed only for non-finite values, failed state integrity, failed mask isolation,
@@ -141,13 +191,42 @@ The following vetoes apply to every comparative pilot:
   checkpoint;
 - control-target selectivity below 0.05 pilot-score units;
 - zeroed or shuffled embeddings within 0.05 of the real-embedding pilot score;
-- `pilot_dev` false-open rate above 5% or more than 2 percentage points worse than the
-  current encoder; or
+- active pilot evaluation-pool false-open rate above 5% or more than 2 percentage
+  points worse than the current encoder; or
 - unsupported output shapes, invalid masks, OOM, or missing resource accounting.
 
-A one-seed difference below 0.03 pilot-score units is a tie. Never use a lower pretext
-loss to break a frozen-probe tie. Carry tied candidates forward when the next pilot has
-capacity; otherwise prefer the lower-memory candidate while recording the tie.
+For every score difference, run a paired stratified cluster bootstrap with 10,000
+resamples of complete geometry IDs. Preserve geometry-family and occupancy strata. In
+P1 and P4, compute intervals separately per seed and on per-geometry scores averaged
+over the two observed seeds. Do not bootstrap two seeds as if they estimated the
+initialization population. A direction is decisive only when the pooled paired 95%
+geometry interval excludes zero, the absolute mean difference is at least 0.03 pilot-
+score units, and both seeds agree where two exist. Otherwise it is a tie. Never use
+lower pretext loss to break a frozen-probe tie. Carry tied candidates forward when the
+next pilot has capacity; otherwise prefer the lower-memory candidate while recording
+the tie.
+
+### Learning-curve extrapolation
+
+Different objectives may have different early learning speed. Fit a probabilistic
+learning-curve model to the five frozen-probe checkpoints following
+[Domhan et al.](https://www.ijcai.org/Proceedings/15/Papers/487.pdf) or the Bayesian
+[LC-PFN](https://arxiv.org/abs/2310.20447). P0 locks one implementation, its priors,
+and its target horizon before candidate results exist. Predict no farther than four
+times the current pilot budget or the next governing-stage budget, whichever is
+smaller.
+
+Before extrapolation affects retention, backtest it by hiding the final two points of
+completed local encoder curves. Its nominal 95% posterior interval must cover at least
+90% of hidden points and median absolute pilot-score error must be at most 0.05. Store
+the calibration sample, coverage, error, posterior draws, and implementation version.
+If local curves are insufficient or calibration fails, extrapolation remains a plotted
+diagnostic and every observed-score tie advances.
+
+A calibrated extrapolation can rescue a candidate: do not eliminate it when its
+predicted 95% upper bound at the target horizon overlaps the leader's predicted 95%
+lower bound. It cannot name a winner or eliminate a candidate by itself. When observed
+and extrapolated rankings disagree, record `short_horizon_unresolved` and advance both.
 
 ## Pilot sequence
 
@@ -166,6 +245,12 @@ Required outcomes:
 - exact geometry targets agree with hand-computed values on every micro-scene;
 - perfect, empty, random, broken-wall, and filled-corridor predictions trigger the
   expected metric and topology behavior;
+- the fixed per-metric normalization floors and supervised ceilings satisfy the
+  pilot-score denominator checks;
+- the paired geometry-bootstrap implementation recovers known differences and covers
+  zero for identical synthetic candidates;
+- the learning-curve implementation, priors, target horizons, and calibration fixture
+  are locked; it is marked diagnostic until its local backtest passes;
 - encoder state hashes change during encoder training and never during frozen probes;
 - each trainable objective reduces its micro-set loss by at least 90% without NaN or
   Inf values;
@@ -195,23 +280,29 @@ Use one pre-activation Tiny residual encoder with identical widths and outputs f
 
 Run each bundle at peak learning rates `1e-4` and `3e-4`, with AdamW weight decay
 `0.05`, 5% linear warmup, cosine decay, and global-norm clipping at 1.0, for 2,000
-updates and seed 0: eight trained trials. Masked and unmasked paths retain the same
-residual stage widths, output dimensions, and probe contracts; report their different
-executed-voxel counts rather than claiming identical kernels.
+updates and seeds 0 and 1: 16 trained trials. Use `pilot_dev_early`. Masked and
+unmasked paths retain the same residual stage widths, output dimensions, and probe
+contracts; report their different executed-voxel counts rather than claiming identical
+kernels.
 
-Exit: retain at most two bundles. A bundle must pass all vetoes and improve at least
-three of the five pilot-score components over random weights. Select the best learning
-rate per bundle by pilot score. When T1/T3 and T0/T2 are within 0.03, retain one masked
-or latent bundle and one direct-geometry bundle so a one-seed tie does not erase a
-meaningfully different direction.
+Exit: retain at most two bundles. A bundle must pass all vetoes on both seeds and
+improve at least three of the five pilot-score components over random weights. Apply
+the paired-bootstrap and learning-curve rescue rules before eliminating it. Carry both
+learning rates for each retained bundle into P2; P1 does not lock a bundle-wide
+learning rate. When T1/T3 and T0/T2 are tied, retain one masked or latent bundle and
+one direct-geometry bundle so a short-horizon tie does not erase a meaningfully
+different direction.
 
 ### P2: Native training-mechanics screen
 
-**Hypothesis:** one native recipe choice matters more than broad optimizer tuning once
-a useful target family has been found.
+**Hypothesis:** a useful native recipe choice remains directionally beneficial across
+both plausible P1 learning rates.
 
-For each of the two retained bundles, run the baseline plus its two applicable variants
-below for 4,000 updates and seed 0: at most six trained trials total.
+For each of the two retained bundles, cross the baseline plus its two applicable
+variants below with both P1 learning rates. Train from scratch for 3,000 updates and
+seed 0: at most 12 trained trials total. Use `pilot_dev_early`. This small factorial
+estimates whether the native recipe choice reverses across the two learning rates;
+P2 does not assume the P1 point winner transfers to every variant.
 
 | Bundle | Baseline | Variant 1 | Variant 2 |
 |---|---|---|---|
@@ -221,9 +312,12 @@ below for 4,000 updates and seed 0: at most six trained trials total.
 | T3 | mask 0.60, EMA 0.996 | mask 0.40 | EMA 0.99 |
 
 All variants use proper cube rotations and no other augmentation. Promote a variant
-only when it gains at least 0.03 pilot-score units or improves one component by at
-least 0.05 without regressing another by more than 0.02. Otherwise retain the simpler
-baseline. The result is a locked training bundle for each retained target family.
+only when its paired-bootstrap interval and mean pass the common decisive-direction
+rule at one learning rate and its effect has the same sign at the other, or when its
+mean component gain is at least 0.05 at both rates without another component regressing
+more than 0.02. Otherwise retain the simpler baseline and carry an unresolved learning-
+rate interaction into the full Stage 1 search. The result is a locked target/mechanics
+bundle, not a permanently locked optimizer.
 
 ### P3: Architecture feasibility screen
 
@@ -253,22 +347,42 @@ no quality claim.
 **Hypothesis:** useful architecture families separate under one fixed training bundle
 before the full Stage 3 budget.
 
-Train every P3 survivor with the best P2 bundle for 4,000 updates, seed 0, radius 16,
-and identical pilot batches. Every candidate sees the full radius-16 physical extent.
-The dense and residual candidates use a `33^3` input; the pyramid uses side 17 at
-strides 1, 2, 4, and 8; the tri-planar model uses the three orthogonal `33^2` planes.
+Train every P3 survivor with the best P2 bundle for 4,000 updates, seeds 0 and 1,
+radius 16, and identical pilot batches. Lock the candidate set before opening
+`pilot_dev_arch`. Every candidate sees the full radius-16 physical extent. The dense
+and residual candidates use a `33^3` input; the pyramid uses side 17 at strides 1, 2,
+4, and 8; the tri-planar model uses the three orthogonal `33^2` planes.
 
-Retain the best quality candidate and every candidate within 0.03 pilot-score units
-that reduces peak memory or p95 latency by at least 25%. Keep no more than two base
-families. If the shared pyramid is retained, spend up to two additional trials on FiLM
-and residual-adapter conditioning. If a dense residual family is retained, spend one
-additional trial on the matched-parameter two-branch dilation/Inception block. Do not
-test independent per-scale weights, norm variants, or equivariance yet. P4 is capped at
-eight trained trials including conditional variants.
+Retain the decisive best candidate and every tied candidate that reduces peak memory
+or p95 latency by at least 25%. Keep no more than two base families after applying the
+bootstrap and learning-curve rescue rules. If the shared pyramid is retained, test
+FiLM and residual-adapter conditioning with seed 0. If a dense residual family is
+retained, test one matched-parameter two-branch dilation/Inception block with seed 0.
+Confirm only the best conditional variant with seed 1 when it would replace a base
+family. Do not test independent per-scale weights, norm variants, or equivariance yet.
+P4 is capped at ten two-seed base trials plus four conditional/confirmation trials.
 
 Exit: name a provisional primary architecture by quality and a fallback by the Pareto
 frontier of quality, memory, and latency. If no learned architecture beats the random
 encoder on three pilot-score components, return `no viable direction` and stop.
+
+### P4D: Four-times-data sensitivity
+
+**Hypothesis:** the P4 primary/fallback ordering is not caused only by the 24,000-
+observation low-data regime.
+
+After locking the P4 primary and fallback, train each once from scratch with seed 0,
+the same 4,000 updates, and 96,000 unique observations sampled from the same 96
+`pilot_train` geometry IDs. Preserve strata, batch size, optimizer, and encoded-voxel
+accounting. Compare each expanded-data result with its paired 24,000-observation P4
+seed-0 run on `pilot_dev_arch`.
+
+Flag `data_sensitive` and retain both architectures when their point ordering reverses,
+the paired difference changes by at least 0.05 pilot-score units, or either expanded-
+data learning-curve interval makes the earlier elimination inconclusive. P4D is a
+ranking sensitivity check, not a fitted scaling law; two data sizes cannot establish
+an asymptotic trend. Because both sizes use the same 96 geometry IDs, it tests
+observation density rather than geometry-family diversity.
 
 ### P5: Field-of-view micro-ablation
 
@@ -276,7 +390,7 @@ encoder on three pilot-score components, return `no viable direction` and stop.
 requiring a large per-level dense volume.
 
 Use the P4 primary and its fixed P2 training bundle for four seed-0 trials of 4,000
-updates:
+updates on `pilot_dev_arch`:
 
 | Trial | Maximum radius | Per-level side | Active strides |
 |---|---:|---:|---|
@@ -291,11 +405,12 @@ winning side is 17 and stride 1 when it is 33, preserving the radius-16 physical
 with one level. It tests whether a fine-to-coarse hierarchy adds value beyond a single
 resolution; report the expected loss of fine detail separately.
 
-Exit: choose the smallest side and fewest scales within 0.03 of the best radius-16
-pilot score and within 0.02 on every component. Radius 32 advances only if it improves
-reachability or geodesic score by at least 0.03 without a veto and adds no more than
-one declared scale level. Otherwise keep radius 16 for the next pilot and leave wider
-context to the full radius study.
+Exit: among candidates tied with the best radius-16 result under the common bootstrap
+rule, choose the smallest side and fewest scales with no component regression above
+0.02. Radius 32 advances only if the paired 95% geometry interval for reachability or
+geodesic improvement excludes zero, its mean gain is at least 0.03, no veto fires, and
+it adds no more than one declared scale level. Otherwise keep radius 16 for the next
+pilot and leave wider context to the full radius study.
 
 ### P6: Objective-by-architecture interaction check
 
@@ -303,37 +418,44 @@ context to the full radius study.
 being evaluated with only one counterpart.
 
 Cross the top two P2 training bundles with the P4 primary and fallback architecture/
-field-of-view bundles. Train the four pairings from scratch for 8,000 updates with seed
-0. Use the same batches and cap each pairing at the smaller of the fixed update budget
-or the preregistered accelerator-hour budget.
+field-of-view bundles. Lock all four pairings before opening `pilot_dev_interaction`.
+Train them from scratch for 8,000 updates with seed 0. Use the same batches and cap each
+pairing at the smaller of the fixed update budget or the preregistered accelerator-hour
+budget.
 
-Report the recipe effect within each architecture, the architecture effect within each
-recipe, and rank correlation between the two recipe rankings. Treat either of these as
-a material interaction:
+Report recipe effects within each architecture, architecture effects within each
+recipe, and the paired-bootstrap distribution of the difference-in-differences. With
+one encoder seed this is an exploratory interaction screen, not a precise estimate.
+Flag a possible material interaction when either condition holds:
 
 - the preferred recipe reverses by at least 0.03 pilot-score units; or
-- an architecture effect changes by at least 0.05 between recipes.
+- the mean architecture effect changes by at least 0.05 between recipes, or its 95%
+  interval includes changes of that magnitude in either direction.
 
-Exit: without a material interaction, retain the best pairing and the most efficient
-pairing within 0.03. With an interaction, retain the best pairing from each
-architecture and prohibit independent recipe/architecture conclusions in later
-reports.
+Exit: without a possible material interaction, retain the decisive best pairing and
+the most efficient tied pairing. With a possible interaction, retain the best pairing
+from each architecture and prohibit independent recipe/architecture conclusions in
+later reports. Only the later multi-seed experiments may turn the flag into a claim.
 
 ### P7: Fresh-seed confirmation
 
 **Hypothesis:** the two retained pairings preserve their direction on fresh seeds and
 previously unopened pilot geometries.
 
-Lock all choices, then train both pairings from scratch for 10,000 updates with seeds 1
-and 2: four trained trials. Open `pilot_confirm` only after the run manifests and
+Lock all choices, then train both pairings from scratch for 10,000 updates with seeds 2
+and 3: four trained trials. Open `pilot_confirm` only after the run manifests and
 checkpoint-selection rule are committed. Report mean and per-seed metrics for the
 ordinary, held-out-topology, and held-out-imported groups. Two seeds are not enough for
-a significance claim; they are a guard against a single lucky exploratory seed.
+a significance claim; they are a guard against a single lucky exploratory seed. The
+eight-geometry topology and imported results are stress smokes and may expose a
+failure, but they cannot support a population-level generalization claim.
 
 Declare `winner` only when one pairing:
 
 - passes every pilot veto on both seeds;
 - leads by at least 0.03 mean pilot-score units;
+- has a paired geometry-cluster-bootstrap 95% interval excluding zero on the ordinary
+  confirmation group;
 - has the same score direction on both seeds; and
 - has no component regression greater than 0.02.
 
@@ -341,27 +463,83 @@ Otherwise declare `tie` and carry both pairings into the existing Stage 1/2 prog
 Declare `no viable direction` if neither pairing passes the vetoes. Never reopen P1-P6
 or tune a configuration after reading `pilot_confirm`.
 
+### P8: Wide-context viability smoke
+
+**Hypothesis:** the P7 winner can execute and retain useful features at a radius large
+enough to exercise the multiscale design before it is queued as the wide-context
+direction.
+
+After P7 is immutable, train the winner from scratch twice with seed 4, 10,000 updates,
+and the expanded 96,000-observation corpus: one checkpoint with maximum radius 32 and
+one with maximum radius 128. Use the same observation positions, optimizer, and update
+budget. Both mixtures allocate 25% each to radii 8, 16, and 32; the remaining 25% is
+radius 32 for the control and radius 128 for the wide model. Count cumulative
+observations, valid voxels, wall time, and accelerator-hours. Evaluate both on matching
+radius-32 queries and on the same preregistered wide-context reachability, geodesic,
+loop, and dead-end labels from `pilot_confirm`; the control receives only its declared
+radius-32 observation.
+
+Exit: radius 128 must execute without OOM or a dense per-level volume above the
+declared side, pass state/mask vetoes, and regress no shared-radius component by more
+than 0.05. Report whether any wide-context component improves by at least 0.03, but do
+not require improvement from this one-seed smoke. Failure prevents describing the P7
+architecture as the queued wide-context direction: retain its training bundle, mark
+architecture scaling unresolved, and reopen the relevant full Stage 3/4 comparison.
+
+## Validity limits
+
+The pilot outcome is directional evidence under these known limits:
+
+- **Short horizons:** 2,000-10,000 updates can favor fast-starting objectives and may
+  miss a delayed representation gain. Calibrated curve intervals rescue uncertain
+  candidates; only the full Stage 2 budget resolves their ceiling.
+- **Small base corpus:** 24,000 observations can rank optimization speed more than data
+  efficiency. P4D detects one observation-density reversal at 96,000 observations but
+  holds geometry count fixed, does not fit a scaling law, and does not substitute for
+  the full data-diversity study.
+- **Limited context:** P1-P4 see radii no larger than 16 and P5/P6 no larger than 32.
+  P8 establishes radius-128 viability for one winner, not architecture superiority at
+  128 or transfer to radius 512.
+- **Incomplete seed variance:** P2, P5, P6, and P8 use one encoder seed. Geometry
+  bootstrap intervals condition on that seed and cannot estimate initialization
+  variance. Their numerical thresholds are retention heuristics, not significance
+  claims.
+- **Adaptive development reuse:** P1-P2 share `pilot_dev_early` and P4-P5 share
+  `pilot_dev_arch`. Cross-fitted scores reduce checkpoint bias but cannot make adaptive
+  reuse independent. Fresh pools at P4, P6, and P7 test for major ranking failures.
+- **Small out-of-family groups:** eight held-out topology and eight imported geometries
+  can veto an obvious failure only. Generalization claims require the full stratified
+  certification corpus.
+- **Proxy task:** frozen probes and the small geometry-only adaptation check measure
+  accessible geometry, not eventual policy or planner value. Pilot ordering may still
+  invert in the governing experiments.
+
+Every decision record lists which limits could plausibly invert that decision. Reports
+must say `pilot direction`, never `best architecture`, `scales to 512`, or `validated`.
+
 ## Budget and stop rules
 
 | Pilot | Maximum trained trials | Updates per trial | Maximum updates |
 |---|---:|---:|---:|
 | P0 | diagnostic only | 500 | not comparative |
-| P1 | 8 | 2,000 | 16,000 |
-| P2 | 6 | 4,000 | 24,000 |
+| P1 | 16 | 2,000 | 32,000 |
+| P2 | 12 | 3,000 | 36,000 |
 | P3 | profiling only | 20 steps | not comparative |
-| P4 | 8 | 4,000 | 32,000 |
+| P4 | 14 | 4,000 | 56,000 |
+| P4D | 2 | 4,000 | 8,000 |
 | P5 | 4 | 4,000 | 16,000 |
 | P6 | 4 | 8,000 | 32,000 |
 | P7 | 4 | 10,000 | 40,000 |
-| **Total** | **30 comparative trainings** | | **160,000** |
+| P8 | 2 | 10,000 | 20,000 |
+| **Total** | **58 comparative trainings** | | **240,000** |
 
 Before P1, record a per-pilot and total accelerator-hour cap. The total program stops
-at the first of 160,000 comparative encoder updates or that accelerator-hour cap.
+at the first of 240,000 comparative encoder updates or that accelerator-hour cap.
 P0/P3 diagnostic work is reported separately so profiling cannot silently consume the
 training budget. A pilot may spend unused trials from its own cap only; budget cannot
 be moved into a later pilot after results are visible.
 
-The 160,000-update cap is 11.9% of the 1.35 million maximum encoder updates in the
+The 240,000-update cap is 17.8% of the 1.35 million maximum encoder updates in the
 governing Stage 2 matrix. This ratio is descriptive, not a claim of equal compute:
 executed valid voxels and accelerator-hours remain the primary accounting.
 
@@ -375,11 +553,15 @@ Commit one `pilot-decision.json` after every pilot with:
   "dataset_hash": "...",
   "query_hash": "...",
   "code_commit": "...",
+  "development_pool": "pilot_dev_arch",
   "locked_inputs": {},
   "candidates": [],
   "vetoes": {},
   "pilot_scores": {},
+  "bootstrap": {"resamples": 10000, "paired_geometry_ids": true},
+  "learning_curve": {"implementation": "...", "calibrated": false},
   "resource_metrics": {},
+  "validity_flags": [],
   "decision": "winner | tie | no_viable_direction | blocked",
   "retained": [],
   "rejected": [],
@@ -389,15 +571,17 @@ Commit one `pilot-decision.json` after every pilot with:
 ```
 
 Every rejection names the preregistered rule that fired. Store resolved configs,
-checkpoints, per-geometry predictions, probe ablations, metric components, resource
-traces, and failed-run logs. Failed/OOM trials count against the trial cap.
+checkpoints, per-geometry out-of-fold predictions, probe ablations, metric components,
+bootstrap indices, learning-curve observations/posteriors/calibration, resource traces,
+and failed-run logs. Failed/OOM trials count against the trial cap.
 
 ## Handoff to the full experiment plan
 
-The pilot winner becomes the first queued direction in Stage 1, not a certified model.
-The fallback remains queued until Stage 2 establishes a multi-seed result. R0, the
-random encoder, the raw-grid control, and the current encoder remain mandatory even if
-they lose in the pilots.
+After it passes P8, the pilot winner becomes the first queued wide-context direction in
+Stage 1, not a certified model. Before P8 passes, only its training bundle may be
+prioritized; its architecture remains a small-context result. The fallback remains
+queued until Stage 2 establishes a multi-seed result. R0, the random encoder, the raw-
+grid control, and the current encoder remain mandatory even if they lose in the pilots.
 
 P0 evidence may satisfy a governing Stage 0 item only when it used the identical
 implementation, fixtures, tolerances, and artifact contract. The remaining Stage 0
