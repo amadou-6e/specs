@@ -28,6 +28,10 @@ that make intent, behavior, constraints, and verification clearer.
 - Do not vendor generated caches, virtual environments, model weights, dependency
   trees, or cloned upstream repositories.
 - Run `python tools/validate_specs.py` before committing.
+- Treat this repository as the system of record for specifications. Completed changes
+  to specifications and their evidence must be committed on the issue branch and
+  pushed to this repository; do not leave specification work only in an ignored
+  checkout or in an implementation repository.
 
 ## Change workflow
 

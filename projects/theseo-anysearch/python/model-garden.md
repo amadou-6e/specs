@@ -5,6 +5,11 @@ plug them into any policy as a frozen or fine-tunable backbone. The model
 garden is a versioned local store of encoder checkpoints at
 `runtime/garden/`.
 
+Architecture selection and scaling for 3D voxel inputs are investigated in
+[Scalable 3D Voxel Perception Encoders](perception-encoders.md). That document is
+discovery evidence; its proposed pyramid encoder is not part of this specification
+until its acceptance gates have been met and reviewed.
+
 ---
 
 ## Motivation
