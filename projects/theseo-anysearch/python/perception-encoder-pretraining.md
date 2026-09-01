@@ -4,6 +4,7 @@ Status: discovery
 Owner: amadou-6e
 Last reviewed: 2026-09-01
 Tracking issue: [specs#7](https://github.com/amadou-6e/specs/issues/7)
+Literature revision: [specs#9](https://github.com/amadou-6e/specs/issues/9)
 Related research: [Scalable 3D Voxel Perception Encoders](perception-encoders.md)
 Governing specification: [Model Garden](model-garden.md)
 
@@ -45,6 +46,28 @@ dominant empty class. Every checkpoint must pass objective-independent frozen pr
 - [RankMe](https://proceedings.mlr.press/v202/garrido23a.html) proposes effective rank
   as a label-free signal for selecting self-supervised representations. It is useful
   for rejecting collapse and screening checkpoints, not as the sole acceptance gate.
+- [SwAV](https://arxiv.org/abs/2006.09882) and
+  [DINO](https://arxiv.org/abs/2104.14294) establish multi-view assignment and
+  self-distillation objectives. [DenseCL](https://arxiv.org/abs/2011.09157),
+  [PixPro](https://arxiv.org/abs/2011.10043), and
+  [VADeR](https://arxiv.org/abs/2011.05499) show why dense, corresponding locations
+  matter when transfer requires spatial predictions. Cross-scale voxel consistency
+  should therefore use known physical correspondences, not only global embeddings.
+
+### What frozen embodied encoders establish
+
+- [R3M](https://arxiv.org/abs/2203.12601),
+  [MVP](https://arxiv.org/abs/2203.06173),
+  [PVR](https://arxiv.org/abs/2203.03580),
+  [VIP](https://arxiv.org/abs/2210.00030), and
+  [VC-1](https://arxiv.org/abs/2303.18240) demonstrate reusable frozen visual
+  encoders across embodied tasks. MVP is especially relevant because it discards a
+  masked-pretraining decoder and reuses one large frozen encoder.
+- This evidence is contested rather than uniform. VC-1 finds no universal winner,
+  while [Hansen et al.](https://arxiv.org/abs/2212.05749) report that in-domain
+  from-scratch training can be competitive and that fine-tuning can overcome domain
+  mismatch. Theseo must prove frozen value against raw-input, random-feature, adapted,
+  and from-scratch controls; it cannot inherit the conclusion from 2D robotics.
 
 ### What 3D masked pretraining suggests
 
@@ -56,8 +79,11 @@ dominant empty class. Every checkpoint must pass objective-independent frozen pr
   [MaskPoint](https://arxiv.org/abs/2203.11183) apply masked modeling to point clouds
   with coordinate reconstruction or masked point discrimination. Their point-patch
   assumptions are not identical to known-free voxel occupancy.
+- [Point-M2AE](https://arxiv.org/abs/2205.14401) uses consistent visible regions
+  across a hierarchical point pyramid and reports strong frozen linear evaluation.
+  It supports multi-scale masking but does not establish Theseo's fixed-grid design.
 - [Occupancy-MAE](https://arxiv.org/abs/2206.09900) and
-  [Voxel-MAE](https://openaccess.thecvf.com/content/WACV2023W/Pretrain/html/Hess_Masked_Autoencoder_for_Self-Supervised_Pre-Training_on_Lidar_Point_Clouds_WACVW_2023_paper.html)
+  [Voxel-MAE](https://arxiv.org/abs/2207.00531)
   provide direct evidence for masked occupancy or voxel reconstruction followed by
   transfer of the encoder.
 - [GeoMAE](https://openaccess.thecvf.com/content/CVPR2023/html/Tian_GeoMAE_Masked_Geometric_Target_Prediction_for_Self-Supervised_Point_Cloud_Pre-Training_CVPR_2023_paper.html)
@@ -72,15 +98,27 @@ dominant empty class. Every checkpoint must pass objective-independent frozen pr
   demonstrates that volumetric overlap can hide connectivity errors and provides a
   topology-aware 2D/3D measure. Theseo should likewise measure connectivity rather
   than accepting voxel IoU alone.
+- [Voxblox](https://arxiv.org/abs/1611.03631) and
+  [FIESTA](https://arxiv.org/abs/1903.02144) establish truncated Euclidean signed-
+  distance fields as useful mapping products for planning. They motivate a truncated
+  ESDF as the primary dense geometric target, while exact collision checks remain
+  outside the learned representation.
+- [Semi-parametric Topological Memory](https://arxiv.org/abs/1803.00653),
+  [Search on the Replay Buffer](https://arxiv.org/abs/1906.05253), and
+  [Sparse Graphical Memory](https://arxiv.org/abs/2003.06417) show that learned
+  reachability or distance relations can support graph search. They are precedents for
+  topology probes, not evidence that a policy-conditioned value belongs in this
+  goal-independent encoder.
 
 ### Synthesis
 
-The most defensible initial recipe is a multi-scale masked voxel encoder with a small
-decoder, geometry-aware auxiliary targets, and an explicit representation-consistency
-term. Contrastive learning and self-distillation are valuable comparisons, not
-assumed defaults. Exact geometry can generate clearance, connectivity, and geodesic
-targets automatically, so standalone certification can test path-relevant spatial
-information without involving a policy or RL system.
+The most defensible initial recipe uses truncated ESDF prediction as its primary dense
+target, frontier-biased multi-scale masked occupancy as a complementary target, and
+physically aligned local consistency over overlapping scales. Contrastive learning
+and self-distillation are comparisons, not assumed defaults. Exact geometry can
+generate clearance, connectivity, and geodesic targets automatically, so standalone
+certification can test path-relevant spatial information without a policy or RL
+system.
 
 ## What counts as independent encoder validation
 
@@ -93,14 +131,17 @@ Three readout classes are allowed:
 
 1. **Linear probe**: one affine map from the global embedding.
 2. **Coordinate probe**: an MLP with at most two hidden layers of width 128 reading
-   `[embedding, query_coordinates, stride_metadata]`.
+   `[global_embedding, sampled_local_feature, query_coordinates, stride_metadata]`.
+   Report global-only, local-only, and combined variants with the same capacity cap.
 3. **Probe decoder**: a decoder no larger than 25% of encoder parameter count or one
    million parameters, whichever is smaller, used only for masked occupancy and
    topology reconstruction.
 
 The same probe architecture, optimizer search space, update budget, and labeled
-sample count must be used for every encoder in a comparison. A result from a larger
-or separately tuned probe is invalid.
+sample count must be used for every learned encoder in a comparison. The raw-grid
+control's minimal input adapter is preregistered, counts against the same parameter and
+update cap, and may not be retuned per recipe. A result from a larger or separately
+tuned probe is invalid.
 
 ### Probe training protocol
 
@@ -180,6 +221,10 @@ number of observations comparable across radii.
 Every certification report includes:
 
 - majority-class and occupancy-frequency predictors;
+- raw conservative multiscale grids consumed by capacity-matched coordinate and
+  decoder probes, with no pretrained encoder. The minimal trainable input adapter
+  needed to consume grid channels counts against the same probe parameter and update
+  budget, so this control measures learning perception in the head from raw geometry;
 - a random frozen encoder with the same architecture;
 - a fixed random projection or PCA baseline over the same voxel input;
 - the current pretrained `VoxelEncoder3D` checkpoint at supported radii;
@@ -187,9 +232,11 @@ Every certification report includes:
 - a fully supervised encoder trained on each probe target as an upper-reference
   model, clearly marked as non-comparable training.
 
-The pretrained checkpoint must beat both its random-weight counterpart and the best
-non-neural baseline on the critical frozen probes. The supervised reference estimates
-whether a weak score reflects the representation or an impossible dataset/task.
+The pretrained checkpoint must beat its random-weight counterpart, raw-grid control,
+and best other non-neural baseline on the declared baseline-relative gates. The raw
+control answers whether learning compression adds accessible geometry beyond the
+conservative pyramid itself. The supervised reference estimates whether a weak score
+reflects the representation or an impossible dataset/task.
 
 ## Metric suite
 
@@ -278,6 +325,12 @@ transform to the input and query coordinates. For adjacent scales, compare predi
 over their shared physical support rather than raw latent cosine unless the
 architecture explicitly defines an equivariant latent transform.
 
+For every critical metric, report the canonical-orientation value, mean over the 24
+rotations, standard deviation over rotations, worst-rotation value, and worst-case
+degradation from canonical. `robustness/rotation/worst_degradation` is a first-class
+gate, not a supplemental chart. Reflections are excluded unless the data contract
+explicitly proves handedness and channel semantics are reflection symmetric.
+
 ### 7. Efficiency
 
 Measure on declared reference CPU and accelerator hardware:
@@ -325,7 +378,7 @@ of these metrics.
 | False-closed topology | <= 5.0% on thin-wall and narrow-corridor suites. |
 | Pairwise topology reconstruction | <= 3.0% of sampled free-cell pairs change connectivity. |
 | Out-of-family generalization | No critical metric loses more than 10% relative to the ordinary held-out test result. |
-| Rotation robustness | No critical metric loses more than 3 percentage points over proper cube rotations. |
+| Rotation robustness | Worst-rotation degradation is <= 3 percentage points for every higher-is-better critical metric and <= 0.03 normalized error for every lower-is-better critical metric over the 24 proper cube rotations. |
 | Corruption robustness | No critical metric loses more than 5 percentage points at 1% cell corruption or 10% observed-cell removal. |
 | Radius retention | Adding a coarser level reduces no already-supported-radius critical metric by more than 2 percentage points. |
 | Radius 512 execution | Batch-1 inference completes without OOM and without constructing a dense volume larger than 33 per level. |
@@ -343,9 +396,13 @@ features. Against the same architecture with random frozen weights, it must achi
 - at least 20% lower geodesic normalized MAE; and
 - at least 25% fewer labeled examples to reach 90% of its full-data probe score.
 
-It must beat the best PCA/random-projection baseline on every critical metric. A
-checkpoint that passes absolute thresholds but fails these comparisons is not evidence
-that pretraining helped and must not be published as pretrained.
+It must beat the best PCA/random-projection baseline on every critical metric. Against
+the raw conservative-grid control, it must improve the preregistered mean normalized
+probe score by at least 3 percentage points or reduce labeled examples to 90% of the
+full-data score by at least 25%, while losing no higher-is-better critical metric by
+more than 2 percentage points and increasing no normalized critical error by more than
+10%. A checkpoint that passes absolute thresholds but fails these comparisons is not
+evidence that learned compression helped and must not be published as pretrained.
 
 ### Few-label probe gate
 
@@ -357,11 +414,21 @@ allowing a large probe dataset to compensate for weak features.
 ### Statistical gate
 
 Final certification uses five encoder seeds. Each probe uses three probe seeds per
-encoder seed. Report mean, standard deviation, and a 95% bootstrap confidence
-interval over geometry IDs. Every hard gate must be passed by the mean, and the lower
-confidence bound for higher-is-better critical metrics must be no more than 2
-percentage points below its gate. No single encoder seed may miss a critical gate by
-more than 5 percentage points.
+encoder seed. Following the robust reporting principles in
+[rliable](https://arxiv.org/abs/2108.13264), report the mean, median, interquartile mean
+(IQM), and 95% stratified-bootstrap intervals. Resample geometry IDs within geometry
+family, radius, and occupancy-density strata, and preserve the nesting of encoder and
+probe seeds; do not treat voxel queries as independent samples.
+
+For each critical metric, both the mean and IQM must pass its hard threshold. The
+conservative confidence bound may miss a higher-is-better threshold by at most 2
+percentage points or a lower-is-better threshold by at most 0.02 normalized error.
+Report paired probability of improvement against the random encoder and raw-grid
+control, using identical geometry/seed units; it must exceed 0.95 for the
+preregistered normalized aggregate. Include performance profiles showing the fraction
+of critical metric/stratum pairs above every normalized threshold. No single encoder
+seed may miss a critical gate by more than 5 percentage points or 0.05 normalized
+error. Mean plus standard deviation alone is insufficient for certification.
 
 ## Candidate pretraining recipes
 
@@ -372,13 +439,13 @@ full factorial search.
 |---|---|---|
 | R0 | Full autoencoder with class-balanced occupancy reconstruction | Existing baseline and empty-space shortcut check. |
 | R1 | Random-cell masked occupancy modeling | Existing MVM baseline. |
-| R2 | Contiguous patch masking at one scale | Test whether spatial completion is more useful than isolated-cell prediction. |
-| R3 | Hierarchical neighborhood masking and occupancy targets at every active scale | NOMAE-inspired primary candidate. |
-| R4 | R3 + clearance, boundary, and nearest-boundary-direction targets | Geometry-aware candidate inspired by GeoMAE. |
+| R2 | Truncated ESDF prediction with boundary-balanced coordinate sampling | Primary dense-geometry baseline. |
+| R3 | R2 + contiguous frontier-biased masked occupancy at one scale | Test whether spatial completion adds information beyond distance fields. |
+| R4 | R3 + hierarchical neighborhood masks and targets at every active scale | Point-M2AE/NOMAE-inspired primary candidate. |
 | R5 | R4 + reachability, geodesic, and bottleneck-clearance targets | Topology-aware procedural supervision. |
-| R6 | R4 + VICReg consistency across topology-preserving views | Negative-free consistency candidate. |
-| R7 | R4 + contrastive projection head | PointContrast/DepthContrast-style comparison. |
-| R8 | R4 + EMA self-distillation across mask ratios and scales | MM-3DScene-style consistency comparison. |
+| R6 | R4 + physically aligned local VICReg consistency across overlapping scales/views | Negative-free dense-consistency candidate. |
+| R7 | R4 + aligned local contrastive projection head | PointContrast/DepthContrast-style comparison. |
+| R8 | R4 + EMA self-distillation across mask ratios and physically aligned scales | MM-3DScene-style consistency comparison. |
 | R9 | Best of R5-R8 with only additions that passed ablation | Final combined candidate. |
 
 R5 labels come from exact voxel geometry algorithms, not a policy, reward, rollout, or
@@ -388,10 +455,13 @@ RL model. R7's projection head and every decoder or auxiliary head are discarded
 
 ### Masking
 
-For R2 and later, screen mask ratios `0.40, 0.60, 0.75, 0.85` and patch sides
-`2, 4, 8`. Sample occupied-boundary, free-space, and unknown patches separately so a
-batch has declared class coverage. Reject a masking scheme if coordinates, validity
-metadata, or decoder inputs directly reveal the masked occupancy label.
+For masked recipes, screen mask ratios `0.40, 0.60, 0.75, 0.85` and patch sides
+`2, 4, 8`. Every observation must contain at least one nonempty masked patch. Draw
+50% of patch centers from occupied boundaries or observed/unknown frontiers, 30% from
+corridors or ordinary free space, and 20% from unknown regions; audit these shares by
+radius. Compare full-patch loss with a surface/frontier-only target mask. Reject a
+masking scheme if coordinates, validity metadata, or decoder inputs directly reveal
+the masked occupancy label.
 
 Use `0.60` as the first trial rather than assuming the 2D MAE value of `0.75` transfers
 to sparse 3D. Extensive masking can disconnect sparse evidence. Promote a mask ratio
@@ -400,11 +470,16 @@ by frozen-probe score, not by reconstruction loss.
 ### Losses
 
 - Occupancy: class-balanced cross-entropy for occupied/free/unknown; compare focal
-  gamma `0, 1, 2` only if occupied precision-recall remains poor.
-- Clearance and geodesic: Smooth L1 over values normalized by the declared maximum.
+  gamma `0, 1, 2` and full-patch versus surface/frontier-only supervision.
+- ESDF and geodesic: Smooth L1 over values normalized by the declared physical
+  truncation or maximum. Clip ESDF targets symmetrically and report boundary, free,
+  occupied, and saturation-region errors separately.
 - Boundary direction: cosine loss plus a valid-boundary mask.
 - Reachability: balanced BCE; sample equal reachable and unreachable pairs.
-- Consistency: VICReg variance/invariance/covariance terms or an EMA-teacher loss.
+- Consistency: map both views to a common physical frame, intersect validity masks,
+  conservatively pool fine features to the coarse grid, and compare only corresponding
+  local features. Use VICReg variance/invariance/covariance terms or an EMA-teacher
+  stop-gradient loss. Do not minimize unaligned global cosine similarity as a proxy.
 
 Normalize every component by its initial moving standard deviation before applying
 static weights. Start with equal normalized weights. Compare uncertainty or
@@ -427,6 +502,22 @@ comparison:
 Use gradient accumulation when a radius does not fit the effective batch. Contrastive
 runs use the same number of encoded views, not merely the same sample count. Report
 both updates and encoded valid voxels so methods receive comparable compute.
+
+### Training efficiency controls
+
+- Generate occupancy, truncated ESDF, boundary, connectivity, and geodesic targets
+  once from exact geometry code; content-address and reuse them across recipes.
+- Process scale levels sequentially for the memory baseline and accumulate gradients
+  before the optimizer step. A batched-scales variant must report its throughput and
+  peak-memory tradeoff.
+- Use BF16 where supported and FP16 only with dynamic loss scaling. Keep ESDF target
+  generation and certification metrics in FP32 or higher precision.
+- A masked transformer or sparse candidate may skip hidden tokens. A dense CNN must
+  count every processed voxel even when its input value is masked; do not claim MAE-
+  style compute savings unless profiling shows that masked locations were skipped.
+- Enable activation checkpointing only when needed to fit the locked effective batch,
+  and report recomputation time. Compilation and fused kernels are deployment
+  measurements, not changes to the scientific architecture comparison.
 
 ### Augmentation
 
@@ -463,7 +554,8 @@ No encoder training.
 - implement geometry-level splits and dataset hashes;
 - verify occupancy, clearance, boundary, connectivity, geodesic, and bottleneck
   targets against hand-checked micro-scenes;
-- implement majority, random encoder, PCA, and supervised upper references;
+- implement majority, raw conservative-grid, random encoder, PCA, and supervised
+  upper references;
 - lock probe capacities and search spaces; and
 - verify every metric on perfect, empty, random, one-voxel-hole, and broken-corridor
   predictions.
@@ -474,8 +566,8 @@ gate, and no geometry ID crosses splits.
 ### Stage 1: Cheap recipe pilot
 
 Use Tiny, radii through 32, 100,000 unique observations, 10,000 updates, and one seed.
-Run R0-R4 plus the random-weight control. Use ASHA with a 2,000-update grace period to
-screen optimizer, mask, and augmentation choices.
+Run R0-R4 plus the raw-grid and random-weight controls. Use ASHA with a 2,000-update
+grace period to screen optimizer, mask, and augmentation choices.
 
 Exit: retain at most two configurations per recipe. They must beat the random encoder
 on at least three of occupancy, clearance, reachability, and effective rank. Results
@@ -492,25 +584,41 @@ metric by 2 percentage points or lowers a critical normalized error by 10%, whil
 other critical metric regresses more than 2 percentage points. Retain at most three
 recipes.
 
-### Stage 3: Architecture selection
+### Stage 3: Field-of-view and architecture selection
 
 Use the best retained recipe, radii through 32, 1 million observations, 100,000
-updates, and three seeds. Compare:
+updates, and three seeds. First use the Tiny shared pyramid to isolate field-of-view
+construction without a Cartesian sweep:
 
+1. hold four active scales fixed and compare per-level sides `17`, `33`, and `65`;
+2. hold the winning side fixed and compare one, two, four, and all scales available
+   through radius 32; and
+3. keep the smallest side/scale combination within 2 percentage points of the best
+   normalized probe score and within 0.02 normalized error on every critical error.
+
+With that field-of-view contract fixed, compare:
+
+- raw conservative grids with the capacity-matched probe and no learned encoder;
 - current dense `VoxelEncoder3D`;
 - pre-activation dense 3D ResNet;
 - tri-planar 2D encoder;
 - Tiny shared-backbone voxel pyramid;
-- voxel pyramid with per-scale adapters; and
+- pyramid with per-stage FiLM conditioning;
+- pyramid with residual adapters;
+- pyramid with independent per-scale weights;
 - sparse residual encoder if its runtime dependency is available.
 
 The two-branch dilation/Inception variant is tested only against the winning residual
-architecture at matched parameters within 10%.
+architecture at matched parameters within 10%. Compare GroupNorm and LayerNorm only
+on that winner. If its worst-rotation degradation exceeds 3 percentage points or 0.03
+normalized error, add the 24-rotation octahedral-equivariant variant at matched
+parameters and report the activation-memory multiplier. Do not include reflections.
 
 Exit: select one primary and one fallback architecture using frozen-probe score,
 false-open rate, peak memory, and latency. The primary must improve the mean normalized
 probe score by at least 3 percentage points over the current encoder or match it while
-reducing peak memory or latency by at least 25%.
+reducing peak memory or latency by at least 25%. It must also satisfy the raw-grid
+comparison rule; otherwise no learned architecture advances.
 
 ### Stage 4: Radius scaling
 
@@ -569,7 +677,7 @@ The maximum planned run count before early stopping is:
 |---|---:|---:|---:|
 | 1 recipe pilot | up to 24 ASHA trials | 1 | 24 partial |
 | 2 objective selection | 8 recipes | 3 | 24 |
-| 3 architecture selection | up to 7 variants | 3 | 21 |
+| 3 field-of-view and architecture selection | up to 17 staged variants | 3 | 48 |
 | 4 radius scaling | 6 maxima + 1 scratch control | 3 | 21 |
 | 5 data scaling | 7 budgets | 3 | 21 |
 | 6 capacity scaling | 3 families | 3 | 9 |
@@ -583,7 +691,9 @@ but never reuse validation/test observations as pretraining input.
 
 Each run must store resolved configuration, Git commit, dataset/split hashes, encoder
 checkpoint, optimizer state, objective histories, collapse diagnostics, frozen-probe
-configurations, per-geometry predictions, and an environment manifest.
+configurations, per-geometry predictions, per-rotation predictions, stratified-
+bootstrap samples or reproducible indices, IQM and performance-profile inputs, and an
+environment manifest.
 
 Use stable metric prefixes:
 
@@ -598,6 +708,9 @@ probe/reachability/{metric}
 probe/geodesic/{metric}
 probe/topology/{metric}
 robustness/{corruption}/{metric}
+robustness/rotation/{metric}/worst_degradation
+statistics/{metric}/iqm
+statistics/{metric}/probability_of_improvement/{baseline}
 efficiency/{device}/{metric}
 ```
 
@@ -607,8 +720,8 @@ artifacts. A single failed hard gate makes the top-level result `failed`.
 
 ## Recommended first execution
 
-Implement Stage 0 before changing the encoder. Then run Stage 1 with R0, R1, R3, and
-R4 only. This determines whether the existing reconstruction objective has an
-empty-space shortcut and whether multi-scale neighborhood masking plus geometric
-targets improves frozen features. Do not train Base or Large until a Tiny recipe
-passes Stage 2 promotion rules.
+Implement Stage 0 before changing the encoder. Then run Stage 1 with R0, R1, R2, R3,
+and R4. This determines whether the existing reconstruction objective has an empty-
+space shortcut, whether truncated ESDF is a stronger standalone target, and whether
+frontier-biased multi-scale masking adds useful frozen features. Do not train Base or
+Large until a Tiny recipe passes Stage 2 promotion rules.

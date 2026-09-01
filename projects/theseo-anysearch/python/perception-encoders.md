@@ -4,6 +4,7 @@ Status: discovery
 Owner: amadou-6e
 Last reviewed: 2026-09-01
 Tracking issue: [specs#5](https://github.com/amadou-6e/specs/issues/5)
+Literature revision: [specs#9](https://github.com/amadou-6e/specs/issues/9)
 Governing specification: [Model Garden](model-garden.md)
 Related implementation issues:
 [theseo-anysearch#16](https://github.com/amadou-6e/theseo-anysearch/issues/16),
@@ -73,6 +74,14 @@ perception encoder. Otherwise a checkpoint becomes specific to a goal convention
 policy. Planning-derived labels may supervise pretraining, but inference through the
 encoder must require geometry and observation metadata only.
 
+This split is analogous to the task/reward separation in
+[successor features](https://arxiv.org/abs/1606.05312), but it is not a successor-
+feature model. Successor features are policy-conditioned expectations of future
+feature occupancy. This encoder describes current observed geometry and has no policy,
+transition model, discount, or future-occupancy semantics. The analogy justifies a
+reusable goal-independent boundary; it does not justify calling its latent a successor
+feature.
+
 ## Evidence from 2D work
 
 | Work | Relevant evidence | Consequence for Theseo |
@@ -84,10 +93,32 @@ encoder must require geometry and observation metadata only.
 | [RegNet](https://arxiv.org/abs/2003.13678) | Simple, regular stage-width rules can outperform heavily customized scaling at similar FLOPs. | Prefer a small explicit model family that can be benchmarked over ad hoc per-radius networks. |
 | [Masked Autoencoders](https://arxiv.org/abs/2111.06377) | A lightweight decoder and a heavily masked input can make self-supervised pretraining efficient while the decoder is discarded for transfer. | Use patch masking and disposable pretraining decoders; do not require the policy to load them. |
 | [Value Iteration Networks](https://arxiv.org/abs/1602.02867) and [Gated Path Planning Networks](https://arxiv.org/abs/1806.06408) | Planning structure can be represented by differentiable convolutional or recurrent computation; the gated variant also reports optimization advantages. | Add planning-aware proxy tasks, but keep iterative planning in the downstream head or planner. |
+| [Cognitive Mapping and Planning](https://arxiv.org/abs/1702.03920) and [Neural A*](https://arxiv.org/abs/2009.07476) | Learned spatial maps or guidance fields can be coupled to explicit planning computation. | Preserve dense local features, but keep mapping memory and search outside the reusable observation encoder. |
+| [SwAV](https://arxiv.org/abs/2006.09882), [DINO](https://arxiv.org/abs/2104.14294), [DenseCL](https://arxiv.org/abs/2011.09157), [PixPro](https://arxiv.org/abs/2011.10043), and [VADeR](https://arxiv.org/abs/2011.05499) | Cross-view agreement can be learned globally or at corresponding dense locations; dense methods preserve spatial correspondence that global instance objectives can discard. | Align local voxel features over known physical overlap, not just whole-observation vectors. |
 
 The 2D literature supports residual multi-scale encoders and masked pretraining. It
 does not establish that a direct 3D translation will be efficient: a 3D kernel and
 dense feature map have a much larger memory and compute footprint.
+
+### Evidence for frozen embodied encoders
+
+[R3M](https://arxiv.org/abs/2203.12601),
+[MVP](https://arxiv.org/abs/2203.06173),
+[PVR](https://arxiv.org/abs/2203.03580),
+[VIP](https://arxiv.org/abs/2210.00030), and
+[VC-1](https://arxiv.org/abs/2303.18240) provide direct precedent for placing a
+pretrained visual encoder behind a frozen boundary and training a small task-specific
+module. The evidence is mixed rather than universal: VC-1 reports that no single
+representation dominates every embodied task, and
+[Hansen et al.](https://arxiv.org/abs/2212.05749) find that in-domain training from
+scratch can be competitive and that fine-tuning often closes domain gaps. MVP also
+shows that masked pretraining can scale to a large frozen encoder reused by multiple
+robot tasks.
+
+For Theseo, frozen transfer is therefore a hypothesis with a strong systems benefit,
+not an assumed quality win. Standalone probes must beat raw-grid and random-feature
+controls before downstream use, and later comparisons must include frozen, adapted,
+fully fine-tuned, and from-scratch variants at equal data and compute.
 
 ## Evidence from 3D work
 
@@ -96,14 +127,20 @@ dense feature map have a much larger memory and compute footprint.
 | Dense voxel CNN | [VoxelNet](https://arxiv.org/abs/1711.06396) | Regular kernels, mature GPU support, and direct voxel feature learning. | Cubic memory makes large radii infeasible. |
 | Submanifold sparse CNN | [Submanifold Sparse Convolutional Networks](https://arxiv.org/abs/1706.01307) and [Minkowski convolutions](https://arxiv.org/abs/1904.08755) | Compute follows active coordinates and can support deep residual U-Nets. | Free/unknown semantics and coordinate construction must be designed; performance depends on occupancy density and sparse-kernel support. |
 | Octree CNN | [OctNet](https://arxiv.org/abs/1611.05009) and [O-CNN](https://arxiv.org/abs/1712.01537) | Allocates resolution hierarchically and has demonstrated high-resolution 3D analysis. | More complex data structures, batching, kernels, and checkpoint contracts. |
+| Octree transformer | [OctFormer](https://arxiv.org/abs/2305.03045) | Uses octree-ordered windows to scale attention with occupied structure. | Octree construction and custom kernels increase implementation and deployment cost. |
 | Point encoder | [PointNet](https://arxiv.org/abs/1612.00593) and [KPConv](https://arxiv.org/abs/1904.08889) | Avoids a full grid and handles irregular geometry or density. | Conversion from known-free voxel observations to points can discard occupancy topology or become dense itself. |
+| Serialized point transformer | [Point Transformer V3](https://arxiv.org/abs/2312.10035) | Scales point attention using serialization and reports a favorable accuracy/efficiency tradeoff. | Known-free volume still needs an explicit, potentially large tokenization. |
+| Tri-plane representation | [TPVFormer](https://arxiv.org/abs/2302.07817) | Represents 3D context on three 2D planes and recovers dense occupancy efficiently. | Projection is learned for semantic occupancy; thin-barrier topology must be independently validated. |
+| Implicit field | [Occupancy Networks](https://arxiv.org/abs/1812.03828), [DeepSDF](https://arxiv.org/abs/1901.05103), [Convolutional Occupancy Networks](https://arxiv.org/abs/2003.04618), and [iSDF](https://arxiv.org/abs/2204.02296) | Continuous occupancy or distance queries avoid allocating a dense output grid and support geometric interpolation. | Query cost, local-detail fidelity, and unknown-space semantics can be poor fits for repeated discrete planning queries. |
 | Contrastive 3D pretraining | [PointContrast](https://arxiv.org/abs/2007.10985) and [DepthContrast](https://arxiv.org/abs/2101.02691) | Demonstrates transfer of self-supervised 3D features across tasks, datasets, and input formats. | Augmentations must preserve navigation-relevant distinctions and positive-pair construction can dominate results. |
-| Masked voxel pretraining | [Occupancy-MAE](https://arxiv.org/abs/2206.09900) | Predicts masked voxel occupancy and reports transfer to several downstream 3D tasks. | Raw occupancy reconstruction can be dominated by empty cells and may not encode connectivity. |
+| Masked hierarchical pretraining | [Point-M2AE](https://arxiv.org/abs/2205.14401), [Occupancy-MAE](https://arxiv.org/abs/2206.09900), and [Voxel-MAE](https://arxiv.org/abs/2207.00531) | Multi-scale masking and voxel reconstruction transfer to frozen or fine-tuned 3D tasks; Voxel-MAE explicitly distinguishes empty from non-empty voxels. | Raw occupancy reconstruction can be dominated by empty cells and may not encode connectivity. |
+| Distance-field mapping | [Voxblox](https://arxiv.org/abs/1611.03631) and [FIESTA](https://arxiv.org/abs/1903.02144) | Truncated Euclidean signed-distance fields are practical mapping products for collision checking and planning. | A learned approximation must preserve conservative obstacle boundaries and cannot replace exact collision checks. |
 
 No reviewed work directly validates a frozen, goal-independent encoder for Theseo's
 voxel path-finding observations over the full radius range. The closest evidence
-supports sparse or hierarchical spatial processing plus masked or contrastive
-pretraining. This is a transfer hypothesis that must be tested on planner outcomes.
+supports sparse or hierarchical spatial processing, geometry-aware masked objectives,
+and physically aligned dense consistency. The checkpoint must first pass standalone
+geometric certification; planner outcomes are a separate post-certification test.
 
 ## Architecture candidates
 
@@ -123,7 +160,9 @@ submanifold sparse residual blocks, downsampling only at stage transitions.
 - Best role: high-resolution candidate when active coordinates remain sparse.
 - Advantages: preserves exact coordinates without allocating empty feature maps.
 - Risks: sparse input policy changes semantics; active count can approach dense count;
-  deployment inherits a specialized sparse-convolution dependency.
+  deployment inherits a specialized sparse-convolution dependency such as
+  [TorchSparse](https://arxiv.org/abs/2204.10319) or `spconv`, whose supported devices,
+  operating systems, and serialization behavior must be demonstrated.
 
 ### C. Octree residual encoder
 
@@ -133,7 +172,8 @@ and pool homogeneous free or occupied regions.
 - Best role: long-term candidate for extremely large or irregular environments.
 - Advantages: resolution follows geometric complexity rather than bounding volume.
 - Risks: greatest implementation and batching cost; requires an octree-aware
-  observation and checkpoint schema.
+  observation and checkpoint schema. OctFormer is the required modern comparison if
+  this family advances beyond paper analysis.
 
 ### D. Tri-planar or multi-view 2D encoder
 
@@ -142,7 +182,8 @@ Project or slice the voxel volume onto orthogonal planes and reuse a 2D backbone
 - Best role: low-cost baseline and ablation against the existing tri-planar model.
 - Advantages: efficient, well-supported, and easy to initialize from 2D work.
 - Risks: occlusion and projection collisions remove 3D topology; center slices miss
-  obstacles away from the planes.
+  obstacles away from the planes. TPVFormer motivates a learned tri-plane baseline,
+  but does not remove this topology risk.
 
 ### E. Fixed-grid multiresolution residual encoder
 
@@ -153,7 +194,30 @@ each grid with shared residual stages, and fuse one token per scale.
 - Advantages: bounded tensor dimensions, ordinary dense PyTorch operations, exact
   local detail, logarithmic growth in the number of scale levels, and shared weights.
 - Risks: coarse cells can hide thin barriers unless aggregation is conservative;
-  direct multistride sampling must be added to the environment boundary.
+  direct multistride sampling must be added to the environment boundary. Published
+  precedent for this exact centered, fixed-grid construction is thin. Its closest
+  analogues are feature pyramids, [Multigrid Neural Memory](https://arxiv.org/abs/1906.05948),
+  and local/global map hierarchies such as
+  [Active Neural SLAM](https://arxiv.org/abs/2004.05155); it remains an engineering
+  hypothesis that must win the ablation.
+
+### F. Octahedral-equivariant residual pyramid
+
+Replace ordinary convolutions in candidate E with cube-rotation-equivariant group
+convolutions, following [G-CNNs](https://arxiv.org/abs/1602.07576) and
+[CubeNet](https://arxiv.org/abs/1804.04458), or benchmark a
+continuous alternative derived from
+[3D Steerable CNNs](https://arxiv.org/abs/1807.02547).
+
+- Best role: an orientation-robust candidate if augmentation leaves a material
+  worst-orientation gap.
+- Advantages: encodes right-angle rotation structure by construction and can reduce
+  augmentation burden.
+- Risks: orientation channels multiply activation cost and complicate checkpoint
+  compatibility. The primary discrete group is the 24 proper cube rotations. The 48
+  elements of the full octahedral group include reflections and are allowed only when
+  input channels, coordinate handedness, and downstream semantics are reflection
+  symmetric.
 
 ## Residual and Inception decision
 
@@ -164,10 +228,11 @@ channel shapes agree. Use a projected skip only at a stage transition. This make
 depth ablations practical and keeps the backbone compatible with both dense and
 sparse convolutions.
 
-Use GroupNorm rather than BatchNorm in the initial experiments. GroupNorm avoids
-running-statistics drift between pretraining and small-batch RL inference, and its
-behavior is stable when the encoder is frozen. This is a project constraint rather
-than a claim from the papers above and must be tested against the current model.
+Use [GroupNorm](https://arxiv.org/abs/1803.08494) rather than BatchNorm in the initial
+experiments. GroupNorm avoids mutable running statistics and remains well defined for
+small batches. Benchmark [LayerNorm](https://arxiv.org/abs/1607.06450) at matched
+capacity because token-based and sparse variants may prefer per-sample normalization.
+The choice is not certified until the frozen-probe and latency comparison is complete.
 
 ### Full Inception modules: do not make them the default
 
@@ -253,6 +318,12 @@ skip. Global average and max pooling produce one feature vector per scale. A lea
 embedding of `log2(stride)`, requested radius, and valid fraction is added to each
 scale token.
 
+Weight sharing is the default, but scale conditioning must be stronger than adding a
+token after pooling. Benchmark a small FiLM adapter at every residual stage: an MLP
+maps `log2(stride)`, requested radius, and valid fraction to per-channel affine
+parameters. Compare shared weights, shared weights plus FiLM, bottleneck residual
+adapters, and independent per-scale weights in that order.
+
 Process scales sequentially during the first implementation so peak activation
 memory is bounded by one 33-cube backbone pass. Batched scale processing is an
 optional throughput optimization only after memory measurements exist.
@@ -264,12 +335,17 @@ scale tokens. Missing levels use an attention mask. The encoder returns:
 
 - `global_embedding`: a fixed 256-dimensional vector for the current model-garden
   and RL integration;
-- `scale_embeddings`: optional per-scale vectors for spatial or search-specific
-  heads; and
+- `scale_embeddings`: per-scale vectors before fusion;
+- `local_feature_volume`: a stride-1 feature volume matching the finest input side
+  (`33 x 33 x 33` by default), formed by an FPN/U-Net-style lightweight lateral
+  decoder over that level's stages and returned with its validity mask for coordinate
+  and dense heads; and
 - metadata containing active strides and validity fractions.
 
-The first implementation may expose only `global_embedding` to maintain the existing
-garden contract, but checkpoints must record whether scale tokens are available.
+The first model-garden integration may expose only `global_embedding` to an existing
+consumer, but the encoder API and checkpoint metadata must define all three outputs.
+This prevents the global vector from becoming an irreversible bottleneck for dense
+geometry and search heads.
 
 ### Capacity families
 
@@ -291,14 +367,20 @@ per-level grid size; it must not mean constructing the full dense radius cube.
 
 ### Required geometric objectives
 
-1. **Masked occupancy modeling**: mask contiguous 3D patches, encode visible input,
-   and reconstruct occupied/free/unknown classes with a lightweight decoder. Compute
-   loss on masked valid cells and class-balance it so empty space cannot dominate.
-2. **Truncated clearance or signed-distance prediction**: regress distance to the
-   nearest obstacle up to a declared truncation. This makes corridor width and local
-   safety margin observable in the latent space.
-3. **Cross-scale consistency**: require compatible representations for the same
-   physical region observed at adjacent strides while retaining a scale embedding.
+1. **Truncated Euclidean signed-distance prediction**: regress signed distance to the
+   nearest obstacle, clipped to a declared physical truncation. This is the primary
+   dense target because it exposes boundary location, corridor width, and safety
+   margin while remaining grounded in practical ESDF mapping work.
+2. **Masked semantic occupancy modeling**: mask contiguous, nonempty 3D patches and
+   reconstruct occupied/free/unknown classes with a lightweight decoder. Bias patch
+   selection toward obstacle boundaries and frontiers, report surface-only loss, and
+   compare class-balanced cross-entropy with focal loss so empty space cannot dominate.
+3. **Physically aligned cross-scale consistency**: transform both views into the same
+   world or agent-centered coordinate frame, compute their exact valid overlap, pool
+   fine local features into coarse cells with the declared conservative mapping, and
+   compare only corresponding valid locations. Use a stop-gradient teacher or VICReg
+   variance/covariance terms to prevent collapse. Global latent cosine is diagnostic,
+   not the training target, unless the architecture defines its transformation law.
 
 ### Planning-aware auxiliary objectives
 
@@ -312,6 +394,15 @@ pretraining:
 
 These tasks should teach connectivity and obstacle consequences without injecting a
 specific runtime goal into the frozen encoder interface.
+
+Learned reachability and distance functions have precedents in
+[Semi-parametric Topological Memory](https://arxiv.org/abs/1803.00653),
+[Search on the Replay Buffer](https://arxiv.org/abs/1906.05253), and
+[Sparse Graphical Memory](https://arxiv.org/abs/2003.06417). Those systems learn
+task- or policy-dependent graph relations; Theseo uses their evidence only to motivate
+frozen geometric probes and exact offline labels, not to place a policy in the encoder.
+[Universal Value Function Approximators](https://arxiv.org/abs/1506.02438) provide
+the broader goal-conditioned value precedent, with the same boundary caveat.
 
 ### Optional contrastive objective
 
@@ -358,7 +449,8 @@ Add these fields to metadata before publishing this architecture:
 - pretraining objectives and weights;
 - geometry corpus, split, sampler version, and dataset hash;
 - coordinate frame, rotation augmentation, and voxel-size conventions;
-- whether optional scale embeddings are stored; and
+- shapes, strides, masks, and dtypes for the global embedding, scale embeddings, and
+  local feature volume;
 - benchmark results for frozen, top-layer, and full fine-tuning.
 
 Loading must fail with a clear compatibility error when observation semantics,
@@ -377,12 +469,14 @@ standalone gates and are not part of model-garden pretraining validation.
 
 Benchmark at least:
 
-1. the current dense `VoxelEncoder3D` at feasible radii;
-2. the existing tri-planar 2D encoder;
-3. a plain dense 3D CNN with matched parameters;
-4. the dense residual baseline;
-5. `voxel_pyramid_resnet_3d`; and
-6. one sparse residual candidate if the dependency and sampler are available.
+1. raw conservative multiscale grids consumed directly by the same capacity-limited
+   probe or downstream head, with no learned encoder;
+2. the current dense `VoxelEncoder3D` at feasible radii;
+3. the existing tri-planar 2D encoder;
+4. a plain dense 3D CNN with matched parameters;
+5. the dense residual baseline;
+6. `voxel_pyramid_resnet_3d`; and
+7. one sparse residual candidate if the dependency and sampler are available.
 
 The octree candidate enters only after the fixed-grid pyramid has established that
 large-radius context improves planner outcomes.
@@ -414,15 +508,24 @@ At a fixed training budget and over at least three seeds, report:
 
 Compare random initialization, frozen pretraining, top-layer fine-tuning, and full
 fine-tuning. A reconstruction score alone is not sufficient evidence for adoption.
+Include an exact full-observability planner as an oracle ceiling and a classical
+[frontier explorer](https://doi.org/10.1109/CIRA.1997.613851) as a non-learned
+partial-observability reference. Report SPL using the definition from
+[Anderson et al.](https://arxiv.org/abs/1807.06757). These are post-certification
+references only; none enters standalone encoder acceptance.
 
 ### Required ablations
 
 - plain blocks versus pre-activation residual blocks;
 - residual baseline versus the budgeted two-branch dilation variant;
 - single-scale versus multiresolution input;
-- shared versus per-scale backbone weights;
+- per-level sides `17`, `33`, and `65`, with scale count held fixed;
+- one, two, four, and all available scales, with per-level side held fixed;
+- shared weights versus per-stage FiLM, residual adapters, and per-scale weights;
+- GroupNorm versus LayerNorm;
+- augmentation-only rotations versus the octahedral-equivariant candidate;
 - masked occupancy alone versus clearance and reachability auxiliaries;
-- global embedding alone versus optional scale tokens; and
+- global embedding alone versus scale tokens and the dense local feature volume; and
 - max radius 32, 64, 128, 256, and 512 at matched local resolution.
 
 ### Acceptance gates
@@ -447,15 +550,22 @@ for the target hardware before the benchmark begins.
   are candidate additions, subject to semantics tests.
 - **Shared weights across strides**: weight sharing controls parameters but local
   patterns can have different meaning at different physical scales. Scale embeddings
-  may be insufficient; compare per-stage adapters before duplicating the backbone.
+  may be insufficient; compare per-stage FiLM and residual adapters before duplicating
+  the backbone.
 - **Global vector bottleneck**: one vector fits the current policy contract but may
-  discard spatial correspondence needed by search. Optional scale tokens preserve an
-  upgrade path.
+  discard spatial correspondence needed by search. Scale tokens and the required local
+  feature volume preserve an upgrade path.
 - **Synthetic-to-real transfer**: box obstacles alone are not adequate. The corpus
   should mix procedural scenes, imported geometry, narrow passages, and held-out
   topology families.
 - **Rotation handling**: cube rotations are cheap augmentations, but full SO(3)
-  equivariance is not part of the first candidate. Measure orientation sensitivity.
+  equivariance is not part of the first candidate. Report mean, dispersion, and
+  worst-case probe quality over all 24 proper cube rotations. Benchmark discrete
+  octahedral equivariance if the worst-case gap exceeds the certification limit.
+- **Frozen transfer can fail**: domain mismatch or a sufficiently large in-domain
+  training set can make from-scratch or fine-tuned encoders competitive. Publication
+  requires raw-grid, random-feature, adapted, and from-scratch controls rather than an
+  assumption that freezing is beneficial.
 - **Dynamic obstacles**: this review covers static 3D observations. Time should be a
   separate encoder or explicit temporal extension, not an undocumented extra channel.
 - **Sparse backend portability**: sparse and octree variants remain candidates until
@@ -463,9 +573,9 @@ for the target hardware before the benchmark begins.
 
 ## Recommended next experiment
 
-Implement only the data contract, dense radius-32 residual baseline, and Tiny/Base
-fixed-grid pyramid first. Pretrain with masked occupancy, clearance, and reachability;
-freeze the encoders; then compare identical planner heads on held-out geometries at
-radii 16, 32, 64, 128, 256, and 512. This experiment determines whether wider context
-and the frozen boundary help before investing in sparse kernels, octrees, or a larger
-capacity family.
+Implement only the data contract, raw-grid control, dense radius-32 residual baseline,
+and Tiny fixed-grid pyramid first. Pretrain with truncated ESDF, frontier-biased
+masked occupancy, and physically aligned cross-scale consistency; freeze the encoders;
+then run the standalone probe plan. Screen per-level sides `17`, `33`, and `65` and
+the number of scales before scaling radius or capacity. No planner experiment starts
+until one checkpoint passes standalone certification.
