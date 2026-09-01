@@ -1,5 +1,8 @@
 # Editor — Layout Spec
 
+> UI authority: [editor.drawio](editor.drawio). This layout is a derived reading aid, not
+> an independent source of UI behavior.
+
 ## Purpose
 The core writing surface. The user reads, edits, and requests AI revisions on a generated or manually created article.
 

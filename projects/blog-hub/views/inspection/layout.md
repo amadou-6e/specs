@@ -1,5 +1,8 @@
 # Inspection — Layout Spec
 
+> UI authority: [inspection.drawio](inspection.drawio). This layout is a derived reading
+> aid, not an independent source of UI behavior.
+
 ## Purpose
 Shows the per-platform gate result after a draft has been created. The user diagnoses failures and decides whether to proceed to publish.
 

@@ -1,5 +1,8 @@
 # Settings — Components Spec
 
+> UI authority: [settings.drawio](settings.drawio). This component inventory is a
+> searchable projection and must not introduce states absent from the Draw.io.
+
 ---
 
 ## SettingsNav

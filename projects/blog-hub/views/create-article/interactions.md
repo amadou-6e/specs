@@ -1,6 +1,9 @@
 # Create Article — Interactions
 
-Source: `screens/create-article/v1.html`
+Authority: [create-article.drawio](create-article.drawio). This table is a searchable
+projection and must not introduce behavior absent from the Draw.io.
+
+Implementation reference: `screens/create-article/v1.html`
 
 **Type key:**
 - **Self** — stays on view, no navigation

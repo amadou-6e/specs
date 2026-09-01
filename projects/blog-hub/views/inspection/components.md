@@ -1,5 +1,8 @@
 # Inspection — Components Spec
 
+> UI authority: [inspection.drawio](inspection.drawio). This component inventory is a
+> searchable projection and must not introduce states absent from the Draw.io.
+
 ---
 
 ## GateSummaryBar

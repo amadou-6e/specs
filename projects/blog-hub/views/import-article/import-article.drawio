@@ -1,0 +1,478 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mxfile host="Electron" agent="Codex" pages="2">
+  <diagram id="import-upload" name="Import Article · Upload">
+    <mxGraphModel dx="2002" dy="1380" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200.0" pageHeight="2190.0" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="319" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0F1117;strokeColor=#171914;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="1250" width="1800" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="320" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0F1117;strokeColor=#252A38;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="60" width="1800" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="321" parent="1" style="rounded=1;arcSize=5;whiteSpace=wrap;html=1;fillColor=#6366F1;strokeColor=none;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="27.5" width="27.5" x="80" y="57.5" as="geometry" />
+        </mxCell>
+        <mxCell id="322" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=none;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="3" width="12.5" x="87.5" y="65" as="geometry" />
+        </mxCell>
+        <mxCell id="323" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=none;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="3" width="10" x="87.5" y="72.5" as="geometry" />
+        </mxCell>
+        <mxCell id="324" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=16.8;fontColor=#E8EAF2;fontStyle=1;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="BlogHub" vertex="1">
+          <mxGeometry height="40" width="200" x="117.5" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="325" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14.7;fontColor=#E8EAF2;fontStyle=1;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="Articles" vertex="1">
+          <mxGeometry height="40" width="145" x="710" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="326" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6366F1;strokeColor=none;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="3" width="95" x="735" y="95" as="geometry" />
+        </mxCell>
+        <mxCell id="327" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14.7;fontColor=#5A6080;fontStyle=0;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="Queue" vertex="1">
+          <mxGeometry height="40" width="145" x="875" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="328" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14.7;fontColor=#5A6080;fontStyle=0;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="Settings" vertex="1">
+          <mxGeometry height="40" width="145" x="1040" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="329" parent="1" style="ellipse;aspect=fixed;html=1;fillColor=#4ADE80;strokeColor=none;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="7.5" width="7.5" x="1495" y="65" as="geometry" />
+        </mxCell>
+        <mxCell id="330" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=12.6;fontColor=#5A6080;fontStyle=0;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="35" width="230" x="1510" y="52.5" as="geometry" />
+        </mxCell>
+        <mxCell id="331" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0F1117;strokeColor=#252A38;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="95" width="1800" x="40" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="332" parent="1" style="ellipse;aspect=fixed;html=1;fillColor=#181C27;strokeColor=none;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="35" width="35" x="372.5" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="333" parent="1" style="ellipse;aspect=fixed;html=1;fillColor=none;strokeColor=#6366F1;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="35" width="35" x="372.5" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="334" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14.7;fontColor=#6366F1;fontStyle=1;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="1" vertex="1">
+          <mxGeometry height="35" width="35" x="372.5" y="117.5" as="geometry" />
+        </mxCell>
+        <mxCell id="335" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12.6;fontColor=#E8EAF2;fontStyle=1;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="Upload file" vertex="1">
+          <mxGeometry height="25" width="240" x="270" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="336" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#252A38;strokeColor=none;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="3" width="930" x="475" y="137.5" as="geometry" />
+        </mxCell>
+        <mxCell id="337" parent="1" style="ellipse;aspect=fixed;html=1;fillColor=#1A1E2A;strokeColor=none;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="35" width="35" x="1472.5" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="338" parent="1" style="ellipse;aspect=fixed;html=1;fillColor=none;strokeColor=#252A38;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="35" width="35" x="1472.5" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="339" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14.7;fontColor=#5A6080;fontStyle=1;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="2" vertex="1">
+          <mxGeometry height="35" width="35" x="1472.5" y="117.5" as="geometry" />
+        </mxCell>
+        <mxCell id="340" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12.6;fontColor=#5A6080;fontStyle=0;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="Review" vertex="1">
+          <mxGeometry height="25" width="240" x="1370" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="341" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=21.0;fontColor=#E8EAF2;fontStyle=1;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="Upload an article" vertex="1">
+          <mxGeometry height="45" width="550" x="440" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="342" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=14.7;fontColor=#5A6080;fontStyle=0;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="Drop a file or click to browse. Accepts .md, .zip, .html, or .docx." vertex="1">
+          <mxGeometry height="35" width="900" x="440" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="343" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#0F1117;strokeColor=#3A3F52;dashed=1;dashPattern=4 4;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="275" width="1000" x="440" y="365" as="geometry" />
+        </mxCell>
+        <mxCell id="344" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14.7;fontColor=#E8EAF2;fontStyle=1;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="Drop your file here" vertex="1">
+          <mxGeometry height="30" width="275" x="802.5" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="345" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12.6;fontColor=#6366F1;fontStyle=0;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="or click to browse" vertex="1">
+          <mxGeometry height="30" width="250" x="815" y="485" as="geometry" />
+        </mxCell>
+        <mxCell id="346" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0F1117;strokeColor=#252A38;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="95" width="1800" x="40" y="1195" as="geometry" />
+        </mxCell>
+        <mxCell id="347" parent="1" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#6366F1;strokeColor=none;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="7.5" width="25" x="920" y="1231.25" as="geometry" />
+        </mxCell>
+        <mxCell id="348" parent="1" style="ellipse;aspect=fixed;html=1;fillColor=#252A38;strokeColor=none;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="7.5" width="7.5" x="952.5" y="1231.25" as="geometry" />
+        </mxCell>
+        <mxCell id="349" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#3A3A86;strokeColor=#3A3A86;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="45" width="120" x="1680" y="1212.5" as="geometry" />
+        </mxCell>
+        <mxCell id="350" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14.7;fontColor=#8A8FB0;fontStyle=1;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="Next →" vertex="1">
+          <mxGeometry height="40" width="120" x="1680" y="1215" as="geometry" />
+        </mxCell>
+        <mxCell id="import-upload-icon" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=20;fontColor=#3A3F52;fontStyle=0;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="⇧" vertex="1">
+          <mxGeometry height="35" width="40" x="920" y="395" as="geometry" />
+        </mxCell>
+        <mxCell id="import-upload-types" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10.5;fontColor=#3A3F52;fontStyle=0;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value=".md · .zip · .html · .docx" vertex="1">
+          <mxGeometry height="25" width="250" x="815" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="import-upload-transitions-title" value="IMPORT ARTICLE · SOURCE TRANSITIONS" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;locked=1;fontSize=24;fontColor=#171914;fontStyle=1;" vertex="1" parent="1" bloghubSection="import-upload-transitions">
+          <mxGeometry x="60" y="1395.0" width="2080" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="import-upload-transitions-subtitle" value="Upload and connected-platform paths converge on the same review state." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;locked=1;fontSize=14;fontColor=#747970;fontStyle=0;" vertex="1" parent="1" bloghubSection="import-upload-transitions">
+          <mxGeometry x="60" y="1438.0" width="2080" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="import-upload-transitions-band-0" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;" vertex="1" parent="1" bloghubSection="import-upload-transitions">
+          <mxGeometry x="40" y="1500.0" width="2120" height="650" as="geometry" />
+        </mxCell>
+        <mxCell id="import-upload-transitions-band-0-label" value="CHOOSE SOURCE" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;locked=1;fontSize=12;fontColor=#747970;fontStyle=1;" vertex="1" parent="1" bloghubSection="import-upload-transitions">
+          <mxGeometry x="75" y="1530.0" width="390" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="import-upload-transitions-band-0-detail" value="Entry mode is fixed by the route; Cancel returns to the caller." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;locked=1;fontSize=13;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="import-upload-transitions">
+          <mxGeometry x="75" y="1566.0" width="370" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="import-upload-transitions-entry" value="&lt;b&gt;Entry mode&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Upload or platform&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;fontFamily=Arial;fontSize=15;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="import-upload-transitions">
+          <mxGeometry x="430" y="1670.0" width="270" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="import-upload-transitions-file" value="&lt;b&gt;File drop&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Accept .md only&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;fontFamily=Arial;fontSize=15;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="import-upload-transitions">
+          <mxGeometry x="800" y="1590.0" width="270" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="import-upload-transitions-platform" value="&lt;b&gt;Platform picker&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Connected platforms&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;fontFamily=Arial;fontSize=15;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="import-upload-transitions">
+          <mxGeometry x="800" y="1790.0" width="270" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="import-upload-transitions-draft" value="&lt;b&gt;Draft list&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Select remote draft&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;fontFamily=Arial;fontSize=15;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="import-upload-transitions">
+          <mxGeometry x="1170" y="1790.0" width="270" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="import-upload-transitions-review" value="&lt;b&gt;Review&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Editable title and preview&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#2B3141;fontFamily=Arial;fontSize=15;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="import-upload-transitions">
+          <mxGeometry x="1540" y="1670.0" width="270" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="import-upload-transitions-error" value="&lt;b&gt;Source error&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Stay and explain&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#2B3141;fontFamily=Arial;fontSize=15;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="import-upload-transitions">
+          <mxGeometry x="1170" y="1970.0" width="270" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="import-upload-transitions-edge-1" value="IM-14/15 · upload" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="import-upload-transitions-entry" target="import-upload-transitions-file" bloghubSection="import-upload-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="import-upload-transitions-edge-2" value="IM-05 · platform" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="import-upload-transitions-entry" target="import-upload-transitions-platform" bloghubSection="import-upload-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="import-upload-transitions-edge-3" value="SYSTEM · valid markdown" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="import-upload-transitions-file" target="import-upload-transitions-review" bloghubSection="import-upload-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="import-upload-transitions-edge-4" value="SYSTEM · fetched" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="import-upload-transitions-platform" target="import-upload-transitions-draft" bloghubSection="import-upload-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="import-upload-transitions-edge-5" value="IM-11/24 · Next" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="import-upload-transitions-draft" target="import-upload-transitions-review" bloghubSection="import-upload-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="import-upload-transitions-edge-6" value="SYSTEM · invalid" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="import-upload-transitions-file" target="import-upload-transitions-error" bloghubSection="import-upload-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="import-upload-transitions-edge-7" value="SYSTEM · fetch failed" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="import-upload-transitions-draft" target="import-upload-transitions-error" bloghubSection="import-upload-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="import-upload-transitions-edge-8" value="IM-17/21 · Retry" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="import-upload-transitions-error" target="import-upload-transitions-entry" bloghubSection="import-upload-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-upload-badge-0" value="IM-01" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-upload">
+          <mxGeometry x="700" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-upload-badge-1" value="IM-02" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-upload">
+          <mxGeometry x="875" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-upload-badge-2" value="IM-03" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-upload">
+          <mxGeometry x="1040" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-upload-badge-3" value="IM-14–16" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-upload">
+          <mxGeometry x="1030" y="390" width="92" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-upload-badge-4" value="IM-24" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-upload">
+          <mxGeometry x="1710" y="1185" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-upload-legend-background" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-upload">
+          <mxGeometry x="1350" y="300" width="700" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-upload-legend-title" value="INTERACTION INDEX" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=18;fontColor=#171914;fontStyle=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-upload">
+          <mxGeometry x="1378" y="320" width="644" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-upload-legend-help" value="Amber IDs mark interactive geometry. Matching edge IDs show the user action; SYSTEM marks automatic work." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#747970;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-upload">
+          <mxGeometry x="1378" y="354" width="644" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-upload-badge-1000" value="IM-01–03" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-upload">
+          <mxGeometry x="1378.0" y="405.0" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-upload-legend-text-0" value="Navigation" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-upload">
+          <mxGeometry x="1478.0" y="403.0" width="536.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-upload-badge-1001" value="IM-04" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-upload">
+          <mxGeometry x="1378.0" y="460.25" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-upload-legend-text-1" value="Open platform Settings" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-upload">
+          <mxGeometry x="1478.0" y="458.25" width="536.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-upload-badge-1002" value="IM-05/06" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-upload">
+          <mxGeometry x="1378.0" y="515.5" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-upload-legend-text-2" value="Choose connected platform" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-upload">
+          <mxGeometry x="1478.0" y="513.5" width="536.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-upload-badge-1003" value="IM-07–13" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-upload">
+          <mxGeometry x="1378.0" y="570.75" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-upload-legend-text-3" value="Search and select remote draft" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-upload">
+          <mxGeometry x="1478.0" y="568.75" width="536.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-upload-badge-1004" value="IM-14–16" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-upload">
+          <mxGeometry x="1378.0" y="626.0" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-upload-legend-text-4" value="Browse, drop, or drag file" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-upload">
+          <mxGeometry x="1478.0" y="624.0" width="536.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-upload-badge-1005" value="IM-17" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-upload">
+          <mxGeometry x="1378.0" y="681.25" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-upload-legend-text-5" value="Retry invalid upload" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-upload">
+          <mxGeometry x="1478.0" y="679.25" width="536.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-upload-badge-1006" value="IM-22" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-upload">
+          <mxGeometry x="1378.0" y="736.5" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-upload-legend-text-6" value="Back or return" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-upload">
+          <mxGeometry x="1478.0" y="734.5" width="536.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-upload-badge-1007" value="IM-24" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-upload">
+          <mxGeometry x="1378.0" y="791.75" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-upload-legend-text-7" value="Continue to Review" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-upload">
+          <mxGeometry x="1478.0" y="789.75" width="536.0" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="import-review" name="Import Article · Review">
+    <mxGraphModel dx="2002" dy="1380" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1880.0" pageHeight="2260.0" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="356" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0F1117;strokeColor=#171914;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="1250" width="1800" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="357" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0F1117;strokeColor=#252A38;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="60" width="1800" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="358" parent="1" style="rounded=1;arcSize=5;whiteSpace=wrap;html=1;fillColor=#6366F1;strokeColor=none;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="27.5" width="27.5" x="80" y="57.5" as="geometry" />
+        </mxCell>
+        <mxCell id="359" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=none;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="3" width="12.5" x="87.5" y="65" as="geometry" />
+        </mxCell>
+        <mxCell id="360" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=none;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="3" width="10" x="87.5" y="72.5" as="geometry" />
+        </mxCell>
+        <mxCell id="361" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=16.8;fontColor=#E8EAF2;fontStyle=1;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="BlogHub" vertex="1">
+          <mxGeometry height="40" width="200" x="117.5" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="362" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14.7;fontColor=#E8EAF2;fontStyle=1;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="Articles" vertex="1">
+          <mxGeometry height="40" width="145" x="710" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="363" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6366F1;strokeColor=none;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="3" width="95" x="735" y="95" as="geometry" />
+        </mxCell>
+        <mxCell id="364" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14.7;fontColor=#5A6080;fontStyle=0;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="Queue" vertex="1">
+          <mxGeometry height="40" width="145" x="875" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="365" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14.7;fontColor=#5A6080;fontStyle=0;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="Settings" vertex="1">
+          <mxGeometry height="40" width="145" x="1040" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="366" parent="1" style="ellipse;aspect=fixed;html=1;fillColor=#4ADE80;strokeColor=none;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="7.5" width="7.5" x="1495" y="65" as="geometry" />
+        </mxCell>
+        <mxCell id="367" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=12.6;fontColor=#5A6080;fontStyle=0;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="35" width="230" x="1510" y="52.5" as="geometry" />
+        </mxCell>
+        <mxCell id="368" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0F1117;strokeColor=#252A38;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="95" width="1800" x="40" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="369" parent="1" style="ellipse;aspect=fixed;html=1;fillColor=#6366F1;strokeColor=none;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="35" width="35" x="372.5" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="370" parent="1" style="ellipse;aspect=fixed;html=1;fillColor=none;strokeColor=#6366F1;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="35" width="35" x="372.5" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="371" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14.7;fontColor=#FFFFFF;fontStyle=1;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="✓" vertex="1">
+          <mxGeometry height="35" width="35" x="372.5" y="117.5" as="geometry" />
+        </mxCell>
+        <mxCell id="372" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12.6;fontColor=#5A6080;fontStyle=0;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="Upload file" vertex="1">
+          <mxGeometry height="25" width="240" x="270" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="373" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6366F1;strokeColor=none;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="3" width="930" x="475" y="137.5" as="geometry" />
+        </mxCell>
+        <mxCell id="374" parent="1" style="ellipse;aspect=fixed;html=1;fillColor=#181C27;strokeColor=none;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="35" width="35" x="1472.5" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="375" parent="1" style="ellipse;aspect=fixed;html=1;fillColor=none;strokeColor=#6366F1;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="35" width="35" x="1472.5" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="376" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14.7;fontColor=#6366F1;fontStyle=1;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="2" vertex="1">
+          <mxGeometry height="35" width="35" x="1472.5" y="117.5" as="geometry" />
+        </mxCell>
+        <mxCell id="377" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12.6;fontColor=#E8EAF2;fontStyle=1;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="Review" vertex="1">
+          <mxGeometry height="25" width="240" x="1370" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="378" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=21.0;fontColor=#E8EAF2;fontStyle=1;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="Review article" vertex="1">
+          <mxGeometry height="45" width="550" x="440" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="379" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=12.6;fontColor=#5A6080;fontStyle=0;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="9 words · Local file — review-article.md" vertex="1">
+          <mxGeometry height="30" width="650" x="440" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="380" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#252A38;strokeColor=none;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="2.5" width="1000" x="440" y="355" as="geometry" />
+        </mxCell>
+        <mxCell id="381" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=25.2;fontColor=#E8EAF2;fontStyle=1;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="Review article" vertex="1">
+          <mxGeometry height="45" width="550" x="440" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="382" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=16.8;fontColor=#E8EAF2;fontStyle=0;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="This content is ready for import review." vertex="1">
+          <mxGeometry height="40" width="650" x="440" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="383" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0F1117;strokeColor=#252A38;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="95" width="1800" x="40" y="1195" as="geometry" />
+        </mxCell>
+        <mxCell id="384" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#0F1117;strokeColor=#3A3F52;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="45" width="145" x="100" y="1212.5" as="geometry" />
+        </mxCell>
+        <mxCell id="385" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14.7;fontColor=#C9CFE0;fontStyle=1;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="← Back" vertex="1">
+          <mxGeometry height="40" width="145" x="100" y="1215" as="geometry" />
+        </mxCell>
+        <mxCell id="386" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=12.6;fontColor=#5A6080;fontStyle=0;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="↺ Start over" vertex="1">
+          <mxGeometry height="35" width="145" x="265" y="1217.5" as="geometry" />
+        </mxCell>
+        <mxCell id="387" parent="1" style="ellipse;aspect=fixed;html=1;fillColor=#6366F1;strokeColor=none;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="7.5" width="7.5" x="360" y="1231.25" as="geometry" />
+        </mxCell>
+        <mxCell id="388" parent="1" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#6366F1;strokeColor=none;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="7.5" width="25" x="375" y="1231.25" as="geometry" />
+        </mxCell>
+        <mxCell id="389" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#6366F1;strokeColor=#6366F1;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="" vertex="1">
+          <mxGeometry height="45" width="142.5" x="718.75" y="1212.5" as="geometry" />
+        </mxCell>
+        <mxCell id="390" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14.7;fontColor=#FFFFFF;fontStyle=1;fontFamily=Arial;spacing=0;locked=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" value="Import" vertex="1">
+          <mxGeometry height="40" width="142.5" x="718.75" y="1215" as="geometry" />
+        </mxCell>
+        <mxCell id="import-review-transitions-title" value="IMPORT ARTICLE · REVIEW TRANSITIONS" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;locked=1;fontSize=24;fontColor=#171914;fontStyle=1;" vertex="1" parent="1" bloghubSection="import-review-transitions">
+          <mxGeometry x="60" y="1395.0" width="1760" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="import-review-transitions-subtitle" value="Review commits the imported markdown as a BlogHub article before opening Editor." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;locked=1;fontSize=14;fontColor=#747970;fontStyle=0;" vertex="1" parent="1" bloghubSection="import-review-transitions">
+          <mxGeometry x="60" y="1438.0" width="1760" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="import-review-transitions-band-0" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;" vertex="1" parent="1" bloghubSection="import-review-transitions">
+          <mxGeometry x="40" y="1500.0" width="1800" height="720" as="geometry" />
+        </mxCell>
+        <mxCell id="import-review-transitions-band-0-label" value="REVIEW AND IMPORT" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;locked=1;fontSize=12;fontColor=#747970;fontStyle=1;" vertex="1" parent="1" bloghubSection="import-review-transitions">
+          <mxGeometry x="75" y="1530.0" width="390" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="import-review-transitions-band-0-detail" value="All actions are disabled while the import request is in flight." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=top;letterSpacing=0;locked=1;fontSize=13;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="import-review-transitions">
+          <mxGeometry x="75" y="1566.0" width="370" height="630" as="geometry" />
+        </mxCell>
+        <mxCell id="import-review-transitions-review" value="&lt;b&gt;Review&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Edit title · inspect markdown&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;fontFamily=Arial;fontSize=15;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="import-review-transitions">
+          <mxGeometry x="280" y="1640.0" width="270" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="import-review-transitions-import" value="&lt;b&gt;Importing&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;POST /api/articles/import&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1F2740;strokeColor=#2B3141;fontFamily=Arial;fontSize=15;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="import-review-transitions">
+          <mxGeometry x="650" y="1640.0" width="270" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="import-review-transitions-editor" value="&lt;b&gt;Editor&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;201 created&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#173127;strokeColor=#2B3141;fontFamily=Arial;fontSize=15;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="import-review-transitions">
+          <mxGeometry x="1020" y="1640.0" width="270" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="import-review-transitions-error" value="&lt;b&gt;Import failed&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Banner · Try again&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#302027;strokeColor=#2B3141;fontFamily=Arial;fontSize=15;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="import-review-transitions">
+          <mxGeometry x="650" y="1840.0" width="270" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="import-review-transitions-cancel" value="&lt;b&gt;Return&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8991AA&quot;&gt;Overview or Create&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#181C27;strokeColor=#2B3141;fontFamily=Arial;fontSize=15;fontColor=#E8EAF2;align=center;verticalAlign=middle;spacing=8;locked=1;" vertex="1" parent="1" bloghubSection="import-review-transitions">
+          <mxGeometry x="280" y="2000.0" width="270" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="import-review-transitions-edge-1" value="IM-25 · Import" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="import-review-transitions-review" target="import-review-transitions-import" bloghubSection="import-review-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="import-review-transitions-edge-2" value="SYSTEM · 201" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;" edge="1" parent="1" source="import-review-transitions-import" target="import-review-transitions-editor" bloghubSection="import-review-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="import-review-transitions-edge-3" value="SYSTEM · 4xx / 5xx" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="import-review-transitions-import" target="import-review-transitions-error" bloghubSection="import-review-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="import-review-transitions-edge-4" value="IM-21 · Try again" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="import-review-transitions-error" target="import-review-transitions-review" bloghubSection="import-review-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="import-review-transitions-edge-5" value="IM-22/23 · return" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#69708A;fontColor=#4F554D;fontSize=12;fontFamily=Arial;labelBackgroundColor=#F3F4F1;locked=1;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="import-review-transitions-review" target="import-review-transitions-cancel" bloghubSection="import-review-transitions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-badge-0" value="IM-01" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="700" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-badge-1" value="IM-02" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="875" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-badge-2" value="IM-03" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="1040" y="18" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-badge-3" value="IM-18" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="950" y="390" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-badge-4" value="IM-22" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="95" y="1185" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-badge-5" value="IM-23" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="300" y="1185" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-badge-6" value="IM-25" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="760" y="1185" width="78" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-legend-background" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F1;strokeColor=#D8DBD4;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="1030" y="410" width="720" height="620" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-legend-title" value="INTERACTION INDEX" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=18;fontColor=#171914;fontStyle=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="1058" y="430" width="664" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-legend-help" value="Amber IDs mark interactive geometry. Matching edge IDs show the user action; SYSTEM marks automatic work." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#747970;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="1058" y="464" width="664" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-badge-1000" value="IM-01–03" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="1058.0" y="515.0" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-legend-text-0" value="Navigation" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="1158.0" y="513.0" width="556.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-badge-1001" value="IM-18" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="1058.0" y="577.75" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-legend-text-1" value="Edit imported title" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="1158.0" y="575.75" width="556.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-badge-1002" value="IM-19" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="1058.0" y="640.5" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-legend-text-2" value="Open preview link" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="1158.0" y="638.5" width="556.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-badge-1003" value="IM-20" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="1058.0" y="703.25" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-legend-text-3" value="Select article in multi-import" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="1158.0" y="701.25" width="556.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-badge-1004" value="IM-21" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="1058.0" y="766.0" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-legend-text-4" value="Retry failed import" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="1158.0" y="764.0" width="556.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-badge-1005" value="IM-22" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="1058.0" y="828.75" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-legend-text-5" value="Back or return" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="1158.0" y="826.75" width="556.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-badge-1006" value="IM-23" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="1058.0" y="891.5" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-legend-text-6" value="Start over" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="1158.0" y="889.5" width="556.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-badge-1007" value="IM-25" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FBBF24;strokeColor=#171914;strokeWidth=2;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#171914;align=center;verticalAlign=middle;spacing=0;locked=1;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="1058.0" y="954.25" width="88" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="bloghub-interaction-markers-import-review-legend-text-7" value="Import and open Editor" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;spacing=0;fontFamily=Arial;align=left;verticalAlign=middle;letterSpacing=0;locked=1;fontSize=11;fontColor=#4F554D;fontStyle=0;" vertex="1" parent="1" bloghubSection="bloghub-interaction-markers-import-review">
+          <mxGeometry x="1158.0" y="952.25" width="556.0" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

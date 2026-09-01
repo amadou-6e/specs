@@ -1,5 +1,9 @@
 # Publish / Schedule — API Contract
 
+> Scope: this file defines service requests and payloads. UI geometry, visible states,
+> interaction IDs, and transitions are governed by
+> [publish-schedule.drawio](publish-schedule.drawio).
+
 ---
 
 ## GET /articles/:id/publish-state

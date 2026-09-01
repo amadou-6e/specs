@@ -10,9 +10,9 @@ across projects.
 - `shared/conventions/`: the lifecycle and review rules shared by projects.
 - `tools/`: dependency-free scaffolding and validation commands.
 
-BlogHub is the first imported project. Its existing `.spec` layout is preserved under
-`projects/blog-hub/` so Draw.io sources, backups, and screenshot references remain
-usable. New projects can begin with the smaller standard scaffold.
+BlogHub is the first imported project. Its specifications live under
+`projects/blog-hub/`; UI sources are owned by their corresponding view, while shared
+flows and historical baselines live under `projects/blog-hub/ui/`.
 
 ## Start a project
 
@@ -45,4 +45,3 @@ python tools/validate_specs.py
 
 Validation checks project manifests, temporary files, repository size limits, and
 relative Markdown links. GitHub Actions runs the same checks for pull requests.
-

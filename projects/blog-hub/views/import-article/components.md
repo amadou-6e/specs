@@ -1,5 +1,8 @@
 # Import Article — Components Spec
 
+> UI authority: [import-article.drawio](import-article.drawio). This component inventory is
+> a searchable projection and must not introduce states absent from the Draw.io.
+
 ---
 
 ## ModeHeader

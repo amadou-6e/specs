@@ -1,5 +1,8 @@
 # Login View — API Contract
 
+> Scope: this file defines service requests and payloads. UI geometry, visible states,
+> interaction IDs, and transitions are governed by [login.drawio](login.drawio).
+
 Backend lives at the same origin (no CORS needed in production).
 Dev backend: `http://localhost:8082`.
 

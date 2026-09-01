@@ -1,5 +1,8 @@
 # Create Article — Layout Spec
 
+> UI authority: [create-article.drawio](create-article.drawio). This layout is a derived
+> reading aid, not an independent source of UI behavior.
+
 ## Purpose
 Entry point for new content. The user describes what they want, configures generation options, and kicks off an AI drafting job.
 

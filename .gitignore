@@ -10,9 +10,12 @@ node_modules/
 .$*
 *.tmp
 *.swp
+*.bak
+*.bak-*
+*.bkp
 
 # Local rendering and browser automation output
 artifacts/
 test-results/
 playwright-report/
-
+renders/

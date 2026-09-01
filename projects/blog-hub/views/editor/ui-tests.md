@@ -1,5 +1,8 @@
 # Editor — UI Tests Spec
 
+> Test authority: [editor.drawio](editor.drawio). Tests project its represented states and
+> `ED-*` transitions; they must not create new UI requirements.
+
 ---
 
 ## Mode switching

@@ -1,5 +1,8 @@
 # Publish / Schedule — UI Tests Spec
 
+> Test authority: [publish-schedule.drawio](publish-schedule.drawio). Tests project its
+> represented states and `PS-*` transitions; they must not create new UI requirements.
+
 ---
 
 ## Destination rows
