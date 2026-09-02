@@ -320,3 +320,18 @@ representative replayable tasks.
 - Build stable fixtures for easy, detour, narrow, disconnected, and over-budget cases.
 - Verify in-memory and compiled backends agree for the same bounded world.
 - Link implementation issues and pull requests to specification issue #17.
+
+## Implementation Work Items
+
+| Order | Issue | Work item | Dependency |
+|---:|---|---|---|
+| 1 | [AnySearch #298](https://github.com/amadou-6e/theseo-anysearch/issues/298) | Validate augmented obstacle tasks and resample impossible episodes. | None; first unblocking slice. |
+| 2 | [AnySearch #299](https://github.com/amadou-6e/theseo-anysearch/issues/299) | Extract reusable geometry-validity and task-feasibility contracts. | #298. |
+| 3 | [AnySearch #300](https://github.com/amadou-6e/theseo-anysearch/issues/300) | Expose obstacle-routing difficulty descriptors and sampling bands. | #299. |
+| 4 | [AnySearch #301](https://github.com/amadou-6e/theseo-anysearch/issues/301) | Persist geometry-task identities and stable evaluation suites. | #299 and #300. |
+| 5 | [AnySearch #302](https://github.com/amadou-6e/theseo-anysearch/issues/302) | Add typed composable geometry sources for small worlds. | Can begin independently; integrate with #299. |
+| 6 | [AnySearch #303](https://github.com/amadou-6e/theseo-anysearch/issues/303) | Add validated Python geometry-generation providers. | #299 and #302. |
+| 7 | [AnySearch #304](https://github.com/amadou-6e/theseo-anysearch/issues/304) | Add a versioned native geometry-provider ABI. | #303 contract stabilized. |
+| 8 | [AnySearch #305](https://github.com/amadou-6e/theseo-anysearch/issues/305) | Unify small and compiled geometry artifact contracts. | #301 and #302; coordinate with existing #296. |
+| 9 | [AnySearch #306](https://github.com/amadou-6e/theseo-anysearch/issues/306) | Support deterministic sparse transformations of compiled worlds. | #305 and existing #296. |
+| 10 | [AnySearch #307](https://github.com/amadou-6e/theseo-anysearch/issues/307) | Add geometry validation, inspection, and sampling CLI tools. | Basic form after #299; enrich after #300 and #301. |
