@@ -1,388 +1,322 @@
-# Terrain And Geometry Generator Spec
+# Terrain, Geometry, And Navigable Task Specification
 
-## Goal
+Status: draft
 
-Add a generator pipeline for this repository that can produce:
+Last audited implementation: `theseo-anysearch` `origin/develop` at `9bcd120` on 2026-09-02
 
-1. random terrains
-2. random obstacle geometries
-3. approximations of real engineering spaces for routing tasks
-4. optional imported geometries from external `.stl` or convertible CAD assets
-5. routing tasks with explicit start/end anchors, and later connector or waypoint sets
+Specification issue: [#17](https://github.com/amadou-6e/specs/issues/17)
 
-This should support both:
+## Purpose
 
-- fast synthetic training data generation
-- evaluation on more realistic imported shapes
+Define one coherent geometry surface for AnySearch. Users must be able to add,
+generate, validate, load, and reproduce geometries without accidentally creating
+impossible tasks, unsuitable training distributions, or incomparable evaluations.
 
-## Current Repository Fit
+The architecture protects four separate questions:
 
-This repository is already close to supporting this.
+1. **Geometry validity:** is the occupied world structurally well formed?
+2. **Task feasibility:** can the configured agent solve this task in that world?
+3. **Training suitability:** does the task provide useful difficulty and diversity?
+4. **Evaluation suitability:** is the task stable enough for comparison?
 
-- Python config already supports `stl_path`, `geometry_boxes`, and `waypoints_file` in [`theseo_anysearch/models.py`](c:/Users/acisse/Documents/CodeWorkspace/theseo-anysearch/theseo_anysearch/models.py).
-- Rust already ingests STL and voxelizes it in [`theseo_anysearch/core/src/world/ingest/stl.rs`](c:/Users/acisse/Documents/CodeWorkspace/theseo-anysearch/theseo_anysearch/core/src/world/ingest/stl.rs) and [`theseo_anysearch/core/src/world/ingest/voxelize.rs`](c:/Users/acisse/Documents/CodeWorkspace/theseo-anysearch/theseo_anysearch/core/src/world/ingest/voxelize.rs).
-- The repo already ships simple hand-made test geometries in [`usage/geometries/README.md`](c:/Users/acisse/Documents/CodeWorkspace/theseo-anysearch/usage/geometries/README.md).
+A geometry can be valid while a selected start and goal are disconnected. A task can
+be feasible but uselessly easy. A useful training task can still be unsuitable for
+evaluation if it changes between iterations. These results remain separately testable
+even when one pipeline invokes them together.
 
-## Important Constraints In The Current Code
+## Goals
 
-1. STL import is currently ASCII STL only.
-   [`stl.rs`](c:/Users/acisse/Documents/CodeWorkspace/theseo-anysearch/theseo_anysearch/core/src/world/ingest/stl.rs) scans only `vertex ...` lines and does not parse binary STL.
+- Preserve simple fixed boxes and STL loading for small experiments.
+- Support varied synthetic obstacles and imported engineering geometry.
+- Prove navigability after all geometry transformations and task placement.
+- Characterize routing difficulty using the configured action space.
+- Support deterministic training generation and stable evaluation suites.
+- Use one logical artifact contract across in-memory and large disk-backed worlds.
+- Allow Python and native extensions without allowing them to bypass validation.
+- Support future terrain, engineering-scene, wiring, and connector-routing use cases.
 
-2. The voxelizer converts meshes into occupied voxels and then solid-fills the interior.
-   That is good for obstacles and surface navigation, but not enough by itself for internal free-space extraction in cabins, ducts, and harness channels.
+## Non-goals For The First Delivery
 
-3. Real routing tasks need anchors.
-   The repo has `waypoints_file`, which is the right primitive to extend into:
-   - start/goal pairs
-   - connector sets
-   - multi-pin bundles
-   - clip or clamp sequences
+- Applying dense NumPy transformations directly to compiled worlds.
+- Generating production-quality automotive or aircraft CAD procedurally.
+- Solving arbitrary multi-agent joint-motion planning in the first validator.
+- Replacing the existing heuristic planners.
+- Adding difficulty metrics before safe obstacle generation itself works.
 
-4. Default grid sizes are small for detailed interiors.
-   Fine cable-routing scenes will likely need either:
-   - higher-resolution voxelization
-   - local crops around the route corridor
-   - multi-resolution representations
+## Current Implementation
 
-## Feasibility Summary
+### Working capabilities
 
-### Short answer
+| Capability | Current behavior | Appropriate use |
+|---|---|---|
+| Fixed boxes | Inclusive axis-aligned boxes become occupied voxels. | Controlled walls, gaps, corridors, and regression fixtures. |
+| Fixed STL | One ASCII STL is voxelized into a cubic environment. | Small static imported scenes. |
+| STL scale variation | `scale_range` samples a scale and rebuilds on reset. | Limited variation of one small mesh. |
+| Offline geometry pools | `.npy` occupancy grids are sampled at reset and installed with `set_geometry()`. | Diverse small-world training. |
+| Pool extraction | Multiple STL inputs, SO(3) rotations, scale variation, quality filters, atomic writes, and metadata. | Preparing reusable small-world datasets. |
+| Random box augmentation | `paste_boxes()` adds random solid boxes to a sampled dense grid. | Mechanically generating obstacle layouts. |
+| Runtime base replacement | Single- and multi-agent native environments expose `set_geometry()`. | Reusing an environment with a new small-world base. |
+| Compiled worlds | `BoxSource`, `NpySource`, and `StlSource` compose into content-addressed chunk packs. | Large finite worlds and immutable geometry. |
+| Regional residency | Compiled chunks are loaded, pinned, prefetched, and evicted under a memory budget. | Large-world training and simulation. |
+| Bounded occupancy queries | Scenario providers query points and regions without full materialization. | Large-world task placement and validation. |
+| Candidate indexes | Typed candidates are queried deterministically with budgets. | Spawn, goal, surface, and portal selection. |
+| Heuristic planners | A*, Dijkstra, weighted A*, and replanning A* query live occupancy. | Feasibility, demonstrations, and references. |
+| Compiled-world identity | Sources, extent, compiler settings, algorithms, and hashes identify a pack. | Cache reuse and reproducibility. |
+| Replay references | Trajectories reference immutable bases and store overlays as deltas. | Large-world replay without duplication. |
 
-This is feasible.
+### Existing but incomplete or unsafe capabilities
 
-The best path is not "blobs only". The practical solution is a hybrid:
+#### Ambiguous runtime and preprocessing settings
 
-- blobs / implicit fields for terrain and organic clutter
-- CSG / primitives for engineering-style components
-- imported STL or STEP-derived meshes for realism
-- explicit anchor metadata for wiring tasks
+`stl_paths`, `pool_size`, and `scale_variants_per_map` appear beside runtime fields.
+Normal construction directly handles one `stl_path`, inline boxes, an already-built
+pool, or one compiled-world path. Multiple-STL and pool-generation settings primarily
+belong to preprocessing. They need compiler-backed semantics or an explicit
+preprocessing schema.
 
-### How far blobs can get you
+#### Implicitly exclusive source paths
 
-Blob-style implicit surfaces are useful for:
+The small-world builder selects `compiled world`, else `fixed STL`, else `inline
+boxes`. STL and boxes do not compose through regular experiment YAML. Compiled worlds
+and dense pool augmentation do not compose. Precedence must become explicit, and
+conflicting legacy combinations must fail during preflight.
 
-- caves, berms, ramps, mounds
-- cable slack obstacles
-- soft partitions
-- organic housings
-- rough occupancy fields for clutter
+#### Unsafe box augmentation
 
-They are not a good direct model for:
+`paste_boxes()` does not check whether it occupies the start or goal, disconnects
+them, makes the required path exceed the episode budget, requires unavailable actions,
+or produces an unsuitable or duplicate sample. It works mechanically but is not yet a
+safe task generator.
 
-- brackets
-- trays
-- stamped panels
-- connector housings
-- seat rails
-- aircraft ribs
-- machine frames
+#### Coarse pool validation
 
-RenderMan's blobby surface documentation describes these shapes as simple primitives that blend into rounded masses, which is consistent with their strengths and weaknesses: <https://renderman.jp/appnote.31.html>.
+Extraction can require a large connected free-space component. That is useful
+geometry validation, but it does not prove reachability for a later start/goal pair.
 
-### How close we can get to real engineering spaces
+#### Geometry-unaware waypoint curricula
 
-#### Engineering components
+The record policy in AnySearch PR #217 learned a 96-action route on an empty 32-cubed
+grid. `segment_distance` defines geometric waypoint spacing, not traversable path
+length. Obstacles can invalidate or lengthen a segment. `monotonic_distance` currently
+rejects populated geometry. A teacher finding a detour after selection does not make
+the task generator safe.
 
-High feasibility.
+#### Materialization and ingestion limits
 
-Use CSG and parametric feature generators:
+Small-world boxes, STLs, and pools become Python lists of occupied coordinates. This
+does not scale to large dense worlds. Fixed ingestion also expects ASCII STL, compiled
+STL voxelization requires a cubic extent, and per-reset scale variation repeats
+voxelization without a feasibility gate.
 
-- boxes
-- cylinders
-- filleted channels
-- cut pockets
-- bosses
-- through holes
-- slots
-- ribs
-- trays
-- clamps
+#### Candidate and mutation gaps
 
-This can get reasonably close to mechanical parts, fixture plates, brackets, covers, housings, junction blocks, and routing trays.
+Compiled worlds can carry candidate indexes, but compilation does not automatically
+produce task-specific candidates or prove their pairwise feasibility. The public
+contract also does not fully state when base replacement or overlay mutation
+invalidates identities, indexes, caches, or feasibility results.
 
-The best evidence is that synthetic machining-feature STL corpora already exist. FeatureNet publishes 24 classes with 1000 randomly generated STL models per class: <https://github.com/madlabub/Machining-feature-dataset>.
+## Required Concepts
 
-#### Car interiors for cabling
+### Geometry proposal
 
-Medium feasibility with procedural generation alone.
+A typed description of sources and transformations before installation. Providers
+return an inert proposal rather than mutating a live environment.
 
-You can approximate:
+### Geometry validation result
 
-- cabin voids
-- dashboard bulkheads
-- center tunnels
-- seat pedestals
-- HVAC ducts
-- cable trays
-- connector zones
+Reports bounds, encoding, occupancy, free-space connectivity, and source integrity,
+independent of a particular task.
 
-You will not get convincing OEM-like geometry from blobs alone. For that, you need imported CAD or meshes plus anchor annotations.
+### Task feasibility result
 
-#### Plane interiors
+Reports whether one concrete task is solvable, including a path, path length, planner,
+and rejection reasons. The first implementation supports one agent and one start/goal
+pair, using the configured action mode.
 
-Medium feasibility for coarse cabin and equipment-bay layouts.
+### Training suitability result
 
-You can model:
+Reports difficulty and diversity without deciding curriculum advancement. Initial
+descriptors include shortest-path length, direct distance, detour ratio, direction
+changes, vertical displacement, planner expansions, and optional clearance measures.
 
-- fuselage-like curved shells
-- overhead bins
-- floor beams
-- cable raceways
-- equipment racks
-- sidewall cutouts
+### Evaluation suite
 
-But realistic aircraft interiors are usually assembly-heavy and clearance-driven. Procedural generation can make good training proxies, but evaluation should use imported assets.
+A fixed collection of geometry/task identities stratified by difficulty and reused
+across iterations, trials, checkpoints, algorithms, and machines.
 
-#### Construction machines
+## Immediate Delivery: Safe Random-Box Training
 
-Medium-to-high feasibility.
+The first implementation wraps the existing pool plus `paste_boxes()` reset path. It
+does not introduce a new planner or compiled-world transformation system.
 
-These spaces are usually a good fit for a hybrid generator:
-
-- articulated frames and boxes
-- engine bays
-- hydraulic line corridors
-- guard structures
-- access panels
-- cable bundles around rigid mechanical assemblies
-
-Compared with passenger-car interiors, these spaces are often more boxy and easier to approximate with primitives and imported subassemblies.
-
-## Recommended Geometry Strategy
-
-### Tier 1: Procedural Terrain Generator
-
-Use this for fast RL curriculum generation.
-
-Representation:
-
-- height fields
-- signed distance fields
-- metaball/blob fields
-- optional marching-cubes export to STL
-
-Outputs:
-
-- rolling terrain
-- steps
-- ramps
-- trenches
-- overhang-like clutter
-- caves or tunnels if using full 3-D fields
-
-Recommendation:
-
-- use blobs only for terrain and amorphous clutter
-- do not use blobs as the main representation for engineering assemblies
-
-### Tier 2: Procedural Engineering Geometry Generator
-
-Use this for synthetic but structured routing scenes.
-
-Representation:
-
-- primitive library
-- CSG composition
-- rule-based placement
-- optional skeleton-to-mesh extrusion for trays and channels
-
-Core primitives:
-
-- box
-- cylinder
-- capsule
-- bent duct
-- tray
-- bracket
-- rib
-- flange
-- clip
-- connector block
-- perforated panel
-
-Scene templates:
-
-- equipment bay
-- dashboard cavity
-- seat base routing area
-- avionics rack bay
-- chassis side rail
-- pipe cluster
-- machine boom base
-
-### Tier 3: Imported Real Geometry
-
-Use this for realism and external validation.
-
-Recommended sources:
-
-- ABC Dataset: 1 million CAD models, with STL and STEP-related formats available. It also exposes FeatureScript metadata, which is useful if later you want to learn procedural generators from CAD programs rather than only final meshes: <https://deep-geometry.github.io/abc-dataset/>
-- FeatureNet machining-feature STL corpus: good for procedural feature priors and part-level obstacle libraries: <https://github.com/madlabub/Machining-feature-dataset>
-- FS-AI ADS-DV CAD: official open vehicle CAD subset for sensor and compute installation tasks, with STEP/Fusion files and connector-related geometry context: <https://github.com/FS-AI/FS-AI_ADS-DV_CAD>
-- Public CAD libraries such as GrabCAD can provide practical STL or STEP examples, but license checks must be explicit on each asset.
-
-## Wiring Task Data: What Exists And What Is Missing
-
-### What I found
-
-There are useful public examples, but open datasets that give all of the following together are rare:
-
-- full geometry mesh
-- explicit routing start/end anchors
-- connector semantics
-- ground-truth cable paths
-
-The best public references I found are:
-
-1. Berkeley cable routing dataset
-   It provides 1442 expert routing demonstrations where trajectories start with the cable in the gripper and end when routed through a clip, but it is demonstration data rather than a clean STL-plus-endpoints benchmark:
-   <https://sites.google.com/view/cablerouting/data>
-
-2. SOLIDWORKS Electrical 3D harness exercise
-   It includes an example harness-routing project with five connectors linked by a harness, and a pre-existing route path in the assembly:
-   <https://swelectrical-help.solidworks.com/dl/swe/CHM/2022/EN/HelpOnLine/EW4SW_EX07.htm>
-
-3. FS-AI ADS-DV CAD
-   It gives real vehicle geometry context plus connector location information and connector types for additional sensor/electrical integration. That is useful as a near-real benchmark seed even if the cable route itself is not labeled:
-   <https://github.com/FS-AI/FS-AI_ADS-DV_CAD>
-
-4. GrabCAD harness-routing examples
-   These are practical examples of connector import, harness assembly, and rerouting workflows, but they are tutorial/community assets and need per-model license review:
-   <https://grabcad.com/tutorials/car-wire-harness-connector-terminal-assembly-by-creo-parametric-3d-routing-and-design>
-
-### What this means for this repo
-
-You should expect to create your own benchmark format for routing tasks:
-
-- `geometry.stl`
-- `anchors.json`
-- `task.json`
-- optional `route_reference.json`
-
-Suggested anchor schema:
-
-```json
-{
-  "anchors": [
-    {"id": "src_power", "kind": "connector", "point": [12, 8, 4], "normal": [1, 0, 0]},
-    {"id": "dst_ecu", "kind": "connector", "point": [54, 22, 11], "normal": [-1, 0, 0]}
-  ]
-}
+```text
+sample base pool geometry
+-> paste random boxes
+-> select start and goal
+-> confirm both are free
+-> run an existing heuristic with the configured action mode
+-> confirm a path exists and fits the episode budget
+-> accept, or reject and resample
 ```
 
-Suggested task schema:
+### Required behavior
 
-```json
-{
-  "tasks": [
-    {
-      "id": "power_route_a",
-      "start_anchor": "src_power",
-      "end_anchor": "dst_ecu",
-      "bundle_radius": 2,
-      "clearance": 1,
-      "must_visit": ["clip_1", "clip_2"]
-    }
-  ]
-}
+- Validate the final augmented geometry, not the original pool sample.
+- Use a hard, positive attempt limit and fail clearly after exhaustion.
+- Never silently fall back to unaugmented or easier geometry.
+- Record categorized rejection counts.
+- Produce identical accepted tasks for identical seeds and inputs.
+- Preserve existing pool behavior when validation is disabled.
+- Do not require difficulty metrics or persistent identities in this slice.
+
+The validator compares heuristic path length with the actual episode budget. A caller
+may reserve a recovery margin such as `episode_budget >= ceil(path_length * 4 / 3)`.
+The margin is policy, not part of A*.
+
+Failure categories include `start_occupied`, `goal_occupied`, `no_path`,
+`path_exceeds_budget`, `planner_budget_exhausted`, and
+`generation_attempts_exhausted`.
+
+### Acceptance criteria
+
+1. Random boxes cannot silently create an impossible accepted episode.
+2. Endpoints are checked after every augmentation.
+3. Existing A* proves reachability using only selectable actions.
+4. Accepted paths satisfy the configured episode-budget rule.
+5. Rejection and resampling are deterministic for a fixed seed.
+6. Exhaustion reports categorized counts.
+7. Training and evaluation can enable validation independently.
+8. Tests cover occupied endpoints, disconnection, detours, budget overflow,
+   action-mode differences, deterministic resampling, and exhaustion.
+
+## Follow-up Milestones
+
+### 1. Reusable validators
+
+Extract geometry and feasibility validators from the first augmentation call site.
+Apply them to fixed boxes, fixed STLs, pools, providers, and compiled worlds. Use
+bounded occupancy reads for large worlds.
+
+### 2. Difficulty characterization
+
+Expose existing planner results instead of duplicating search. Support explicit
+difficulty bands and balanced sampling across them.
+
+### 3. Deterministic identities and stable evaluation
+
+Hash base geometry, transformations, seeds, resolved task, action mode, validator
+versions, and relevant planner settings. Extend existing dataset/world fingerprints.
+Persist stable heterogeneous evaluation suites.
+
+### 4. Typed source composition for small worlds
+
+Replace implicit precedence with explicit sources and transformations:
+
+```yaml
+geometry:
+  extent: [64, 64, 64]
+  sources:
+    - type: stl
+      path: factory.stl
+      scale: 40
+    - type: boxes
+      boxes:
+        - [10, 10, 1, 12, 40, 20]
+  transformations:
+    - type: random_boxes
+      count: [2, 8]
 ```
 
-## Recommendation For Actual Implementation
+This initially targets in-memory worlds. It defines composition, validation order,
+compatibility translation, and errors for ambiguous legacy combinations.
 
-### Phase 1
+### 5. Geometry providers
 
-Build an internal synthetic generator first.
+Follow the scenario and reward extension pattern: read-only context and bounded world
+queries produce a typed `GeometryProposal`, which the framework validates and
+installs. Support deterministic Python providers first, then a versioned native ABI.
 
-Deliverables:
+### 6. Unified artifacts
 
-- terrain generator
-- engineering-scene generator
-- STL exporter
-- anchor generator
-- deterministic seeds
+Define one logical artifact containing geometry identity, extent and coordinates,
+provenance, occupancy representation, candidates, validation and difficulty metadata,
+overview data, and schema/algorithm versions. Small worlds may load into memory;
+large worlds retain regional residency.
 
-Why:
+### 7. Sparse compiled-world transformations
 
-- fast to iterate
-- no licensing friction
-- ideal for curriculum learning
+This is deliberately separate. Dense `paste_boxes()` cannot operate on a world whose
+purpose is to avoid dense materialization. Evaluate compiling a new immutable world,
+immutable augmentation layers, chunk-local generation, or validated episode overlays.
 
-### Phase 2
+## Long-Term Geometry Sources
 
-Add robust external geometry ingestion.
+### Procedural terrain and clutter
 
-Deliverables:
+Use height fields, signed-distance fields, and metaball/blob fields for terrain,
+caves, ramps, trenches, and amorphous clutter. Blobs are not the main representation
+for engineering assemblies.
 
-- binary STL support
-- optional STEP-to-STL conversion outside the repo runtime
-- mesh normalization
-- scale normalization
-- watertightness checks
-- anchor annotation tools
+### Procedural engineering scenes
 
-This phase matters because many useful corpora, including ABC, provide binary STL or STEP-like assets, while this repo currently expects ASCII STL.
+Use CSG and parametric boxes, cylinders, channels, trays, brackets, ribs, clips,
+connector blocks, ducts, housings, and panels. Compose equipment bays, cabins, racks,
+chassis rails, pipe clusters, and machine frames.
 
-### Phase 3
+### Imported real geometry
 
-Create a benchmark pack for wiring and routing.
+Use imported assets for realism and external validation. Follow-ups include binary
+STL, optional external STEP conversion, normalization, watertightness diagnostics,
+licensing provenance, and anchor annotation.
 
-Target packs:
+Research sources include the [ABC Dataset](https://deep-geometry.github.io/abc-dataset/),
+[FeatureNet](https://github.com/madlabub/Machining-feature-dataset),
+[FS-AI ADS-DV CAD](https://github.com/FS-AI/FS-AI_ADS-DV_CAD), and
+[Berkeley cable-routing demonstrations](https://sites.google.com/view/cablerouting/data).
+External assets require per-asset license review.
 
-- synthetic tray-and-connector scenes
-- synthetic cabin routing scenes
-- imported vehicle/equipment scenes with hand-authored anchors
-- clip sequence tasks
+## Routing Anchors And Tasks
 
-## Best Technical Direction
+Real routing benchmarks need semantic anchors in addition to geometry. An artifact
+should support connector points and normals, while tasks reference start/end anchors,
+bundle radius, clearance, and required clips. Anchor placement and validation occur
+after final geometry resolution.
 
-### Recommended
+## Determinism And Compatibility
 
-Use a hybrid generator:
+- Fixed seeds determine attempts, transformations, candidates, and tie-breaking.
+- Hash-map iteration order must not affect accepted geometry or routes.
+- Algorithm and validator versions participate in persistent identities.
+- Training may generate fresh accepted tasks; evaluation uses persisted identities.
+- Legacy single-source YAML remains loadable through a canonical adapter.
+- Previously ignored conflicting fields must fail or emit a time-bounded warning.
+- Checkpoint restoration requires compatible model, observation, and action contracts.
+- Imitation reuse additionally requires compatible geometry/task identity.
 
-- SDF/blob terrain for terrain and clutter
-- CSG/parametric primitives for engineering components
-- imported meshes for realism
-- explicit anchor metadata for routing
+## Operational Diagnostics
 
-### Not recommended
+The eventual CLI should offer `anysearch geometry validate`, `geometry inspect`, and
+`geometry sample`. Reports include occupancy, connectivity, feasibility, path length,
+detour ratio, rejection reasons, attempts, difficulty distribution, identities, and
+representative replayable tasks.
 
-Do not try to cover all target spaces with blobs alone.
+## Open Decisions
 
-That will produce:
+1. Whether feasibility settings belong under augmentation, scenario generation, or a
+   shared episode-preparation block.
+2. Whether recovery margin is a ratio, fixed steps, or a completion condition.
+3. Which planner expansion/time limit is safe inside reset.
+4. When small accepted geometries first receive persistent identities.
+5. How multi-agent feasibility adds collision and interaction constraints.
+6. Which sparse transformation model governs compiled worlds.
 
-- poor flat surfaces
-- weak edge semantics
-- bad connector realism
-- unrealistic interior packaging
+## Verification Strategy
 
-## Concrete Next Step For This Repository
-
-The most valuable next implementation step is:
-
-1. define a `generated_scene` artifact format
-2. generate synthetic engineering scenes plus anchors
-3. export them as STL + JSON
-4. teach the existing env loader to accept anchor/task metadata
-5. add binary STL support
-
-## Proposed Spec Additions Later
-
-Follow-up specs would be useful for:
-
-- binary STL support
-- scene generator API
-- anchor/task JSON schema
-- benchmark pack layout
-- STEP ingestion pipeline
-
-## Source Notes
-
-External references used for this assessment:
-
-- ABC Dataset: <https://deep-geometry.github.io/abc-dataset/>
-- FeatureNet STL dataset: <https://github.com/madlabub/Machining-feature-dataset>
-- FS-AI ADS-DV CAD: <https://github.com/FS-AI/FS-AI_ADS-DV_CAD>
-- Berkeley cable routing data: <https://sites.google.com/view/cablerouting/data>
-- SOLIDWORKS Electrical harness exercise: <https://swelectrical-help.solidworks.com/dl/swe/CHM/2022/EN/HelpOnLine/EW4SW_EX07.htm>
-- GrabCAD Creo harness example: <https://grabcad.com/tutorials/car-wire-harness-connector-terminal-assembly-by-creo-parametric-3d-routing-and-design>
-- RenderMan blobby implicit surfaces note: <https://renderman.jp/appnote.31.html>
+- Unit-test each validation result independently.
+- Property-test fixed-seed determinism and coordinate bounds.
+- Compare planner actions with the configured action space.
+- Test compatibility translation and rejection of ambiguity.
+- Benchmark reset throughput before enabling validation by default.
+- Build stable fixtures for easy, detour, narrow, disconnected, and over-budget cases.
+- Verify in-memory and compiled backends agree for the same bounded world.
+- Link implementation issues and pull requests to specification issue #17.
