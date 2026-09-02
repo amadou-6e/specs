@@ -2,9 +2,10 @@
 
 Status: discovery
 Owner: amadou-6e
-Last reviewed: 2026-09-01
+Last reviewed: 2026-09-02
 Tracking issue: [specs#13](https://github.com/amadou-6e/specs/issues/13)
 Methodology revision: [specs#15](https://github.com/amadou-6e/specs/issues/15)
+Calibration recovery: [specs#19](https://github.com/amadou-6e/specs/issues/19)
 Governing validation plan:
 [Standalone Voxel Encoder Pretraining](perception-encoder-pretraining.md)
 Architecture research:
@@ -88,6 +89,47 @@ split. Assign geometry IDs before sampling observations and store the assignment
 | `pilot_dev_arch` | 24 | 6,000 | Open after P3 for P4-P5 architecture/context decisions. |
 | `pilot_dev_interaction` | 24 | 6,000 | Open after P6 pairings are locked. |
 | `pilot_confirm` | 32 | 12,000 | Open once for P7 after the top two pairings are locked. |
+
+### Calibration-repair corpus
+
+The first execution of `voxel-encoder-pilot-v1` remains governed by specification
+commit `f64ea0b1b30ce07c28dfe2dc688a56d48a931c0d`. Its analytic micro-fixture
+normalization anchors are not measured corpus baselines, so its aggregate
+`pilot_score` values are diagnostic only. Preserve its raw metrics and reports; do
+not recalculate them under replacement anchors. The v1 effective-rank and false-open
+vetoes remain valid observations for its trained embeddings because they do not use
+the normalization anchors.
+
+The calibration-repair execution is `voxel-encoder-pilot-v2`. Draw every v2 geometry
+ID afresh from the parent training partition; no v2 geometry or observation may occur
+in an opened v1 pool. Preserve the v1 decision-pool sizes and add two non-decision
+pools before any v2 candidate result is opened:
+
+| V2-only split | Geometry IDs | Base observations | Use |
+|---|---:|---:|---|
+| `pilot_calibration` | 24 | 6,000 | Fit and validate fixed score floors and supervised references only. |
+| `pilot_diagnostic` | 24 | 6,000 | Run the frozen T3 implementation-health replay only. |
+
+Both added pools cover all four geometry families and low, medium, and high occupied
+fractions. They are geometry-disjoint from `pilot_train`, every decision pool, and
+each other. Neither pool may rank candidates, select P1 checkpoints, or contribute
+rows to a P1-P8 decision. Freeze the following identities before generating any v2
+candidate metric:
+
+- corpus: `voxel-encoder-pilot-v2`;
+- dataset snapshot: `voxel-encoder-pilot-v2-dataset-1`;
+- preregistration: `voxel-encoder-pilot-v2-preregistration-1`;
+- calibration run: `voxel-encoder-pilot-v2-p0-calibration-1`;
+- T3 diagnostic run: `voxel-encoder-pilot-v2-t3-diagnostic-1`; and
+- replacement P1 run: `voxel-encoder-pilot-v2-p1-1`.
+
+The v2 preregistration must pin the merge commit containing this recovery revision,
+the superseded v1 run and specification commit, every pool and query hash, generator
+version and seed, reference checkpoint and prediction hashes, numerical anchors, and
+separate calibration/diagnostic accelerator-hour caps. P0 calibration and T3
+diagnostics do not consume the unchanged 16-trial P1 cap, but their compute is
+reported separately. A cap exhaustion or failed shared gate blocks v2 P1 rather than
+borrowing comparative budget.
 
 `pilot_train` and every development pool cover open rooms/boxes, thin walls/isolated
 obstacles, corridor/topology scenes, and imported geometry. In `pilot_confirm`, 16
@@ -184,6 +226,37 @@ not only architectural inductive bias, added value. If the ceiling check fails,
 the normalization is ill-conditioned: block the comparison and repair the target,
 probe, or corpus rather than dropping the component after seeing candidate results.
 
+For `voxel-encoder-pilot-v2`, fit and measure these anchors as follows before opening
+`pilot_dev_early`:
+
+1. Derive majority/frequency statistics only from `pilot_train`. Fit PCA only on
+   `pilot_train`, and freeze the random-projection distribution and seed. Train each
+   baseline's capacity-matched probe with the same target definitions, training-query
+   budget, architecture, optimizer, update budget, and cross-fitting code used for a
+   candidate probe.
+2. Train the deliberately over-capacity supervised references from `pilot_train`.
+   Each reference has at least four times the Tiny candidate's parameters and uses
+   fixed geometry-disjoint train/selection folds within `pilot_train`. Select its
+   checkpoint without reading `pilot_calibration`; record its convergence curve,
+   capacity, seed, and residual training and selection error.
+3. Evaluate every floor candidate and supervised reference once on the immutable
+   `pilot_calibration` queries. For each component, set the floor to the best measured
+   majority/frequency, PCA, or fixed-random-projection result and the ceiling to the
+   measured supervised-reference result. Store per-geometry values and strata as
+   well as the aggregate.
+4. Apply the existing denominator check to each measured floor/ceiling pair. A
+   higher-is-better ceiling must exceed its floor by at least 0.10 absolute; an error
+   ceiling must reduce the floor error by at least 20%. Any failed component blocks
+   the entire v2 comparison. Do not drop, replace, or reweight a failed component
+   after opening candidate results.
+5. Content-address the fitted models, predictions, queries, per-geometry metrics, and
+   numerical anchors in `voxel-encoder-pilot-v2-preregistration-1`. Only then may P1
+   open the separately hashed `pilot_dev_early` decision pool.
+
+Candidates continue to require improvement over their paired random encoder. The
+measured fixed floors normalize scores across architectures; they do not replace the
+paired random control or any raw veto.
+
 The following vetoes apply to every comparative pilot:
 
 - state-integrity, numerical-reproducibility, or applicable mask-isolation failure;
@@ -263,6 +336,46 @@ Required outcomes:
 Exit: all required outcomes pass. P0 selects nothing. A failure blocks only the
 affected recipe or architecture unless it invalidates shared targets, probes, or
 metrics, in which case all later pilots stop.
+
+#### V2 T3 implementation-health replay
+
+Before replacement P1, run T3 at both P1 learning rates with diagnostic seed 5 for
+2,000 updates on v2 `pilot_train` and evaluate only on `pilot_diagnostic`. Use the
+unchanged P1 T3 baseline: mask ratio 0.60, EMA decay 0.996, AdamW weight decay 0.05,
+5% linear warmup, cosine decay, and global-norm clipping at 1.0. This two-cell replay
+is diagnostic, not a recipe comparison; it cannot select a learning rate or weaken a
+P1 gate.
+
+At update 0 and every 100 updates, store:
+
+- pretext loss, learning rate, unclipped gradient norm, clipping occurrence, and
+  encoder parameter-update norm;
+- online-encoder, predictor, and EMA-teacher local/global per-channel standard
+  deviation, effective-rank fraction, largest-component fraction, and near-dead
+  dimension fraction;
+- EMA parameter drift, online/teacher feature cosine similarity, target norm, and
+  target variance; and
+- at the five ordinary frozen-probe checkpoints, the real, zeroed, shuffled, and
+  control-target results on `pilot_diagnostic`.
+
+Interpret the replay using rules frozen in the v2 preregistration. Non-finite values,
+unchanged encoder state, or a broken EMA update are implementation failures. Label
+`target_collapse` when the teacher target has effective-rank fraction below 0.25 or
+more than 5% near-dead dimensions at two consecutive stored checkpoints. Label
+`representation_collapse` by the same rule on the online global embedding. Label
+`late_optimization_instability` when the update-2,000 loss exceeds the lowest loss at
+or after update 1,000 by more than 25% at both learning rates. These labels are
+diagnostic classifications, not new comparative vetoes.
+
+Declare `mechanism_health_failure` when the same collapse label occurs at both
+learning rates or when `late_optimization_instability` fires. T3 enters replacement
+P1 unchanged only if the replay has neither an implementation failure nor a mechanism
+health failure. A label at only one learning rate does not select the other rate: both
+rates still enter P1 and the label remains a declared validity limit. Any failure
+blocks T3 and requires a focused fix with a new diagnostic run identity; it does not
+authorize tuning against `pilot_diagnostic` or substituting an unregistered T3
+variant. A healthy replay means only that the mechanism executes as specified, not
+that latent targets are useful.
 
 ### P1: Broad pretraining signal screen
 
@@ -522,6 +635,8 @@ must say `pilot direction`, never `best architecture`, `scales to 512`, or `vali
 | Pilot | Maximum trained trials | Updates per trial | Maximum updates |
 |---|---:|---:|---:|
 | P0 | diagnostic only | 500 | not comparative |
+| P0C (v2 calibration) | fixed controls/references | preregistered convergence cap | not comparative |
+| P0D (v2 T3 replay) | 2 | 2,000 | 4,000 diagnostic |
 | P1 | 16 | 2,000 | 32,000 |
 | P2 | 12 | 3,000 | 36,000 |
 | P3 | profiling only | 20 steps | not comparative |
@@ -535,9 +650,10 @@ must say `pilot direction`, never `best architecture`, `scales to 512`, or `vali
 
 Before P1, record a per-pilot and total accelerator-hour cap. The total program stops
 at the first of 240,000 comparative encoder updates or that accelerator-hour cap.
-P0/P3 diagnostic work is reported separately so profiling cannot silently consume the
-training budget. A pilot may spend unused trials from its own cap only; budget cannot
-be moved into a later pilot after results are visible.
+P0/P0C/P0D/P3 diagnostic work is reported separately so calibration, diagnosis, and
+profiling cannot silently consume the training budget. A pilot may spend unused trials
+from its own cap only; budget cannot be moved into a later pilot after results are
+visible.
 
 The 240,000-update cap is 17.8% of the 1.35 million maximum encoder updates in the
 governing Stage 2 matrix. This ratio is descriptive, not a claim of equal compute:
