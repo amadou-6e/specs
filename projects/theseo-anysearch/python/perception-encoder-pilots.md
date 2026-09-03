@@ -418,14 +418,17 @@ choice, so a single preregistration cannot pin both the R0 report and the chosen
 metric. Freeze two:
 
 1. **Audit and calibration protocol** (`voxel-encoder-pilot-v2r2-audit-protocol-1`),
-   frozen before R0. It pins: the `theseo-anysearch` integration commit that
-   carries the topology-termination enforcement - the squash SHA on
-   `exp/perception-encoder`, not any topic-branch commit; the predecessor v2r1
-   specification commit `0c9e3c633799f5d42b7a603e0845cac0bd494cda`; the audit
-   pool and every pool/query hash; generator version and seed; the R2 control
-   ladder identities and their capacities; the model-free ceiling inputs; the
-   menu of admissible R4 primary-metric forms; and separate R0/P0C/P0D
-   accelerator-hour caps.
+   frozen before R0. It pins: the `theseo-anysearch` integration commit
+   `f03509f926d217cf8a0c8c34cd0da38020a5034c` - the squash of PR #342 on
+   `exp/perception-encoder`, which carries the `Decision.no_topology_identifiable`
+   literal, `contracts.TOPOLOGY_COMPONENT_FAMILIES`, and
+   `_require_active_topology_component` (the v2r2 audit/comparative contracts in
+   #340 call it; the completed v1/v2/v2r1 contracts are not amended); the
+   predecessor v2r1 specification commit
+   `0c9e3c633799f5d42b7a603e0845cac0bd494cda`; the audit pool and every
+   pool/query hash; generator version and seed; the R2 control ladder identities
+   and their capacities; the model-free ceiling inputs; the menu of admissible
+   R4 primary-metric forms; and separate R0/P0C/P0D accelerator-hour caps.
 2. **Comparative P1-P8 preregistration**
    (`voxel-encoder-pilot-v2r2-preregistration-1`), frozen after R0 and P0C and
    before any candidate result. It pins: the R0 audit report payload hash; the
