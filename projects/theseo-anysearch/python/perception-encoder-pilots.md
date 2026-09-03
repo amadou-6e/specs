@@ -383,11 +383,12 @@ claim. `geodesic_nmae` is already deferred (v2r1 override 3), so v2r2 begins onl
 if it establishes an identifiable, calibratable connectivity gate.
 
 The v2r2 topology gate is the neutral component **`reachability`**: a gate family
-whose one frozen primary metric is chosen by R4 (normalized conditional log-loss
-gain, or occlusion-stratified AUPRC). AUPRC, pointwise V-information, and the
-R3 structural scores are diagnostics of that family, never the gate. Reports and
-`active_gate_components` name `reachability`, not a specific metric, so the gate
-identity does not contradict the chosen metric.
+whose one frozen primary metric is chosen by R4 (either the normalized
+conditional log-loss gain or occlusion-stratified AUPRC). The **selected** R4
+metric drives the `reachability` gate; the unselected alternative, pointwise
+V-information, selectivity, and the R3 structural scores are diagnostics of the
+family. Reports and `active_gate_components` name `reachability`, not a specific
+metric, so the gate identity does not contradict the chosen metric.
 
 Enforcement is structural: the comparative P1-P8 preregistration cannot be frozen
 unless `active_gate_components` contains a topology-family component - one whose
@@ -501,11 +502,13 @@ nonlinear-raw floor:
 structurally uniform with the other revised anchors and not clipped (the pilot
 never clips normalized scores). Occlusion-stratified AUPRC with the R1 frozen
 weighted aggregate, normalized between the R2 nonlinear-raw floor and the
-reference ceiling, is the alternative. The null-input log loss is a triviality
-diagnostic only, not a floor. AUPRC, pointwise V-information, and selectivity are
-retained as diagnostics. The `reachability` gate is active only when R0 returned
-`feasible`, the R4 primary denominator clears `0.10` headroom between the R2
-nonlinear-raw floor and the reference ceiling, and its triviality gate passes.
+reference ceiling, is the alternative. Exactly one of the two is selected in the
+comparative preregistration and becomes the `reachability` gate; the unselected
+form, the null-input log loss, pointwise V-information, and selectivity are then
+diagnostics only. The `reachability` gate is active only when R0 returned
+`feasible`, the selected R4 metric's denominator clears `0.10` headroom between
+the R2 nonlinear-raw floor and the reference ceiling, and its triviality gate
+passes.
 
 **R5 - fresh run.** New v2r2 dataset, query, audit-protocol, preregistration, and
 run identities; no reuse of any v1, v2, or v2r1 identity; new specification
