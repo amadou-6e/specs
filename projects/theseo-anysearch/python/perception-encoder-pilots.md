@@ -257,6 +257,99 @@ Candidates continue to require improvement over their paired random encoder. The
 measured fixed floors normalize scores across architectures; they do not replace the
 paired random control or any raw veto.
 
+#### Calibration amendment after the blocked v2 run
+
+The first `voxel-encoder-pilot-v2` calibration run remains immutable under
+specification commit `01eefc529016da48c4a1dd17b85391720542af14`. It returned
+`blocked` and recorded report-payload SHA-256
+`a7a149f9235b38f9ff1f1a230ce791367cf528fc6705e0f987674f1a48d4ea43`.
+Three gates failed: PCA and fixed-random local projections exposed the queried input
+channel and reached occupied IoU `1.0`; the reachability sampling/threshold contract
+gave PCA AUPRC `0.934` while its absolute false-open veto was `0.05`; and frequency
+prediction reached geodesic NMAE `0.0225`, leaving no useful small-radius denominator.
+The supervised reference also collapsed to effective-rank fraction `0.011`. These are
+probe and reference failures, not evidence against an encoder objective.
+
+The amended program is `voxel-encoder-pilot-v2r1`. Freeze these new identities:
+
+- dataset: `voxel-encoder-pilot-v2r1-dataset-1`;
+- preregistration: `voxel-encoder-pilot-v2r1-preregistration-1`;
+- calibration: `voxel-encoder-pilot-v2r1-p0c-1`;
+- four-times-data sensitivity: `voxel-encoder-pilot-v2r1-p0d-1`; and
+- replacement P1: `voxel-encoder-pilot-v2r1-p1-1`.
+
+The amended calibration pool must contain 24 new parent-training geometry IDs that
+are disjoint from every opened v1 and v2 pool. It covers all geometry-family and
+occupancy strata. Revised query identities, masks, pair provenance, threshold folds,
+and model-free ceiling inputs are content-addressed before the amended pool is opened.
+The training and `pilot_dev_early` pools used by replacement P1 are also fresh and
+disjoint from opened v1/v2 geometry because candidate selection has already occurred
+under those earlier identities. No v2r1 result may be recomputed on v2 geometry.
+
+The v1 P1 `no_viable_direction` verdict is formally superseded by
+`voxel-encoder-pilot-v2r1-p1-1`. Preserve all v1 values and its raw collapse
+observations, but do not treat its decision as active: the decision contract combined
+those observations with a false-open veto later shown to be structurally unpassable
+and with miscalibrated aggregate scores. Store a machine-readable supersede record
+that cites the v2 P0C report-payload hash and names `false_open_rate_max` as the
+invalidating fired veto.
+
+For v2r1, apply the following probe and scoring overrides:
+
+1. **Held-out occupancy:** select balanced known occupied/free query cells, change
+   those cells to unknown before encoder execution, and predict their original labels.
+   The default remains on-grid; off-grid and cross-channel variants are diagnostic
+   flags and cannot replace the default after calibration opens. Assert that no query
+   label remains in the encoder input.
+2. **Reachability:** sample positives across fixed geodesic-distance bins, component
+   negatives with the registered separation margin, and connectivity-flipping
+   boundary perturbations. Calibrate the operating threshold on a geometry-disjoint
+   selection fold, report overall and per-bin AUPRC plus false-open/false-closed rates,
+   and require two-way agreement. Set the false-open veto before candidate results to
+   the best calibrated non-neural baseline rate minus the registered `0.02` margin;
+   do not restore an absolute threshold.
+3. **Geodesic:** defer `geodesic_nmae` to Stage 2 wide-context evaluation. The v2
+   frequency NMAE is below the registered `0.15` pilot noise floor and the supervised
+   reference did not reduce it. Record the metric and deferral reason in reports, but
+   exclude it from P0C/P0D/P1 gates and ordering.
+4. **Ceilings:** use leave-one-out k-nearest-neighbour Bayes proxies for occupied IoU,
+   boundary F1, and reachability AUPRC, and kNN-residual error for clearance NMAE.
+   These estimates are model-free and collapse-free by construction. Do not train a
+   supervised reference. If a future amendment restores one, its selected embedding
+   must have effective-rank fraction greater than `0.30`.
+5. **Triviality:** for every active component report pointwise V-information and
+   online-MDL under its contextual input and registered null input. An active component
+   requires contextual-minus-null PVI of at least `0.05` bits per example. Failure
+   blocks the run; it does not authorize post-hoc metric removal.
+6. **Aggregation:** retire the unweighted `pilot_score` for v2r1. Report raw mean,
+   raw IQM, normalized IQM, and the performance profile at thresholds
+   `[-0.5, 0, 0.25, 0.5, 0.75, 1.0]` for every active component. A component remains
+   active only when its higher-is-better ceiling exceeds its floor by `0.10`, or its
+   error ceiling reduces floor error by `20%`. Retain at most two nondominated
+   candidates on the per-metric IQMs; if more than two are nondominated, prefer the
+   highest worst-component IQM and then the lexical frozen candidate ID. A composite
+   score cannot override or conceal any component gate.
+
+`boundary_f1` and `clearance_nmae` keep their v2 target definitions and probe
+templates. Their calibration bars remain, respectively, at least `0.10` absolute
+headroom and at least `20%` error reduction. The model-free ceilings and fresh v2r1
+queries are nevertheless remeasured; the v2 numerical values are evidence, not copied
+anchors.
+
+After amended P0C passes, run P0D with four times the observation density from the
+same v2r1 training geometry IDs, identical active metrics, fixed query identities,
+and matched probe budgets. P0D passes when every active denominator remains valid,
+the empirically calibrated false-open veto changes by no more than `0.02` absolute,
+and no active metric reverses floor/ceiling ordering. Report geometry-clustered
+uncertainty. P0D does not select a recipe and cannot tune the amended probes.
+
+Replacement P1 retains T0-T3, learning rates `1e-4` and `3e-4`, seeds 0 and 1,
+2,000 updates, FP32, and the original optimizer schedule. It uses the v2r1 probes,
+empirical false-open veto, per-metric gates, and Pareto retention above. Precompute
+immutable geometry targets and pipeline CPU batch preparation when those operations
+preserve the ordered observations, effective batch size, and exact numerical targets;
+record throughput and cache identities with the run.
+
 The following vetoes apply to every comparative pilot:
 
 - state-integrity, numerical-reproducibility, or applicable mask-isolation failure;
@@ -267,6 +360,10 @@ The following vetoes apply to every comparative pilot:
 - active pilot evaluation-pool false-open rate above 5% or more than 2 percentage
   points worse than the current encoder; or
 - unsupported output shapes, invalid masks, OOM, or missing resource accounting.
+
+For v2r1 only, replace the two `pilot_score`-unit vetoes with their corresponding
+per-metric PVI/MDL, embedding-necessity, and revised-anchor checks, and replace the
+absolute false-open veto with the empirical reachability veto above.
 
 For every score difference, run a paired stratified cluster bootstrap with 10,000
 resamples of complete geometry IDs. Preserve geometry-family and occupancy strata. In
@@ -637,6 +734,8 @@ must say `pilot direction`, never `best architecture`, `scales to 512`, or `vali
 | P0 | diagnostic only | 500 | not comparative |
 | P0C (v2 calibration) | fixed controls/references | preregistered convergence cap | not comparative |
 | P0D (v2 T3 replay) | 2 | 2,000 | 4,000 diagnostic |
+| P0C (v2r1 amended calibration) | fixed controls/model-free ceilings | fixed query budget | not comparative |
+| P0D (v2r1 four-times-data sensitivity) | fixed controls/model-free ceilings | matched P0C query budget | not comparative |
 | P1 | 16 | 2,000 | 32,000 |
 | P2 | 12 | 3,000 | 36,000 |
 | P3 | profiling only | 20 steps | not comparative |
