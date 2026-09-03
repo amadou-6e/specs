@@ -350,6 +350,185 @@ immutable geometry targets and pipeline CPU batch preparation when those operati
 preserve the ordered observations, effective batch size, and exact numerical targets;
 record throughput and cache identities with the run.
 
+#### Termination after the blocked v2r1 run
+
+The amended `voxel-encoder-pilot-v2r1` calibration is terminal. Its P0C returned
+`blocked` (report-payload SHA-256
+`2564db175a1880cf81da40bd5a32e472f9b3db81bce111283fe48c74d409697b`) on the single
+active gate `reachability_auprc`: even with the redesigned pair sampler and the
+model-free k-nearest-neighbour ceiling, the revised anchor could not clear a
+`0.10` higher-is-better denominator, because connectivity over a bounded,
+fully-visible observation window is near-linearly decodable from raw occupancy.
+P0D returned `blocked`
+(`4af619e2e3c2256c0e8f6655f65534580fbcabc4178257a4b100348699461775`) with no
+retained bundle, and replacement P1 was recorded `not_started`
+(`f499d7ede0049ab568297bc3aa6ad810d0400071214648ef940b05781bcdb542`) with zero
+trials, updates, and accelerator-hours. That line does not reopen; no
+configuration change revives it.
+
+#### Frozen v2r2 topology rule
+
+> At least one topology component must be active and pass its denominator,
+> identifiability, triviality, and control-ladder gates. If both reachability
+> and geodesic are deferred or invalid, v2r2 terminates with
+> `no_topology_identifiable`. The direction-finding pilot does not begin. A
+> separately preregistered local-geometry study may be proposed, but is outside
+> this pilot's decision chain.
+
+Reachability and geodesic performance are essential to the claim that the encoder
+supports pathfinding and benefits from wider context. Continuing P1-P8 on
+`occupied_iou`, `boundary_f1`, and `clearance_nmae` alone would silently measure
+local-geometry reconstruction while preserving an unjustified topology-perception
+claim. `geodesic_nmae` is already deferred (v2r1 override 3), so v2r2 begins only
+if it establishes an identifiable, calibratable connectivity gate.
+
+The v2r2 topology gate is the neutral component **`reachability`**: a gate family
+whose one frozen primary metric is chosen by R4 (either the normalized
+conditional log-loss gain or occlusion-stratified AUPRC). The **selected** R4
+metric drives the `reachability` gate; the unselected alternative, pointwise
+V-information, selectivity, and the R3 structural scores are diagnostics of the
+family. Reports and `active_gate_components` name `reachability`, not a specific
+metric, so the gate identity does not contradict the chosen metric.
+
+Enforcement is structural: the comparative P1-P8 preregistration cannot be frozen
+unless `active_gate_components` contains a topology-family component - one whose
+name begins with `reachability` or `geodesic` (`contracts.TOPOLOGY_COMPONENT_FAMILIES`,
+`_require_active_topology_component`). Because P1-P8 can only begin from a frozen
+preregistration, a run that defers both topology families stops at P0C with
+`decision: no_topology_identifiable` and writes no preregistration.
+
+#### Successor study: `voxel-encoder-pilot-v2r2`
+
+v2r2 is a partially-observed-topology study, not a metric adjustment on v2r1.
+The terminal `voxel-encoder-pilot-v2r1` runs are governed by specification commit
+`0c9e3c633799f5d42b7a603e0845cac0bd494cda`; v2r2 records that as its predecessor
+commit. Draw every v2r2 geometry ID afresh from the parent training partition; no
+v2r2 geometry or observation may occur in an opened v1, v2, or v2r1 pool. Freeze
+these identities before generating any v2r2 candidate metric:
+
+- dataset: `voxel-encoder-pilot-v2r2-dataset-1`;
+- audit protocol: `voxel-encoder-pilot-v2r2-audit-protocol-1`;
+- comparative preregistration: `voxel-encoder-pilot-v2r2-preregistration-1`;
+- identifiability audit run: `voxel-encoder-pilot-v2r2-r0-1`;
+- calibration: `voxel-encoder-pilot-v2r2-p0c-1`;
+- four-times-data sensitivity: `voxel-encoder-pilot-v2r2-p0d-1`; and
+- replacement P1: `voxel-encoder-pilot-v2r2-p1-1`.
+
+**Two immutable contracts.** R0 runs before R1-R4 and P0C informs the R4 metric
+choice, so a single preregistration cannot pin both the R0 report and the chosen
+metric. Freeze two:
+
+1. **Audit and calibration protocol** (`voxel-encoder-pilot-v2r2-audit-protocol-1`),
+   frozen before R0. It pins: the `theseo-anysearch` integration commit
+   `f03509f926d217cf8a0c8c34cd0da38020a5034c` - the squash of PR #342 on
+   `exp/perception-encoder`, which carries the `Decision.no_topology_identifiable`
+   literal, `contracts.TOPOLOGY_COMPONENT_FAMILIES`, and
+   `_require_active_topology_component` (the v2r2 audit/comparative contracts in
+   #340 call it; the completed v1/v2/v2r1 contracts are not amended); the
+   predecessor v2r1 specification commit
+   `0c9e3c633799f5d42b7a603e0845cac0bd494cda`; the audit pool and every
+   pool/query hash; generator version and seed; the R2 control ladder identities
+   and their capacities; the model-free ceiling inputs; the menu of admissible
+   R4 primary-metric forms; and separate R0/P0C/P0D accelerator-hour caps.
+2. **Comparative P1-P8 preregistration**
+   (`voxel-encoder-pilot-v2r2-preregistration-1`), frozen after R0 and P0C and
+   before any candidate result. It pins: the R0 audit report payload hash; the
+   single chosen R4 primary metric and its aggregation; the calibrated
+   per-component denominators and floor sources; the R3 false-merge veto
+   threshold; and `active_gate_components`.
+
+`boundary_f1`, `clearance_nmae`, and `occupied_iou` keep their v2r1 target
+definitions and probe templates and are remeasured on fresh v2r2 queries; the
+v2r1 numerical values are evidence, not copied anchors.
+
+**R0 - identifiability audit (gates everything).** Before R1-R4, on a
+geometry-disjoint audit pool, generate controlled counterfactual pairs that hold
+the visible voxels fixed and vary the hidden completion, then estimate the
+conditional uncertainty of the completed-reachability label given the visible
+input. Report:
+
+- unknown-channel prevalence and per-stratum class balance;
+- the conditional label entropy `H(reachable | visible input)` per occlusion-span
+  stratum. If, for any stratum R4 requires, the hidden geometry is effectively
+  random given the visible input (entropy near its maximum), no encoder can solve
+  it and the `reachability` gate defers. A visible-context predictor that *beats*
+  the geometric prior is the wanted signal - learnable completion - not a
+  failure;
+- a **leakage** check with two parts. First, an ablation: a predictor given only
+  forbidden generator identity or configuration features (seed, template index,
+  band placement rule) that a deployed encoder would not see must not exceed the
+  geometric-prior baseline by more than the registered margin. Second, transfer:
+  the visible-context completion predictor trained on one generator configuration
+  must retain its skill on a held-out generator configuration; a large drop is
+  leakage. Both must pass for a `feasible` finding.
+
+R0 emits a machine-readable `feasible` or `defer` decision from audit data only;
+`defer` triggers the frozen topology rule.
+
+**R1 - occlusion-aware sampler.** Reachability labels come from the completed
+geometry. Occlusion-span strata `1-2`, `3-5`, and `6+` and their aggregation
+weights are frozen before any candidate result; the weights are balanced or
+task-motivated and are never set to observed stratum prevalence. Selecting the
+best-performing stratum after results (`max`-over-strata) is prohibited.
+
+**R2 - control ladder.** Freeze the candidate probe capacity, optimization
+budget, and checkpoint-selection procedure before building any control. Compare
+against three distinct controls: an identical probe over raw input; a
+capacity-matched nonlinear raw-input model; and an over-capacity or model-free
+reference ceiling. The gated `reachability` denominator is
+`reference - nonlinear_raw`, never `reference - linear_raw`; a weak linear
+raw-grid probe is not a general raw-input floor because connectivity is
+nonlinear.
+
+**R3 - structural evaluation.** Evaluate connectivity with dense reachability
+fields from `K` preregistered anchor cells per observation (fixed selection rule;
+target is reachable-from-anchor-`k`), scored with Variation of Information,
+Adapted Rand index, and Betti-0 error, plus explicit false-merge and false-split
+rates. While the `reachability` gate is active, the false-merge rate is a veto
+(a false merge is a false-open); its threshold is calibrated from the R2 control
+and reference behaviour, not an absolute value. Per-cell component identifiers
+are not used as targets.
+
+**R4 - one primary metric, chosen from calibration only.** Before P1 opens,
+freeze exactly one primary metric and aggregation for the `reachability` family.
+The preferred form is the normalized conditional log-loss gain against the R2
+nonlinear-raw floor:
+
+```text
+(nonlinear_raw_log_loss - candidate_log_loss) /
+(nonlinear_raw_log_loss - reference_log_loss)
+```
+
+structurally uniform with the other revised anchors and not clipped (the pilot
+never clips normalized scores). Occlusion-stratified AUPRC with the R1 frozen
+weighted aggregate, normalized between the R2 nonlinear-raw floor and the
+reference ceiling, is the alternative. Exactly one of the two is selected in the
+comparative preregistration and becomes the `reachability` gate; the unselected
+form, the null-input log loss, pointwise V-information, and selectivity are then
+diagnostics only. The `reachability` gate is active only when R0 returned
+`feasible`, the selected R4 metric's denominator clears `0.10` headroom between
+the R2 nonlinear-raw floor and the reference ceiling, and its triviality gate
+passes.
+
+**R5 - fresh run.** New v2r2 dataset, query, audit-protocol, preregistration, and
+run identities; no reuse of any v1, v2, or v2r1 identity; new specification
+commit. Run R0, then the frozen CUDA P0C, P0D, and P1 chain. If R0 or the R2
+ladder shows the preregistered `reachability` denominator stays below `0.10`
+headroom, defer the `reachability` gate; do not adopt whichever diagnostic
+happened to pass.
+
+#### Local-geometry carve-out
+
+A narrower study may proceed only as its own program, never as part of this
+decision chain. It uses a new corpus `voxel-encoder-local-geometry-v1` with its
+own dataset, queries, preregistration, runs, score, and reports. Its claims are
+limited to occupancy, boundary, clearance, and clearance recovery. It makes no
+claim about connectivity or pathfinding, topology perception, wide-context value,
+or architecture selection for planning. Its results cannot advance the
+direction-finding P1-P8 sequence chain. A later topology-capable study must
+independently qualify before its conclusions may be combined with local-geometry
+results.
+
 The following vetoes apply to every comparative pilot:
 
 - state-integrity, numerical-reproducibility, or applicable mask-isolation failure;
@@ -723,6 +902,12 @@ The pilot outcome is directional evidence under these known limits:
 - **Proxy task:** frozen probes and the small geometry-only adaptation check measure
   accessible geometry, not eventual policy or planner value. Pilot ordering may still
   invert in the governing experiments.
+- **Topology identifiability:** v2r2 begins only if its R0 audit finds an identifiable,
+  non-leaky, calibratable `reachability` gate. If R0 or the R2 control ladder cannot
+  establish a `0.10` denominator between the nonlinear raw-input floor and the
+  reference ceiling, both topology families are deferred and the pilot terminates
+  `no_topology_identifiable`. A local-geometry study is then a separate program with
+  no topology, wide-context, or planning-architecture claims.
 
 Every decision record lists which limits could plausibly invert that decision. Reports
 must say `pilot direction`, never `best architecture`, `scales to 512`, or `validated`.
@@ -736,6 +921,9 @@ must say `pilot direction`, never `best architecture`, `scales to 512`, or `vali
 | P0D (v2 T3 replay) | 2 | 2,000 | 4,000 diagnostic |
 | P0C (v2r1 amended calibration) | fixed controls/model-free ceilings | fixed query budget | not comparative |
 | P0D (v2r1 four-times-data sensitivity) | fixed controls/model-free ceilings | matched P0C query budget | not comparative |
+| R0 (v2r2 identifiability audit) | counterfactual audit pool | preregistered audit cap | not comparative |
+| P0C (v2r2 amended calibration) | fixed controls/model-free ceilings + R2 ladder | fixed query budget | not comparative |
+| P0D (v2r2 four-times-data sensitivity) | fixed controls/model-free ceilings | matched P0C query budget | not comparative |
 | P1 | 16 | 2,000 | 32,000 |
 | P2 | 12 | 3,000 | 36,000 |
 | P3 | profiling only | 20 steps | not comparative |
