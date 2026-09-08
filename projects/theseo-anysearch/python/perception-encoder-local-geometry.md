@@ -159,3 +159,9 @@ Possible result: `qualifies_local_followup` or `not_qualified` per recipe.
 Neither is model-garden certification. Even a passing recipe requires separate
 external-domain, larger-radius and seed-replication work; this study does not
 choose a large-scale architecture or enable any topology-dependent pilot.
+
+## Completion evidence
+
+The [LG1 assessment and diagram](perception-encoder-local-geometry/lg1-assessment.md)
+record the completed run. The frozen protocol remains the original registration
+commit; this link and the evidence do not amend its gates or identities.
