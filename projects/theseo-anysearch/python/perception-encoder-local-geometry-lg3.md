@@ -116,3 +116,8 @@ Persist checkpoint metadata/hashes, registration, per-geometry statistics, famil
 scores, all controls, zero-shot diagnostics, intervals and written assessment with
 diagram. Keep weights, volumes and tensor predictions untracked. Publish evidence
 in both implementation and specs PRs. An incomplete run cannot confirm transfer.
+
+## Completion evidence
+
+The [LG3 assessment and diagram](perception-encoder-local-geometry/lg3-assessment.md)
+record the completed confirmation. The original preregistration remains unchanged.
