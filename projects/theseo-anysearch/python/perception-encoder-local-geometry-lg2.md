@@ -146,3 +146,8 @@ Keep weights, generated volumes and tensor predictions outside Git. Specificatio
 and evidence must also be committed/pushed in the specs repository. PRs remain
 unmerged for user review. No evaluation-guided retry, larger-radius run or changed
 joint weighting is authorized under this frozen study identity.
+
+## Completion evidence
+
+The [completed assessment and diagram](perception-encoder-local-geometry/lg2-assessment.md)
+record the results without changing the original frozen protocol or its gates.
