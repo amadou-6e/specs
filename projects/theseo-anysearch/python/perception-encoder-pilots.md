@@ -352,13 +352,18 @@ record throughput and cache identities with the run.
 
 #### Termination after the blocked v2r1 run
 
+State diagram and review evidence: [perception-encoder-state-review.md](perception-encoder-state-review.md).
+
 The amended `voxel-encoder-pilot-v2r1` calibration is terminal. Its P0C returned
 `blocked` (report-payload SHA-256
 `2564db175a1880cf81da40bd5a32e472f9b3db81bce111283fe48c74d409697b`) on the single
 active gate `reachability_auprc`: even with the redesigned pair sampler and the
 model-free k-nearest-neighbour ceiling, the revised anchor could not clear a
-`0.10` higher-is-better denominator, because connectivity over a bounded,
-fully-visible observation window is near-linearly decodable from raw occupancy.
+`0.10` higher-is-better denominator. The selected floor was coordinates-only
+AUPRC `0.9309221452`, and the kNN reference was `0.9971262631`: a gap of
+approximately `0.066204`. This shows inadequate headroom on the sampled task, not that
+raw occupancy makes connectivity linearly decodable. R0 must test coordinate
+and pair-sampling shortcuts before attributing this result to observability.
 P0D returned `blocked`
 (`4af619e2e3c2256c0e8f6655f65534580fbcabc4178257a4b100348699461775`) with no
 retained bundle, and replacement P1 was recorded `not_started`
@@ -429,7 +434,9 @@ metric. Freeze two:
    `0c9e3c633799f5d42b7a603e0845cac0bd494cda`; the audit pool and every
    pool/query hash; generator version and seed; the R2 control ladder identities
    and their capacities; the model-free ceiling inputs; the menu of admissible
-   R4 primary-metric forms; and separate R0/P0C/P0D accelerator-hour caps.
+   R4 primary-metric forms and a deterministic selection rule; and separate
+   R0/P0C/P0D accelerator-hour caps. It also pins the actual implementation SHA
+   executing the audit; the foundation SHA above is not a substitute for it.
 2. **Comparative P1-P8 preregistration**
    (`voxel-encoder-pilot-v2r2-preregistration-1`), frozen after R0 and P0C and
    before any candidate result. It pins: the R0 audit report payload hash; the
@@ -450,8 +457,8 @@ input. Report:
 - unknown-channel prevalence and per-stratum class balance;
 - the conditional label entropy `H(reachable | visible input)` per occlusion-span
   stratum. If, for any stratum R4 requires, the hidden geometry is effectively
-  random given the visible input (entropy near its maximum), no encoder can solve
-  it and the `reachability` gate defers. A visible-context predictor that *beats*
+  random given the visible input under the frozen entropy and uncertainty rule,
+  the `reachability` gate defers for insufficient usable signal. A visible-context predictor that *beats*
   the geometric prior is the wanted signal - learnable completion - not a
   failure;
 - a **leakage** check with two parts. First, an ablation: a predictor given only
@@ -459,17 +466,40 @@ input. Report:
   band placement rule) that a deployed encoder would not see must not exceed the
   geometric-prior baseline by more than the registered margin. Second, transfer:
   the visible-context completion predictor trained on one generator configuration
-  must retain its skill on a held-out generator configuration; a large drop is
-  leakage. Both must pass for a `feasible` finding.
+  must retain its skill on a held-out generator configuration; an excessive drop
+  fails the transfer requirement. Both must pass for a `feasible` finding.
 
 R0 emits a machine-readable `feasible` or `defer` decision from audit data only;
 `defer` triggers the frozen topology rule.
+
+Before R0 data are opened, the audit contract must resolve numeric values for
+geometry and counterfactual counts per stratum, class support, entropy bounds,
+predictor skill margins, transfer-drop tolerances, and uncertainty coverage.
+It must define the geometric-prior predictor, coordinate-only control, forbidden
+features, generator folds, training budgets, and entropy estimator. All completions
+sharing a visible observation stay in the same geometry group. Empty strata,
+insufficient support, or intervals crossing a decision boundary produce `defer`
+with a reason such as `insufficient_evidence`; this is not proof of impossibility.
+Missing values prevent protocol freeze, rather than receiving runtime defaults.
+Only the audit contract freezes before R0; the comparative contract is conditional
+on the subsequent measured gates. R0 deferral preserves the audit record and does
+not require running P0C to emit the terminal decision.
+
+The forbidden-feature control measures generator predictability, not by itself
+leakage into the encoder. Record whether those features actually reach encoder
+inputs; report held-out-generator failure as a transfer failure rather than proof
+of leakage. Both may still fail the preregistered robustness requirements.
 
 **R1 - occlusion-aware sampler.** Reachability labels come from the completed
 geometry. Occlusion-span strata `1-2`, `3-5`, and `6+` and their aggregation
 weights are frozen before any candidate result; the weights are balanced or
 task-motivated and are never set to observed stratum prevalence. Selecting the
 best-performing stratum after results (`max`-over-strata) is prohibited.
+For reachable pairs, span counts unknown cells on one shortest six-connected
+path, including endpoints, with lexicographic (D, H, W) next-cell tie-breaking.
+It never counts the union of shortest paths. Unreachable pairs have no such path:
+freeze their bin-assignment rule separately before sampling; do not duplicate
+every negative into every stratum. Record the support and prevalence of each bin.
 
 **R2 - control ladder.** Freeze the candidate probe capacity, optimization
 budget, and checkpoint-selection procedure before building any control. Compare
@@ -479,6 +509,15 @@ reference ceiling. The gated `reachability` denominator is
 `reference - nonlinear_raw`, never `reference - linear_raw`; a weak linear
 raw-grid probe is not a general raw-input floor because connectivity is
 nonlinear.
+
+Every empirical reference uses geometry-disjoint fitting and evaluation, including
+preprocessing. Row-wise leave-one-out neighbours from the same geometry cannot
+establish the reference used by a v2r2 gate. Counterfactual siblings share folds.
+Report kNN results as empirical references, not certified Bayes bounds. The
+gating reference and nonlinear-raw control receive the same visible information;
+completed geometry, component labels, and target-derived features are permitted
+only in separately named oracle diagnostics. Otherwise the denominator would
+measure privileged information rather than learnable representation quality.
 
 **R3 - structural evaluation.** Evaluate connectivity with dense reachability
 fields from `K` preregistered anchor cells per observation (fixed selection rule;
@@ -509,6 +548,25 @@ diagnostics only. The `reachability` gate is active only when R0 returned
 `feasible`, the selected R4 metric's denominator clears `0.10` headroom between
 the R2 nonlinear-raw floor and the reference ceiling, and its triviality gate
 passes.
+
+For log loss, use mean binary cross-entropy in bits per query (log base 2),
+with probabilities clipped to `[1e-6, 1 - 1e-6]` before taking logarithms.
+The headroom is `nonlinear_raw_log_loss - reference_log_loss >= 0.10` bits;
+for AUPRC it is `reference_auprc - nonlinear_raw_auprc >= 0.10` absolute.
+Normalized scores remain unclipped. Compute both losses on identical queries
+and aggregate using the frozen stratum weights. Freeze the primary-metric
+selection rule before P0C; do not select a diagnostic merely because it passes.
+
+For v2r2, this amendment supersedes the inherited absolute 5% false-open veto
+and the v1 aggregate-score-unit selectivity and embedding-necessity vetoes.
+The calibrated R3 false-merge veto is the topology error veto. Its formula,
+threshold-selection folds, minimum support, and uncertainty rule must be in the
+audit contract before calibration. Component-wise selectivity and embedding
+necessity thresholds and the active-component retention rule must also be
+explicitly frozen; a v1 five-component rule must not be silently reused.
+State integrity, numerical checks, collapse, masks, and resource vetoes remain.
+P0D rechecks all active denominators and the calibrated topology veto using its
+frozen sensitivity tolerances before P1 may start.
 
 **R5 - fresh run.** New v2r2 dataset, query, audit-protocol, preregistration, and
 run identities; no reuse of any v1, v2, or v2r1 identity; new specification
