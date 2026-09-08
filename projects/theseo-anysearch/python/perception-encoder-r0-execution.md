@@ -170,3 +170,8 @@ recorded as errors, not converted into scientific topology conclusions.
 
 No evidential R0 data had been opened when this registration was committed.
 Results will be appended separately, without editing the registered choices above.
+
+Post-run evidence: [completed R0 result](perception-encoder-r0-result.md).
+The pre-data version of this registration remains pinned at
+`a0d03c434be72d6eab7d962e53af62a7dd57b11d`; the result records the external-review
+ordering deviation explicitly.
