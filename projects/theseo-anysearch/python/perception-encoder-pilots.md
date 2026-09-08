@@ -361,7 +361,7 @@ active gate `reachability_auprc`: even with the redesigned pair sampler and the
 model-free k-nearest-neighbour ceiling, the revised anchor could not clear a
 `0.10` higher-is-better denominator. The selected floor was coordinates-only
 AUPRC `0.9309221452`, and the kNN reference was `0.9971262631`: a gap of
-`0.0662041178`. This shows inadequate headroom on the sampled task, not that
+approximately `0.066204`. This shows inadequate headroom on the sampled task, not that
 raw occupancy makes connectivity linearly decodable. R0 must test coordinate
 and pair-sampling shortcuts before attributing this result to observability.
 P0D returned `blocked`
