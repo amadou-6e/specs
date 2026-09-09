@@ -3,6 +3,10 @@
 Specification issue: specs#35. Implementation issue: theseo-anysearch#358.
 Status: preparation protocol; not a frozen executable run registration.
 
+Execution binding: theseo-anysearch#360. The settings below complete the preparation
+choices before fitting; a hashed run registration is still required. The user
+authorizes stacking on unmerged LG3/preparation work, without integration merges.
+
 ## Amendment and scope
 
 This introduces a separate development-only campaign after the local-geometry
@@ -69,9 +73,32 @@ but comparisons must wait for both. Choose the D2 probe using selection log loss
 never assessment F1. Also report each capacity, including training curves and
 selection loss, to expose failed fitting and overfitting.
 
-Preparation leaves D1's exact layer widths/receptive field and the shared optimizer
-to the execution implementation. These must be committed and frozen before any
-campaign fitting; they cannot be selected from assessment outcomes.
+D1 uses occupied/free/unknown channels only, four 3x3x3 Conv3d blocks of width 16,
+dilations 1/2/4/1, same padding, GroupNorm(4) and SiLU, then a 1x1x1 scalar head.
+The convolutional receptive field is 17; GroupNorm also uses spatial statistics.
+No coordinates or clean target-derived channels enter the reference. Fit unweighted
+boundary BCE using AdamW(lr=0.001, weight_decay=0.01), eight volumes per update.
+D2 uses the eight local encoder channels, train-only mean/std normalization with
+std floor 1e-5, linear or Linear-SiLU-Linear heads, the same AdamW and unweighted
+BCE, 1024 sampled query rows per update. Final-step weights are evaluated; curves
+record training and selection loss every 256 updates, without early stopping.
+Selection chooses the lowest log-loss D2 capacity (ties use order linear/32/128).
+Threshold selection maximizes selection F1 over 0.01..0.99 in steps of 0.01,
+with ties choosing the lowest threshold. Every seed and capacity remains reported.
+
+CPU-generated query masks use streams 36001/36002/36003 for train/selection/
+assessment, with 256 uniformly sampled hidden cells without replacement per
+geometry. Fewer than 256 eligible cells or fewer than 20 positive/negative boundary
+rows per family invalidates the run without redraw. D0 positive-control fitting
+uses a single linear layer on signed explicit labels, 64 balanced rows, AdamW
+lr=0.01/weight_decay=0.01 and 512 full-batch updates. Its hand-checked boundary
+fixtures mark occupied cells with an in-crop six-connected free neighbor.
+
+This binding fits boundary only; occupancy/distance fitting is deferred rather
+than multiplying the diagnostic budget. Those earlier results remain contextual
+evidence, not new supporting measurements. D1 and D2 execute sequentially on the
+single GPU. A timed-out stage ends this run as inconclusive, retaining completed
+evidence. D3/D4 remain proposals, not automatic execution in this binding.
 
 For D1/D2, use three-valued evidence: pass when every seed meets boundary F1 0.70
 at the selection-calibrated threshold and the geometry-cluster-bootstrap 95% CI
