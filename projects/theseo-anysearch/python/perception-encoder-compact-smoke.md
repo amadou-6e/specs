@@ -4,10 +4,10 @@ Issue theseo-anysearch#379; specs#54. Parent plan commit
 4df18c69ee81c2c2ebd383b7eab615ae7583a6b3. Authorized unmerged implementation stack
 on #376. This bounded engineering run does not start the48 GPU-hour HPO campaign.
 
-Study compact-c0c3-smoke-v1. Fresh development-only train/probe/development splits,
+Study compact-c0c3-smoke-v2. Fresh development-only train/probe/development splits,
 12 distinct49-cubed parents each; two existing stationary generators (random_field,
 oblique_sheets) and densities.08/.16/.28 in the context-scale order. Scene ID
-compact-c0c3-smoke-v1-<split>-<index:03d>; SHA-seeded generator and independent20%
+compact-c0c3-smoke-v2-<split>-<index:03d>; SHA-seeded generator and independent20%
 mask. Parent boundary and distance targets, truncation/divisor8. Crop33 input;
 256 central17 queries/task, seed37900+split index, same eligibility as context
 pilots, replacement only for undersized nonempty pools. Fixed masks are deliberate
@@ -44,3 +44,13 @@ Output cost ledger and compact report; weights outside Git. C0-C3 remain partial
 until production data/control coverage, detailed numerical comparisons, caching,
 batch/worker/precision benchmarks and actual campaign contracts are completed.
 This smoke has no claim to exhaustively use or optimize all hardware resources.
+
+## Engineering deviation: deterministic pooling
+
+The v1 run stopped during grid joint-training because adaptive_avg_pool3d backward
+has no deterministic CUDA implementation. Its partial output is invalid for quality
+or cost comparisons. Preserve its manifest and partial artifacts; do not resume or
+select configurations from it. V2 uses fresh data/registration/run identities and
+explicit separable averages over the same adaptive bins, with tested forward and
+gradient equivalence. Deterministic execution remains enabled. Source/spec pins
+must be renewed before the replacement run.
