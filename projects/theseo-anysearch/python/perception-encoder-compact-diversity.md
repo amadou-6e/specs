@@ -109,3 +109,25 @@ If rank improves without task metrics, do not declare success: next test nonline
 decoding or representation detail. If quality improves, confirm on fresh seeds and
 controls before packaging. Continue in-scope evidence-directed work within budget;
 never merge/promote or enlarge the field without the corresponding authorization.
+
+## Completed evidence
+
+Implementation#393 / PR394, sourceb09313a, manifest0f042ca, evidenceefb5c5d.
+Six recipes and18 stages completed. Report payload
+02701cbde1957a598460a86b0a4321f3ff39344a3a468c0f54dd3b943787fbe0.
+473 garden tests passed. All21 artifact hashes,18 selection metric/threshold
+replays,18 cached-feature-to-prediction CUDA replays and two development assessments
+verified. Strict CPU replay differed by up to4.055e-6; tolerance was not relaxed,
+and CPU portability at that tolerance is not certified.
+
+Fine pooling/strong penalties raised entropy rank to21.62, but selection boundary
+F1 remained.3301. Rank alone did not fix task information. Family-aware selection
+chose recipe0/512. Development IoU.24850, boundary F1.33044, clearance.09825,
+recovery.09837: classification targets fail. Neither finalist is usable or
+promotion-eligible. The density-balanced corpus removes the previous filled-crop
+advantage; cross-study pooled numbers are not directly comparable.
+
+Cached1024-update recipes plus evaluations took about9.3-9.7s each; repeated bank
+entries are not independent scenes. Ledger charge484.922s includes300s overhead
+reserve and freeze preparation. Continue a fresh nonlinear frozen-readout study,
+not stronger penalties or field scaling. No integration merges performed.
