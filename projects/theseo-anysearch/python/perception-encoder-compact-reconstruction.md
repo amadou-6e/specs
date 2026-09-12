@@ -91,3 +91,30 @@ cache identity/hash/size, independent normalization, schedule, ranking and resum
 Replay artifact hashes and original-device predictions/metrics after completion.
 Quality failures direct a bounded fresh follow-up; validity failures exclude the
 affected evidence and require a recorded repair, never lower the acceptance bars.
+
+## Completed evidence
+
+Implementation#397 / PR398; source4723679, manifest24902ee, verifier531c5a8.
+All18 fits completed. Report payload SHA256:
+5ca3268a17847dde3bd30e6e019d48994f7140752d113bc1162ffeb594318474.
+498 garden tests passed; all97 artifact hashes, eight backbone-batch replays,
+eight candidates including vectors/heads/shuffles, two controls and three
+development predictions verified on original CUDA.
+
+The frozen ranking selected grid128/conv, not the best pooled-score residual model:
+residual/conv improved pooled F1 to.404 but thin-sheet IoU remained.179/.167,
+below grid/conv.205/.209. Selected grid128 development IoU.27136, F1.35488,
+clearance.08829, recovery.08851; sphere/box distance errors still exceed.10.
+The spatial reference achieved.75816/.79214/.04754/.04832 and passes every
+development family. No compact candidate is usable or promotion-eligible.
+
+Nonlinear reconstruction helps; neither code-size doubling nor variance-rank
+improvement rescues the weak families. Next is a fresh spatial-layout/capacity
+and learning-rate study, preserving local ordering inside a flattened vector,
+with the actual selected grid/conv recipe retained as a control. Larger code sizes
+require an explicit successor protocol; the field remains33 with central17 targets.
+Increase independent geometry coverage within a bounded cache footprint; preserve
+independent heads, family-aware ranking and unchanged quality targets.
+
+Run3136.516s plus final settlement and an additional300s validation reserve in the
+ledger; no change to the immutable report. All source/spec PRs remain unmerged.
