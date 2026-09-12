@@ -67,3 +67,20 @@ decoder/aggregation changes over increasing field size. Keep original failures.
 Commit registration, compact diagnostic report, hashes and assessment. Do not stop
 at the diagnostic when an in-scope next training experiment is justified and budget
 remains. No automatic integration merge or promotion.
+
+## Completed evidence
+
+Source91de70a / evidencebaee828 on implementation#391. All six input checkpoint
+hashes and encoder states verified; regenerated ridge predictions matched original
+saved predictions. Full garden suite462 passed. Report payload
+49f6cfd3cab1b0ff1c2542cdc709731c89cd6d798af4d4987fbf0999023e2e6d.
+29.297s analysis plus120s conservative overhead charged within the campaign.
+
+Probe covariance entropy rank ranges1.33-2.07 for grid64 and falls to1.000001 for
+grid192 at8192 updates (leading variance fraction .99999993). At that checkpoint,
+ridge boundary F1 .1985 and shuffled-vector F1 .1938 are near the spatial prior
+.1902. Grid64 still uses scene information (.2815 real versus .1613 shuffled),
+but its trained decoder (.2811) is also weak. This motivates a fresh small-field
+anti-collapse/detail training comparison. Entropy rank is variance concentration,
+not literal matrix rank or information capacity. No independent qualification or
+change to the original search result follows from this analysis.
