@@ -111,3 +111,23 @@ Verify report hashes and original-device prediction replay after completion.
 If nonlinear heads help, confirm the promising head/encoder before packaging; if
 not, test encoder training with a nonlinear decoder and stronger spatial detail
 under fresh identities. Continue within scope/budget, not another routine pause.
+
+## Completed evidence
+
+Implementation#395 / PR396, sourced02d086, manifest11811c9. All20 fits and34
+checkpoint evaluations completed. Report payload
+39503c4fdbb641581a3d1d587827e6fe30e46126dae96e46f9a191d9092fd6e8.
+484 garden tests passed. All39 artifact hashes,34 original-CUDA head replays,
+24 shuffle replays, two ridge controls and both development assessments verified.
+
+Conv passed all three learnability controls (IoU1.0, boundary F1.989/1.0/1.0).
+FiLM passed at LR.003 (both1.0), underfit at lower rates. Real frozen-code heads
+remained around.34-.35 boundary F1, above null~.259 but far below target. Selected
+source0/conv/LR.001/4096 development: IoU.25684, boundary F1.33722,
+clearance.09771, recovery.09790. Neither finalist is usable or promotion-eligible.
+
+Charge1180.906s plus final report-write settlement, including preparation and300s
+overhead reserve. Next: train the encoder aggregation with nonlinear reconstruction
+and stronger spatial-detail preservation, with a contemporaneous spatial reference.
+Keep the field fixed, preserve failed results and freeze fresh identities before
+training. No additional head search on these immutable codes is justified now.
