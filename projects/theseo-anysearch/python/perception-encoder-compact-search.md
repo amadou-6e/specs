@@ -116,3 +116,31 @@ Git, with hashes. Write durable progress after each completed trial so interrupt
 does not discard completed work. Never restart completed trials without recording
 the extra cost. Commit resolved configurations, manifests and compact report.
 No final certified checkpoint or automatic promotion from this first tranche.
+
+## Completed evidence (2026-09-12)
+
+Implementation #389 / PR #390 completed all36 configurations and46 training stages.
+Frozen protocol SHA remains31beb05c0c1dd8fe57bfa90d6052867617bc5fdd; this evidence
+does not amend that run. Source8d8f5f6, manifest4a804f7, evidence782322f.
+Report payload572e8910c6d1934f59662a9b79312f0a08e482fb91dfe2d832f08a6bca8048a6.
+All48 artifact hashes and all46 selection/two development metric sets replayed.
+455 garden tests plus two separate verifier tests passed.
+
+Selected grid64/frozen/8192-update checkpoint: development IoU.69789, boundary
+F1.27556, clearance NMAE.09636, recovery NMAE.09607. Grid192 finalist:
+.51300/.20517/.11323/.11315. Neither is usable or promotion-eligible. Winner
+sheet/random-field IoU is only.0632/.0438; sphere/box distance errors are about
+.17/.18. Pooled target attainment is not broad geometry retention.
+
+Grid192 deteriorated from2048 to8192 updates. HPO did not fix boundary retention.
+The grid and attention192 outputs also have a128-wide internal linear bottleneck;
+this limits interpretation of dimension scaling. Proceed to a bounded readout/
+representation diagnostic and then a fresh evidence-directed training protocol,
+not larger fields, relaxed targets or repeated final-test selection.
+
+The tranche ledger settled2530.155s, including a conservative900s interruption
+charge, plus the separate3600s historical reserve. Approximately46.30 of the
+authorized48 hours remain before post-run diagnosis/verification charges. The
+authorization does not permit integration merges. Full assessment and compact
+report live at theseo-anysearch commit782322f in docs/perception-compact-search-
+assessment.md and docs/perception-encoder-local-geometry/compact-search-report.json.
