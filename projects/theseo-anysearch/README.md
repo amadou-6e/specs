@@ -52,6 +52,7 @@ continue to resolve.
 - [Naming conventions](naming.md)
 - [Project structure](project-structure.md)
 - [Experiment design](experiments.md)
+- [Routing environment inventory](routing-environment-inventory.md)
 - [Python specifications](python/)
 - [RLlib explanation specifications](rllib/explain/README.md)
 - [Rust specifications](rust/)
