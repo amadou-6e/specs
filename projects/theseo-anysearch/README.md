@@ -54,6 +54,7 @@ continue to resolve.
 - [Experiment design](experiments.md)
 - [3D routing environment inventory](routing-environment-inventory.md)
 - [3D routing asset and integration inventory](routing-asset-inventory.md)
+- [3D routing geometry integration roadmap](routing-geometry-integration-roadmap.md)
 - [Python specifications](python/)
 - [RLlib explanation specifications](rllib/explain/README.md)
 - [Rust specifications](rust/)

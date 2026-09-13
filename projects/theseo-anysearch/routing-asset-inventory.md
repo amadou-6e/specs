@@ -85,6 +85,10 @@ to the garden model or planner core. Every converted dataset needs:
 
 ## Integration order
 
+This is the source-priority summary. The reviewable implementation packages
+and acceptance gates are in the
+[3D routing geometry integration roadmap](routing-geometry-integration-roadmap.md).
+
 1. **Prove the benchmark path on `plant01`.** Parse its `.3dscen` as structured
    task data, validate pairing and coordinates, and ingest sparse map cells
    without dense `rev_voxel` expansion. Compare a full-map classical baseline
