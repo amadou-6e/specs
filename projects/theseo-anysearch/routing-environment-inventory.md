@@ -24,6 +24,29 @@ bend rule, task pair, or obstacle is a separately named Theseo-derived task.
 | [ShortestPathLab Descent](https://benchmarks.pathfinding.ai/3d-benchmarks/voxel-maps/) | Thirty voxelized, internally traversable game levels with 2,000 tasks per map. | Distinct 3D room/corridor topology for generalization outside industrial layouts. | Point-agent navigation only; levels originate from a 1995 game, though the voxel benchmark is from 2023. Audit data rights; do not present it as modern engineering CAD. |
 | [ShortestPathLab Sandstone](https://benchmarks.pathfinding.ai/3d-benchmarks/voxel-maps/) | Eleven CT-derived pore-space voxel maps with 2,000 tasks per map. | Tight, irregular 3D passage control. | A point-path task in rock pores, not pipe installation; voxel/scan rights require audit. |
 
+## Compact drone navigation candidates
+
+These sources are relevant to small, difficult flight volumes. A drone task must
+allow free vertical motion and check the swept vehicle body, not just a point path
+through a 2D floor plan. The source task and any Theseo-derived fixed-goal task
+must be reported separately.
+
+| Source and direct entry | Supplied geometry and task | Research role | Boundary before use |
+| --- | --- | --- | --- |
+| [Aerial Gym Simulator](https://github.com/ntnu-arl/aerial_gym_simulator), [bounded obstacle configuration](https://github.com/ntnu-arl/aerial_gym_simulator/blob/main/aerial_gym/config/env_config/env_with_lidar_nav_obstacles.py), [active-perception navigation examples](https://github.com/ntnu-arl/active-perception-RL-navigation) | Source-defined 3D obstacle and wall assets plus a drone navigation task. The cited configuration samples a bounded volume roughly 10-15 m wide in each horizontal axis and 6-10 m high; the active-perception work supplies 10-, 20-, and 30-obstacle inference examples. | Runnable compact flight-task candidate with controllable obstacle density and sensor observations. | Random obstacle count is not evidence of narrow-passage or multi-route topology. Audit actual placements, start/goal sampling, collision geometry, and licensing. Its Isaac Gym integration is substantial; exporting source geometry into a simpler voxel evaluator would be a derived task. |
+| [AvoidBench](https://github.com/tudelft/AvoidBench) | Indoor and forest flight scenes; seeded random maps and start/goal trials with flight and environmental-complexity metrics. The Unity scene is distributed as a simulator release, and the runner can save point clouds. | External obstacle-avoidance benchmark with an existing flight-task protocol. | The scene is not supplied as a convenient raw collision-mesh corpus. Verify whether indoor trials require genuine 3D route choices rather than local avoidance. Keep upstream scores distinct from any extracted-voxel or fixed-pair task. The published setup targets Ubuntu 20.04/ROS Noetic. |
+| [Gazebo maps: 3D maze and vertical tunnel](https://github.com/engcang/gazebo_maps) | Downloadable Gazebo world archives, including `3d_maze.tar.xz`; the repository documents a launchable `3d_maze/eazy_maze.world` and a vertical-tunnel scene. | Concrete compact geometry for held-out, topology-focused flight routes. | These are worlds, not a packaged start/goal benchmark. Inspect the collision model to confirm that height changes are necessary and no over-wall shortcut exists. Define reachable, clearance-checked task pairs and an evaluator before using them as evidence. |
+| [CaveDroneSim](https://github.com/makarov-mm/cave-drone) | Source-generated 3D voxel chambers and tunnels, a partially observed occupancy map, simulated flight, and an exploration-and-return task. | Procedural irregular-tunnel family for testing an encoder under partial observation. | Its native objective is exploration, not fixed-goal path planning, and the source does not establish a small-volume benchmark. Freeze world dimensions/seeds, derive valid start/goal pairs, and separate those results from the upstream exploration task. |
+
+For a derived compact-drone suite, control difficulty by minimum body clearance,
+geodesic detour, and required altitude changes rather than obstacle count alone.
+Candidate layouts include offset openings at different heights, overhead detours,
+dead ends, and narrow vertical passages. Certify each case against a full-map 3D
+planner after obstacle inflation, then hold out whole layout families and source
+worlds during encoder selection. Report success, body collisions, path cost,
+clearance, and planning latency; add dynamic-feasibility checks before claiming a
+trajectory is flyable.
+
 ## 3D scene sources needing task construction
 
 | Source | Downloadable geometry | Missing routing-task work |
