@@ -83,3 +83,24 @@ After execution replay hashed artifacts and original-device predictions at
 rtol1e-5/atol1e-6, including cached backbone batches. Commit compact report and
 assessment to implementation PR and evidence to this specs repository; no weights,
 corpora or caches. No merges without review/explicit merge authorization.
+
+## Executed evidence
+
+Frozen spec `b77b6a20ffc7e88930b4e4110133a649afdb95c7`, source
+`b3a28146fa2c2c8f890e9b0b9b531196032cb8a8`; issue401 / PR402.
+Report `f7d65863a81c3c905d24649d78a4d2d55ce747ccc0c89d361feb796d4bfc7c10`:
+all12 fits completed,109 hashed artifacts,6,876.375 accounted seconds.
+All three fresh seeds pass every development family point target and both
+per-family embedding-necessity comparisons. Experimental packaging readiness
+is true; promotion remains false. Native development IoU .76333/.76398/.77122,
+F1 .79149/.79435/.79458 for seeds401/402/403. Worst family/seed IoU .631216,
+F1 .705934; maximum errors .059629/.059573. No seed was selected on development.
+
+Proceed to a separately scoped frozen-interface export and round-trip validation.
+Keep the native spatial-readout limitation, fixed-backbone/shared-corpus limits,
+and narrow worst F1 margin explicit. This does not establish arbitrary-head,
+topology, navigation, larger-field or broad statistical certification claims.
+Assessment and diagram: `docs/perception-compact-replication-assessment.md`.
+Validation:526 garden tests pass; original-CUDA replay verified109 artifacts,
+three seed pipelines,30 predictions and eight backbone batches at unchanged
+rtol1e-5/atol1e-6. Specs validator:zero errors, existing Draw.io warning only.
