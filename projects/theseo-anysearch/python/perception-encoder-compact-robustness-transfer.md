@@ -139,3 +139,19 @@ validation overhead, per-fit1800s. Hash-keyed resume and cumulative charges; no
 duplicated fits. After completion verify artifacts and original-device head
 predictions, calibration lock, sampled-query exposure, and encoder-state invariance.
 Keep confidence/partial-observation/control-capacity limits in the assessment.
+
+## Executed evidence
+
+Both studies completed and passed original-device replay under frozen protocol
+191f883a24b67afe75a5ce9b0783f53351802423 and implementatione16fbc6 (issue405/PR406).
+See the [full assessment](perception-encoder-compact-validation-assessment.md).
+Robustness report6f3036bd4f6a83443324ca44a7ac9c234b82748a31b89c71be4052349de09b7e;
+transfer report3c058b813540b08c7eb8f7499a13c2c6b08b44549689a2fc1d9f2a76ec7f8d67.
+All416 artifacts verified, all12 collision heads and82944 queries replayed;
+encoder states unchanged. 559 garden tests pass. The compact code transfers useful
+signal but misses the declared raw/spatial competitiveness margins in every seed.
+Noise, sparse density and contiguous occlusion expose robustness limits. The
+uncertain-path diagnostics also expose limits of pooled-recall threshold calibration.
+No thresholds, heads or criteria were changed after test access. Total accounted
+3706.844s for these two studies within the existing48-hour authorization; no merge
+or promotion. Subsequent directions require fresh protocols/data, not test-set tuning.
