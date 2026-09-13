@@ -13,9 +13,9 @@ source rights again before executing a package.
 The first deliverable is a reproducible, **external 3D point-path evaluation**
 on one Industrial Plants map and its actual query file. The second is a
 **controlled compact training family** with fixed geometry and query identities
-from scene generators. Only then add roofed-maze transfer, simulator-native
-flight evaluation, and engineering route constraints. This order gives an
-end-to-end measurement before adding CAD or full simulator dependencies.
+from scene generators. A separately derived roofed-maze test then probes
+transfer. This order gives an end-to-end measurement without adding CAD or
+full simulator dependencies to the gate-bearing path.
 
 Do not relabel component models as environments, feasible reference routes as
 optimal, or an occupancy array as a partially observed sensor input. An
@@ -57,24 +57,62 @@ branch when it supports the perception campaign. Review its PR before merging
 to that branch; selectively promote reusable code to `develop` under the
 existing promotion workflow. No package below implies a merge or GPU budget.
 
-| ID | Depends on | Deliverable and source | Exit evidence |
+| ID and issue | Depends on | Deliverable and source | Exit evidence |
 | --- | --- | --- | --- |
-| **G0: contracts and fixtures** | This roadmap reviewed | Versioned source/world/task/observation/reference/split sidecars; tiny hand-built boxes, tunnel and invalid-query fixtures; source-rights register. | Deterministic IDs, round-trip coordinates, visible-versus-unknown separation, zero silent invalid inputs, and CI tests with no network downloads. |
-| **G1: first point-path slice** | G0 | Strict `.3dmap.zip` + `.3dscen` importer for ShortestPathLab `plant01`; compile via `NpySource`; fixed query runner and baseline. | One reproducible end-to-end report with source hashes, accepted/rejected query counts, search semantics, valid replayed paths, runtime, and peak memory. No claim of upstream score comparability until query columns and movement rules are verified. |
-| **G2a: compact scene export** | G0 | Instantiate seeded Aerial Gym obstacle layouts; transform URDF **collision** bodies, walls, starts and goals into metric occupancy and task manifests. | Re-export is hash-identical; transformed collision samples agree with source geometry; task pairs include genuine detours and altitude-change cases. Components alone do not count as worlds. |
-| **G2b: tunnel-family export** | G0 | Export pinned CaveDroneSim voxel generator outputs and fixed-goal pairs separately from its native exploration task. | Generator version and seed reproduce maps; held-out chamber/tunnel layout families and clearance-checked tasks are explicit. Do not call its exploration score a fixed-goal routing score. |
-| **G3: training and frozen-code evaluation** | G1 plus G2a; G2b optional extension | Feed compact worlds into new geometry-ID-aware garden data manifests, with full-world truth separated from sensor-visible input and independently checked local labels. Run frozen-encoder heads alongside raw-grid, spatial and shuffled-code controls. | Train/calibration/test split by source site and generator topology family, not crop or seed alone; fixed query/crop hashes; new protocol and run IDs; identical tasks for all controls; no test-set model selection. |
-| **G4: roofed maze transfer** | G0, G1 | Convert Gazebo SDF collision boxes and poses; create a separately identified roofed variant, not a replacement of the open-top `easy_maze.world`. | Roof underside, body radius, world bounds and source hash recorded; independent checker rules out overflight; connected, valid query pairs and a planar-only control identify whether the task truly needs 3D motion. If not, retain it only as an enclosed-maze case. |
-| **G5: native flight benchmark** | G1, a runnable planner interface | Run AvoidBench through its native Unity/ROS interface with pinned scenes and trials; log its sensor stream, outcomes and resource use. | Native flight metrics and versioned scene/trial IDs are reproducible. Do not treat an exported point cloud as ground-truth occupancy or equate simulator and voxel scores. |
-| **G6: engineering track** | G0, G1, independent rights review | Start with Deng's 32^3 multi-pipe generator and small PipeWiring/Aker fixtures. Then assess IFC-Bench port and installed-route extraction; investigate IRIS and the cabin harness only if rights and topology permit. | Independent swept-volume, bend, terminal, inter-route and obstacle checks; installed target routes excluded from model input; each site held out whole. Rights-gated CAD never enters training by default. |
-| **G7: comparative report** | G1, G3, G4; G5/G6 reported separately when ready | Paired benchmark of point planning, frozen-code heads and their controls on the exact same geometry/query manifests; source-family and difficulty breakdowns. | Collision-free success and query coverage reported first, then route cost, clearance, search expansions, time and memory with uncertainty across geometry IDs. Explicitly separate upstream tasks, derived tasks, and simulator-native scores. |
+| **[G0 #411](https://github.com/amadou-6e/theseo-anysearch/issues/411): contracts and fixtures** | This roadmap merged | Versioned source/world/task/observation/reference/split sidecars; tiny hand-built boxes, tunnel and invalid-query fixtures; source-rights register. | Deterministic IDs, round-trip coordinates, visible-versus-unknown separation, zero silent invalid inputs, and CI tests with no network downloads. |
+| **[G1 #412](https://github.com/amadou-6e/theseo-anysearch/issues/412): first point-path slice** | #411 merged | Strict `.3dmap.zip` + `.3dscen` importer for ShortestPathLab `plant01`; compile via `NpySource`; fixed query runner and baseline. | One reproducible end-to-end report with source hashes, accepted/rejected query counts, search semantics, valid replayed paths, runtime, and peak memory. No claim of upstream score comparability until query columns and movement rules are verified. |
+| **[G2a #413](https://github.com/amadou-6e/theseo-anysearch/issues/413): compact scene export** | #411 merged | Instantiate seeded Aerial Gym obstacle layouts; transform URDF **collision** bodies, walls, starts and goals into metric occupancy and task manifests. | Re-export is hash-identical; transformed collision samples agree with source geometry; task pairs include genuine detours and altitude-change cases. Components alone do not count as worlds. |
+| **[G2b #414](https://github.com/amadou-6e/theseo-anysearch/issues/414): tunnel-family holdout** | #411 merged; optional for first training run | Export pinned CaveDroneSim voxel generator outputs and fixed-goal pairs separately from its native exploration task. | Generator version and seed reproduce maps; held-out chamber/tunnel layout families and clearance-checked tasks are explicit. Required before any tunnel-family generalization claim. |
+| **[G3a #415](https://github.com/amadou-6e/theseo-anysearch/issues/415): dataset and controls** | #412 and #413 merged | Feed compact worlds into new geometry-ID-aware garden data manifests; keep full-world truth separate from sensor-visible input and independently checked local labels. Prepare matched frozen-code, raw-grid, spatial and shuffled-code controls. | Group splits by complete layout/site, with a topology-family holdout when multiple families exist; never split by crop or seed alone. Fix query/crop hashes and identical tasks for controls; test leakage and labels. No training run yet. |
+| **[G3b #416](https://github.com/amadou-6e/theseo-anysearch/issues/416): training and assessment** | #415 merged; [specs#92](https://github.com/amadou-6e/specs/issues/92) preregistration merged; compute budget approved | Execute the compact encoder and frozen-code head comparison with fresh external-corpus dataset/query/run identities. | Resolved configs, resource use, geometry-level uncertainty, matched-control scores and failure strata assessed against the frozen protocol; no test-set model selection. |
+| **[G4 #417](https://github.com/amadou-6e/theseo-anysearch/issues/417): roofed maze transfer** | #411 and #412 merged | Convert Gazebo SDF collision boxes and poses; create a separately identified roofed variant, not a replacement of the open-top `easy_maze.world`. | Roof underside, body radius, world bounds and source hash recorded; independent checker rules out overflight; connected, valid query pairs and a planar-only control identify whether the task truly needs 3D motion. If not, retain it only as an enclosed-maze case. |
+| **[G7 #418](https://github.com/amadou-6e/theseo-anysearch/issues/418): comparative report** | #412, #416 and #417 merged; #414 only for tunnel claim | Paired benchmark of point planning, frozen-code heads and controls on identical geometry/query manifests; source-family and difficulty breakdowns. | Collision-free success and query coverage first, then route cost, clearance, expansions, time and memory with uncertainty across geometry IDs. Explicitly separate upstream and derived tasks. |
 
-G1 is the first runnable milestone. G2a and G2b may proceed in parallel after
-G0, with separate source-adapter ownership; G4 can proceed after G1 without
-waiting for encoder training. G5 depends
-on a closed-loop planner interface and may remain an external benchmark rather
-than block G7. G6 is a distinct engineering objective and must not hold up the
-drone/point-path track.
+AvoidBench's native flight loop and IFC/STEP/IRIS/cabin-harness engineering
+imports remain in the [asset inventory](routing-asset-inventory.md), **outside
+this gate-bearing issue chain**. Open separate issues only after a reviewed
+decision names the gate they answer, their rights are cleared, and a runnable
+task contract exists. Do not use their absence to block #418 or claim they were
+tested.
+
+## Prescribed issue and PR resolution order
+
+1. Review and merge specs [#85](https://github.com/amadou-6e/specs/pull/85),
+   then [#87](https://github.com/amadou-6e/specs/pull/87), then
+   [#89](https://github.com/amadou-6e/specs/pull/89). Before implementation,
+   replace each task issue's pinned draft spec SHA with the exact merged
+   governing SHA. Opening these issues does not authorize running experiments.
+2. Implement **#411** first. Its reviewed `exp/411` PR must be merged into
+   `exp/perception-encoder` before any source-adapter branch starts.
+3. After #411, **#412**, **#413**, and **#414** may be implemented in parallel
+   on distinct source modules. Each branch starts from the then-current
+   integration tip and has its own reviewed PR. Their PRs may merge in any
+   order; update a published branch from the integration tip before continuing
+   if another merges first. #412 is the first runnable evaluation milestone.
+4. Start **#415** only after #412 and #413 are merged. **#417** may start after
+   #412 and proceed in parallel with #415/#416. #414 is not a prerequisite for
+   the first compact training run.
+5. After #415 defines the actual imported data contract, resolve
+   [specs#92](https://github.com/amadou-6e/specs/issues/92) in a separate
+   reviewed and merged preregistration PR. Start **#416** only after that
+   merged spec is pinned in its issue and an explicit compute budget is
+   approved. Freeze fresh data/query/run identities before training; review
+   its evidence PR before integration.
+6. Start **#418** after #412, #416 and #417 are integrated. Include #414 only
+   if it has been integrated and a tunnel-family claim was preregistered;
+   otherwise state the narrower source coverage. Review the result PR last,
+   close each implementation issue explicitly after its accepted integration,
+   and use a separate promotion issue to cherry-pick accepted commits to
+   `develop`. No PR is merged solely because its predecessor passed CI.
+
+```text
+specs #85 -> #87 -> #89 -> #411
+#411 -> {#412, #413, #414}
+{#412, #413} -> #415 -> specs#92 -> #416
+#412 -> #417
+{#412, #416, #417} -> #418
+#414 -> #418 only when claiming tunnel-family transfer
+```
 
 ## Cross-cutting acceptance rules
 
@@ -88,8 +126,8 @@ drone/point-path track.
   semantics. Count every rejected query with a reason. For accepted tasks,
   require free start/goal, correct motion model, independent route replay and
   collision checks. A search timeout is not proof of no path. Finite-radius
-  flight and piping require obstacle inflation or swept-body validation beyond
-  the present point-A* check.
+  flight requires obstacle inflation or swept-body validation beyond the
+  present point-A* check; future piping adds its own route constraints.
 - **Topology and difficulty:** record component count, passage clearance,
   geodesic detour, direction changes, altitude displacement and whether a
   projected planar route exists. Sampling to a target obstacle percentage is
@@ -112,15 +150,15 @@ drone/point-path track.
    ambiguous, release parser/conversion evidence but label the benchmark
    `not_comparable`; do not report a published-route improvement. If they are
    verified, freeze the point-task suite before trying learned methods.
-2. **After G2a/G2b:** inspect actual topology and leakage by layout family.
+2. **After G2a, and G2b if used:** inspect actual topology and leakage by layout family.
    If cases are mostly open space or planar, revise the generator and issue a
    fresh dataset identity before training; do not lower a score gate to admit
    uninformative worlds.
-3. **After G3/G4:** proceed to larger contexts only if the smaller frozen
+3. **After G3b/G4:** proceed to larger contexts only if the smaller frozen
    encoder has a measurable, reproducible advantage over the matched raw-grid
    and spatial controls on held-out geometries while retaining collision-safe
    routing. Otherwise use the failure strata to choose the next bounded task
    or observation design.
-4. **Before G5/G6 claims:** establish simulator deployment parity or CAD
-   rights/route provenance respectively. Either may be deferred without
-   blocking the already valid point-path and compact-world results.
+4. **Before any later simulator or CAD claim:** establish simulator deployment
+   parity or CAD rights/route provenance under a separate reviewed task. Neither
+   is part of this campaign's success claim.
