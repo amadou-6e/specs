@@ -112,3 +112,37 @@ completion. Fresh native-head success directs multi-seed confirmation and contro
 checks before packaging. Native/common disagreement limits readout generality,
 not data validity. Failure directs a new bounded information-retention/optimization
 study; never lower targets, enlarge the field silently or stop merely at a weak score.
+
+## Executed evidence
+
+The frozen protocol above was executed at spec commit
+`02ab2379655e8a76ae4a6a6f3dc4ff483a74145a`, implementation source
+`07b24adce7a3faf15ab39bf81cd0a8e77822ed5e`, issue #399 / PR #400.
+Report payload `f4c46fe17c0c767e7e43e374ee940f70d83d760f472c18c1fd84a5ee02711b94`:
+30 completed fits, 12 configurations, 279 hashed artifacts; 18,684.031 seconds
+including the preregistered preparation/overhead accounting (5.190 hours).
+
+Fine729 at LR .0003 is the frozen selection winner (ID8); fine729 at .001 is
+runner-up (ID9). Both pass all family point targets on selection. The selected
+native head reaches development IoU .75263 / F1 .77775 / errors .04506/.04519,
+but thin-sheet IoU .589664 misses .60. The runner-up passes all development
+family point targets, but is not substituted using development evidence.
+No qualification or promotion. The contemporaneous spatial reference passes
+development family targets (pooled IoU .75479 / F1 .79716) despite failing
+selection thin-sheet IoU .57844; narrow point margins require replication.
+
+The selected code's common-head development IoU/F1 falls to .56767/.62079.
+Thus the supported direction is a layout-aware spatial code with an independent
+native head, not a generic interchangeable global embedding. Native readout
+capacities, data coverage and cross-study budget differences remain confounds
+as declared above. The same-data grid128 controls remain weak (F1 .27424/.27523).
+
+Next evidence-directed action: fresh-data and fresh-seed replication of the
+selected recipe, preserving its settings and all thresholds, with spatial/null
+controls. Do not retune or reselect on this development set. Repeatable deficits
+direct a separate fresh refinement protocol. Implementation assessment and
+Mermaid decision diagram: `docs/perception-compact-structured-assessment.md`.
+Validation: 514 garden tests; original-CUDA replay verified all 279 artifact hashes,
+eight backbone batches, 12 candidates, four controls, two common heads and five
+development predictions under unchanged strict tolerances. Specs validator has
+zero errors; the unrelated existing large Draw.io warning remains.
