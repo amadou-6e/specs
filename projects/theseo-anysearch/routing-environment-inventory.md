@@ -1,15 +1,18 @@
-# Routing environment inventory
+# 3D routing environment inventory
 
 Status: research shortlist, not a frozen experiment protocol.
 Reviewed: 2026-09-13.
 
 ## Scope and admission rule
 
-This inventory distinguishes a *routing task* (environment geometry, connection
+This inventory admits only routing through a 3D volume or a freely navigable 3D
+space. It distinguishes a *3D routing task* (environment geometry, connection
 demands, and a checkable result) from a scene, asset pack, simulator, or planner
-implementation. "Viable" means useful for a specified research role, not that a
-source is already licensed, ingested, or certified for Theseo. Keep upstream
-tasks unchanged when reporting upstream benchmark results. Any added pipe radius,
+implementation. Planar networks and XY routes constrained to prescribed height
+layers are out of scope, even when their results can be rendered in 3D.
+"Viable" means useful for a specified research role, not that a source is
+already licensed, ingested, or certified for Theseo. Keep upstream tasks
+unchanged when reporting upstream benchmark results. Any added pipe radius,
 bend rule, task pair, or obstacle is a separately named Theseo-derived task.
 
 ## Runnable task sources
@@ -20,8 +23,6 @@ bend rule, task pair, or obstacle is a separately named Theseo-derived task.
 | [ShortestPathLab Industrial Plants](https://benchmarks.pathfinding.ai/3d-benchmarks/voxel-maps/), [paper](https://benchmarks.pathfinding.ai/assets/pdf/Nobes2023.pdf) | Five industrial-plant-inspired voxel maps at 10 cm resolution, 2,000 source-target tasks each; average map size 227 million voxels. Endpoints are sampled adjacent to equipment. | Large-volume, held-out-layout 3D *point-path search* and encoder-transfer test. | No pipe radius, terminal tangent, bend, support, or multi-route coupling. Audit actual archive filenames, map/task pairing, and rights before ingestion. Inflated-obstacle variants are new tasks, not upstream scores. |
 | [ShortestPathLab Descent](https://benchmarks.pathfinding.ai/3d-benchmarks/voxel-maps/) | Thirty voxelized, internally traversable game levels with 2,000 tasks per map. | Distinct 3D room/corridor topology for generalization outside industrial layouts. | Point-agent navigation only; levels originate from a 1995 game, though the voxel benchmark is from 2023. Do not present it as modern engineering CAD. |
 | [ShortestPathLab Sandstone](https://benchmarks.pathfinding.ai/3d-benchmarks/voxel-maps/) | Eleven CT-derived pore-space voxel maps with 2,000 tasks per map. | Tight, irregular 3D passage control. | A point-path task in rock pores, not pipe installation; voxel/scan rights require audit. |
-| [IHNF MEP plant-room routing](https://huggingface.co/datasets/IHNF/mep-plant-room-pipe-routing) | Seven JSON cases: room/equipment/obstacle geometry, pipe terminals, diameter/material, route outputs, and costs; optional Revit visualizations. Dataset states CC BY 4.0. | Reproducible *coordinated piping* cases and route-schema/evaluator design. | Paths are XY polylines with layer heights (2.5D), not arbitrary volumetric routes. Seven cases cannot serve as a broad training corpus. Reimplement and validate the cost/constraint checker before comparing novel solutions. |
-| [OptiWindNet RouteSets](https://optiwindnet.readthedocs.io/latest/dataset.html), [dataset](https://zenodo.org/records/20053479) | 13,954 offshore wind-farm cable-network instances with multiple routed solutions, costs, runtimes, and many optimality bounds; CC BY 4.0 data release. | Adjacent multi-terminal network/topology and optimization control. | Embedded cable routes are planar. Useful for network design, not 3D obstacle-volume perception or harness clearance. |
 
 The [Warframe voxel suite](https://benchmarks.pathfinding.ai/3d-benchmarks/voxel-maps/)
 also has routes (44 maps, 10,000 tasks per map), but the available v1 maps are
