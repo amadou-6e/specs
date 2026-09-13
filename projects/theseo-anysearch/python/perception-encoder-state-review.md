@@ -1,5 +1,10 @@
 # Perception encoder state and review
 
+Latest local-encoder followup (2026-09-13): the packaged729 code is now undergoing
+[frozen robustness and collision transfer](perception-encoder-compact-robustness-transfer.md).
+See the [executed assessment](perception-encoder-compact-validation-assessment.md)
+for results; the September8 topology snapshot below remains historical evidence.
+
 Snapshot: 2026-09-08. Review repairs: specs#25 and theseo-anysearch#350.
 Governing predecessor spec: `d9b260a5c677277d47776c7677fe07c2a7ff4f34`.
 Reviewed implementation: `a2e9f5a87066ed663f7ea76f318d09b9177d115b`.
