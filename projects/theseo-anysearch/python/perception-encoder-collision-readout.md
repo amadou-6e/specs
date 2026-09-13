@@ -125,3 +125,13 @@ source, tests, frozen manifest, compact reports and assessment in the issue PRs;
 weights, corpora and prediction stores stay runtime-only. No merges or promotion.
 Finish by assessing whether readout changes help, whether the code still loses
 detail, and whether explicit uncertain calibration trades false alarms for misses.
+
+## Executed evidence
+
+The frozen protocol at `4961f46d4023d9780a9ffd0db18db2bf5e29e09c` was executed
+as `compact-collision-readout-v1-run1`, source `958b541`, manifest `84436a7`.
+See [the assessment](perception-encoder-collision-readout-assessment.md), including
+the pipeline diagram and links to full replayed implementation evidence in PR408.
+All three revised heads pass the three-seed ID improvement screen; none passes
+the raw/spatial competitiveness screen. Retain, without promotion. This evidence
+appendix does not modify the frozen training, calibration or decision rules.

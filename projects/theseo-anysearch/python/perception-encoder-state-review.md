@@ -1,6 +1,11 @@
 # Perception encoder state and review
 
-Latest local-encoder followup (2026-09-13): the packaged729 code has completed
+Latest local-encoder followup (2026-09-13): the fixed-field
+[collision-readout comparison](perception-encoder-collision-readout-assessment.md)
+finds repeatable improvements from revised heads, but no competitiveness pass
+against raw-grid and spatial controls. No encoder retraining or promotion.
+
+Previously, the packaged729 code completed
 [frozen robustness and collision transfer](perception-encoder-compact-robustness-transfer.md).
 See the [executed assessment](perception-encoder-compact-validation-assessment.md)
 for results; the September8 topology snapshot below remains historical evidence.
