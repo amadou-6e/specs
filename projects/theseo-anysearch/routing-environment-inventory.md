@@ -24,15 +24,6 @@ bend rule, task pair, or obstacle is a separately named Theseo-derived task.
 | [ShortestPathLab Descent](https://benchmarks.pathfinding.ai/3d-benchmarks/voxel-maps/) | Thirty voxelized, internally traversable game levels with 2,000 tasks per map. | Distinct 3D room/corridor topology for generalization outside industrial layouts. | Point-agent navigation only; levels originate from a 1995 game, though the voxel benchmark is from 2023. Audit data rights; do not present it as modern engineering CAD. |
 | [ShortestPathLab Sandstone](https://benchmarks.pathfinding.ai/3d-benchmarks/voxel-maps/) | Eleven CT-derived pore-space voxel maps with 2,000 tasks per map. | Tight, irregular 3D passage control. | A point-path task in rock pores, not pipe installation; voxel/scan rights require audit. |
 
-The [MovingAI Warframe voxel suite](https://www.movingai.com/benchmarks/warframe/index.html)
-also has 44 maps with 10,000 tasks each. MovingAI explicitly offers its 3D
-benchmark data under [ODC-By](https://www.movingai.com/benchmarks/voxels.html)
-and records a January 2019 scenario regeneration after a movement-model error.
-Use the small `Simple.3dmap` and matching scenario as parser and correctness
-fixtures, then a larger map as a loader stress test. Prior visual inspection
-found sparse occupied geometry; do not treat this as an industrial-layout or
-finite-radius piping benchmark.
-
 ## 3D scene sources needing task construction
 
 | Source | Downloadable geometry | Missing routing-task work |
