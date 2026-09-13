@@ -53,6 +53,7 @@ continue to resolve.
 - [Project structure](project-structure.md)
 - [Experiment design](experiments.md)
 - [3D routing environment inventory](routing-environment-inventory.md)
+- [3D routing asset and integration inventory](routing-asset-inventory.md)
 - [Python specifications](python/)
 - [RLlib explanation specifications](rllib/explain/README.md)
 - [Rust specifications](rust/)
