@@ -61,3 +61,22 @@ the full tranche on failure. No failed-run overwrite or uncharged resume.
 Success delivers a directly loadable experimental local-geometry artifact and
 usage example with the explicit limits. It does not promote to develop, merge
 PRs, establish planning/topology transfer, or certify out-of-distribution quality.
+
+## Executed evidence
+
+Frozen spec1eedc6ca419b4f62f9bb320d1e983d65cb8999ca; source
+65e6f8f3480d3caca5046d5b03391f14cf343dd7; issue403 / PR404.
+All three seed artifacts exported and verified:64 direct-input development rows
+per seed reproduce native-head predictions at unchanged tolerances; each
+disposable head-only optimizer step changes the head without encoder gradients
+or state changes. 537 garden tests pass. Manifest payload:
+`2ddf188ecedff4699dba434fec05a851c5649119c07dcf30c9d9afd1292d4ed1`.
+Verification report:
+`786c803a8c648b283c5136d6332c95ba7a88b7a6179a51847fa4850ede8bf8d1`.
+
+Observed RTX3060Ti warm batch1 encoder latency13.98ms median/14.77ms p95;
+peak CUDA allocation54,901,248 bytes. Accounted331.453s includes300s overhead,
+within1800s tranche. Runtime artifact directory `runtime/compact-package-v1-run1`;
+usage and limits in `docs/perception-compact-package.md`. No weights committed,
+no merge/promotion. The bounded experimental frozen-encoder/native-head package
+is available; broader transfer and certification remain outside this result.
