@@ -50,16 +50,32 @@ surface. Do not rename the commands above to `providers`, `generate`,
   checked reference routes, and a verification report. The report states what
   was checked and what was not. A route feasible against voxel cubes is not
   thereby feasible for a continuous flight controller or optimal.
+- Generated worlds use the existing `routing_manifests.py` `SourceRecord`,
+  `ConversionRecord`, `RoutingWorldRecord`, `RoutingTaskRecord`,
+  `RoutingReferenceRecord`, and `RoutingSplitRecord` sidecars and pass
+  `validate_routing_bundle`. Provider metadata may extend this bundle but
+  must not replace it with a parallel CLI-only world/task schema.
 - Preview PNGs show occupancy and routes using named slice/projection views,
   coordinate axes, scale, start/goal markers, and a legend. They are derived
   artifacts, not the source of geometry truth. Rendering failures fail the
   complete generation command rather than producing a verified world with no
-  inspection output.
+  inspection output. The renderer must use a deterministic headless-safe
+  backend and bundled/default fonts so CI does not require a display server.
 - Training/tuning YAML references the immutable world identity and manifest
-  path in its declared data role. The run loader checks hashes again and
-  refuses missing or changed worlds. A world selected for train cannot be
-  silently reused for calibration or test; all crops and observations from a
-  root geometry retain the same split.
+  path in its declared data role and points to the study's shared
+  `RoutingSplitRecord`. The split record and actual YAML contents, not the
+  local world-list registry, are authoritative. `add` rereads and validates
+  both on every call, including after manual edits, and rejects a root already
+  assigned to another partition in that study; the run loader repeats these
+  checks and rejects missing or changed worlds. All crops and observations
+  from a root geometry retain the same split. Separate YAMLs claiming one
+  study must reference the same split record. Unrelated studies may assign a
+  world differently, so the CLI makes no global no-leakage claim across
+  arbitrary independent configs; comparisons across studies must explicitly
+  audit their manifests. `add` never rewrites a frozen split record in place:
+  it creates a new identified record and updates the YAML reference, or
+  refuses when other configs in the study cannot be updated consistently.
+  The local registry is only a discovery index.
 
 ## CaveDrone provider boundary
 
@@ -86,7 +102,8 @@ exploration-and-return objective and simulated sensor observations.
    manifest validation, PNG previews, YAML integration, and synthetic fixture
    provider. Test offline discovery, missing/incompatible providers, parameter
    validation, deterministic identities, failed verification, corrupt files,
-   preview failures, idempotent config updates, and split leakage. No
+   preview failures, idempotent config updates, hand-edited YAML/manifest
+   divergence, and same-study split leakage across two YAML files. No
    third-party source is needed for its CI suite.
 2. After that interface is reviewed and integrated, implement
    [#430](https://github.com/amadou-6e/theseo-anysearch/issues/430), the CaveDrone
