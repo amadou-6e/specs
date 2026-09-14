@@ -6,7 +6,7 @@ Status: discussion draft
 
 A concrete Google Drive layout populated with representative workspace files is available in [drive-folder-example](drive-folder-example/README.md).
 
-The reproducible Cash flow analysis, portable source index, Drive handoff, and Notion publication contract are specified in [cash-flow-layout.md](cash-flow-layout.md). This is a proposal; the remote Cash flow folder and replay CLI have not been created.
+The reproducible Cash flow analysis, portable source index, Drive handoff, and Notion publication contract are specified in [cash-flow-layout.md](cash-flow-layout.md). Existing-system migration, recurring schedules, liability lifecycles, and tax-year workspaces are specified in [review-contracts.md](review-contracts.md). These are proposals; the remote Cash flow folder and replay CLI have not been created.
 
 The repository, Notion, and Google Drive should share terminology and stable identifiers. Their structures do not need to be identical because they serve different purposes.
 
@@ -54,7 +54,7 @@ Employer reimbursements and merchant refunds are expense offsets so they do not 
 
 ## Tax
 
-Tax is cross-cutting. Each tax year is an Open matter containing income evidence, deductible expenses, certificates, filing, correspondence, assessment, payments, refunds, and open questions.
+Tax is cross-cutting. Each tax year is an Open matter with a visible lifecycle status, living status/checklist/evidence-index/next-step documents, subject-based working analyses, immutable review artifacts, and links to filing, assessment, payments, refunds, and source evidence. Keep one original file and link it to every relevant tax year; see [review-contracts.md](review-contracts.md).
 
 A tax-relevant purchase remains in its natural expense category and receives tax metadata: tax relevance, tax year, tax category, deductible percentage, business or personal allocation, supporting document, filing status, and filing reference.
 
@@ -198,22 +198,21 @@ Financial Workspace/
 |           +-- [PDF] Depotauszug_2026-12-31.pdf
 |           +-- [PDF] Jahressteuerbescheinigung_2026.pdf
 |           \-- [PDF] Kaufabrechnung_EXAMPLE.pdf
-+-- 🧮 Tax/                                          # Filing and authority documents by tax year.
-|   \-- 2026/
-|       +-- Income/         -> [PDF] Lohnsteuerbescheinigung_2026.pdf
-|       +-- Deductions/     -> [Google Sheet] Evidence index 2026
-|       +-- Filing/
-|       |   +-- [PDF] Einkommensteuererklaerung_2026.pdf
-|       |   \-- [ERiC] Einkommensteuererklaerung_2026.eric
-|       +-- Assessment/     -> [PDF] Einkommensteuerbescheid_2026.pdf
-|       \-- Correspondence/ -> [PDF] Finanzamt_Schreiben_2026-09-15.pdf
++-- 🧮 Tax/                                          # Tax-year matters and original authority documents.
+|   \-- <year>/                                     # Stable year folder; status lives in Matters and STATUS.
+|       +-- STATUS, CHECKLIST, EVIDENCE MANIFEST, NEXT STEPS  # Living indexes linked to their canonical copies.
+|       +-- subjects/                               # Funding, residence, exchange, employment, and other topics.
+|       +-- review_artifacts/                       # Frozen findings and reviewed-input hashes.
+|       +-- Filing/                                 # Original submitted returns and acknowledgements.
+|       +-- Assessment/                             # Original assessment notices.
+|       \-- Correspondence/                         # Original tax-authority correspondence.
 +-- [Google Doc] Workspace links               # Links to related document areas.
 \-- [Google Doc] README                       # Explains the workspace and filing rules.
 ~~~
 
 Purchase and travel records remain in their subject folders, which hold invoices, tickets, itineraries, correspondence, and workflow state. The Finance Drive uses Workspace links to point to those verified folders and retains only independently financial documents, such as a reimbursement statement. A dedicated Claims folder has not been verified; claim evidence may remain with its purchase or journey.
 
-The checked-in [Drive folder example](drive-folder-example/README.md) contains representative original statement PDFs from the current workspace. Names shown above for unavailable document types are illustrative and are not fabricated files.
+The [Drive folder example](drive-folder-example/README.md) describes representative original statement PDFs, but the copied binaries remain local and are excluded from this specs repository. Names shown above for unavailable document types are illustrative and are not fabricated files.
 
 The repository should use:
 

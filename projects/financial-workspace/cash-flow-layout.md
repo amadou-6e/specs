@@ -1,6 +1,6 @@
 ﻿# Reproducible cash-flow analysis and Notion publication
 
-Status: proposed architecture. The commands, folders, and Cash flow database below are target behavior, not an implemented workflow.
+Status: proposed architecture. The commands, folders, and Cash flow database below are target behavior, not an implemented workflow. The existing-system migration and tax workspace rules are in [review-contracts.md](review-contracts.md).
 
 ## Goal and boundary
 
@@ -39,7 +39,7 @@ data/cashflow/
 |-- decisions/                               # Reviewed row-level classifications and match overrides.
 |-- canonical/                               # Versioned normalized movements and relationship table.
 |-- runs/<run_id>/                            # Immutable manifest, analysis outputs, validation, review.
-`-- .cache/                                  # Downloaded originals and extracts; ignored by Git.
+cache/                                       # Top-level, ignored mirror of Financial Workspace in Drive.
 data/reconciliations/exception_register.md    # Existing central exception trail.
 ```
 
@@ -51,7 +51,7 @@ The private repository should track source metadata, code, rules, reviewed decis
 
 Each source index entry needs `source_id`, Drive file ID and URL, provider, account ID, document type, coverage start/end, original filename, MIME type, expected SHA-256, parser name/version, and `available`, `superseded`, or `missing` status. A Drive folder link alone is insufficient: it cannot prove which statement version was analyzed. Cross-year files have one source entry with their full coverage period. Keep the existing Drive file IDs stable when folders move.
 
-`fetch` checks account permissions, downloads only the indexed files needed for the requested period, verifies hashes, and stores them in ignored `.cache/`. It reports inaccessible, changed, or absent files before analysis and records specific gaps in `data/reconciliations/exception_register.md`. It must not substitute a similar-looking statement automatically. Cached originals can accelerate replay but are never the sole source index. Gmail-only evidence requires stable message IDs/links and an explicit export or retrieval method; a human-readable link without retrieval access is not sufficient for a fully automated replay.
+`fetch` checks account permissions, downloads only the indexed files needed for the requested period, verifies hashes, and stores them in the top-level ignored `cache/` mirror described in [review-contracts.md](review-contracts.md). It reports inaccessible, changed, or absent files before analysis and records specific gaps in `data/reconciliations/exception_register.md`. It must not substitute a similar-looking statement automatically. Cached originals can accelerate replay but are never the sole source index. Gmail-only evidence requires stable message IDs/links and an explicit export or retrieval method; a human-readable link without retrieval access is not sufficient for a fully automated replay.
 
 Authentication is interactive user OAuth or another explicitly configured credential on each machine. The repo contains setup instructions and `example.env`, not secrets. Reproduction requires access to the private repo and every referenced source; without access, the tool produces a coverage report rather than an apparently complete analysis. Cloud automation is optional, not a prerequisite.
 
@@ -109,7 +109,7 @@ The export is generated from a named validated run, never edited manually after 
 
 ## Implementation milestones
 
-1. Inventory all account statements and other evidence, migrate existing Drive IDs into `sources.yaml`, and publish a coverage matrix for 2024-11 onward. Identify missing periods explicitly.
+1. Inventory all account statements and other evidence, compare Git-tracked PDF hashes with Drive, migrate existing Drive IDs into `sources.yaml`, and publish a coverage matrix for 2024-11 onward. Identify missing periods explicitly.
 2. Wrap or migrate the existing statement parsers and reconciliation rules; add independent controls against provider statement totals and known procurement links.
 3. Make a fresh-machine replay succeed for one closed month using only the repo, Drive access, and documented setup. Compare its output to the historical analysis.
 4. Add the deterministic Notion export and dry-run diff. Create the Drive handoff and Notion database only after the replay and import schema have been reviewed.

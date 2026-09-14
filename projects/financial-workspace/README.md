@@ -6,7 +6,7 @@ Status: Drive folder structure implemented; finance data model remains a discuss
 
 Financial Workspace is the evidence library for personal financial history and future analysis. It keeps original statements and financial documents in stable locations so account balances, cash flow, procurement, liabilities, and tax can be traced back to a source. A stored document is evidence, not a confirmed transaction or a forecast.
 
-The [live README](https://docs.google.com/document/d/1AtknilGP8OP8VvRN9U08vfABqhC2669euLQ-pjf9tnw/edit) gives the operating instructions for the Drive folder. [financial-structure.md](financial-structure.md) describes the current remote structure and the proposed cross-system model. [cash-flow-layout.md](cash-flow-layout.md) proposes a portable, reproducible Cash flow workflow with a Drive source index, versioned analysis code and decisions, and a separate Notion publication step.
+The [live README](https://docs.google.com/document/d/1AtknilGP8OP8VvRN9U08vfABqhC2669euLQ-pjf9tnw/edit) gives the operating instructions for the Drive folder. [financial-structure.md](financial-structure.md) describes the current remote structure and the proposed cross-system model. [cash-flow-layout.md](cash-flow-layout.md) proposes a portable, reproducible Cash flow workflow with a Drive source index, versioned analysis code and decisions, and a separate Notion publication step. [review-contracts.md](review-contracts.md) specifies migration of the live Notion records, recurring schedules, liabilities, tracked statements, local Drive cache, and tax-year workspaces.
 
 ## System roles
 
