@@ -81,13 +81,15 @@ exploration-and-return objective and simulated sensor observations.
 
 ## Implementation order and acceptance
 
-1. Implement the provider-neutral interface, CLI list/generate/add behavior,
+1. Implement [#429](https://github.com/amadou-6e/theseo-anysearch/issues/429),
+   the provider-neutral interface, CLI list/generate/add behavior,
    manifest validation, PNG previews, YAML integration, and synthetic fixture
    provider. Test offline discovery, missing/incompatible providers, parameter
    validation, deterministic identities, failed verification, corrupt files,
    preview failures, idempotent config updates, and split leakage. No
    third-party source is needed for its CI suite.
-2. After that interface is reviewed and integrated, implement the CaveDrone
+2. After that interface is reviewed and integrated, implement
+   [#430](https://github.com/amadou-6e/theseo-anysearch/issues/430), the CaveDrone
    pip provider against it. Reuse the existing source-faithful export and
    swept-sphere voxel-cube replay; verify a pinned seed twice with identical
    output hashes, rejected-task reporting, PNGs, and a YAML round trip. Do not
