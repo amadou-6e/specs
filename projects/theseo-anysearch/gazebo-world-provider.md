@@ -43,6 +43,11 @@ verified archives; retain verified member hashes. Cache publication is atomic.
 
 Preserve the separately identified original open-top crop. Derived roof bounds
 are [-46,46] x [-46,46] x [0,9] meters, roof underside 8 m and thickness 1 m.
+Gazebo source coordinates are Z-up; voxel storage is `(source x, source z,
+source y)` because the native replayer renders storage axis 1 as vertical.
+Thus the 0.5 m extent is `184 x 18 x 184`, not `184 x 184 x 18`.
+GridFrame must record this permutation and all planar/altitude checks operate
+on the mapped vertical axis. A viewer-only transform is insufficient.
 Resolution must be between 0.25 and 0.5 m and divide all bounds; cap 5 million
 voxels before allocation. Default sphere radius is 0.25 m, positive and below
 0.5 m. Outside bounds is forbidden. Record conservative voxel-cube clearance
