@@ -95,6 +95,64 @@ it cannot claim the source generator natively produced that resolution.
 Derived fixed-goal voxel routes remain distinct from CaveDroneSim's native
 exploration-and-return objective and simulated sensor observations.
 
+## Aerial Gym cached collision provider
+
+Tracked by theseo-anysearch #459 (foundation), #457 (provider), and specs #95.
+These feature PRs form a stack rooted at `develop`, not the encoder research line.
+
+```powershell
+python -m pip install "theseo-anysearch[aerialgym]"
+anysearch worlds list
+anysearch worlds aerialgym --seed 42 --meters-per-voxel 0.25 --output worlds/aerial-42-025
+anysearch worlds aerialgym --seed 42 --meters-per-voxel 0.10 --output worlds/aerial-42-010
+anysearch worlds add worlds/aerial-42-025 --config experiments/train.yaml
+```
+
+The core extra installs an independently packaged provider. Pip installation has
+no source-download, compilation or generation side effects. First generation
+downloads only allowlisted files from upstream revision
+`f0d0f05283f7897bab5a1bcc7b19b91cebbab218`, checking packaged SHA-256 hashes.
+The allowlist contains rigid collision-box URDFs, source configuration provenance
+and the BSD-3-Clause notice; it does not cover arbitrary meshes or execute Python.
+Asset headers and repository licensing must be reviewed for these specific files.
+Preserve the notice in generated bundles and retain rights evidence in sidecars.
+
+Store the immutable source set in a manifest-addressed cache under
+`ANYSEARCH_AERIALGYM_CACHE`, or `~/.cache/anysearch/aerialgym` by default.
+Verify cached hashes on every use; corruption is an error, not trusted evidence.
+`--offline true` requires a complete verified cache and never downloads.
+Use bounded HTTPS downloads, safe relative paths, and atomic publication. Failed
+downloads must not publish a complete cache. No source checkout or simulator is
+required. Cached original collision bodies, not earlier voxel grids, are the
+input when changing granularity.
+
+`--meters-per-voxel` defaults to 0.25 and lies in [0.10, 0.50] meters; it must divide
+the fixed 10 x 10 x 6 meter bounds. The same seed and `--layout` (`detour` or
+`altitude`, default `detour`) identify the same metric actor poses at every
+resolution. Conservatively rasterize rotated collision boxes and record the
+recipe, scene hash, transforms and actual resolution. Different resolutions
+have different world identities but share one root geometry identity and cannot
+cross train/test roles. Advertised native resolution is a default for this
+provider; the core validates output resolution against its declared, resolved
+resolution parameter. Providers without that declaration remain fixed-resolution.
+
+`--body-radius-m` defaults to 0.25 and lies in [0, 0.50]. Each generated world
+contains a derived fixed-goal training task independently checked against both
+source collision bodies and occupied voxel cubes. Reverify at every resolution;
+reject infeasible tasks rather than reusing fine-grid route validity. Core
+generation verifies the bundle and renders six PNGs before registration.
+`worlds add` compiles the verified grid and selects one task for an existing YAML;
+it neither creates another world nor starts training.
+
+These are explicitly derived static recipes, not captured native Isaac Gym scenes,
+sensor observations or flight-controller results. Native parity remains #423.
+No broad corpus or cross-family claim follows from two recipes.
+
+Resolution validation and cache tests (#459) precede the optional provider (#457).
+The provider PR may stack on the foundation while review is pending; merge the
+foundation first, then retarget the provider to updated `develop`. Neither stack
+authorization nor passing tests authorize merging without review.
+
 ## Implementation order and acceptance
 
 1. Implement [#429](https://github.com/amadou-6e/theseo-anysearch/issues/429),
