@@ -1,9 +1,9 @@
 # Cached IFC-Bench MEP routing provider
 
-Implements specs#99 through theseo-anysearch#PLACEHOLDER then
-#PLACEHOLDER. Stack the provider PR on the isolated adapter PR; neither is
-merged without review. The owning interface is `world-provider-cli.md`. No
-package-index publication is required.
+Implements specs#99 through theseo-anysearch#489 then #490. Stack the
+provider PR on the isolated adapter PR; neither is merged without review.
+The owning interface is `world-provider-cli.md`. No package-index
+publication is required.
 
 ## Installation and commands
 
