@@ -1,9 +1,13 @@
 # Perception encoder state and review
 
-Snapshot: 2026-09-08. Review repairs: specs#25 and theseo-anysearch#350.
-Governing predecessor spec: `d9b260a5c677277d47776c7677fe07c2a7ff4f34`.
-Reviewed implementation: `a2e9f5a87066ed663f7ea76f318d09b9177d115b`.
-This snapshot is a review artifact, not an experiment result or a new run.
+Snapshot updated: 2026-09-08 after the completed R0 audit (specs#27 / implementation #340).
+The original repair review used spec `d9b260a5c677277d47776c7677fe07c2a7ff4f34`
+and implementation `a2e9f5a87066ed663f7ea76f318d09b9177d115b`.
+Repairs are merged; R0 now has an executed result under governing spec
+`0060366f43892bade5acf734cf2e189d8a666ad2` and pre-data execution registration
+`a0d03c434be72d6eab7d962e53af62a7dd57b11d`.
+See [the completed result and review-ordering deviation](perception-encoder-r0-result.md).
+The result and protocol are awaiting external acceptance, not merged or promoted.
 
 ```mermaid
 flowchart TD
@@ -11,20 +15,20 @@ flowchart TD
     V21["v2r1 P0C completed<br/>Reachability gap 0.0662 below 0.10"]
     STOP["v2r1 terminal<br/>P0D blocked; replacement P1 not started"]
     SPEC["v2r2 methodology merged<br/>Exploratory infrastructure retained"]
-    FIX["Review repairs #350 and specs#25<br/>Proposed: code, evidence checks, audit rules"]
-    NOW["#340 pending<br/>Implement and freeze audit contract"]
-    R0{"R0: sufficient evidence<br/>of usable topology signal?"}
-    CAL["P0C calibration<br/>Sampler, controls, structural probes, primary metric"]
-    FREEZE["Freeze comparative contract<br/>Require valid topology component"]
-    SENS{"P0D sensitivity passes?"}
-    P1["P1-P2: training approach"]
+    FIX["Review repairs merged<br/>#351 and specs#26"]
+    NOW["#340: source and audit protocol published<br/>External registration review pending"]
+    R0{"R0 completed: DEFER<br/>Class support and interval gates failed"}
+    CAL["P0C calibration: NOT STARTED"]
+    FREEZE["Comparative contract: NOT FROZEN"]
+    SENS{"P0D: NOT STARTED"}
+    P1["P1-P2: NOT STARTED<br/>No new encoder training"]
     P4["P3-P4: architecture comparison"]
     LATER["P5-P8: context, interactions,<br/>confirmation, scaling smoke"]
-    END["Stop; record reason<br/>No topology: no_topology_identifiable<br/>Other gate failure: blocked"]
-    LOCAL["#341 separately proposable<br/>Only after no_topology_identifiable"]
+    END["Recorded stop: no_topology_identifiable<br/>Protocol/result acceptance pending review"]
+    LOCAL["#341 separately proposable<br/>NOT STARTED"]
     V1 --> V21 --> STOP
     STOP -. successor .-> SPEC --> FIX --> NOW --> R0
-    R0 -- feasible --> CAL --> FREEZE --> SENS
+    R0 -. not qualified .-> CAL --> FREEZE --> SENS
     R0 -- defer --> END
     CAL -- invalid topology --> END
     SENS -- fail --> END
@@ -32,12 +36,19 @@ flowchart TD
     END -. separate program .-> LOCAL
     style STOP fill:#fde2e2,stroke:#b42318
     style END fill:#fde2e2,stroke:#b42318
-    style FIX fill:#fff3cd,stroke:#997300
+    style FIX fill:#dcfce7,stroke:#15803d
     style NOW fill:#fff3cd,stroke:#997300
     style SPEC fill:#dcfce7,stroke:#15803d
+    style R0 fill:#fde2e2,stroke:#b42318
 ```
 
 ## Evidence and implications
+
+R0 filled all 216 training and 144 audit geometry slots. The held-out `1-2` and
+`3-5` bins had zero negative labels; `6+` failed entropy, visible-skill,
+forbidden-predictability and transfer uncertainty bounds. The assessment replayed
+exactly from saved predictions. This is not an architecture verdict or proof
+that hidden topology is universally unidentifiable.
 
 | v2r1 component | Floor | Reference | Calibration outcome |
 | --- | ---: | ---: | --- |
@@ -68,7 +79,8 @@ implementation commit; payload hash:
    reference fitting. Keep oracle-completed inputs out of the gating reference.
 6. Recompute report payload hashes before accepting prerequisite evidence.
 
-The v2r2 topology helper is present, but its audit and comparative contract
-integration is #340 work. A helper alone does not enforce the experiment boundary.
-The future audit's numeric choices require review before data are opened; this
-repair does not claim R0 has run or that topology is identifiable.
+Audit and comparative contract checks are now implemented in #340, and the
+registered R0 has completed. The prior snapshot requested numeric-choice review
+before data opening. External review was still pending at execution; this missed
+ordering is explicitly recorded in the result, not erased by this updated chart.
+No comparative run is authorized by the deferred audit.
