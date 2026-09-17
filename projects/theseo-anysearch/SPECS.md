@@ -130,24 +130,27 @@ Its entry folder uses the following structure as applicable:
 
 ```text
 subsystems/<subsystem>/
-├── README.md          # ownership, scope, consumers, maturity, reading map
-├── behavior.md        # observable behavior, guarantees, lifecycle, limitations
-├── interfaces.md      # public APIs, CLIs, ABIs, and serialized contracts
-├── configuration.md   # schema, defaults, validation, path and identity effects
-├── architecture.md    # internal components, state ownership, data flow
-├── validation.md      # tests, parity checks, benchmarks, acceptance evidence
-├── usage.md           # local user workflows specific to this subsystem
-├── troubleshooting.md # symptoms, diagnostics, workarounds, recovery
-├── python.md          # Python-specific implementation guidance
-├── rust.md            # Rust-specific implementation guidance
-├── extensions.md      # supported extension points and conformance rules
-└── migrations.md      # actionable deprecations and compatibility transitions
+├── README.md             # ownership, scope, consumers, maturity, reading map
+├── contract/
+│   ├── README.md         # behavior, guarantees, invariants, limitations
+│   ├── interfaces.md     # APIs, CLIs, ABIs, events, and serialization
+│   ├── configuration.md  # schema, defaults, validation, and identity effects
+│   └── extensions.md     # extension points and conformance rules
+├── design/
+│   ├── README.md         # internal architecture and design trade-offs
+│   ├── python.md         # Python implementation responsibility mapping
+│   └── rust.md           # Rust implementation responsibility mapping
+├── guides/
+│   ├── README.md         # local user workflows for this subsystem
+│   └── troubleshooting.md # symptoms, diagnostics, workarounds, recovery
+├── validation.md         # tests, parity checks, benchmarks, acceptance evidence
+└── migrations.md         # actionable deprecations and compatibility transitions
 ```
 
-`README.md`, `behavior.md`, and `validation.md` are expected for a mature subsystem.
-Other files are conditional. Small subsystems may initially keep these as sections in
-`README.md`, but must retain the same conceptual boundaries. Language pages never
-redefine public behavior. See the
+`README.md`, `contract/README.md`, `design/README.md`, and `validation.md` are expected
+for a mature subsystem. Other elements are conditional. Small subsystems may initially
+keep details in the required overview files, but must retain the same conceptual
+boundaries. Language pages never redefine public behavior. See the
 [live subsystem example](subsystems/template/README.md). Copy the
 `template/` folder and rename the copy for the subsystem; do not nest it beneath another
 template directory.
@@ -236,7 +239,8 @@ Local runbooks are folded into implementation: installation, training, tuning,
 monitoring, artifacts, caches, recovery, troubleshooting, and releases. Put
 technology-specific procedures in the owning partition and genuinely cross-stack
 procedures directly under `implementation/`. Subsystem-specific usage and diagnostic
-facts remain in the subsystem's `usage.md` and `troubleshooting.md`.
+facts remain in the subsystem's `guides/README.md` and
+`guides/troubleshooting.md`.
 
 Implementation guidance may link to subsystem contracts but must not become a second
 source of truth for product behavior. See the
