@@ -21,3 +21,12 @@ specifications.
 Copy [template/](template/README.md) to create an entry. The template itself is not a
 research entry. Existing root-level research documents predate this structure and
 should be migrated separately rather than rewritten incidentally.
+
+## Current topics
+
+- [3D routing environment and asset sources](3d-routing-sources/README.md)
+- [Medical geometry and centerline datasets](medical-routing-datasets/README.md)
+
+These initial topics structurally migrate source characterizations from existing
+research documents. Their linked legacy syntheses remain in place until findings are
+fully migrated and reviewed.
