@@ -590,6 +590,10 @@ direction-finding P1-P8 sequence chain. A later topology-capable study must
 independently qualify before its conclusions may be combined with local-geometry
 results.
 
+The separately registered [LG1 local-feature study](perception-encoder-local-geometry.md)
+implements this carve-out under the user's recorded independent-execution exception.
+Its outcomes do not alter this pilot's topology stop rule or advance P1-P8.
+
 The following vetoes apply to every comparative pilot:
 
 - state-integrity, numerical-reproducibility, or applicable mask-isolation failure;
