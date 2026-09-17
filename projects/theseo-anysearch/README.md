@@ -56,6 +56,7 @@ continue to resolve.
 - [3D routing asset and integration inventory](routing-asset-inventory.md)
 - [3D routing geometry integration roadmap](routing-geometry-integration-roadmap.md)
 - [Installable voxel-world providers and worlds CLI](world-provider-cli.md)
+- [Configuration architecture](configurations/overview.md)
 - [Python specifications](python/)
 - [RLlib explanation specifications](rllib/explain/README.md)
 - [Rust specifications](rust/)
