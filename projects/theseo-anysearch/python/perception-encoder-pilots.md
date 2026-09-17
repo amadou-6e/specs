@@ -11,6 +11,9 @@ Governing validation plan:
 Architecture research:
 [Scalable 3D Voxel Perception Encoders](perception-encoders.md)
 
+Concrete v2r2 R0 registration:
+[R0 execution protocol](perception-encoder-r0-execution.md).
+
 ## Decision boundary
 
 This document is a preregistration: hypotheses, data partitions, budgets, metrics,
@@ -586,6 +589,10 @@ or architecture selection for planning. Its results cannot advance the
 direction-finding P1-P8 sequence chain. A later topology-capable study must
 independently qualify before its conclusions may be combined with local-geometry
 results.
+
+The separately registered [LG1 local-feature study](perception-encoder-local-geometry.md)
+implements this carve-out under the user's recorded independent-execution exception.
+Its outcomes do not alter this pilot's topology stop rule or advance P1-P8.
 
 The following vetoes apply to every comparative pilot:
 
