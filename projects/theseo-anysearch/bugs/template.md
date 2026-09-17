@@ -24,7 +24,7 @@ Record exact observable behavior, errors, misleading outputs, and affected workf
 
 ## Expected behavior
 
-Link to the concern specification that defines correct behavior.
+Link to the subsystem specification that defines correct behavior.
 
 ## Conditions
 
@@ -53,5 +53,5 @@ Identify automated tests and any required platform or hardware checks.
 
 ## Lessons incorporated
 
-Link updated concern contracts, implementation rules, or decisions that prevent
+Link updated subsystem contracts, implementation rules, or decisions that prevent
 reintroduction.

@@ -16,7 +16,7 @@ visual geometry, component states, interaction identifiers, and transitions.
 
 ## Surface type and ownership
 
-State whether this is a tab or window, which concern owns its behavior, and which
+State whether this is a tab or window, which subsystem owns its behavior, and which
 application shell or parent flow opens it.
 
 ## Purpose
@@ -35,7 +35,7 @@ and selection-dependent states. Do not define states only in prose.
 ## Interactions and transitions
 
 Index stable interaction identifiers from Draw.io and their destination states or
-surfaces. Link the concern contract for underlying product behavior.
+surfaces. Link the subsystem contract for underlying product behavior.
 
 ## Owned elements
 

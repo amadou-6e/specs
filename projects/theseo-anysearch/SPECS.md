@@ -6,7 +6,7 @@ use these names and ownership boundaries as it grows.
 
 ## Principles
 
-1. Organize primary documentation by concern, not programming language.
+1. Organize primary documentation by subsystem, not programming language.
 2. Give every behavior or contract one canonical owner; other pages link to it.
 3. Keep normative specifications, implementation guidance, research evidence, and
    historical records distinguishable.
@@ -25,7 +25,7 @@ projects/<project>/
 ├── README.md
 ├── glossary.md
 ├── architecture/
-├── concerns/
+├── subsystems/
 ├── experiments/
 ├── research/
 ├── decisions/
@@ -42,7 +42,7 @@ the ownership effects. Categories have three structural types:
 | Type | Expansion rule | Template rule | Categories |
 | --- | --- | --- | --- |
 | Fixed top-structured | The category has one system-wide structure. Focused documents or named partitions may be added only within that declared structure. | A `template.md` is optional. Fixed partitions do not use copyable templates. | `architecture`, `implementation` |
-| Expandable folder collection | Each new entry is an independently owned multi-file folder following one stable entry schema. | One directly copyable `template/` folder. No example-name layer beneath it. | `concerns`, `experiments`, `ui-design` |
+| Expandable folder collection | Each new entry is an independently owned multi-file folder following one stable entry schema. | One directly copyable `template/` folder. No example-name layer beneath it. | `subsystems`, `experiments`, `ui-design` |
 | Expandable document collection | Each new entry is one independently owned Markdown document. | One directly copyable `template.md`. | `research`, `decisions`, `bugs`, `legacy` |
 
 “Expandable” applies to entries, not to the top-level taxonomy or template variants.
@@ -52,8 +52,8 @@ file or an abstract directory tree.
 
 The category type does not determine authority. Authority is defined by purpose:
 
-- architecture describes the current cross-concern system;
-- concerns normatively own observable behavior and contracts;
+- architecture describes the current cross-subsystem system;
+- subsystems normatively own observable behavior and contracts;
 - experiments preserve protocols, execution evidence, and bounded conclusions;
 - research is exploratory and non-normative;
 - decisions normatively record accepted durable choices and their rationale;
@@ -65,7 +65,7 @@ The category type does not determine authority. Authority is defined by purpose:
 Theseo provides one canonical reference template for each category:
 
 - [architecture](architecture/template.md)
-- [concerns](concerns/template/README.md)
+- [subsystems](subsystems/template/README.md)
 - [experiments](experiments/template/README.md)
 - [research](research/template.md)
 - [decisions](decisions/template.md)
@@ -77,16 +77,16 @@ Theseo provides one canonical reference template for each category:
 ## Root project documents
 
 `README.md` is the project landing page. It explains the project, maps its major
-concerns, and gives reading paths for users, experiment authors, implementers, and
+subsystems, and gives reading paths for users, experiment authors, implementers, and
 extension authors. It must link to authoritative pages rather than restating them.
 
 `glossary.md` owns project-specific terminology. Define a term once and link to that
-definition. Do not let concern pages develop incompatible meanings for terms such as
+definition. Do not let subsystem pages develop incompatible meanings for terms such as
 world, geometry, task, route, episode, stage, or observation.
 
 ## Architecture
 
-Architecture explains relationships spanning several concerns: system context,
+Architecture explains relationships spanning several subsystems: system context,
 component responsibilities, cross-language ownership, important data flows,
 execution lifecycles, and system-wide invariants. It describes the current system.
 Arguments for individual choices belong in decisions.
@@ -97,20 +97,22 @@ beside it when necessary. The
 [architecture template](architecture/template.md) shows the
 expected content of those documents.
 
-## Concerns
+## Subsystems
 
-A concern owns one coherent product or platform capability. Its entry folder uses the
-following structure as applicable:
+A subsystem is a functionally cohesive part of Theseo that owns a stable behavioral
+and contractual boundary. It may span multiple languages and packages, but it has one
+purpose, explicit interfaces and dependencies, and independently verifiable behavior.
+Its entry folder uses the following structure as applicable:
 
 ```text
-concerns/<concern>/
+subsystems/<subsystem>/
 ├── README.md          # ownership, scope, consumers, maturity, reading map
 ├── behavior.md        # observable behavior, guarantees, lifecycle, limitations
 ├── interfaces.md      # public APIs, CLIs, ABIs, and serialized contracts
 ├── configuration.md   # schema, defaults, validation, path and identity effects
 ├── architecture.md    # internal components, state ownership, data flow
 ├── validation.md      # tests, parity checks, benchmarks, acceptance evidence
-├── usage.md           # local user workflows specific to this concern
+├── usage.md           # local user workflows specific to this subsystem
 ├── troubleshooting.md # symptoms, diagnostics, workarounds, recovery
 ├── python.md          # Python-specific implementation guidance
 ├── rust.md            # Rust-specific implementation guidance
@@ -118,13 +120,19 @@ concerns/<concern>/
 └── migrations.md      # actionable deprecations and compatibility transitions
 ```
 
-`README.md`, `behavior.md`, and `validation.md` are expected for a mature concern.
-Other files are conditional. Small concerns may initially keep these as sections in
+`README.md`, `behavior.md`, and `validation.md` are expected for a mature subsystem.
+Other files are conditional. Small subsystems may initially keep these as sections in
 `README.md`, but must retain the same conceptual boundaries. Language pages never
 redefine public behavior. See the
-[live concern example](concerns/template/README.md). Copy the
-`template/` folder and rename the copy for the concern; do not nest it beneath another
+[live subsystem example](subsystems/template/README.md). Copy the
+`template/` folder and rename the copy for the subsystem; do not nest it beneath another
 template directory.
+
+A subsystem is not a stakeholder concern, code module, class, package, individual UI
+surface, research topic, or cross-cutting quality. Cross-cutting properties such as
+determinism, security, performance, naming, and compatibility belong in architecture,
+decisions, or implementation unless they genuinely have their own behavioral interface
+and ownership boundary.
 
 ## Experiments
 
@@ -157,7 +165,7 @@ findings, limitations, recommendation, and unresolved questions.
 The normal promotion path is:
 
 ```text
-research -> experiment or decision -> concern specification
+research -> experiment or decision -> subsystem specification
 ```
 
 Research must not silently become normative behavior. See the
@@ -169,7 +177,7 @@ multi-file experiment.
 
 Decision records explain why a durable choice was made. Each entry records status,
 context, decision, alternatives, consequences, compatibility and migration effects,
-and links to affected concerns and experiments. Superseded decisions remain available
+and links to affected subsystems and experiments. Superseded decisions remain available
 and point to their replacement. See the
 [live decision example](decisions/template.md). Copy it to a
 numbered decision filename; do not create a folder for an ordinary decision record.
@@ -199,10 +207,10 @@ explicit revision of this guide.
 Local runbooks are folded into implementation: installation, training, tuning,
 monitoring, artifacts, caches, recovery, troubleshooting, and releases. Put
 technology-specific procedures in the owning partition and genuinely cross-stack
-procedures directly under `implementation/`. Concern-specific usage and diagnostic
-facts remain in the concern's `usage.md` and `troubleshooting.md`.
+procedures directly under `implementation/`. Subsystem-specific usage and diagnostic
+facts remain in the subsystem's `usage.md` and `troubleshooting.md`.
 
-Implementation guidance may link to concern contracts but must not become a second
+Implementation guidance may link to subsystem contracts but must not become a second
 source of truth for product behavior. See the
 [implementation index](implementation/README.md).
 
@@ -245,14 +253,14 @@ important workaround. Ordinary defects do not need specification records.
 GitHub issues remain authoritative for ownership, priority, implementation work, and
 closure. A bug record preserves symptoms, expected behavior, affected conditions,
 impact, verified root cause, workaround, resolution links, regression verification,
-and lessons incorporated into concerns or implementation guidance. See the
+and lessons incorporated into subsystems or implementation guidance. See the
 [bug template](bugs/template.md).
 
 ## Legacy
 
 Legacy preserves non-authoritative history with continuing evidential value. It is not
 a dumping ground for active deprecations: user-actionable transitions remain in the
-owning concern's `migrations.md`. Every legacy entry identifies why it was archived,
+owning subsystem's `migrations.md`. Every legacy entry identifies why it was archived,
 when it stopped being authoritative, and what replaced it. See the
 [live legacy example](legacy/template.md). Ordinary archive
 entries are individual Markdown documents and must link to their active replacement.
@@ -266,7 +274,7 @@ can maintain accurately:
 ---
 title: Example title
 status: draft
-kind: concern
+kind: subsystem
 owners:
   - project-team
 last_reviewed: YYYY-MM-DD

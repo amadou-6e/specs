@@ -13,5 +13,5 @@ workflows.
 - Rust tests, parity checks, benchmarks, and profiling.
 - Native build, diagnostic, and release procedures.
 
-Implementation guidance links to concern contracts and must not redefine their
+Implementation guidance links to subsystem contracts and must not redefine their
 observable behavior.

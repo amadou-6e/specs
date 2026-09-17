@@ -13,5 +13,5 @@ local workflows.
 - Metrics and diagnostic integration.
 - RLlib-specific tests, upgrades, and known framework hazards.
 
-Implementation guidance links to concern contracts and must not redefine their
+Implementation guidance links to subsystem contracts and must not redefine their
 observable behavior.

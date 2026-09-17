@@ -27,7 +27,7 @@ Give the date or release after which new work must not depend on this material.
 
 ## Current replacement
 
-Link the active concern, migration guidance, and decision record. Do not place active
+Link the active subsystem, migration guidance, and decision record. Do not place active
 user migration instructions only in this archive.
 
 ## Continuing evidential value

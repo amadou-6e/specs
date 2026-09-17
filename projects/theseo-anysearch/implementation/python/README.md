@@ -14,5 +14,5 @@ workflows.
 - Python test organization, diagnostics, and performance hazards.
 - Python-owned installation, training, tuning, cache, and recovery procedures.
 
-Implementation guidance links to concern contracts and must not redefine their
+Implementation guidance links to subsystem contracts and must not redefine their
 observable behavior.

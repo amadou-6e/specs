@@ -24,8 +24,8 @@ This category also owns end-to-end local workflows formerly described as operati
 installation, training, tuning, monitoring, artifacts, caches, recovery,
 troubleshooting, and releases. Put technology-specific instructions in the owning
 partition. Put a genuinely cross-stack workflow directly under `implementation/` and
-link to the concern contracts it exercises.
+link to the subsystem contracts it exercises.
 
 These are local development and execution instructions, not deployed-service
-operations or incident-management procedures. Concern-specific usage and
-troubleshooting remain with the owning concern.
+operations or incident-management procedures. Subsystem-specific usage and
+troubleshooting remain with the owning subsystem.

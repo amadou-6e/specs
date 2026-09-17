@@ -37,5 +37,5 @@ Explain transition requirements and how conformance will be demonstrated.
 
 ## Related specifications
 
-Link affected concerns, experiments, research, implementation issues, and any decision
+Link affected subsystems, experiments, research, implementation issues, and any decision
 that this record supersedes.

@@ -17,8 +17,8 @@ copying the folder; retain the section boundaries.
 
 ## Purpose and scope
 
-Describe the cross-concern problem and explicitly name what the architecture does not
-own. Link to the concern specifications that define observable behavior.
+Describe the cross-subsystem problem and explicitly name what the architecture does not
+own. Link to the subsystem specifications that define observable behavior.
 
 ## System context
 
@@ -37,14 +37,14 @@ blocking, caching, and asynchronous work may occur.
 ## System-wide invariants
 
 Record coordinate, identity, determinism, versioning, and compatibility invariants
-shared by multiple concerns.
+shared by multiple subsystems.
 
 ## Failure boundaries
 
 Explain how corruption, missing data, extension failure, and resource exhaustion are
 contained and surfaced.
 
-## Related decisions and concerns
+## Related decisions and subsystems
 
-Link to decision records and canonical concern contracts. Do not duplicate their full
+Link to decision records and canonical subsystem contracts. Do not duplicate their full
 rationale or interface definitions here.

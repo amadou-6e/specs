@@ -1,7 +1,7 @@
 ---
 title: World storage
 status: template
-kind: concern
+kind: subsystem
 owners: [theseo-team]
 last_reviewed: YYYY-MM-DD
 applies_to: [theseo-anysearch]
@@ -11,12 +11,12 @@ related: []
 
 # World storage
 
-This example demonstrates a mature concern entry. `README.md`, `behavior.md`, and
+This example demonstrates a mature subsystem entry. `README.md`, `behavior.md`, and
 `validation.md` are expected; the remaining pages are included when applicable.
 
 ## Problem and ownership
 
-State the capability this concern owns and the boundary beyond which another concern
+State the capability this subsystem owns and the boundary beyond which another subsystem
 takes responsibility.
 
 ## Consumers
