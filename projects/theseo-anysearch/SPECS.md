@@ -66,11 +66,13 @@ relationships explicit. This rule applies recursively to category containers and
 fixed partitions, including the project root.
 
 An individual specification entry is a **leaf entry**, even when it needs a folder
-for several documents. Leaf entries do not need to restate this structural contract.
-Template folders are examples of leaf-entry structure and likewise do not need a
-second recursive container specification. Evidence, captures, references, component
-assets, and similar support directories are also exempt unless they become an
-independently extensible collection with their own entry contract.
+for several documents. Concrete leaf entries do not need to restate the category's
+structural contract. However, the `README.md` of a multi-file template must define the
+internal elements and cardinalities of the entry it demonstrates; this complements
+the category README, which defines the category-to-entry relationship. Evidence,
+captures, references, component assets, and similar support directories do not need
+their own structural specification unless they become an independently extensible
+collection with an entry contract not already defined by their parent template.
 
 The category type does not determine authority. Authority is defined by purpose:
 
