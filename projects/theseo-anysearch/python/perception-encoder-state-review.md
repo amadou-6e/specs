@@ -1,5 +1,10 @@
 # Perception encoder state and review
 
+Latest local-encoder followup (2026-09-13): the packaged729 code has completed
+[frozen robustness and collision transfer](perception-encoder-compact-robustness-transfer.md).
+See the [executed assessment](perception-encoder-compact-validation-assessment.md)
+for results; the September8 topology snapshot below remains historical evidence.
+
 Snapshot updated: 2026-09-08 after the completed R0 audit (specs#27 / implementation #340).
 The original repair review used spec `d9b260a5c677277d47776c7677fe07c2a7ff4f34`
 and implementation `a2e9f5a87066ed663f7ea76f318d09b9177d115b`.
@@ -7,7 +12,8 @@ Repairs are merged; R0 now has an executed result under governing spec
 `0060366f43892bade5acf734cf2e189d8a666ad2` and pre-data execution registration
 `a0d03c434be72d6eab7d962e53af62a7dd57b11d`.
 See [the completed result and review-ordering deviation](perception-encoder-r0-result.md).
-The result and protocol are awaiting external acceptance, not merged or promoted.
+These records preserve their review state at execution time; merging the
+documentation does not promote the evaluated encoder.
 
 ```mermaid
 flowchart TD
