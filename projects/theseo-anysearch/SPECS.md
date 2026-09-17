@@ -42,8 +42,8 @@ the ownership effects. Categories have three structural types:
 | Type | Expansion rule | Template rule | Categories |
 | --- | --- | --- | --- |
 | Fixed top-structured | The category has one system-wide structure. Focused documents or named partitions may be added only within that declared structure. | A `template.md` is optional. Fixed partitions do not use copyable templates. | `architecture`, `implementation` |
-| Expandable folder collection | Each new entry is an independently owned multi-file folder following one stable entry schema. | One directly copyable `template/` folder. No example-name layer beneath it. | `subsystems`, `experiments`, `ui-design` |
-| Expandable document collection | Each new entry is one independently owned Markdown document. | One directly copyable `template.md`. | `research`, `decisions`, `bugs`, `legacy` |
+| Expandable folder collection | Each new entry is an independently owned multi-file folder following one stable entry schema. | One directly copyable `template/` folder. No example-name layer beneath it. | `subsystems`, `experiments`, `research`, `ui-design` |
+| Expandable document collection | Each new entry is one independently owned Markdown document. | One directly copyable `template.md`. | `decisions`, `bugs`, `legacy` |
 
 “Expandable” applies to entries, not to the top-level taxonomy or template variants.
 Each expandable category has one canonical template unless this guide explicitly
@@ -91,7 +91,7 @@ Theseo provides one canonical reference template for each category:
 - [architecture](architecture/template.md)
 - [subsystems](subsystems/template/README.md)
 - [experiments](experiments/template/README.md)
-- [research](research/template.md)
+- [research](research/template/README.md)
 - [decisions](decisions/template.md)
 - [implementation](implementation/README.md)
 - [UI design](ui-design/template/README.md)
@@ -190,8 +190,27 @@ Copy the `template/` folder and rename the copy for the experiment.
 
 Research contains exploratory knowledge that is useful but not yet a product contract:
 literature reviews, technology surveys, feasibility assessments, benchmark surveys,
-and open questions. Each entry states its question, relevance, sources and search date,
-findings, limitations, recommendation, and unresolved questions.
+and open questions. Each topic is a multi-file entry:
+
+```text
+research/<topic>/
+├── README.md
+├── method.md
+├── findings/
+│   ├── README.md
+│   └── <finding>.md
+└── sources/
+    ├── README.md
+    └── <source>.md
+```
+
+The topic overview owns the question, relevance, synthesis, recommendation, and open
+questions. The method makes source discovery and evaluation reproducible. Each source
+record links and characterizes one material item, including what was actually
+inspected and its limitations. Each finding record owns one bounded claim, classifies
+its evidence and confidence, and cites one or more source records. Sources and
+findings have a many-to-many relationship and may support, qualify, or contradict one
+another.
 
 The normal promotion path is:
 
@@ -200,9 +219,9 @@ research -> experiment or decision -> subsystem specification
 ```
 
 Research must not silently become normative behavior. See the
-[live research example](research/template.md). Research
-entries are individual Markdown documents unless their evidence requires a dedicated
-multi-file experiment.
+[live research example](research/template/README.md). Existing single-document
+research predates this structure and is migrated separately when substantively
+reviewed.
 
 ## Decisions
 

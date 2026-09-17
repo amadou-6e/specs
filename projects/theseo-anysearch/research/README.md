@@ -1,20 +1,23 @@
 # Research
 
-Research is an expandable collection of single-document exploratory entries. Research
-is informative rather than normative.
+Research is an expandable collection of multi-file exploratory topic entries.
+Research is informative rather than normative.
 
 ## Contained elements
 
 ```text
 research/
 ├── 1 README.md
-├── 1 template.md
-└── 0..* <topic>.md entries
+├── 1 template/
+└── 0..* <topic>/ entries
 ```
 
-Each entry owns one question or survey and records relevance, method, search date,
-sources, findings, limitations, recommendation, and open questions. Research may
-motivate experiments or decisions and may inform subsystem specifications.
+Each topic owns one bounded investigation, a reproducible method, `1..*` individually
+characterized sources, and `1..*` individually reviewable findings. The topic overview
+synthesizes those findings without hiding attribution, uncertainty, disagreement, or
+limitations. Research may motivate experiments or decisions and may inform subsystem
+specifications.
 
-Copy [template.md](template.md) to create an entry. The template itself is not a
-research entry.
+Copy [template/](template/README.md) to create an entry. The template itself is not a
+research entry. Existing root-level research documents predate this structure and
+should be migrated separately rather than rewritten incidentally.
