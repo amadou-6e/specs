@@ -30,6 +30,7 @@ projects/<project>/
 ├── research/
 ├── decisions/
 ├── implementation/
+├── ui-design/
 ├── bugs/
 └── legacy/
 ```
@@ -41,7 +42,7 @@ the ownership effects. Categories have three structural types:
 | Type | Expansion rule | Template rule | Categories |
 | --- | --- | --- | --- |
 | Fixed top-structured | The category has one system-wide structure. Focused documents or named partitions may be added only within that declared structure. | A `template.md` is optional. Fixed partitions do not use copyable templates. | `architecture`, `implementation` |
-| Expandable folder collection | Each new entry is an independently owned multi-file folder following one stable entry schema. | One directly copyable `template/` folder. No example-name layer beneath it. | `concerns`, `experiments` |
+| Expandable folder collection | Each new entry is an independently owned multi-file folder following one stable entry schema. | One directly copyable `template/` folder. No example-name layer beneath it. | `concerns`, `experiments`, `ui-design` |
 | Expandable document collection | Each new entry is one independently owned Markdown document. | One directly copyable `template.md`. | `research`, `decisions`, `bugs`, `legacy` |
 
 “Expandable” applies to entries, not to the top-level taxonomy or template variants.
@@ -57,6 +58,7 @@ The category type does not determine authority. Authority is defined by purpose:
 - research is exploratory and non-normative;
 - decisions normatively record accepted durable choices and their rationale;
 - implementation normatively guides contributors without redefining product behavior;
+- UI design normatively owns reviewed visual geometry, states, and interactions by tab or window;
 - bugs preserve verified defect knowledge while GitHub owns work status; and
 - legacy is explicitly non-authoritative historical evidence.
 
@@ -68,6 +70,7 @@ Theseo provides one canonical reference template for each category:
 - [research](research/template.md)
 - [decisions](decisions/template.md)
 - [implementation](implementation/README.md)
+- [UI design](ui-design/template/README.md)
 - [bugs](bugs/template.md)
 - [legacy](legacy/template.md)
 
@@ -202,6 +205,35 @@ facts remain in the concern's `usage.md` and `troubleshooting.md`.
 Implementation guidance may link to concern contracts but must not become a second
 source of truth for product behavior. See the
 [implementation index](implementation/README.md).
+
+## UI design
+
+UI design is an expandable folder collection split by independently navigable tab or
+window. A tab is a primary destination within a shared application shell. A window is
+a separately opened native or application surface with its own lifecycle. Each tab or
+window owns one folder:
+
+```text
+ui-design/<tab-or-window>/
+├── README.md        # purpose, entry/exit, states, interactions, ownership
+├── design.drawio    # sole authority for visual geometry and transitions
+├── references/      # source screenshots used for fidelity comparison
+├── captures/        # reviewed renders or implementation comparisons
+└── components/      # components owned only by this tab or window
+```
+
+Panels, dialogs, sidebars, and components do not become sibling top-level UI entries;
+they stay under the tab or window that owns their lifecycle. Use `ui-design/shared/`
+only for shell chrome, flows, or components with no single tab/window owner. A shared
+artifact must link every consuming surface and must not become a substitute for each
+surface's state and interaction specification.
+
+The reviewed Draw.io file is authoritative for geometry, component states,
+interaction identifiers, and transitions. `README.md` provides navigation and design
+intent but cannot introduce behavior absent from Draw.io. References and captures are
+evidence, not editable sources. See the
+[UI-design template](ui-design/template/README.md). The existing combined replayer
+workshop predates this structure and will be split in a separate migration.
 
 ## Bugs
 
