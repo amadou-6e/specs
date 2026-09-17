@@ -4,6 +4,10 @@ Status: active
 Owner: amadou-6e
 Last reviewed: 2026-08-24
 
+Before adding or reorganizing Theseo specifications, read
+[SPECS.md](SPECS.md). It defines the project's documentation taxonomy,
+ownership rules, lifecycle, and live template examples.
+
 ## Problem
 
 Theseo Anysearch combines voxel environments, heuristic route planning, reinforcement
