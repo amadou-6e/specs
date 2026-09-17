@@ -35,19 +35,22 @@ projects/<project>/
 ```
 
 Only create a category when the project has material for it. Every created category
-must contain a `template/` subfolder. The template contains a realistic example entry
-folder, not merely an empty file or an abstract directory tree.
+must contain one canonical template. Use `template/` when an entry is a multi-file
+folder and `template.md` when the category is top-structured or entries are individual
+documents. The template is a realistic example, not an empty file or an abstract
+directory tree. Do not add another example-name layer inside `template/`; multiple
+templates are not expected unless the category explicitly defines distinct entry types.
 
 The Theseo AnySearch project provides the reference templates:
 
-- [architecture](projects/theseo-anysearch/architecture/template/streaming-world-system/README.md)
-- [concerns](projects/theseo-anysearch/concerns/template/world-storage/README.md)
-- [experiments](projects/theseo-anysearch/experiments/template/compact-encoder-study/README.md)
-- [research](projects/theseo-anysearch/research/template/voxel-rendering-landscape/README.md)
-- [decisions](projects/theseo-anysearch/decisions/template/000-separate-worlds-and-tasks/README.md)
-- [implementation](projects/theseo-anysearch/implementation/template/python/README.md)
-- [operations](projects/theseo-anysearch/operations/template/training-runbook/README.md)
-- [legacy](projects/theseo-anysearch/legacy/template/superseded-world-format/README.md)
+- [architecture](projects/theseo-anysearch/architecture/template.md)
+- [concerns](projects/theseo-anysearch/concerns/template/README.md)
+- [experiments](projects/theseo-anysearch/experiments/template/README.md)
+- [research](projects/theseo-anysearch/research/template.md)
+- [decisions](projects/theseo-anysearch/decisions/template.md)
+- [implementation](projects/theseo-anysearch/implementation/template.md)
+- [operations](projects/theseo-anysearch/operations/template.md)
+- [legacy](projects/theseo-anysearch/legacy/template.md)
 
 ## Root project documents
 
@@ -66,9 +69,11 @@ component responsibilities, cross-language ownership, important data flows,
 execution lifecycles, and system-wide invariants. It describes the current system.
 Arguments for individual choices belong in decisions.
 
-An architecture entry normally contains a `README.md` and may add focused diagrams or
-pages when the subject is too large for one document. See the
-[live architecture example](projects/theseo-anysearch/architecture/template/streaming-world-system/README.md).
+Architecture is top-structured rather than a collection of independent entry folders.
+Use `architecture/README.md` for the system map and add focused documents or diagrams
+beside it when necessary. The
+[architecture template](projects/theseo-anysearch/architecture/template.md) shows the
+expected content of those documents.
 
 ## Concerns
 
@@ -94,7 +99,9 @@ concerns/<concern>/
 Other files are conditional. Small concerns may initially keep these as sections in
 `README.md`, but must retain the same conceptual boundaries. Language pages never
 redefine public behavior. See the
-[live concern example](projects/theseo-anysearch/concerns/template/world-storage/README.md).
+[live concern example](projects/theseo-anysearch/concerns/template/README.md). Copy the
+`template/` folder and rename the copy for the concern; do not nest it beneath another
+template directory.
 
 ## Experiments
 
@@ -114,7 +121,8 @@ experiments/<experiment>/
 Freeze `protocol.md` before observing decision-bearing results. Record deviations in
 `execution.md`; never silently rewrite the protocol to match what happened. Keep raw
 evidence machine-readable and summarize it in `results.md`. See the
-[live experiment example](projects/theseo-anysearch/experiments/template/compact-encoder-study/README.md).
+[live experiment example](projects/theseo-anysearch/experiments/template/README.md).
+Copy the `template/` folder and rename the copy for the experiment.
 
 ## Research
 
@@ -130,7 +138,9 @@ research -> experiment or decision -> concern specification
 ```
 
 Research must not silently become normative behavior. See the
-[live research example](projects/theseo-anysearch/research/template/voxel-rendering-landscape/README.md).
+[live research example](projects/theseo-anysearch/research/template.md). Research
+entries are individual Markdown documents unless their evidence requires a dedicated
+multi-file experiment.
 
 ## Decisions
 
@@ -138,7 +148,8 @@ Decision records explain why a durable choice was made. Each entry records statu
 context, decision, alternatives, consequences, compatibility and migration effects,
 and links to affected concerns and experiments. Superseded decisions remain available
 and point to their replacement. See the
-[live decision example](projects/theseo-anysearch/decisions/template/000-separate-worlds-and-tasks/README.md).
+[live decision example](projects/theseo-anysearch/decisions/template.md). Copy it to a
+numbered decision filename; do not create a folder for an ordinary decision record.
 
 ## Implementation
 
@@ -150,7 +161,9 @@ and integration conventions.
 
 Implementation guidance may link to concern contracts but must not become a second
 source of truth for product behavior. See the
-[live implementation example](projects/theseo-anysearch/implementation/template/python/README.md).
+[live implementation example](projects/theseo-anysearch/implementation/template.md).
+Implementation is top-structured: create focused documents such as `python.md`,
+`rust.md`, or `rllib.md` directly in the category.
 
 ## Operations
 
@@ -158,7 +171,9 @@ Operations contains end-to-end runbooks for running and maintaining the system:
 installation, training, tuning, monitoring, artifacts, caches, recovery,
 troubleshooting, and releases. Concern-specific operational facts stay with their
 concern; operational entries compose those facts into complete workflows. See the
-[live operations example](projects/theseo-anysearch/operations/template/training-runbook/README.md).
+[live operations example](projects/theseo-anysearch/operations/template.md). Ordinary
+runbooks are individual Markdown documents; use a folder only when a runbook owns
+supporting artifacts.
 
 ## Legacy
 
@@ -166,7 +181,8 @@ Legacy preserves non-authoritative history with continuing evidential value. It 
 a dumping ground for active deprecations: user-actionable transitions remain in the
 owning concern's `migrations.md`. Every legacy entry identifies why it was archived,
 when it stopped being authoritative, and what replaced it. See the
-[live legacy example](projects/theseo-anysearch/legacy/template/superseded-world-format/README.md).
+[live legacy example](projects/theseo-anysearch/legacy/template.md). Ordinary archive
+entries are individual Markdown documents and must link to their active replacement.
 
 ## Metadata
 
