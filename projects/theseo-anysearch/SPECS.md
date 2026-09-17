@@ -30,16 +30,35 @@ projects/<project>/
 ├── research/
 ├── decisions/
 ├── implementation/
-├── operations/
+├── bugs/
 └── legacy/
 ```
 
-Only create a category when the project has material for it. Every created category
-must contain one canonical template. Use `template/` when an entry is a multi-file
-folder and `template.md` when the category is top-structured or entries are individual
-documents. The template is a realistic example, not an empty file or an abstract
-directory tree. Do not add another example-name layer inside `template/`; multiple
-templates are not expected unless the category explicitly defines distinct entry types.
+This top-level category set is closed for the current specification version. Do not add,
+rename, or repurpose a top-level category without updating this document and reviewing
+the ownership effects. Categories have three structural types:
+
+| Type | Expansion rule | Template rule | Categories |
+| --- | --- | --- | --- |
+| Fixed top-structured | The category has one system-wide structure. Focused documents or named partitions may be added only within that declared structure. | A `template.md` is optional. Fixed partitions do not use copyable templates. | `architecture`, `implementation` |
+| Expandable folder collection | Each new entry is an independently owned multi-file folder following one stable entry schema. | One directly copyable `template/` folder. No example-name layer beneath it. | `concerns`, `experiments` |
+| Expandable document collection | Each new entry is one independently owned Markdown document. | One directly copyable `template.md`. | `research`, `decisions`, `bugs`, `legacy` |
+
+“Expandable” applies to entries, not to the top-level taxonomy or template variants.
+Each expandable category has one canonical template unless this guide explicitly
+introduces another entry type. A template is a realistic live example, not an empty
+file or an abstract directory tree.
+
+The category type does not determine authority. Authority is defined by purpose:
+
+- architecture describes the current cross-concern system;
+- concerns normatively own observable behavior and contracts;
+- experiments preserve protocols, execution evidence, and bounded conclusions;
+- research is exploratory and non-normative;
+- decisions normatively record accepted durable choices and their rationale;
+- implementation normatively guides contributors without redefining product behavior;
+- bugs preserve verified defect knowledge while GitHub owns work status; and
+- legacy is explicitly non-authoritative historical evidence.
 
 Theseo provides one canonical reference template for each category:
 
@@ -48,8 +67,8 @@ Theseo provides one canonical reference template for each category:
 - [experiments](experiments/template/README.md)
 - [research](research/template.md)
 - [decisions](decisions/template.md)
-- [implementation](implementation/template.md)
-- [operations](operations/template.md)
+- [implementation](implementation/README.md)
+- [bugs](bugs/template.md)
 - [legacy](legacy/template.md)
 
 ## Root project documents
@@ -88,7 +107,8 @@ concerns/<concern>/
 ├── configuration.md   # schema, defaults, validation, path and identity effects
 ├── architecture.md    # internal components, state ownership, data flow
 ├── validation.md      # tests, parity checks, benchmarks, acceptance evidence
-├── operations.md      # diagnostics, metrics, sizing, troubleshooting
+├── usage.md           # local user workflows specific to this concern
+├── troubleshooting.md # symptoms, diagnostics, workarounds, recovery
 ├── python.md          # Python-specific implementation guidance
 ├── rust.md            # Rust-specific implementation guidance
 ├── extensions.md      # supported extension points and conformance rules
@@ -153,27 +173,48 @@ numbered decision filename; do not create a folder for an ordinary decision reco
 
 ## Implementation
 
-Implementation guidance defines contributor expectations for a language, framework,
-or cross-cutting engineering domain. Typical entries include `shared`, `python`,
-`rust`, `rllib`, `extensions`, `testing`, and `review`. They cover source organization,
-dependency boundaries, error and compatibility policy, testing, performance hazards,
-and integration conventions.
+Implementation is a fixed top-structured category with exactly three technology
+partitions:
+
+```text
+implementation/
+├── README.md
+├── python/
+│   └── README.md
+├── rust/
+│   └── README.md
+└── rllib/
+    └── README.md
+```
+
+It defines contributor expectations, source organization, dependency boundaries,
+error and compatibility policy, testing, performance hazards, integration conventions,
+and local execution workflows. It does not use a template because contributors do not
+create arbitrary implementation partitions. Adding a fourth partition requires an
+explicit revision of this guide.
+
+Local runbooks are folded into implementation: installation, training, tuning,
+monitoring, artifacts, caches, recovery, troubleshooting, and releases. Put
+technology-specific procedures in the owning partition and genuinely cross-stack
+procedures directly under `implementation/`. Concern-specific usage and diagnostic
+facts remain in the concern's `usage.md` and `troubleshooting.md`.
 
 Implementation guidance may link to concern contracts but must not become a second
 source of truth for product behavior. See the
-[live implementation example](implementation/template.md).
-Implementation is top-structured: create focused documents such as `python.md`,
-`rust.md`, or `rllib.md` directly in the category.
+[implementation index](implementation/README.md).
 
-## Operations
+## Bugs
 
-Operations contains end-to-end runbooks for running and maintaining the system:
-installation, training, tuning, monitoring, artifacts, caches, recovery,
-troubleshooting, and releases. Concern-specific operational facts stay with their
-concern; operational entries compose those facts into complete workflows. See the
-[live operations example](operations/template.md). Ordinary
-runbooks are individual Markdown documents; use a folder only when a runbook owns
-supporting artifacts.
+Bugs is an expandable collection of individual records for defects with durable
+diagnostic or design value: failures that are difficult to diagnose, platform-specific,
+likely to recur, capable of silently invalidating results, or associated with an
+important workaround. Ordinary defects do not need specification records.
+
+GitHub issues remain authoritative for ownership, priority, implementation work, and
+closure. A bug record preserves symptoms, expected behavior, affected conditions,
+impact, verified root cause, workaround, resolution links, regression verification,
+and lessons incorporated into concerns or implementation guidance. See the
+[bug template](bugs/template.md).
 
 ## Legacy
 
@@ -208,6 +249,10 @@ Allowed lifecycle values are `draft`, `active`, `complete`, `deprecated`, and
 `superseded`. Templates use `status: template` so they cannot be mistaken for active
 specifications. Experiments additionally record governing protocol, implementation,
 data, and result identities in `execution.md` once known.
+
+Bug records use the more specific lifecycle `reported`, `confirmed`,
+`fix-in-progress`, `resolved`, `not-reproducible`, or `superseded`. The GitHub issue,
+not the bug record, remains authoritative for current work status.
 
 ## Review checklist
 
