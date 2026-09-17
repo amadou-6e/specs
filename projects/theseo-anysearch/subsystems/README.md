@@ -33,9 +33,12 @@ subsystem entry.
 | [Training and tuning orchestration](training-and-tuning/README.md) | Experiment loading, RLlib/Tune execution, stages, evaluation, resources, checkpoints | Draft migration index |
 | [World providers](world-providers/README.md) | Provider discovery, conversion/generation, verification, manifests, previews, registration | Draft; proposed and implemented generations require reconciliation |
 | [Trajectory and replay](trajectory-and-replay/README.md) | Trajectory schema, replay, rendering, regional visualization, and camera behavior | Draft; UI Draw.io authority remains separate |
-| [Model garden](model-garden/README.md) | Reusable representation packages, identities, certification, caching, and loading | Draft; research protocols require experiment migration |
 | [Experiment tracking](experiment-tracking/README.md) | Searchable run parameters, metrics, identities, statuses, and artifact references | Draft migration index |
 | [Policy explainability](policy-explainability/README.md) | Policy restoration, attribution, action comparison, and explanation artifacts | Draft migration index |
 
 These entries classify existing specifications without declaring every imported claim
 current. Each entry records unresolved reconciliation work at its ownership boundary.
+
+Concrete optional extensions are listed by their host subsystem rather than as peer
+rows. Model Garden is registered under
+[Observations and policy models](observations-and-models/extensions/model-garden/README.md).

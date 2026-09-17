@@ -32,6 +32,9 @@ applicable.
 ├── 0..1 guides/
 │   ├── 1 README.md
 │   └── 0..1 troubleshooting.md
+├── 0..1 extensions/
+│   ├── 1 README.md
+│   └── 0..* <extension>/
 ├── 1 validation.md
 └── 0..1 migrations.md
 ```
@@ -57,13 +60,17 @@ boundary. Its internal relationships are:
 - `design/python.md` and `design/rust.md` map the contract onto language-specific
   implementation responsibilities without becoming separate subsystem
   specifications; and
+- `extensions/` contains `0..*` concrete optional implementations of extension points
+  declared by `contract/extensions.md`; each extension depends on the host contract
+  and cannot redefine it; and
 - `migrations.md` may define `0..*` active compatibility transitions from an older
   contract to the current one.
 
 A mature subsystem requires `README.md`, `contract/README.md`, `design/README.md`, and
-`validation.md`. Add optional pages and the `guides/` folder only when their subject
-exists; do not create empty elements merely to match the complete template. The
-template includes every optional element to demonstrate the full entry shape.
+`validation.md`. Add optional pages, `guides/`, and `extensions/` only when their
+subject exists; do not create empty elements merely to match the complete template.
+The template includes documentation for the extension relationship but need not ship
+a concrete example extension.
 
 ## Problem and ownership
 
@@ -95,4 +102,5 @@ State lifecycle status, supported use cases, exclusions, and known limitations.
 - [Validation](validation.md)
 - [Usage](guides/README.md)
 - [Troubleshooting](guides/troubleshooting.md)
+- [Concrete extensions](extensions/README.md)
 - [Migrations](migrations.md)

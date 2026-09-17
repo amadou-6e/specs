@@ -35,3 +35,4 @@ belong in this subsystem contract.
 - [Contract](contract/README.md)
 - [Design](design/README.md)
 - [Validation](validation.md)
+- [Extensions](extensions/README.md)

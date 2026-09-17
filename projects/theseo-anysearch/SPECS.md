@@ -143,6 +143,8 @@ subsystems/<subsystem>/
 ├── guides/
 │   ├── README.md         # local user workflows for this subsystem
 │   └── troubleshooting.md # symptoms, diagnostics, workarounds, recovery
+├── extensions/
+│   └── <extension>/      # optional concrete implementations of declared extension points
 ├── validation.md         # tests, parity checks, benchmarks, acceptance evidence
 └── migrations.md         # actionable deprecations and compatibility transitions
 ```
@@ -154,6 +156,12 @@ boundaries. Language pages never redefine public behavior. See the
 [live subsystem example](subsystems/template/README.md). Copy the
 `template/` folder and rename the copy for the subsystem; do not nest it beneath another
 template directory.
+
+`contract/extensions.md` specifies supported extension points. A concrete optional
+extension is not a peer subsystem: place it under `extensions/<extension>/` inside its
+host subsystem. Its entry identifies the host extension point, added behavior,
+activation, dependencies, compatibility, absence behavior, design, and validation. An
+extension may consume other subsystems but has exactly one host contract.
 
 A subsystem is not a stakeholder concern, code module, class, package, individual UI
 surface, research topic, or cross-cutting quality. Cross-cutting properties such as

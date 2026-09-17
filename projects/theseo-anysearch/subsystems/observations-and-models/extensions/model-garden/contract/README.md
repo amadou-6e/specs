@@ -14,5 +14,5 @@ status, compatibility, provenance, and immutable publication.
 
 ## Imported sources
 
-- [Model garden](../../../python/model-garden.md)
-- [Encoder package](../../../python/perception-encoder-compact-package.md)
+- [Model garden](../../../../../python/model-garden.md)
+- [Encoder package](../../../../../python/perception-encoder-compact-package.md)

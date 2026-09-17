@@ -5,7 +5,8 @@
 ```text
 contract/
 ├── 1 README.md
-└── 0..1 interfaces.md
+├── 0..1 interfaces.md
+└── 0..1 extensions.md
 ```
 
 The contract owns named observation fields, shapes, dtypes, coordinate frames,
