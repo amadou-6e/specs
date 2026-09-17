@@ -11,6 +11,9 @@ Governing validation plan:
 Architecture research:
 [Scalable 3D Voxel Perception Encoders](perception-encoders.md)
 
+Concrete v2r2 R0 registration:
+[R0 execution protocol](perception-encoder-r0-execution.md).
+
 ## Decision boundary
 
 This document is a preregistration: hypotheses, data partitions, budgets, metrics,
