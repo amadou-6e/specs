@@ -3,6 +3,10 @@
 Private source of truth for product, architecture, contract, and UI specifications
 across projects.
 
+Before adding or reorganizing specifications, read [SPECS.md](SPECS.md). It defines
+the repository-wide taxonomy, document ownership rules, lifecycle, and live template
+examples.
+
 ## Repository layout
 
 - `projects/<slug>/`: project-owned specifications and design artifacts.
