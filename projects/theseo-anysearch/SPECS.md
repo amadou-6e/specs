@@ -166,16 +166,20 @@ Experiments answer bounded research questions under explicit decision rules:
 experiments/<experiment>/
 ├── README.md       # question, hypothesis, status, summary, non-claims
 ├── protocol.md     # frozen design, metrics, gates, permitted adaptations
-├── execution.md    # revisions, commands, hardware, deviations, produced artifacts
-├── results.md      # outcomes, uncertainty, failed gates, interpretation, disposition
-├── replication.md  # reproducibility and fresh-data/fresh-seed replication status
 ├── sources.md      # code, specs, data, artifacts, literature, related experiments
-└── evidence/       # machine-readable reports or a manifest linking large artifacts
+└── iterations/
+    └── <iteration>/
+        ├── README.md       # role, status, predecessor, and authorizing gate
+        ├── execution.md    # revisions, commands, hardware, deviations, artifacts
+        ├── results.md      # outcomes, uncertainty, gates, interpretation, disposition
+        ├── replication.md  # present for reproducibility or replication iterations
+        └── evidence/       # reports or a manifest linking large artifacts
 ```
 
-Freeze `protocol.md` before observing decision-bearing results. Record deviations in
+Freeze `protocol.md` before observing decision-bearing results. Record each permitted
+attempt as an ordered iteration and record deviations in that iteration's
 `execution.md`; never silently rewrite the protocol to match what happened. Keep raw
-evidence machine-readable and summarize it in `results.md`. See the
+evidence machine-readable and summarize it in the same iteration's `results.md`. See the
 [live experiment example](experiments/template/README.md).
 Copy the `template/` folder and rename the copy for the experiment.
 
@@ -311,8 +315,8 @@ related: []
 
 Allowed lifecycle values are `draft`, `active`, `complete`, `deprecated`, and
 `superseded`. Templates use `status: template` so they cannot be mistaken for active
-specifications. Experiments additionally record governing protocol, implementation,
-data, and result identities in `execution.md` once known.
+specifications. Experiment iterations additionally record governing protocol,
+implementation, data, and result identities in their `execution.md` once known.
 
 Bug records use the more specific lifecycle `reported`, `confirmed`,
 `fix-in-progress`, `resolved`, `not-reproducible`, or `superseded`. The GitHub issue,

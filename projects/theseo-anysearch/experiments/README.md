@@ -13,10 +13,11 @@ experiments/
 └── 0..* <experiment>/ entries
 ```
 
-A planned experiment has one overview, protocol, and source list. An executed
-experiment additionally has an execution record, results, and evidence. A replicated
-experiment adds a replication record. Experiment results are evidence and do not
-promote a subsystem or model without a decision.
+A planned experiment has one overview, protocol, and source list. It may own multiple
+ordered iterations. Each iteration groups its execution, evidence, results, and any
+replication record so separate attempts cannot be mistaken for one aggregate run.
+Experiment results are evidence and do not promote a subsystem or model without a
+decision.
 
 Copy [template/](template/README.md) to create an entry. The template itself is not an
 experiment entry.

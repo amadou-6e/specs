@@ -21,12 +21,16 @@ execution, evidence, results, and replication record.
 ├── 1 README.md
 ├── 1 protocol.md
 ├── 1 sources.md
-├── 0..1 execution.md
-├── 0..1 results.md
-├── 0..1 replication.md
-└── 0..1 evidence/
+└── 0..1 iterations/
     ├── 1 README.md
-    └── 0..* evidence artifacts or artifact references
+    └── 1..* <iteration>/
+        ├── 1 README.md
+        ├── 1 execution.md
+        ├── 0..1 results.md
+        ├── 0..1 replication.md
+        └── 1 evidence/
+            ├── 1 README.md
+            └── 0..* evidence artifacts or artifact references
 ```
 
 The experiment entry is the aggregate root for all of these elements. Their
@@ -37,20 +41,21 @@ relationships are:
   decision gates, `0..*` sub-experiments, and `0..*` planned iterations;
 - one experiment has one consolidated source list, shared by all of its protocol,
   execution, result, and replication claims;
-- one protocol may have `0..*` executions or reruns, all consolidated in the single
-  `execution.md` rather than represented as sibling experiment entries;
-- each recorded execution may produce `0..*` evidence artifacts, indexed by the one
-  evidence manifest;
-- one result record synthesizes the applicable executions and evidence without
-  replacing either source; and
-- one replication record may describe `0..*` replication attempts against the same
-  frozen protocol and distinguishes them from ordinary reruns.
+- one experiment may have `0..*` iterations governed by that protocol;
+- each iteration has one execution record and one evidence manifest containing
+  `0..*` evidence artifacts or stable artifact references;
+- each concluded iteration has one result record synthesizing that iteration's
+  execution and evidence without replacing either source; and
+- an iteration that tests reproducibility or replication has one replication record
+  distinguishing an identical-input rerun from a fresh-seed, fresh-data, or
+  independent replication attempt.
 
-A planned experiment requires `README.md`, `protocol.md`, and `sources.md`. Once an
-execution starts, `execution.md` and `evidence/README.md` become required. A concluded
-experiment requires `results.md`. `replication.md` becomes required only when a
-replication is attempted. Files remain present in this template to demonstrate the
-complete lifecycle even when their logical cardinality is `0..1`.
+A planned experiment requires `README.md`, `protocol.md`, and `sources.md`. The
+`iterations/` container is created when the first iteration starts. Every started
+iteration requires its own `README.md`, `execution.md`, and `evidence/README.md`; a
+concluded iteration requires `results.md`; and `replication.md` is required only for
+an iteration that performs a reproducibility or replication check. The sample
+`iteration-001/` demonstrates the complete iteration shape.
 
 ## Problem statement
 
@@ -67,13 +72,10 @@ State what the study can and cannot establish.
 ## Status and summarized outcome
 
 Use `planned`, `running`, `complete`, `replicated`, or `superseded`. When complete,
-summarize the outcome and disposition without replacing [results](results.md).
+summarize the outcome and disposition without replacing iteration-level results.
 
 ## Documents
 
 - [Frozen protocol](protocol.md)
-- [Execution record](execution.md)
-- [Results](results.md)
-- [Reproducibility and replication](replication.md)
 - [Consolidated sources](sources.md)
-- [Evidence manifest](evidence/README.md)
+- [Iterations](iterations/README.md)
