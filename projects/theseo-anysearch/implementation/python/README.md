@@ -3,6 +3,17 @@
 This fixed partition owns contributor guidance for the Python package and its local
 workflows.
 
+## Contained elements
+
+```text
+implementation/python/
+├── 1 README.md
+└── 0..* Python implementation documents
+```
+
+Each additional document owns one bounded contributor rule or local workflow. This
+partition is fixed; documents do not create nested implementation categories.
+
 ## Scope
 
 - Package and module organization.

@@ -11,6 +11,21 @@ Adding another implementation partition requires an explicit update to
 [SPECS.md](../SPECS.md); contributors do not copy a template to create arbitrary
 implementation categories.
 
+## Contained elements
+
+```text
+implementation/
+├── 1 README.md
+├── 1 python/
+├── 1 rust/
+├── 1 rllib/
+└── 0..* cross-stack implementation documents
+```
+
+The three partitions are fixed containers, not repeatable entries. Cross-stack
+documents are individual implementation entries and must not create new technology
+partitions implicitly.
+
 ## Shared responsibilities
 
 Cross-stack rules live in this README or in a clearly named document directly under

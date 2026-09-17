@@ -27,6 +27,32 @@ This directory preserves the original specification workspace imported from the
 organization and filenames remain intact so historical references and Draw.io assets
 continue to resolve.
 
+## Contained elements
+
+```text
+projects/theseo-anysearch/
+├── 1 README.md
+├── 1 spec.json
+├── 1 SPECS.md
+├── 0..1 glossary.md
+├── 1 architecture/
+├── 1 subsystems/
+├── 1 experiments/
+├── 1 research/
+├── 1 decisions/
+├── 1 implementation/
+├── 1 ui-design/
+├── 1 bugs/
+├── 1 legacy/
+└── 0..* transitional imported documents and directories
+```
+
+The named categories are the closed project taxonomy. Each category README defines
+the entry type and cardinalities below that boundary. Transitional imported material
+remains available for historical links, but new specifications must use the category
+that owns their purpose. [SPECS.md](SPECS.md) is authoritative for structure and
+placement rules; `spec.json` owns machine-readable project metadata.
+
 ## Scope
 
 - Cross-project naming and repository structure.

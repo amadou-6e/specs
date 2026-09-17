@@ -1,5 +1,16 @@
 # Rust implementation
 
+## Contained elements
+
+```text
+implementation/rust/
+├── 1 README.md
+└── 0..* Rust implementation documents
+```
+
+Each additional document owns one bounded contributor rule or local workflow. This
+partition is fixed; documents do not create nested implementation categories.
+
 This fixed partition owns contributor guidance for the native core and its local
 workflows.
 

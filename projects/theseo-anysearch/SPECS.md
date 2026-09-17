@@ -50,6 +50,28 @@ Each expandable category has one canonical template unless this guide explicitly
 introduces another entry type. A template is a realistic live example, not an empty
 file or an abstract directory tree.
 
+## Container and entry documentation
+
+Every directory that organizes child specification elements is a **container** and
+must contain a `README.md`. Its README must define:
+
+- the type and purpose of the elements it contains;
+- the permitted child shapes and filenames;
+- the cardinality of required, optional, and repeatable elements;
+- the authority and ownership boundary of the container; and
+- how its template is used, when the category has one.
+
+Use `1`, `0..1`, and `0..*` in a small tree or equivalent table to make those
+relationships explicit. This rule applies recursively to category containers and
+fixed partitions, including the project root.
+
+An individual specification entry is a **leaf entry**, even when it needs a folder
+for several documents. Leaf entries do not need to restate this structural contract.
+Template folders are examples of leaf-entry structure and likewise do not need a
+second recursive container specification. Evidence, captures, references, component
+assets, and similar support directories are also exempt unless they become an
+independently extensible collection with their own entry contract.
+
 The category type does not determine authority. Authority is defined by purpose:
 
 - architecture describes the current cross-subsystem system;
