@@ -34,8 +34,9 @@ it prescribes implementation.
 5. Link implementation issues and pull requests back to the governing spec.
 6. Update the spec when feedback changes the intended behavior; preserve meaningful design history.
 
-See [the specification lifecycle](shared/conventions/spec-lifecycle.md) for status and
-review conventions.
+See [the specification lifecycle](shared/conventions/spec_lifecycle.md) for status and
+review conventions, and [the typed and named folder hierarchy](shared/conventions/typed_folder_system/README.md)
+for how categories and entries are structured.
 
 ## Validate
 
