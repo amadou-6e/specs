@@ -16,6 +16,9 @@ and status.
 
 ## Index
 
-| ID | Finding | Classification | Status | Confidence |
-| --- | --- | --- | --- | --- |
-| [F-001](F-001-sparse-hierarchy.md) | Sparse hierarchies avoid allocating uniform regions voxel by voxel | Source claim | Supported | High |
+| ID | Finding | Classification | Status | Confidence | Sources |
+| --- | --- | --- | --- | --- | --- |
+| [F-001](F-001-sparse-hierarchy.md) | Sparse hierarchies avoid allocating uniform regions voxel by voxel | External source claim | Supported | High | [S-001](../sources/S-001-openvdb-overview.md) |
+
+Keep this table synchronized with the records in this directory. Its source links must
+match each finding record's **Supporting sources** section.

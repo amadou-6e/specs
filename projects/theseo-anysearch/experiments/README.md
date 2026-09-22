@@ -26,11 +26,17 @@ experiment entry.
 
 | Experiment | Status | Iteration structure |
 | --- | --- | --- |
-| [Perception encoder R0](perception-encoder-r0/README.md) | Complete migration index | One registered run |
-| [Local-geometry encoder study](local-geometry-encoder/README.md) | Complete migration index | LG1, LG2, LG3 |
-| [Encoder continuation and context studies](encoder-continuation-and-context/README.md) | Complete migration index | Diagnostics, continuation/transfer, context scaling |
-| [Compact perception-encoder campaign](compact-encoder-campaign/README.md) | Complete migration index | Engineering screens, optimization, qualification, collision readout |
-| [RL training diversity study](rl-training-diversity/README.md) | Draft; not executed here | No registered iteration |
+| [RL training diversity study](rl-training-diversity/README.md) | `planned`; historical design imported, no registered execution | No registered iteration |
 
 “Migration index” means the entry organizes existing protocols and evidence without
 replacing their pinned identities or creating a new aggregate scientific conclusion.
+
+Encoder-pretraining experiments are owned by the peer
+[Theseo Model Garden](../../theseo-model-garden/experiments/README.md) project.
+
+## Maintenance
+
+Apply [SKILL.md](SKILL.md) when creating, reconstructing, or revising an experiment.
+The skill requires protocol, execution, evidence, and results to remain separate and
+for incomplete historical records to disclose their gaps. Do not infer an experiment
+from the existence of an example configuration or implementation feature alone.

@@ -1,0 +1,7 @@
+{
+  "name": "Theseo World Providers",
+  "slug": "theseo-world-providers",
+  "source_repository": "https://github.com/amadou-6e/theseo-anysearch",
+  "status": "active",
+  "description": "Specifications for the optional Theseo world-provider ecosystem"
+}

@@ -38,6 +38,12 @@ synthesizes the finding records but must not introduce claims that they do not s
 
 Define the exploratory question and why it matters to the project.
 
+## Non-questions
+
+State adjacent questions this topic does not answer. In particular, identify any
+dependency choice, product contract, or benchmark conclusion that the investigation
+cannot authorize.
+
 ## Method and search date
 
 Summarize the search boundary and link to the full [method](method.md).
@@ -50,7 +56,9 @@ separate from conclusions.
 ## Synthesized findings
 
 Summarize the registered [findings](findings/README.md), preserving their identifiers,
-classification, confidence, and disagreements.
+classification, support status, confidence, and disagreements. For example,
+[F-001](findings/F-001-sparse-hierarchy.md) reports one documented property of a
+sparse hierarchy; it does not establish an AnySearch implementation choice.
 
 ## Comparison
 

@@ -1,7 +1,15 @@
-# Experiment-tracking configuration
+# Experiment tracking configuration
 
-Tracking enablement, URI resolution, experiment naming, artifact location, and
-authentication must be explicit and must not change run semantics. Environment
-variables or absent services must not silently redirect authoritative artifacts.
+This page identifies tracking selectors defined by `MLflowConfig` and experiment
+settings in `theseo_anysearch/experiments/models.py`.
 
-See [MLflow tracking](../../../python/mlflow-tracking.md).
+MLflow tracking is disabled when no URI is configured. When enabled, the tracking URI,
+experiment name, and run metadata select the remote/local MLflow destination. Output
+directory settings select authoritative local storage independently. Authentication is
+supplied through the supported MLflow environment/client mechanism and must not be
+written into run artifacts.
+
+Changing a tracking URI or experiment name changes publication location, not training
+semantics or run identity. A missing/unavailable backend enters degraded state rather
+than redirecting artifacts silently. Full resolved settings remain local because
+flattening, omission, encoding, and truncation make MLflow parameters lossy.

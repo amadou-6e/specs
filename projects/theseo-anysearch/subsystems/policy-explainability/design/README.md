@@ -1,12 +1,17 @@
-# Policy-explainability design
+# Policy explainability design
 
-## Contained elements
+The service restores the saved RLModule and authoritative spaces, resolves a state
+source, validates or replays it, selects steps, computes policy scores, perturbs grouped
+features against a declared background, and publishes a report. This order ensures
+attribution uses the same preprocessing and inference path as evaluated behavior.
 
-```text
-design/
-├── 1 README.md
-└── 1 python.md
-```
+Feature grouping is schema-aware and deliberately coarser than individual-voxel
+attribution. It produces tractable diagnostics but cannot isolate interactions within
+a group. Background choice is explicit because zero/open semantics and empirical trace
+semantics answer different questions.
 
-Python owns RLlib checkpoint restoration, observation reconstruction, policy scoring,
-attribution execution, feature grouping, action safety comparison, and artifact output.
+Python owns restoration, scoring, validation, attribution, and artifact output. Rust
+owns viewer integration and communicates with a persistent Python service over JSONL,
+avoiding model reinitialization for every UI action.
+
+See [Python](python.md) and [Rust](rust.md) responsibility maps.

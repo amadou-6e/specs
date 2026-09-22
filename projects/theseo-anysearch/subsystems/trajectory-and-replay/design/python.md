@@ -1,5 +1,12 @@
-# Python responsibility mapping
+# Python trajectory responsibilities
 
-See [trajectory recording](../../../python/trajectory-recording.md) and
-[Tune replay](../../../python/tune-replay.md). Python produces stable replay inputs and
-resolves run/trial artifacts without redefining rendering behavior.
+This page follows capture and storage at product revision
+`72a413a2f10ba1aeb9430c8e3412bffc30d1e68c`.
+
+`theseo_anysearch/experiments/trajectory.py` collects episode state, ranks buffered
+episodes, and builds small- or compiled-world payloads.
+`theseo_anysearch/rllib/trainer/reporting/trajectories.py` schedules snapshots and
+best-so-far output. `theseo_anysearch/experiments/trajectory_storage.py` validates
+finite values, compresses, atomically publishes, reads compatibility formats, and
+resolves selectors. `theseo_anysearch/cli/commands/replay.py` maps user selection to
+the native viewer invocation.

@@ -15,6 +15,9 @@ are used, and what the material cannot establish.
 
 ## Index
 
-| ID | Material | Type | Evidence class | Accessed |
-| --- | --- | --- | --- | --- |
-| [S-001](S-001-openvdb-overview.md) | OpenVDB overview | Official documentation | Primary | 2026-09-17 |
+| ID | Material | Type | Evidence class | Accessed | Related findings |
+| --- | --- | --- | --- | --- | --- |
+| [S-001](S-001-openvdb-overview.md) | OpenVDB overview | Official documentation | Primary | 2026-09-17 | [F-001](../findings/F-001-sparse-hierarchy.md) |
+
+Keep this table synchronized with the records in this directory. Its related-finding
+links must match each source record's **Related findings** section.

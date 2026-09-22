@@ -8,6 +8,7 @@ Research is informative rather than normative.
 ```text
 research/
 ├── 1 README.md
+├── 1 SKILL.md
 ├── 1 template/
 └── 0..* <topic>/ entries
 ```
@@ -22,11 +23,27 @@ Copy [template/](template/README.md) to create an entry. The template itself is 
 research entry. Existing root-level research documents predate this structure and
 should be migrated separately rather than rewritten incidentally.
 
-## Current topics
+## Topic registry
 
-- [3D routing environment and asset sources](3d-routing-sources/README.md)
-- [Medical geometry and centerline datasets](medical-routing-datasets/README.md)
+There are currently no active AnySearch-owned research topics. Add a row when a topic
+folder is created and remove it only when the topic is moved to another owning project
+or archived with an explicit replacement.
 
-These initial topics structurally migrate source characterizations from existing
-research documents. Their linked legacy syntheses remain in place until findings are
-fully migrated and reviewed.
+| Topic | Question boundary | Status |
+| --- | --- | --- |
+| _None_ | _No active AnySearch research topic_ | — |
+
+The [template](template/README.md) demonstrates the topic structure; it is not part of
+this registry and its OpenVDB example is not an AnySearch research conclusion.
+
+## Ownership redirects
+
+World-source and routing-dataset research is owned by the peer
+[Theseo World Providers](../../theseo-world-providers/research/README.md) project.
+Anysearch research entries should address questions owned by the consumer runtime,
+policy, training, or UI rather than provider acquisition.
+
+Model and perception-encoder research is owned by the peer
+[Theseo Model Garden](../../theseo-model-garden/research/README.md) project. Experiments
+that evaluate AnySearch training behavior remain experiments rather than becoming
+research topics solely because their results are exploratory.

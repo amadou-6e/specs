@@ -3,7 +3,7 @@ title: Worlds and geometry
 status: draft
 kind: subsystem
 owners: [theseo-team]
-last_reviewed: 2026-09-17
+last_reviewed: 2026-09-22
 applies_to: [theseo-anysearch]
 related:
   - ../../rust/voxel-spec.md
@@ -13,25 +13,10 @@ related:
 
 # Worlds and geometry
 
-## Problem and ownership
+This subsystem supplies occupancy and geometry to environments without requiring every world to be materialized as a dense array. It owns coordinate conversion, bounded reads, immutable base geometry, per-episode mutations, compiled packs and their integrity. Episode rules, route feasibility, provider discovery, and task selection belong elsewhere.
 
-Own the representation, coordinates, occupancy semantics, mutation, persistence, and
-geometry-ingestion primitives of a voxel world. It does not own episode behavior,
-provider discovery, or routing-task selection.
+This description is based on product repository `theseo-anysearch` revision `72a413a` (`origin/develop`). It is **draft**: the historical fixed-1000³/HashMap-only descriptions in [world.md](../../rust/world.md) are not the current universal contract, and performance claims for every possible world shape have not been established.
 
-## Consumers
+Environment runtime, planners, observation builders, world providers, and the replay viewer consume bounded occupancy or compiled artifacts. A compiled world can be shared as one base allocation while each episode keeps its own overlay. Live environment axes remain bounded by the native task-coordinate limit even though the storage manifest uses wider coordinates.
 
-Environment runtime, world providers, planners, observation construction, rendering,
-and offline compilers consume this subsystem.
-
-## Maturity and migration status
-
-This entry indexes imported Rust and geometry specifications. Some legacy documents
-describe the former fixed 1000³ world and HashMap backend; treat such details as
-historical until reconciled with the later chunked and disk-backed world design.
-
-## Reading map
-
-- [Contract](contract/README.md)
-- [Design](design/README.md)
-- [Validation](validation.md)
+Read the [contract](contract/README.md) for behavior, the [design](design/README.md) for storage and compiler flow, and [validation](validation.md) for evidence and remaining gaps.

@@ -2,7 +2,7 @@
 
 ## Characterization
 
-- Classification: source claim
+- Classification: external source claim
 - Status: supported
 - Confidence: high
 

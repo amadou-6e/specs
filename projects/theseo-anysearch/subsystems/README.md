@@ -31,7 +31,6 @@ subsystem entry.
 | [Environment runtime](environment-runtime/README.md) | Reset/step lifecycle, actions, rewards, agents, masks, and standard environment APIs | Draft migration index |
 | [Observations and policy models](observations-and-models/README.md) | Observation schemas, preprocessing, encoders, policy/value model interfaces | Draft; experimental encoder evidence remains separate |
 | [Training and tuning orchestration](training-and-tuning/README.md) | Experiment loading, RLlib/Tune execution, stages, evaluation, resources, checkpoints | Draft migration index |
-| [World providers](world-providers/README.md) | Provider discovery, conversion/generation, verification, manifests, previews, registration | Draft; proposed and implemented generations require reconciliation |
 | [Trajectory and replay](trajectory-and-replay/README.md) | Trajectory schema, replay, rendering, regional visualization, and camera behavior | Draft; UI Draw.io authority remains separate |
 | [Experiment tracking](experiment-tracking/README.md) | Searchable run parameters, metrics, identities, statuses, and artifact references | Draft migration index |
 | [Policy explainability](policy-explainability/README.md) | Policy restoration, attribution, action comparison, and explanation artifacts | Draft migration index |
@@ -39,6 +38,7 @@ subsystem entry.
 These entries classify existing specifications without declaring every imported claim
 current. Each entry records unresolved reconciliation work at its ownership boundary.
 
-Concrete optional extensions are listed by their host subsystem rather than as peer
-rows. Model Garden is registered under
-[Observations and policy models](observations-and-models/extensions/model-garden/README.md).
+Separately downloadable products are not represented as internal subsystems. Their
+consumer-facing boundaries remain here, while their owned specifications live in the
+[Theseo Model Garden](../../theseo-model-garden/README.md) and
+[Theseo World Providers](../../theseo-world-providers/README.md) projects.

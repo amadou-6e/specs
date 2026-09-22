@@ -1,7 +1,22 @@
+---
+title: Concise description of the incorrect behavior
+status: template
+kind: bug
+owners: [theseo-team]
+last_reviewed: YYYY-MM-DD
+applies_to: [theseo-anysearch]
+supersedes: null
+related: []
+---
+
 # [Concise description of the incorrect behavior]
 
 <!--
 Specific Instructions
+
+- After copying this template, replace `status: template` with exactly one of
+  `reported`, `confirmed`, `fix-in-progress`, `resolved`, `not-reproducible`, or
+  `superseded`. Replace every other placeholder as well.
 
 - Describe the defect from the perspective of the team reporting or fixing it.
 - In "Observed behavior", state only what the system demonstrably does and identify
@@ -74,28 +89,43 @@ Good:
 
 ## To Do
 
+[List only missing work needed to complete this durable record. Keep implementation
+status and the fixing checklist in the linked GitHub issue. Write `None` when the
+record itself is complete.]
+
 ## Description
 
-[Briefly explain the defect, where it occurs, and why it matters.]
+[Briefly explain the defect, where it occurs, the affected conditions, and why it
+matters. Include a verified root cause and useful workaround when known; label
+hypotheses and unverified workarounds explicitly. Distinguish demonstrated impact
+from plausible risk.]
 
 ## Observed behavior
 
-- [Describe what currently happens and cite its evidence or source.]
-- [Describe the conditions under which it happens.]
-- [Describe the demonstrable user-facing or data impact.]
+- [Observed behavior 1 under its stated conditions; link or identify the evidence.]
+- [Observed behavior 2 under its stated conditions; link or identify the evidence.]
+- [Observed behavior 3 under its stated conditions; link or identify the evidence.]
 
 ## Expected behavior
 
-- [Describe the required behavior under the same conditions as observed behavior 1.]
-- [Describe the required behavior under the same conditions as observed behavior 2.]
-- [Describe the required user-facing or data state corresponding to observed behavior 3.]
+- [Expected behavior 1 under the same conditions; link its governing authority.]
+- [Expected behavior 2 under the same conditions; link its governing authority.]
+- [Expected behavior 3 under the same conditions; link its governing authority.]
 
 ## Linked work items
 
-- [TICKET-ID: Linked work item title]
+- [Required GitHub issue: title]
+- [Fixing pull request, when one exists]
+- [Regression evidence, when it exists]
+- [Owning contract or other authority; if absent, add writing it to To Do]
 
 ## Checklist
 
-- [ ] [The defect can no longer be reproduced.]
-- [ ] [Existing affected data or behavior has been validated.]
-- [ ] [Regression checks pass in the required environments.]
+- [ ] Every observation is supported by identified evidence.
+- [ ] Every expectation names its authority and pairs with exactly one observation.
+- [ ] The reproduction or regression check is named, including environments tested.
+- [ ] Existing affected data or behavior has been validated where applicable.
+- [ ] Root cause, workaround, remaining caveats, and resolution evidence are recorded
+      or explicitly identified as unknown or not applicable.
+- [ ] Durable lessons are linked from the owning subsystem or implementation guide,
+      or explicitly identified as not applicable.

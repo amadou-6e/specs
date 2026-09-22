@@ -61,7 +61,7 @@ placement rules; `spec.json` owns machine-readable project metadata.
 - Rust voxel, world, environment, rendering, ingestion, bridge, and testing design.
 - Replay and explanation UI Draw.io sources, historical design snapshots, and visual
   reference captures.
-- Research notes, known bugs, deferred work, and terrain-generation design.
+- Research notes, known bugs, and deferred work owned by Anysearch.
 
 ## Non-goals
 
@@ -82,11 +82,9 @@ placement rules; `spec.json` owns machine-readable project metadata.
 - [Naming conventions](naming.md)
 - [Project structure](project-structure.md)
 - [Experiment design](experiments.md)
-- [3D routing environment inventory](routing-environment-inventory.md)
-- [3D routing asset and integration inventory](routing-asset-inventory.md)
-- [3D routing geometry integration roadmap](routing-geometry-integration-roadmap.md)
-- [Installable voxel-world providers and worlds CLI](world-provider-cli.md)
-- [Python specifications](python/)
+- [Theseo Model Garden](../theseo-model-garden/README.md)
+- [Theseo World Providers](../theseo-world-providers/README.md)
+- [Python implementation rules](implementation/python/README.md)
 - [RLlib explanation specifications](rllib/explain/README.md)
 - [Rust specifications](rust/)
 - [UI design workspace](ui-design/)
