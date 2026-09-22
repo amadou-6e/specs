@@ -27,7 +27,7 @@ For AE-style objectives, occupied-voxel class weighting is fixed by configuratio
 estimated from at most the first 512 training samples. VAE and masked-voxel objectives
 delegate loss computation to the model without that weighting. These branches are
 implemented in
-[`trainer.py`](../../../../../../theseo_anysearch/garden/trainer.py). The trainer does
+[`trainer.py`](https://github.com/amadou-6e/theseo-anysearch/blob/49fef5f4f9d3fb21325931e1ce1eed89e743cdcc/theseo_anysearch/garden/trainer.py). The trainer does
 not seed PyTorch or loader shuffling, so identical configuration does not guarantee
 identical weights.
 

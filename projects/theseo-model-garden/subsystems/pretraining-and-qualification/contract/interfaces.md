@@ -16,7 +16,7 @@ the model-registry subsystem.
 
 ## Python training interface
 
-[`theseo_anysearch.garden.trainer.train`](../../../../../../theseo_anysearch/garden/trainer.py)
+[`theseo_anysearch.garden.trainer.train`](https://github.com/amadou-6e/theseo-anysearch/blob/49fef5f4f9d3fb21325931e1ce1eed89e743cdcc/theseo_anysearch/garden/trainer.py)
 accepts a Torch model, train and validation datasets, `GardenTrainingConfig`, objective
 name, device, optional epoch callback, and optional checkpoint path. It returns a
 Pydantic `TrainResult`:
@@ -33,7 +33,7 @@ Callback exceptions propagate.
 
 ## Tune interface
 
-[`GardenTuneRunner`](../../../../../../theseo_anysearch/garden/tune_runner.py) validates
+[`GardenTuneRunner`](https://github.com/amadou-6e/theseo-anysearch/blob/49fef5f4f9d3fb21325931e1ce1eed89e743cdcc/theseo_anysearch/garden/tune_runner.py) validates
 that a Tune block exists at construction. `run(output_dir)` initializes Ray if needed,
 runs the sweep, and returns `best_config`, `best_val_loss`, `run_name`, and
 `num_trials`.
@@ -45,7 +45,7 @@ arguments; malformed or unsupported leaves raise `ValueError` before the sweep.
 ## Command-line interface
 
 The commands are defined in
-[`garden.py`](../../../../../../theseo_anysearch/cli/commands/garden.py):
+[`garden.py`](https://github.com/amadou-6e/theseo-anysearch/blob/49fef5f4f9d3fb21325931e1ce1eed89e743cdcc/theseo_anysearch/cli/commands/garden.py):
 
 ```text
 anysearch garden train CONFIG [--output-dir PATH] [--tag TAG]

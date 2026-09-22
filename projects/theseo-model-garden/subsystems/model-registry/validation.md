@@ -17,7 +17,7 @@ specification pass.
 | Run-source metadata round-trips | `TestGardenStoreRunRegistry` | `runs.json` registration and empty behavior |
 
 All referenced checks are in
-[`tests/test_garden/test_unit/test_garden_store.py`](../../../../../tests/test_garden/test_unit/test_garden_store.py).
+[`tests/test_garden/test_unit/test_garden_store.py`](https://github.com/amadou-6e/theseo-anysearch/blob/49fef5f4f9d3fb21325931e1ce1eed89e743cdcc/tests/test_garden/test_unit/test_garden_store.py).
 
 ## Validation run for this review
 

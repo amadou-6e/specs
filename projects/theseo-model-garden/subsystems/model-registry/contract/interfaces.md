@@ -37,21 +37,21 @@ portable manifests.
 
 ## Python API
 
-[`theseo_anysearch/garden/store.py`](../../../../../../theseo_anysearch/garden/store.py)
+[`theseo_anysearch/garden/store.py`](https://github.com/amadou-6e/theseo-anysearch/blob/49fef5f4f9d3fb21325931e1ce1eed89e743cdcc/theseo_anysearch/garden/store.py)
 provides:
 
 - `GardenStore.save`, `load_encoder_state`, `meta`, `loss_curve`, `list_models`,
   `exists`, and `resolve_ref`;
 - `register_config`, `resolve_config`, and `list_configs`; and
 - `register_builtin_presets`, invoked as an import side effect by
-  [`theseo_anysearch/garden/__init__.py`](../../../../../../theseo_anysearch/garden/__init__.py).
+  [`theseo_anysearch/garden/__init__.py`](https://github.com/amadou-6e/theseo-anysearch/blob/49fef5f4f9d3fb21325931e1ce1eed89e743cdcc/theseo_anysearch/garden/__init__.py).
 
 `resolve_ref` accepts `name`, `name:tag`, or an existing path. A drive-letter path is
 recognized before colon-based tag parsing.
 
 ## CLI surface
 
-[`theseo_anysearch/cli/commands/garden.py`](../../../../../../theseo_anysearch/cli/commands/garden.py)
+[`theseo_anysearch/cli/commands/garden.py`](https://github.com/amadou-6e/theseo-anysearch/blob/49fef5f4f9d3fb21325931e1ce1eed89e743cdcc/theseo_anysearch/cli/commands/garden.py)
 defines the user-facing commands:
 
 | Command | Registry interaction |
@@ -68,7 +68,7 @@ forms; its presence under `garden` should not be read as a package-install opera
 
 ## Anysearch consumer
 
-[`theseo_anysearch/rllib/models/cnn.py`](../../../../../../theseo_anysearch/rllib/models/cnn.py)
+[`theseo_anysearch/rllib/models/cnn.py`](https://github.com/amadou-6e/theseo-anysearch/blob/49fef5f4f9d3fb21325931e1ce1eed89e743cdcc/theseo_anysearch/rllib/models/cnn.py)
 uses `custom_model_config.pretrained_encoder` as the reference and
 `freeze_encoder` as a boolean defaulting to `true`. It reads `meta.json`, constructs
 `VoxelEncoder3D`, loads `encoder.pt`, and concatenates its latent output with auxiliary
