@@ -6,7 +6,7 @@ owners: [amadou-6e]
 last_reviewed: 2026-09-23
 applies_to: [financial-workspace]
 supersedes: null
-related: [model/objects/financial-domain/contract]
+related: [model/objects/transactions, model/objects/reconciliation]
 ---
 
 # Validation
@@ -15,7 +15,7 @@ This page maps guarantees to checks and gaps for `main` at `dcc72d596aac78bc90b5
 
 | Guarantee | Check/evidence | Result and limit |
 | --- | --- | --- |
-| Spec structure | From `specs/`: `python tools/validate_specs.py` | Fails on pre-existing repository-model broken link to sources.md; financial-domain structure produced no error |
+| Spec structure | From `specs/`: `python tools/validate_specs.py` | Fails on pre-existing repository-model broken link to sources.md; object-domain structure produced no error |
 | Procurement validation/idempotency | `python -m unittest tests.test_validate_procurement_import` | Pass: included in 10 focused tests; current projection only |
 | Source ID/hash fail closed | `python -m unittest tests.cashflow.test_sources tests.cashflow.test_fetch` | Pass: included in 10 focused tests; cataloged sources only |
 | Unique purchase IDs | Parse 2026 source ledger | Pass: 161 rows, 161 unique IDs |

@@ -6,12 +6,12 @@ owners: [amadou-6e]
 last_reviewed: 2026-09-23
 applies_to: [financial-workspace]
 supersedes: null
-related: [model/objects/financial-domain, model/mappings/cross-system, model/systems/repository, processes/cash-flow]
+related: [model/objects/evidence, model/objects/reconciliation, model/mappings/cross-system, model/systems/repository, processes/cash-flow]
 ---
 
 # Gmail financial evidence model
 
-This entry owns native identity and evidence representation for Gmail messages, threads, MIME parts, and attachments. Gmail is authoritative for original correspondence and provider metadata. Financial meaning belongs to the [financial-domain model](../../objects/financial-domain/README.md), normalized artifacts to the [repository model](../repository/README.md), cross-system links to the [cross-system model](../../mappings/cross-system/README.md), and retrieval procedure to integrations and processes.
+This entry owns native identity and evidence representation for Gmail messages, threads, MIME parts, and attachments. Gmail is authoritative for original correspondence and provider metadata. Financial meaning belongs to the [financial object models](../../objects/README.md), normalized artifacts to the [repository model](../repository/README.md), cross-system links to the [cross-system model](../../mappings/cross-system/README.md), and retrieval procedure to integrations and processes.
 
 ## Consumers and guarantees
 

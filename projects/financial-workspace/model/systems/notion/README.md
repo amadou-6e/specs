@@ -6,12 +6,12 @@ owners: [amadou-6e]
 last_reviewed: 2026-09-23
 applies_to: [financial-workspace]
 supersedes: null
-related: [model/mappings/cross-system, model/objects/financial-domain, model/systems/repository, migrations/0001-existing-system, processes/cash-flow]
+related: [model/mappings/cross-system, model/objects/evidence, model/objects/reconciliation, model/systems/repository, migrations/0001-existing-system, processes/cash-flow]
 ---
 
 # Notion model
 
-This entry owns Financial Workspace objects native to Notion: workspace pages, database containers, data sources, views, row pages, properties, formulas, relations, rollups, charts, and presentation configuration. Financial meaning belongs to the [financial-domain model](../../objects/financial-domain/README.md); canonical records and run artifacts belong to the repository model; handoffs and crosswalks belong to the [cross-system model](../../mappings/cross-system/README.md).
+This entry owns Financial Workspace objects native to Notion: workspace pages, database containers, data sources, views, row pages, properties, formulas, relations, rollups, charts, and presentation configuration. Financial meaning belongs to the [financial object models](../../objects/README.md); canonical records and run artifacts belong to the repository model; handoffs and crosswalks belong to the [cross-system model](../../mappings/cross-system/README.md).
 
 ## Consumers and guarantees
 

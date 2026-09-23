@@ -1,6 +1,6 @@
 # Repository rules
 
-This contract defines observable repository identity, provenance, lifecycle, and rejection behavior without redefining financial concepts owned by the financial-domain model.
+This contract defines observable repository identity, provenance, lifecycle, and rejection behavior without redefining financial concepts owned by the financial object models.
 
 ## Schema
 

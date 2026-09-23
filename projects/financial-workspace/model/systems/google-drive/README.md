@@ -21,7 +21,7 @@ This entry defines the Google Drive objects that preserve original financial evi
 
 ## Ownership and consumers
 
-The owned elements are Drive workspaces, files, folders, parent relationships, and provider-native metadata needed to locate or retrieve evidence. Financial meaning belongs to the [financial-domain model](../../objects/financial-domain/README.md), repository copies and run artifacts to the [repository model](../repository/README.md), and relationships spanning systems to the [cross-system model](../../mappings/cross-system/README.md).
+The owned elements are Drive workspaces, files, folders, parent relationships, and provider-native metadata needed to locate or retrieve evidence. Financial meaning belongs to the [financial object models](../../objects/README.md), repository copies and run artifacts to the [repository model](../repository/README.md), and relationships spanning systems to the [cross-system model](../../mappings/cross-system/README.md).
 
 Cash-flow, procurement, recurring-expense, monthly-close, travel, claims, and tax workflows consume Drive evidence. Repository acquisition code and reviewers depend on stable file IDs, bounded discovery, explicit coverage, and byte verification. Folder paths and filenames aid navigation and matching but cannot establish canonical financial identity or workflow completion.
 

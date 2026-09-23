@@ -40,7 +40,7 @@ Begin with files. Expand a subject into a named folder with README.md when sever
 
 Keep provider IDs distinct from names, paths and display labels. Preserve many-to-many relationships and monetary allocations. Distinguish order, travel, service, payment, posting and observation dates; retain currency with amount and unknown values separately from zero. Expected events do not become observed transactions through presentation. Record native property types only when supported by schema evidence.
 
-Financial meaning belongs to `objects/financial-domain`; cross-system mappings to `mappings/cross-system`; each concrete representation belongs under `systems/`. Operational procedures belong in processes, connector mechanics in integrations, bounded changes in migrations, and durable rationale in decisions.
+Financial meaning belongs to the entries under `objects/`; cross-system mappings to `mappings/cross-system`; each concrete representation belongs under `systems/`. Operational procedures belong in processes, connector mechanics in integrations, bounded changes in migrations, and durable rationale in decisions.
 
 ## Evidence and checking
 

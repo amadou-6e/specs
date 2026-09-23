@@ -18,7 +18,7 @@ Deduplication compares exact external identity against a fresh scoped baseline. 
 
 ## Fields, time, money, and evidence
 
-Required meaning comes from the financial-domain and publication contracts. Name is presentation. Commercial date, payment/posting date, service month, due date, last-verified date, and retrieval time remain distinct. Amount and currency stay paired; missing is not zero and foreign currency receives no implicit FX conversion.
+Required meaning comes from the financial object and publication contracts. Name is presentation. Commercial date, payment/posting date, service month, due date, last-verified date, and retrieval time remain distinct. Amount and currency stay paired; missing is not zero and foreign currency receives no implicit FX conversion.
 
 Evidence text and links are convenience projections; original evidence remains authoritative in its provider. Formulas, rollups, chart helpers, calendar scaffolds, and dashboard aggregates are presentation state and cannot prove a transaction. Expected recurring rows and liability balances do not become transactions through display.
 

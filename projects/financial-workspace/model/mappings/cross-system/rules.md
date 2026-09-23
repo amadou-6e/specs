@@ -6,7 +6,7 @@ This contract governs records crossing repository, Drive, Gmail, and Notion boun
 
 | Concern | Authority |
 | --- | --- |
-| Financial meaning and lifecycle | [Financial domain](../../objects/financial-domain/rules/README.md) |
+| Financial meaning and lifecycle | [financial object domains](../../objects/README.md) |
 | Original documents and Drive metadata | [Google Drive](../../systems/google-drive/rules.md) or original provider |
 | Original correspondence | [Gmail](../../systems/gmail/rules.md) |
 | Normalized records, reconciliation, exceptions, runs | [Repository](../../systems/repository/rules.md) |

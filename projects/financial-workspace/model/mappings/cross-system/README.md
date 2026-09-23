@@ -9,7 +9,8 @@ applies_to:
   - financial-workspace
 supersedes: null
 related:
-  - model/objects/financial-domain
+  - model/objects/evidence
+  - model/objects/reconciliation
   - model/systems/repository
   - model/systems/google-drive
   - model/systems/gmail
@@ -24,7 +25,7 @@ This entry owns mappings that let one financial fact move between the repository
 
 ## Ownership and consumers
 
-This entry owns qualified references, domain-to-native crosswalks, authority precedence, many-to-many reconciliation links, handoff manifests, baselines, approvals, receipts, and verification. Financial meaning belongs to [Financial domain](../../objects/financial-domain/README.md); native objects belong to [Drive](../../systems/google-drive/README.md), [Gmail](../../systems/gmail/README.md), [Notion](../../systems/notion/README.md), and [Repository](../../systems/repository/README.md). Procedures and transitions belong to [processes](../../../processes/README.md) and [migrations](../../../migrations/README.md).
+This entry owns qualified references, domain-to-native crosswalks, authority precedence, many-to-many reconciliation links, handoff manifests, baselines, approvals, receipts, and verification. Financial meaning belongs to [financial object domains](../../objects/README.md); native objects belong to [Drive](../../systems/google-drive/README.md), [Gmail](../../systems/gmail/README.md), [Notion](../../systems/notion/README.md), and [Repository](../../systems/repository/README.md). Procedures and transitions belong to [processes](../../../processes/README.md) and [migrations](../../../migrations/README.md).
 
 Cash-flow, procurement, recurring-expense, monthly-close, travel, claims, and tax processes consume these mappings. Operators review gaps and publication diffs; connectors fetch sources and upsert projections; audit tooling replays results.
 

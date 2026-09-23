@@ -1,4 +1,4 @@
-﻿# Financial workspace structure proposal
+# Financial workspace structure proposal
 
 Status: discussion draft
 
@@ -214,31 +214,115 @@ Purchase and travel records remain in their subject folders, which hold invoices
 
 The [Drive folder example](integrations/google-drive/example/README.md) describes representative original statement PDFs, but the copied binaries remain local and are excluded from this specs repository. Names shown above for unavailable document types are illustrative and are not fabricated files.
 
-The repository should use:
+## Repository Tasks
+
+The repository must support the complete lifecycle of every recurring financial process:
+
+1. **Define:** State purpose, scope, ownership, inputs, outputs, invariants, evidence requirements, and completion criteria.
+2. **Design:** Develop decision flows, rules, schemas, agent contracts, controls, review gates, and failure handling before relying on the process.
+3. **Execute:** Create an isolated run, acquire pinned evidence, apply versioned code and decisions, review exceptions, produce a validated package, and publish only after the required gate.
+4. **Maintain:** Preserve run evidence, review failures and exceptions, promote durable lessons through reviewed changes, test replay, and migrate consumers before retiring legacy paths.
+
+Process-independent skills provide reusable agent behavior. The shared code harness implements acquisition, extraction, reconciliation, artifact management, orchestration, and publication controls. The local cache provides replaceable access to indexed Drive and Gmail evidence. Process workspaces contain execution-specific generated artifacts and never replace process definitions or source systems.
+
+## Target repository workspace
+The repository is organized by responsibility rather than by financial category. Domain concepts and external-system representations are defined once, reusable capabilities remain independent of individual processes, and each process owns its operating contract and generated runs.
 
 ~~~text
-finance/
-|-- accounts/
-|-- transactions/
+README.md                              # Entry point, setup, operating boundaries, and links to the specifications.
+AGENTS.md                              # Repository-wide instructions for people, orchestrators, and delegated agents.
+
+model/                                 # Versioned system-independent and system-specific data contracts.
+|-- objects/                           # Financial concepts such as transactions, purchases, journeys, and matters.
+|-- systems/                           # Repository, Google Drive, Gmail, and Notion representations.
+`-- mappings/                          # Stable identities and relationships between systems and domain objects.
+
+processes/                             # Definitions and lifecycle material for repeatable financial work.
+|-- template/                          # Standard used to design and document a new process.
 |-- procurement/
-|-- recurring/
-|-- everyday_spending/
+|   |-- README.md                      # Purpose, scope, ownership, inputs, outputs, and process status.
+|   |-- rules/                         # Durable procurement classification and reconciliation rules.
+|   |-- procedures/                    # Human-readable decision flows and operating procedures.
+|   |-- runbooks/                      # Machine-readable orchestration and step dependencies.
+|   |-- checklists/                    # Start, review, publication, and close gates.
+|   |-- schemas/                       # Input, decision, package, audit, and report contracts.
+|   |-- registers/                     # Exceptions, unresolved cases, and durable resolutions.
+|   `-- subagents/                     # Bounded agent assignments, inputs, outputs, and stop conditions.
+|-- recurring-expenses/                # The same process contract for recurring expense reconstruction.
+|-- everyday-spending/                 # Receipt-backed and statement-derived everyday spending workflow.
+|-- monthly-close/                     # Account coverage, balance controls, and month-end closure.
+|-- travel/                            # Journey evidence, personal/work classification, and claims workflow.
+|-- matters/                           # Returns, reimbursements, compensation, and other open matters.
+`-- tax/                               # Tax-year evidence, classification, filing, and assessment workflow.
+
+skills/                                # Process-independent capabilities that agents can reuse.
+|-- source-discovery/                  # Locate evidence without assigning process-specific meaning.
+|-- document-extraction/               # Extract structured facts with source locations and confidence.
+|-- record-linking/                    # Propose and review cross-system links and monetary allocations.
+|-- package-validation/                # Validate schemas, manifests, hashes, totals, and completeness.
+`-- publication-review/                # Compare approved packages with destination state before writing.
+
+src/                                   # Shared executable harness used across processes.
+|-- acquisition/                       # Fetch indexed Drive files and exported Gmail evidence.
+|-- extraction/                        # Provider parsers and normalized evidence readers.
+|-- reconciliation/                    # Matching, allocation, exception, and decision utilities.
+|-- artifacts/                         # Manifest, lineage, hashing, indexing, and validation code.
+|-- publishing/                        # Dry-run, diff, upload, receipt, and recovery adapters.
+`-- orchestration/                     # Run creation, task dispatch, gates, resume, and close behavior.
+
+integrations/                          # External-system adapters and their operational configuration.
+|-- google-drive/                      # Stable Drive IDs, retrieval, export formats, and cache mapping.
+|-- gmail/                             # Message discovery, export, attachment retrieval, and source links.
+`-- notion/                            # Baseline capture, projection, dry-run diff, upload, and receipts.
+
+config/                                # Versioned catalogs and settings consumed by shared code and processes.
+|-- accounts.yaml                      # Stable account identifiers and provider metadata.
+|-- sources.yaml                       # Indexed evidence, native IDs, expected periods, and hashes.
+|-- categories.yaml                    # Shared category vocabulary and mappings.
+`-- processes/                         # Process-specific configuration that is not generated per run.
+
+cache/                                 # Ignored, replaceable local access to remote evidence.
+|-- google-drive/                      # Drive-shaped cache addressed through the source catalog.
+`-- gmail/                             # Exported messages and attachments with retained native IDs.
+
+workspaces/                            # Agent execution areas separated by process.
+|-- procurement/
+|   `-- runs/
+|       `-- <run-id>/                  # Generated artifacts for one immutable procurement run.
+|           |-- run.json               # Scope, code revision, rule versions, source coverage, and state.
+|           |-- inputs/                # Frozen source references and verified input manifests.
+|           |-- working/               # Regenerable candidates, parses, and intermediate calculations.
+|           |-- decisions/             # Reviewed overrides and resolutions applied in this run.
+|           |-- package/               # Validated records proposed for publication.
+|           |-- reviews/               # Human and delegated-agent findings and gate decisions.
+|           |-- publication/           # Dry-run diff, approval, upload receipt, and verification.
+|           `-- report.md              # Final result, coverage, exceptions, and next actions.
+|-- recurring-expenses/
+|   `-- runs/<run-id>/                 # Generated recurring-expense run artifacts using the same contract.
+|-- everyday-spending/
+|   `-- runs/<run-id>/
+|-- monthly-close/
+|   `-- runs/<run-id>/
 |-- travel/
+|   `-- runs/<run-id>/
 |-- matters/
-|-- tax/
-`-- reconciliation/
+|   `-- runs/<run-id>/
+`-- tax/
+    `-- runs/<run-id>/
 
-integrations/
-|-- google_drive/
-|-- gmail/
-`-- notion/
+tests/                                 # Contract, parser, reconciliation, replay, and integration tests.
+|-- fixtures/                          # Synthetic or safely redacted deterministic test inputs.
+|-- unit/                              # Isolated shared-code behavior.
+|-- contract/                          # Schema and cross-system invariant checks.
+`-- replay/                            # Closed-run reproducibility and regression checks.
 
-ingestion/
-automation/
-scripts/
-reports/
-archive/
+migrations/                            # Bounded transitions from legacy paths, schemas, and remote layouts.
+archive/                               # Superseded outputs retained only where audit or migration requires them.
 ~~~
+
+`processes/<process>/` defines how work is designed, executed, reviewed, and maintained. `workspaces/<process>/runs/<run-id>/` contains generated evidence from an execution. A run may update a process rule only through a reviewed change to the process definition; generated findings do not silently become policy.
+
+The current repository still uses `docs/cashflow/processes/` and `data/cashflow/runs/` alongside legacy `finance`, `ingestion`, `automation`, `scripts`, `reports`, and statement paths. Moving those paths into this target layout requires the migration, hash, replay, and path-consumer checks defined in [the existing-system migration](migrations/0001-existing-system.md).
 
 ## Cross-system identity
 

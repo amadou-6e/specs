@@ -10,20 +10,22 @@ applies_to:
 supersedes: null
 related:
   - model/mappings/cross-system
-  - model/objects/financial-domain
+  - model/objects/transactions
+  - model/objects/evidence
+  - model/objects/reconciliation
   - processes/cash-flow
   - migrations/0001-existing-system
 ---
 
 # Repository model
 
-This entry defines the private repository as owner of versioned financial representations, executable reconstruction logic, reviewed decisions, and reproducibility evidence. Drive owns original files, Gmail owns original messages and attachments, Notion owns native pages and views, and the financial-domain model owns financial meaning.
+This entry defines the private repository as owner of versioned financial representations, executable reconstruction logic, reviewed decisions, and reproducibility evidence. Drive owns original files, Gmail owns original messages and attachments, Notion owns native pages and views, and the financial object models owns financial meaning.
 
 ## Ownership and consumers
 
 The repository owns committed bytes and history, repository-relative paths, normalized records derived from external evidence, source catalogs and hashes, schemas, process instructions, exception and reconciliation records, and run artifacts. Cached provider bytes do not replace provider identity or originals.
 
-Cash-flow acquisition consumes the catalog and cache. Procurement, recurring-expense, ledger, and reconciliation workflows consume saved data, decisions, exceptions, work products, and packages. Reviewers consume manifests, checks, reports, and Git history. Cross-system mappings belong in [cross-system](../../mappings/cross-system/README.md), financial semantics in [financial-domain](../../objects/financial-domain/README.md), and procedural sequencing in [cash-flow processes](../../../processes/cash-flow/README.md).
+Cash-flow acquisition consumes the catalog and cache. Procurement, recurring-expense, ledger, and reconciliation workflows consume saved data, decisions, exceptions, work products, and packages. Reviewers consume manifests, checks, reports, and Git history. Cross-system mappings belong in [cross-system](../../mappings/cross-system/README.md), financial semantics in [financial object domains](../../objects/README.md), and procedural sequencing in [cash-flow processes](../../../processes/cash-flow/README.md).
 
 ## Guarantees
 

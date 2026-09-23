@@ -10,7 +10,7 @@ See [schema](schema.md) for fields and identifiers.
 
 A known thread groups one or many independently addressable messages. A message has zero or many parts and attachments. Messages and attachments can support zero or many assertions and domain entities; domain entities can cite zero or many Gmail objects through explicit cross-system links.
 
-Provider sent/internal/received time, retrieval time, and dates stated in content remain distinct. Order, invoice, service, travel, payment, posting, refund, and claim dates keep financial-domain meanings. Labels and thread presentation are mutable.
+Provider sent/internal/received time, retrieval time, and dates stated in content remain distinct. Order, invoice, service, travel, payment, posting, refund, and claim dates keep financial object-domain meanings. Labels and thread presentation are mutable.
 
 Assertions cite the exact message and relevant part or attachment, observation time, method, and parser/rule version when automated. Captured bytes add MIME type, size, hash, and lineage. Hashes prove integrity only for captured bytes and never replace native identity. Subjects, snippets, filenames, and links may guide review but cannot replace body or attachment content.
 

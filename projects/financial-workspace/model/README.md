@@ -7,7 +7,17 @@ The model is divided by semantic role. Objects define financial meaning, systems
 ```text
 model/
 |-- objects/            # System-independent financial concepts and semantics.
-|   `-- financial-domain/
+|   |-- accounts/
+|   |-- transactions/
+|   |-- procurement/
+|   |-- recurring-expenses/
+|   |-- everyday-spending/
+|   |-- travel/
+|   |-- matters/
+|   |-- tax/
+|   |-- financial-position/
+|   |-- evidence/
+|   `-- reconciliation/
 |-- systems/            # Representations owned by concrete storage or operating systems.
 |   |-- repository/
 |   |-- google-drive/
@@ -26,7 +36,7 @@ Cite evidence and observation dates beside supported claims or in the owning doc
 
 | Catalogue | Entry | Owned boundary |
 | --- | --- | --- |
-| Objects | [Financial domain](objects/financial-domain/README.md) | Domain catalog, relationships, lifecycle, and time semantics independent of storage system. |
+| Objects | [Financial object domains](objects/README.md) | Accounts, transactions, procurement, recurring expenses, everyday spending, travel, matters, tax, financial position, evidence, and reconciliation. |
 | Systems | [Repository](systems/repository/README.md) | Canonical data, code, cache, process workspaces, and generated run artifacts. |
 | Systems | [Google Drive](systems/google-drive/README.md) | Original documents, Drive identity, folder semantics, and evidence access. |
 | Systems | [Gmail](systems/gmail/README.md) | Correspondence, message and attachment identity, retrieval, and evidence semantics. |
