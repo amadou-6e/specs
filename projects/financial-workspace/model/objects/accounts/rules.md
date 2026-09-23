@@ -17,3 +17,7 @@ related: [model/mappings/cross-system]
 - Closing an account does not delete its transaction or snapshot history.
 
 Invalid identities, impossible dates, currency conflicts, unsupported inference, or contradictory evidence require rejection or review.
+
+## Admissible source artifacts
+
+Bank statements and provider account-overview documents may support Account identity and lifecycle. A statement is a container for transaction assertions; filenames and Drive paths never become Account identity. Every checked-in example records the source-system identity and limitations; raw source bytes remain external or in ignored temporary storage.

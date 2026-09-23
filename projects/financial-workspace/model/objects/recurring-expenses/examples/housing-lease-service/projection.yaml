@@ -1,0 +1,22 @@
+object_types:
+  - Recurring service
+  - Contract term
+source_links:
+  - drive:1G-4eu01pWBv827iySpzIl6-lUtOWRGVU
+recurring_service:
+  service_id: redacted-housing-service
+  provider: redacted
+  description: housing lease
+  category: housing
+  cadence: monthly
+  lifecycle: observed
+contract_term:
+  term_id: redacted-contract-term
+  effective_interval: redacted
+  price: redacted
+redacted_fields:
+  - service_id
+  - provider
+  - term_id
+  - effective_interval
+  - price

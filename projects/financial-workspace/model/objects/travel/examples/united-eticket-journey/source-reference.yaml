@@ -1,0 +1,18 @@
+system: google-drive
+provider: google-drive
+provider_id: 1ha2rT5NYKcZNyEvfkVBq_6tHn3kyiqU-
+stable_url: https://drive.google.com/file/d/1ha2rT5NYKcZNyEvfkVBq_6tHn3kyiqU-/view
+observed_path: Documents/✈️ Reisen/2023 San Diego (UCSD)/united-GJV745_eticket-receipt_original-email.pdf
+mime_type: application/pdf
+observed_at: 2026-09-23
+artifact_kind: airline-eticket-receipt
+evidence_role: direct
+supports:
+  - provider booking reference
+  - booking date
+  - traveler
+  - origin and destination
+  - travel dates and times
+limitations:
+  - the ticket does not prove completed travel
+  - payment settlement requires transaction evidence

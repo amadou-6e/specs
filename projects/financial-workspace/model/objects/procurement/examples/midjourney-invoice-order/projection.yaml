@@ -1,0 +1,21 @@
+object_types:
+  - Order
+  - Purchase item
+source_links:
+  - drive:1Ex8M25ibL-ktsLFhFY94DIljlmyS82SZ
+order:
+  order_id: redacted-merchant-scoped-order
+  merchant: Midjourney
+  order_reference: redacted
+  order_date: redacted
+  currency: redacted
+purchase_item:
+  purchase_id: redacted-order-line
+  description: subscription service
+  quantity: 1
+  item_amount: redacted
+redacted_fields:
+  - order_reference
+  - order_date
+  - currency
+  - item_amount

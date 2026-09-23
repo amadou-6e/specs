@@ -1,0 +1,10 @@
+schema_version: 1
+name: december-2025-settlement
+kind: source-grounded-example
+purpose: "Redacted projection of a real settlement reconciliation"
+authority: "Immutable run artifact and recorded hash"
+owner: amadou-6e
+children:
+  - "1 README.md"
+  - "1 source-reference.yaml"
+  - "1 projection.yaml"

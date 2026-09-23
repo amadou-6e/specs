@@ -1,0 +1,17 @@
+system: git-repository
+repository: financial-workspace
+commit: 89486b82c0b32f0d86f89a659e8f7e25a63c9240
+path: data/cashflow/runs/procurement-2025-12-test-20260915T120000Z/work/procurement.settlement-reconciliation/relationships.json
+sha256: 0be2f8fbcd16b6b0df0e3337dcdae0ebdc7ecdc1b1b9e2e59d5a97052f03e96f
+observed_at: 2026-09-23
+artifact_kind: reconciliation-relationships
+evidence_role: derived
+supports:
+  - reconciliation state
+  - typed purchase and transaction endpoints
+  - matching rule
+  - evidence paths
+  - unresolved exception reason
+limitations:
+  - the run is partial and candidate-scoped
+  - publication was not run

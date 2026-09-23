@@ -17,3 +17,7 @@ related: [model/mappings/cross-system]
 - Do not manufacture item allocations when evidence cannot explain an order total.
 
 Invalid identities, impossible dates, currency conflicts, unsupported inference, or contradictory evidence require rejection or review.
+
+## Admissible source artifacts
+
+Invoices, receipts, order confirmations, and merchant emails may support Orders, Purchase items, Returns, or Merchant refunds. Settlement requires separate Transaction evidence. Every checked-in example records the source-system identity and limitations; raw source bytes remain external or in ignored temporary storage.

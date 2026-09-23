@@ -1,0 +1,16 @@
+system: google-drive
+provider: google-drive
+provider_id: 16uavOYGfZJ31oCMDYwPkS8bGubzxQmYM
+stable_url: https://drive.google.com/file/d/16uavOYGfZJ31oCMDYwPkS8bGubzxQmYM/view
+observed_path: Financial Workspace/🏦 Banking/SSKM/2026/SSKM_2026-01_Kontoauszug.pdf
+mime_type: application/pdf
+observed_at: 2026-09-23
+artifact_kind: bank-statement
+evidence_role: direct
+supports:
+  - account assertions
+  - statement coverage assertions
+  - multiple transaction assertions
+limitations:
+  - no content hash is claimed because bytes were not acquired in this research pass
+  - Drive metadata does not prove period completeness

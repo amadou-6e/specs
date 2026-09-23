@@ -17,3 +17,7 @@ related: [model/mappings/cross-system]
 - Work travel classification requires supporting employer or itinerary evidence.
 
 Invalid identities, impossible dates, currency conflicts, unsupported inference, or contradictory evidence require rejection or review.
+
+## Admissible source artifacts
+
+Tickets, itinerary attachments, booking confirmations, and accommodation confirmations may support Travel objects. Planning spreadsheets are context only unless corroborated; merchant names and amounts cannot establish routes or travel dates. Every checked-in example records the source-system identity and limitations; raw source bytes remain external or in ignored temporary storage.

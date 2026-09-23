@@ -1,0 +1,10 @@
+schema_version: 1
+name: elster-filing
+kind: source-grounded-example
+purpose: "Redacted source-linked tax projection"
+authority: "Observed source reference and model projection"
+owner: amadou-6e
+children:
+  - "1 README.md"
+  - "1 source-reference.yaml"
+  - "1 projection.yaml"

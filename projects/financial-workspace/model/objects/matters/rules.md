@@ -17,3 +17,7 @@ related: [model/mappings/cross-system]
 - Refunds and reimbursements are expense offsets unless another reviewed policy applies.
 
 Invalid identities, impossible dates, currency conflicts, unsupported inference, or contradictory evidence require rejection or review.
+
+## Admissible source artifacts
+
+Claims, demand letters, return requests, reimbursement submissions, insurer correspondence, and case communications may support Matters, Claims, and Matter events. A claim state remains separate from later payment Transactions. Every checked-in example records the source-system identity and limitations; raw source bytes remain external or in ignored temporary storage.

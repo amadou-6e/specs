@@ -17,3 +17,7 @@ related: [model/mappings/cross-system]
 - Reclassification to procurement preserves identity and provenance.
 
 Invalid identities, impossible dates, currency conflicts, unsupported inference, or contradictory evidence require rejection or review.
+
+## Example evidence boundary
+
+The Drive folder `Financial Workspace/Everyday spending/Receipts/2026/` was observed empty on 2026-09-23. No receipt-backed Spending occurrence was verified, so this domain has no example. This is a dated coverage fact, not proof that no everyday spending exists.

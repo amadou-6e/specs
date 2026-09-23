@@ -1,0 +1,23 @@
+object_types:
+  - Reconciliation link
+  - Exception
+source_links:
+  - repository:financial-workspace@89486b82c0b32f0d86f89a659e8f7e25a63c9240:data/cashflow/runs/procurement-2025-12-test-20260915T120000Z/work/procurement.settlement-reconciliation/relationships.json
+reconciliation_link:
+  link_id: redacted-purchase-payment-link
+  endpoints:
+    - type: purchase
+      id: redacted
+    - type: transaction
+      id: redacted
+  method: merchant-amount-date-with-original-evidence
+  state: confirmed
+  rule: PR-06
+exception_pattern:
+  exception_id: redacted-unresolved-settlement
+  reason: no supported settlement found; unrelated equal-amount candidates rejected
+  status: open
+redacted_fields:
+  - endpoint identifiers
+  - financial values
+  - provider references

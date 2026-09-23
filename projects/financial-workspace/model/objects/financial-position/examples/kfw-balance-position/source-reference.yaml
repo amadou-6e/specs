@@ -1,0 +1,17 @@
+system: google-drive
+provider: google-drive
+provider_id: 16wF2NRxApDHPBVX7A7raatEdtDZuuPRj
+stable_url: https://drive.google.com/file/d/16wF2NRxApDHPBVX7A7raatEdtDZuuPRj/view
+observed_path: Financial Workspace/📉 Liabilities/KfW/2026/KfW_Bildungskredit_Kontostand_2026-08.pdf
+mime_type: application/pdf
+observed_at: 2026-09-23
+artifact_kind: loan-balance-statement
+evidence_role: direct
+supports:
+  - obligation identity
+  - balance cutoff
+  - amount and currency
+  - observation date
+limitations:
+  - the document supports one position, not a complete monthly snapshot
+  - durable agreement terms require the loan contract

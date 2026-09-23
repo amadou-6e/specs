@@ -1,0 +1,16 @@
+object_type: Liability position
+source_links:
+  - drive:16wF2NRxApDHPBVX7A7raatEdtDZuuPRj
+object:
+  liability_position_id: redacted-kfw-position
+  obligation: redacted-kfw-loan
+  cutoff: redacted
+  amount: redacted
+  currency: redacted
+  certainty: observed
+redacted_fields:
+  - liability_position_id
+  - obligation
+  - cutoff
+  - amount
+  - currency

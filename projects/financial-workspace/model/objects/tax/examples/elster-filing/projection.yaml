@@ -1,0 +1,19 @@
+object_types:
+  - Tax year
+  - Tax filing
+source_links:
+  - drive:1Ti77YxgM0Xo89bNkT4oEAc53-YXb3EXy
+tax_year:
+  jurisdiction: Germany
+  tax_year: 2021
+  filing_status: submitted
+  assessment_status: unknown
+tax_filing:
+  filing_id: redacted-filing
+  submitted_version: redacted
+  submission_date: redacted
+  acknowledgement: observed
+redacted_fields:
+  - filing_id
+  - submitted_version
+  - submission_date

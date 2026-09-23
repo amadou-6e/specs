@@ -41,3 +41,7 @@ Domain folders own economic meaning. [System models](../systems/README.md) own n
 ## Instance boundary
 
 This catalogue specifies the financial object types used by Financial Workspace. It does not store source documents or invented instances. A concrete object example is valid here only when it is a redacted projection of an object verified in the actual model and linked to its owning Gmail message, Google Drive file, Notion page, bank source, or other source-system position. Source bytes may be pulled into ignored temporary or cache directories for inspection, but they do not become specification files.
+
+## Source-linked example contract
+
+A populated domain example contains one human-readable `README.md`, one `source-reference.yaml`, and one `projection.yaml`. The source reference records the owning system, provider-native identity, observed location or stable link, MIME type or artifact format, observation date, evidence role, supported claims, and limitations. The projection contains only fields supported by that source and explicitly lists redactions. One source may support many objects, and one object may require many sources.

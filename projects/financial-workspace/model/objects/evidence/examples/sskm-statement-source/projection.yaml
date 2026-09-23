@@ -1,0 +1,22 @@
+object_types:
+  - Evidence source
+  - Evidence assertion
+source_links:
+  - drive:16uavOYGfZJ31oCMDYwPkS8bGubzxQmYM
+evidence_source:
+  evidence_id: drive:16uavOYGfZJ31oCMDYwPkS8bGubzxQmYM
+  provider: google-drive
+  immutable_source_id: 16uavOYGfZJ31oCMDYwPkS8bGubzxQmYM
+  type: bank-statement
+  observation_time: 2026-09-23
+  content_hash: null
+assertion_pattern:
+  assertion_id: derived-per-subject-and-field
+  subject: redacted
+  field_or_claim: redacted
+  source_location: redacted
+  confidence: observed
+redacted_fields:
+  - subject
+  - field_or_claim
+  - source_location

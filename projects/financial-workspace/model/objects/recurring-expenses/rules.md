@@ -17,3 +17,7 @@ related: [model/mappings/cross-system]
 - Missing settlement evidence remains unresolved and does not cancel the expected obligation.
 
 Invalid identities, impossible dates, currency conflicts, unsupported inference, or contradictory evidence require rejection or review.
+
+## Admissible source artifacts
+
+Contracts, mandates, invoices, and cancellation confirmations may support Recurring services and Contract terms. Service-month settlement state must come from a transaction or a reviewed reconciliation. Every checked-in example records the source-system identity and limitations; raw source bytes remain external or in ignored temporary storage.

@@ -1,0 +1,27 @@
+object_types:
+  - Journey
+  - Travel segment
+  - Booking
+source_links:
+  - drive:1ha2rT5NYKcZNyEvfkVBq_6tHn3kyiqU-
+journey:
+  journey_id: redacted-journey
+  origin: redacted
+  destination: redacted
+  travel_interval: redacted
+  purpose_classification: redacted
+booking:
+  booking_id: redacted-booking
+  provider_reference: redacted
+  booking_date: redacted
+  traveler: redacted
+redacted_fields:
+  - journey_id
+  - origin
+  - destination
+  - travel_interval
+  - purpose_classification
+  - booking_id
+  - provider_reference
+  - booking_date
+  - traveler

@@ -1,0 +1,12 @@
+object_type: Account
+source_links:
+  - drive:16uavOYGfZJ31oCMDYwPkS8bGubzxQmYM
+object:
+  account_id: redacted-provider-scoped-account
+  provider: SSKM
+  native_account_reference: redacted
+  account_type: checking
+  currency_policy: single-currency
+  lifecycle_status: observed
+redacted_fields:
+  - native_account_reference

@@ -17,3 +17,7 @@ related: [model/mappings/cross-system]
 - Expected charges and invoices do not become transactions until provider evidence shows movement.
 
 Invalid identities, impossible dates, currency conflicts, unsupported inference, or contradictory evidence require rejection or review.
+
+## Admissible source artifacts
+
+Bank, card, wallet, and payment-provider statements or exports may directly support posted Transaction fields. Invoices, orders, and expected charges are not Transaction evidence until a payment provider records movement. Every checked-in example records the source-system identity and limitations; raw source bytes remain external or in ignored temporary storage.

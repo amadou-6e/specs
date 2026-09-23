@@ -1,0 +1,17 @@
+object_type: Transaction
+source_links:
+  - drive:1_VeFNwmDTT4Oca18jB5zyPmFuC1-CtY3
+object:
+  transaction_id: redacted-provider-transaction
+  account_id: paypal
+  amount: redacted
+  currency: redacted
+  observed_status: posted
+  posting_date: redacted
+  counterparty: redacted
+redacted_fields:
+  - transaction_id
+  - amount
+  - currency
+  - posting_date
+  - counterparty

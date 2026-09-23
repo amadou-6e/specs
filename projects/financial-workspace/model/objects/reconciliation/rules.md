@@ -17,3 +17,7 @@ related: [model/mappings/cross-system]
 - Allocations balance within a declared tolerance; remainders and ambiguity remain explicit.
 
 Invalid identities, impossible dates, currency conflicts, unsupported inference, or contradictory evidence require rejection or review.
+
+## Example evidence boundary
+
+Drive does not directly store Reconciliation links or Allocations. Examples must come from immutable repository-run artifacts and retain links to the original Drive, Gmail, statement, or Notion evidence used by the run.

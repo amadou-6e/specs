@@ -1,0 +1,9 @@
+schema_version: 1
+name: examples
+kind: example-collection
+purpose: "Source-grounded examples for the tax object model"
+authority: "Verified source-linked projections"
+owner: amadou-6e
+children:
+  - "1 README.md"
+  - "1 elster-filing/"

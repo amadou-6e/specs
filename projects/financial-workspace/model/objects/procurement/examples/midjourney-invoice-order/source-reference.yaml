@@ -1,0 +1,19 @@
+system: google-drive
+provider: google-drive
+provider_id: 1Ex8M25ibL-ktsLFhFY94DIljlmyS82SZ
+stable_url: https://drive.google.com/file/d/1Ex8M25ibL-ktsLFhFY94DIljlmyS82SZ/view
+observed_path: Documents/E-Commerce/Billing/Midjourney/Invoice-4F0E52E6-0001.pdf
+mime_type: application/pdf
+observed_at: 2026-09-23
+artifact_kind: invoice
+evidence_role: direct
+supports:
+  - merchant
+  - commercial reference
+  - invoice or order date
+  - service description
+  - amount and currency
+  - tax when present
+limitations:
+  - the invoice does not prove settlement
+  - one invoice may also support recurring-service billing
