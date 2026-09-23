@@ -48,7 +48,7 @@ ALLOWED_CATEGORY_TYPES = {"fixed", "document-collection", "folder-collection"}
 # a plain historical-archive collection) instead only needs a valid kebab-case slug.
 NUMBERED_ENTRY_PATTERN = re.compile(r"^\d{4}-[a-z0-9]+(?:-[a-z0-9]+)*\.md$")
 SLUG_ENTRY_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*\.md$")
-# <slug> for folder-collection entry directory names (never "template").
+# <slug> for folder-collection entry directory names (never ".template").
 FOLDER_ENTRY_NAME_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 # Filenames that are never treated as a spec entry, even inside a declared category
 # (README.md is the container; SKILL.md marks an invokable agent skill, not a spec).
@@ -299,7 +299,7 @@ def validate_contract_children(
                 f"{folder.relative_to(ROOT)}/metadata.yaml: permits at most one of {alternatives}"
             )
         for path in existing:
-            if path.is_dir() and path.name != "template" and not (path / "metadata.yaml").exists():
+            if path.is_dir() and path.name != ".template" and not (path / "metadata.yaml").exists():
                 errors.append(
                     f"{path.relative_to(ROOT)}/metadata.yaml: nested folder must define its own relationship level"
                 )
@@ -316,18 +316,19 @@ def sync_recursive_folder_contracts(
         category_type = spec.get("type") if isinstance(spec, dict) else None
         groups = spec.get("groups") if isinstance(spec, dict) else None
         if category_type == "folder-collection":
-            template = category / "template"
-            required_contracts.append(template)
             if groups:
                 for group_name in groups:
                     group = category / group_name
-                    required_contracts.append(group)
+                    template = group / ".template"
+                    required_contracts.extend((group, template))
                     for entry in group.iterdir() if group.exists() else []:
-                        if entry.is_dir():
+                        if entry.is_dir() and entry.name != ".template":
                             inherited_entries.append((entry, template))
             else:
+                template = category / ".template"
+                required_contracts.append(template)
                 for entry in category.iterdir() if category.exists() else []:
-                    if entry.is_dir() and entry.name != "template":
+                    if entry.is_dir() and entry.name != ".template":
                         inherited_entries.append((entry, template))
 
     seen: set[Path] = set()
@@ -485,9 +486,9 @@ def check_fixed_category(
         check_contained_elements(readme, project, errors)
     # Container READMEs are bare containers, not entries: the convention's own
     # metadata rule ("every entry, not bare containers") exempts them from frontmatter.
-    if (category / "template").is_dir():
+    if (category / ".template").is_dir():
         errors.append(
-            f"{name}/template/: a fixed top-structured category has no copy-and-rename "
+            f"{name}/.template/: a fixed top-structured category has no copy-and-rename "
             "entry mechanism, so it cannot have a folder template"
         )
     template_doc = category / "template.md"
@@ -582,10 +583,6 @@ def check_folder_collection_category(
     else:
         check_contained_elements(readme, project, errors)
 
-    template_dir = category / "template"
-    if not template_dir.is_dir():
-        errors.append(f"{name}/template/: missing copyable template folder")
-
     entries: list[Path] = []
     if groups:
         for group_name in groups:
@@ -598,14 +595,20 @@ def check_folder_collection_category(
                 errors.append(f"{name}/{group_name}/README.md: missing group README")
             else:
                 check_contained_elements(group_readme, project, errors)
+            template_dir = group / ".template"
+            if not template_dir.is_dir():
+                errors.append(
+                    f"{name}/{group_name}/.template/: missing copyable template folder"
+                )
             entries.extend(sorted(p for p in group.iterdir() if p.is_dir()))
-        if template_dir.is_dir():
-            entries.append(template_dir)
     else:
+        template_dir = category / ".template"
+        if not template_dir.is_dir():
+            errors.append(f"{name}/.template/: missing copyable template folder")
         entries = sorted(p for p in category.iterdir() if p.is_dir())
 
     for entry in entries:
-        is_template = entry == template_dir
+        is_template = entry.name == ".template"
         if not is_template and not FOLDER_ENTRY_NAME_PATTERN.match(entry.name):
             errors.append(
                 f"{entry.relative_to(project)}/: entry folder name must be lowercase "
@@ -662,7 +665,7 @@ def check_references(
             candidates = [
                 p / "README.md"
                 for p in category.iterdir()
-                if p.is_dir() and p.name != "template"
+                if p.is_dir() and p.name != ".template"
             ]
     else:
         candidates = [

@@ -6,6 +6,7 @@
 ```text
 mappings/
 ├── 1 README.md
+├── 1 .template/
 └── 0..* <mapping>/ entries
 ```
 <!-- END GENERATED: contained-elements -->

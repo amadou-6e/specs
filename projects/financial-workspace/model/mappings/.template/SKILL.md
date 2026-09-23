@@ -9,7 +9,7 @@ Use [the model template](README.md). This skill covers local specifications; it 
 
 ## Category naming
 
-Before creating or renaming a category, read the [shared category-naming convention](../../../../shared/conventions/category_naming.md) and the project-specific guidance in [SPECS.md](../../SPECS.md). Use common intrinsic system or domain kinds. Keep workflow roles in processes and mappings.
+Before creating or renaming a category, read the [shared category-naming convention](../../../../../shared/conventions/category_naming.md) and the project-specific guidance in [SPECS.md](../../../SPECS.md). Use common intrinsic system or domain kinds. Keep workflow roles in processes and mappings.
 
 ## Establish scope
 

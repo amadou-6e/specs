@@ -1,7 +1,7 @@
 schema_version: 1
-name: model-entry-template
+name: mapping-model-template
 kind: entry-template
-purpose: "Common model entry relationship level"
+purpose: "Cross-system mapping model entry"
 authority: "Model entry schema"
 owner: amadou-6e
 children:

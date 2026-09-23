@@ -1,5 +1,5 @@
 ---
-title: Example financial model entry
+title: Object-domain entry template
 status: template
 kind: model-entry
 owners:
@@ -11,13 +11,13 @@ supersedes: null
 related: []
 ---
 
-# Model entry template
+# Object-domain entry template
 
 <!-- BEGIN GENERATED: contained-elements -->
 ## Contained elements
 
 ```text
-template/
+.template/
 ├── 1 README.md
 ├── 1 structure.md
 ├── 1 schema.md or schema/

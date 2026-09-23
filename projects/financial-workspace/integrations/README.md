@@ -6,7 +6,7 @@
 ```text
 integrations/
 ├── 1 README.md
-├── 1 template/
+├── 1 .template/
 └── 0..* <integration>/ entries
 ```
 <!-- END GENERATED: contained-elements -->

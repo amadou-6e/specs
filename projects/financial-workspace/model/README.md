@@ -6,7 +6,6 @@
 ```text
 model/
 ├── 1 README.md
-├── 1 template/
 ├── 1 objects/
 ├── 1 systems/
 └── 1 mappings/

@@ -67,7 +67,7 @@ financial-workspace/
 |   |-- systems/                       # Repository, Drive, Gmail, and Notion representations.
 |   `-- mappings/                      # Identities and relationships across systems.
 |-- processes/                         # Definitions for repeatable financial workflows.
-|   |-- template/                      # Standard for designing and documenting a process.
+|   |-- .template/                      # Standard for designing and documenting a process.
 |   |-- procurement/
 |   |   |-- README.md                  # Scope, ownership, inputs, outputs, and status.
 |   |   |-- rules/                     # Durable classification and reconciliation policy.
@@ -142,7 +142,7 @@ financial-workspace/
 | Implemented path | Target path | Required gate |
 | --- | --- | --- |
 | `docs/cashflow/processes/<process>/` | `processes/<process>/` | Documentation parity and repaired links |
-| `docs/templates/processes/` | `processes/template/` | Template parity and process validation |
+| `docs/templates/processes/` | `processes/.template/` | Template parity and process validation |
 | `data/cashflow/runs/<run-id>/` | `workspaces/<process>/runs/<run-id>/` | Manifest compatibility and deterministic replay |
 | `data/cashflow/decisions/` | Process registers or run `decisions/` | Explicit split between durable policy and run-specific decisions |
 | `config/cashflow/` | Shared `config/` plus `config/processes/` | Consumer inventory and configuration-schema validation |

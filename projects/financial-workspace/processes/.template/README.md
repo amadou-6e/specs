@@ -1,7 +1,7 @@
 ---
-title: Example financial integration
+title: Example financial process
 status: template
-kind: integration
+kind: process
 owners:
   - financial-workspace
 last_reviewed: 2026-09-23
@@ -11,15 +11,16 @@ supersedes: null
 related: []
 ---
 
-# Example financial integration
+# Example financial process
 
 <!-- BEGIN GENERATED: contained-elements -->
 ## Contained elements
 
 ```text
-template/
+.template/
 ├── 1 README.md
-├── 0..1 model-validation.md
-└── 0..1 example/
+├── 1 workflow.md
+├── 0..1 model-validation/
+└── 0..1 examples/
 ```
 <!-- END GENERATED: contained-elements -->

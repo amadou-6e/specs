@@ -6,4 +6,5 @@ authority: "Native system semantics"
 owner: amadou-6e
 children:
   - "1 README.md"
+  - "1 .template/"
   - "0..* <system>/ entries"

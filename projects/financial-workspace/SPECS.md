@@ -33,9 +33,9 @@ All category identifiers follow the [shared category-naming convention](../../sh
 Financial Workspace examples include `cloud-file-storage`, `email-service`, `git-repository`, and `collaborative-workspace`. Product names such as Google Drive, Gmail, GitHub, and Notion identify system entries, not reusable categories.
 ## Category rules
 
-- [Model](model/README.md) separates `objects/`, `systems/`, and `mappings/`. All three use `model/template/` as the copyable entry and provide an overview, structure, schema, and rules, with examples and presentation only where useful.
-- [Processes](processes/README.md) uses `processes/template/` as its copyable entry. Copy it to a descriptive workflow name.
-- [Integrations](integrations/README.md) uses `integrations/template/` as its copyable entry. Copy it to the external system name.
+- [Model](model/README.md) separates `objects/`, `systems/`, and `mappings/`. Each catalogue uses its own `.template/` folder as the copyable entry and provide an overview, structure, schema, and rules, with examples and presentation only where useful.
+- [Processes](processes/README.md) uses `processes/.template/` as its copyable entry. Copy it to a descriptive workflow name.
+- [Integrations](integrations/README.md) uses `integrations/.template/` as its copyable entry. Copy it to the external system name.
 - [Migrations](migrations/README.md) uses `migrations/template.md`; real migrations use sequential names such as `0002-<slug>.md`.
 - [Decisions](decisions/README.md) uses `decisions/template.md`; real decisions use sequential names such as `0001-<slug>.md`.
 

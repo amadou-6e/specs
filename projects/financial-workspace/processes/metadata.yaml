@@ -6,5 +6,5 @@ authority: "Process definitions"
 owner: amadou-6e
 children:
   - "1 README.md"
-  - "1 template/"
+  - "1 .template/"
   - "0..* <process>/ entries"

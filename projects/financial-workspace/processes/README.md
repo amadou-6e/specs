@@ -6,7 +6,7 @@
 ```text
 processes/
 ├── 1 README.md
-├── 1 template/
+├── 1 .template/
 └── 0..* <process>/ entries
 ```
 <!-- END GENERATED: contained-elements -->

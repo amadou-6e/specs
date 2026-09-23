@@ -6,6 +6,7 @@
 ```text
 objects/
 ├── 1 README.md
+├── 1 .template/
 └── 0..* <domain>/ entries
 ```
 <!-- END GENERATED: contained-elements -->

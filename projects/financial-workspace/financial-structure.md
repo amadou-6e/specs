@@ -238,7 +238,7 @@ model/                                 # Versioned system-independent and system
 `-- mappings/                          # Stable identities and relationships between systems and domain objects.
 
 processes/                             # Definitions and lifecycle material for repeatable financial work.
-|-- template/                          # Standard used to design and document a new process.
+|-- .template/                          # Standard used to design and document a new process.
 |-- procurement/
 |   |-- README.md                      # Purpose, scope, ownership, inputs, outputs, and process status.
 |   |-- rules/                         # Durable procurement classification and reconciliation rules.
