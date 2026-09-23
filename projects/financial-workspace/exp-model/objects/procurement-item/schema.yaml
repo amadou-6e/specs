@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "object": "procurement-item",
+  "identity_field": "item_id",
+  "required_information": "Procurement, description, quantity",
+  "optional_information": "Unit/line amount, category, receipt line",
+  "unknown_values": "null; never invented",
+  "status": "conceptual contract, not an executable validator"
+}

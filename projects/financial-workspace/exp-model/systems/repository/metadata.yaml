@@ -1,0 +1,10 @@
+schema_version: 1
+name: repository
+kind: model-entry
+purpose: "repository"
+authority: Replacement candidate
+owner: amadou-6e
+children:
+  - "1 README.md"
+  - "1 structure.md"
+status: draft

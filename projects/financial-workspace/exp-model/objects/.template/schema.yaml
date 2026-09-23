@@ -1,0 +1,5 @@
+schema_version: 1
+object: <object>
+identity_field: <object>_id
+required_information: []
+optional_information: []

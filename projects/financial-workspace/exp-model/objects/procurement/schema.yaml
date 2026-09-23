@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "object": "procurement",
+  "identity_field": "procurement_id",
+  "required_information": "Merchant, order date when known, source",
+  "optional_information": "Merchant order reference, order total, travel details",
+  "unknown_values": "null; never invented",
+  "status": "conceptual contract, not an executable validator"
+}

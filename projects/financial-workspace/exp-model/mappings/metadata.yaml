@@ -1,0 +1,11 @@
+schema_version: 1
+name: mappings
+kind: group
+purpose: "Mappings"
+authority: Replacement candidate
+owner: amadou-6e
+children:
+  - "1 README.md"
+  - "1 .template/"
+  - "0..* <mapping>/ entries"
+status: draft

@@ -1,0 +1,15 @@
+schema_version: 1
+name: exp-model
+kind: folder-collection
+purpose: "Financial model replacement"
+authority: Replacement candidate
+owner: amadou-6e
+children:
+  - "1 README.md"
+  - "1 objects/"
+  - "1 relationships/"
+  - "1 representations/"
+  - "1 systems/"
+  - "1 mappings/"
+  - "1 migration/"
+status: draft

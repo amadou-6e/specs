@@ -1,0 +1,15 @@
+schema_version: 1
+name: representations
+kind: folder-collection
+purpose: "Source representations"
+authority: Replacement candidate
+owner: amadou-6e
+children:
+  - "1 README.md"
+  - "1 contract.md"
+  - "1 email/"
+  - "1 pdf/"
+  - "1 image/"
+  - "1 structured-export/"
+  - "1 calendar/"
+status: draft

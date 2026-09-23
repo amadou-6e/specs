@@ -1,0 +1,12 @@
+schema_version: 1
+name: transaction-statement
+kind: model-entry
+purpose: "Transaction statement"
+authority: Replacement candidate
+owner: amadou-6e
+children:
+  - "1 README.md"
+  - "1 schema.yaml"
+  - "1 relationships.md"
+  - "1 representations.md"
+status: draft

@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "object": "receipt",
+  "identity_field": "receipt_id",
+  "required_information": "Document kind, source representation",
+  "optional_information": "Issuer, order/document reference, issue date, items, total, currency",
+  "unknown_values": "null; never invented",
+  "status": "conceptual contract, not an executable validator"
+}

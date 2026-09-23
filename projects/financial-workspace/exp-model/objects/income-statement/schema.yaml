@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "object": "income-statement",
+  "identity_field": "income_statement_id",
+  "required_information": "Employer, period, source",
+  "optional_information": "Gross/net amounts, deductions, reimbursement component",
+  "unknown_values": "null; never invented",
+  "status": "conceptual contract, not an executable validator"
+}

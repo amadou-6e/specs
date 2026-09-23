@@ -1,0 +1,12 @@
+schema_version: 1
+name: relationships
+kind: folder-collection
+purpose: "Relationships"
+authority: Replacement candidate
+owner: amadou-6e
+children:
+  - "1 README.md"
+  - "1 graph.yaml"
+  - "1 rules.md"
+  - "1 tree-views.md"
+status: draft

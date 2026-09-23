@@ -8,8 +8,7 @@ model/
 ├── 1 README.md
 ├── 1 objects/
 ├── 1 systems/
-├── 1 mappings/
-└── 0..1 experimental/
+└── 1 mappings/
 ```
 <!-- END GENERATED: contained-elements -->
 
@@ -23,4 +22,4 @@ model/
 | Systems | [Gmail](systems/gmail/README.md) | Correspondence, message and attachment identity, retrieval, and evidence semantics. |
 | Systems | [Notion](systems/notion/README.md) | Operational databases, presentation, baselines, and controlled publication. |
 | Mappings | [Cross-system](mappings/cross-system/README.md) | Shared identities, authority boundaries, handoffs, and mappings between objects and systems. |
-| Experiments | [Minimal financial graph](experimental/minimal-financial-graph/README.md) | Candidate graph for accounts, income evidence, recurring agreements, procurement, and receipts. |
+| Experiments | [Replacement model](../exp-model/README.md) | Candidate graph for accounts, income evidence, recurring agreements, procurement, and receipts. |

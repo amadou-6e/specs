@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "object": "cashflow-entry",
+  "identity_field": "entry_id",
+  "required_information": "Sheet, transaction, flattened reporting properties",
+  "optional_information": "Receipt, procurement, agreement and income details",
+  "unknown_values": "null; never invented",
+  "status": "conceptual contract, not an executable validator"
+}

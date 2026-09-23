@@ -13,3 +13,4 @@ children:
   - "1 integrations/"
   - "1 migrations/"
   - "1 decisions/"
+  - "0..1 exp-model/"

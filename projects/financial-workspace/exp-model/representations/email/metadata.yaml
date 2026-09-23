@@ -1,0 +1,9 @@
+schema_version: 1
+name: email
+kind: folder-collection
+purpose: "Email"
+authority: Replacement candidate
+owner: amadou-6e
+children:
+  - "1 README.md"
+status: draft

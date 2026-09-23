@@ -1,0 +1,12 @@
+schema_version: 1
+name: migration
+kind: folder-collection
+purpose: "Promotion readiness"
+authority: Replacement candidate
+owner: amadou-6e
+children:
+  - "1 README.md"
+  - "1 plan.md"
+  - "1 validation-cases.md"
+  - "1 open-questions.md"
+status: draft

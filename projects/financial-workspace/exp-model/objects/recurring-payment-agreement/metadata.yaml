@@ -1,0 +1,12 @@
+schema_version: 1
+name: recurring-payment-agreement
+kind: model-entry
+purpose: "Recurring-payment agreement"
+authority: Replacement candidate
+owner: amadou-6e
+children:
+  - "1 README.md"
+  - "1 schema.yaml"
+  - "1 relationships.md"
+  - "1 representations.md"
+status: draft

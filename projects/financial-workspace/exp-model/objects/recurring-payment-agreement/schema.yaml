@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "object": "recurring-payment-agreement",
+  "identity_field": "agreement_id",
+  "required_information": "Provider, service description, source or reviewed basis",
+  "optional_information": "Cadence, effective dates, versioned price terms",
+  "unknown_values": "null; never invented",
+  "status": "conceptual contract, not an executable validator"
+}

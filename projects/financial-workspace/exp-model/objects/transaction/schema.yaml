@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "object": "transaction",
+  "identity_field": "transaction_id",
+  "required_information": "Account, signed amount, currency, booking date, source observation",
+  "optional_information": "Value date, merchant, original reference, provider transaction ID",
+  "unknown_values": "null; never invented",
+  "status": "conceptual contract, not an executable validator"
+}

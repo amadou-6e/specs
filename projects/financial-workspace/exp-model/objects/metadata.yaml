@@ -1,0 +1,11 @@
+schema_version: 1
+name: objects
+kind: group
+purpose: "Financial objects"
+authority: Replacement candidate
+owner: amadou-6e
+children:
+  - "1 README.md"
+  - "1 .template/"
+  - "0..* <object>/ entries"
+status: draft
