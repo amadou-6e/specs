@@ -34,3 +34,7 @@ template/
 - [Rules](rules.md)
 
 State ownership, consumers, implementation status, and unresolved questions in the entry overview.
+
+## Example policy
+
+An `examples/` folder is optional and may contain only a redacted projection of a verified instance of this model. Every projection identifies the source system, provider-native ID, native location or safe stable link, and observation date. Source documents and exports remain in Google Drive, Gmail, Notion, or another owning system; local copies belong only in ignored temporary or cache storage and are never committed here. If a verified instance is unavailable, omit the example folder.

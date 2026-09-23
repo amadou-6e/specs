@@ -35,7 +35,7 @@ For each moved document, preserve substantive content and repair inbound and out
 - structure.md: components, containment, relationships, cardinalities, concrete topology.
 - schema.md: records, attributes, exact types, keys, options, formulas and computed fields.
 - rules.md: required meaning, consistency, filing and lifecycle constraints.
-- examples/: real or explicitly illustrative examples, only where useful.
+- examples/: source-linked projections of verified model instances, only where useful. Do not place invented domain instances or source-document bytes here.
 - presentation/: configured displays such as Notion boards, tables, charts and filters. These are distinct from the stored schema.
 
 Begin with files. Expand a subject into a named folder with README.md when several useful documents exist. Do not require identical file counts or create placeholder collections. Avoid contract/, views/, native-model/, or deployments/ as generic wrappers.
@@ -45,6 +45,14 @@ Begin with files. Expand a subject into a named folder with README.md when sever
 Keep provider IDs distinct from names, paths and display labels. Preserve many-to-many relationships and monetary allocations. Distinguish order, travel, service, payment, posting and observation dates; retain currency with amount and unknown values separately from zero. Expected events do not become observed transactions through presentation. Record native property types only when supported by schema evidence.
 
 Financial meaning belongs to the entries under `objects/`; cross-system mappings to `mappings/cross-system`; each concrete representation belongs under `systems/`. Operational procedures belong in processes, connector mechanics in integrations, bounded changes in migrations, and durable rationale in decisions.
+
+## Ground examples in the actual model
+
+An example under a real model entry must represent an instance verified in the Financial Workspace model. Do not invent an account, transaction, purchase, journey, matter, tax record, evidence record, or reconciliation link and present it as a domain example.
+
+Keep bank statements, salary statements, receipts, email bodies, attachments, and system exports in their source system. A local working copy may exist only in ignored temporary or cache storage. Never commit those source bytes to this specification repository. Refer to the source with its provider, immutable provider ID when available, native path or container, stable URL when safe, observation date, and content hash when bytes were inspected.
+
+A checked-in example contains only a redacted projection needed to demonstrate the model and a source-reference block that makes the projection traceable. If no verified instance exists, omit `examples/`; use `schema.md` to describe the proposed shape and mark unsupported fields or relationships as unresolved.
 
 ## Evidence and checking
 

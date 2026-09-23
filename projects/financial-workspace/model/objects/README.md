@@ -37,3 +37,7 @@ objects/
 ## Ownership boundary
 
 Domain folders own economic meaning. [System models](../systems/README.md) own native representations. [Cross-system mappings](../mappings/cross-system/README.md) own crosswalks and authority precedence. Processes own operational sequencing.
+
+## Instance boundary
+
+This catalogue specifies the financial object types used by Financial Workspace. It does not store source documents or invented instances. A concrete object example is valid here only when it is a redacted projection of an object verified in the actual model and linked to its owning Gmail message, Google Drive file, Notion page, bank source, or other source-system position. Source bytes may be pulled into ignored temporary or cache directories for inspection, but they do not become specification files.
