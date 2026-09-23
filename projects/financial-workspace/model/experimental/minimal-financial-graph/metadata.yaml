@@ -1,0 +1,18 @@
+schema_version: 1
+name: minimal-financial-graph
+kind: model-experiment
+purpose: "Replacement object graph and unified transaction cashflow projection"
+authority: "Replacement candidate pending migration checks"
+owner: amadou-6e
+status: draft
+children:
+  - "1 objects.md"
+  - "1 representations.md"
+  - "1 cashflow-sheet.md"
+  - "1 migration.md"
+  - "1 validation-cases.md"
+  - "1 open-questions.md"
+  - "1 model.yaml"
+  - "1 relationships.md"
+  - "1 tree-views.md"
+  - "1 README.md"
