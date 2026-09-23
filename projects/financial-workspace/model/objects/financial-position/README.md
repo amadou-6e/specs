@@ -11,6 +11,17 @@ related: [model/mappings/cross-system]
 
 # Financial position
 
+## Contained elements
+
+```text
+<model-entry>/
+├── 1 README.md
+├── 1 structure.md
+├── 1 schema.md or schema/
+├── 1 rules.md or rules/
+├── 0..1 examples/
+└── 0..1 presentation/
+```
 Owns point-in-time assets, liabilities, balances, valuations, and monthly snapshots.
 
 ## Owned concepts

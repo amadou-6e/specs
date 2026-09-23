@@ -15,6 +15,14 @@ related:
 
 # Cash-flow process
 
+## Contained elements
+
+```text
+cash-flow/
+├── 1 README.md
+├── 1 workflow.md
+└── 1 model-validation/
+```
 This entry specifies portable acquisition, analysis, reconciliation, replay, review, and approved Notion publication for cash-flow data.
 
 ```text

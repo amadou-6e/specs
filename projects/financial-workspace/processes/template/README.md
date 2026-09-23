@@ -13,6 +13,15 @@ related: []
 
 # Example financial process
 
+## Contained elements
+
+```text
+<process>/
+├── 1 README.md
+├── 1 workflow.md
+├── 0..1 model-validation/
+└── 0..1 examples/
+```
 This folder is copied and renamed for each repeatable workflow.
 
 ```text

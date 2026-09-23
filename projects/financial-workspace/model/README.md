@@ -1,7 +1,15 @@
 # Financial models
 
-Cardinality: README.md 1, objects/ 1, systems/ 1, mappings/ 1, template/ 1.
+## Contained elements
 
+```text
+model/
+├── 1 README.md
+├── 1 template/
+├── 1 objects/
+├── 1 systems/
+└── 1 mappings/
+```
 The model is divided by semantic role. Objects define financial meaning, systems define concrete representations, and mappings connect identities and facts across those systems. Use [template](template/README.md) and its [skill](template/SKILL.md) inside any of the three catalogues.
 
 ```text

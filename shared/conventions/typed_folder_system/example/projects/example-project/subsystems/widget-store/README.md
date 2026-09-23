@@ -13,6 +13,15 @@ related: []
 
 # Widget Store
 
+## Contained elements
+
+```text
+widget-store/
+├── 1 README.md
+├── 1 contract/README.md
+├── 1 design/README.md
+└── 1 validation.md
+```
 A named entry copied from [`subsystems/template/`](../template/README.md) and
 filled in — this is what a real, non-template subsystem looks like.
 

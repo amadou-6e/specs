@@ -14,6 +14,14 @@ related:
 
 # Google Drive integration
 
+## Contained elements
+
+```text
+google-drive/
+├── 1 README.md
+├── 0..1 model-validation.md
+└── 0..1 example/
+```
 Google Drive is authoritative for original statements, receipts, contracts, certificates, and native workspace navigation documents. Repository records refer to Drive content through stable file IDs, links, metadata, expected hashes, and documented coverage.
 
 ```text

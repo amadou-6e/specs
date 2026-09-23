@@ -1,7 +1,12 @@
 # Model objects
 
-Cardinality: README.md 1, domain folders 0..*.
+## Contained elements
 
+```text
+objects/
+├── 1 README.md
+└── 0..* <domain>/ entries
+```
 Objects define financial concepts without depending on Google Drive, Gmail, Notion, repository paths, or another storage system.
 
 ## Shared guarantees

@@ -44,6 +44,11 @@ SUBSYSTEM_ENTRY_FILES = ("README.md", "contract/README.md", "design/README.md", 
 DECISION_ENTRY_PATTERN = re.compile(r"^\d{4}-[a-z0-9]+(?:-[a-z0-9]+)*\.md$")
 
 FRONTMATTER = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
+CONTAINED_ELEMENTS_HEADING = re.compile(
+    r"^## Contained elements(?: and relationships)?\s*$", re.MULTILINE
+)
+CARDINALITY_TOKEN = re.compile(r"\b0\.\.\*|\b0\.\.1\b|(?<!\.)\b1\b")
+TREE_CONNECTOR = re.compile(r"(?:├──|└──|\|--|`--)")
 
 
 def parse_frontmatter(text: str) -> dict[str, object] | None:
@@ -103,6 +108,22 @@ def check_entry_frontmatter(path: Path, errors: list[str], *, expect_template: b
     return fields
 
 
+def check_contained_elements(path: Path, errors: list[str]) -> None:
+    text = path.read_text(encoding="utf-8")
+    relative = path.relative_to(PROJECT_ROOT)
+    match = CONTAINED_ELEMENTS_HEADING.search(text)
+    if match is None:
+        errors.append(f"{relative}: missing '## Contained elements' section")
+        return
+    tail = text[match.end():]
+    next_heading = re.search(r"^## ", tail, re.MULTILINE)
+    section = tail[:next_heading.start()] if next_heading else tail
+    if "```" not in section or TREE_CONNECTOR.search(section) is None:
+        errors.append(f"{relative}: Contained elements section must include a fenced tree")
+    if CARDINALITY_TOKEN.search(section) is None:
+        errors.append(f"{relative}: Contained elements tree must state cardinality")
+
+
 def check_manifest(errors: list[str]) -> None:
     manifest_path = PROJECT_ROOT / "spec.json"
     if not manifest_path.exists():
@@ -127,6 +148,8 @@ def check_root_documents(errors: list[str]) -> None:
         path = PROJECT_ROOT / name
         if not path.exists():
             errors.append(f"{name}: missing")
+    if (PROJECT_ROOT / "README.md").exists():
+        check_contained_elements(PROJECT_ROOT / "README.md", errors)
     check_manifest(errors)
 
 
@@ -137,6 +160,7 @@ def check_fixed_category(name: str, errors: list[str]) -> None:
         errors.append(f"{name}/README.md: missing")
     else:
         check_entry_frontmatter(readme, errors, expect_template=False)
+        check_contained_elements(readme, errors)
     for forbidden in ("template", "template.md"):
         if (category / forbidden).exists():
             errors.append(f"{name}/{forbidden}: a fixed top-structured category must not have a copyable template")
@@ -149,6 +173,7 @@ def check_folder_collection_category(name: str, errors: list[str]) -> None:
         errors.append(f"{name}/README.md: missing container README")
     else:
         fields = check_entry_frontmatter(readme, errors, expect_template=False)
+        check_contained_elements(readme, errors)
         text = readme.read_text(encoding="utf-8")
         if fields is not None and not re.search(r"\b0\.\.\*|\b0\.\.1\b|(?<!\.)\b1\b", text):
             errors.append(f"{name}/README.md: container README must state cardinality (1 / 0..1 / 0..*)")
@@ -168,6 +193,8 @@ def check_folder_collection_category(name: str, errors: list[str]) -> None:
                 errors.append(f"{name}/{entry.name}/{required}: missing")
             elif required.endswith(".md"):
                 check_entry_frontmatter(required_path, errors, expect_template=is_template)
+                if required == "README.md":
+                    check_contained_elements(required_path, errors)
 
 
 def check_document_collection_category(name: str, errors: list[str]) -> None:
@@ -177,6 +204,7 @@ def check_document_collection_category(name: str, errors: list[str]) -> None:
         errors.append(f"{name}/README.md: missing container README")
     else:
         check_entry_frontmatter(readme, errors, expect_template=False)
+        check_contained_elements(readme, errors)
 
     template_doc = category / "template.md"
     if not template_doc.exists():

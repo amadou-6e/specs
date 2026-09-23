@@ -13,6 +13,17 @@ related: []
 
 # Model entry template
 
+## Contained elements
+
+```text
+<model-entry>/
+├── 1 README.md
+├── 1 structure.md
+├── 1 schema.md or schema/
+├── 1 rules.md or rules/
+├── 0..1 examples/
+└── 0..1 presentation/
+```
 Use the same document meanings for entries under `objects/`, `systems/`, and `mappings/`. Choose the catalogue before copying this template:
 
 - `objects/` for system-independent financial concepts;

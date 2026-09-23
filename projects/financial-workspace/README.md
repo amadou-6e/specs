@@ -1,5 +1,18 @@
 # Financial Workspace
 
+## Contained elements
+
+```text
+financial-workspace/
+├── 1 README.md
+├── 1 SPECS.md
+├── 1 spec.json
+├── 1 model/
+├── 1 processes/
+├── 1 integrations/
+├── 1 migrations/
+└── 1 decisions/
+```
 Status: Drive folder structure implemented; finance data model remains a discussion draft.
 
 ## Intent

@@ -59,13 +59,16 @@ specifics is faster than writing an entry from nothing.
 ## Container and entry documentation
 
 Every directory that organizes child specification elements is a **container** and
-must have a `README.md` that states:
+must have a `README.md` with a `## Contained elements` section. That section contains
+a fenced tree, following the form used by the worked example, and states:
 
-- the type and purpose of the elements it contains;
 - the permitted child shapes and filenames;
-- the cardinality of required, optional, and repeatable elements, using `1`,
-  `0..1`, and `0..*` in a small tree or table; and
-- the authority and ownership boundary of the container.
+- the cardinality of required, optional, and repeatable elements using `1`, `0..1`,
+  and `0..*`; and
+- which file or folder is the copyable template where the collection is expandable.
+
+The surrounding README also states the container's purpose, authority, and ownership
+boundary. A prose sentence or an isolated cardinality token does not replace the tree.
 
 This rule applies recursively: the project root, each category folder, and each
 multi-file entry's own root are all containers and each needs this cardinality

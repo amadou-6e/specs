@@ -55,6 +55,11 @@ FOLDER_ENTRY_NAME_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 NON_ENTRY_FILENAMES = {"README.md", "SKILL.md"}
 
 FRONTMATTER = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
+CONTAINED_ELEMENTS_HEADING = re.compile(
+    r"^## Contained elements(?: and relationships)?\s*$", re.MULTILINE
+)
+CARDINALITY_TOKEN = re.compile(r"\b0\.\.\*|\b0\.\.1\b|(?<!\.)\b1\b")
+TREE_CONNECTOR = re.compile(r"(?:├──|└──|\|--|`--)")
 
 
 def files() -> list[Path]:
@@ -152,6 +157,25 @@ def check_entry_frontmatter(
     return fields
 
 
+def check_contained_elements(path: Path, project: Path, errors: list[str]) -> None:
+    """Require a visible contained-elements tree in every typed container README."""
+    text = path.read_text(encoding="utf-8")
+    relative = path.relative_to(project)
+    match = CONTAINED_ELEMENTS_HEADING.search(text)
+    if match is None:
+        errors.append(f"{relative}: missing '## Contained elements' section")
+        return
+    tail = text[match.end():]
+    next_heading = re.search(r"^## ", tail, re.MULTILINE)
+    section = tail[:next_heading.start()] if next_heading else tail
+    if "```" not in section or TREE_CONNECTOR.search(section) is None:
+        errors.append(f"{relative}: Contained elements section must include a fenced tree")
+    if CARDINALITY_TOKEN.search(section) is None:
+        errors.append(
+            f"{relative}: Contained elements tree must state cardinality (1 / 0..1 / 0..*)"
+        )
+
+
 def check_fixed_category(
     project: Path, name: str, errors: list[str], *, allowed_statuses: set[str]
 ) -> set[str]:
@@ -160,6 +184,8 @@ def check_fixed_category(
     refs: set[str] = set()
     if not readme.exists():
         errors.append(f"{name}/README.md: missing container README")
+    else:
+        check_contained_elements(readme, project, errors)
     # Container READMEs are bare containers, not entries: the convention's own
     # metadata rule ("every entry, not bare containers") exempts them from frontmatter.
     if (category / "template").is_dir():
@@ -205,6 +231,8 @@ def check_document_collection_category(
     refs: set[str] = set()
     if not readme.exists():
         errors.append(f"{name}/README.md: missing container README")
+    else:
+        check_contained_elements(readme, project, errors)
 
     template_doc = category / "template.md"
     if not template_doc.exists():
@@ -255,9 +283,7 @@ def check_folder_collection_category(
     if not readme.exists():
         errors.append(f"{name}/README.md: missing container README")
     else:
-        text = readme.read_text(encoding="utf-8")
-        if not re.search(r"\b0\.\.\*|\b0\.\.1\b|(?<!\.)\b1\b", text):
-            errors.append(f"{name}/README.md: container README must state cardinality (1 / 0..1 / 0..*)")
+        check_contained_elements(readme, project, errors)
 
     template_dir = category / "template"
     if not template_dir.is_dir():
@@ -274,13 +300,10 @@ def check_folder_collection_category(
             if not group_readme.exists():
                 errors.append(f"{name}/{group_name}/README.md: missing group README")
             else:
-                group_text = group_readme.read_text(encoding="utf-8")
-                if not re.search(r"\b0\.\.\*|\b0\.\.1\b|(?<!\.)\b1\b", group_text):
-                    errors.append(
-                        f"{name}/{group_name}/README.md: group README must state "
-                        "cardinality (1 / 0..1 / 0..*)"
-                    )
+                check_contained_elements(group_readme, project, errors)
             entries.extend(sorted(p for p in group.iterdir() if p.is_dir()))
+        if template_dir.is_dir():
+            entries.append(template_dir)
     else:
         entries = sorted(p for p in category.iterdir() if p.is_dir())
 
@@ -303,6 +326,8 @@ def check_folder_collection_category(
                     expect_template=is_template,
                     allowed_statuses=allowed_statuses,
                 )
+                if required == "README.md":
+                    check_contained_elements(required_path, project, errors)
         if not is_template:
             refs.add(str(entry.relative_to(project)).replace(os.sep, "/"))
     return refs
@@ -357,6 +382,9 @@ def check_typed_categories(project: Path, categories: dict, errors: list[str]) -
     for name in ("README.md", "SPECS.md"):
         if not (project / name).exists():
             errors.append(f"{name}: missing (required once a project declares categories in spec.json)")
+    root_readme = project / "README.md"
+    if root_readme.exists():
+        check_contained_elements(root_readme, project, errors)
 
     known_refs: set[str] = set()
     per_category: list[tuple[str, str, list[str] | None]] = []

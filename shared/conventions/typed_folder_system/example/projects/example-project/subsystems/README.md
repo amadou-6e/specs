@@ -16,19 +16,14 @@ related: []
 Expandable folder collection: each entry below is an independently owned,
 multi-file folder following the schema demonstrated by [`template/`](template/).
 
-## Contained elements and relationships
+## Contained elements
 
 ```text
 subsystems/
 ├── 1 README.md
-├── 1 template/       # copyable schema example, status: template
-└── 0..* <subsystem>/  # named entries, one per owned behavioral boundary
+├── 1 template/
+└── 0..* <subsystem>/ entries
 ```
-
-To add a subsystem, copy `template/`, rename the copy, and replace its `status:
-template` frontmatter and example content. Do not nest a copied template beneath
-another template, and do not add an extra naming layer between `subsystems/` and the
-entry folder.
 
 ## Entries
 

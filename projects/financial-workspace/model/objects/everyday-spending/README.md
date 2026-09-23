@@ -11,6 +11,17 @@ related: [model/mappings/cross-system]
 
 # Everyday spending
 
+## Contained elements
+
+```text
+<model-entry>/
+├── 1 README.md
+├── 1 structure.md
+├── 1 schema.md or schema/
+├── 1 rules.md or rules/
+├── 0..1 examples/
+└── 0..1 presentation/
+```
 Owns receipt-backed and statement-derived routine consumption classifications that do not require procurement item tracking.
 
 ## Owned concepts

@@ -4,7 +4,7 @@ This is the minimal worked example for the
 [typed and named folder hierarchy](../../../README.md) convention. It is not a real
 project; it exists so the convention can be demonstrated and validated in isolation.
 
-## Contained elements and relationships
+## Contained elements
 
 ```text
 example-project/
@@ -15,9 +15,6 @@ example-project/
 ├── 1 subsystems/
 └── 1 decisions/
 ```
-
-`SPECS.md` is authoritative for the category set below and each category's
-structural type; this README only orients a new reader.
 
 ## Categories
 

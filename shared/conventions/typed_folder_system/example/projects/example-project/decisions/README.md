@@ -16,19 +16,14 @@ related: []
 Expandable document collection: each entry is one independently owned Markdown
 document explaining why a durable choice was made.
 
-## Contained elements and relationships
+## Contained elements
 
 ```text
 decisions/
 ├── 1 README.md
-├── 1 template.md              # copyable schema example, status: template
-└── 0..* <NNNN>-<slug>.md       # named entries, sequentially numbered
+├── 1 template.md
+└── 0..* <NNNN>-<slug>.md entries
 ```
-
-To add a decision, copy `template.md` to the next sequential number (`NNNN`, zero
-padded to four digits) and a short slug, then replace its `status: template`
-frontmatter and example content. Decisions are single files — do not create a folder
-for an ordinary decision record.
 
 ## Entries
 

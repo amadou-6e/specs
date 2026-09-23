@@ -13,6 +13,12 @@ related: []
 
 # Example Project architecture
 
+## Contained elements
+
+```text
+architecture/
+└── 1 README.md
+```
 Fixed top-structured category: this file is the one system-wide structure for
 architecture. A real project may add focused documents beside this one (for example
 `architecture/data-flow.md`), but does not create arbitrary new architecture

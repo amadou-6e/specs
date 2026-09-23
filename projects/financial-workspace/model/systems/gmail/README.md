@@ -11,6 +11,17 @@ related: [model/objects/evidence, model/objects/reconciliation, model/mappings/c
 
 # Gmail financial evidence model
 
+## Contained elements
+
+```text
+<model-entry>/
+├── 1 README.md
+├── 1 structure.md
+├── 1 schema.md or schema/
+├── 1 rules.md or rules/
+├── 0..1 examples/
+└── 0..1 presentation/
+```
 This entry owns native identity and evidence representation for Gmail messages, threads, MIME parts, and attachments. Gmail is authoritative for original correspondence and provider metadata. Financial meaning belongs to the [financial object models](../../objects/README.md), normalized artifacts to the [repository model](../repository/README.md), cross-system links to the [cross-system model](../../mappings/cross-system/README.md), and retrieval procedure to integrations and processes.
 
 ## Consumers and guarantees

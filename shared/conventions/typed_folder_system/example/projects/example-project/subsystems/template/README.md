@@ -16,23 +16,17 @@ related: []
 Copy this folder and rename the copy for a new subsystem entry. This README
 demonstrates the internal cardinality every copy must follow.
 
-## Contained elements and relationships
+## Contained elements
 
 ```text
 <subsystem>/
 ├── 1 README.md
-├── 1 contract/
-│   └── 1 README.md
-├── 1 design/
-│   └── 1 README.md
-└── 1 validation.md
+├── 1 contract/README.md
+├── 1 design/README.md
+├── 1 validation.md
+├── 0..1 guides/
+└── 0..1 migrations.md
 ```
-
-A mature subsystem entry requires `README.md`, `contract/README.md`,
-`design/README.md`, and `validation.md`. (The full convention also allows optional
-`contract/interfaces.md`, `contract/configuration.md`, `contract/extensions.md`,
-`design/<language>.md`, `guides/`, `extensions/`, and `migrations.md` — omitted here
-to keep the worked example small.)
 
 ## Problem and ownership
 

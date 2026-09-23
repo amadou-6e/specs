@@ -1,5 +1,13 @@
 # Financial processes
 
+## Contained elements
+
+```text
+processes/
+├── 1 README.md
+├── 1 template/
+└── 0..* <process>/ entries
+```
 Structural type: expandable folder collection.
 
 Each child folder specifies one repeatable workflow that a person or agent can execute without relying on conversation history. Process entries own their inputs, outputs, invariants, decision flow, validation, and maintenance contract. Generated run artifacts live in the financial repository, not in this specification repository.

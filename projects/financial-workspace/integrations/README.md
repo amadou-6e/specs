@@ -1,5 +1,13 @@
 # Financial integrations
 
+## Contained elements
+
+```text
+integrations/
+├── 1 README.md
+├── 1 template/
+└── 0..* <integration>/ entries
+```
 Structural type: expandable folder collection.
 
 Each child folder specifies one external system's identity model, access boundary, source-of-truth role, retrieval or publication behavior, and local-cache representation.
