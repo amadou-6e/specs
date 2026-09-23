@@ -1,6 +1,6 @@
 # Typed and named folder hierarchy
 
-This convention explains how a project under `projects/<project>/` organizes its
+Category identifiers used by this structure follow the [shared category-naming convention](../category_naming.md). explains how a project under `projects/<project>/` organizes its
 specifications: a small closed set of top-level **categories**, each assigned one of
 three **structural types**, and — inside an expandable category — new **entries**
 created by copying that category's **template** and renaming the copy. "Typed"

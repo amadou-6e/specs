@@ -7,6 +7,10 @@ description: Create or reorganize Financial Workspace data models using concrete
 
 Use [the model template](README.md). This skill covers local specifications; it does not authorize remote mutations.
 
+## Category naming
+
+Before creating or renaming a category, read the [shared category-naming convention](../../../../shared/conventions/category_naming.md) and the project-specific guidance in [SPECS.md](../../SPECS.md). Use common intrinsic system or domain kinds. Keep workflow roles in processes and mappings.
+
 ## Establish scope
 
 Read the entry, existing specifications, relevant process and integration documents, and available schema captures. Describe the Financial Workspace use of the system. Include provider mechanics only when they affect our data. Do not create generic platform manuals or redundant deployment nesting.

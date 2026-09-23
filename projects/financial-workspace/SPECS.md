@@ -26,6 +26,11 @@ This category set is closed. Adding or repurposing a top-level category requires
 | `migrations` | Expandable document collection | Sequentially numbered migration contracts for bounded transitions of live data or structure. |
 | `decisions` | Expandable document collection | Sequentially numbered decisions that resolve durable design or operating choices. |
 
+## Category naming
+
+All category identifiers follow the [shared category-naming convention](../../shared/conventions/category_naming.md). Categories name intrinsic, conventionally recognized kinds at a stable abstraction level. Workflow-specific uses belong in process relationships or roles rather than category names.
+
+Financial Workspace examples include `cloud-file-storage`, `email-service`, `git-repository`, and `collaborative-workspace`. Product names such as Google Drive, Gmail, GitHub, and Notion identify system entries, not reusable categories.
 ## Category rules
 
 - [Model](model/README.md) separates `objects/`, `systems/`, and `mappings/`. All three use `model/template/` as the copyable entry and provide an overview, structure, schema, and rules, with examples and presentation only where useful.
