@@ -6,7 +6,7 @@ owners: [amadou-6e]
 last_reviewed: 2026-09-23
 applies_to: [financial-workspace]
 supersedes: null
-related: [model/objects/evidence, model/objects/reconciliation, model/mappings/cross-system, model/systems/repository, processes/cash-flow]
+related: [model/objects/reconciliation, model/mappings/cross-system, model/systems/repository, processes/cash-flow]
 ---
 
 # Gmail financial evidence model

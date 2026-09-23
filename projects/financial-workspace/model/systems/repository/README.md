@@ -11,7 +11,6 @@ supersedes: null
 related:
   - model/mappings/cross-system
   - model/objects/transactions
-  - model/objects/evidence
   - model/objects/reconciliation
   - processes/cash-flow
   - migrations/0001-existing-system

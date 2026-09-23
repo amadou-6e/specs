@@ -28,10 +28,7 @@ objects/
 - [Recurring expenses](recurring-expenses/README.md): Owns continuing services, contracts, billing schedules, service periods, and cancellation state.
 - [Everyday spending](everyday-spending/README.md): Owns receipt-backed and statement-derived routine consumption classifications that do not require procurement item tracking.
 - [Travel](travel/README.md): Owns journeys, route segments, bookings, travel dates, tickets, accommodation, and personal or work classification.
-- [Matters](matters/README.md): Owns stateful returns, claims, reimbursements, disputes, deposits, and recoverable balances that may produce future movements.
-- [Tax](tax/README.md): Owns tax-year matters, classifications, filings, assessments, payments, refunds, and jurisdiction-specific status.
 - [Financial position](financial-position/README.md): Owns point-in-time assets, liabilities, balances, valuations, and monthly snapshots.
-- [Evidence](evidence/README.md): Owns system-independent evidence references, assertions, provenance, coverage, and transformation lineage.
 - [Reconciliation](reconciliation/README.md): Owns candidate and reviewed links, monetary allocations, matching decisions, ambiguity, and exceptions.
 
 ## Ownership boundary

@@ -9,7 +9,6 @@ applies_to:
   - financial-workspace
 supersedes: null
 related:
-  - model/objects/evidence
   - model/objects/reconciliation
   - model/systems/repository
   - model/systems/google-drive
