@@ -1,4 +1,4 @@
-name: Validate specifications
+﻿name: Validate specifications
 
 on:
   pull_request:
@@ -16,5 +16,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Verify generated specifications and structure`n        run: python tools/validate_specs.py --check
-
+      - name: Verify generated specifications and structure
+        run: python tools/validate_specs.py --check
