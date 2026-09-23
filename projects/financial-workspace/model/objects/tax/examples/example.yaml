@@ -1,0 +1,13 @@
+illustrative: true
+tax_year:
+  jurisdiction: DE
+  tax_year: 2026
+  lifecycle: evidence-collection
+  filing_status: not-filed
+  assessment_status: not-assessed
+classification:
+  classification_id: tax-classification-example-001
+  subject_id: purchase-example-1001-1
+  category: work-equipment
+  deductible_share: "0.50"
+  evidence_id: evidence-example-invoice

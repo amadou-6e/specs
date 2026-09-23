@@ -1,0 +1,14 @@
+illustrative: true
+spending_occurrence:
+  spending_id: spending-example-grocery-001
+  merchant: Example Supermarket
+  commercial_date: 2026-01-17
+  amount: "31.20"
+  currency: EUR
+  category: groceries
+  evidence_status: receipt-observed
+receipt_lines:
+  - receipt_line_id: line-example-001
+    description: Example groceries
+    quantity: 1
+    line_amount: "31.20"

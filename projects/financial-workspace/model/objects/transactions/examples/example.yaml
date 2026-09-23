@@ -1,0 +1,12 @@
+illustrative: true
+transaction:
+  transaction_id: txn-example-2026-001
+  account_id: account-example-checking
+  status: observed
+  amount: "-24.90"
+  currency: EUR
+  posting_date: 2026-01-16
+  value_date: 2026-01-16
+  counterparty: Example Merchant
+  provenance:
+    evidence_id: evidence-example-statement-line

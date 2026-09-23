@@ -1,0 +1,13 @@
+illustrative: true
+matter:
+  matter_id: matter-example-refund-001
+  type: merchant-refund
+  subject_id: purchase-example-1001-1
+  opened_date: 2026-01-20
+  lifecycle: submitted
+  responsible_party: Example Hardware Store
+claim:
+  claim_id: claim-example-refund-001
+  claimed_amount: "24.90"
+  currency: EUR
+  decision_state: pending

@@ -1,0 +1,15 @@
+illustrative: true
+service:
+  service_id: service-example-internet
+  provider: Example ISP
+  description: Home internet
+  category: utilities
+  cadence: monthly
+  lifecycle: active
+service_month:
+  service_id: service-example-internet
+  service_month: 2026-01
+  expected_amount: "39.99"
+  currency: EUR
+  due_date: 2026-01-20
+  settlement_state: unresolved

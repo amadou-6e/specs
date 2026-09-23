@@ -1,0 +1,11 @@
+illustrative: true
+monthly_snapshot:
+  scope: personal
+  cutoff: 2026-01-31T23:59:59+01:00
+  valuation_policy: provider-closing-balances
+  account_balances:
+    - account_id: account-example-checking
+      amount: "1250.00"
+      currency: EUR
+  assets: []
+  liabilities: []
