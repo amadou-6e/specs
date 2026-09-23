@@ -11,6 +11,26 @@ related: [model/mappings/cross-system]
 
 # Everyday spending
 
+<!-- BEGIN GENERATED: object-domain-summary -->
+> Defines routine consumption where item-level procurement lifecycle tracking is unnecessary.
+
+## Domain boundary
+
+**Includes:**
+
+- Spending occurrences
+- Commercial date, merchant, amount, currency, and category
+- Optional receipt lines supported by evidence
+- Evidence and classification state
+
+**Excludes:**
+
+- Orders requiring item lifecycle tracking
+- Inferred receipt lines
+- Provider transaction records
+- Raw receipts and statement files
+<!-- END GENERATED: object-domain-summary -->
+
 <!-- BEGIN GENERATED: contained-elements -->
 ## Contained elements
 
@@ -24,14 +44,6 @@ everyday-spending/
 └── 0..1 presentation/
 ```
 <!-- END GENERATED: contained-elements -->
-
-## Owned concepts
-
-Spending occurrence, Receipt line.
-
-## Boundaries
-
-This domain owns system-independent financial meaning. Provider identity and presentation belong to system models, cross-system aliases to mappings, and execution steps to processes.
 
 ## Maturity
 

@@ -11,6 +11,27 @@ related: [model/mappings/cross-system]
 
 # Accounts
 
+<!-- BEGIN GENERATED: object-domain-summary -->
+> Defines financial accounts and their stable identities independently of provider names, folders, and source systems.
+
+## Domain boundary
+
+**Includes:**
+
+- Stable account identity
+- Provider-scoped account references
+- Account type and ownership scope
+- Currency policy
+- Account lifecycle and historical aliases
+
+**Excludes:**
+
+- Posted movements
+- Statements and exports
+- Balance snapshots
+- Provider-specific APIs and export formats
+<!-- END GENERATED: object-domain-summary -->
+
 <!-- BEGIN GENERATED: contained-elements -->
 ## Contained elements
 
@@ -24,14 +45,6 @@ accounts/
 └── 0..1 presentation/
 ```
 <!-- END GENERATED: contained-elements -->
-
-## Owned concepts
-
-Account, Account alias.
-
-## Boundaries
-
-This domain owns system-independent financial meaning. Provider identity and presentation belong to system models, cross-system aliases to mappings, and execution steps to processes.
 
 ## Maturity
 

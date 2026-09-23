@@ -11,6 +11,27 @@ related: [model/mappings/cross-system]
 
 # Travel
 
+<!-- BEGIN GENERATED: object-domain-summary -->
+> Defines journeys, bookings, route segments, and stays using verified travel dates and locations.
+
+## Domain boundary
+
+**Includes:**
+
+- Journeys and purpose classification
+- Travel segments and transport mode
+- Origin, destination, departure, and arrival
+- Bookings and provider references
+- Travel stays and stay intervals
+
+**Excludes:**
+
+- Payment and refund transactions
+- Reimbursement or compensation claims
+- Unverified routes inferred from merchant names
+- Raw tickets, itineraries, and booking files
+<!-- END GENERATED: object-domain-summary -->
+
 <!-- BEGIN GENERATED: contained-elements -->
 ## Contained elements
 
@@ -24,14 +45,6 @@ travel/
 └── 0..1 presentation/
 ```
 <!-- END GENERATED: contained-elements -->
-
-## Owned concepts
-
-Journey, Travel segment, Booking, Travel stay.
-
-## Boundaries
-
-This domain owns system-independent financial meaning. Provider identity and presentation belong to system models, cross-system aliases to mappings, and execution steps to processes.
 
 ## Maturity
 

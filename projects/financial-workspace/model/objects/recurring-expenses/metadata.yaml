@@ -1,0 +1,24 @@
+schema_version: 1
+name: recurring-expenses
+kind: object-domain
+purpose: "Defines continuing services, effective contract terms, service periods, and expected recurring obligations."
+authority: "Financial Workspace object model"
+owner: amadou-6e
+includes:
+  - "Recurring service identity"
+  - "Contract terms and effective intervals"
+  - "Billing cadence and service periods"
+  - "Expected service-month obligations"
+  - "Cancellation and lifecycle state"
+excludes:
+  - "Posted settlement transactions"
+  - "One-off purchases"
+  - "Raw contracts, mandates, and invoices"
+  - "Provider-specific billing exports"
+children:
+  - "1 README.md"
+  - "1 structure.md"
+  - "1 schema.md or schema/"
+  - "1 rules.md or rules/"
+  - "0..1 examples/"
+  - "0..1 presentation/"

@@ -1,0 +1,23 @@
+schema_version: 1
+name: everyday-spending
+kind: object-domain
+purpose: "Defines routine consumption where item-level procurement lifecycle tracking is unnecessary."
+authority: "Financial Workspace object model"
+owner: amadou-6e
+includes:
+  - "Spending occurrences"
+  - "Commercial date, merchant, amount, currency, and category"
+  - "Optional receipt lines supported by evidence"
+  - "Evidence and classification state"
+excludes:
+  - "Orders requiring item lifecycle tracking"
+  - "Inferred receipt lines"
+  - "Provider transaction records"
+  - "Raw receipts and statement files"
+children:
+  - "1 README.md"
+  - "1 structure.md"
+  - "1 schema.md or schema/"
+  - "1 rules.md or rules/"
+  - "0..1 examples/"
+  - "0..1 presentation/"

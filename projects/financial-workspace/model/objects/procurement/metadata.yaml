@@ -1,0 +1,24 @@
+schema_version: 1
+name: procurement
+kind: object-domain
+purpose: "Defines purchases and their commercial lifecycle from order through item, return, and merchant refund."
+authority: "Financial Workspace object model"
+owner: amadou-6e
+includes:
+  - "Orders and merchant-scoped references"
+  - "Purchase items and supported allocations"
+  - "Commercial order, dispatch, delivery, and return dates"
+  - "Returns and merchant refunds"
+  - "Procurement categories"
+excludes:
+  - "Posted payment movements"
+  - "Recurring contract terms"
+  - "Raw invoices, receipts, and order emails"
+  - "Provider-specific publication layouts"
+children:
+  - "1 README.md"
+  - "1 structure.md"
+  - "1 schema.md or schema/"
+  - "1 rules.md or rules/"
+  - "0..1 examples/"
+  - "0..1 presentation/"

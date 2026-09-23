@@ -1,0 +1,24 @@
+schema_version: 1
+name: accounts
+kind: object-domain
+purpose: "Defines financial accounts and their stable identities independently of provider names, folders, and source systems."
+authority: "Financial Workspace object model"
+owner: amadou-6e
+includes:
+  - "Stable account identity"
+  - "Provider-scoped account references"
+  - "Account type and ownership scope"
+  - "Currency policy"
+  - "Account lifecycle and historical aliases"
+excludes:
+  - "Posted movements"
+  - "Statements and exports"
+  - "Balance snapshots"
+  - "Provider-specific APIs and export formats"
+children:
+  - "1 README.md"
+  - "1 structure.md"
+  - "1 schema.md or schema/"
+  - "1 rules.md or rules/"
+  - "0..1 examples/"
+  - "0..1 presentation/"

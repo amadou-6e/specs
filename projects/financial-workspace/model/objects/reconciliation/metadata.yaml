@@ -1,0 +1,24 @@
+schema_version: 1
+name: reconciliation
+kind: object-domain
+purpose: "Defines reviewed relationships, monetary allocations, and unresolved exceptions between independently identified records."
+authority: "Financial Workspace object model"
+owner: amadou-6e
+includes:
+  - "Candidate, confirmed, rejected, and superseded links"
+  - "Typed relationship endpoints"
+  - "Explicit monetary allocations and tolerances"
+  - "Matching method, rule, reviewer, and timestamps"
+  - "Exceptions, evidence gaps, and resolutions"
+excludes:
+  - "The native meaning of linked records"
+  - "Unreviewed equality based only on amount or date"
+  - "Raw statements, emails, and source documents"
+  - "Publication or workflow execution state"
+children:
+  - "1 README.md"
+  - "1 structure.md"
+  - "1 schema.md or schema/"
+  - "1 rules.md or rules/"
+  - "0..1 examples/"
+  - "0..1 presentation/"

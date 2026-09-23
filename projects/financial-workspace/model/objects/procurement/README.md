@@ -11,6 +11,27 @@ related: [model/mappings/cross-system]
 
 # Procurement
 
+<!-- BEGIN GENERATED: object-domain-summary -->
+> Defines purchases and their commercial lifecycle from order through item, return, and merchant refund.
+
+## Domain boundary
+
+**Includes:**
+
+- Orders and merchant-scoped references
+- Purchase items and supported allocations
+- Commercial order, dispatch, delivery, and return dates
+- Returns and merchant refunds
+- Procurement categories
+
+**Excludes:**
+
+- Posted payment movements
+- Recurring contract terms
+- Raw invoices, receipts, and order emails
+- Provider-specific publication layouts
+<!-- END GENERATED: object-domain-summary -->
+
 <!-- BEGIN GENERATED: contained-elements -->
 ## Contained elements
 
@@ -24,14 +45,6 @@ procurement/
 └── 0..1 presentation/
 ```
 <!-- END GENERATED: contained-elements -->
-
-## Owned concepts
-
-Order, Purchase item, Return, Merchant refund.
-
-## Boundaries
-
-This domain owns system-independent financial meaning. Provider identity and presentation belong to system models, cross-system aliases to mappings, and execution steps to processes.
 
 ## Maturity
 

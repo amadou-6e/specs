@@ -1,0 +1,24 @@
+schema_version: 1
+name: financial-position
+kind: object-domain
+purpose: "Defines assets, liabilities, balances, and valuations observed at a specific cutoff."
+authority: "Financial Workspace object model"
+owner: amadou-6e
+includes:
+  - "Asset positions"
+  - "Liability positions"
+  - "Account balances at a cutoff"
+  - "Valuation basis, currency, and certainty"
+  - "Scoped monthly snapshots"
+excludes:
+  - "Period cash flow"
+  - "Individual posted transactions"
+  - "Unqualified expected amounts"
+  - "Raw balance statements and valuation documents"
+children:
+  - "1 README.md"
+  - "1 structure.md"
+  - "1 schema.md or schema/"
+  - "1 rules.md or rules/"
+  - "0..1 examples/"
+  - "0..1 presentation/"

@@ -11,6 +11,27 @@ related: [model/mappings/cross-system]
 
 # Financial position
 
+<!-- BEGIN GENERATED: object-domain-summary -->
+> Defines assets, liabilities, balances, and valuations observed at a specific cutoff.
+
+## Domain boundary
+
+**Includes:**
+
+- Asset positions
+- Liability positions
+- Account balances at a cutoff
+- Valuation basis, currency, and certainty
+- Scoped monthly snapshots
+
+**Excludes:**
+
+- Period cash flow
+- Individual posted transactions
+- Unqualified expected amounts
+- Raw balance statements and valuation documents
+<!-- END GENERATED: object-domain-summary -->
+
 <!-- BEGIN GENERATED: contained-elements -->
 ## Contained elements
 
@@ -24,14 +45,6 @@ financial-position/
 └── 0..1 presentation/
 ```
 <!-- END GENERATED: contained-elements -->
-
-## Owned concepts
-
-Asset position, Liability position, Monthly snapshot.
-
-## Boundaries
-
-This domain owns system-independent financial meaning. Provider identity and presentation belong to system models, cross-system aliases to mappings, and execution steps to processes.
 
 ## Maturity
 

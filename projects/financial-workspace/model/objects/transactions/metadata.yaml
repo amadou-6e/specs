@@ -1,0 +1,24 @@
+schema_version: 1
+name: transactions
+kind: object-domain
+purpose: "Defines observed movements of money and reviewed transfer relationships independently of purchase, invoice, or statement containers."
+authority: "Financial Workspace object model"
+owner: amadou-6e
+includes:
+  - "Posted or observed money movements"
+  - "Signed amount and currency"
+  - "Posting, value, authorization, and payment dates"
+  - "Counterparty and provider transaction reference"
+  - "Reviewed transfer pairs"
+excludes:
+  - "Orders and purchase items"
+  - "Invoices and expected charges"
+  - "Account identity"
+  - "Period balances and financial-position snapshots"
+children:
+  - "1 README.md"
+  - "1 structure.md"
+  - "1 schema.md or schema/"
+  - "1 rules.md or rules/"
+  - "0..1 examples/"
+  - "0..1 presentation/"

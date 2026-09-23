@@ -11,6 +11,27 @@ related: [model/mappings/cross-system]
 
 # Transactions
 
+<!-- BEGIN GENERATED: object-domain-summary -->
+> Defines observed movements of money and reviewed transfer relationships independently of purchase, invoice, or statement containers.
+
+## Domain boundary
+
+**Includes:**
+
+- Posted or observed money movements
+- Signed amount and currency
+- Posting, value, authorization, and payment dates
+- Counterparty and provider transaction reference
+- Reviewed transfer pairs
+
+**Excludes:**
+
+- Orders and purchase items
+- Invoices and expected charges
+- Account identity
+- Period balances and financial-position snapshots
+<!-- END GENERATED: object-domain-summary -->
+
 <!-- BEGIN GENERATED: contained-elements -->
 ## Contained elements
 
@@ -24,14 +45,6 @@ transactions/
 └── 0..1 presentation/
 ```
 <!-- END GENERATED: contained-elements -->
-
-## Owned concepts
-
-Transaction, Transfer pair.
-
-## Boundaries
-
-This domain owns system-independent financial meaning. Provider identity and presentation belong to system models, cross-system aliases to mappings, and execution steps to processes.
 
 ## Maturity
 

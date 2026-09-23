@@ -11,6 +11,27 @@ related: [model/mappings/cross-system]
 
 # Reconciliation
 
+<!-- BEGIN GENERATED: object-domain-summary -->
+> Defines reviewed relationships, monetary allocations, and unresolved exceptions between independently identified records.
+
+## Domain boundary
+
+**Includes:**
+
+- Candidate, confirmed, rejected, and superseded links
+- Typed relationship endpoints
+- Explicit monetary allocations and tolerances
+- Matching method, rule, reviewer, and timestamps
+- Exceptions, evidence gaps, and resolutions
+
+**Excludes:**
+
+- The native meaning of linked records
+- Unreviewed equality based only on amount or date
+- Raw statements, emails, and source documents
+- Publication or workflow execution state
+<!-- END GENERATED: object-domain-summary -->
+
 <!-- BEGIN GENERATED: contained-elements -->
 ## Contained elements
 
@@ -24,14 +45,6 @@ reconciliation/
 └── 0..1 presentation/
 ```
 <!-- END GENERATED: contained-elements -->
-
-## Owned concepts
-
-Reconciliation link, Allocation, Exception.
-
-## Boundaries
-
-This domain owns system-independent financial meaning. Provider identity and presentation belong to system models, cross-system aliases to mappings, and execution steps to processes.
 
 ## Maturity
 

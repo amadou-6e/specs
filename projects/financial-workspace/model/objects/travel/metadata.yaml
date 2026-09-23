@@ -1,0 +1,24 @@
+schema_version: 1
+name: travel
+kind: object-domain
+purpose: "Defines journeys, bookings, route segments, and stays using verified travel dates and locations."
+authority: "Financial Workspace object model"
+owner: amadou-6e
+includes:
+  - "Journeys and purpose classification"
+  - "Travel segments and transport mode"
+  - "Origin, destination, departure, and arrival"
+  - "Bookings and provider references"
+  - "Travel stays and stay intervals"
+excludes:
+  - "Payment and refund transactions"
+  - "Reimbursement or compensation claims"
+  - "Unverified routes inferred from merchant names"
+  - "Raw tickets, itineraries, and booking files"
+children:
+  - "1 README.md"
+  - "1 structure.md"
+  - "1 schema.md or schema/"
+  - "1 rules.md or rules/"
+  - "0..1 examples/"
+  - "0..1 presentation/"

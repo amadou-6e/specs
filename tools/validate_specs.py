@@ -73,11 +73,14 @@ def files() -> list[Path]:
 FOLDER_CONTRACT_FIELDS = {
     "schema_version", "name", "kind", "purpose", "authority", "owner", "children",
 }
+FOLDER_LIST_FIELDS = {"children", "includes", "excludes"}
 EXCLUDED_DUMP_FIELDS = {
     "schema_version", "name", "kind", "purpose", "owner", "type_check", "temporary",
 }
 GENERATED_START = "<!-- BEGIN GENERATED: contained-elements -->"
 GENERATED_END = "<!-- END GENERATED: contained-elements -->"
+OBJECT_SUMMARY_START = "<!-- BEGIN GENERATED: object-domain-summary -->"
+OBJECT_SUMMARY_END = "<!-- END GENERATED: object-domain-summary -->"
 CHILD_SPEC = re.compile(r'^(1|0\.\.1|0\.\.\*)\s+(.+)$')
 
 
@@ -100,7 +103,7 @@ def parse_folder_contract(path: Path, errors: list[str]) -> dict[str, object] | 
             return None
         key, value = raw.split(":", 1)
         key, value = key.strip(), value.strip()
-        if key == "children":
+        if key in FOLDER_LIST_FIELDS:
             children: list[str] = []
             index += 1
             while index < len(lines) and (not lines[index].strip() or lines[index][:1].isspace()):
@@ -146,6 +149,13 @@ def parse_folder_contract(path: Path, errors: list[str]) -> dict[str, object] | 
                 errors.append(
                     f"{path.relative_to(ROOT)}: child {child!r} must start with 1, 0..1, or 0..*"
                 )
+    if data.get("kind") == "object-domain":
+        for field in ("includes", "excludes"):
+            values = data.get(field)
+            if not isinstance(values, list) or not values:
+                errors.append(
+                    f"{path.relative_to(ROOT)}: object-domain metadata requires a non-empty {field} list"
+                )
     return data
 
 
@@ -162,6 +172,49 @@ def render_contained_elements(folder_name: str, contract: dict[str, object]) -> 
         f"```text\n{tree}\n```\n"
         f"{GENERATED_END}"
     )
+
+
+def render_object_domain_summary(contract: dict[str, object]) -> str:
+    purpose = str(contract["purpose"])
+    includes = "\n".join(f"- {item}" for item in contract["includes"])
+    excludes = "\n".join(f"- {item}" for item in contract["excludes"])
+    return (
+        f"{OBJECT_SUMMARY_START}\n"
+        f"> {purpose}\n\n"
+        "## Domain boundary\n\n"
+        "**Includes:**\n\n"
+        f"{includes}\n\n"
+        "**Excludes:**\n\n"
+        f"{excludes}\n"
+        f"{OBJECT_SUMMARY_END}"
+    )
+
+
+def sync_object_domain_summary(
+    readme: Path, contract: dict[str, object], errors: list[str], *, write: bool
+) -> None:
+    if not readme.exists():
+        return
+    text = readme.read_text(encoding="utf-8-sig")
+    generated = render_object_domain_summary(contract)
+    if OBJECT_SUMMARY_START in text or OBJECT_SUMMARY_END in text:
+        if text.count(OBJECT_SUMMARY_START) != 1 or text.count(OBJECT_SUMMARY_END) != 1:
+            errors.append(f"{readme.relative_to(ROOT)}: malformed generated object-domain-summary markers")
+            return
+        start = text.index(OBJECT_SUMMARY_START)
+        end = text.index(OBJECT_SUMMARY_END, start) + len(OBJECT_SUMMARY_END)
+        updated = text[:start] + generated + "\n\n" + text[end:].lstrip("\n")
+    else:
+        h1 = re.search(r"^# [^\n]+$", text, re.MULTILINE)
+        if h1 is None:
+            errors.append(f"{readme.relative_to(ROOT)}: cannot place generated object-domain summary")
+            return
+        updated = text[:h1.end()] + "\n\n" + generated + "\n" + text[h1.end():].lstrip("\n")
+    if updated != text:
+        if write:
+            readme.write_text(updated, encoding="utf-8")
+        else:
+            errors.append(f"{readme.relative_to(ROOT)}: generated object-domain summary is stale")
 
 
 def sync_contained_elements(
@@ -282,6 +335,8 @@ def sync_recursive_folder_contracts(
                 )
             continue
         sync_contained_elements(folder / "README.md", contract, folder.name, errors, write=write)
+        if contract.get("kind") == "object-domain":
+            sync_object_domain_summary(folder / "README.md", contract, errors, write=write)
         validate_contract_children(folder, contract, errors)
 
     for entry, template in inherited_entries:
