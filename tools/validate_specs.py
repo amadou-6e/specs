@@ -73,7 +73,8 @@ def files() -> list[Path]:
 FOLDER_CONTRACT_FIELDS = {
     "schema_version", "name", "kind", "purpose", "authority", "owner", "children",
 }
-FOLDER_LIST_FIELDS = {"children", "includes", "excludes"}
+FOLDER_LIST_FIELDS = {"children", "includes", "excludes", "applies_to", "related"}
+OBJECT_DOMAIN_METADATA_FIELDS = {"title", "status", "last_reviewed", "applies_to", "supersedes", "related"}
 EXCLUDED_DUMP_FIELDS = {
     "schema_version", "name", "kind", "purpose", "owner", "type_check", "temporary",
 }
@@ -150,12 +151,29 @@ def parse_folder_contract(path: Path, errors: list[str]) -> dict[str, object] | 
                     f"{path.relative_to(ROOT)}: child {child!r} must start with 1, 0..1, or 0..*"
                 )
     if data.get("kind") == "object-domain":
-        for field in ("includes", "excludes"):
+        missing_domain_fields = OBJECT_DOMAIN_METADATA_FIELDS - data.keys()
+        if missing_domain_fields:
+            errors.append(
+                f"{path.relative_to(ROOT)}: object-domain metadata missing "
+                f"{sorted(missing_domain_fields)}"
+            )
+        for field in ("includes", "excludes", "applies_to"):
             values = data.get(field)
             if not isinstance(values, list) or not values:
                 errors.append(
                     f"{path.relative_to(ROOT)}: object-domain metadata requires a non-empty {field} list"
                 )
+        related = data.get("related")
+        if not isinstance(related, list):
+            errors.append(
+                f"{path.relative_to(ROOT)}: object-domain metadata requires related to be a list"
+            )
+        status = data.get("status")
+        if status not in ALLOWED_STATUSES - {"template"}:
+            errors.append(
+                f"{path.relative_to(ROOT)}: object-domain status {status!r} is not one of "
+                f"{sorted(ALLOWED_STATUSES - {'template'})}"
+            )
     return data
 
 
@@ -598,13 +616,22 @@ def check_folder_collection_category(
             if not required_path.exists():
                 errors.append(f"{entry.relative_to(project)}/{required}: missing")
             elif required.endswith(".md"):
-                check_entry_frontmatter(
-                    required_path,
-                    project,
-                    errors,
-                    expect_template=is_template,
-                    allowed_statuses=allowed_statuses,
-                )
+                metadata_backed_readme = False
+                if required == "README.md" and not is_template:
+                    metadata_path = entry / "metadata.yaml"
+                    if metadata_path.exists():
+                        metadata = parse_folder_contract(metadata_path, errors)
+                        metadata_backed_readme = bool(
+                            metadata and metadata.get("kind") == "object-domain"
+                        )
+                if not metadata_backed_readme:
+                    check_entry_frontmatter(
+                        required_path,
+                        project,
+                        errors,
+                        expect_template=is_template,
+                        allowed_statuses=allowed_statuses,
+                    )
                 if required == "README.md":
                     check_contained_elements(required_path, project, errors)
         if not is_template:
@@ -646,6 +673,12 @@ def check_references(
         if not path.exists():
             continue
         fields = parse_frontmatter(path.read_text(encoding="utf-8"))
+        if fields is None and path.name == "README.md":
+            metadata_path = path.parent / "metadata.yaml"
+            if metadata_path.exists():
+                metadata = parse_folder_contract(metadata_path, errors)
+                if metadata and metadata.get("kind") == "object-domain":
+                    fields = metadata
         if fields is None:
             continue
         relative = path.relative_to(project)

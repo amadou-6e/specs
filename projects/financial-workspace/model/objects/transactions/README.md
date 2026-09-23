@@ -1,14 +1,3 @@
----
-title: Transactions domain model
-status: draft
-kind: entity-model
-owners: [amadou-6e]
-last_reviewed: 2026-09-23
-applies_to: [financial-workspace]
-supersedes: null
-related: [model/mappings/cross-system]
----
-
 # Transactions
 
 <!-- BEGIN GENERATED: object-domain-summary -->

@@ -4,6 +4,14 @@ kind: object-domain
 purpose: "Defines purchases and their commercial lifecycle from order through item, return, and merchant refund."
 authority: "Financial Workspace object model"
 owner: amadou-6e
+title: "Procurement domain model"
+status: draft
+last_reviewed: 2026-09-23
+applies_to:
+  - "financial-workspace"
+supersedes: null
+related:
+  - "model/mappings/cross-system"
 includes:
   - "Orders and merchant-scoped references"
   - "Purchase items and supported allocations"

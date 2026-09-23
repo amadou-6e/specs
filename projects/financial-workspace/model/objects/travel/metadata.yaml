@@ -4,6 +4,14 @@ kind: object-domain
 purpose: "Defines journeys, bookings, route segments, and stays using verified travel dates and locations."
 authority: "Financial Workspace object model"
 owner: amadou-6e
+title: "Travel domain model"
+status: draft
+last_reviewed: 2026-09-23
+applies_to:
+  - "financial-workspace"
+supersedes: null
+related:
+  - "model/mappings/cross-system"
 includes:
   - "Journeys and purpose classification"
   - "Travel segments and transport mode"
