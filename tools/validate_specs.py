@@ -42,10 +42,17 @@ ALLOWED_STATUSES = {
 }
 ALLOWED_CATEGORY_TYPES = {"fixed", "document-collection", "folder-collection"}
 
-# <NNNN>-<slug>.md for document-collection entries.
-DOCUMENT_ENTRY_PATTERN = re.compile(r"^\d{4}-[a-z0-9]+(?:-[a-z0-9]+)*\.md$")
+# <NNNN>-<slug>.md, for document-collection categories that opt into sequential
+# numbering (spec.json category entry: {"numbered": true}) — the convention's own
+# generic doc calls this "typical", not universal, so an unnumbered category (e.g.
+# a plain historical-archive collection) instead only needs a valid kebab-case slug.
+NUMBERED_ENTRY_PATTERN = re.compile(r"^\d{4}-[a-z0-9]+(?:-[a-z0-9]+)*\.md$")
+SLUG_ENTRY_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*\.md$")
 # <slug> for folder-collection entry directory names (never "template").
 FOLDER_ENTRY_NAME_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+# Filenames that are never treated as a spec entry, even inside a declared category
+# (README.md is the container; SKILL.md marks an invokable agent skill, not a spec).
+NON_ENTRY_FILENAMES = {"README.md", "SKILL.md"}
 
 FRONTMATTER = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
 
@@ -142,29 +149,34 @@ def check_fixed_category(project: Path, name: str, errors: list[str]) -> set[str
     refs: set[str] = set()
     if not readme.exists():
         errors.append(f"{name}/README.md: missing container README")
-    else:
-        check_entry_frontmatter(readme, project, errors, expect_template=False)
-    for forbidden in ("template", "template.md"):
-        if (category / forbidden).exists():
-            errors.append(
-                f"{name}/{forbidden}: a fixed top-structured category must not have a copyable template"
-            )
+    # Container READMEs are bare containers, not entries: the convention's own
+    # metadata rule ("every entry, not bare containers") exempts them from frontmatter.
+    if (category / "template").is_dir():
+        errors.append(
+            f"{name}/template/: a fixed top-structured category has no copy-and-rename "
+            "entry mechanism, so it cannot have a folder template"
+        )
+    template_doc = category / "template.md"
+    if template_doc.exists():
+        # Optional per the convention: illustrates expected content, but nothing
+        # copies it to create a new entry (a fixed category has no new entries).
+        check_entry_frontmatter(template_doc, project, errors, expect_template=True)
     for path in sorted(category.glob("*.md")):
-        if path.name == "README.md":
+        if path.name in NON_ENTRY_FILENAMES or path.name == "template.md":
             continue
         check_entry_frontmatter(path, project, errors, expect_template=False)
         refs.add(f"{name}/{path.stem}")
     return refs
 
 
-def check_document_collection_category(project: Path, name: str, errors: list[str]) -> set[str]:
+def check_document_collection_category(
+    project: Path, name: str, errors: list[str], *, numbered: bool
+) -> set[str]:
     category = project / name
     readme = category / "README.md"
     refs: set[str] = set()
     if not readme.exists():
         errors.append(f"{name}/README.md: missing container README")
-    else:
-        check_entry_frontmatter(readme, project, errors, expect_template=False)
 
     template_doc = category / "template.md"
     if not template_doc.exists():
@@ -172,14 +184,17 @@ def check_document_collection_category(project: Path, name: str, errors: list[st
     else:
         check_entry_frontmatter(template_doc, project, errors, expect_template=True)
 
+    pattern = NUMBERED_ENTRY_PATTERN if numbered else SLUG_ENTRY_PATTERN
+    pattern_help = (
+        "<NNNN>-<slug>.md (four-digit sequence, lowercase kebab-case slug)"
+        if numbered
+        else "<slug>.md (lowercase kebab-case)"
+    )
     for path in sorted(category.glob("*.md")):
-        if path.name in {"README.md", "template.md"}:
+        if path.name in NON_ENTRY_FILENAMES or path.name == "template.md":
             continue
-        if not DOCUMENT_ENTRY_PATTERN.match(path.name):
-            errors.append(
-                f"{name}/{path.name}: entry filename must match <NNNN>-<slug>.md "
-                "(four-digit sequence, lowercase kebab-case slug)"
-            )
+        if not pattern.match(path.name):
+            errors.append(f"{name}/{path.name}: entry filename must match {pattern_help}")
         check_entry_frontmatter(path, project, errors, expect_template=False)
         refs.add(f"{name}/{path.stem}")
     return refs
@@ -194,9 +209,8 @@ def check_folder_collection_category(
     if not readme.exists():
         errors.append(f"{name}/README.md: missing container README")
     else:
-        fields = check_entry_frontmatter(readme, project, errors, expect_template=False)
         text = readme.read_text(encoding="utf-8")
-        if fields is not None and not re.search(r"\b0\.\.\*|\b0\.\.1\b|(?<!\.)\b1\b", text):
+        if not re.search(r"\b0\.\.\*|\b0\.\.1\b|(?<!\.)\b1\b", text):
             errors.append(f"{name}/README.md: container README must state cardinality (1 / 0..1 / 0..*)")
 
     template_dir = category / "template"
@@ -232,7 +246,8 @@ def check_references(
         candidates = [p / "README.md" for p in category.iterdir() if p.is_dir() and p.name != "template"]
     else:
         candidates = [
-            p for p in category.glob("*.md") if p.name not in {"README.md", "template.md"}
+            p for p in category.glob("*.md")
+            if p.name not in NON_ENTRY_FILENAMES and p.name != "template.md"
         ]
     for path in candidates:
         if not path.exists():
@@ -270,7 +285,8 @@ def check_typed_categories(project: Path, categories: dict, errors: list[str]) -
         if category_type == "fixed":
             known_refs |= check_fixed_category(project, name, errors)
         elif category_type == "document-collection":
-            known_refs |= check_document_collection_category(project, name, errors)
+            numbered = bool(spec.get("numbered", True))
+            known_refs |= check_document_collection_category(project, name, errors, numbered=numbered)
         elif category_type == "folder-collection":
             entry_files = spec.get("entry_files") or ["README.md"]
             known_refs |= check_folder_collection_category(project, name, entry_files, errors)
