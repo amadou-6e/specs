@@ -49,6 +49,7 @@ FRONTMATTER = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
 def parse_frontmatter(text: str) -> dict[str, object] | None:
     """Parse a minimal YAML-subset frontmatter block: scalars and simple lists."""
 
+    text = text.lstrip("﻿")
     match = FRONTMATTER.match(text)
     if match is None:
         return None

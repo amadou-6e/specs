@@ -1,6 +1,21 @@
-﻿# Reproducible cash-flow analysis and Notion publication
+﻿---
+title: Reproducible cash-flow analysis and Notion publication
+status: draft
+kind: architecture
+owners:
+  - amadou-6e
+last_reviewed: 2026-09-14
+applies_to:
+  - financial-workspace
+supersedes: null
+related:
+  - architecture/data-model
+  - architecture/migration-contracts
+---
 
-Status: proposed architecture. The commands, folders, and Cash flow database below are target behavior, not an implemented workflow. The existing-system migration and tax workspace rules are in [review-contracts.md](review-contracts.md).
+# Reproducible cash-flow analysis and Notion publication
+
+Proposed architecture. The commands, folders, and Cash flow database below are target behavior, not an implemented workflow. The existing-system migration and tax workspace rules are in [migration-contracts.md](migration-contracts.md).
 
 ## Goal and boundary
 
@@ -51,7 +66,7 @@ The private repository should track source metadata, code, rules, reviewed decis
 
 Each source index entry needs `source_id`, Drive file ID and URL, provider, account ID, document type, coverage start/end, original filename, MIME type, expected SHA-256, parser name/version, and `available`, `superseded`, or `missing` status. A Drive folder link alone is insufficient: it cannot prove which statement version was analyzed. Cross-year files have one source entry with their full coverage period. Keep the existing Drive file IDs stable when folders move.
 
-`fetch` checks account permissions, downloads only the indexed files needed for the requested period, verifies hashes, and stores them in the top-level ignored `cache/` mirror described in [review-contracts.md](review-contracts.md). It reports inaccessible, changed, or absent files before analysis and records specific gaps in `data/reconciliations/exception_register.md`. It must not substitute a similar-looking statement automatically. Cached originals can accelerate replay but are never the sole source index. Gmail-only evidence requires stable message IDs/links and an explicit export or retrieval method; a human-readable link without retrieval access is not sufficient for a fully automated replay.
+`fetch` checks account permissions, downloads only the indexed files needed for the requested period, verifies hashes, and stores them in the top-level ignored `cache/` mirror described in [migration-contracts.md](migration-contracts.md). It reports inaccessible, changed, or absent files before analysis and records specific gaps in `data/reconciliations/exception_register.md`. It must not substitute a similar-looking statement automatically. Cached originals can accelerate replay but are never the sole source index. Gmail-only evidence requires stable message IDs/links and an explicit export or retrieval method; a human-readable link without retrieval access is not sufficient for a fully automated replay.
 
 Authentication is interactive user OAuth or another explicitly configured credential on each machine. The repo contains setup instructions and `example.env`, not secrets. Reproduction requires access to the private repo and every referenced source; without access, the tool produces a coverage report rather than an apparently complete analysis. Cloud automation is optional, not a prerequisite.
 

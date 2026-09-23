@@ -18,6 +18,44 @@ PROJECT_STATUSES = {"active", "paused", "archived"}
 MARKDOWN_LINK = re.compile(r"(?<!!)\[[^]]*]\((?![a-z]+:|#)([^)]+)\)", re.IGNORECASE)
 IGNORED_PARTS = {".git", "__pycache__", "node_modules", ".venv", "venv"}
 
+# --- Typed and named folder hierarchy enforcement (opt-in via spec.json "categories") ---
+#
+# A project opts in by adding a "categories" object to its spec.json, mapping each
+# declared category name to its structural type (see
+# shared/conventions/typed_folder_system/README.md). Projects without a "categories"
+# key are unaffected by any of the checks below: this is deliberately additive so
+# existing, not-yet-migrated projects don't start failing CI over a convention they
+# never declared.
+#
+# Example:
+#   "categories": {
+#     "architecture": {"type": "fixed"},
+#     "decisions": {"type": "document-collection"},
+#     "subsystems": {"type": "folder-collection", "entry_files": ["README.md"]}
+#   }
+
+REQUIRED_FRONTMATTER_FIELDS = {
+    "title", "status", "kind", "owners", "last_reviewed", "applies_to",
+}
+ALLOWED_STATUSES = {
+    "draft", "active", "complete", "deprecated", "superseded", "template",
+}
+ALLOWED_CATEGORY_TYPES = {"fixed", "document-collection", "folder-collection"}
+
+# <NNNN>-<slug>.md, for document-collection categories that opt into sequential
+# numbering (spec.json category entry: {"numbered": true}) — the convention's own
+# generic doc calls this "typical", not universal, so an unnumbered category (e.g.
+# a plain historical-archive collection) instead only needs a valid kebab-case slug.
+NUMBERED_ENTRY_PATTERN = re.compile(r"^\d{4}-[a-z0-9]+(?:-[a-z0-9]+)*\.md$")
+SLUG_ENTRY_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*\.md$")
+# <slug> for folder-collection entry directory names (never "template").
+FOLDER_ENTRY_NAME_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+# Filenames that are never treated as a spec entry, even inside a declared category
+# (README.md is the container; SKILL.md marks an invokable agent skill, not a spec).
+NON_ENTRY_FILENAMES = {"README.md", "SKILL.md"}
+
+FRONTMATTER = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
+
 
 def files() -> list[Path]:
     discovered: list[Path] = []
@@ -48,6 +86,215 @@ def validate_manifest(project: Path, errors: list[str]) -> None:
         )
 
 
+def parse_frontmatter(text: str) -> dict[str, object] | None:
+    """Parse a minimal YAML-subset frontmatter block: scalars and simple lists."""
+    text = text.lstrip("﻿")
+    match = FRONTMATTER.match(text)
+    if match is None:
+        return None
+    fields: dict[str, object] = {}
+    lines = match.group(1).splitlines()
+    index = 0
+    while index < len(lines):
+        line = lines[index]
+        if not line.strip() or line.startswith("#"):
+            index += 1
+            continue
+        key, _, rest = line.partition(":")
+        key = key.strip()
+        rest = rest.strip()
+        if rest.startswith("[") and rest.endswith("]"):
+            items = [item.strip().strip("'\"") for item in rest[1:-1].split(",") if item.strip()]
+            fields[key] = items
+            index += 1
+            continue
+        if rest:
+            fields[key] = rest.strip("'\"")
+            index += 1
+            continue
+        items = []
+        index += 1
+        while index < len(lines) and lines[index].lstrip().startswith("- "):
+            items.append(lines[index].lstrip()[2:].strip().strip("'\""))
+            index += 1
+        fields[key] = items
+    return fields
+
+
+def check_entry_frontmatter(
+    path: Path, project: Path, errors: list[str], *, expect_template: bool
+) -> dict | None:
+    text = path.read_text(encoding="utf-8")
+    fields = parse_frontmatter(text)
+    relative = path.relative_to(project)
+    if fields is None:
+        errors.append(f"{relative}: missing frontmatter block")
+        return None
+    missing = REQUIRED_FRONTMATTER_FIELDS - fields.keys()
+    if missing:
+        errors.append(f"{relative}: frontmatter missing {sorted(missing)}")
+    status = fields.get("status")
+    if status not in ALLOWED_STATUSES:
+        errors.append(f"{relative}: frontmatter status {status!r} is not one of {sorted(ALLOWED_STATUSES)}")
+    elif expect_template and status != "template":
+        errors.append(f"{relative}: template entry must use status: template, found {status!r}")
+    elif not expect_template and status == "template":
+        errors.append(f"{relative}: real entry must not use status: template")
+    return fields
+
+
+def check_fixed_category(project: Path, name: str, errors: list[str]) -> set[str]:
+    category = project / name
+    readme = category / "README.md"
+    refs: set[str] = set()
+    if not readme.exists():
+        errors.append(f"{name}/README.md: missing container README")
+    # Container READMEs are bare containers, not entries: the convention's own
+    # metadata rule ("every entry, not bare containers") exempts them from frontmatter.
+    if (category / "template").is_dir():
+        errors.append(
+            f"{name}/template/: a fixed top-structured category has no copy-and-rename "
+            "entry mechanism, so it cannot have a folder template"
+        )
+    template_doc = category / "template.md"
+    if template_doc.exists():
+        # Optional per the convention: illustrates expected content, but nothing
+        # copies it to create a new entry (a fixed category has no new entries).
+        check_entry_frontmatter(template_doc, project, errors, expect_template=True)
+    for path in sorted(category.glob("*.md")):
+        if path.name in NON_ENTRY_FILENAMES or path.name == "template.md":
+            continue
+        check_entry_frontmatter(path, project, errors, expect_template=False)
+        refs.add(f"{name}/{path.stem}")
+    return refs
+
+
+def check_document_collection_category(
+    project: Path, name: str, errors: list[str], *, numbered: bool
+) -> set[str]:
+    category = project / name
+    readme = category / "README.md"
+    refs: set[str] = set()
+    if not readme.exists():
+        errors.append(f"{name}/README.md: missing container README")
+
+    template_doc = category / "template.md"
+    if not template_doc.exists():
+        errors.append(f"{name}/template.md: missing copyable template document")
+    else:
+        check_entry_frontmatter(template_doc, project, errors, expect_template=True)
+
+    pattern = NUMBERED_ENTRY_PATTERN if numbered else SLUG_ENTRY_PATTERN
+    pattern_help = (
+        "<NNNN>-<slug>.md (four-digit sequence, lowercase kebab-case slug)"
+        if numbered
+        else "<slug>.md (lowercase kebab-case)"
+    )
+    for path in sorted(category.glob("*.md")):
+        if path.name in NON_ENTRY_FILENAMES or path.name == "template.md":
+            continue
+        if not pattern.match(path.name):
+            errors.append(f"{name}/{path.name}: entry filename must match {pattern_help}")
+        check_entry_frontmatter(path, project, errors, expect_template=False)
+        refs.add(f"{name}/{path.stem}")
+    return refs
+
+
+def check_folder_collection_category(
+    project: Path, name: str, entry_files: list[str], errors: list[str]
+) -> set[str]:
+    category = project / name
+    readme = category / "README.md"
+    refs: set[str] = set()
+    if not readme.exists():
+        errors.append(f"{name}/README.md: missing container README")
+    else:
+        text = readme.read_text(encoding="utf-8")
+        if not re.search(r"\b0\.\.\*|\b0\.\.1\b|(?<!\.)\b1\b", text):
+            errors.append(f"{name}/README.md: container README must state cardinality (1 / 0..1 / 0..*)")
+
+    template_dir = category / "template"
+    if not template_dir.is_dir():
+        errors.append(f"{name}/template/: missing copyable template folder")
+
+    entries = sorted(p for p in category.iterdir() if p.is_dir())
+    for entry in entries:
+        is_template = entry.name == "template"
+        if not is_template and not FOLDER_ENTRY_NAME_PATTERN.match(entry.name):
+            errors.append(
+                f"{name}/{entry.name}/: entry folder name must be lowercase kebab-case "
+                "(e.g. widget-store)"
+            )
+        for required in entry_files:
+            required_path = entry / required
+            if not required_path.exists():
+                errors.append(f"{name}/{entry.name}/{required}: missing")
+            elif required.endswith(".md"):
+                check_entry_frontmatter(required_path, project, errors, expect_template=is_template)
+        if not is_template:
+            refs.add(f"{name}/{entry.name}")
+    return refs
+
+
+def check_references(
+    project: Path, name: str, category_type: str, errors: list[str], known_refs: set[str]
+) -> None:
+    """Check that every non-empty `related` entry and non-null `supersedes` value
+    resolves to a real entry declared somewhere in this project's categories."""
+    category = project / name
+    if category_type == "folder-collection":
+        candidates = [p / "README.md" for p in category.iterdir() if p.is_dir() and p.name != "template"]
+    else:
+        candidates = [
+            p for p in category.glob("*.md")
+            if p.name not in NON_ENTRY_FILENAMES and p.name != "template.md"
+        ]
+    for path in candidates:
+        if not path.exists():
+            continue
+        fields = parse_frontmatter(path.read_text(encoding="utf-8"))
+        if fields is None:
+            continue
+        relative = path.relative_to(project)
+        for ref in fields.get("related", []) or []:
+            if ref and ref not in known_refs:
+                errors.append(f"{relative}: related entry {ref!r} does not resolve to a known entry")
+        supersedes = fields.get("supersedes")
+        if supersedes and supersedes != "null" and supersedes not in known_refs:
+            errors.append(f"{relative}: supersedes {supersedes!r} does not resolve to a known entry")
+
+
+def check_typed_categories(project: Path, categories: dict, errors: list[str]) -> None:
+    for name in ("README.md", "SPECS.md"):
+        if not (project / name).exists():
+            errors.append(f"{name}: missing (required once a project declares categories in spec.json)")
+
+    known_refs: set[str] = set()
+    per_category: list[tuple[str, str]] = []
+    for name, spec in categories.items():
+        category_type = spec.get("type") if isinstance(spec, dict) else None
+        if category_type not in ALLOWED_CATEGORY_TYPES:
+            errors.append(
+                f"spec.json: categories.{name}.type must be one of {sorted(ALLOWED_CATEGORY_TYPES)}"
+            )
+            continue
+        if not (project / name).is_dir():
+            errors.append(f"{name}/: declared category is missing")
+            continue
+        per_category.append((name, category_type))
+        if category_type == "fixed":
+            known_refs |= check_fixed_category(project, name, errors)
+        elif category_type == "document-collection":
+            numbered = bool(spec.get("numbered", True))
+            known_refs |= check_document_collection_category(project, name, errors, numbered=numbered)
+        elif category_type == "folder-collection":
+            entry_files = spec.get("entry_files") or ["README.md"]
+            known_refs |= check_folder_collection_category(project, name, entry_files, errors)
+
+    for name, category_type in per_category:
+        check_references(project, name, category_type, errors, known_refs)
+
+
 def validate_markdown(path: Path, errors: list[str]) -> None:
     try:
         content = path.read_text(encoding="utf-8")
@@ -74,6 +321,15 @@ def main() -> int:
         errors.append("projects/: at least one project is required")
     for project in projects:
         validate_manifest(project, errors)
+        manifest_path = project / "spec.json"
+        if manifest_path.exists():
+            try:
+                manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+                manifest = {}
+            categories = manifest.get("categories")
+            if isinstance(categories, dict):
+                check_typed_categories(project, categories, errors)
 
     for path in all_files:
         relative = path.relative_to(ROOT)

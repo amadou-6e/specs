@@ -1,6 +1,21 @@
-﻿# Review contracts for Financial Workspace migration
+﻿---
+title: Review contracts for Financial Workspace migration
+status: draft
+kind: architecture
+owners:
+  - amadou-6e
+last_reviewed: 2026-09-14
+applies_to:
+  - financial-workspace
+supersedes: null
+related:
+  - architecture/data-model
+  - architecture/cash-flow-workflow
+---
 
-Status: proposed behavior for PR #91. The live Notion and Drive structures have not been migrated by this document.
+# Review contracts for Financial Workspace migration
+
+Proposed behavior, originally specified for PR #91. The live Notion and Drive structures have not been migrated by this document.
 
 ## Existing system inventory and identity
 
