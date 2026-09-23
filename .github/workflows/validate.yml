@@ -16,5 +16,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python tools/validate_specs.py
+      - name: Verify generated specifications and structure`n        run: python tools/validate_specs.py --check
 
