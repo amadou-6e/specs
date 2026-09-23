@@ -73,7 +73,7 @@ def files() -> list[Path]:
 FOLDER_CONTRACT_FIELDS = {
     "schema_version", "name", "kind", "purpose", "authority", "owner", "children",
 }
-FOLDER_LIST_FIELDS = {"children", "includes", "excludes", "applies_to", "related"}
+FOLDER_LIST_FIELDS = {"children", "includes", "excludes", "applies_to", "related", "representations", "evidence_forms", "mapping_refs", "relationship_ids", "media_types", "variants", "locator_types"}
 OBJECT_DOMAIN_METADATA_FIELDS = {"title", "status", "last_reviewed", "applies_to", "supersedes", "related"}
 EXCLUDED_DUMP_FIELDS = {
     "schema_version", "name", "kind", "purpose", "owner", "type_check", "temporary",
@@ -814,6 +814,9 @@ def main() -> int:
             warnings.append(f"{relative}: large file ({size / 1024 / 1024:.1f} MiB)")
         if path.suffix.lower() == ".md":
             validate_markdown(path, errors)
+
+    from validate_financial_model import validate as validate_financial_model
+    validate_financial_model(ROOT, errors, parse_folder_contract)
 
     for warning in warnings:
         print(f"warning: {warning}")

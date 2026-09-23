@@ -1,9 +1,77 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "object": "transaction",
   "identity_field": "transaction_id",
-  "required_information": "Account, signed amount, currency, booking date, source observation",
-  "optional_information": "Value date, merchant, original reference, provider transaction ID",
-  "unknown_values": "null; never invented",
-  "status": "conceptual contract, not an executable validator"
+  "fields": {
+    "transaction_id": {
+      "type": "string",
+      "required": true,
+      "nullable": false,
+      "description": "Persistent internal identity; not a display name."
+    },
+    "account_id": {
+      "type": "ref",
+      "required": true,
+      "nullable": false,
+      "target": "account"
+    },
+    "amount": {
+      "type": "decimal",
+      "required": true,
+      "nullable": false,
+      "encoding": "decimal-string",
+      "pattern": "^-?\\d+(\\.\\d+)?$"
+    },
+    "currency": {
+      "type": "string",
+      "required": true,
+      "nullable": false
+    },
+    "booking_date": {
+      "type": "date",
+      "required": true,
+      "nullable": false,
+      "format": "YYYY-MM-DD"
+    },
+    "representation_ids": {
+      "type": "ref[]",
+      "required": true,
+      "nullable": false,
+      "min_items": 1,
+      "target": "source-representation"
+    },
+    "value_date": {
+      "type": "date",
+      "required": false,
+      "nullable": true,
+      "format": "YYYY-MM-DD"
+    },
+    "merchant": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    },
+    "reference": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    },
+    "provider_transaction_id": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    },
+    "description": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    }
+  },
+  "constraints": [
+    "Required fields apply to accepted canonical records; incomplete extractions remain candidates.",
+    "Unknown optional values are null; no invented defaults.",
+    "amount is signed; booked account movements only.",
+    "Provider ID is account-scoped; amount/date/merchant alone are not a unique key."
+  ],
+  "validation_scope": "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."
 }

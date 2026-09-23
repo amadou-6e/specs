@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "link": {
+    "required": [
+      "link_id",
+      "edge_id",
+      "source_id",
+      "target_id",
+      "state",
+      "evidence_refs",
+      "decision_time",
+      "rule_version"
+    ],
+    "states": [
+      "candidate",
+      "verified",
+      "rejected"
+    ]
+  },
+  "allocation": {
+    "required": [
+      "allocation_id",
+      "transaction_id",
+      "target_id",
+      "dimension",
+      "amount",
+      "currency",
+      "role"
+    ],
+    "amount_type": "decimal-string",
+    "roles": [
+      "payment",
+      "refund"
+    ],
+    "constraints": [
+      "Sum within one allocation dimension must not exceed the transaction magnitude.",
+      "Full allocation reconciles to magnitude; partial allocation retains residual.",
+      "Never add order and item allocation dimensions together."
+    ]
+  }
+}

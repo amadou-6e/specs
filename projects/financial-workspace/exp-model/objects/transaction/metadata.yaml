@@ -1,7 +1,5 @@
 schema_version: 1
 name: transaction
-kind: model-entry
-purpose: "Transaction"
 authority: Replacement candidate
 owner: amadou-6e
 children:
@@ -10,3 +8,31 @@ children:
   - "1 relationships.md"
   - "1 representations.md"
 status: draft
+kind: "financial-object"
+purpose: "One booked movement on one account."
+includes:
+  - "Account, signed amount, currency, booking date, source observation"
+  - "Value date, merchant, original reference, provider transaction ID"
+excludes:
+  - "Source file format as financial identity"
+  - "Workflow execution"
+identity_field: "transaction_id"
+schema_ref: "schema.yaml"
+graph_ref: "../../relationships/graph.yaml"
+relationship_ids:
+  - "records"
+  - "contains"
+  - "substantiates-income"
+  - "settles-occurrence"
+  - "settles-procurement"
+  - "projects"
+  - "refunds"
+representations:
+evidence_forms:
+  - "../../representations/pdf"
+  - "../../representations/image"
+  - "../../representations/structured-export"
+provenance_ref: "../../representations/provenance.yaml"
+mapping_refs:
+  - "../../mappings/cashflow/mapping.yaml"
+maturity: "specified-not-replayed"

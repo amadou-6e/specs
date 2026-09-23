@@ -1,10 +1,15 @@
 schema_version: 1
 name: cashflow
 kind: model-entry
-purpose: "Cashflow projection"
 authority: Replacement candidate
 owner: amadou-6e
+status: draft
+purpose: "Projects each booked transaction and reviewed enrichment into one cashflow row"
+source_graph_ref: "../../relationships/graph.yaml"
+target_schema_ref: "../../objects/cashflow-entry/schema.yaml"
+mapping_ref: "mapping.yaml"
+maturity: "target-not-live-verified"
 children:
   - "1 README.md"
   - "1 contract.md"
-status: draft
+  - "1 mapping.yaml"

@@ -1,9 +1,23 @@
 schema_version: 1
 name: email
-kind: folder-collection
-purpose: "Email"
 authority: Replacement candidate
 owner: amadou-6e
 children:
   - "1 README.md"
 status: draft
+kind: "representation"
+purpose: "email source encoding and native identity"
+media_types:
+  - "text/plain"
+  - "text/html"
+  - "message/rfc822"
+variants:
+  - "plain-text"
+  - "html"
+  - "multipart-with-attachments"
+locator_types:
+  - "message-id"
+  - "mime-part"
+  - "attachment-id"
+provenance_ref: "../provenance.yaml"
+maturity: "specified-not-replayed"

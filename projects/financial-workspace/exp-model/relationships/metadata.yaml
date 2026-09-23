@@ -1,12 +1,15 @@
 schema_version: 1
 name: relationships
 kind: folder-collection
-purpose: "Relationships"
 authority: Replacement candidate
 owner: amadou-6e
+status: draft
+purpose: "Canonical financial object edges with directional cardinalities and reviewed monetary allocations"
+graph_ref: "graph.yaml"
+record_schema_ref: "records.yaml"
 children:
   - "1 README.md"
   - "1 graph.yaml"
   - "1 rules.md"
   - "1 tree-views.md"
-status: draft
+  - "1 records.yaml"

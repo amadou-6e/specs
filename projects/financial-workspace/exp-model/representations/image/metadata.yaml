@@ -1,9 +1,20 @@
 schema_version: 1
 name: image
-kind: folder-collection
-purpose: "Image"
 authority: Replacement candidate
 owner: amadou-6e
 children:
   - "1 README.md"
 status: draft
+kind: "representation"
+purpose: "image source encoding and native identity"
+media_types:
+  - "image/jpeg"
+  - "image/png"
+  - "image/heic"
+variants:
+  - "photograph"
+  - "scan"
+locator_types:
+  - "image-region"
+provenance_ref: "../provenance.yaml"
+maturity: "specified-not-replayed"

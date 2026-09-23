@@ -1,0 +1,319 @@
+{
+  "schema_version": 1,
+  "status": "target-not-live-verified",
+  "target_object": "cashflow-entry",
+  "identity": [
+    "sheet_id",
+    "transaction_id"
+  ],
+  "fields": [
+    {
+      "target_field": "entry_id",
+      "notion_property": "Entry Id",
+      "source": "cashflow-entry.entry_id",
+      "derivation": "source-field",
+      "transform": "copy-or-reviewed-value",
+      "missing": "block-publication",
+      "notion_type": "rich_text",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "sheet_id",
+      "notion_property": "Sheet Id",
+      "source": "cashflow-sheet.sheet_id",
+      "derivation": "source-field",
+      "transform": "copy-or-reviewed-value",
+      "missing": "block-publication",
+      "notion_type": "rich_text",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "transaction_id",
+      "notion_property": "External transaction ID",
+      "source": "transaction.transaction_id",
+      "derivation": "source-field",
+      "transform": "copy-or-reviewed-value",
+      "missing": "block-publication",
+      "notion_type": "rich_text",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "name",
+      "notion_property": "Name",
+      "source": "transaction.description",
+      "derivation": "source-field",
+      "transform": "copy-or-reviewed-value",
+      "missing": "null",
+      "notion_type": "rich_text",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "booking_date",
+      "notion_property": "Date",
+      "source": "transaction.booking_date",
+      "derivation": "source-field",
+      "transform": "copy-or-reviewed-value",
+      "missing": "block-publication",
+      "notion_type": "date",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "amount",
+      "notion_property": "Amount",
+      "source": "transaction.amount",
+      "derivation": "source-field",
+      "transform": "copy-or-reviewed-value",
+      "missing": "block-publication",
+      "notion_type": "number",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "currency",
+      "notion_property": "Currency",
+      "source": "transaction.currency",
+      "derivation": "source-field",
+      "transform": "copy-or-reviewed-value",
+      "missing": "block-publication",
+      "notion_type": "rich_text",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "account_id",
+      "notion_property": "Account",
+      "source": "transaction.account_id",
+      "derivation": "source-field",
+      "transform": "copy-or-reviewed-value",
+      "missing": "block-publication",
+      "notion_type": "rich_text",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "institution_id",
+      "notion_property": "Institution",
+      "source": "account.institution_id",
+      "derivation": "source-field",
+      "transform": "copy-or-reviewed-value",
+      "missing": "block-publication",
+      "notion_type": "rich_text",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "counterparty",
+      "notion_property": "Counterparty",
+      "source": "transaction.merchant",
+      "derivation": "source-field",
+      "transform": "copy-or-reviewed-value",
+      "missing": "null",
+      "notion_type": "rich_text",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "reference",
+      "notion_property": "Reference",
+      "source": "transaction.reference",
+      "derivation": "source-field",
+      "transform": "copy-or-reviewed-value",
+      "missing": "null",
+      "notion_type": "rich_text",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "type",
+      "notion_property": "Type",
+      "source": null,
+      "derivation": "reviewed-classification",
+      "transform": "copy-or-reviewed-value",
+      "missing": "block-publication",
+      "notion_type": "select",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "expense_category",
+      "notion_property": "Expense Category",
+      "source": null,
+      "derivation": "reviewed-classification",
+      "transform": "copy-or-reviewed-value",
+      "missing": "block-publication",
+      "notion_type": "select",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "purchase_category",
+      "notion_property": "Purchase Category",
+      "source": null,
+      "derivation": "run-context",
+      "transform": "copy-or-reviewed-value",
+      "missing": "null",
+      "notion_type": "rich_text",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "personal_work",
+      "notion_property": "Personal Work",
+      "source": null,
+      "derivation": "reviewed-classification",
+      "transform": "copy-or-reviewed-value",
+      "missing": "block-publication",
+      "notion_type": "select",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "order_dates",
+      "notion_property": "Order Dates",
+      "source": "procurement.order_date",
+      "derivation": "source-field",
+      "transform": "collect-distinct",
+      "missing": "null",
+      "notion_type": "rich_text",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "travel_dates",
+      "notion_property": "Travel Dates",
+      "source": "procurement.travel_details",
+      "derivation": "source-field",
+      "transform": "collect-distinct",
+      "missing": "null",
+      "notion_type": "rich_text",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "service_periods",
+      "notion_property": "Service Periods",
+      "source": "recurring-payment-occurrence.period",
+      "derivation": "source-field",
+      "transform": "collect-distinct",
+      "missing": "null",
+      "notion_type": "rich_text",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "procurement_ids",
+      "notion_property": "Procurement Ids",
+      "source": "procurement.procurement_id",
+      "derivation": "source-field",
+      "transform": "collect-distinct",
+      "missing": "null",
+      "notion_type": "rich_text",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "item_descriptions",
+      "notion_property": "Item Descriptions",
+      "source": "procurement-item.description",
+      "derivation": "source-field",
+      "transform": "collect-distinct",
+      "missing": "null",
+      "notion_type": "rich_text",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "agreement_ids",
+      "notion_property": "Agreement Ids",
+      "source": "recurring-payment-agreement.agreement_id",
+      "derivation": "source-field",
+      "transform": "collect-distinct",
+      "missing": "null",
+      "notion_type": "rich_text",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "agreement_names",
+      "notion_property": "Agreement Names",
+      "source": "recurring-payment-agreement.description",
+      "derivation": "source-field",
+      "transform": "collect-distinct",
+      "missing": "null",
+      "notion_type": "rich_text",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "receipt_links",
+      "notion_property": "Receipt Links",
+      "source": null,
+      "derivation": "provenance-links",
+      "transform": "collect-distinct",
+      "missing": "null",
+      "notion_type": "rich_text",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "income_statement_links",
+      "notion_property": "Income Statement Links",
+      "source": null,
+      "derivation": "provenance-links",
+      "transform": "collect-distinct",
+      "missing": "null",
+      "notion_type": "rich_text",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "statement_links",
+      "notion_property": "Statement Links",
+      "source": null,
+      "derivation": "provenance-links",
+      "transform": "collect-distinct",
+      "missing": "null",
+      "notion_type": "rich_text",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "evidence_status",
+      "notion_property": "Evidence Status",
+      "source": null,
+      "derivation": "reviewed-classification",
+      "transform": "copy-or-reviewed-value",
+      "missing": "block-publication",
+      "notion_type": "select",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "match_status",
+      "notion_property": "Match Status",
+      "source": null,
+      "derivation": "reviewed-classification",
+      "transform": "copy-or-reviewed-value",
+      "missing": "block-publication",
+      "notion_type": "select",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "reporting_treatment",
+      "notion_property": "Reporting Treatment",
+      "source": null,
+      "derivation": "reviewed-classification",
+      "transform": "copy-or-reviewed-value",
+      "missing": "block-publication",
+      "notion_type": "select",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "run_id",
+      "notion_property": "Run Id",
+      "source": null,
+      "derivation": "run-context",
+      "transform": "copy-or-reviewed-value",
+      "missing": "block-publication",
+      "notion_type": "rich_text",
+      "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "model_version",
+      "notion_property": "Model Version",
+      "source": null,
+      "derivation": "run-context",
+      "transform": "copy-or-reviewed-value",
+      "missing": "block-publication",
+      "notion_type": "rich_text",
+      "notes": "Native property IDs/types must be verified before publication."
+    }
+  ],
+  "invariants": [
+    "One cashflow entry per (sheet_id, transaction_id).",
+    "Statement and transaction account IDs must agree.",
+    "Every published entry references one evidenced booked transaction.",
+    "No receipt match duplicates a posted movement.",
+    "Unknown and unclassified transactions remain in the sheet.",
+    "Refunds retain separate transaction identity."
+  ]
+}

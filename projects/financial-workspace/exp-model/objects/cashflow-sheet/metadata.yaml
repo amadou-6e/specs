@@ -1,7 +1,5 @@
 schema_version: 1
 name: cashflow-sheet
-kind: model-entry
-purpose: "Cashflow sheet"
 authority: Replacement candidate
 owner: amadou-6e
 children:
@@ -10,3 +8,23 @@ children:
   - "1 relationships.md"
   - "1 representations.md"
 status: draft
+kind: "financial-object"
+purpose: "Destination dataset in Notion."
+includes:
+  - "Workspace/database/data-source identity and schema version"
+  - "Views and chart configuration"
+excludes:
+  - "Source file format as financial identity"
+  - "Workflow execution"
+identity_field: "sheet_id"
+schema_ref: "schema.yaml"
+graph_ref: "../../relationships/graph.yaml"
+relationship_ids:
+  - "contains-entry"
+representations:
+  - "../../representations/notion-dataset"
+evidence_forms:
+provenance_ref: "../../representations/provenance.yaml"
+mapping_refs:
+  - "../../mappings/cashflow/mapping.yaml"
+maturity: "specified-not-replayed"

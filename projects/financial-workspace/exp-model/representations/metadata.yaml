@@ -1,16 +1,20 @@
 schema_version: 1
 name: representations
 kind: folder-collection
-purpose: "Source representations"
 authority: Replacement candidate
 owner: amadou-6e
+status: draft
 children:
   - "1 README.md"
-  - "1 contract.md"
   - "1 .template/"
+  - "1 contract.md"
+  - "1 provenance.yaml"
   - "1 email/"
   - "1 pdf/"
   - "1 image/"
   - "1 structured-export/"
   - "1 calendar/"
-status: draft
+  - "1 notion-row/"
+  - "1 notion-dataset/"
+purpose: "Source forms shared across financial objects, with native identities and field-level assertions"
+provenance_ref: "provenance.yaml"

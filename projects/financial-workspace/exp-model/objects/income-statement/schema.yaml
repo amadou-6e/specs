@@ -1,9 +1,80 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "object": "income-statement",
   "identity_field": "income_statement_id",
-  "required_information": "Employer, period, source",
-  "optional_information": "Gross/net amounts, deductions, reimbursement component",
-  "unknown_values": "null; never invented",
-  "status": "conceptual contract, not an executable validator"
+  "fields": {
+    "income_statement_id": {
+      "type": "string",
+      "required": true,
+      "nullable": false,
+      "description": "Persistent internal identity; not a display name."
+    },
+    "employer_id": {
+      "type": "ref",
+      "required": true,
+      "nullable": false,
+      "target": "employer"
+    },
+    "period_start": {
+      "type": "date",
+      "required": true,
+      "nullable": false,
+      "format": "YYYY-MM-DD"
+    },
+    "period_end": {
+      "type": "date",
+      "required": true,
+      "nullable": false,
+      "format": "YYYY-MM-DD"
+    },
+    "representation_ids": {
+      "type": "ref[]",
+      "required": true,
+      "nullable": false,
+      "min_items": 1,
+      "target": "source-representation"
+    },
+    "gross": {
+      "type": "decimal",
+      "required": false,
+      "nullable": true,
+      "encoding": "decimal-string",
+      "pattern": "^-?\\d+(\\.\\d+)?$"
+    },
+    "net": {
+      "type": "decimal",
+      "required": false,
+      "nullable": true,
+      "encoding": "decimal-string",
+      "pattern": "^-?\\d+(\\.\\d+)?$"
+    },
+    "deductions": {
+      "type": "decimal",
+      "required": false,
+      "nullable": true,
+      "encoding": "decimal-string",
+      "pattern": "^-?\\d+(\\.\\d+)?$"
+    },
+    "reimbursement": {
+      "type": "decimal",
+      "required": false,
+      "nullable": true,
+      "encoding": "decimal-string",
+      "pattern": "^-?\\d+(\\.\\d+)?$"
+    },
+    "currency": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    }
+  },
+  "constraints": [
+    "Required fields apply to accepted canonical records; incomplete extractions remain candidates.",
+    "Unknown optional values are null; no invented defaults.",
+    "If gross is supplied, currency must be supplied.",
+    "If net is supplied, currency must be supplied.",
+    "If deductions is supplied, currency must be supplied.",
+    "If reimbursement is supplied, currency must be supplied."
+  ],
+  "validation_scope": "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."
 }

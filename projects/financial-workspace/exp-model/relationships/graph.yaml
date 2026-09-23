@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "name": "minimal-financial-graph",
+  "name": "financial-workspace-object-graph",
   "status": "replacement-candidate",
   "cardinality_semantics": {
     "targets_per_source": "Number of targets for one source",

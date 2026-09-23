@@ -1,0 +1,18 @@
+schema_version: 1
+name: notion-row
+authority: Native system representation
+owner: amadou-6e
+status: draft
+children:
+  - "1 README.md"
+kind: "representation"
+purpose: "One page in a Notion data source, identified by native page ID and canonical transaction ID.\n"
+media_types:
+variants:
+  - "native-page"
+  - "property-export"
+locator_types:
+  - "page-id"
+  - "property-id"
+provenance_ref: "../provenance.yaml"
+maturity: "specified-not-replayed"

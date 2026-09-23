@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "records": {
+    "source-representation": {
+      "identity_field": "representation_id",
+      "fields": {
+        "representation_id": {
+          "type": "string",
+          "required": true,
+          "nullable": false
+        },
+        "system": {
+          "type": "string",
+          "required": true,
+          "nullable": false
+        },
+        "native_id": {
+          "type": "string",
+          "required": true,
+          "nullable": false
+        },
+        "native_url": {
+          "type": "string",
+          "required": false,
+          "nullable": true
+        },
+        "observed_at": {
+          "type": "datetime",
+          "required": true,
+          "nullable": false
+        },
+        "retrieval_status": {
+          "type": "string",
+          "required": true,
+          "nullable": false
+        },
+        "media_type": {
+          "type": "string",
+          "required": false,
+          "nullable": true
+        },
+        "sha256": {
+          "type": "string",
+          "required": false,
+          "nullable": true
+        },
+        "parent_message_id": {
+          "type": "string",
+          "required": false,
+          "nullable": true
+        },
+        "attachment_id": {
+          "type": "string",
+          "required": false,
+          "nullable": true
+        },
+        "extraction_tool": {
+          "type": "string",
+          "required": false,
+          "nullable": true
+        },
+        "extraction_version": {
+          "type": "string",
+          "required": false,
+          "nullable": true
+        }
+      },
+      "constraints": [
+        "Captured bytes require sha256.",
+        "Attachment representations require parent message and attachment identities.",
+        "Missing retrieval does not imply that the financial object is absent."
+      ]
+    },
+    "field-assertion": {
+      "identity_field": "assertion_id",
+      "fields": {
+        "assertion_id": {
+          "type": "string",
+          "required": true,
+          "nullable": false
+        },
+        "object_id": {
+          "type": "string",
+          "required": true,
+          "nullable": false
+        },
+        "field_path": {
+          "type": "string",
+          "required": true,
+          "nullable": false
+        },
+        "value": {
+          "type": "any",
+          "required": true,
+          "nullable": false
+        },
+        "representation_id": {
+          "type": "string",
+          "required": true,
+          "nullable": false
+        },
+        "locator": {
+          "type": "string",
+          "required": true,
+          "nullable": false
+        },
+        "method": {
+          "type": "string",
+          "required": true,
+          "nullable": false
+        },
+        "review_state": {
+          "type": "string",
+          "required": true,
+          "nullable": false
+        },
+        "supersedes_assertion_id": {
+          "type": "string",
+          "required": false,
+          "nullable": true
+        }
+      },
+      "constraints": [
+        "method is structured, text, OCR or manual.",
+        "Conflicting assertions are retained; selected values require a review decision."
+      ]
+    }
+  }
+}

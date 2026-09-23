@@ -1,10 +1,14 @@
 schema_version: 1
 name: gmail
 kind: model-entry
-purpose: "gmail"
-authority: Replacement candidate
 owner: amadou-6e
 children:
   - "1 README.md"
   - "1 structure.md"
 status: draft
+purpose: "Communication platform retaining original messages and attachments"
+structure_ref: "structure.md"
+schema_ref: "../../../model/systems/gmail/schema.md"
+maturity: "historical-observations-and-proposed-target"
+authority: "Native source semantics; see structure for dated observations"
+migration_dependency: "Current model schema must be retained or migrated before replacement"

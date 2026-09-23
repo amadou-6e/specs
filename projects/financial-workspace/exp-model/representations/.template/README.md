@@ -11,3 +11,7 @@ Define format and delivery variants, native identity, extraction locators, suppo
 ```
 <!-- END GENERATED: contained-elements -->
 
+
+## Required semantic metadata
+
+Representation metadata declares purpose, media_types, variants, locator_types, provenance_ref and maturity. Native Notion objects may have no MIME type; declare an empty media_types list.

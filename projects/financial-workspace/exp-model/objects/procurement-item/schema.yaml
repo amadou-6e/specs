@@ -1,9 +1,67 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "object": "procurement-item",
   "identity_field": "item_id",
-  "required_information": "Procurement, description, quantity",
-  "optional_information": "Unit/line amount, category, receipt line",
-  "unknown_values": "null; never invented",
-  "status": "conceptual contract, not an executable validator"
+  "fields": {
+    "item_id": {
+      "type": "string",
+      "required": true,
+      "nullable": false,
+      "description": "Persistent internal identity; not a display name."
+    },
+    "procurement_id": {
+      "type": "ref",
+      "required": true,
+      "nullable": false,
+      "target": "procurement"
+    },
+    "description": {
+      "type": "string",
+      "required": true,
+      "nullable": false
+    },
+    "quantity": {
+      "type": "decimal",
+      "required": true,
+      "nullable": false,
+      "encoding": "decimal-string",
+      "pattern": "^-?\\d+(\\.\\d+)?$"
+    },
+    "unit_amount": {
+      "type": "decimal",
+      "required": false,
+      "nullable": true,
+      "encoding": "decimal-string",
+      "pattern": "^-?\\d+(\\.\\d+)?$"
+    },
+    "line_amount": {
+      "type": "decimal",
+      "required": false,
+      "nullable": true,
+      "encoding": "decimal-string",
+      "pattern": "^-?\\d+(\\.\\d+)?$"
+    },
+    "currency": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    },
+    "category": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    },
+    "receipt_locator": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    }
+  },
+  "constraints": [
+    "Required fields apply to accepted canonical records; incomplete extractions remain candidates.",
+    "Unknown optional values are null; no invented defaults.",
+    "If unit_amount is supplied, currency must be supplied.",
+    "If line_amount is supplied, currency must be supplied."
+  ],
+  "validation_scope": "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."
 }

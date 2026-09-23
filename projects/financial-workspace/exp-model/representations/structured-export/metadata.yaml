@@ -1,9 +1,23 @@
 schema_version: 1
 name: structured-export
-kind: folder-collection
-purpose: "Structured-Export"
 authority: Replacement candidate
 owner: amadou-6e
 children:
   - "1 README.md"
 status: draft
+kind: "representation"
+purpose: "structured-export source encoding and native identity"
+media_types:
+  - "text/csv"
+  - "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+  - "application/json"
+variants:
+  - "csv"
+  - "xlsx"
+  - "json"
+locator_types:
+  - "row-id"
+  - "column"
+  - "sheet"
+provenance_ref: "../provenance.yaml"
+maturity: "specified-not-replayed"

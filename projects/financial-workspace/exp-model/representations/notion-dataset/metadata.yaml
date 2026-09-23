@@ -1,0 +1,18 @@
+schema_version: 1
+name: notion-dataset
+authority: Native system representation
+owner: amadou-6e
+status: draft
+children:
+  - "1 README.md"
+kind: "representation"
+purpose: "Notion database/data source container, with native identity and dated schema.\n"
+media_types:
+variants:
+  - "database-container"
+  - "data-source"
+locator_types:
+  - "database-id"
+  - "data-source-id"
+provenance_ref: "../provenance.yaml"
+maturity: "specified-not-replayed"

@@ -1,9 +1,82 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "object": "procurement",
   "identity_field": "procurement_id",
-  "required_information": "Merchant, order date when known, source",
-  "optional_information": "Merchant order reference, order total, travel details",
-  "unknown_values": "null; never invented",
-  "status": "conceptual contract, not an executable validator"
+  "fields": {
+    "procurement_id": {
+      "type": "string",
+      "required": true,
+      "nullable": false,
+      "description": "Persistent internal identity; not a display name."
+    },
+    "merchant": {
+      "type": "string",
+      "required": true,
+      "nullable": false
+    },
+    "representation_ids": {
+      "type": "ref[]",
+      "required": true,
+      "nullable": false,
+      "min_items": 1,
+      "target": "source-representation"
+    },
+    "order_date": {
+      "type": "date",
+      "required": false,
+      "nullable": true,
+      "format": "YYYY-MM-DD"
+    },
+    "order_reference": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    },
+    "total": {
+      "type": "decimal",
+      "required": false,
+      "nullable": true,
+      "encoding": "decimal-string",
+      "pattern": "^-?\\d+(\\.\\d+)?$"
+    },
+    "currency": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    },
+    "travel_details": {
+      "type": "object",
+      "required": false,
+      "nullable": true,
+      "properties": {
+        "origin": {
+          "type": "string",
+          "required": false,
+          "nullable": true
+        },
+        "destination": {
+          "type": "string",
+          "required": false,
+          "nullable": true
+        },
+        "travel_date": {
+          "type": "date",
+          "required": false,
+          "nullable": true
+        },
+        "timezone": {
+          "type": "string",
+          "required": false,
+          "nullable": true
+        }
+      }
+    }
+  },
+  "constraints": [
+    "Required fields apply to accepted canonical records; incomplete extractions remain candidates.",
+    "Unknown optional values are null; no invented defaults.",
+    "If total is supplied, currency must be supplied.",
+    "Travel fields are only supplied from verified itinerary evidence."
+  ],
+  "validation_scope": "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."
 }

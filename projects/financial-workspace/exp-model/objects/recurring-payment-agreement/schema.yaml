@@ -1,9 +1,91 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "object": "recurring-payment-agreement",
   "identity_field": "agreement_id",
-  "required_information": "Provider, service description, source or reviewed basis",
-  "optional_information": "Cadence, effective dates, versioned price terms",
-  "unknown_values": "null; never invented",
-  "status": "conceptual contract, not an executable validator"
+  "fields": {
+    "agreement_id": {
+      "type": "string",
+      "required": true,
+      "nullable": false,
+      "description": "Persistent internal identity; not a display name."
+    },
+    "provider": {
+      "type": "string",
+      "required": true,
+      "nullable": false
+    },
+    "description": {
+      "type": "string",
+      "required": true,
+      "nullable": false
+    },
+    "representation_ids": {
+      "type": "ref[]",
+      "required": false,
+      "nullable": true,
+      "min_items": 0,
+      "target": "source-representation"
+    },
+    "reviewed_basis": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    },
+    "cadence": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    },
+    "effective_start": {
+      "type": "date",
+      "required": false,
+      "nullable": true,
+      "format": "YYYY-MM-DD"
+    },
+    "effective_end": {
+      "type": "date",
+      "required": false,
+      "nullable": true,
+      "format": "YYYY-MM-DD"
+    },
+    "terms": {
+      "type": "object[]",
+      "required": false,
+      "nullable": true,
+      "min_items": 0,
+      "items": {
+        "effective_start": {
+          "type": "date",
+          "required": true,
+          "nullable": false
+        },
+        "effective_end": {
+          "type": "date",
+          "required": false,
+          "nullable": true
+        },
+        "amount": {
+          "type": "decimal",
+          "required": true,
+          "nullable": false
+        },
+        "currency": {
+          "type": "string",
+          "required": true,
+          "nullable": false
+        },
+        "cadence": {
+          "type": "string",
+          "required": true,
+          "nullable": false
+        }
+      }
+    }
+  },
+  "constraints": [
+    "Required fields apply to accepted canonical records; incomplete extractions remain candidates.",
+    "Unknown optional values are null; no invented defaults.",
+    "At least one source representation or nonempty reviewed_basis is required."
+  ],
+  "validation_scope": "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."
 }

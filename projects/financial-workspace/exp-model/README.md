@@ -26,3 +26,7 @@ This is the contender to replace model/, not an experiment catalogue.
 - [migration](migration/README.md)
 
 One entry per booked transaction; receipts enrich rows without creating money movements. Tax, investments and new manual cash capture are out of scope.
+
+## Metadata ownership
+
+Object metadata explicitly links direct representations, supporting evidence forms, schemas, canonical graph edges and cashflow mappings. Schema fields own types and nullability; graph.yaml owns cardinalities; representation metadata owns encoding variants and locators. No copy of an edge or field definition in metadata is authoritative. tools/validate_specs.py checks the references and completeness.

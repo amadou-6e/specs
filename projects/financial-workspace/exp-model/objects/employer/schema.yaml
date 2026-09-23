@@ -1,9 +1,29 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "object": "employer",
   "identity_field": "employer_id",
-  "required_information": "Name",
-  "optional_information": "Provider/employment references",
-  "unknown_values": "null; never invented",
-  "status": "conceptual contract, not an executable validator"
+  "fields": {
+    "employer_id": {
+      "type": "string",
+      "required": true,
+      "nullable": false,
+      "description": "Persistent internal identity; not a display name."
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "nullable": false
+    },
+    "provider_references": {
+      "type": "string[]",
+      "required": false,
+      "nullable": true,
+      "min_items": 0
+    }
+  },
+  "constraints": [
+    "Required fields apply to accepted canonical records; incomplete extractions remain candidates.",
+    "Unknown optional values are null; no invented defaults."
+  ],
+  "validation_scope": "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."
 }

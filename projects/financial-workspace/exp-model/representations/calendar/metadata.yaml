@@ -1,9 +1,18 @@
 schema_version: 1
 name: calendar
-kind: folder-collection
-purpose: "Calendar"
 authority: Replacement candidate
 owner: amadou-6e
 children:
   - "1 README.md"
 status: draft
+kind: "representation"
+purpose: "calendar source encoding and native identity"
+media_types:
+  - "text/calendar"
+variants:
+  - "ics-event"
+locator_types:
+  - "event-uid"
+  - "property"
+provenance_ref: "../provenance.yaml"
+maturity: "specified-not-replayed"

@@ -1,9 +1,21 @@
 schema_version: 1
 name: pdf
-kind: folder-collection
-purpose: "Pdf"
 authority: Replacement candidate
 owner: amadou-6e
 children:
   - "1 README.md"
 status: draft
+kind: "representation"
+purpose: "pdf source encoding and native identity"
+media_types:
+  - "application/pdf"
+variants:
+  - "text-bearing"
+  - "scanned"
+  - "mixed-pages"
+locator_types:
+  - "page"
+  - "table-row"
+  - "field-region"
+provenance_ref: "../provenance.yaml"
+maturity: "specified-not-replayed"

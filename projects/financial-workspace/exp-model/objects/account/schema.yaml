@@ -1,9 +1,64 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "object": "account",
   "identity_field": "account_id",
-  "required_information": "Institution, account kind, ownership",
-  "optional_information": "Masked native reference, currencies, open/closed dates",
-  "unknown_values": "null; never invented",
-  "status": "conceptual contract, not an executable validator"
+  "fields": {
+    "account_id": {
+      "type": "string",
+      "required": true,
+      "nullable": false,
+      "description": "Persistent internal identity; not a display name."
+    },
+    "institution_id": {
+      "type": "ref",
+      "required": true,
+      "nullable": false,
+      "target": "financial-institution"
+    },
+    "kind": {
+      "type": "string",
+      "required": true,
+      "nullable": false,
+      "enum": [
+        "bank",
+        "wallet",
+        "card",
+        "loan"
+      ]
+    },
+    "ownership": {
+      "type": "string",
+      "required": true,
+      "nullable": false
+    },
+    "native_reference": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    },
+    "currencies": {
+      "type": "string[]",
+      "required": false,
+      "nullable": true,
+      "min_items": 0
+    },
+    "opened_on": {
+      "type": "date",
+      "required": false,
+      "nullable": true,
+      "format": "YYYY-MM-DD"
+    },
+    "closed_on": {
+      "type": "date",
+      "required": false,
+      "nullable": true,
+      "format": "YYYY-MM-DD"
+    }
+  },
+  "constraints": [
+    "Required fields apply to accepted canonical records; incomplete extractions remain candidates.",
+    "Unknown optional values are null; no invented defaults.",
+    "Currency policy may permit multiple currencies; source amount currency is retained."
+  ],
+  "validation_scope": "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."
 }

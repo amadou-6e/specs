@@ -1,9 +1,54 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "object": "recurring-payment-occurrence",
   "identity_field": "occurrence_id",
-  "required_information": "Agreement, period or due date",
-  "optional_information": "Expected amount, observed settlement state",
-  "unknown_values": "null; never invented",
-  "status": "conceptual contract, not an executable validator"
+  "fields": {
+    "occurrence_id": {
+      "type": "string",
+      "required": true,
+      "nullable": false,
+      "description": "Persistent internal identity; not a display name."
+    },
+    "agreement_id": {
+      "type": "ref",
+      "required": true,
+      "nullable": false,
+      "target": "recurring-payment-agreement"
+    },
+    "period": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    },
+    "due_date": {
+      "type": "date",
+      "required": false,
+      "nullable": true,
+      "format": "YYYY-MM-DD"
+    },
+    "expected_amount": {
+      "type": "decimal",
+      "required": false,
+      "nullable": true,
+      "encoding": "decimal-string",
+      "pattern": "^-?\\d+(\\.\\d+)?$"
+    },
+    "currency": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    },
+    "settlement_state": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    }
+  },
+  "constraints": [
+    "Required fields apply to accepted canonical records; incomplete extractions remain candidates.",
+    "Unknown optional values are null; no invented defaults.",
+    "If expected_amount is supplied, currency must be supplied.",
+    "At least one of period or due_date is required."
+  ],
+  "validation_scope": "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."
 }
