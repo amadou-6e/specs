@@ -201,7 +201,12 @@ def check_document_collection_category(
 
 
 def check_folder_collection_category(
-    project: Path, name: str, entry_files: list[str], errors: list[str]
+    project: Path,
+    name: str,
+    entry_files: list[str],
+    errors: list[str],
+    *,
+    groups: list[str] | None = None,
 ) -> set[str]:
     category = project / name
     readme = category / "README.md"
@@ -217,33 +222,72 @@ def check_folder_collection_category(
     if not template_dir.is_dir():
         errors.append(f"{name}/template/: missing copyable template folder")
 
-    entries = sorted(p for p in category.iterdir() if p.is_dir())
+    entries: list[Path] = []
+    if groups:
+        for group_name in groups:
+            group = category / group_name
+            group_readme = group / "README.md"
+            if not group.is_dir():
+                errors.append(f"{name}/{group_name}/: declared group is missing")
+                continue
+            if not group_readme.exists():
+                errors.append(f"{name}/{group_name}/README.md: missing group README")
+            else:
+                group_text = group_readme.read_text(encoding="utf-8")
+                if not re.search(r"\b0\.\.\*|\b0\.\.1\b|(?<!\.)\b1\b", group_text):
+                    errors.append(
+                        f"{name}/{group_name}/README.md: group README must state "
+                        "cardinality (1 / 0..1 / 0..*)"
+                    )
+            entries.extend(sorted(p for p in group.iterdir() if p.is_dir()))
+    else:
+        entries = sorted(p for p in category.iterdir() if p.is_dir())
+
     for entry in entries:
-        is_template = entry.name == "template"
+        is_template = entry == template_dir
         if not is_template and not FOLDER_ENTRY_NAME_PATTERN.match(entry.name):
             errors.append(
-                f"{name}/{entry.name}/: entry folder name must be lowercase kebab-case "
-                "(e.g. widget-store)"
+                f"{entry.relative_to(project)}/: entry folder name must be lowercase "
+                "kebab-case (e.g. widget-store)"
             )
         for required in entry_files:
             required_path = entry / required
             if not required_path.exists():
-                errors.append(f"{name}/{entry.name}/{required}: missing")
+                errors.append(f"{entry.relative_to(project)}/{required}: missing")
             elif required.endswith(".md"):
-                check_entry_frontmatter(required_path, project, errors, expect_template=is_template)
+                check_entry_frontmatter(
+                    required_path, project, errors, expect_template=is_template
+                )
         if not is_template:
-            refs.add(f"{name}/{entry.name}")
+            refs.add(str(entry.relative_to(project)).replace(os.sep, "/"))
     return refs
 
 
 def check_references(
-    project: Path, name: str, category_type: str, errors: list[str], known_refs: set[str]
+    project: Path,
+    name: str,
+    category_type: str,
+    errors: list[str],
+    known_refs: set[str],
+    *,
+    groups: list[str] | None = None,
 ) -> None:
-    """Check that every non-empty `related` entry and non-null `supersedes` value
-    resolves to a real entry declared somewhere in this project's categories."""
+    """Check related and supersedes values against declared project entries."""
     category = project / name
     if category_type == "folder-collection":
-        candidates = [p / "README.md" for p in category.iterdir() if p.is_dir() and p.name != "template"]
+        if groups:
+            candidates = [
+                entry / "README.md"
+                for group_name in groups
+                for entry in (category / group_name).iterdir()
+                if entry.is_dir()
+            ]
+        else:
+            candidates = [
+                p / "README.md"
+                for p in category.iterdir()
+                if p.is_dir() and p.name != "template"
+            ]
     else:
         candidates = [
             p for p in category.glob("*.md")
@@ -270,7 +314,7 @@ def check_typed_categories(project: Path, categories: dict, errors: list[str]) -
             errors.append(f"{name}: missing (required once a project declares categories in spec.json)")
 
     known_refs: set[str] = set()
-    per_category: list[tuple[str, str]] = []
+    per_category: list[tuple[str, str, list[str] | None]] = []
     for name, spec in categories.items():
         category_type = spec.get("type") if isinstance(spec, dict) else None
         if category_type not in ALLOWED_CATEGORY_TYPES:
@@ -281,7 +325,8 @@ def check_typed_categories(project: Path, categories: dict, errors: list[str]) -
         if not (project / name).is_dir():
             errors.append(f"{name}/: declared category is missing")
             continue
-        per_category.append((name, category_type))
+        groups = spec.get("groups") if isinstance(spec.get("groups"), list) else None
+        per_category.append((name, category_type, groups))
         if category_type == "fixed":
             known_refs |= check_fixed_category(project, name, errors)
         elif category_type == "document-collection":
@@ -289,11 +334,14 @@ def check_typed_categories(project: Path, categories: dict, errors: list[str]) -
             known_refs |= check_document_collection_category(project, name, errors, numbered=numbered)
         elif category_type == "folder-collection":
             entry_files = spec.get("entry_files") or ["README.md"]
-            known_refs |= check_folder_collection_category(project, name, entry_files, errors)
+            known_refs |= check_folder_collection_category(
+                project, name, entry_files, errors, groups=groups
+            )
 
-    for name, category_type in per_category:
-        check_references(project, name, category_type, errors, known_refs)
-
+    for name, category_type, groups in per_category:
+        check_references(
+            project, name, category_type, errors, known_refs, groups=groups
+        )
 
 def validate_markdown(path: Path, errors: list[str]) -> None:
     try:

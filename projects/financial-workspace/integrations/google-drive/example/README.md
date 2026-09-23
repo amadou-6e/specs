@@ -1,4 +1,4 @@
-﻿# Finance Drive folder example
+# Finance Drive folder example
 
 This folder demonstrates the proposed Google Drive structure.
 

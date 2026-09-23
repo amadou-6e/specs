@@ -1,27 +1,12 @@
-﻿---
-title: Financial workspace data model
-status: draft
-kind: architecture
-owners:
-  - amadou-6e
-last_reviewed: 2026-09-14
-applies_to:
-  - financial-workspace
-supersedes: null
-related:
-  - architecture/cash-flow-workflow
-  - architecture/migration-contracts
----
+﻿# Financial workspace structure proposal
 
-# Financial workspace structure proposal
-
-Discussion draft.
+Status: discussion draft
 
 ## Core model
 
-A concrete Google Drive layout populated with representative workspace files is available in [drive-folder-example](drive-folder-example/README.md).
+A concrete Google Drive layout populated with representative workspace files is available in [drive-folder-example](integrations/google-drive/example/README.md).
 
-The reproducible Cash flow analysis, portable source index, Drive handoff, and Notion publication contract are specified in [cash-flow-workflow.md](cash-flow-workflow.md). Existing-system migration, recurring schedules, liability lifecycles, and tax-year workspaces are specified in [migration-contracts.md](migration-contracts.md). These are proposals; the remote Cash flow folder and replay CLI have not been created.
+The reproducible Cash flow analysis, portable source index, Drive handoff, and Notion publication contract are specified in [cash-flow-layout.md](processes/cash-flow/workflow.md). Existing-system migration, recurring schedules, liability lifecycles, and tax-year workspaces are specified in [review-contracts.md](migrations/0001-existing-system.md). These are proposals; the remote Cash flow folder and replay CLI have not been created.
 
 The repository, Notion, and Google Drive should share terminology and stable identifiers. Their structures do not need to be identical because they serve different purposes.
 
@@ -69,7 +54,7 @@ Employer reimbursements and merchant refunds are expense offsets so they do not 
 
 ## Tax
 
-Tax is cross-cutting. Each tax year is an Open matter with a visible lifecycle status, living status/checklist/evidence-index/next-step documents, subject-based working analyses, immutable review artifacts, and links to filing, assessment, payments, refunds, and source evidence. Keep one original file and link it to every relevant tax year; see [migration-contracts.md](migration-contracts.md).
+Tax is cross-cutting. Each tax year is an Open matter with a visible lifecycle status, living status/checklist/evidence-index/next-step documents, subject-based working analyses, immutable review artifacts, and links to filing, assessment, payments, refunds, and source evidence. Keep one original file and link it to every relevant tax year; see [review-contracts.md](migrations/0001-existing-system.md).
 
 A tax-relevant purchase remains in its natural expense category and receives tax metadata: tax relevance, tax year, tax category, deductible percentage, business or personal allocation, supporting document, filing status, and filing reference.
 
@@ -227,7 +212,7 @@ Financial Workspace/
 
 Purchase and travel records remain in their subject folders, which hold invoices, tickets, itineraries, correspondence, and workflow state. The Finance Drive uses Workspace links to point to those verified folders and retains only independently financial documents, such as a reimbursement statement. A dedicated Claims folder has not been verified; claim evidence may remain with its purchase or journey.
 
-The [Drive folder example](drive-folder-example/README.md) describes representative original statement PDFs, but the copied binaries remain local and are excluded from this specs repository. Names shown above for unavailable document types are illustrative and are not fabricated files.
+The [Drive folder example](integrations/google-drive/example/README.md) describes representative original statement PDFs, but the copied binaries remain local and are excluded from this specs repository. Names shown above for unavailable document types are illustrative and are not fabricated files.
 
 The repository should use:
 

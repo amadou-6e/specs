@@ -1,4 +1,4 @@
-﻿# Financial Workspace
+# Financial Workspace
 
 Status: Drive folder structure implemented; finance data model remains a discussion draft.
 
@@ -10,7 +10,9 @@ Before adding or reorganizing Financial Workspace specifications, read
 [SPECS.md](SPECS.md). It defines the project's documentation taxonomy and points to
 the live category templates.
 
-The [live README](https://docs.google.com/document/d/1AtknilGP8OP8VvRN9U08vfABqhC2669euLQ-pjf9tnw/edit) gives the operating instructions for the Drive folder. [architecture/data-model.md](architecture/data-model.md) describes the current remote structure and the proposed cross-system model. [architecture/cash-flow-workflow.md](architecture/cash-flow-workflow.md) proposes a portable, reproducible Cash flow workflow with a Drive source index, versioned analysis code and decisions, and a separate Notion publication step. [architecture/migration-contracts.md](architecture/migration-contracts.md) specifies migration of the live Notion records, recurring schedules, liabilities, tracked statements, local Drive cache, and tax-year workspaces.
+The [financial structure](financial-structure.md) is the top-level map of the financial nomenclature and system responsibilities. The [model index](model/README.md) separates financial objects, system representations, and cross-system mappings.
+
+The [live README](https://docs.google.com/document/d/1AtknilGP8OP8VvRN9U08vfABqhC2669euLQ-pjf9tnw/edit) gives the operating instructions for the Drive folder. [model/mappings/cross-system/README.md](model/mappings/cross-system/README.md) describes the current remote structure and the proposed cross-system model. [processes/cash-flow/workflow.md](processes/cash-flow/workflow.md) proposes a portable, reproducible Cash flow workflow with a Drive source index, versioned analysis code and decisions, and a separate Notion publication step. [migrations/0001-existing-system.md](migrations/0001-existing-system.md) specifies migration of the live Notion records, recurring schedules, liabilities, tracked statements, local Drive cache, and tax-year workspaces.
 
 ## System roles
 
@@ -35,4 +37,4 @@ Vinted purchase confirmations can support procurement records without a bank or 
 
 ## Maintenance
 
-Review new evidence and open exceptions monthly, or during a quarterly catch-up. Keep this README, the live Drive guide, and [architecture/data-model.md](architecture/data-model.md) aligned when the folder taxonomy or matching rules change. The checked-in [Drive folder example](architecture/drive-folder-example/README.md) illustrates the structure with representative original PDFs; native Google Docs are linked from its README.
+Review new evidence and open exceptions monthly, or during a quarterly catch-up. Keep this README, the live Drive guide, and [model/mappings/cross-system/README.md](model/mappings/cross-system/README.md) aligned when the folder taxonomy or matching rules change. The checked-in [Drive folder example](integrations/google-drive/example/README.md) illustrates the structure with representative original PDFs; native Google Docs are linked from its README.

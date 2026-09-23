@@ -1,11 +1,29 @@
 {
-  "name": "Financial Workspace",
-  "slug": "financial-workspace",
-  "source_repository": "https://github.com/amadou-6e/financial-workspace",
-  "status": "active",
-  "description": "",
-  "categories": {
-    "architecture": { "type": "fixed" },
-    "decisions": { "type": "document-collection" }
-  }
+    "name":  "Financial Workspace",
+    "slug":  "financial-workspace",
+    "source_repository":  "https://github.com/amadou-6e/financial-workspace",
+    "status":  "active",
+    "description":  "",
+    "categories":  {
+                       "model":  {
+                                     "type":  "folder-collection",
+                                     "groups":  [
+                                                    "objects",
+                                                    "systems",
+                                                    "mappings"
+                                                ]
+                                 },
+                       "processes":  {
+                                         "type":  "folder-collection"
+                                     },
+                       "integrations":  {
+                                            "type":  "folder-collection"
+                                        },
+                       "migrations":  {
+                                          "type":  "document-collection"
+                                      },
+                       "decisions":  {
+                                         "type":  "document-collection"
+                                     }
+                   }
 }

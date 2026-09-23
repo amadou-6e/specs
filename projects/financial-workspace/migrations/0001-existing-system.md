@@ -1,4 +1,4 @@
-﻿---
+---
 title: Review contracts for Financial Workspace migration
 status: draft
 kind: architecture
@@ -9,8 +9,8 @@ applies_to:
   - financial-workspace
 supersedes: null
 related:
-  - architecture/data-model
-  - architecture/cash-flow-workflow
+  - model/mappings/cross-system
+  - processes/cash-flow
 ---
 
 # Review contracts for Financial Workspace migration
