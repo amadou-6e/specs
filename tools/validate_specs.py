@@ -79,7 +79,7 @@ CHILD_SPEC = re.compile(r'^(1|0\.\.1|0\.\.\*)\s+(.+)$')
 
 
 def parse_folder_contract(path: Path, errors: list[str]) -> dict[str, object] | None:
-    """Parse the intentionally small folder.yaml subset: scalars plus a children list."""
+    """Parse the intentionally small metadata.yaml subset: scalars plus a children list."""
     try:
         lines = path.read_text(encoding="utf-8").splitlines()
     except (OSError, UnicodeDecodeError) as exc:
@@ -93,7 +93,7 @@ def parse_folder_contract(path: Path, errors: list[str]) -> dict[str, object] | 
             index += 1
             continue
         if raw[:1].isspace() or ":" not in raw:
-            errors.append(f"{path.relative_to(ROOT)}:{index + 1}: invalid folder.yaml syntax")
+            errors.append(f"{path.relative_to(ROOT)}:{index + 1}: invalid metadata.yaml syntax")
             return None
         key, value = raw.split(":", 1)
         key, value = key.strip(), value.strip()
@@ -201,16 +201,16 @@ def validate_contract_children(
         existing = [path for path in paths if path.exists()]
         if cardinality == "1" and len(existing) != 1:
             errors.append(
-                f"{folder.relative_to(ROOT)}/folder.yaml: requires exactly one of {alternatives}"
+                f"{folder.relative_to(ROOT)}/metadata.yaml: requires exactly one of {alternatives}"
             )
         if cardinality == "0..1" and len(existing) > 1:
             errors.append(
-                f"{folder.relative_to(ROOT)}/folder.yaml: permits at most one of {alternatives}"
+                f"{folder.relative_to(ROOT)}/metadata.yaml: permits at most one of {alternatives}"
             )
         for path in existing:
-            if path.is_dir() and path.name != "template" and not (path / "folder.yaml").exists():
+            if path.is_dir() and path.name != "template" and not (path / "metadata.yaml").exists():
                 errors.append(
-                    f"{path.relative_to(ROOT)}/folder.yaml: nested folder must define its own relationship level"
+                    f"{path.relative_to(ROOT)}/metadata.yaml: nested folder must define its own relationship level"
                 )
 
 
@@ -241,9 +241,9 @@ def sync_recursive_folder_contracts(
 
     seen: set[Path] = set()
     # Explicit contracts include required structural folders and nested subfolders.
-    explicit_files = set(project.rglob("folder.yaml"))
+    explicit_files = set(project.rglob("metadata.yaml"))
     for folder in required_contracts:
-        contract_path = folder / "folder.yaml"
+        contract_path = folder / "metadata.yaml"
         if not contract_path.exists():
             errors.append(f"{contract_path.relative_to(ROOT)}: missing recursive folder contract")
             continue
@@ -260,7 +260,7 @@ def sync_recursive_folder_contracts(
     for entry, template in inherited_entries:
         if entry.resolve() in seen:
             continue
-        template_contract = parse_folder_contract(template / "folder.yaml", errors)
+        template_contract = parse_folder_contract(template / "metadata.yaml", errors)
         if template_contract is None or "children" not in template_contract:
             continue
         sync_contained_elements(entry / "README.md", template_contract, entry.name, errors, write=write)
