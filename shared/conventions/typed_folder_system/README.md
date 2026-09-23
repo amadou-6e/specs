@@ -31,6 +31,13 @@ checks that instance against the rules below.
 | **Expandable folder collection** | Each new entry is an independently owned, multi-file folder following one stable entry schema. | One directly copyable `<category>/template/` folder. No example-name layer beneath it — the template folder itself is copied and renamed. |
 | **Expandable document collection** | Each new entry is one independently owned Markdown document. | One directly copyable `<category>/template.md`. |
 
+A folder collection may declare one intermediate set of named `groups` in
+`spec.json` when entries have different semantic roles but share one entry schema. Each
+group is a container with its own `README.md` and cardinality statement. Entries remain
+direct children of a declared group, and the category still has one copyable `template/`.
+Groups organize entries; they are not entries themselves and cannot introduce a second
+entry schema.
+
 "Expandable" applies to entries within a category, never to the top-level category
 set itself, which a project's `SPECS.md` declares closed: adding, renaming, or
 repurposing a category requires revising that document and reviewing the ownership
@@ -92,7 +99,27 @@ sentinel `template` reserved for template copies so they can never be mistaken f
 active specification. A category may define a more specific lifecycle vocabulary for
 its own entries (for example, bug records use `reported`, `confirmed`,
 `fix-in-progress`, `resolved`, `not-reproducible`, `superseded`) as long as that
-vocabulary is documented in the category's own container `README.md`.
+vocabulary is documented in the category's own container `README.md`. An enforced
+category declares that vocabulary in `spec.json` through `statuses`; the validator
+always permits `template` for the category's template entry and applies the declared
+values to real entries:
+
+```json
+"bugs": {
+  "type": "document-collection",
+  "numbered": false,
+  "statuses": [
+    "reported",
+    "confirmed",
+    "fix-in-progress",
+    "resolved",
+    "not-reproducible",
+    "superseded"
+  ]
+}
+```
+
+When `statuses` is omitted, the generic lifecycle vocabulary applies.
 
 ## Worked example
 
