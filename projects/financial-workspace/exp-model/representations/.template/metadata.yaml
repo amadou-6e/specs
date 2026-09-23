@@ -1,0 +1,9 @@
+schema_version: 1
+name: .template
+kind: entry-template
+purpose: Source representation standard
+authority: Replacement candidate
+owner: amadou-6e
+status: template
+children:
+  - "1 README.md"
