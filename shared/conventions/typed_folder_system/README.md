@@ -92,7 +92,27 @@ sentinel `template` reserved for template copies so they can never be mistaken f
 active specification. A category may define a more specific lifecycle vocabulary for
 its own entries (for example, bug records use `reported`, `confirmed`,
 `fix-in-progress`, `resolved`, `not-reproducible`, `superseded`) as long as that
-vocabulary is documented in the category's own container `README.md`.
+vocabulary is documented in the category's own container `README.md`. An enforced
+category declares that vocabulary in `spec.json` through `statuses`; the validator
+always permits `template` for the category's template entry and applies the declared
+values to real entries:
+
+```json
+"bugs": {
+  "type": "document-collection",
+  "numbered": false,
+  "statuses": [
+    "reported",
+    "confirmed",
+    "fix-in-progress",
+    "resolved",
+    "not-reproducible",
+    "superseded"
+  ]
+}
+```
+
+When `statuses` is omitted, the generic lifecycle vocabulary applies.
 
 ## Worked example
 

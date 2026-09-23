@@ -122,7 +122,12 @@ def parse_frontmatter(text: str) -> dict[str, object] | None:
 
 
 def check_entry_frontmatter(
-    path: Path, project: Path, errors: list[str], *, expect_template: bool
+    path: Path,
+    project: Path,
+    errors: list[str],
+    *,
+    expect_template: bool,
+    allowed_statuses: set[str],
 ) -> dict | None:
     text = path.read_text(encoding="utf-8")
     fields = parse_frontmatter(text)
@@ -134,8 +139,12 @@ def check_entry_frontmatter(
     if missing:
         errors.append(f"{relative}: frontmatter missing {sorted(missing)}")
     status = fields.get("status")
-    if status not in ALLOWED_STATUSES:
-        errors.append(f"{relative}: frontmatter status {status!r} is not one of {sorted(ALLOWED_STATUSES)}")
+    accepted_statuses = allowed_statuses | {"template"}
+    if status not in accepted_statuses:
+        errors.append(
+            f"{relative}: frontmatter status {status!r} is not one of "
+            f"{sorted(accepted_statuses)}"
+        )
     elif expect_template and status != "template":
         errors.append(f"{relative}: template entry must use status: template, found {status!r}")
     elif not expect_template and status == "template":
@@ -143,7 +152,9 @@ def check_entry_frontmatter(
     return fields
 
 
-def check_fixed_category(project: Path, name: str, errors: list[str]) -> set[str]:
+def check_fixed_category(
+    project: Path, name: str, errors: list[str], *, allowed_statuses: set[str]
+) -> set[str]:
     category = project / name
     readme = category / "README.md"
     refs: set[str] = set()
@@ -160,17 +171,34 @@ def check_fixed_category(project: Path, name: str, errors: list[str]) -> set[str
     if template_doc.exists():
         # Optional per the convention: illustrates expected content, but nothing
         # copies it to create a new entry (a fixed category has no new entries).
-        check_entry_frontmatter(template_doc, project, errors, expect_template=True)
+        check_entry_frontmatter(
+            template_doc,
+            project,
+            errors,
+            expect_template=True,
+            allowed_statuses=allowed_statuses,
+        )
     for path in sorted(category.glob("*.md")):
         if path.name in NON_ENTRY_FILENAMES or path.name == "template.md":
             continue
-        check_entry_frontmatter(path, project, errors, expect_template=False)
+        check_entry_frontmatter(
+            path,
+            project,
+            errors,
+            expect_template=False,
+            allowed_statuses=allowed_statuses,
+        )
         refs.add(f"{name}/{path.stem}")
     return refs
 
 
 def check_document_collection_category(
-    project: Path, name: str, errors: list[str], *, numbered: bool
+    project: Path,
+    name: str,
+    errors: list[str],
+    *,
+    numbered: bool,
+    allowed_statuses: set[str],
 ) -> set[str]:
     category = project / name
     readme = category / "README.md"
@@ -182,7 +210,13 @@ def check_document_collection_category(
     if not template_doc.exists():
         errors.append(f"{name}/template.md: missing copyable template document")
     else:
-        check_entry_frontmatter(template_doc, project, errors, expect_template=True)
+        check_entry_frontmatter(
+            template_doc,
+            project,
+            errors,
+            expect_template=True,
+            allowed_statuses=allowed_statuses,
+        )
 
     pattern = NUMBERED_ENTRY_PATTERN if numbered else SLUG_ENTRY_PATTERN
     pattern_help = (
@@ -195,13 +229,24 @@ def check_document_collection_category(
             continue
         if not pattern.match(path.name):
             errors.append(f"{name}/{path.name}: entry filename must match {pattern_help}")
-        check_entry_frontmatter(path, project, errors, expect_template=False)
+        check_entry_frontmatter(
+            path,
+            project,
+            errors,
+            expect_template=False,
+            allowed_statuses=allowed_statuses,
+        )
         refs.add(f"{name}/{path.stem}")
     return refs
 
 
 def check_folder_collection_category(
-    project: Path, name: str, entry_files: list[str], errors: list[str]
+    project: Path,
+    name: str,
+    entry_files: list[str],
+    errors: list[str],
+    *,
+    allowed_statuses: set[str],
 ) -> set[str]:
     category = project / name
     readme = category / "README.md"
@@ -230,7 +275,13 @@ def check_folder_collection_category(
             if not required_path.exists():
                 errors.append(f"{name}/{entry.name}/{required}: missing")
             elif required.endswith(".md"):
-                check_entry_frontmatter(required_path, project, errors, expect_template=is_template)
+                check_entry_frontmatter(
+                    required_path,
+                    project,
+                    errors,
+                    expect_template=is_template,
+                    allowed_statuses=allowed_statuses,
+                )
         if not is_template:
             refs.add(f"{name}/{entry.name}")
     return refs
@@ -281,15 +332,47 @@ def check_typed_categories(project: Path, categories: dict, errors: list[str]) -
         if not (project / name).is_dir():
             errors.append(f"{name}/: declared category is missing")
             continue
+        configured_statuses = spec.get("statuses")
+        if configured_statuses is None:
+            allowed_statuses = ALLOWED_STATUSES - {"template"}
+        elif (
+            not isinstance(configured_statuses, list)
+            or not configured_statuses
+            or any(
+                not isinstance(status, str) or not status.strip()
+                for status in configured_statuses
+            )
+        ):
+            errors.append(
+                f"spec.json: categories.{name}.statuses must be a non-empty list "
+                "of status names"
+            )
+            allowed_statuses = ALLOWED_STATUSES - {"template"}
+        else:
+            allowed_statuses = set(configured_statuses) - {"template"}
         per_category.append((name, category_type))
         if category_type == "fixed":
-            known_refs |= check_fixed_category(project, name, errors)
+            known_refs |= check_fixed_category(
+                project, name, errors, allowed_statuses=allowed_statuses
+            )
         elif category_type == "document-collection":
             numbered = bool(spec.get("numbered", True))
-            known_refs |= check_document_collection_category(project, name, errors, numbered=numbered)
+            known_refs |= check_document_collection_category(
+                project,
+                name,
+                errors,
+                numbered=numbered,
+                allowed_statuses=allowed_statuses,
+            )
         elif category_type == "folder-collection":
             entry_files = spec.get("entry_files") or ["README.md"]
-            known_refs |= check_folder_collection_category(project, name, entry_files, errors)
+            known_refs |= check_folder_collection_category(
+                project,
+                name,
+                entry_files,
+                errors,
+                allowed_statuses=allowed_statuses,
+            )
 
     for name, category_type in per_category:
         check_references(project, name, category_type, errors, known_refs)
