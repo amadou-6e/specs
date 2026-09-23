@@ -1,5 +1,6 @@
 # Model objects
 
+<!-- BEGIN GENERATED: contained-elements -->
 ## Contained elements
 
 ```text
@@ -7,7 +8,7 @@ objects/
 ├── 1 README.md
 └── 0..* <domain>/ entries
 ```
-Objects define financial concepts without depending on Google Drive, Gmail, Notion, repository paths, or another storage system.
+<!-- END GENERATED: contained-elements -->
 
 ## Shared guarantees
 

@@ -14,4 +14,3 @@
 Unknown values remain null or unavailable; producers must not synthesize IDs, hashes, dates, recipients, or references. Gmail-native keys are `(mailbox_scope, gmail_message_id)`, `(mailbox_scope, gmail_thread_id)`, and `(mailbox_scope, gmail_message_id, gmail_attachment_id)`. Legacy `gmail:<message-id>` aliases are safe only in their documented single-mailbox scope. Derived `gmail:<message-id>:item:<ordinal>` identifies a repository candidate, not a Gmail object.
 
 A browser link is navigation metadata. Account slot, label, sender, subject, date, filename, RFC Message-ID, and hash are not Gmail message keys. Exact native keys deduplicate observations. Conflicting content under one key is blocking; byte-equal attachments in different messages remain distinct.
-

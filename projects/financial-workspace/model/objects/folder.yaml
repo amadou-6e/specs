@@ -1,0 +1,9 @@
+schema_version: 1
+name: objects
+kind: group
+purpose: "System-independent financial object domains"
+authority: "Economic meaning"
+owner: amadou-6e
+children:
+  - "1 README.md"
+  - "0..* <domain>/ entries"

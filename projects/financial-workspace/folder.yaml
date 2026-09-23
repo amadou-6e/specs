@@ -1,0 +1,15 @@
+schema_version: 1
+name: financial-workspace
+kind: project
+purpose: "Financial Workspace specification root"
+authority: "Project specification taxonomy"
+owner: amadou-6e
+children:
+  - "1 README.md"
+  - "1 SPECS.md"
+  - "1 spec.json"
+  - "1 model/"
+  - "1 processes/"
+  - "1 integrations/"
+  - "1 migrations/"
+  - "1 decisions/"

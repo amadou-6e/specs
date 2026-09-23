@@ -1,0 +1,10 @@
+schema_version: 1
+name: integrations
+kind: folder-collection
+purpose: "External-system integration contracts"
+authority: "Connector boundaries"
+owner: amadou-6e
+children:
+  - "1 README.md"
+  - "1 template/"
+  - "0..* <integration>/ entries"

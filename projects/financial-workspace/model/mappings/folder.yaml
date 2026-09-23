@@ -1,0 +1,9 @@
+schema_version: 1
+name: mappings
+kind: group
+purpose: "Mappings across objects and systems"
+authority: "Cross-system identity and authority"
+owner: amadou-6e
+children:
+  - "1 README.md"
+  - "0..* <mapping>/ entries"

@@ -13,22 +13,14 @@ related: []
 
 # Example financial process
 
+<!-- BEGIN GENERATED: contained-elements -->
 ## Contained elements
 
 ```text
-<process>/
+template/
 ├── 1 README.md
 ├── 1 workflow.md
 ├── 0..1 model-validation/
 └── 0..1 examples/
 ```
-This folder is copied and renamed for each repeatable workflow.
-
-```text
-<process>/
-|-- README.md    1
-|-- workflow.md  1
-`-- examples/   0..1
-```
-
-The README owns purpose, scope, triggers, inputs, outputs, identities, invariants, approval boundaries, completion criteria, and maintenance responsibility. `workflow.md` owns the decision flow and failure paths. `examples/` may contain small reviewed fixtures or diagrams; generated runs do not belong here.
+<!-- END GENERATED: contained-elements -->

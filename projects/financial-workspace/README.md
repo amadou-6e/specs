@@ -1,5 +1,6 @@
 # Financial Workspace
 
+<!-- BEGIN GENERATED: contained-elements -->
 ## Contained elements
 
 ```text
@@ -13,7 +14,7 @@ financial-workspace/
 ├── 1 migrations/
 └── 1 decisions/
 ```
-Status: Drive folder structure implemented; finance data model remains a discussion draft.
+<!-- END GENERATED: contained-elements -->
 
 ## Intent
 

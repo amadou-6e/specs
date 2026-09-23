@@ -1,0 +1,9 @@
+schema_version: 1
+name: systems
+kind: group
+purpose: "Concrete system representations"
+authority: "Native system semantics"
+owner: amadou-6e
+children:
+  - "1 README.md"
+  - "0..* <system>/ entries"

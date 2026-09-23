@@ -11,10 +11,11 @@ related: [model/mappings/cross-system]
 
 # Procurement
 
+<!-- BEGIN GENERATED: contained-elements -->
 ## Contained elements
 
 ```text
-<model-entry>/
+procurement/
 ├── 1 README.md
 ├── 1 structure.md
 ├── 1 schema.md or schema/
@@ -22,7 +23,7 @@ related: [model/mappings/cross-system]
 ├── 0..1 examples/
 └── 0..1 presentation/
 ```
-Owns orders, purchase items, merchants, commercial dates, returns, and merchant refunds.
+<!-- END GENERATED: contained-elements -->
 
 ## Owned concepts
 

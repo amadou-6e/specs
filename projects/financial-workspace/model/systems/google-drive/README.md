@@ -17,10 +17,11 @@ related:
 
 # Google Drive model
 
+<!-- BEGIN GENERATED: contained-elements -->
 ## Contained elements
 
 ```text
-<model-entry>/
+google-drive/
 ├── 1 README.md
 ├── 1 structure.md
 ├── 1 schema.md or schema/
@@ -28,7 +29,7 @@ related:
 ├── 0..1 examples/
 └── 0..1 presentation/
 ```
-This entry defines the Google Drive objects that preserve original financial evidence and workspace navigation. Drive owns native file and folder identity, current native metadata, access, and content; the repository owns reproducible catalogs, cached bytes, hashes, derived artifacts, exceptions, and process runs.
+<!-- END GENERATED: contained-elements -->
 
 ## Ownership and consumers
 

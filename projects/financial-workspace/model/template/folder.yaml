@@ -1,0 +1,13 @@
+schema_version: 1
+name: model-entry-template
+kind: entry-template
+purpose: "Common model entry relationship level"
+authority: "Model entry schema"
+owner: amadou-6e
+children:
+  - "1 README.md"
+  - "1 structure.md"
+  - "1 schema.md or schema/"
+  - "1 rules.md or rules/"
+  - "0..1 examples/"
+  - "0..1 presentation/"

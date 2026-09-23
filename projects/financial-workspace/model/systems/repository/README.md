@@ -19,10 +19,11 @@ related:
 
 # Repository model
 
+<!-- BEGIN GENERATED: contained-elements -->
 ## Contained elements
 
 ```text
-<model-entry>/
+repository/
 ├── 1 README.md
 ├── 1 structure.md
 ├── 1 schema.md or schema/
@@ -30,7 +31,7 @@ related:
 ├── 0..1 examples/
 └── 0..1 presentation/
 ```
-This entry defines the private repository as owner of versioned financial representations, executable reconstruction logic, reviewed decisions, and reproducibility evidence. Drive owns original files, Gmail owns original messages and attachments, Notion owns native pages and views, and the financial object models owns financial meaning.
+<!-- END GENERATED: contained-elements -->
 
 ## Ownership and consumers
 

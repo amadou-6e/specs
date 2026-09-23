@@ -11,10 +11,11 @@ related: [model/mappings/cross-system]
 
 # Reconciliation
 
+<!-- BEGIN GENERATED: contained-elements -->
 ## Contained elements
 
 ```text
-<model-entry>/
+reconciliation/
 ├── 1 README.md
 ├── 1 structure.md
 ├── 1 schema.md or schema/
@@ -22,7 +23,7 @@ related: [model/mappings/cross-system]
 ├── 0..1 examples/
 └── 0..1 presentation/
 ```
-Owns candidate and reviewed links, monetary allocations, matching decisions, ambiguity, and exceptions.
+<!-- END GENERATED: contained-elements -->
 
 ## Owned concepts
 

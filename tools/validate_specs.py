@@ -70,6 +70,203 @@ def files() -> list[Path]:
     return discovered
 
 
+FOLDER_CONTRACT_FIELDS = {
+    "schema_version", "name", "kind", "purpose", "authority", "owner", "children",
+}
+GENERATED_START = "<!-- BEGIN GENERATED: contained-elements -->"
+GENERATED_END = "<!-- END GENERATED: contained-elements -->"
+CHILD_SPEC = re.compile(r'^(1|0\.\.1|0\.\.\*)\s+(.+)$')
+
+
+def parse_folder_contract(path: Path, errors: list[str]) -> dict[str, object] | None:
+    """Parse the intentionally small folder.yaml subset: scalars plus a children list."""
+    try:
+        lines = path.read_text(encoding="utf-8").splitlines()
+    except (OSError, UnicodeDecodeError) as exc:
+        errors.append(f"{path.relative_to(ROOT)}: unreadable folder contract: {exc}")
+        return None
+    data: dict[str, object] = {}
+    index = 0
+    while index < len(lines):
+        raw = lines[index]
+        if not raw.strip() or raw.lstrip().startswith("#"):
+            index += 1
+            continue
+        if raw[:1].isspace() or ":" not in raw:
+            errors.append(f"{path.relative_to(ROOT)}:{index + 1}: invalid folder.yaml syntax")
+            return None
+        key, value = raw.split(":", 1)
+        key, value = key.strip(), value.strip()
+        if key == "children":
+            children: list[str] = []
+            index += 1
+            while index < len(lines) and (not lines[index].strip() or lines[index][:1].isspace()):
+                item = lines[index].strip()
+                if item:
+                    if not item.startswith("- "):
+                        errors.append(f"{path.relative_to(ROOT)}:{index + 1}: children must be list items")
+                        return None
+                    children.append(item[2:].strip().strip("'\""))
+                index += 1
+            data[key] = children
+            continue
+        data[key] = value.strip("'\"")
+        index += 1
+    missing = FOLDER_CONTRACT_FIELDS - data.keys()
+    if missing:
+        errors.append(f"{path.relative_to(ROOT)}: missing folder metadata {sorted(missing)}")
+    if data.get("schema_version") != "1":
+        errors.append(f"{path.relative_to(ROOT)}: schema_version must be 1")
+    children = data.get("children")
+    if not isinstance(children, list) or not children:
+        errors.append(f"{path.relative_to(ROOT)}: children must be a non-empty list")
+    else:
+        for child in children:
+            if CHILD_SPEC.match(child) is None:
+                errors.append(
+                    f"{path.relative_to(ROOT)}: child {child!r} must start with 1, 0..1, or 0..*"
+                )
+    return data
+
+
+def render_contained_elements(folder_name: str, contract: dict[str, object]) -> str:
+    children = contract["children"]
+    lines = [f"{folder_name}/"]
+    for index, child in enumerate(children):
+        connector = "└──" if index == len(children) - 1 else "├──"
+        lines.append(f"{connector} {child}")
+    tree = "\n".join(lines)
+    return (
+        f"{GENERATED_START}\n"
+        "## Contained elements\n\n"
+        f"```text\n{tree}\n```\n"
+        f"{GENERATED_END}"
+    )
+
+
+def sync_contained_elements(
+    readme: Path,
+    contract: dict[str, object],
+    display_name: str,
+    errors: list[str],
+    *,
+    write: bool,
+) -> None:
+    if not readme.exists():
+        errors.append(f"{readme.relative_to(ROOT)}: missing README for folder contract")
+        return
+    text = readme.read_text(encoding="utf-8-sig")
+    generated = render_contained_elements(display_name, contract)
+    if GENERATED_START in text or GENERATED_END in text:
+        if text.count(GENERATED_START) != 1 or text.count(GENERATED_END) != 1:
+            errors.append(f"{readme.relative_to(ROOT)}: malformed generated contained-elements markers")
+            return
+        start = text.index(GENERATED_START)
+        end = text.index(GENERATED_END, start) + len(GENERATED_END)
+        updated = text[:start] + generated + text[end:]
+    else:
+        heading = CONTAINED_ELEMENTS_HEADING.search(text)
+        if heading:
+            tail = text[heading.end():]
+            next_heading = re.search(r"^## ", tail, re.MULTILINE)
+            end = heading.end() + (next_heading.start() if next_heading else len(tail))
+            updated = text[:heading.start()] + generated + "\n\n" + text[end:].lstrip("\n")
+        else:
+            h1 = re.search(r"^# [^\n]+$", text, re.MULTILINE)
+            if h1 is None:
+                errors.append(f"{readme.relative_to(ROOT)}: cannot place generated contained-elements section")
+                return
+            updated = text[:h1.end()] + "\n\n" + generated + "\n" + text[h1.end():].lstrip("\n")
+    if updated != text:
+        if write:
+            readme.write_text(updated, encoding="utf-8")
+        else:
+            errors.append(f"{readme.relative_to(ROOT)}: generated contained-elements section is stale")
+
+
+def validate_contract_children(
+    folder: Path, contract: dict[str, object], errors: list[str]
+) -> None:
+    for spec in contract.get("children", []):
+        match = CHILD_SPEC.match(spec)
+        if match is None:
+            continue
+        cardinality, display = match.groups()
+        # Placeholder children describe a repeatable class, not one literal path.
+        if "<" in display and ">" in display:
+            continue
+        label = re.sub(r"\s+#.*$", "", display).strip()
+        alternatives = [part.strip() for part in re.split(r"\s+or\s+|\|", label)]
+        paths = [folder / item.rstrip("/") for item in alternatives]
+        existing = [path for path in paths if path.exists()]
+        if cardinality == "1" and len(existing) != 1:
+            errors.append(
+                f"{folder.relative_to(ROOT)}/folder.yaml: requires exactly one of {alternatives}"
+            )
+        if cardinality == "0..1" and len(existing) > 1:
+            errors.append(
+                f"{folder.relative_to(ROOT)}/folder.yaml: permits at most one of {alternatives}"
+            )
+        for path in existing:
+            if path.is_dir() and path.name != "template" and not (path / "folder.yaml").exists():
+                errors.append(
+                    f"{path.relative_to(ROOT)}/folder.yaml: nested folder must define its own relationship level"
+                )
+
+
+def sync_recursive_folder_contracts(
+    project: Path, categories: dict, errors: list[str], *, write: bool
+) -> None:
+    required_contracts = [project]
+    inherited_entries: list[tuple[Path, Path]] = []
+    for name, spec in categories.items():
+        category = project / name
+        required_contracts.append(category)
+        category_type = spec.get("type") if isinstance(spec, dict) else None
+        groups = spec.get("groups") if isinstance(spec, dict) else None
+        if category_type == "folder-collection":
+            template = category / "template"
+            required_contracts.append(template)
+            if groups:
+                for group_name in groups:
+                    group = category / group_name
+                    required_contracts.append(group)
+                    for entry in group.iterdir() if group.exists() else []:
+                        if entry.is_dir():
+                            inherited_entries.append((entry, template))
+            else:
+                for entry in category.iterdir() if category.exists() else []:
+                    if entry.is_dir() and entry.name != "template":
+                        inherited_entries.append((entry, template))
+
+    seen: set[Path] = set()
+    # Explicit contracts include required structural folders and nested subfolders.
+    explicit_files = set(project.rglob("folder.yaml"))
+    for folder in required_contracts:
+        contract_path = folder / "folder.yaml"
+        if not contract_path.exists():
+            errors.append(f"{contract_path.relative_to(ROOT)}: missing recursive folder contract")
+            continue
+        explicit_files.add(contract_path)
+    for contract_path in sorted(explicit_files):
+        contract = parse_folder_contract(contract_path, errors)
+        if contract is None or "children" not in contract:
+            continue
+        folder = contract_path.parent
+        seen.add(folder.resolve())
+        sync_contained_elements(folder / "README.md", contract, folder.name, errors, write=write)
+        validate_contract_children(folder, contract, errors)
+
+    for entry, template in inherited_entries:
+        if entry.resolve() in seen:
+            continue
+        template_contract = parse_folder_contract(template / "folder.yaml", errors)
+        if template_contract is None or "children" not in template_contract:
+            continue
+        sync_contained_elements(entry / "README.md", template_contract, entry.name, errors, write=write)
+        validate_contract_children(entry, template_contract, errors)
+
+
 def validate_manifest(project: Path, errors: list[str]) -> None:
     manifest_path = project / "spec.json"
     if not manifest_path.exists():
@@ -482,6 +679,10 @@ def main() -> int:
                 manifest = {}
             categories = manifest.get("categories")
             if isinstance(categories, dict):
+                write_contracts = "--check" not in sys.argv
+                sync_recursive_folder_contracts(
+                    project, categories, errors, write=write_contracts
+                )
                 check_typed_categories(project, categories, errors)
 
     for path in all_files:

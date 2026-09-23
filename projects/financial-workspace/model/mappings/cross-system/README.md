@@ -21,10 +21,11 @@ related:
 
 # Cross-system financial workspace model
 
+<!-- BEGIN GENERATED: contained-elements -->
 ## Contained elements
 
 ```text
-<model-entry>/
+cross-system/
 ├── 1 README.md
 ├── 1 structure.md
 ├── 1 schema.md or schema/
@@ -32,7 +33,7 @@ related:
 ├── 0..1 examples/
 └── 0..1 presentation/
 ```
-This entry owns mappings that let one financial fact move between the repository, Google Drive, Gmail, and Notion without losing identity, provenance, cardinality, or review state. Each linked model remains authoritative for its records and native identifiers.
+<!-- END GENERATED: contained-elements -->
 
 ## Ownership and consumers
 

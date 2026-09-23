@@ -1,0 +1,10 @@
+schema_version: 1
+name: migrations
+kind: document-collection
+purpose: "Bounded specification migrations"
+authority: "Migration records"
+owner: amadou-6e
+children:
+  - "1 README.md"
+  - "1 template.md"
+  - "0..* <NNNN>-<slug>.md entries"

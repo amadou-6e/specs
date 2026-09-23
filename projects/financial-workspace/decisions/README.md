@@ -18,6 +18,7 @@ document explaining why a durable choice was made — for example a concrete sto
 schema, or tooling choice that the [architecture](../model/README.md)
 documents don't need to justify in place.
 
+<!-- BEGIN GENERATED: contained-elements -->
 ## Contained elements
 
 ```text
@@ -26,6 +27,7 @@ decisions/
 ├── 1 template.md
 └── 0..* <NNNN>-<slug>.md entries
 ```
+<!-- END GENERATED: contained-elements -->
 
 ## Entries
 

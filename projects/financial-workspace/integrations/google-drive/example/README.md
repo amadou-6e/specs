@@ -1,5 +1,14 @@
 # Finance Drive folder example
 
+<!-- BEGIN GENERATED: contained-elements -->
+## Contained elements
+
+```text
+example/
+├── 1 README.md
+└── 0..* <example-file> files
+```
+<!-- END GENERATED: contained-elements -->
 This folder demonstrates the proposed Google Drive structure.
 
 Representative original PDFs were copied into the local example during drafting, but they are intentionally excluded from the specs repository and PR. The committed specification uses the proposed filenames and verified Drive links without publishing source documents. Generated JSON, CSV, XLSX, extracted text, Markdown reports, reconciliation outputs, and Notion exports are also outside this example.

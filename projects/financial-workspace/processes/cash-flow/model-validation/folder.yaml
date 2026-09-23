@@ -1,0 +1,9 @@
+schema_version: 1
+name: model-validation
+kind: document-collection
+purpose: "Cash-flow model validation records"
+authority: "Process validation evidence"
+owner: amadou-6e
+children:
+  - "1 README.md"
+  - "0..* <model>.md validations"

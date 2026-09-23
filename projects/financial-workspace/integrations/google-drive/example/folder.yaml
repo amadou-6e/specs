@@ -1,0 +1,9 @@
+schema_version: 1
+name: example
+kind: example-collection
+purpose: "Representative Google Drive material"
+authority: "Non-authoritative examples"
+owner: amadou-6e
+children:
+  - "1 README.md"
+  - "0..* <example-file> files"

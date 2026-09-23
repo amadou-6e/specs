@@ -1,0 +1,11 @@
+schema_version: 1
+name: process-entry-template
+kind: entry-template
+purpose: "Common process entry relationship level"
+authority: "Process entry schema"
+owner: amadou-6e
+children:
+  - "1 README.md"
+  - "1 workflow.md"
+  - "0..1 model-validation/"
+  - "0..1 examples/"

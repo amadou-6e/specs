@@ -77,6 +77,49 @@ container contract, but a template's `README.md` must state the cardinality of t
 elements *inside* the entry it demonstrates, since that is the schema every copy of
 it will follow.
 
+## Recursive folder contracts
+
+Every managed container has a `folder.yaml` that defines only its immediate relationship level. The required fields are `schema_version`, `name`, `kind`, `purpose`, `authority`, `owner`, and a non-empty `children` list. Each child declaration begins with `1`, `0..1`, or `0..*` and then names one immediate file, folder, alternative, or placeholder class.
+
+```yaml
+schema_version: 1
+name: processes
+kind: folder-collection
+purpose: "Repeatable financial workflows"
+authority: "Process definitions"
+owner: financial-workspace
+children:
+  - "1 README.md"
+  - "1 template/"
+  - "0..* <process>/ entries"
+```
+
+A collection does not define the files inside an entry. Its `template/folder.yaml` defines that entry relationship level. Each nested folder named by the template defines its own children in its own `folder.yaml`. Real entry folders inherit the template contract; they do not copy and then independently drift from it. The complete hierarchy is composed recursively from these local contracts:
+
+```text
+financial-workspace/folder.yaml
+└── processes/folder.yaml
+    ├── template/folder.yaml          # shape inherited by each <process>/ entry
+    └── <process>/
+        └── model-validation/folder.yaml
+```
+
+The repository validator renders each local contract into its folder's README between protected markers. Placeholder entry classes remain summarized as many; the generator does not enumerate their current instances.
+
+``~~~~markdown
+<!-- BEGIN GENERATED: contained-elements -->
+## Contained elements
+
+```text
+processes/
+├── 1 README.md
+├── 1 template/
+└── 0..* <process>/ entries
+```
+<!-- END GENERATED: contained-elements -->
+~~~~``
+
+`python tools/validate_specs.py` synchronizes generated sections and then validates the result. `python tools/validate_specs.py --check` performs the same validation without writing and fails when a generated section is stale. Authors edit `folder.yaml`, not the protected Markdown region.
 ## Metadata frontmatter
 
 Every entry (not bare containers) opens with a short YAML frontmatter block, using

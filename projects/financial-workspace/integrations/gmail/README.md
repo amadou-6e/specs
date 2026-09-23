@@ -11,6 +11,7 @@ related: []
 
 # Gmail integration checks
 
+<!-- BEGIN GENERATED: contained-elements -->
 ## Contained elements
 
 ```text
@@ -19,6 +20,4 @@ gmail/
 ├── 0..1 model-validation.md
 └── 0..1 example/
 ```
-This entry retains local verification requirements and dated results for the [model](../../model/systems/gmail/README.md). It does not claim a new connector implementation.
-
-- [Model validation](model-validation.md)
+<!-- END GENERATED: contained-elements -->

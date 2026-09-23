@@ -12,4 +12,3 @@
 | Canonical record | Domain ID from domain or cross-system contract | Provider references |
 
 A source record requires provider ID, SHA-256, byte size, source type, current and cache locators, availability, and coverage with an explicit basis. Unknown coverage dates remain null. SHA-256 proves byte equality, not provider-object identity.
-

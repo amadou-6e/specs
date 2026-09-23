@@ -11,10 +11,11 @@ related: [model/mappings/cross-system, model/objects/evidence, model/objects/rec
 
 # Notion model
 
+<!-- BEGIN GENERATED: contained-elements -->
 ## Contained elements
 
 ```text
-<model-entry>/
+notion/
 ├── 1 README.md
 ├── 1 structure.md
 ├── 1 schema.md or schema/
@@ -22,7 +23,7 @@ related: [model/mappings/cross-system, model/objects/evidence, model/objects/rec
 ├── 0..1 examples/
 └── 0..1 presentation/
 ```
-This entry owns Financial Workspace objects native to Notion: workspace pages, database containers, data sources, views, row pages, properties, formulas, relations, rollups, charts, and presentation configuration. Financial meaning belongs to the [financial object models](../../objects/README.md); canonical records and run artifacts belong to the repository model; handoffs and crosswalks belong to the [cross-system model](../../mappings/cross-system/README.md).
+<!-- END GENERATED: contained-elements -->
 
 ## Consumers and guarantees
 
