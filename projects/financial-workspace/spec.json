@@ -3,5 +3,9 @@
   "slug": "financial-workspace",
   "source_repository": "https://github.com/amadou-6e/financial-workspace",
   "status": "active",
-  "description": ""
+  "description": "",
+  "categories": {
+    "architecture": { "type": "fixed" },
+    "decisions": { "type": "document-collection" }
+  }
 }
