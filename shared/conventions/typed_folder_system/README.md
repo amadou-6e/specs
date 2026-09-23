@@ -104,6 +104,19 @@ financial-workspace/metadata.yaml
         └── model-validation/metadata.yaml
 ```
 
+A folder may opt out of recursive type checking only when it is a temporary data dump. Its `metadata.yaml` must declare all three markers: `type_check: exclude`, `kind: tmp-data-dump`, and `temporary: true`. Excluded dumps may contain arbitrary transient files and do not require a README or `children` contract. Project roots, declared categories, groups, and templates cannot be excluded. Permanent evidence, fixtures, examples, archives, and ordinary working folders must use normal recursive metadata rather than this exception.
+
+```yaml
+schema_version: 1
+name: parser-scratch
+authority: "None; disposable diagnostic output"
+kind: tmp-data-dump
+purpose: "Temporary parser diagnostics"
+owner: financial-workspace
+type_check: exclude
+temporary: true
+```
+
 The repository validator renders each local contract into its folder's README between protected markers. Placeholder entry classes remain summarized as many; the generator does not enumerate their current instances.
 
 ``~~~~markdown

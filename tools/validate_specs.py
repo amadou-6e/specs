@@ -73,6 +73,9 @@ def files() -> list[Path]:
 FOLDER_CONTRACT_FIELDS = {
     "schema_version", "name", "kind", "purpose", "authority", "owner", "children",
 }
+EXCLUDED_DUMP_FIELDS = {
+    "schema_version", "name", "kind", "purpose", "owner", "type_check", "temporary",
+}
 GENERATED_START = "<!-- BEGIN GENERATED: contained-elements -->"
 GENERATED_END = "<!-- END GENERATED: contained-elements -->"
 CHILD_SPEC = re.compile(r'^(1|0\.\.1|0\.\.\*)\s+(.+)$')
@@ -81,7 +84,7 @@ CHILD_SPEC = re.compile(r'^(1|0\.\.1|0\.\.\*)\s+(.+)$')
 def parse_folder_contract(path: Path, errors: list[str]) -> dict[str, object] | None:
     """Parse the intentionally small metadata.yaml subset: scalars plus a children list."""
     try:
-        lines = path.read_text(encoding="utf-8").splitlines()
+        lines = path.read_text(encoding="utf-8-sig").splitlines()
     except (OSError, UnicodeDecodeError) as exc:
         errors.append(f"{path.relative_to(ROOT)}: unreadable folder contract: {exc}")
         return None
@@ -112,6 +115,23 @@ def parse_folder_contract(path: Path, errors: list[str]) -> dict[str, object] | 
             continue
         data[key] = value.strip("'\"")
         index += 1
+    if data.get("type_check") == "exclude":
+        missing = EXCLUDED_DUMP_FIELDS - data.keys()
+        if missing:
+            errors.append(
+                f"{path.relative_to(ROOT)}: excluded dump metadata missing {sorted(missing)}"
+            )
+        if data.get("kind") != "tmp-data-dump" or data.get("temporary") != "true":
+            errors.append(
+                f"{path.relative_to(ROOT)}: type_check exclusion is permitted only for "
+                "kind: tmp-data-dump with temporary: true"
+            )
+        data["_type_check_excluded"] = True
+        return data
+    if "type_check" in data and data.get("type_check") != "include":
+        errors.append(
+            f"{path.relative_to(ROOT)}: type_check must be include or exclude"
+        )
     missing = FOLDER_CONTRACT_FIELDS - data.keys()
     if missing:
         errors.append(f"{path.relative_to(ROOT)}: missing folder metadata {sorted(missing)}")
@@ -240,6 +260,7 @@ def sync_recursive_folder_contracts(
                         inherited_entries.append((entry, template))
 
     seen: set[Path] = set()
+    required_resolved = {folder.resolve() for folder in required_contracts}
     # Explicit contracts include required structural folders and nested subfolders.
     explicit_files = set(project.rglob("metadata.yaml"))
     for folder in required_contracts:
@@ -254,6 +275,12 @@ def sync_recursive_folder_contracts(
             continue
         folder = contract_path.parent
         seen.add(folder.resolve())
+        if contract.get("_type_check_excluded"):
+            if folder.resolve() in required_resolved:
+                errors.append(
+                    f"{contract_path.relative_to(ROOT)}: structural folders cannot be excluded from type checking"
+                )
+            continue
         sync_contained_elements(folder / "README.md", contract, folder.name, errors, write=write)
         validate_contract_children(folder, contract, errors)
 
