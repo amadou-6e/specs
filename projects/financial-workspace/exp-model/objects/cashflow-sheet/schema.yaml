@@ -1,43 +1,35 @@
-{
-  "schema_version": 2,
-  "object": "cashflow-sheet",
-  "identity_field": "sheet_id",
-  "fields": {
-    "sheet_id": {
-      "type": "string",
-      "required": true,
-      "nullable": false,
-      "description": "Persistent internal identity; not a display name."
-    },
-    "workspace_id": {
-      "type": "string",
-      "required": true,
-      "nullable": false
-    },
-    "database_id": {
-      "type": "string",
-      "required": true,
-      "nullable": false
-    },
-    "data_source_id": {
-      "type": "string",
-      "required": true,
-      "nullable": false
-    },
-    "schema_version": {
-      "type": "string",
-      "required": true,
-      "nullable": false
-    },
-    "view_configuration": {
-      "type": "object",
-      "required": false,
-      "nullable": true
-    }
-  },
-  "constraints": [
-    "Required fields apply to accepted canonical records; incomplete extractions remain candidates.",
-    "Unknown optional values are null; no invented defaults."
-  ],
-  "validation_scope": "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."
-}
+schema_version: 2
+object: "cashflow-sheet"
+identity_field: "sheet_id"
+primary_key:
+  sheet_id:
+    type: "string"
+    required: true
+    nullable: false
+    description: "Persistent internal identity; not a display name."
+foreign_keys: {}
+fields:
+  workspace_id:
+    type: "string"
+    required: true
+    nullable: false
+  database_id:
+    type: "string"
+    required: true
+    nullable: false
+  data_source_id:
+    type: "string"
+    required: true
+    nullable: false
+  schema_version:
+    type: "string"
+    required: true
+    nullable: false
+  view_configuration:
+    type: "object"
+    required: false
+    nullable: true
+constraints:
+  - "Required fields apply to accepted canonical records; incomplete extractions remain candidates."
+  - "Unknown optional values are null; no invented defaults."
+validation_scope: "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."

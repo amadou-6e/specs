@@ -15,4 +15,4 @@ Define one identifiable object: meaning and boundary, stable identity, fields, g
 
 ## Required semantic metadata
 
-Object metadata must declare purpose, includes, excludes, identity_field, schema_ref, graph_ref, relationship_ids, representations, evidence_forms, provenance_ref, mapping_refs and maturity. Direct representations and supporting evidence are distinct. Empty association lists must be explicit. Schema fields require type, requiredness and null policy.
+Object metadata must declare purpose, includes, excludes, identity_field, schema_ref, graph_ref, relationship_ids, representations, evidence_forms, provenance_ref, mapping_refs and maturity. Direct representations and supporting evidence are distinct. Empty association lists must be explicit. Schema files use readable YAML. Put the single identity field under primary_key, every ref/ref[] field under foreign_keys, and all remaining attributes under fields. Every field requires type, requiredness and null policy; the schema owns these definitions and constraints.

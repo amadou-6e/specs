@@ -1,55 +1,46 @@
-{
-  "schema_version": 2,
-  "object": "commitment-term",
-  "identity_field": "term_id",
-  "fields": {
-    "term_id": {
-      "type": "string",
-      "required": true,
-      "nullable": false,
-      "description": "Persistent Commitment term identity."
-    },
-    "commitment_id": {
-      "type": "ref",
-      "required": true,
-      "nullable": false,
-      "target": "recurring-commitment"
-    },
-    "effective_start": {
-      "type": "date",
-      "required": true,
-      "nullable": false,
-      "format": "YYYY-MM-DD"
-    },
-    "effective_end": {
-      "type": "date",
-      "required": false,
-      "nullable": true,
-      "format": "YYYY-MM-DD"
-    },
-    "amount": {
-      "type": "decimal",
-      "required": true,
-      "nullable": false,
-      "encoding": "decimal-string",
-      "pattern": "^-?\\d+(\\.\\d+)?$"
-    },
-    "currency": {
-      "type": "string",
-      "required": true,
-      "nullable": false
-    },
-    "cadence": {
-      "type": "string",
-      "required": true,
-      "nullable": false
-    }
-  },
-  "constraints": [
-    "Each Commitment term belongs to exactly one Recurring commitment.",
-    "An commitment may have no Commitment term records.",
-    "effective_end, when supplied, must not precede effective_start.",
-    "Preserve evidence and reviewed corrections; do not invent terms for incomplete commitments."
-  ],
-  "validation_scope": "Typed specification contract; temporal and evidence constraints require review."
-}
+schema_version: 2
+object: "commitment-term"
+identity_field: "term_id"
+primary_key:
+  term_id:
+    type: "string"
+    required: true
+    nullable: false
+    description: "Persistent Commitment term identity."
+foreign_keys:
+  commitment_id:
+    type: "ref"
+    required: true
+    nullable: false
+    target: "recurring-commitment"
+fields:
+  effective_start:
+    type: "date"
+    required: true
+    nullable: false
+    format: "YYYY-MM-DD"
+  effective_end:
+    type: "date"
+    required: false
+    nullable: true
+    format: "YYYY-MM-DD"
+  amount:
+    type: "decimal"
+    required: true
+    nullable: false
+    encoding: "decimal-string"
+    pattern: "^-?\\d+(\\.\\d+)?$"
+  currency:
+    type: "string"
+    required: true
+    nullable: false
+  cadence:
+    type: "string"
+    required: true
+    nullable: false
+constraints:
+  - "Each Commitment term belongs to exactly one Recurring commitment."
+  - "An commitment may have no Commitment term records."
+  - "effective_end, when supplied, must not precede effective_start."
+  - "Preserve evidence and reviewed corrections; do not invent terms for incomplete commitments."
+validation_scope: "Typed specification contract; temporal and evidence constraints require review."

@@ -1,54 +1,45 @@
-{
-  "schema_version": 2,
-  "object": "payment-occurrence",
-  "identity_field": "occurrence_id",
-  "fields": {
-    "occurrence_id": {
-      "type": "string",
-      "required": true,
-      "nullable": false,
-      "description": "Persistent internal identity; not a display name."
-    },
-    "commitment_id": {
-      "type": "ref",
-      "required": true,
-      "nullable": false,
-      "target": "recurring-commitment"
-    },
-    "period": {
-      "type": "string",
-      "required": false,
-      "nullable": true
-    },
-    "due_date": {
-      "type": "date",
-      "required": false,
-      "nullable": true,
-      "format": "YYYY-MM-DD"
-    },
-    "expected_amount": {
-      "type": "decimal",
-      "required": false,
-      "nullable": true,
-      "encoding": "decimal-string",
-      "pattern": "^-?\\d+(\\.\\d+)?$"
-    },
-    "currency": {
-      "type": "string",
-      "required": false,
-      "nullable": true
-    },
-    "settlement_state": {
-      "type": "string",
-      "required": false,
-      "nullable": true
-    }
-  },
-  "constraints": [
-    "Required fields apply to accepted canonical records; incomplete extractions remain candidates.",
-    "Unknown optional values are null; no invented defaults.",
-    "If expected_amount is supplied, currency must be supplied.",
-    "At least one of period or due_date is required."
-  ],
-  "validation_scope": "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."
-}
+schema_version: 2
+object: "payment-occurrence"
+identity_field: "occurrence_id"
+primary_key:
+  occurrence_id:
+    type: "string"
+    required: true
+    nullable: false
+    description: "Persistent internal identity; not a display name."
+foreign_keys:
+  commitment_id:
+    type: "ref"
+    required: true
+    nullable: false
+    target: "recurring-commitment"
+fields:
+  period:
+    type: "string"
+    required: false
+    nullable: true
+  due_date:
+    type: "date"
+    required: false
+    nullable: true
+    format: "YYYY-MM-DD"
+  expected_amount:
+    type: "decimal"
+    required: false
+    nullable: true
+    encoding: "decimal-string"
+    pattern: "^-?\\d+(\\.\\d+)?$"
+  currency:
+    type: "string"
+    required: false
+    nullable: true
+  settlement_state:
+    type: "string"
+    required: false
+    nullable: true
+constraints:
+  - "Required fields apply to accepted canonical records; incomplete extractions remain candidates."
+  - "Unknown optional values are null; no invented defaults."
+  - "If expected_amount is supplied, currency must be supplied."
+  - "At least one of period or due_date is required."
+validation_scope: "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."

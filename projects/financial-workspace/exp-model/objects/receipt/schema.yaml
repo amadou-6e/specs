@@ -1,78 +1,65 @@
-{
-  "schema_version": 2,
-  "object": "receipt",
-  "identity_field": "receipt_id",
-  "fields": {
-    "receipt_id": {
-      "type": "string",
-      "required": true,
-      "nullable": false,
-      "description": "Persistent internal identity; not a display name."
-    },
-    "document_kind": {
-      "type": "string",
-      "required": true,
-      "nullable": false,
-      "enum": [
-        "order-confirmation",
-        "invoice",
-        "paid-receipt",
-        "refund-confirmation",
-        "booking-confirmation"
-      ]
-    },
-    "representation_ids": {
-      "type": "ref[]",
-      "required": true,
-      "nullable": false,
-      "min_items": 1,
-      "target": "source-representation"
-    },
-    "issuer": {
-      "type": "string",
-      "required": false,
-      "nullable": true
-    },
-    "document_reference": {
-      "type": "string",
-      "required": false,
-      "nullable": true
-    },
-    "order_reference": {
-      "type": "string",
-      "required": false,
-      "nullable": true
-    },
-    "issue_date": {
-      "type": "date",
-      "required": false,
-      "nullable": true,
-      "format": "YYYY-MM-DD"
-    },
-    "item_descriptions": {
-      "type": "string[]",
-      "required": false,
-      "nullable": true,
-      "min_items": 0
-    },
-    "total": {
-      "type": "decimal",
-      "required": false,
-      "nullable": true,
-      "encoding": "decimal-string",
-      "pattern": "^-?\\d+(\\.\\d+)?$"
-    },
-    "currency": {
-      "type": "string",
-      "required": false,
-      "nullable": true
-    }
-  },
-  "constraints": [
-    "Required fields apply to accepted canonical records; incomplete extractions remain candidates.",
-    "Unknown optional values are null; no invented defaults.",
-    "If total is supplied, currency must be supplied.",
-    "Document kind or format alone does not establish a booked payment."
-  ],
-  "validation_scope": "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."
-}
+schema_version: 2
+object: "receipt"
+identity_field: "receipt_id"
+primary_key:
+  receipt_id:
+    type: "string"
+    required: true
+    nullable: false
+    description: "Persistent internal identity; not a display name."
+foreign_keys:
+  representation_ids:
+    type: "ref[]"
+    required: true
+    nullable: false
+    min_items: 1
+    target: "source-representation"
+fields:
+  document_kind:
+    type: "string"
+    required: true
+    nullable: false
+    enum:
+      - "order-confirmation"
+      - "invoice"
+      - "paid-receipt"
+      - "refund-confirmation"
+      - "booking-confirmation"
+  issuer:
+    type: "string"
+    required: false
+    nullable: true
+  document_reference:
+    type: "string"
+    required: false
+    nullable: true
+  order_reference:
+    type: "string"
+    required: false
+    nullable: true
+  issue_date:
+    type: "date"
+    required: false
+    nullable: true
+    format: "YYYY-MM-DD"
+  item_descriptions:
+    type: "string[]"
+    required: false
+    nullable: true
+    min_items: 0
+  total:
+    type: "decimal"
+    required: false
+    nullable: true
+    encoding: "decimal-string"
+    pattern: "^-?\\d+(\\.\\d+)?$"
+  currency:
+    type: "string"
+    required: false
+    nullable: true
+constraints:
+  - "Required fields apply to accepted canonical records; incomplete extractions remain candidates."
+  - "Unknown optional values are null; no invented defaults."
+  - "If total is supplied, currency must be supplied."
+  - "Document kind or format alone does not establish a booked payment."
+validation_scope: "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."

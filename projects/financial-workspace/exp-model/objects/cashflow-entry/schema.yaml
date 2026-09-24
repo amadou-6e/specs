@@ -1,225 +1,187 @@
-{
-  "schema_version": 2,
-  "object": "cashflow-entry",
-  "identity_field": "entry_id",
-  "fields": {
-    "entry_id": {
-      "type": "string",
-      "required": true,
-      "nullable": false,
-      "description": "Persistent internal identity; not a display name."
-    },
-    "sheet_id": {
-      "type": "ref",
-      "required": true,
-      "nullable": false,
-      "target": "cashflow-sheet"
-    },
-    "transaction_id": {
-      "type": "ref",
-      "required": true,
-      "nullable": false,
-      "target": "transaction"
-    },
-    "name": {
-      "type": "string",
-      "required": false,
-      "nullable": true
-    },
-    "booking_date": {
-      "type": "date",
-      "required": true,
-      "nullable": false,
-      "format": "YYYY-MM-DD"
-    },
-    "amount": {
-      "type": "decimal",
-      "required": true,
-      "nullable": false,
-      "encoding": "decimal-string",
-      "pattern": "^-?\\d+(\\.\\d+)?$"
-    },
-    "currency": {
-      "type": "string",
-      "required": true,
-      "nullable": false
-    },
-    "account_id": {
-      "type": "ref",
-      "required": true,
-      "nullable": false,
-      "target": "account"
-    },
-    "institution_id": {
-      "type": "ref",
-      "required": true,
-      "nullable": false,
-      "target": "financial-institution"
-    },
-    "counterparty": {
-      "type": "string",
-      "required": false,
-      "nullable": true
-    },
-    "reference": {
-      "type": "string",
-      "required": false,
-      "nullable": true
-    },
-    "type": {
-      "type": "string",
-      "required": true,
-      "nullable": false,
-      "enum": [
-        "income",
-        "expense",
-        "refund",
-        "transfer",
-        "other",
-        "unknown"
-      ]
-    },
-    "expense_category": {
-      "type": "string",
-      "required": true,
-      "nullable": false,
-      "enum": [
-        "procurement",
-        "recurring-expense",
-        "other",
-        "unclassified",
-        "mixed"
-      ]
-    },
-    "purchase_category": {
-      "type": "string",
-      "required": false,
-      "nullable": true
-    },
-    "personal_work": {
-      "type": "string",
-      "required": true,
-      "nullable": false,
-      "enum": [
-        "personal",
-        "work",
-        "mixed",
-        "unknown"
-      ]
-    },
-    "order_dates": {
-      "type": "date[]",
-      "required": false,
-      "nullable": true,
-      "min_items": 0
-    },
-    "travel_dates": {
-      "type": "date[]",
-      "required": false,
-      "nullable": true,
-      "min_items": 0
-    },
-    "service_periods": {
-      "type": "string[]",
-      "required": false,
-      "nullable": true,
-      "min_items": 0
-    },
-    "procurement_ids": {
-      "type": "ref[]",
-      "required": false,
-      "nullable": true,
-      "min_items": 0,
-      "target": "procurement"
-    },
-    "item_descriptions": {
-      "type": "string[]",
-      "required": false,
-      "nullable": true,
-      "min_items": 0
-    },
-    "commitment_ids": {
-      "type": "ref[]",
-      "required": false,
-      "nullable": true,
-      "min_items": 0,
-      "target": "recurring-commitment"
-    },
-    "commitment_names": {
-      "type": "string[]",
-      "required": false,
-      "nullable": true,
-      "min_items": 0
-    },
-    "receipt_links": {
-      "type": "string[]",
-      "required": false,
-      "nullable": true,
-      "min_items": 0
-    },
-    "income_statement_links": {
-      "type": "string[]",
-      "required": false,
-      "nullable": true,
-      "min_items": 0
-    },
-    "statement_links": {
-      "type": "string[]",
-      "required": false,
-      "nullable": true,
-      "min_items": 0
-    },
-    "evidence_status": {
-      "type": "string",
-      "required": true,
-      "nullable": false,
-      "enum": [
-        "missing",
-        "partial",
-        "verified",
-        "ambiguous"
-      ]
-    },
-    "match_status": {
-      "type": "string",
-      "required": true,
-      "nullable": false,
-      "enum": [
-        "missing",
-        "partial",
-        "verified",
-        "ambiguous"
-      ]
-    },
-    "reporting_treatment": {
-      "type": "string",
-      "required": true,
-      "nullable": false,
-      "enum": [
-        "include",
-        "internal-transfer",
-        "wallet-funding",
-        "liability-movement",
-        "unresolved"
-      ]
-    },
-    "run_id": {
-      "type": "string",
-      "required": true,
-      "nullable": false
-    },
-    "model_version": {
-      "type": "string",
-      "required": true,
-      "nullable": false
-    }
-  },
-  "constraints": [
-    "Required fields apply to accepted canonical records; incomplete extractions remain candidates.",
-    "Unknown optional values are null; no invented defaults.",
-    "Unique(sheet_id, transaction_id).",
-    "amount, currency, booking_date and account_id equal the referenced transaction.",
-    "Aggregate by currency and reporting treatment; do not duplicate payment totals across item categories."
-  ],
-  "validation_scope": "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."
-}
+schema_version: 2
+object: "cashflow-entry"
+identity_field: "entry_id"
+primary_key:
+  entry_id:
+    type: "string"
+    required: true
+    nullable: false
+    description: "Persistent internal identity; not a display name."
+foreign_keys:
+  sheet_id:
+    type: "ref"
+    required: true
+    nullable: false
+    target: "cashflow-sheet"
+  transaction_id:
+    type: "ref"
+    required: true
+    nullable: false
+    target: "transaction"
+  account_id:
+    type: "ref"
+    required: true
+    nullable: false
+    target: "account"
+  institution_id:
+    type: "ref"
+    required: true
+    nullable: false
+    target: "financial-institution"
+  procurement_ids:
+    type: "ref[]"
+    required: false
+    nullable: true
+    min_items: 0
+    target: "procurement"
+  commitment_ids:
+    type: "ref[]"
+    required: false
+    nullable: true
+    min_items: 0
+    target: "recurring-commitment"
+fields:
+  name:
+    type: "string"
+    required: false
+    nullable: true
+  booking_date:
+    type: "date"
+    required: true
+    nullable: false
+    format: "YYYY-MM-DD"
+  amount:
+    type: "decimal"
+    required: true
+    nullable: false
+    encoding: "decimal-string"
+    pattern: "^-?\\d+(\\.\\d+)?$"
+  currency:
+    type: "string"
+    required: true
+    nullable: false
+  counterparty:
+    type: "string"
+    required: false
+    nullable: true
+  reference:
+    type: "string"
+    required: false
+    nullable: true
+  type:
+    type: "string"
+    required: true
+    nullable: false
+    enum:
+      - "income"
+      - "expense"
+      - "refund"
+      - "transfer"
+      - "other"
+      - "unknown"
+  expense_category:
+    type: "string"
+    required: true
+    nullable: false
+    enum:
+      - "procurement"
+      - "recurring-expense"
+      - "other"
+      - "unclassified"
+      - "mixed"
+  purchase_category:
+    type: "string"
+    required: false
+    nullable: true
+  personal_work:
+    type: "string"
+    required: true
+    nullable: false
+    enum:
+      - "personal"
+      - "work"
+      - "mixed"
+      - "unknown"
+  order_dates:
+    type: "date[]"
+    required: false
+    nullable: true
+    min_items: 0
+  travel_dates:
+    type: "date[]"
+    required: false
+    nullable: true
+    min_items: 0
+  service_periods:
+    type: "string[]"
+    required: false
+    nullable: true
+    min_items: 0
+  item_descriptions:
+    type: "string[]"
+    required: false
+    nullable: true
+    min_items: 0
+  commitment_names:
+    type: "string[]"
+    required: false
+    nullable: true
+    min_items: 0
+  receipt_links:
+    type: "string[]"
+    required: false
+    nullable: true
+    min_items: 0
+  income_statement_links:
+    type: "string[]"
+    required: false
+    nullable: true
+    min_items: 0
+  statement_links:
+    type: "string[]"
+    required: false
+    nullable: true
+    min_items: 0
+  evidence_status:
+    type: "string"
+    required: true
+    nullable: false
+    enum:
+      - "missing"
+      - "partial"
+      - "verified"
+      - "ambiguous"
+  match_status:
+    type: "string"
+    required: true
+    nullable: false
+    enum:
+      - "missing"
+      - "partial"
+      - "verified"
+      - "ambiguous"
+  reporting_treatment:
+    type: "string"
+    required: true
+    nullable: false
+    enum:
+      - "include"
+      - "internal-transfer"
+      - "wallet-funding"
+      - "liability-movement"
+      - "unresolved"
+  run_id:
+    type: "string"
+    required: true
+    nullable: false
+  model_version:
+    type: "string"
+    required: true
+    nullable: false
+constraints:
+  - "Required fields apply to accepted canonical records; incomplete extractions remain candidates."
+  - "Unknown optional values are null; no invented defaults."
+  - "Unique(sheet_id, transaction_id)."
+  - "amount, currency, booking_date and account_id equal the referenced transaction."
+  - "Aggregate by currency and reporting treatment; do not duplicate payment totals across item categories."
+validation_scope: "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."

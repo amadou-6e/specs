@@ -1,5 +1,12 @@
-schema_version: 1
-object: <object>
-identity_field: <object>_id
-required_information: []
-optional_information: []
+schema_version: 2
+object: "<object>"
+identity_field: "<object>_id"
+primary_key:
+  <object>_id:
+    type: "string"
+    required: true
+    nullable: false
+foreign_keys: {}
+fields: {}
+constraints: []
+validation_scope: "Typed specification contract; cross-record constraints require review."

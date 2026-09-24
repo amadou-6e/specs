@@ -11,7 +11,7 @@ objects/
 └── 0..* <object>/ entries
 ```
 <!-- END GENERATED: contained-elements -->
-One folder per identifiable object. [Field catalogue](field_catalogue.yml) describes attributes across all concrete object schemas; it does not define additional objects. The object schemas remain authoritative for types and constraints.
+One folder per identifiable object. [Field catalogue](field_catalogue.yml) describes attributes across all concrete object schemas; it does not define additional objects. The object schemas own key grouping, types and constraints. The catalogue keeps descriptions and cross-object naming notes, with links back to each schema.
 
 - [financial-institution](financial-institution/README.md)
 - [account](account/README.md)

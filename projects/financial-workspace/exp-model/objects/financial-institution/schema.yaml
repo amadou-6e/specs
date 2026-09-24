@@ -1,29 +1,24 @@
-{
-  "schema_version": 2,
-  "object": "financial-institution",
-  "identity_field": "institution_id",
-  "fields": {
-    "institution_id": {
-      "type": "string",
-      "required": true,
-      "nullable": false,
-      "description": "Persistent internal identity; not a display name."
-    },
-    "name": {
-      "type": "string",
-      "required": true,
-      "nullable": false
-    },
-    "provider_identifiers": {
-      "type": "string[]",
-      "required": false,
-      "nullable": true,
-      "min_items": 0
-    }
-  },
-  "constraints": [
-    "Required fields apply to accepted canonical records; incomplete extractions remain candidates.",
-    "Unknown optional values are null; no invented defaults."
-  ],
-  "validation_scope": "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."
-}
+schema_version: 2
+object: "financial-institution"
+identity_field: "institution_id"
+primary_key:
+  institution_id:
+    type: "string"
+    required: true
+    nullable: false
+    description: "Persistent internal identity; not a display name."
+foreign_keys: {}
+fields:
+  name:
+    type: "string"
+    required: true
+    nullable: false
+  provider_identifiers:
+    type: "string[]"
+    required: false
+    nullable: true
+    min_items: 0
+constraints:
+  - "Required fields apply to accepted canonical records; incomplete extractions remain candidates."
+  - "Unknown optional values are null; no invented defaults."
+validation_scope: "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."

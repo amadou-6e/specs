@@ -1,75 +1,63 @@
-{
-  "schema_version": 2,
-  "object": "transaction-statement",
-  "identity_field": "statement_id",
-  "fields": {
-    "statement_id": {
-      "type": "string",
-      "required": true,
-      "nullable": false,
-      "description": "Persistent internal identity; not a display name."
-    },
-    "account_id": {
-      "type": "ref",
-      "required": true,
-      "nullable": false,
-      "target": "account"
-    },
-    "coverage_start": {
-      "type": "date",
-      "required": true,
-      "nullable": false,
-      "format": "YYYY-MM-DD"
-    },
-    "coverage_end": {
-      "type": "date",
-      "required": true,
-      "nullable": false,
-      "format": "YYYY-MM-DD"
-    },
-    "representation_ids": {
-      "type": "ref[]",
-      "required": true,
-      "nullable": false,
-      "min_items": 1,
-      "target": "source-representation"
-    },
-    "opening_balance": {
-      "type": "decimal",
-      "required": false,
-      "nullable": true,
-      "encoding": "decimal-string",
-      "pattern": "^-?\\d+(\\.\\d+)?$"
-    },
-    "closing_balance": {
-      "type": "decimal",
-      "required": false,
-      "nullable": true,
-      "encoding": "decimal-string",
-      "pattern": "^-?\\d+(\\.\\d+)?$"
-    },
-    "currency": {
-      "type": "string",
-      "required": false,
-      "nullable": true
-    },
-    "issued_on": {
-      "type": "date",
-      "required": false,
-      "nullable": true,
-      "format": "YYYY-MM-DD"
-    },
-    "revision": {
-      "type": "string",
-      "required": false,
-      "nullable": true
-    }
-  },
-  "constraints": [
-    "Required fields apply to accepted canonical records; incomplete extractions remain candidates.",
-    "Unknown optional values are null; no invented defaults.",
-    "If opening_balance is supplied, currency must be supplied.",
-    "If closing_balance is supplied, currency must be supplied."
-  ],
-  "validation_scope": "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."
-}
+schema_version: 2
+object: "transaction-statement"
+identity_field: "statement_id"
+primary_key:
+  statement_id:
+    type: "string"
+    required: true
+    nullable: false
+    description: "Persistent internal identity; not a display name."
+foreign_keys:
+  account_id:
+    type: "ref"
+    required: true
+    nullable: false
+    target: "account"
+  representation_ids:
+    type: "ref[]"
+    required: true
+    nullable: false
+    min_items: 1
+    target: "source-representation"
+fields:
+  coverage_start:
+    type: "date"
+    required: true
+    nullable: false
+    format: "YYYY-MM-DD"
+  coverage_end:
+    type: "date"
+    required: true
+    nullable: false
+    format: "YYYY-MM-DD"
+  opening_balance:
+    type: "decimal"
+    required: false
+    nullable: true
+    encoding: "decimal-string"
+    pattern: "^-?\\d+(\\.\\d+)?$"
+  closing_balance:
+    type: "decimal"
+    required: false
+    nullable: true
+    encoding: "decimal-string"
+    pattern: "^-?\\d+(\\.\\d+)?$"
+  currency:
+    type: "string"
+    required: false
+    nullable: true
+  issued_on:
+    type: "date"
+    required: false
+    nullable: true
+    format: "YYYY-MM-DD"
+  revision:
+    type: "string"
+    required: false
+    nullable: true
+constraints:
+  - "Required fields apply to accepted canonical records; incomplete extractions remain candidates."
+  - "Unknown optional values are null; no invented defaults."
+  - "If opening_balance is supplied, currency must be supplied."
+  - "If closing_balance is supplied, currency must be supplied."
+validation_scope: "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."
