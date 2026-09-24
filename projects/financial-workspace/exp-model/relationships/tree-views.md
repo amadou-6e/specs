@@ -47,12 +47,14 @@ Employer
     +-- [1 : 0..*] Income statement item
 ```
 
-## Account balance and Liability subtree
+## Account and liability relationship tree view
 
 ```text
 Account
-|-- [1 : 0..*] Balance item
+|-- [0..1 : 0..*] Balance item
 +-- [0..1 : 0..*] Liability
+    |-- [1 : 0..*] Liability term
+    +-- [0..1 : 0..*] Balance item
 ```
 
-A Liability need not yet be linked to an Account. Balance items remain dated observations, never cashflow rows.
+A Liability need not yet be linked to an Account. Its Liability terms are optional, and each Balance item belongs to either an Account or a Liability. Balance items remain dated observations, never cashflow rows.

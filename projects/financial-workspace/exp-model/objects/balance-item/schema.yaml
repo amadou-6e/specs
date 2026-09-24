@@ -10,8 +10,8 @@
     },
     "account_id": {
       "type": "ref",
-      "required": true,
-      "nullable": false,
+      "required": false,
+      "nullable": true,
       "target": "account"
     },
     "as_of_date": {
@@ -77,16 +77,22 @@
       "required": false,
       "nullable": true,
       "target": "balance-item"
+    },
+    "liability_id": {
+      "type": "ref",
+      "required": false,
+      "nullable": true,
+      "target": "liability"
     }
   },
   "constraints": [
-    "Exactly one Account owns each Balance item.",
+    "Exactly one of account_id or liability_id owns each Balance item.",
     "As-of date is distinct from evidence retrieval time.",
     "Timestamp precision requires timezone; a date alone does not imply end-of-day.",
     "Different currencies, balance types or cutoffs are not interchangeable.",
     "A balance is a stock observation, not an additive cashflow or transaction.",
     "Corrections preserve previous observations and evidence; repeated source captures do not duplicate the financial observation.",
-    "Where linked to a Transaction statement, the Account must agree."
+    "Where linked to a Transaction statement, the Balance item is account-owned and the Account must agree."
   ],
   "validation_scope": "Typed specification; balance reconciliation, duplicate resolution and financial-position aggregation require review."
 }

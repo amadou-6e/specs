@@ -32,3 +32,4 @@ One folder per identifiable object.
 
 - [Balance item](balance-item/README.md)
 - [Liability](liability/README.md)
+- [Liability term](liability-term/README.md)

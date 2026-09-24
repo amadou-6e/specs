@@ -1,0 +1,75 @@
+{
+  "schema_version": 2,
+  "object": "liability-term",
+  "identity_field": "liability_term_id",
+  "fields": {
+    "liability_term_id": {
+      "type": "string",
+      "required": true,
+      "nullable": false
+    },
+    "liability_id": {
+      "type": "ref",
+      "required": true,
+      "nullable": false,
+      "target": "liability"
+    },
+    "effective_start": {
+      "type": "date",
+      "required": true,
+      "nullable": false,
+      "format": "YYYY-MM-DD"
+    },
+    "effective_end": {
+      "type": "date",
+      "required": false,
+      "nullable": true,
+      "format": "YYYY-MM-DD"
+    },
+    "agreement_reference": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    },
+    "interest_rate": {
+      "type": "decimal",
+      "required": false,
+      "nullable": true,
+      "encoding": "decimal-string",
+      "description": "Source-labelled rate; do not infer the rate basis or period."
+    },
+    "scheduled_repayment": {
+      "type": "decimal",
+      "required": false,
+      "nullable": true,
+      "encoding": "decimal-string",
+      "pattern": "^\\d+(\\.\\d+)?$"
+    },
+    "repayment_currency": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    },
+    "repayment_cadence": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    },
+    "representation_ids": {
+      "type": "ref[]",
+      "required": true,
+      "nullable": false,
+      "target": "source-representation",
+      "min_items": 1
+    }
+  },
+  "constraints": [
+    "Each Liability term belongs to exactly one Liability; a Liability may have no recorded terms.",
+    "effective_end, when supplied, must not precede effective_start.",
+    "Terms for the same Liability must not overlap unless the source explicitly distinguishes concurrent agreements.",
+    "A renegotiation creates a new term; preserve prior effective terms and evidence.",
+    "Scheduled repayment is not a posted Transaction or an outstanding Balance item.",
+    "repayment_currency is required when scheduled_repayment is present."
+  ],
+  "validation_scope": "Typed specification; evidence, effective-period and rate-basis review remain required."
+}

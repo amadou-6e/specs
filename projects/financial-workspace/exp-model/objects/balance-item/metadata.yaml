@@ -1,7 +1,7 @@
 schema_version: 1
 name: "balance-item"
 kind: "financial-object"
-purpose: "One account balance amount at a given date, with currency, balance type and evidence."
+purpose: "One account or liability balance amount at a given date, with currency, balance type and evidence."
 authority: "Replacement candidate"
 owner: "amadou-6e"
 status: "draft"
@@ -11,7 +11,7 @@ children:
   - "1 relationships.md"
   - "1 representations.md"
 includes:
-  - "Account, dated amount, currency, balance type, sign convention and source evidence"
+  - "Account or Liability, dated amount, currency, balance type, sign convention and source evidence"
 excludes:
   - "Cashflow movements"
   - "Undocumented balance interpolation"
@@ -20,6 +20,7 @@ schema_ref: "schema.yaml"
 graph_ref: "../../relationships/graph.yaml"
 relationship_ids:
   - "account-balance-items"
+  - "liability-balance-items"
   - "statement-balance-items"
 representations:
 evidence_forms:

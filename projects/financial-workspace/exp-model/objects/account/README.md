@@ -23,4 +23,4 @@ Includes: Institution, account kind, ownership. Optional: Masked native referenc
 
 These are type definitions; no illustrative instance is claimed as an observed record.
 
-Balance item records dated balances [1 : 0..*]. Liability is optionally linked via account-liabilities [0..1 : 0..*]; the debt may exist before an account is mapped.
+Account-owned Balance items record dated account balances [0..1 : 0..*]. Liability is optionally linked via account-liabilities [0..1 : 0..*]; the debt may exist before an account is mapped.

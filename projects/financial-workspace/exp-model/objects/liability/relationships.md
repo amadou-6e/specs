@@ -5,3 +5,5 @@
 | Edge | Source | Target | Targets per source | Sources per target |
 | --- | --- | --- | --- | --- |
 | account-liabilities | account | liability | 0..* | 0..1 |
+| liability-terms | liability | liability-term | 0..* | 1 |
+| liability-balance-items | liability | balance-item | 0..* | 0..1 |

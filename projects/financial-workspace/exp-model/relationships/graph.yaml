@@ -91,6 +91,11 @@
       "id": "liability",
       "identity": "liability_id",
       "definition": "../objects/liability/README.md"
+    },
+    {
+      "id": "liability-term",
+      "identity": "liability_term_id",
+      "definition": "../objects/liability-term/README.md"
     }
   ],
   "relationships": [
@@ -225,7 +230,7 @@
       "source": "account",
       "target": "balance-item",
       "targets_per_source": "0..*",
-      "sources_per_target": "1"
+      "sources_per_target": "0..1"
     },
     {
       "id": "statement-balance-items",
@@ -240,6 +245,20 @@
       "target": "liability",
       "targets_per_source": "0..*",
       "sources_per_target": "0..1"
+    },
+    {
+      "id": "liability-terms",
+      "source": "liability",
+      "target": "liability-term",
+      "targets_per_source": "0..*",
+      "sources_per_target": "1"
+    },
+    {
+      "id": "liability-balance-items",
+      "source": "liability",
+      "target": "balance-item",
+      "targets_per_source": "0..*",
+      "sources_per_target": "0..1"
     }
   ],
   "invariants": [
@@ -248,6 +267,7 @@
     "Every published entry references one evidenced booked transaction.",
     "No receipt match duplicates a posted movement.",
     "Unknown and unclassified transactions remain in the sheet.",
-    "Refunds retain separate transaction identity."
+    "Refunds retain separate transaction identity.",
+    "Each Balance item belongs to exactly one Account or Liability."
   ]
 }
