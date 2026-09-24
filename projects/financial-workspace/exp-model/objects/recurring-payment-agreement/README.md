@@ -22,3 +22,5 @@ Includes: Provider, service description, source or reviewed basis. Optional: Cad
 - [Source forms](representations.md)
 
 These are type definitions; no illustrative instance is claimed as an observed record.
+
+[Agreement term](../agreement-term/README.md) is an optional child: [1 : 0..*]. Versioned terms are separate records, replacing the embedded terms field.

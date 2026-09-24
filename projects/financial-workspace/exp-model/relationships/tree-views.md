@@ -28,3 +28,13 @@ Cashflow sheet
     +-- Income statement details [when applicable]
     +-- Personal/work, reporting treatment, match status
 ```
+
+## Recurring-payment agreement subtree
+
+```text
+Recurring-payment agreement
+|-- [1 : 0..*] Agreement term
++-- [1 : 0..*] Recurring-payment occurrence
+```
+
+The zero lower bound makes Agreement term optional for an agreement. Each term belongs to exactly one agreement.

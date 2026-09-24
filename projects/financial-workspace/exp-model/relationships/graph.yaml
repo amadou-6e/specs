@@ -71,6 +71,11 @@
       "id": "cashflow-entry",
       "identity": "entry_id",
       "definition": "../objects/cashflow-entry/README.md"
+    },
+    {
+      "id": "agreement-term",
+      "identity": "term_id",
+      "definition": "../objects/agreement-term/README.md"
     }
   ],
   "relationships": [
@@ -185,6 +190,13 @@
       "target": "transaction",
       "targets_per_source": "0..*",
       "sources_per_target": "0..*"
+    },
+    {
+      "id": "agreement-terms",
+      "source": "recurring-payment-agreement",
+      "target": "agreement-term",
+      "targets_per_source": "0..*",
+      "sources_per_target": "1"
     }
   ],
   "invariants": [

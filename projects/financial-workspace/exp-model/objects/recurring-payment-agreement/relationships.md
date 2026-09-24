@@ -1,7 +1,8 @@
-# Recurring-payment agreement relationships
+# Recurring payment agreement relationships
 
-Derived from [canonical graph](../../relationships/graph.yaml).
+[Canonical graph](../../relationships/graph.yaml).
 
 | Edge | Source | Target | Targets per source | Sources per target |
 | --- | --- | --- | --- | --- |
 | defines | recurring-payment-agreement | recurring-payment-occurrence | 0..* | 1 |
+| agreement-terms | recurring-payment-agreement | agreement-term | 0..* | 1 |

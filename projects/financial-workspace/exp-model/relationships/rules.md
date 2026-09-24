@@ -4,6 +4,7 @@ Canonical edges and cardinalities are in graph.yaml. targets_per_source counts t
 
 | Edge | Source | Target | Targets per source | Sources per target |
 | --- | --- | --- | --- | --- |
+| agreement-terms | recurring-payment-agreement | agreement-term | 0..* | 1 |
 | provides | financial-institution | account | 0..* | 1 |
 | issues-for | account | transaction-statement | 0..* | 1 |
 | records | account | transaction | 0..* | 1 |

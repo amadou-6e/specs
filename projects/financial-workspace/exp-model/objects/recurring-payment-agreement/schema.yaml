@@ -47,45 +47,13 @@
       "required": false,
       "nullable": true,
       "format": "YYYY-MM-DD"
-    },
-    "terms": {
-      "type": "object[]",
-      "required": false,
-      "nullable": true,
-      "min_items": 0,
-      "items": {
-        "effective_start": {
-          "type": "date",
-          "required": true,
-          "nullable": false
-        },
-        "effective_end": {
-          "type": "date",
-          "required": false,
-          "nullable": true
-        },
-        "amount": {
-          "type": "decimal",
-          "required": true,
-          "nullable": false
-        },
-        "currency": {
-          "type": "string",
-          "required": true,
-          "nullable": false
-        },
-        "cadence": {
-          "type": "string",
-          "required": true,
-          "nullable": false
-        }
-      }
     }
   },
   "constraints": [
     "Required fields apply to accepted canonical records; incomplete extractions remain candidates.",
     "Unknown optional values are null; no invented defaults.",
-    "At least one source representation or nonempty reviewed_basis is required."
+    "At least one source representation or nonempty reviewed_basis is required.",
+    "Optional Agreement term records are linked through agreement-terms; no embedded terms copy."
   ],
   "validation_scope": "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."
 }

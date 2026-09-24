@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "object": "agreement-term",
+  "identity_field": "term_id",
+  "fields": {
+    "term_id": {
+      "type": "string",
+      "required": true,
+      "nullable": false,
+      "description": "Persistent Agreement term identity."
+    },
+    "agreement_id": {
+      "type": "ref",
+      "required": true,
+      "nullable": false,
+      "target": "recurring-payment-agreement"
+    },
+    "effective_start": {
+      "type": "date",
+      "required": true,
+      "nullable": false,
+      "format": "YYYY-MM-DD"
+    },
+    "effective_end": {
+      "type": "date",
+      "required": false,
+      "nullable": true,
+      "format": "YYYY-MM-DD"
+    },
+    "amount": {
+      "type": "decimal",
+      "required": true,
+      "nullable": false,
+      "encoding": "decimal-string",
+      "pattern": "^-?\\d+(\\.\\d+)?$"
+    },
+    "currency": {
+      "type": "string",
+      "required": true,
+      "nullable": false
+    },
+    "cadence": {
+      "type": "string",
+      "required": true,
+      "nullable": false
+    }
+  },
+  "constraints": [
+    "Each Agreement term belongs to exactly one Recurring-payment agreement.",
+    "An agreement may have no Agreement term records.",
+    "effective_end, when supplied, must not precede effective_start.",
+    "Preserve evidence and reviewed corrections; do not invent terms for incomplete agreements."
+  ],
+  "validation_scope": "Typed specification contract; temporal and evidence constraints require review."
+}
