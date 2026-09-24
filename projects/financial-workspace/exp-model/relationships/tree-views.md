@@ -12,8 +12,8 @@ Account
     |   +-- Procurement item
     |   +-- Receipt
     |       +-- Representation: email / PDF / scan / image
-    +-- Recurring-payment occurrence
-    |   +-- Recurring-payment agreement
+    +-- Payment occurrence
+    |   +-- Recurring commitment
     +-- Income statement
     |   +-- Employer
     +-- Cashflow entry
@@ -24,20 +24,20 @@ Cashflow sheet
     +-- Amount, Currency, Date, Account [from transaction]
     +-- Type and Expense category [reviewed classification]
     +-- Receipt links and item descriptions [when available]
-    +-- Agreement and service period [when applicable]
+    +-- Commitment and service period [when applicable]
     +-- Income statement details [when applicable]
     +-- Personal/work, reporting treatment, match status
 ```
 
-## Recurring-payment agreement subtree
+## Recurring commitment subtree
 
 ```text
-Recurring-payment agreement
-|-- [1 : 0..*] Agreement term
-+-- [1 : 0..*] Recurring-payment occurrence
+Recurring commitment
+|-- [1 : 0..*] Commitment term
++-- [1 : 0..*] Payment occurrence
 ```
 
-The zero lower bound makes Agreement term optional for an agreement. Each term belongs to exactly one agreement.
+The zero lower bound makes Commitment term optional for an commitment. Each term belongs to exactly one commitment.
 
 ## Income statement subtree
 

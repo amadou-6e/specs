@@ -180,7 +180,7 @@
     {
       "target_field": "service_periods",
       "notion_property": "Service Periods",
-      "source": "recurring-payment-occurrence.period",
+      "source": "payment-occurrence.period",
       "derivation": "source-field",
       "transform": "collect-distinct",
       "missing": "null",
@@ -208,9 +208,9 @@
       "notes": "Native property IDs/types must be verified before publication."
     },
     {
-      "target_field": "agreement_ids",
-      "notion_property": "Agreement Ids",
-      "source": "recurring-payment-agreement.agreement_id",
+      "target_field": "commitment_ids",
+      "notion_property": "Commitment Ids",
+      "source": "recurring-commitment.commitment_id",
       "derivation": "source-field",
       "transform": "collect-distinct",
       "missing": "null",
@@ -218,9 +218,9 @@
       "notes": "Native property IDs/types must be verified before publication."
     },
     {
-      "target_field": "agreement_names",
-      "notion_property": "Agreement Names",
-      "source": "recurring-payment-agreement.description",
+      "target_field": "commitment_names",
+      "notion_property": "Commitment Names",
+      "source": "recurring-commitment.description",
       "derivation": "source-field",
       "transform": "collect-distinct",
       "missing": "null",

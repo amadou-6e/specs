@@ -138,14 +138,14 @@
       "nullable": true,
       "min_items": 0
     },
-    "agreement_ids": {
+    "commitment_ids": {
       "type": "ref[]",
       "required": false,
       "nullable": true,
       "min_items": 0,
-      "target": "recurring-payment-agreement"
+      "target": "recurring-commitment"
     },
-    "agreement_names": {
+    "commitment_names": {
       "type": "string[]",
       "required": false,
       "nullable": true,

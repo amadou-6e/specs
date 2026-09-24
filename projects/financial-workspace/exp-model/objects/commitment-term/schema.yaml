@@ -1,19 +1,19 @@
 {
   "schema_version": 2,
-  "object": "agreement-term",
+  "object": "commitment-term",
   "identity_field": "term_id",
   "fields": {
     "term_id": {
       "type": "string",
       "required": true,
       "nullable": false,
-      "description": "Persistent Agreement term identity."
+      "description": "Persistent Commitment term identity."
     },
-    "agreement_id": {
+    "commitment_id": {
       "type": "ref",
       "required": true,
       "nullable": false,
-      "target": "recurring-payment-agreement"
+      "target": "recurring-commitment"
     },
     "effective_start": {
       "type": "date",
@@ -46,10 +46,10 @@
     }
   },
   "constraints": [
-    "Each Agreement term belongs to exactly one Recurring-payment agreement.",
-    "An agreement may have no Agreement term records.",
+    "Each Commitment term belongs to exactly one Recurring commitment.",
+    "An commitment may have no Commitment term records.",
     "effective_end, when supplied, must not precede effective_start.",
-    "Preserve evidence and reviewed corrections; do not invent terms for incomplete agreements."
+    "Preserve evidence and reviewed corrections; do not invent terms for incomplete commitments."
   ],
   "validation_scope": "Typed specification contract; temporal and evidence constraints require review."
 }

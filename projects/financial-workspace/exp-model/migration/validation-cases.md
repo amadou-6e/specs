@@ -12,7 +12,7 @@ These are acceptance scenarios grounded in prior rules and the exception registe
 | Employer work exclusions | Work travel remains in all-transactions view with work classification, excluded from personal spending; reimbursements link without overwriting original payments. |
 | Statement exported twice | Same movements resolve to existing IDs; duplicate import creates no additional rows. |
 | Receipt PDF plus email copy | Two representations may support one document; evidence duplication adds no transaction. |
-| Changed recurring charge | Version agreement terms; actual booked amount remains authoritative for cash flow. |
+| Changed recurring charge | Version commitment terms; actual booked amount remains authoritative for cash flow. |
 | Bank funding PayPal | Retain observed bank and wallet movements, exclude verified funding from consolidated spending, count merchant settlement once. |
 
 ## Sources
@@ -22,4 +22,4 @@ These are acceptance scenarios grounded in prior rules and the exception registe
 - [Existing Notion contract](../../model/systems/notion/schema.md)
 - [Recurring model](../../model/objects/recurring-expenses/schema.md)
 
-The existing recurring model supplies service, service period and effective contract terms. It does not prove that every recurring agreement or payment has been captured.
+The existing recurring model supplies service, service period and effective contract terms. It does not prove that every recurring commitment or payment has been captured.

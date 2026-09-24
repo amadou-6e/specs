@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
-  "object": "recurring-payment-agreement",
-  "identity_field": "agreement_id",
+  "object": "recurring-commitment",
+  "identity_field": "commitment_id",
   "fields": {
-    "agreement_id": {
+    "commitment_id": {
       "type": "string",
       "required": true,
       "nullable": false,
@@ -53,7 +53,7 @@
     "Required fields apply to accepted canonical records; incomplete extractions remain candidates.",
     "Unknown optional values are null; no invented defaults.",
     "At least one source representation or nonempty reviewed_basis is required.",
-    "Optional Agreement term records are linked through agreement-terms; no embedded terms copy."
+    "Optional Commitment term records are linked through commitment-terms; no embedded terms copy."
   ],
   "validation_scope": "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."
 }

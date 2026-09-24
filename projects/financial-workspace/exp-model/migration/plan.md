@@ -7,7 +7,7 @@ The candidate is intended to replace the old domain catalogue after evidence and
 | accounts | Account and Financial institution |
 | transactions | Transaction and Transaction statement |
 | procurement | Procurement, Procurement item and Receipt |
-| recurring-expenses | Agreement, versioned terms and Occurrence |
+| recurring-expenses | Commitment, versioned terms and Occurrence |
 | everyday-spending | Classification of a transaction; new manual capture excluded |
 | travel | Procurement attributes and document assertions, including itinerary |
 | financial-position | Balance item; Liability for debts; broader assets deferred |
@@ -27,3 +27,7 @@ The candidate is intended to replace the old domain catalogue after evidence and
 7. Retire old contracts only after replay and consumer checks pass.
 
 No migration or remote update is executed by this specification change.
+
+## Approved nomenclature change
+
+The candidate now uses Recurring commitment (recurring-commitment), Commitment term (commitment-term), and Payment occurrence (payment-occurrence). The previous object names were Recurring-payment agreement, Agreement term, and Recurring-payment occurrence. References formerly named agreement_id/agreement_ids/agreement_names become commitment_id/commitment_ids/commitment_names; existing identity values are preserved. term_id and occurrence_id remain stable. Both child relationships remain [1 : 0..*]. This is a specification rename, not a migration of published Notion records.

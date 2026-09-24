@@ -7,4 +7,4 @@
 - Income and liability breakdown: preserve observed net transactions; model gross/deductions or principal/interest only with sufficient evidence.
 - Cross-currency allocation and account funding: approve reporting conversion and residual-review policy before automated totals.
 
-Resolved here: one row per booked transaction per sheet; receipt formats are representations; recurring occurrences are distinct from agreements; multi-item purchases use item identities; many-to-many monetary links require reviewed allocation records.
+Resolved here: one row per booked transaction per sheet; receipt formats are representations; recurring occurrences are distinct from commitments; multi-item purchases use item identities; many-to-many monetary links require reviewed allocation records.

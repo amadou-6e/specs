@@ -18,15 +18,15 @@ One folder per identifiable object.
 - [transaction](transaction/README.md)
 - [employer](employer/README.md)
 - [income-statement](income-statement/README.md)
-- [recurring-payment-agreement](recurring-payment-agreement/README.md)
-- [recurring-payment-occurrence](recurring-payment-occurrence/README.md)
+- [recurring-commitment](recurring-commitment/README.md)
+- [payment-occurrence](payment-occurrence/README.md)
 - [procurement](procurement/README.md)
 - [procurement-item](procurement-item/README.md)
 - [receipt](receipt/README.md)
 - [cashflow-sheet](cashflow-sheet/README.md)
 - [cashflow-entry](cashflow-entry/README.md)
 
-- [Agreement term](agreement-term/README.md)
+- [Commitment term](commitment-term/README.md)
 
 - [Income statement item](income-statement-item/README.md)
 

@@ -1,5 +1,5 @@
 schema_version: 1
-name: recurring-payment-occurrence
+name: payment-occurrence
 authority: Replacement candidate
 owner: amadou-6e
 children:
@@ -11,7 +11,7 @@ status: draft
 kind: "financial-object"
 purpose: "One expected instalment/service period."
 includes:
-  - "Agreement, period or due date"
+  - "Commitment, period or due date"
   - "Expected amount, observed settlement state"
 excludes:
   - "Source file format as financial identity"

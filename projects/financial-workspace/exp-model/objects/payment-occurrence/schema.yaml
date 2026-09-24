@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "object": "recurring-payment-occurrence",
+  "object": "payment-occurrence",
   "identity_field": "occurrence_id",
   "fields": {
     "occurrence_id": {
@@ -9,11 +9,11 @@
       "nullable": false,
       "description": "Persistent internal identity; not a display name."
     },
-    "agreement_id": {
+    "commitment_id": {
       "type": "ref",
       "required": true,
       "nullable": false,
-      "target": "recurring-payment-agreement"
+      "target": "recurring-commitment"
     },
     "period": {
       "type": "string",

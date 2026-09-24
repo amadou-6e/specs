@@ -1,26 +1,24 @@
-# Recurring-payment agreement
+# Payment occurrence
 
 <!-- BEGIN GENERATED: contained-elements -->
 ## Contained elements
 
 ```text
-recurring-payment-agreement/
+payment-occurrence/
 ├── 1 README.md
 ├── 1 schema.yaml
 ├── 1 relationships.md
 └── 1 representations.md
 ```
 <!-- END GENERATED: contained-elements -->
-> Continuing commitment.
+> One expected instalment/service period.
 
-Identity: agreement_id.
+Identity: occurrence_id.
 
-Includes: Provider, service description, source or reviewed basis. Optional: Cadence, effective dates, versioned price terms.
+Includes: Commitment, period or due date. Optional: Expected amount, observed settlement state.
 
 - [Fields](schema.yaml)
 - [Relationships](relationships.md)
 - [Source forms](representations.md)
 
 These are type definitions; no illustrative instance is claimed as an observed record.
-
-[Agreement term](../agreement-term/README.md) is an optional child: [1 : 0..*]. Versioned terms are separate records, replacing the embedded terms field.
