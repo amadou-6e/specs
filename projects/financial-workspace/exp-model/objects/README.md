@@ -29,3 +29,6 @@ One folder per identifiable object.
 - [Agreement term](agreement-term/README.md)
 
 - [Income statement item](income-statement-item/README.md)
+
+- [Account balance item](account-balance-item/README.md)
+- [Liability](liability/README.md)

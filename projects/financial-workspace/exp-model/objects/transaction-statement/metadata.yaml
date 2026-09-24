@@ -22,6 +22,7 @@ graph_ref: "../../relationships/graph.yaml"
 relationship_ids:
   - "issues-for"
   - "contains"
+  - "statement-balance-items"
 representations:
   - "../../representations/pdf"
   - "../../representations/image"

@@ -1,0 +1,90 @@
+{
+  "schema_version": 2,
+  "object": "liability",
+  "identity_field": "liability_id",
+  "fields": {
+    "liability_id": {
+      "type": "string",
+      "required": true,
+      "nullable": false
+    },
+    "creditor": {
+      "type": "string",
+      "required": true,
+      "nullable": false
+    },
+    "description": {
+      "type": "string",
+      "required": true,
+      "nullable": false
+    },
+    "kind": {
+      "type": "string",
+      "required": true,
+      "nullable": false,
+      "enum": [
+        "loan",
+        "credit-card-debt",
+        "overdraft",
+        "other",
+        "unknown"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "required": true,
+      "nullable": false,
+      "enum": [
+        "active",
+        "settled",
+        "unknown"
+      ]
+    },
+    "native_reference": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    },
+    "currency": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    },
+    "original_amount": {
+      "type": "decimal",
+      "required": false,
+      "nullable": true,
+      "encoding": "decimal-string",
+      "pattern": "^\\d+(\\.\\d+)?$"
+    },
+    "start_date": {
+      "type": "date",
+      "required": false,
+      "nullable": true,
+      "format": "YYYY-MM-DD"
+    },
+    "maturity_date": {
+      "type": "date",
+      "required": false,
+      "nullable": true,
+      "format": "YYYY-MM-DD"
+    },
+    "representation_ids": {
+      "type": "ref[]",
+      "required": true,
+      "nullable": false,
+      "target": "source-representation",
+      "min_items": 1
+    }
+  },
+  "constraints": [
+    "A Liability can exist before an Account is mapped; account-liabilities is optional.",
+    "Original amount is not the outstanding balance; dated account-linked amounts belong to Account balance item.",
+    "When several liabilities share an Account, its balance is aggregate unless evidence supports allocation; never repeat the full balance for each Liability.",
+    "An unmapped Liability has no inferred current outstanding amount.",
+    "Repayment transactions remain separate cashflow rows; do not infer principal/interest allocation.",
+    "Currency is required when original_amount is present.",
+    "Do not count a liability and its linked negative account balance twice in financial-position totals."
+  ],
+  "validation_scope": "Typed specification; balance reconciliation, duplicate resolution and financial-position aggregation require review."
+}

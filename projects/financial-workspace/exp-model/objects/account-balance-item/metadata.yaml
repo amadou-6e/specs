@@ -1,0 +1,31 @@
+schema_version: 1
+name: "account-balance-item"
+kind: "financial-object"
+purpose: "One account balance amount at a given date, with currency, balance type and evidence."
+authority: "Replacement candidate"
+owner: "amadou-6e"
+status: "draft"
+children:
+  - "1 README.md"
+  - "1 schema.yaml"
+  - "1 relationships.md"
+  - "1 representations.md"
+includes:
+  - "Account, dated amount, currency, balance type, sign convention and source evidence"
+excludes:
+  - "Cashflow movements"
+  - "Undocumented balance interpolation"
+identity_field: "balance_item_id"
+schema_ref: "schema.yaml"
+graph_ref: "../../relationships/graph.yaml"
+relationship_ids:
+  - "account-balance-items"
+  - "statement-balance-items"
+representations:
+evidence_forms:
+  - "../../representations/pdf"
+  - "../../representations/image"
+  - "../../representations/structured-export"
+provenance_ref: "../../representations/provenance.yaml"
+mapping_refs:
+maturity: "specified-not-replayed"

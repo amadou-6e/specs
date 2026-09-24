@@ -81,6 +81,16 @@
       "id": "income-statement-item",
       "identity": "income_statement_item_id",
       "definition": "../objects/income-statement-item/README.md"
+    },
+    {
+      "id": "account-balance-item",
+      "identity": "balance_item_id",
+      "definition": "../objects/account-balance-item/README.md"
+    },
+    {
+      "id": "liability",
+      "identity": "liability_id",
+      "definition": "../objects/liability/README.md"
     }
   ],
   "relationships": [
@@ -209,6 +219,27 @@
       "target": "income-statement-item",
       "targets_per_source": "0..*",
       "sources_per_target": "1"
+    },
+    {
+      "id": "account-balance-items",
+      "source": "account",
+      "target": "account-balance-item",
+      "targets_per_source": "0..*",
+      "sources_per_target": "1"
+    },
+    {
+      "id": "statement-balance-items",
+      "source": "transaction-statement",
+      "target": "account-balance-item",
+      "targets_per_source": "0..*",
+      "sources_per_target": "0..*"
+    },
+    {
+      "id": "account-liabilities",
+      "source": "account",
+      "target": "liability",
+      "targets_per_source": "0..*",
+      "sources_per_target": "0..1"
     }
   ],
   "invariants": [

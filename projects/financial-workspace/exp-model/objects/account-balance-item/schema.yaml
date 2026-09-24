@@ -1,0 +1,92 @@
+{
+  "schema_version": 2,
+  "object": "account-balance-item",
+  "identity_field": "balance_item_id",
+  "fields": {
+    "balance_item_id": {
+      "type": "string",
+      "required": true,
+      "nullable": false
+    },
+    "account_id": {
+      "type": "ref",
+      "required": true,
+      "nullable": false,
+      "target": "account"
+    },
+    "as_of_date": {
+      "type": "date",
+      "required": true,
+      "nullable": false,
+      "format": "YYYY-MM-DD"
+    },
+    "as_of_time": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    },
+    "timezone": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    },
+    "amount": {
+      "type": "decimal",
+      "required": true,
+      "nullable": false,
+      "encoding": "decimal-string",
+      "pattern": "^-?\\d+(\\.\\d+)?$"
+    },
+    "currency": {
+      "type": "string",
+      "required": true,
+      "nullable": false
+    },
+    "balance_type": {
+      "type": "string",
+      "required": true,
+      "nullable": false,
+      "enum": [
+        "booked",
+        "available",
+        "outstanding-debt",
+        "other",
+        "unknown"
+      ]
+    },
+    "source_label": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    },
+    "sign_convention": {
+      "type": "string",
+      "required": true,
+      "nullable": false,
+      "description": "Documented source sign convention; do not infer net-worth sign from raw sign alone."
+    },
+    "representation_ids": {
+      "type": "ref[]",
+      "required": true,
+      "nullable": false,
+      "target": "source-representation",
+      "min_items": 1
+    },
+    "supersedes_balance_item_id": {
+      "type": "ref",
+      "required": false,
+      "nullable": true,
+      "target": "account-balance-item"
+    }
+  },
+  "constraints": [
+    "Exactly one Account owns each Account balance item.",
+    "As-of date is distinct from evidence retrieval time.",
+    "Timestamp precision requires timezone; a date alone does not imply end-of-day.",
+    "Different currencies, balance types or cutoffs are not interchangeable.",
+    "A balance is a stock observation, not an additive cashflow or transaction.",
+    "Corrections preserve previous observations and evidence; repeated source captures do not duplicate the financial observation.",
+    "Where linked to a Transaction statement, the Account must agree."
+  ],
+  "validation_scope": "Typed specification; balance reconciliation, duplicate resolution and financial-position aggregation require review."
+}

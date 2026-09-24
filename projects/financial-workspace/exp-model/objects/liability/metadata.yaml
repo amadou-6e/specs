@@ -1,0 +1,31 @@
+schema_version: 1
+name: "liability"
+kind: "financial-object"
+purpose: "An identified debt owed to a creditor, optionally linked to its administering Account."
+authority: "Replacement candidate"
+owner: "amadou-6e"
+status: "draft"
+children:
+  - "1 README.md"
+  - "1 schema.yaml"
+  - "1 relationships.md"
+  - "1 representations.md"
+includes:
+  - "Creditor, debt identity, kind, lifecycle, contract references and optional account relationship"
+excludes:
+  - "Asset or investment models"
+  - "Tax liabilities in this scope"
+  - "Invented outstanding balances"
+identity_field: "liability_id"
+schema_ref: "schema.yaml"
+graph_ref: "../../relationships/graph.yaml"
+relationship_ids:
+  - "account-liabilities"
+representations:
+evidence_forms:
+  - "../../representations/pdf"
+  - "../../representations/image"
+  - "../../representations/structured-export"
+provenance_ref: "../../representations/provenance.yaml"
+mapping_refs:
+maturity: "specified-not-replayed"

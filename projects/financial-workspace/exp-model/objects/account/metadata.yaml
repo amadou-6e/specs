@@ -23,6 +23,8 @@ relationship_ids:
   - "provides"
   - "issues-for"
   - "records"
+  - "account-balance-items"
+  - "account-liabilities"
 representations:
 evidence_forms:
   - "../../representations/pdf"

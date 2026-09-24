@@ -46,3 +46,13 @@ Employer
 +-- [1 : 0..*] Income statement
     +-- [1 : 0..*] Income statement item
 ```
+
+## Account balance and Liability subtree
+
+```text
+Account
+|-- [1 : 0..*] Account balance item
++-- [0..1 : 0..*] Liability
+```
+
+A Liability need not yet be linked to an Account. Account balance items remain dated observations, never cashflow rows.
