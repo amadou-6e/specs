@@ -51,8 +51,8 @@ Employer
 
 ```text
 Account
-|-- [1 : 0..*] Account balance item
+|-- [1 : 0..*] Balance item
 +-- [0..1 : 0..*] Liability
 ```
 
-A Liability need not yet be linked to an Account. Account balance items remain dated observations, never cashflow rows.
+A Liability need not yet be linked to an Account. Balance items remain dated observations, never cashflow rows.

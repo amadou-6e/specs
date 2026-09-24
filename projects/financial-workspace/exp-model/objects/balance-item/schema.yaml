@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "object": "account-balance-item",
+  "object": "balance-item",
   "identity_field": "balance_item_id",
   "fields": {
     "balance_item_id": {
@@ -76,11 +76,11 @@
       "type": "ref",
       "required": false,
       "nullable": true,
-      "target": "account-balance-item"
+      "target": "balance-item"
     }
   },
   "constraints": [
-    "Exactly one Account owns each Account balance item.",
+    "Exactly one Account owns each Balance item.",
     "As-of date is distinct from evidence retrieval time.",
     "Timestamp precision requires timezone; a date alone does not imply end-of-day.",
     "Different currencies, balance types or cutoffs are not interchangeable.",

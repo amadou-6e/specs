@@ -83,9 +83,9 @@
       "definition": "../objects/income-statement-item/README.md"
     },
     {
-      "id": "account-balance-item",
+      "id": "balance-item",
       "identity": "balance_item_id",
-      "definition": "../objects/account-balance-item/README.md"
+      "definition": "../objects/balance-item/README.md"
     },
     {
       "id": "liability",
@@ -223,14 +223,14 @@
     {
       "id": "account-balance-items",
       "source": "account",
-      "target": "account-balance-item",
+      "target": "balance-item",
       "targets_per_source": "0..*",
       "sources_per_target": "1"
     },
     {
       "id": "statement-balance-items",
       "source": "transaction-statement",
-      "target": "account-balance-item",
+      "target": "balance-item",
       "targets_per_source": "0..*",
       "sources_per_target": "0..*"
     },

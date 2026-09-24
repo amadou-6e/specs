@@ -23,4 +23,4 @@ Includes: Account, coverage, source representation. Optional: Opening/closing ba
 
 These are type definitions; no illustrative instance is claimed as an observed record.
 
-Opening and closing balance fields remain observed source summaries. They can substantiate Account balance item records; do not count both as separate positions.
+Opening and closing balance fields remain observed source summaries. They can substantiate Balance item records; do not count both as separate positions.

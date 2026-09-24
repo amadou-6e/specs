@@ -79,7 +79,7 @@
   },
   "constraints": [
     "A Liability can exist before an Account is mapped; account-liabilities is optional.",
-    "Original amount is not the outstanding balance; dated account-linked amounts belong to Account balance item.",
+    "Original amount is not the outstanding balance; dated account-linked amounts belong to Balance item.",
     "When several liabilities share an Account, its balance is aggregate unless evidence supports allocation; never repeat the full balance for each Liability.",
     "An unmapped Liability has no inferred current outstanding amount.",
     "Repayment transactions remain separate cashflow rows; do not infer principal/interest allocation.",

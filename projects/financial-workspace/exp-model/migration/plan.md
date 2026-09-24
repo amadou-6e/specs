@@ -10,7 +10,7 @@ The candidate is intended to replace the old domain catalogue after evidence and
 | recurring-expenses | Agreement, versioned terms and Occurrence |
 | everyday-spending | Classification of a transaction; new manual capture excluded |
 | travel | Procurement attributes and document assertions, including itinerary |
-| financial-position | Account balance item; Liability for debts; broader assets deferred |
+| financial-position | Balance item; Liability for debts; broader assets deferred |
 | reconciliation | Reviewed relationships and allocations, plus process rules |
 | cross-system mappings | Representation IDs, field assertions, publication identity |
 | Notion procurement rows | Preserve original item identities; map settlements to transaction rows |

@@ -1,5 +1,5 @@
 schema_version: 1
-name: "account-balance-item"
+name: "balance-item"
 kind: "financial-object"
 purpose: "One account balance amount at a given date, with currency, balance type and evidence."
 authority: "Replacement candidate"

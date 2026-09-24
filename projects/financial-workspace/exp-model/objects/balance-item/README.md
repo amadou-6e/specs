@@ -1,10 +1,10 @@
-# Account balance item
+# Balance item
 
 <!-- BEGIN GENERATED: contained-elements -->
 ## Contained elements
 
 ```text
-account-balance-item/
+balance-item/
 ├── 1 README.md
 ├── 1 schema.yaml
 ├── 1 relationships.md

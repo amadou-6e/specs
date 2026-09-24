@@ -30,5 +30,5 @@ One folder per identifiable object.
 
 - [Income statement item](income-statement-item/README.md)
 
-- [Account balance item](account-balance-item/README.md)
+- [Balance item](balance-item/README.md)
 - [Liability](liability/README.md)

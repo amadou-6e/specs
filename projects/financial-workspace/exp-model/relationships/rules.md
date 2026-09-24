@@ -6,8 +6,8 @@ Canonical edges and cardinalities are in graph.yaml. targets_per_source counts t
 | --- | --- | --- | --- | --- |
 | agreement-terms | recurring-payment-agreement | agreement-term | 0..* | 1 |
 | income-statement-items | income-statement | income-statement-item | 0..* | 1 |
-| account-balance-items | account | account-balance-item | 0..* | 1 |
-| statement-balance-items | transaction-statement | account-balance-item | 0..* | 0..* |
+| account-balance-items | account | balance-item | 0..* | 1 |
+| statement-balance-items | transaction-statement | balance-item | 0..* | 0..* |
 | account-liabilities | account | liability | 0..* | 0..1 |
 | provides | financial-institution | account | 0..* | 1 |
 | issues-for | account | transaction-statement | 0..* | 1 |
