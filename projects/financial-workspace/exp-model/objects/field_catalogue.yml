@@ -1,10 +1,10 @@
 schema_version: 1
-scope: cashflow-entry
+scope: all-financial-objects
 status: descriptive-index
-authority: cashflow-entry/schema.yaml
-source_schema: cashflow-entry/schema.yaml
-source_mapping: ../mappings/cashflow/mapping.yaml
-description: "Cashflow entry field catalogue. Fields are attributes of one row, not objects or relationship-tree children."
+authority: "*/schema.yaml"
+cashflow_entry_source_schema: cashflow-entry/schema.yaml
+cashflow_entry_source_mapping: ../mappings/cashflow/mapping.yaml
+description: "Financial object field catalogue. Schemas remain authoritative; fields are attributes, not relationship-tree children."
 groups:
   identity:
     - entry_id
@@ -331,3 +331,987 @@ cross_field_constraints:
   - "Unique(sheet_id, transaction_id)."
   - "amount, currency, booking_date and account_id equal the referenced transaction."
   - "Aggregate by currency and reporting treatment; do not duplicate payment totals across item categories."
+normalization:
+  rule: "Keep schema field names stable. Normalize synonymous meanings in this index; do not collapse fields with different roles."
+  conditional_equivalence:
+    - fields: [transaction.merchant, cashflow-entry.counterparty]
+      condition: "Cashflow entry counterparty projects Transaction merchant when available; another counterparty need not be a merchant."
+    - fields: [procurement.order_reference, receipt.order_reference]
+      condition: "Equivalent only when the Receipt explicitly cites the same order."
+  distinct_roles:
+    - "An *_id string on its owner is identity; the same name as ref on another object is a relationship reference."
+    - "Transaction amount is a signed movement; Balance item amount is a stock observation; Commitment term amount is an agreed charge; Income statement item amount is a statement line."
+    - "Procurement total and Receipt total are separate source totals, even when equal."
+    - "Receipt document_reference and order_reference identify different things unless the source explicitly uses one reference for both."
+    - "booking_date, value_date, order_date, issue_date, due_date, as_of_date, effective_start and effective_end represent different events or intervals."
+    - "representation_id identifies one source representation; representation_ids is a collection and is not a separate financial object."
+object_fields:
+  account:
+    source_schema: account/schema.yaml
+    fields:
+      account_id:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Persistent internal identity; not a display name."
+      institution_id:
+        type: "ref"
+        required: true
+        nullable: false
+        description: "Reference to the Financial institution that provides this Account."
+        target: "financial-institution"
+      kind:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Account type: bank, wallet, card, or loan."
+        allowed_values: ["bank", "wallet", "card", "loan"]
+      ownership:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Recorded ownership classification of the account."
+      native_reference:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Provider account reference, distinct from internal account_id."
+      currencies:
+        type: "string[]"
+        required: false
+        nullable: true
+        description: "Currencies supported by the Account."
+        min_items: 0
+      opened_on:
+        type: "date"
+        required: false
+        nullable: true
+        description: "Date the Account was opened, if known."
+        format: "YYYY-MM-DD"
+      closed_on:
+        type: "date"
+        required: false
+        nullable: true
+        description: "Date the Account was closed, if known."
+        format: "YYYY-MM-DD"
+    object_constraints:
+      - "Required fields apply to accepted canonical records; incomplete extractions remain candidates."
+      - "Unknown optional values are null; no invented defaults."
+      - "Currency policy may permit multiple currencies; source amount currency is retained."
+  balance-item:
+    source_schema: balance-item/schema.yaml
+    fields:
+      balance_item_id:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Stable identity of this dated Balance item."
+      account_id:
+        type: "ref"
+        required: false
+        nullable: true
+        description: "Reference to the Account whose balance is observed, when account-owned."
+        target: "account"
+      as_of_date:
+        type: "date"
+        required: true
+        nullable: false
+        description: "Date at which this Balance item was observed."
+        format: "YYYY-MM-DD"
+      as_of_time:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Time at which this Balance item was observed, if available."
+      timezone:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Timezone required to interpret a timestamped balance."
+      amount:
+        type: "decimal"
+        required: true
+        nullable: false
+        description: "Observed balance at the as-of date; a stock value, not cashflow."
+        encoding: "decimal-string"
+        pattern: "^-?\\d+(\\.\\d+)?$"
+      currency:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Currency of the observed balance."
+      balance_type:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Type of balance observation, such as booked or outstanding debt."
+        allowed_values: ["booked", "available", "outstanding-debt", "other", "unknown"]
+      source_label:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Original label attached to the balance in its source."
+      sign_convention:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Documented source sign convention; do not infer net-worth sign from raw sign alone."
+      representation_ids:
+        type: "ref[]"
+        required: true
+        nullable: false
+        description: "References to source representations supporting this Balance Item."
+        target: "source-representation"
+        min_items: 1
+      supersedes_balance_item_id:
+        type: "ref"
+        required: false
+        nullable: true
+        description: "Reference to the earlier Balance item corrected by this observation."
+        target: "balance-item"
+      liability_id:
+        type: "ref"
+        required: false
+        nullable: true
+        description: "Reference to the Liability whose balance is observed, when liability-owned."
+        target: "liability"
+    object_constraints:
+      - "Exactly one of account_id or liability_id owns each Balance item."
+      - "As-of date is distinct from evidence retrieval time."
+      - "Timestamp precision requires timezone; a date alone does not imply end-of-day."
+      - "Different currencies, balance types or cutoffs are not interchangeable."
+      - "A balance is a stock observation, not an additive cashflow or transaction."
+      - "Corrections preserve previous observations and evidence; repeated source captures do not duplicate the financial observation."
+      - "Where linked to a Transaction statement, the Balance item is account-owned and the Account must agree."
+  cashflow-sheet:
+    source_schema: cashflow-sheet/schema.yaml
+    fields:
+      sheet_id:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Persistent internal identity; not a display name."
+      workspace_id:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Identifier of the containing Notion workspace."
+      database_id:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Identifier of the Notion database."
+      data_source_id:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Identifier of the Notion data source."
+      schema_version:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Version identifier of the external sheet schema."
+      view_configuration:
+        type: "object"
+        required: false
+        nullable: true
+        description: "Configuration of views over the Cashflow sheet."
+    object_constraints:
+      - "Required fields apply to accepted canonical records; incomplete extractions remain candidates."
+      - "Unknown optional values are null; no invented defaults."
+  commitment-term:
+    source_schema: commitment-term/schema.yaml
+    fields:
+      term_id:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Persistent Commitment term identity."
+      commitment_id:
+        type: "ref"
+        required: true
+        nullable: false
+        description: "Reference to the Recurring commitment whose terms apply."
+        target: "recurring-commitment"
+      effective_start:
+        type: "date"
+        required: true
+        nullable: false
+        description: "First date for which these terms or commitment apply."
+        format: "YYYY-MM-DD"
+      effective_end:
+        type: "date"
+        required: false
+        nullable: true
+        description: "Last date for which these terms or commitment apply, if known."
+        format: "YYYY-MM-DD"
+      amount:
+        type: "decimal"
+        required: true
+        nullable: false
+        description: "Agreed amount for the Commitment term, not a booked payment."
+        encoding: "decimal-string"
+        pattern: "^-?\\d+(\\.\\d+)?$"
+      currency:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Currency of the agreed term amount."
+      cadence:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Frequency of the commitment or agreed payment."
+    object_constraints:
+      - "Each Commitment term belongs to exactly one Recurring commitment."
+      - "An commitment may have no Commitment term records."
+      - "effective_end, when supplied, must not precede effective_start."
+      - "Preserve evidence and reviewed corrections; do not invent terms for incomplete commitments."
+  employer:
+    source_schema: employer/schema.yaml
+    fields:
+      employer_id:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Persistent internal identity; not a display name."
+      name:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Human-readable name for display."
+      provider_references:
+        type: "string[]"
+        required: false
+        nullable: true
+        description: "Provider-scoped references associated with this entity."
+        min_items: 0
+    object_constraints:
+      - "Required fields apply to accepted canonical records; incomplete extractions remain candidates."
+      - "Unknown optional values are null; no invented defaults."
+  financial-institution:
+    source_schema: financial-institution/schema.yaml
+    fields:
+      institution_id:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Persistent internal identity; not a display name."
+      name:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Human-readable name for display."
+      provider_identifiers:
+        type: "string[]"
+        required: false
+        nullable: true
+        description: "Identifiers assigned by the provider or registry."
+        min_items: 0
+    object_constraints:
+      - "Required fields apply to accepted canonical records; incomplete extractions remain candidates."
+      - "Unknown optional values are null; no invented defaults."
+  income-statement:
+    source_schema: income-statement/schema.yaml
+    fields:
+      income_statement_id:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Persistent internal identity; not a display name."
+      employer_id:
+        type: "ref"
+        required: true
+        nullable: false
+        description: "Reference to the Employer that issued this Income statement."
+        target: "employer"
+      period_start:
+        type: "date"
+        required: true
+        nullable: false
+        description: "Beginning of the statement coverage period."
+        format: "YYYY-MM-DD"
+      period_end:
+        type: "date"
+        required: true
+        nullable: false
+        description: "End of the statement coverage period."
+        format: "YYYY-MM-DD"
+      representation_ids:
+        type: "ref[]"
+        required: true
+        nullable: false
+        description: "References to source representations supporting this Income Statement."
+        target: "source-representation"
+        min_items: 1
+      gross:
+        type: "decimal"
+        required: false
+        nullable: true
+        description: "Gross amount reported by an Income statement."
+        encoding: "decimal-string"
+        pattern: "^-?\\d+(\\.\\d+)?$"
+      net:
+        type: "decimal"
+        required: false
+        nullable: true
+        description: "Net amount reported by an Income statement."
+        encoding: "decimal-string"
+        pattern: "^-?\\d+(\\.\\d+)?$"
+      deductions:
+        type: "decimal"
+        required: false
+        nullable: true
+        description: "Deduction amount reported by an Income statement."
+        encoding: "decimal-string"
+        pattern: "^-?\\d+(\\.\\d+)?$"
+      reimbursement:
+        type: "decimal"
+        required: false
+        nullable: true
+        description: "Reimbursement amount reported by an Income statement."
+        encoding: "decimal-string"
+        pattern: "^-?\\d+(\\.\\d+)?$"
+      currency:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Currency of the statement totals."
+    object_constraints:
+      - "Required fields apply to accepted canonical records; incomplete extractions remain candidates."
+      - "Unknown optional values are null; no invented defaults."
+      - "If gross is supplied, currency must be supplied."
+      - "If net is supplied, currency must be supplied."
+      - "If deductions is supplied, currency must be supplied."
+      - "If reimbursement is supplied, currency must be supplied."
+      - "Gross, net, deductions and reimbursement retain observed summary values; Income statement items retain source lines."
+      - "Do not count statement summaries and their item components as additional cashflow; reconcile discrepancies explicitly."
+  income-statement-item:
+    source_schema: income-statement-item/schema.yaml
+    fields:
+      income_statement_item_id:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Persistent line identity; re-extraction must preserve reviewed identity."
+      income_statement_id:
+        type: "ref"
+        required: true
+        nullable: false
+        description: "Reference to the parent Income statement containing this line."
+        target: "income-statement"
+      label:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Original statement line label."
+      line_kind:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Financial kind of an Income statement line."
+        allowed_values: ["earnings", "deduction", "reimbursement", "other", "unclassified"]
+      line_role:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Structural role of an Income statement line, distinguishing component from subtotal or total."
+        allowed_values: ["component", "subtotal", "total", "informational", "unclassified"]
+      amount:
+        type: "decimal"
+        required: false
+        nullable: true
+        description: "Observed signed amount; preserve provider sign convention."
+        encoding: "decimal-string"
+        pattern: "^-?\\d+(\\.\\d+)?$"
+      currency:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Currency of this statement line amount."
+      provider_code:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Code assigned to a statement line by its provider."
+      section:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Source statement section containing this line."
+      source_locator:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Page/row/field locator within a parent statement representation."
+      representation_id:
+        type: "ref"
+        required: true
+        nullable: false
+        description: "Reference to the source representation containing this statement line."
+        target: "source-representation"
+    object_constraints:
+      - "Each item belongs to exactly one Income statement."
+      - "Income statements may have zero extracted items when breakdown is unavailable."
+      - "If amount is supplied, currency must be supplied."
+      - "The referenced representation must support the parent Income statement."
+      - "Do not sum components, subtotals and totals together; reconcile using the observed section structure."
+      - "Unknown amounts remain null, not zero."
+      - "Statement items do not create cashflow entries; only booked transactions do."
+  liability:
+    source_schema: liability/schema.yaml
+    fields:
+      liability_id:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Stable identity of this continuing Liability."
+      creditor:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Party to whom the liability is owed."
+      description:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Description of the continuing debt."
+      kind:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Liability type: loan, credit-card debt, overdraft, other, or unknown."
+        allowed_values: ["loan", "credit-card-debt", "overdraft", "other", "unknown"]
+      status:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Whether this Liability is active, settled, or of unknown status."
+        allowed_values: ["active", "settled", "unknown"]
+      native_reference:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Lender agreement or loan reference, distinct from liability_id."
+      currency:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Currency of the original liability amount when known."
+      original_amount:
+        type: "decimal"
+        required: false
+        nullable: true
+        description: "Initial or contracted amount of the liability; not its outstanding balance."
+        encoding: "decimal-string"
+        pattern: "^\\d+(\\.\\d+)?$"
+      start_date:
+        type: "date"
+        required: false
+        nullable: true
+        description: "Date on which the liability began, if evidenced."
+        format: "YYYY-MM-DD"
+      maturity_date:
+        type: "date"
+        required: false
+        nullable: true
+        description: "Contractual maturity date, if evidenced."
+        format: "YYYY-MM-DD"
+      representation_ids:
+        type: "ref[]"
+        required: true
+        nullable: false
+        description: "References to source representations supporting this Liability."
+        target: "source-representation"
+        min_items: 1
+    object_constraints:
+      - "A Liability can exist before an Account is mapped; account-liabilities is optional."
+      - "Original amount is not the outstanding balance; dated outstanding amounts belong to Liability-owned Balance items."
+      - "When several liabilities share an Account, its balance is aggregate unless evidence supports allocation; never repeat the full balance for each Liability."
+      - "An unmapped Liability has no inferred current outstanding amount; a dated lender statement may provide an evidenced Balance item."
+      - "Repayment transactions remain separate cashflow rows; do not infer principal/interest allocation."
+      - "Currency is required when original_amount is present."
+      - "Do not count a liability and its linked negative account balance twice in financial-position totals."
+  liability-term:
+    source_schema: liability-term/schema.yaml
+    fields:
+      liability_term_id:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Stable identity of this version of Liability terms."
+      liability_id:
+        type: "ref"
+        required: true
+        nullable: false
+        description: "Reference to the Liability governed by these terms."
+        target: "liability"
+      effective_start:
+        type: "date"
+        required: true
+        nullable: false
+        description: "First date for which these terms or commitment apply."
+        format: "YYYY-MM-DD"
+      effective_end:
+        type: "date"
+        required: false
+        nullable: true
+        description: "Last date for which these terms or commitment apply, if known."
+        format: "YYYY-MM-DD"
+      agreement_reference:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Provider reference for this version of a liability agreement."
+      interest_rate:
+        type: "decimal"
+        required: false
+        nullable: true
+        description: "Source-labelled rate; do not infer the rate basis or period."
+        encoding: "decimal-string"
+      scheduled_repayment:
+        type: "decimal"
+        required: false
+        nullable: true
+        description: "Repayment amount scheduled by the liability terms."
+        encoding: "decimal-string"
+        pattern: "^\\d+(\\.\\d+)?$"
+      repayment_currency:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Currency of the scheduled repayment."
+      repayment_cadence:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Frequency of scheduled repayments."
+      representation_ids:
+        type: "ref[]"
+        required: true
+        nullable: false
+        description: "References to source representations supporting this Liability Term."
+        target: "source-representation"
+        min_items: 1
+    object_constraints:
+      - "Each Liability term belongs to exactly one Liability; a Liability may have no recorded terms."
+      - "effective_end, when supplied, must not precede effective_start."
+      - "Terms for the same Liability must not overlap unless the source explicitly distinguishes concurrent agreements."
+      - "A renegotiation creates a new term; preserve prior effective terms and evidence."
+      - "Scheduled repayment is not a posted Transaction or an outstanding Balance item."
+      - "repayment_currency is required when scheduled_repayment is present."
+  payment-occurrence:
+    source_schema: payment-occurrence/schema.yaml
+    fields:
+      occurrence_id:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Persistent internal identity; not a display name."
+      commitment_id:
+        type: "ref"
+        required: true
+        nullable: false
+        description: "Reference to the Recurring commitment for this expected payment."
+        target: "recurring-commitment"
+      period:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Service period of the expected recurring payment."
+      due_date:
+        type: "date"
+        required: false
+        nullable: true
+        description: "Due date of one Payment occurrence."
+        format: "YYYY-MM-DD"
+      expected_amount:
+        type: "decimal"
+        required: false
+        nullable: true
+        description: "Expected payment amount before settlement review."
+        encoding: "decimal-string"
+        pattern: "^-?\\d+(\\.\\d+)?$"
+      currency:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Currency of the expected payment amount."
+      settlement_state:
+        type: "string"
+        required: false
+        nullable: true
+        description: "State of settlement of a Payment occurrence."
+    object_constraints:
+      - "Required fields apply to accepted canonical records; incomplete extractions remain candidates."
+      - "Unknown optional values are null; no invented defaults."
+      - "If expected_amount is supplied, currency must be supplied."
+      - "At least one of period or due_date is required."
+  procurement:
+    source_schema: procurement/schema.yaml
+    fields:
+      procurement_id:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Persistent internal identity; not a display name."
+      merchant:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Merchant named on a Procurement or Transaction."
+      representation_ids:
+        type: "ref[]"
+        required: true
+        nullable: false
+        description: "References to source representations supporting this Procurement."
+        target: "source-representation"
+        min_items: 1
+      order_date:
+        type: "date"
+        required: false
+        nullable: true
+        description: "Date on which the order was placed."
+        format: "YYYY-MM-DD"
+      order_reference:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Merchant order reference shared by Procurement and Receipt when evidenced."
+      total:
+        type: "decimal"
+        required: false
+        nullable: true
+        description: "Order total stated by the Procurement source; may differ from a settlement."
+        encoding: "decimal-string"
+        pattern: "^-?\\d+(\\.\\d+)?$"
+      currency:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Currency of the order total."
+      travel_details:
+        type: "object"
+        required: false
+        nullable: true
+        description: "Travel itinerary details evidenced by the Procurement source."
+    object_constraints:
+      - "Required fields apply to accepted canonical records; incomplete extractions remain candidates."
+      - "Unknown optional values are null; no invented defaults."
+      - "If total is supplied, currency must be supplied."
+      - "Travel fields are only supplied from verified itinerary evidence."
+  procurement-item:
+    source_schema: procurement-item/schema.yaml
+    fields:
+      item_id:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Persistent internal identity; not a display name."
+      procurement_id:
+        type: "ref"
+        required: true
+        nullable: false
+        description: "Reference to the Procurement containing this purchased item."
+        target: "procurement"
+      description:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Description of the purchased item."
+      quantity:
+        type: "decimal"
+        required: true
+        nullable: false
+        description: "Quantity of units on a Procurement item."
+        encoding: "decimal-string"
+        pattern: "^-?\\d+(\\.\\d+)?$"
+      unit_amount:
+        type: "decimal"
+        required: false
+        nullable: true
+        description: "Price per unit of a Procurement item."
+        encoding: "decimal-string"
+        pattern: "^-?\\d+(\\.\\d+)?$"
+      line_amount:
+        type: "decimal"
+        required: false
+        nullable: true
+        description: "Amount of a Procurement item line."
+        encoding: "decimal-string"
+        pattern: "^-?\\d+(\\.\\d+)?$"
+      currency:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Currency of the item amounts."
+      category:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Classification of a Procurement item."
+      receipt_locator:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Location of the corresponding item within a Receipt representation."
+    object_constraints:
+      - "Required fields apply to accepted canonical records; incomplete extractions remain candidates."
+      - "Unknown optional values are null; no invented defaults."
+      - "If unit_amount is supplied, currency must be supplied."
+      - "If line_amount is supplied, currency must be supplied."
+  receipt:
+    source_schema: receipt/schema.yaml
+    fields:
+      receipt_id:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Persistent internal identity; not a display name."
+      document_kind:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Kind of document represented by a Receipt."
+        allowed_values: ["order-confirmation", "invoice", "paid-receipt", "refund-confirmation", "booking-confirmation"]
+      representation_ids:
+        type: "ref[]"
+        required: true
+        nullable: false
+        description: "References to source representations supporting this Receipt."
+        target: "source-representation"
+        min_items: 1
+      issuer:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Issuer shown on a Receipt."
+      document_reference:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Reference printed on the Receipt itself."
+      order_reference:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Merchant order reference shared by Procurement and Receipt when evidenced."
+      issue_date:
+        type: "date"
+        required: false
+        nullable: true
+        description: "Date on which the Receipt document was issued."
+        format: "YYYY-MM-DD"
+      item_descriptions:
+        type: "string[]"
+        required: false
+        nullable: true
+        description: "Descriptions of items listed on a Receipt without separate Receipt item objects."
+        min_items: 0
+      total:
+        type: "decimal"
+        required: false
+        nullable: true
+        description: "Total printed on the Receipt document."
+        encoding: "decimal-string"
+        pattern: "^-?\\d+(\\.\\d+)?$"
+      currency:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Currency of the document total."
+    object_constraints:
+      - "Required fields apply to accepted canonical records; incomplete extractions remain candidates."
+      - "Unknown optional values are null; no invented defaults."
+      - "If total is supplied, currency must be supplied."
+      - "Document kind or format alone does not establish a booked payment."
+  recurring-commitment:
+    source_schema: recurring-commitment/schema.yaml
+    fields:
+      commitment_id:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Persistent internal identity; not a display name."
+      provider:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Provider named by the source record."
+      description:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Description of the recurring agreement or service."
+      representation_ids:
+        type: "ref[]"
+        required: false
+        nullable: true
+        description: "References to source representations supporting this Recurring Commitment."
+        target: "source-representation"
+        min_items: 0
+      reviewed_basis:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Reviewed evidence basis for a recurring commitment."
+      cadence:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Frequency of the commitment or agreed payment."
+      effective_start:
+        type: "date"
+        required: false
+        nullable: true
+        description: "First date for which these terms or commitment apply."
+        format: "YYYY-MM-DD"
+      effective_end:
+        type: "date"
+        required: false
+        nullable: true
+        description: "Last date for which these terms or commitment apply, if known."
+        format: "YYYY-MM-DD"
+    object_constraints:
+      - "Required fields apply to accepted canonical records; incomplete extractions remain candidates."
+      - "Unknown optional values are null; no invented defaults."
+      - "At least one source representation or nonempty reviewed_basis is required."
+      - "Optional Commitment term records are linked through commitment-terms; no embedded terms copy."
+  transaction:
+    source_schema: transaction/schema.yaml
+    fields:
+      transaction_id:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Persistent internal identity; not a display name."
+      account_id:
+        type: "ref"
+        required: true
+        nullable: false
+        description: "Reference to the Account on which this Transaction was booked."
+        target: "account"
+      amount:
+        type: "decimal"
+        required: true
+        nullable: false
+        description: "Signed amount of a booked account movement."
+        encoding: "decimal-string"
+        pattern: "^-?\\d+(\\.\\d+)?$"
+      currency:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Currency of the booked amount."
+      booking_date:
+        type: "date"
+        required: true
+        nullable: false
+        description: "Booking date recorded for this transaction."
+        format: "YYYY-MM-DD"
+      representation_ids:
+        type: "ref[]"
+        required: true
+        nullable: false
+        description: "References to source representations supporting this Transaction."
+        target: "source-representation"
+        min_items: 1
+      value_date:
+        type: "date"
+        required: false
+        nullable: true
+        description: "Bank value date, distinct from booking date."
+        format: "YYYY-MM-DD"
+      merchant:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Merchant named on a Procurement or Transaction."
+      reference:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Payment purpose or reference supplied with a Transaction."
+      provider_transaction_id:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Transaction identifier assigned by the account provider; account-scoped."
+      description:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Description shown for the booked movement."
+    object_constraints:
+      - "Required fields apply to accepted canonical records; incomplete extractions remain candidates."
+      - "Unknown optional values are null; no invented defaults."
+      - "amount is signed; booked account movements only."
+      - "Provider ID is account-scoped; amount/date/merchant alone are not a unique key."
+  transaction-statement:
+    source_schema: transaction-statement/schema.yaml
+    fields:
+      statement_id:
+        type: "string"
+        required: true
+        nullable: false
+        description: "Persistent internal identity; not a display name."
+      account_id:
+        type: "ref"
+        required: true
+        nullable: false
+        description: "Reference to the Account covered by this Transaction statement."
+        target: "account"
+      coverage_start:
+        type: "date"
+        required: true
+        nullable: false
+        description: "Start of the Transaction statement coverage interval."
+        format: "YYYY-MM-DD"
+      coverage_end:
+        type: "date"
+        required: true
+        nullable: false
+        description: "End of the Transaction statement coverage interval."
+        format: "YYYY-MM-DD"
+      representation_ids:
+        type: "ref[]"
+        required: true
+        nullable: false
+        description: "References to source representations supporting this Transaction Statement."
+        target: "source-representation"
+        min_items: 1
+      opening_balance:
+        type: "decimal"
+        required: false
+        nullable: true
+        description: "Account balance at the start of the statement period."
+        encoding: "decimal-string"
+        pattern: "^-?\\d+(\\.\\d+)?$"
+      closing_balance:
+        type: "decimal"
+        required: false
+        nullable: true
+        description: "Account balance at the end of the statement period."
+        encoding: "decimal-string"
+        pattern: "^-?\\d+(\\.\\d+)?$"
+      currency:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Currency of the statement balances."
+      issued_on:
+        type: "date"
+        required: false
+        nullable: true
+        description: "Date the Transaction statement was issued."
+        format: "YYYY-MM-DD"
+      revision:
+        type: "string"
+        required: false
+        nullable: true
+        description: "Revision identifier of the Transaction statement."
+    object_constraints:
+      - "Required fields apply to accepted canonical records; incomplete extractions remain candidates."
+      - "Unknown optional values are null; no invented defaults."
+      - "If opening_balance is supplied, currency must be supplied."
+      - "If closing_balance is supplied, currency must be supplied."
