@@ -27,3 +27,5 @@ One folder per identifiable object.
 - [cashflow-entry](cashflow-entry/README.md)
 
 - [Agreement term](agreement-term/README.md)
+
+- [Income statement item](income-statement-item/README.md)

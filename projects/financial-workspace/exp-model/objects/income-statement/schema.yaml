@@ -74,7 +74,9 @@
     "If gross is supplied, currency must be supplied.",
     "If net is supplied, currency must be supplied.",
     "If deductions is supplied, currency must be supplied.",
-    "If reimbursement is supplied, currency must be supplied."
+    "If reimbursement is supplied, currency must be supplied.",
+    "Gross, net, deductions and reimbursement retain observed summary values; Income statement items retain source lines.",
+    "Do not count statement summaries and their item components as additional cashflow; reconcile discrepancies explicitly."
   ],
   "validation_scope": "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."
 }

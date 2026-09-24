@@ -38,3 +38,11 @@ Recurring-payment agreement
 ```
 
 The zero lower bound makes Agreement term optional for an agreement. Each term belongs to exactly one agreement.
+
+## Income statement subtree
+
+```text
+Employer
++-- [1 : 0..*] Income statement
+    +-- [1 : 0..*] Income statement item
+```

@@ -22,3 +22,5 @@ Includes: Employer, period, source. Optional: Gross/net amounts, deductions, rei
 - [Source forms](representations.md)
 
 These are type definitions; no illustrative instance is claimed as an observed record.
+
+[Income statement item](../income-statement-item/README.md) captures the optional line breakdown: [1 : 0..*]. Parent amounts remain observed summaries.

@@ -12,7 +12,7 @@ kind: "financial-object"
 purpose: "One payslip or employer payment statement."
 includes:
   - "Employer, period, source"
-  - "Gross/net amounts, deductions, reimbursement component"
+  - "Observed gross/net and deduction/reimbursement summaries; optional Income statement item breakdown"
 excludes:
   - "Source file format as financial identity"
   - "Workflow execution"
@@ -22,6 +22,7 @@ graph_ref: "../../relationships/graph.yaml"
 relationship_ids:
   - "issues"
   - "substantiates-income"
+  - "income-statement-items"
 representations:
   - "../../representations/pdf"
   - "../../representations/image"

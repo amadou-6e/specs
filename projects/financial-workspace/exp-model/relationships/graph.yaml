@@ -76,6 +76,11 @@
       "id": "agreement-term",
       "identity": "term_id",
       "definition": "../objects/agreement-term/README.md"
+    },
+    {
+      "id": "income-statement-item",
+      "identity": "income_statement_item_id",
+      "definition": "../objects/income-statement-item/README.md"
     }
   ],
   "relationships": [
@@ -195,6 +200,13 @@
       "id": "agreement-terms",
       "source": "recurring-payment-agreement",
       "target": "agreement-term",
+      "targets_per_source": "0..*",
+      "sources_per_target": "1"
+    },
+    {
+      "id": "income-statement-items",
+      "source": "income-statement",
+      "target": "income-statement-item",
       "targets_per_source": "0..*",
       "sources_per_target": "1"
     }

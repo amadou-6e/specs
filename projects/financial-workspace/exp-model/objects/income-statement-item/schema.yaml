@@ -1,0 +1,94 @@
+{
+  "schema_version": 2,
+  "object": "income-statement-item",
+  "identity_field": "income_statement_item_id",
+  "fields": {
+    "income_statement_item_id": {
+      "type": "string",
+      "required": true,
+      "nullable": false,
+      "description": "Persistent line identity; re-extraction must preserve reviewed identity."
+    },
+    "income_statement_id": {
+      "type": "ref",
+      "required": true,
+      "nullable": false,
+      "target": "income-statement"
+    },
+    "label": {
+      "type": "string",
+      "required": true,
+      "nullable": false,
+      "description": "Original statement line label."
+    },
+    "line_kind": {
+      "type": "string",
+      "required": true,
+      "nullable": false,
+      "enum": [
+        "earnings",
+        "deduction",
+        "reimbursement",
+        "other",
+        "unclassified"
+      ]
+    },
+    "line_role": {
+      "type": "string",
+      "required": true,
+      "nullable": false,
+      "enum": [
+        "component",
+        "subtotal",
+        "total",
+        "informational",
+        "unclassified"
+      ]
+    },
+    "amount": {
+      "type": "decimal",
+      "required": false,
+      "nullable": true,
+      "encoding": "decimal-string",
+      "pattern": "^-?\\d+(\\.\\d+)?$",
+      "description": "Observed signed amount; preserve provider sign convention."
+    },
+    "currency": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    },
+    "provider_code": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    },
+    "section": {
+      "type": "string",
+      "required": false,
+      "nullable": true
+    },
+    "source_locator": {
+      "type": "string",
+      "required": true,
+      "nullable": false,
+      "description": "Page/row/field locator within a parent statement representation."
+    },
+    "representation_id": {
+      "type": "ref",
+      "required": true,
+      "nullable": false,
+      "target": "source-representation"
+    }
+  },
+  "constraints": [
+    "Each item belongs to exactly one Income statement.",
+    "Income statements may have zero extracted items when breakdown is unavailable.",
+    "If amount is supplied, currency must be supplied.",
+    "The referenced representation must support the parent Income statement.",
+    "Do not sum components, subtotals and totals together; reconcile using the observed section structure.",
+    "Unknown amounts remain null, not zero.",
+    "Statement items do not create cashflow entries; only booked transactions do."
+  ],
+  "validation_scope": "Typed specification contract; section reconciliation and evidence require review."
+}
