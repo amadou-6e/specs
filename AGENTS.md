@@ -41,3 +41,60 @@ Problem or feedback -> specification issue -> typed issue branch -> spec and evi
 Use `<type>/<issue-number>` branches, for example `feat/12`, `fix/18`, `docs/21`, or
 `chore/24`. Pull requests should link the issue and identify the specifications whose
 status or behavior changed.
+
+## Stable nomenclature in conversation and specifications
+
+Use the same established name for the same concept across messages, diagrams,
+metadata and schemas. Do not switch between synonyms for stylistic variety.
+Check the relevant catalogue before describing an object as existing.
+
+Distinguish an existing object, a field on an object, a proposed object and an
+implemented change. A discussion or diagram does not create an object in the
+repository. Preserve that distinction in every follow-up. If a rename or promotion
+is useful, state the old name, proposed name and reason explicitly; update affected
+references consistently when the change is authorized.
+
+Use the user's agreed notation consistently. In relationship trees, preserve
+[parent cardinality : child cardinality] and do not substitute vague relationship
+verbs or imply ownership through a navigation path.
+
+### Examples from the financial-model discussion
+
+**Example 1: A field is not an existing object**
+
+User: "I don't see an Agreement term object."
+
+Avoid: "Agreement term is another object in the model."
+
+Use: "Agreement term is not an object in the catalogue. Recurring-payment agreement
+currently contains a terms field. Promoting it to an Agreement term object is a
+proposal, not an implemented change."
+
+**Example 2: Keep distinct item types distinct**
+
+User: "A procurement has procurement items; a receipt has receipt items."
+
+Avoid: Calling both concepts "items" interchangeably or implying that Procurement
+item already covers Receipt item.
+
+Use: "Procurement item exists. Receipt item is a separate proposed object and has
+not yet been added. A Procurement item describes the purchase; a Receipt item
+describes a line on its document."
+
+**Example 3: Keep the established object name**
+
+Avoid: Switching among "Transaction statement", "Statement" and "transaction
+sheet" as if they were different or newly named objects.
+
+Use: "Transaction statement" consistently for the established object. If the user
+uses a synonym, acknowledge its correspondence once and retain the agreed name.
+
+**Example 4: Preserve cardinality notation**
+
+User: "Despite using cardinalities, can you represent it as a tree?"
+
+Avoid: Replacing the agreed links with "has", "records" or "provides" in the next
+message.
+
+Use: "Recurring-payment agreement -> [1 : 0..*] Recurring-payment occurrence".
+Mark any additional Agreement term branch as proposed until it is implemented.
