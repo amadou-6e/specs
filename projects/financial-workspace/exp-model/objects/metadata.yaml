@@ -6,6 +6,7 @@ authority: Replacement candidate
 owner: amadou-6e
 children:
   - "1 README.md"
+  - "1 field_catalogue.yml"
   - "1 .template/"
   - "0..* <object>/ entries"
 status: draft

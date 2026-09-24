@@ -6,11 +6,12 @@
 ```text
 objects/
 ├── 1 README.md
+├── 1 field_catalogue.yml
 ├── 1 .template/
 └── 0..* <object>/ entries
 ```
 <!-- END GENERATED: contained-elements -->
-One folder per identifiable object.
+One folder per identifiable object. [Field catalogue](field_catalogue.yml) describes Cashflow entry attributes; it does not define additional objects. The object schemas remain authoritative for types and constraints.
 
 - [financial-institution](financial-institution/README.md)
 - [account](account/README.md)

@@ -21,13 +21,9 @@ Account
 
 Cashflow sheet
 +-- Cashflow entry [one per transaction]
-    +-- Amount, Currency, Date, Account [from transaction]
-    +-- Type and Expense category [reviewed classification]
-    +-- Receipt links and item descriptions [when available]
-    +-- Commitment and service period [when applicable]
-    +-- Income statement details [when applicable]
-    +-- Personal/work, reporting treatment, match status
 ```
+
+The Cashflow entry attributes are described in the [field catalogue](../objects/field_catalogue.yml); they are not child objects in this relationship tree.
 
 ## Recurring commitment subtree
 

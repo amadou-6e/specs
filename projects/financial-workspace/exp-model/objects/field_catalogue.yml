@@ -1,0 +1,333 @@
+schema_version: 1
+scope: cashflow-entry
+status: descriptive-index
+authority: cashflow-entry/schema.yaml
+source_schema: cashflow-entry/schema.yaml
+source_mapping: ../mappings/cashflow/mapping.yaml
+description: "Cashflow entry field catalogue. Fields are attributes of one row, not objects or relationship-tree children."
+groups:
+  identity:
+    - entry_id
+    - sheet_id
+    - transaction_id
+    - name
+  transaction_values:
+    - booking_date
+    - amount
+    - currency
+    - account_id
+    - institution_id
+    - counterparty
+    - reference
+  classification:
+    - type
+    - expense_category
+    - purchase_category
+    - personal_work
+    - reporting_treatment
+  purchase_and_travel:
+    - order_dates
+    - travel_dates
+    - procurement_ids
+    - item_descriptions
+    - receipt_links
+  recurring:
+    - service_periods
+    - commitment_ids
+    - commitment_names
+  income_and_statement_evidence:
+    - income_statement_links
+    - statement_links
+  review_and_provenance:
+    - evidence_status
+    - match_status
+    - run_id
+    - model_version
+fields:
+  entry_id:
+    type: "string"
+    required: true
+    nullable: false
+    description: "Stable identity of this Cashflow entry, independent of its display name."
+    source: "cashflow-entry.entry_id"
+    derivation: "source-field"
+    constraints:
+      - "Must remain stable across replays of the same entry."
+  sheet_id:
+    type: "ref"
+    required: true
+    nullable: false
+    description: "Cashflow sheet containing this entry."
+    source: "cashflow-sheet.sheet_id"
+    derivation: "source-field"
+    target: "cashflow-sheet"
+    constraints:
+      - "Together with transaction_id, uniquely identifies a canonical sheet row."
+  transaction_id:
+    type: "ref"
+    required: true
+    nullable: false
+    description: "Booked Transaction projected into this entry."
+    source: "transaction.transaction_id"
+    derivation: "source-field"
+    target: "transaction"
+    constraints:
+      - "Exactly one evidenced booked Transaction per accepted entry."
+      - "Together with sheet_id, must be unique."
+  name:
+    type: "string"
+    required: false
+    nullable: true
+    description: "Human-readable display title for the row."
+    source: "transaction.description"
+    derivation: "source-field"
+  booking_date:
+    type: "date"
+    required: true
+    nullable: false
+    description: "Date on which the source Transaction was booked."
+    source: "transaction.booking_date"
+    derivation: "source-field"
+    format: "YYYY-MM-DD"
+    constraints:
+      - "Must equal the referenced Transaction booking_date; do not substitute order or travel date."
+  amount:
+    type: "decimal"
+    required: true
+    nullable: false
+    description: "Signed amount of the booked Transaction in its original currency."
+    source: "transaction.amount"
+    derivation: "source-field"
+    encoding: "decimal-string"
+    constraints:
+      - "Must equal the referenced Transaction amount, including sign."
+      - "Do not sum item descriptions as additional movements."
+  currency:
+    type: "string"
+    required: true
+    nullable: false
+    description: "Currency of the booked Transaction amount."
+    source: "transaction.currency"
+    derivation: "source-field"
+    constraints:
+      - "Must equal the referenced Transaction currency."
+      - "Aggregate monetary values by currency."
+  account_id:
+    type: "ref"
+    required: true
+    nullable: false
+    description: "Account on which the Transaction was booked."
+    source: "transaction.account_id"
+    derivation: "source-field"
+    target: "account"
+    constraints:
+      - "Must equal the referenced Transaction account_id."
+  institution_id:
+    type: "ref"
+    required: true
+    nullable: false
+    description: "Financial institution that provides the Account."
+    source: "account.institution_id"
+    derivation: "source-field"
+    target: "financial-institution"
+    constraints:
+      - "Must agree with the referenced Account's institution."
+  counterparty:
+    type: "string"
+    required: false
+    nullable: true
+    description: "Merchant or other counterparty named on the Transaction when available."
+    source: "transaction.merchant"
+    derivation: "source-field"
+  reference:
+    type: "string"
+    required: false
+    nullable: true
+    description: "Payment reference or purpose text carried by the Transaction."
+    source: "transaction.reference"
+    derivation: "source-field"
+  type:
+    type: "string"
+    required: true
+    nullable: false
+    description: "Reviewed classification of the money movement."
+    source: null
+    derivation: "reviewed-classification"
+    allowed_values: ["income", "expense", "refund", "transfer", "other", "unknown"]
+    constraints:
+      - "Use unknown when classification is unresolved; do not invent certainty."
+  expense_category:
+    type: "string"
+    required: true
+    nullable: false
+    description: "Reviewed expense grouping for filtered and aggregate cashflow views."
+    source: null
+    derivation: "reviewed-classification"
+    allowed_values: ["procurement", "recurring-expense", "other", "unclassified", "mixed"]
+    constraints:
+      - "Use unclassified when the expense grouping is unresolved."
+      - "The existing enum is the current schema boundary; do not infer finer categories from this catalogue."
+  purchase_category:
+    type: "string"
+    required: false
+    nullable: true
+    description: "More specific purchase grouping when the expense is procurement."
+    source: null
+    derivation: "run-context"
+    constraints:
+      - "Leave null when no reviewed procurement grouping applies."
+  personal_work:
+    type: "string"
+    required: true
+    nullable: false
+    description: "Reviewed personal versus work-related classification."
+    source: null
+    derivation: "reviewed-classification"
+    allowed_values: ["personal", "work", "mixed", "unknown"]
+    constraints:
+      - "Use unknown when evidence does not establish personal versus work use."
+  order_dates:
+    type: "date[]"
+    required: false
+    nullable: true
+    description: "Order dates supported by linked Procurement records."
+    source: "procurement.order_date"
+    derivation: "source-field"
+    constraints:
+      - "Retain distinct evidenced dates; never substitute booking_date."
+  travel_dates:
+    type: "date[]"
+    required: false
+    nullable: true
+    description: "Travel dates supported by linked Procurement details or receipts."
+    source: "procurement.travel_details"
+    derivation: "source-field"
+    constraints:
+      - "Retain distinct evidenced travel dates; never infer them from purchase date."
+  service_periods:
+    type: "string[]"
+    required: false
+    nullable: true
+    description: "Service periods of linked recurring Payment occurrences."
+    source: "payment-occurrence.period"
+    derivation: "source-field"
+    constraints:
+      - "Use only periods supported by linked Payment occurrences."
+  procurement_ids:
+    type: "ref[]"
+    required: false
+    nullable: true
+    description: "Procurement records linked to this Transaction."
+    source: "procurement.procurement_id"
+    derivation: "source-field"
+    target: "procurement"
+    constraints:
+      - "Links must be reviewed; an amount/date candidate alone is insufficient."
+  item_descriptions:
+    type: "string[]"
+    required: false
+    nullable: true
+    description: "Descriptions of linked Procurement items; these are row attributes, not separate cash movements."
+    source: "procurement-item.description"
+    derivation: "source-field"
+    constraints:
+      - "Descriptions do not create extra Cashflow entries."
+  commitment_ids:
+    type: "ref[]"
+    required: false
+    nullable: true
+    description: "Recurring commitments linked through the payment occurrence."
+    source: "recurring-commitment.commitment_id"
+    derivation: "source-field"
+    target: "recurring-commitment"
+    constraints:
+      - "Links must be reviewed and may remain absent."
+  commitment_names:
+    type: "string[]"
+    required: false
+    nullable: true
+    description: "Display names of the linked recurring commitments."
+    source: "recurring-commitment.description"
+    derivation: "source-field"
+  receipt_links:
+    type: "string[]"
+    required: false
+    nullable: true
+    description: "Links to reviewed Receipt evidence, which may be email, PDF, image or another source form."
+    source: null
+    derivation: "provenance-links"
+    constraints:
+      - "Receipt evidence enriches the row; it does not create another movement."
+  income_statement_links:
+    type: "string[]"
+    required: false
+    nullable: true
+    description: "Links to Income statement evidence supporting an income or reimbursement row."
+    source: null
+    derivation: "provenance-links"
+    constraints:
+      - "An Income statement supports the row but is not the booked Transaction."
+  statement_links:
+    type: "string[]"
+    required: false
+    nullable: true
+    description: "Links to Transaction statement evidence for the booked movement."
+    source: null
+    derivation: "provenance-links"
+    constraints:
+      - "Link to the statement containing the booked Transaction when available."
+  evidence_status:
+    type: "string"
+    required: true
+    nullable: false
+    description: "Completeness and reliability of source evidence for the row."
+    source: null
+    derivation: "reviewed-classification"
+    allowed_values: ["missing", "partial", "verified", "ambiguous"]
+    constraints:
+      - "Describes source evidence, distinct from match_status."
+  match_status:
+    type: "string"
+    required: true
+    nullable: false
+    description: "State of the reviewed linkage between the Transaction and supporting objects."
+    source: null
+    derivation: "reviewed-classification"
+    allowed_values: ["missing", "partial", "verified", "ambiguous"]
+    constraints:
+      - "Describes linkage confidence, distinct from evidence_status."
+  reporting_treatment:
+    type: "string"
+    required: true
+    nullable: false
+    description: "Instruction for cashflow aggregation and double-count prevention."
+    source: null
+    derivation: "reviewed-classification"
+    allowed_values: ["include", "internal-transfer", "wallet-funding", "liability-movement", "unresolved"]
+    constraints:
+      - "Only include is counted as ordinary external cashflow; other values need explicit reporting handling."
+      - "Do not double count internal transfers or wallet funding."
+  run_id:
+    type: "string"
+    required: true
+    nullable: false
+    description: "Workflow run that produced or last published the entry."
+    source: null
+    derivation: "run-context"
+    constraints:
+      - "Required for publication audit."
+  model_version:
+    type: "string"
+    required: true
+    nullable: false
+    description: "Version of the model used to produce the entry."
+    source: null
+    derivation: "run-context"
+    constraints:
+      - "Required to reproduce the published projection."
+cross_field_constraints:
+  - "Required fields apply to accepted canonical records; incomplete extractions remain candidates."
+  - "Unknown optional values are null; no invented defaults."
+  - "Unique(sheet_id, transaction_id)."
+  - "amount, currency, booking_date and account_id equal the referenced transaction."
+  - "Aggregate by currency and reporting treatment; do not duplicate payment totals across item categories."
