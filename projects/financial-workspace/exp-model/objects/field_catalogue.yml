@@ -77,8 +77,7 @@ objects:
       service_periods: "Service periods of linked recurring Payment occurrences."
       item_descriptions: "Descriptions of linked Single expense items; these are row attributes, not separate cash movements."
       recurring_expense_names: "Display names of the linked recurring expenses."
-      receipt_links: "Links to reviewed Receipt evidence, which may be email, PDF, image or another source form."
-      income_statement_links: "Links to Income statement evidence supporting an income or reimbursement row."
+      receipt_links: "Links to reviewed Receipts, including income-statement Receipts, in any source form."
       statement_links: "Links to Transaction statement evidence for the booked movement."
       evidence_status: "Completeness and reliability of source evidence for the row."
       match_status: "State of the reviewed linkage between the Transaction and supporting objects."
@@ -137,28 +136,12 @@ objects:
       cadence: "Expected frequency of payment."
       effective_start: "First date the income stream applies."
       effective_end: "Last date the income stream applies, when known."
-  income-statement:
-    schema: "income-statement/schema.yaml"
-    primary_key:
-      income_statement_id: "Persistent internal identity; not a display name."
-    foreign_keys:
-      employer_id: "Reference to the Employer that issued this Income statement."
-      recurring_income_id: "Optional recurring income stream documented by this statement."
-      representation_ids: "References to source representations supporting this Income Statement."
-    fields:
-      period_start: "Beginning of the statement coverage period."
-      period_end: "End of the statement coverage period."
-      gross: "Gross amount reported by an Income statement."
-      net: "Net amount reported by an Income statement."
-      deductions: "Deduction amount reported by an Income statement."
-      reimbursement: "Reimbursement amount reported by an Income statement."
-      currency: "Currency of the statement totals."
   income-statement-item:
     schema: "income-statement-item/schema.yaml"
     primary_key:
       income_statement_item_id: "Persistent line identity; re-extraction must preserve reviewed identity."
     foreign_keys:
-      income_statement_id: "Reference to the parent Income statement containing this line."
+      receipt_id: "Reference to the parent income-statement Receipt containing this line."
       representation_id: "Reference to the source representation containing this statement line."
     fields:
       label: "Original statement line label."
@@ -295,8 +278,16 @@ objects:
       receipt_id: "Persistent internal identity; not a display name."
     foreign_keys:
       representation_ids: "References to source representations supporting this Receipt."
+      employer_id: "Employer issuing an income-statement Receipt, when applicable."
+      recurring_income_id: "Income stream documented by an income-statement Receipt, when applicable."
     fields:
-      document_kind: "Kind of document represented by a Receipt."
+      document_kind: "Kind of document represented by a Receipt, including income-statement."
+      period_start: "Start of the period documented by an income-statement Receipt."
+      period_end: "End of the period documented by an income-statement Receipt."
+      gross: "Observed gross amount on an income-statement Receipt."
+      net: "Observed net amount on an income-statement Receipt."
+      deductions: "Observed deductions on an income-statement Receipt."
+      reimbursement: "Observed reimbursement summary on an income-statement Receipt."
       issuer: "Issuer shown on a Receipt."
       document_reference: "Reference printed on the Receipt itself."
       order_reference: "Merchant order reference shared by Single expense and Receipt when evidenced."

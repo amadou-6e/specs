@@ -9,28 +9,30 @@ HERE=Path(__file__).resolve().parent
 GRAPH=json.loads((HERE/"graph.yaml").read_text(encoding="utf-8"))
 OUT=HERE/"layered-erd.drawio"
 PREVIEW=Path(tempfile.gettempdir())/"financial-workspace-layered-erd-preview.html"
-W,H=2500,2440
+W,H=2800,2660
 BW=250
 STEP=20
 NODES={
- "financial-institution":(570,235),"employer":(100,235),
- "recurring-expense":(1510,235),"recurring-income":(100,360),"single-expense":(1980,235),"liability":(1040,235),
- "account":(570,490),"income-statement":(100,490),
- "commitment-term":(1510,490),"single-expense-item":(1980,490),"liability-term":(1040,490),
- "transaction-statement":(570,745),"income-statement-item":(100,745),
- "payment-occurrence":(1510,745),"receipt":(1980,745),"balance-item":(1040,745),
- "transaction":(1090,1050),"cashflow-entry":(1090,1370),"cashflow-sheet":(1090,1650),"single-income":(100,1045),"budget":(770,2050),"forecast":(1440,2050),
+ "financial-institution":(100,235),"account":(100,420),"transaction-statement":(100,610),"balance-item":(100,800),
+ "liability":(480,235),"liability-term":(480,420),
+ "transaction":(860,235),"receipt":(860,500),
+ "employer":(1240,235),"recurring-income":(1240,410),"income-statement-item":(1240,620),
+ "single-income":(1620,235),
+ "recurring-expense":(2000,235),"commitment-term":(2000,420),"payment-occurrence":(2000,620),
+ "single-expense":(2380,235),"single-expense-item":(2380,450),
+ "cashflow-entry":(1150,1240),"cashflow-sheet":(1150,1640),
+ "budget":(800,2220),"forecast":(1670,2220),
 }
 LANES=[
- ("Accounts and statements",535,140,360,770,"#EEF5FA"),
- ("Employment income",65,140,360,770,"#F5F1FA"),
- ("Recurring expenses",1475,140,360,770,"#F1F6EE"),
- ("Single expenses and receipts",1945,140,360,770,"#FFF6EC"),
- ("Liabilities",1005,140,360,770,"#F8F0F1"),
- ("Single income - planned or received",65,955,360,320,"#EEF8F1"),
- ("Booked movements",445,955,1920,320,"#EDF4F8"),
- ("Cashflow reporting",65,1295,2300,570,"#E9F4ED"),
- ("Budgets and forecasts",65,1900,2300,460,"#F4F0E8"),
+ ("Accounts and statements",65,140,350,920,"#EEF5FA"),
+ ("Liabilities",445,140,350,920,"#F8F0F1"),
+ ("Transactions and receipts",825,140,350,920,"#EDF4F8"),
+ ("Employment income",1205,140,350,920,"#F5F1FA"),
+ ("Single income",1585,140,350,920,"#EEF8F1"),
+ ("Recurring expenses",1965,140,350,920,"#F1F6EE"),
+ ("Single expenses",2345,140,350,920,"#FFF6EC"),
+ ("Cashflow reporting",65,1100,2630,800,"#E9F4ED"),
+ ("Budgets and forecasts",65,1950,2630,600,"#F4F0E8"),
 ]
 SYM={"1":"ERmandOne","0..1":"ERzeroToOne","0..*":"ERzeroToMany","1..*":"ERoneToMany"}
 OBJ={o["id"]:o for o in GRAPH["objects"]}
@@ -40,11 +42,11 @@ def foreign_keys(n):
  block=text.split("foreign_keys:",1)[1].split("\nfields:",1)[0] if "foreign_keys:" in text else ""
  return re.findall(r"^  ([A-Za-z_][A-Za-z_0-9]*):$",block,re.M)
 FKS={n:foreign_keys(n) for n in NODES}
-NODE_H={n:max(110,58+22*len(FKS[n])) for n in NODES}
+NODE_H={n:max(110,58+22*(len(FKS[n])+(1 if n in {"receipt","single-income"} else 0))) for n in NODES}
 CATEGORIES={
  "Party":("#D7E7FB",{"financial-institution","employer"}),
  "Account or obligation":("#F7DDD6",{"account","liability","recurring-expense","recurring-income","budget","forecast"}),
- "Document":("#E8DFF8",{"transaction-statement","income-statement","receipt"}),
+ "Document":("#E8DFF8",{"transaction-statement","receipt"}),
  "Activity":("#D7F0DF",{"transaction","payment-occurrence"}),
  "Single events":("#FFE1A3",{"single-expense","single-income"}),
  "Detail or term":("#F7EDC9",{"balance-item","liability-term","commitment-term","single-expense-item","income-statement-item"}),
@@ -131,17 +133,18 @@ ET.SubElement(root,"mxCell",{"id":"0"});ET.SubElement(root,"mxCell",{"id":"1","p
 def vertex(id,value,x,y,w,h,style):
  c=ET.SubElement(root,"mxCell",{"id":id,"value":value,"style":style,"vertex":"1","parent":"1"})
  ET.SubElement(c,"mxGeometry",{"x":str(x),"y":str(y),"width":str(w),"height":str(h),"as":"geometry"})
-vertex("title","Financial workspace · Entity relationships",80,25,2400,65,"text;html=1;strokeColor=none;fillColor=none;fontSize=31;fontStyle=1;fontColor=#152B40;align=left;")
+vertex("title","Financial workspace - Entity relationships",80,25,2400,65,"text;html=1;strokeColor=none;fillColor=none;fontSize=31;fontStyle=1;fontColor=#152B40;align=left;")
 for i,(label,lx,ly,lw,lh,fill) in enumerate(LANES):
  vertex(f"lane-{i}",label,lx,ly,lw,lh,
         f"swimlane;horizontal=1;startSize=45;rounded=0;html=1;fillColor={fill};swimlaneFillColor={fill};strokeColor=#C7D3DE;strokeWidth=1.5;fontColor=#40576D;fontSize=17;fontStyle=1;align=left;spacingLeft=16;container=0;")
 for i,(category,(color,_)) in enumerate(CATEGORIES.items()):
- vertex(f"legend-{i}",category,80+i*370,108,350,25,
+ vertex(f"legend-{i}",category,80+i*375,108,340,25,
         f"text;html=1;strokeColor=none;fillColor={color};fontColor=#243B52;fontSize=13;align=center;verticalAlign=middle;")
 for n,(x,y) in NODES.items():
  name=n.replace("-"," ").title()
  fk_lines="".join(f"<br><font color='#475E72'>FK {key}</font>" for key in FKS[n])
- value=f"<b><font style='font-size:16px'>{name}</font></b><br><font color='#344E66'>PK {OBJ[n]['identity']}</font>{fk_lines}"
+ kind_line="<br>document_kind includes income-statement" if n=="receipt" else ("<br>income_kind: reimbursement or other" if n=="single-income" else "")
+ value=f"<b><font style='font-size:16px'>{name}</font></b><br><font color='#344E66'>PK {OBJ[n]['identity']}</font>{kind_line}{fk_lines}"
  fill=NODE_COLOR[n]
  vertex(n,value,x,y,BW,NODE_H[n],f"rounded=0;whiteSpace=wrap;html=1;fillColor={fill};strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;")
 def strict_crossings(paths):
@@ -164,7 +167,7 @@ def distance(i):
  a=endpoint[(i,"source")][1];b=endpoint[(i,"target")][1]
  return abs(a[0]-b[0])+abs(a[1]-b[1])
 orders=[indices,list(reversed(indices)),sorted(indices,key=distance),sorted(indices,key=distance,reverse=True)]
-for seed in range(12):
+for seed in range(4):
  order=indices[:];random.Random(seed).shuffle(order);orders.append(order)
 best=None
 for order in orders:
@@ -206,13 +209,13 @@ for i,path in enumerate(preview_edges):
    if a[1]==b[1] and y<a[1]<y+NODE_H[n] and max(a[0],b[0])>x and min(a[0],b[0])<x+BW:
     raise AssertionError(f"{rels[i]['id']} crosses {n}")
 parts=[f'<html><body style="margin:0;background:#f7f9fb"><svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">']
-parts += ['<text x="80" y="65" font-family="Arial" font-size="31" font-weight="bold" fill="#152B40">Financial workspace · Entity relationships</text>']
+parts += ['<text x="80" y="65" font-family="Arial" font-size="31" font-weight="bold" fill="#152B40">Financial workspace - Entity relationships</text>']
 for label,lx,ly,lw,lh,fill in LANES:
  parts.append(f'<rect x="{lx}" y="{ly}" width="{lw}" height="{lh}" fill="{fill}" stroke="#C7D3DE" stroke-width="1.5"/>')
  parts.append(f'<text x="{lx+16}" y="{ly+30}" font-family="Arial" font-size="17" font-weight="bold" fill="#40576D">{html.escape(label)}</text>')
 for i,(category,(color,_)) in enumerate(CATEGORIES.items()):
- lx=80+i*330
- parts.append(f'<rect x="{lx}" y="108" width="310" height="25" fill="{color}" stroke="none"/>')
+ lx=80+i*375
+ parts.append(f'<rect x="{lx}" y="108" width="340" height="25" fill="{color}" stroke="none"/>')
  parts.append(f'<text x="{lx+155}" y="125" text-anchor="middle" font-family="Arial" font-size="13" fill="#243B52">{html.escape(category)}</text>')
 for path in preview_edges:
  pts=" ".join(f"{x:.1f},{y:.1f}" for x,y in path)

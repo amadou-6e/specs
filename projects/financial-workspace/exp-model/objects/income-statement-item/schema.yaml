@@ -8,11 +8,11 @@ primary_key:
     nullable: false
     description: "Persistent line identity; re-extraction must preserve reviewed identity."
 foreign_keys:
-  income_statement_id:
+  receipt_id:
     type: "ref"
     required: true
     nullable: false
-    target: "income-statement"
+    target: "receipt"
   representation_id:
     type: "ref"
     required: true
@@ -69,10 +69,11 @@ fields:
     nullable: false
     description: "Page/row/field locator within a parent statement representation."
 constraints:
-  - "Each item belongs to exactly one Income statement."
-  - "Income statements may have zero extracted items when breakdown is unavailable."
+  - "Each item belongs to exactly one income-statement Receipt."
+  - "Income-statement Receipts may have zero extracted items when breakdown is unavailable."
+  - "The parent Receipt must have document_kind income-statement."
   - "If amount is supplied, currency must be supplied."
-  - "The referenced representation must support the parent Income statement."
+  - "The referenced representation must support the parent Receipt."
   - "Do not sum components, subtotals and totals together; reconcile using the observed section structure."
   - "Unknown amounts remain null, not zero."
   - "Statement items do not create cashflow entries; only booked transactions do."

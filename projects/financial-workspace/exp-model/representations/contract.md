@@ -8,7 +8,7 @@ Financial meaning, delivery channel and encoding are independent. A receipt is a
 | Receipt | Plain-text or HTML email, PDF attachment, standalone PDF, receipt image/scan | Extract issuer, references, items, currency, totals and dates. OCR results require evidence review; locale and decimal conventions are explicit. |
 | Single expense / travel | Confirmation email, invoice, ticket PDF, calendar attachment (.ics) | Combine documents using verified references. Calendar/ticket evidence supplies travel date and endpoints; mail sent date is not travel date. |
 | Commitment | Contract PDF, scan, renewal email, provider notice | Retain effective terms and amendments. Repeated payments can suggest recurrence but cannot fabricate a contract. |
-| Income statement | Payslip PDF/scan, employer export or reimbursement report | Keep gross, deductions, net and reimbursements distinct; link actual payment separately. |
+| Receipt (income-statement kind) | Payslip PDF/scan, employer export or reimbursement report | Keep gross, deductions, net and reimbursements distinct; link actual payment separately. |
 | Cashflow entry | Notion row plus local publication package | Generated from transaction and reviewed enrichment; never re-parse a display title to recover canonical identity. |
 
 ## Source representation record

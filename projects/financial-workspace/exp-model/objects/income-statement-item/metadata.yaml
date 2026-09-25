@@ -20,7 +20,7 @@ identity_field: "income_statement_item_id"
 schema_ref: "schema.yaml"
 graph_ref: "../../relationships/graph.yaml"
 relationship_ids:
-  - "income-statement-items"
+  - "receipt-income-statement-items"
   - "statement-item-supports-single-income"
 representations:
 evidence_forms:

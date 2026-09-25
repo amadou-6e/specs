@@ -14,7 +14,7 @@ Account
     |       +-- Representation: email / PDF / scan / image
     +-- Payment occurrence
     |   +-- Recurring expense
-    +-- Income statement
+    +-- Receipt [income-statement kind]
     |   +-- Employer
     +-- Single income [when received]
     +-- Cashflow entry
@@ -41,8 +41,8 @@ The zero lower bound makes Commitment term optional for a recurring expense. Eac
 ```text
 Employer
 |-- [1 : 0..*] Recurring income
-|   +-- [0..1 : 0..*] Income statement
-+-- [1 : 0..*] Income statement
+|   +-- [0..1 : 0..*] Receipt [income-statement kind]
++-- [1 : 0..*] Receipt [income-statement kind]
     +-- [1 : 0..*] Income statement item
 ```
 
@@ -87,7 +87,7 @@ Budget and Forecast are optional Account-scoped planning objects. Planned Single
 ## Employer reimbursement links
 
 ~~~text
-Income statement
+Receipt [income-statement kind]
 +-- [1 : 0..*] Income statement item
     +-- [0..* : 0..*] Single income [income_kind: reimbursement]
         +-- [0..* : 0..*] Single expense or Single expense item

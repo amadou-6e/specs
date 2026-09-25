@@ -143,11 +143,6 @@ fields:
     required: false
     nullable: true
     min_items: 0
-  income_statement_links:
-    type: "string[]"
-    required: false
-    nullable: true
-    min_items: 0
   statement_links:
     type: "string[]"
     required: false

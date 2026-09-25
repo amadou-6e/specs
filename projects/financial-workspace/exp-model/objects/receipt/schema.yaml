@@ -14,6 +14,16 @@ foreign_keys:
     nullable: false
     min_items: 1
     target: "source-representation"
+  employer_id:
+    type: "ref"
+    required: false
+    nullable: true
+    target: "employer"
+  recurring_income_id:
+    type: "ref"
+    required: false
+    nullable: true
+    target: "recurring-income"
 fields:
   document_kind:
     type: "string"
@@ -25,6 +35,37 @@ fields:
       - "paid-receipt"
       - "refund-confirmation"
       - "booking-confirmation"
+      - "income-statement"
+  period_start:
+    type: "date"
+    required: false
+    nullable: true
+    format: "YYYY-MM-DD"
+  period_end:
+    type: "date"
+    required: false
+    nullable: true
+    format: "YYYY-MM-DD"
+  gross:
+    type: "decimal"
+    required: false
+    nullable: true
+    encoding: "decimal-string"
+  net:
+    type: "decimal"
+    required: false
+    nullable: true
+    encoding: "decimal-string"
+  deductions:
+    type: "decimal"
+    required: false
+    nullable: true
+    encoding: "decimal-string"
+  reimbursement:
+    type: "decimal"
+    required: false
+    nullable: true
+    encoding: "decimal-string"
   issuer:
     type: "string"
     required: false
@@ -58,6 +99,12 @@ fields:
     required: false
     nullable: true
 constraints:
+  - "An Income statement is a Receipt with document_kind income-statement."
+  - "For an income-statement Receipt, employer_id, period_start and period_end are required."
+  - "Payroll summary fields, employer_id and recurring_income_id are only populated for an income-statement Receipt."
+  - "If gross, net, deductions or reimbursement is supplied, currency is required."
+  - "If recurring_income_id is set, its Employer must equal employer_id."
+  - "Preserve observed statement summaries separately from detailed Income statement items."
   - "Required fields apply to accepted canonical records; incomplete extractions remain candidates."
   - "Unknown optional values are null; no invented defaults."
   - "If total is supplied, currency must be supplied."

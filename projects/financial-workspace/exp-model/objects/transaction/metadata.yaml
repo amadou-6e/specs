@@ -20,7 +20,6 @@ identity_field: "transaction_id"
 schema_ref: "schema.yaml"
 graph_ref: "../../relationships/graph.yaml"
 relationship_ids:
-  - "settles-single-income"
   - "records"
   - "contains"
   - "substantiates-income"
@@ -28,6 +27,7 @@ relationship_ids:
   - "settles-single-expense"
   - "projects"
   - "refunds"
+  - "settles-single-income"
 representations:
 evidence_forms:
   - "../../representations/pdf"

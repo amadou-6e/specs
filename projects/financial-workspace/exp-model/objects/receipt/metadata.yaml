@@ -9,9 +9,10 @@ children:
   - "1 representations.md"
 status: draft
 kind: "financial-object"
-purpose: "Purchase-related document in the broad workspace sense."
+purpose: "Document supporting a financial event, including purchase receipts and employer income statements."
 includes:
   - "Document kind, source representation"
+  - "Income statement as document_kind income-statement, with employer, period and payroll summaries"
   - "Issuer, order/document reference, issue date, items, total, currency"
 excludes:
   - "Source file format as financial identity"
@@ -20,14 +21,20 @@ identity_field: "receipt_id"
 schema_ref: "schema.yaml"
 graph_ref: "../../relationships/graph.yaml"
 relationship_ids:
-  - "documents-expense-item"
+  - "issues-income-receipt"
+  - "substantiates-income"
   - "substantiates-purchase"
   - "supports-occurrence"
   - "supported-by-receipt"
+  - "receipt-income-statement-items"
+  - "recurring-income-receipts"
+  - "supports-single-income"
+  - "documents-expense-item"
 representations:
   - "../../representations/email"
   - "../../representations/pdf"
   - "../../representations/image"
+  - "../../representations/structured-export"
 evidence_forms:
 provenance_ref: "../../representations/provenance.yaml"
 mapping_refs:

@@ -25,7 +25,7 @@ This is the contender to replace model/, not an experiment catalogue.
 - [mappings](mappings/README.md)
 - [migration](migration/README.md)
 
-One entry per booked transaction; receipts enrich rows without creating money movements. Tax, investments and new manual cash capture are out of scope.
+One entry per booked transaction; receipts enrich rows without creating money movements. An income statement is a Receipt with document_kind income-statement, while a reimbursement is a Single income with income_kind reimbursement. Transaction and Receipt are the two primary sources used to explain cashflow rows; Single income has its own relationship column. Tax, investments and new manual cash capture are out of scope.
 
 ## Metadata ownership
 

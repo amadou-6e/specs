@@ -18,7 +18,6 @@ One folder per identifiable object. [Field catalogue](field_catalogue.yml) descr
 - [transaction-statement](transaction-statement/README.md)
 - [transaction](transaction/README.md)
 - [employer](employer/README.md)
-- [income-statement](income-statement/README.md)
 - [recurring-expense](recurring-expense/README.md)
 - [recurring-income](recurring-income/README.md)
 - [payment-occurrence](payment-occurrence/README.md)

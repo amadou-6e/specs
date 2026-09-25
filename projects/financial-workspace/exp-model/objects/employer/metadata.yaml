@@ -20,8 +20,8 @@ identity_field: "employer_id"
 schema_ref: "schema.yaml"
 graph_ref: "../../relationships/graph.yaml"
 relationship_ids:
+  - "issues-income-receipt"
   - "employer-recurring-income"
-  - "issues"
 representations:
 evidence_forms:
   - "../../representations/pdf"

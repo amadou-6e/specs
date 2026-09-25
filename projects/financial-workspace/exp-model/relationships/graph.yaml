@@ -38,11 +38,6 @@
       "definition": "../objects/recurring-income/README.md"
     },
     {
-      "id": "income-statement",
-      "identity": "income_statement_id",
-      "definition": "../objects/income-statement/README.md"
-    },
-    {
       "id": "recurring-expense",
       "identity": "recurring_expense_id",
       "definition": "../objects/recurring-expense/README.md"
@@ -148,15 +143,15 @@
       "sources_per_target": "0..*"
     },
     {
-      "id": "issues",
+      "id": "issues-income-receipt",
       "source": "employer",
-      "target": "income-statement",
+      "target": "receipt",
       "targets_per_source": "0..*",
-      "sources_per_target": "1"
+      "sources_per_target": "0..1"
     },
     {
       "id": "substantiates-income",
-      "source": "income-statement",
+      "source": "receipt",
       "target": "transaction",
       "targets_per_source": "0..*",
       "sources_per_target": "0..*"
@@ -239,8 +234,8 @@
       "sources_per_target": "1"
     },
     {
-      "id": "income-statement-items",
-      "source": "income-statement",
+      "id": "receipt-income-statement-items",
+      "source": "receipt",
       "target": "income-statement-item",
       "targets_per_source": "0..*",
       "sources_per_target": "1"
@@ -288,9 +283,9 @@
       "sources_per_target": "1"
     },
     {
-      "id": "recurring-income-statements",
+      "id": "recurring-income-receipts",
       "source": "recurring-income",
-      "target": "income-statement",
+      "target": "receipt",
       "targets_per_source": "0..*",
       "sources_per_target": "0..1"
     },
@@ -310,7 +305,7 @@
     },
     {
       "id": "supports-single-income",
-      "source": "income-statement",
+      "source": "receipt",
       "target": "single-income",
       "targets_per_source": "0..*",
       "sources_per_target": "0..*"
@@ -398,8 +393,11 @@
     "Budgets and forecasts never create cash movements or account balances.",
     "One event may link to multiple budgets or forecasts; aggregation requires explicit allocation to avoid double counting.",
     "A reimbursement is a Single income instance with income_kind reimbursement, not a separate object.",
-    "A reviewed reimbursement Income statement item may support that Single income; subtotals and totals are not allocated again.",
+    "A reviewed reimbursement Receipt income-statement item may support that Single income; subtotals and totals are not allocated again.",
     "Expense allocations from a reimbursement Single income must not count both parent expense and its items.",
-    "The linked payroll transaction remains one booked cashflow movement."
+    "The linked payroll transaction remains one booked cashflow movement.",
+    "An Income statement is a Receipt with document_kind income-statement; it is not a separate object.",
+    "Only an income-statement Receipt may have Income statement items, employer_id, recurring_income_id, or payroll summary fields.",
+    "An income-statement Receipt has exactly one issuing Employer; other Receipt kinds have no Employer."
   ]
 }

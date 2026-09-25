@@ -255,17 +255,7 @@
       "transform": "collect-distinct",
       "missing": "null",
       "notion_type": "rich_text",
-      "notes": "Native property IDs/types must be verified before publication."
-    },
-    {
-      "target_field": "income_statement_links",
-      "notion_property": "Income Statement Links",
-      "source": null,
-      "derivation": "provenance-links",
-      "transform": "collect-distinct",
-      "missing": "null",
-      "notion_type": "rich_text",
-      "notes": "Native property IDs/types must be verified before publication."
+      "notes": "Includes income-statement Receipts. Native property ID/type must be verified before publication."
     },
     {
       "target_field": "statement_links",

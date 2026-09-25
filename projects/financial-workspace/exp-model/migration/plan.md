@@ -37,3 +37,6 @@ The candidate now names the former recurring-commitment object Recurring expense
 ## Single-event and planning transition
 
 Single expense replaces the candidate Procurement object, and Single expense item replaces Procurement item. The existing procurement workflow, Drive folders, and Notion database keep their current names. Preserve existing identifiers as migration aliases; no live records are renamed by this spec. Single income adds one-off receipts. Budget and Forecast are planned allocations, optionally account-scoped. Planned events remain outside the transaction-backed cashflow sheet until a posted transaction is matched.
+
+An Income statement is now a Receipt with document_kind income-statement. Preserve prior income_statement_id values by mapping them to stable receipt_id values before loading data; rekey Income statement items to receipt_id. The former Income statement object has no independent identity in the candidate model.
+Legacy income_statement_links values migrate into receipt_links after deduplication by Receipt identity. The target Cashflow entry has one receipt_links field.

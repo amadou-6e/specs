@@ -14,7 +14,7 @@ income-statement-item/
 One line in an Income statement: an earnings component, deduction, reimbursement,
 subtotal, total or informational entry. Preserve original labels and provider codes.
 
-Income statement [1 : 0..*] Income statement item. Each item belongs to exactly
+Income-statement Receipt [1 : 0..*] Income statement item. Each item belongs to exactly
 one statement. Zero items permits a statement whose detailed breakdown is not yet
 available; it does not assert that the source document is empty.
 
