@@ -31,11 +31,16 @@
         <mxCell id="lane-7" parent="1" style="swimlane;horizontal=1;startSize=45;rounded=0;html=1;fillColor=#E9F4ED;swimlaneFillColor=#E9F4ED;strokeColor=#C7D3DE;strokeWidth=1.5;fontColor=#40576D;fontSize=17;fontStyle=1;align=left;spacingLeft=16;container=0;" value="Cashflow reporting and budgeting" vertex="1">
           <mxGeometry height="1170" width="2550" x="65" y="1460" as="geometry" />
         </mxCell>
-        <mxCell id="reporting-label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=16;fontStyle=1;fontColor=#40576D;align=left;" value="Cashflow reporting" vertex="1">
-          <mxGeometry height="32" width="400" x="115" y="1515" as="geometry" />
+        <mxCell id="reporting-column" parent="1" style="rounded=0;html=1;fillColor=#EAF5EE;strokeColor=#B6D2C0;strokeWidth=1;connectable=0;" vertex="1">
+          <mxGeometry height="1080" width="1200" x="90" y="1510" as="geometry" />
+        </mxCell>
+        <mxCell id="budgeting-column" parent="1" style="rounded=0;html=1;fillColor=#F7F2E9;strokeColor=#D9CDB9;strokeWidth=1;connectable=0;" vertex="1">
+          <mxGeometry height="1080" width="1200" x="1390" y="1510" as="geometry" />
+        </mxCell>        <mxCell id="reporting-label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=16;fontStyle=1;fontColor=#40576D;align=left;" value="Cashflow reporting" vertex="1">
+          <mxGeometry height="32" width="400" x="130" y="1535" as="geometry" />
         </mxCell>
         <mxCell id="budgeting-label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=16;fontStyle=1;fontColor=#40576D;align=left;" value="Budgets and forecasts" vertex="1">
-          <mxGeometry height="32" width="400" x="1550" y="1515" as="geometry" />
+          <mxGeometry height="32" width="400" x="1430" y="1535" as="geometry" />
         </mxCell>
         <mxCell id="legend-0" parent="1" style="text;html=1;strokeColor=none;fillColor=#D7E7FB;fontColor=#243B52;fontSize=13;align=center;verticalAlign=middle;" value="Party" vertex="1">
           <mxGeometry height="25" width="340" x="80" y="108" as="geometry" />
@@ -117,7 +122,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="budget" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7DDD6;strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;" value="&lt;b&gt;&lt;font style=&#39;font-size:16px&#39;&gt;Budget&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&#39;#344E66&#39;&gt;PK budget_id&lt;/font&gt;&lt;br&gt;&lt;font color=&#39;#475E72&#39;&gt;FK account_id&lt;/font&gt;" vertex="1">
-          <mxGeometry height="110" width="250" x="1550" y="2350" as="geometry" />
+          <mxGeometry height="110" width="250" x="1820" y="1900" as="geometry" />
         </mxCell>
         <mxCell id="cashflow-sheet" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D9EAF2;strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;" value="&lt;b&gt;&lt;font style=&#39;font-size:16px&#39;&gt;Cashflow Sheet&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&#39;#344E66&#39;&gt;PK sheet_id&lt;/font&gt;" vertex="1">
           <mxGeometry height="110" width="250" x="650" y="2040" as="geometry" />
@@ -391,7 +396,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="forecast" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7DDD6;strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;" value="&lt;b&gt;&lt;font style=&#39;font-size:16px&#39;&gt;Forecast&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&#39;#344E66&#39;&gt;PK forecast_id&lt;/font&gt;&lt;br&gt;&lt;font color=&#39;#475E72&#39;&gt;FK account_id&lt;/font&gt;" vertex="1">
-          <mxGeometry height="110" width="250" x="2050" y="2350" as="geometry" />
+          <mxGeometry height="110" width="250" x="1820" y="2400" as="geometry" />
         </mxCell>
         <mxCell id="edge-23" edge="1" parent="1" source="employer" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.6667;exitY=1.0000;entryX=0.5000;entryY=0.0000;" target="recurring-income" value="">
           <mxGeometry relative="1" as="geometry">
