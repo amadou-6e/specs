@@ -33,6 +33,12 @@ that make intent, behavior, constraints, and verification clearer.
   pushed to this repository; do not leave specification work only in an ignored
   checkout or in an implementation repository.
 
+## Final visual inspection
+
+Before presenting or delivering any visual artifact, render or open the exact final version and inspect it yourself. This applies to Draw.io diagrams, web pages, slides, charts, images, PDFs, and other visual output. Inspect the full composition and relevant details at a readable size for clipping, overlap, unreadable text, poor routing or crossings, alignment, and other visible defects. Compare the result with the user's requested layout, correct defects, then render and inspect again.
+
+Any change after that inspection, including a small move or text edit, invalidates the review: inspect the new final version before reporting it complete. Automated validation and layout metrics supplement visual inspection; they never replace it. If rendering or inspection is unavailable, say that the visual result remains unverified and do not present it as finished or visually checked.
+
 ## Change workflow
 
 Problem or feedback -> specification issue -> typed issue branch -> spec and evidence
