@@ -9,30 +9,30 @@ HERE=Path(__file__).resolve().parent
 GRAPH=json.loads((HERE/"graph.yaml").read_text(encoding="utf-8"))
 OUT=HERE/"layered-erd.drawio"
 PREVIEW=Path(tempfile.gettempdir())/"financial-workspace-layered-erd-preview.html"
-W,H=2800,2660
+W,H=2800,2990
 BW=250
 STEP=20
 NODES={
  "financial-institution":(100,235),"account":(100,420),"transaction-statement":(100,610),"balance-item":(100,800),
- "liability":(480,235),"liability-term":(480,420),
- "transaction":(860,235),"receipt":(860,500),
- "employer":(1240,235),"recurring-income":(1240,410),"income-statement-item":(1240,620),
- "single-income":(1620,235),
- "recurring-expense":(2000,235),"commitment-term":(2000,420),"payment-occurrence":(2000,620),
- "single-expense":(2380,235),"single-expense-item":(2380,450),
- "cashflow-entry":(1150,1240),"cashflow-sheet":(1150,1640),
- "budget":(800,2220),"forecast":(1670,2220),
+ "liability":(540,235),"liability-term":(540,420),
+ "employer":(980,235),"recurring-income":(980,410),"income-statement-item":(980,620),
+ "single-income":(1420,235),
+ "recurring-expense":(1860,235),"commitment-term":(1860,420),"payment-occurrence":(1860,620),
+ "single-expense":(2300,235),"single-expense-item":(2300,450),
+ "transaction":(1050,1150),"receipt":(1450,1150),
+ "cashflow-entry":(1150,1610),"cashflow-sheet":(1150,2000),
+ "budget":(800,2610),"forecast":(1670,2610),
 }
 LANES=[
- ("Accounts and statements",65,140,350,920,"#EEF5FA"),
- ("Liabilities",445,140,350,920,"#F8F0F1"),
- ("Transactions and receipts",825,140,350,920,"#EDF4F8"),
- ("Employment income",1205,140,350,920,"#F5F1FA"),
- ("Single income",1585,140,350,920,"#EEF8F1"),
- ("Recurring expenses",1965,140,350,920,"#F1F6EE"),
- ("Single expenses",2345,140,350,920,"#FFF6EC"),
- ("Cashflow reporting",65,1100,2630,800,"#E9F4ED"),
- ("Budgets and forecasts",65,1950,2630,600,"#F4F0E8"),
+ ("Accounts and statements",65,140,350,840,"#EEF5FA"),
+ ("Liabilities",505,140,350,840,"#F8F0F1"),
+ ("Employment income",945,140,350,840,"#F5F1FA"),
+ ("Single income",1385,140,350,840,"#EEF8F1"),
+ ("Recurring expenses",1825,140,350,840,"#F1F6EE"),
+ ("Single expenses",2265,140,350,840,"#FFF6EC"),
+ ("Transactions and receipts",65,1020,2550,400,"#EDF4F8"),
+ ("Cashflow reporting",65,1460,2550,820,"#E9F4ED"),
+ ("Budgets and forecasts",65,2320,2550,560,"#F4F0E8"),
 ]
 SYM={"1":"ERmandOne","0..1":"ERzeroToOne","0..*":"ERzeroToMany","1..*":"ERoneToMany"}
 OBJ={o["id"]:o for o in GRAPH["objects"]}
