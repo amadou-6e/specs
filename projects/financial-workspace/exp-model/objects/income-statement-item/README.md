@@ -26,4 +26,4 @@ Gross/net figures on the parent are observed summary values. Items retain the
 breakdown and any printed totals. Do not add printed totals to their components.
 These lines enrich income evidence; they never create additional cashflow rows.
 
-When this line is a reviewed reimbursement component, it may be allocated to a Single expense or specific Single expense items. Keep payroll settlement as its original transaction and avoid counting parent and item allocations twice.
+When this line is a reviewed reimbursement component, it may support a reimbursement-kind Single income. That income links to the Single expense or specific items repaid. Keep payroll settlement as its original transaction and avoid counting parent and item allocations twice.

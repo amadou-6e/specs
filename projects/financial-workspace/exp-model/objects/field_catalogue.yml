@@ -241,6 +241,7 @@ objects:
       budget_ids: "Budgets to which this income is allocated."
       forecast_ids: "Forecasts containing this projected income."
     fields:
+      income_kind: "Type of one-time income; reimbursement identifies repayment of a linked Single expense or item."
       source: "Payer or income source, when known."
       description: "Description of the one-time income event."
       state: "Planned, partially realized, realized, or cancelled."

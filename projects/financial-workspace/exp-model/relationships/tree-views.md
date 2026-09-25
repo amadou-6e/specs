@@ -89,7 +89,8 @@ Budget and Forecast are optional Account-scoped planning objects. Planned Single
 ~~~text
 Income statement
 +-- [1 : 0..*] Income statement item
-    +-- [0..* : 0..*] Single expense or Single expense item [reimbursement component only]
+    +-- [0..* : 0..*] Single income [income_kind: reimbursement]
+        +-- [0..* : 0..*] Single expense or Single expense item
 ~~~
 
-The Income statement item is a component of the salary evidence. It links to the expense being repaid; it does not create a second expense or a second booked salary transaction.
+The Income statement item is a component of the salary evidence. It supports a reimbursement-kind Single income, which links to the expense being repaid. This does not create a second expense or a second booked salary transaction.

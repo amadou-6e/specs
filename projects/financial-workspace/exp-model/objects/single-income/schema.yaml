@@ -23,6 +23,14 @@ foreign_keys:
     nullable: true
     target: "forecast"
 fields:
+  income_kind:
+    type: "string"
+    required: true
+    nullable: false
+    enum:
+      - "reimbursement"
+      - "other"
+      - "unclassified"
   source:
     type: "string"
     required: false
@@ -59,6 +67,7 @@ fields:
     required: false
     nullable: true
 constraints:
+  - "A reimbursement is a Single income instance with income_kind reimbursement, not a separate object."
   - "A planned record may have no transaction or source representation if reviewed_basis is supplied."
   - "Realized money is evidenced by linked transactions; the income record itself does not create cash."
   - "If expected_amount is supplied, currency is required."

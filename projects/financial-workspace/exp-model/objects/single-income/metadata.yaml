@@ -12,6 +12,7 @@ kind: "financial-object"
 purpose: "One nonrecurring income event, including a planned event before payment."
 includes:
   - "One nonrecurring income event; planned or realized"
+  - "Reimbursement as an income kind, linked to the expense or expense item it repays"
   - "Optional payer, expected date and amount, budget and forecast links"
 excludes:
   - "Booked transaction identity"
@@ -25,9 +26,12 @@ schema_ref: "schema.yaml"
 graph_ref: "../../relationships/graph.yaml"
 relationship_ids:
   - "settles-single-income"
+  - "supports-single-income"
   - "single-income-budgets"
   - "single-income-forecasts"
-  - "supports-single-income"
+  - "statement-item-supports-single-income"
+  - "reimburses-single-expense"
+  - "reimburses-single-expense-item"
 representations:
   - "../../representations/pdf"
   - "../../representations/email"

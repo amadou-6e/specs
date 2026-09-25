@@ -1,6 +1,6 @@
 # Single expense relationships
 
-Derived from [canonical graph](../../relationships/graph.yaml).
+[Canonical graph](../../relationships/graph.yaml).
 
 | Edge | Source | Target | Targets per source | Sources per target |
 | --- | --- | --- | --- | --- |
@@ -9,4 +9,4 @@ Derived from [canonical graph](../../relationships/graph.yaml).
 | substantiates-purchase | receipt | single-expense | 0..* | 0..* |
 | single-expense-budgets | budget | single-expense | 0..* | 0..* |
 | single-expense-forecasts | forecast | single-expense | 0..* | 0..* |
-| reimburses-single-expense | income-statement-item | single-expense | 0..* | 0..* |
+| reimburses-single-expense | single-income | single-expense | 0..* | 0..* |

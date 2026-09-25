@@ -20,3 +20,5 @@ Identity: single_income_id.
 - [Source forms](representations.md)
 
 This is a model definition; it does not claim an observed record.
+
+A reimbursement is a Single income instance with income_kind reimbursement. A reviewed Income statement item can support its amount; links to Single expenses or items identify what it repays. The payroll transaction remains one booked movement.

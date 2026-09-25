@@ -76,5 +76,5 @@ constraints:
   - "Do not sum components, subtotals and totals together; reconcile using the observed section structure."
   - "Unknown amounts remain null, not zero."
   - "Statement items do not create cashflow entries; only booked transactions do."
-  - "Only a reviewed reimbursement component may be allocated to Single expenses or their items; subtotals and totals are not allocated again."
+  - "Only a reviewed reimbursement component may support a reimbursement-kind Single income; subtotals and totals are not allocated again."
 validation_scope: "Typed specification contract; section reconciliation and evidence require review."

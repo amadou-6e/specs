@@ -39,8 +39,9 @@ Canonical edges and cardinalities are in graph.yaml. targets_per_source counts t
 | single-expense-forecasts | forecast | single-expense | 0..* | 0..* |
 | single-income-forecasts | forecast | single-income | 0..* | 0..* |
 | documents-expense-item | receipt | single-expense-item | 0..* | 0..* |
-| reimburses-single-expense | income-statement-item | single-expense | 0..* | 0..* |
-| reimburses-single-expense-item | income-statement-item | single-expense-item | 0..* | 0..* |
+| statement-item-supports-single-income | income-statement-item | single-income | 0..* | 0..* |
+| reimburses-single-expense | single-income | single-expense | 0..* | 0..* |
+| reimburses-single-expense-item | single-income | single-expense-item | 0..* | 0..* |
 
 A statement can be empty; multiple overlapping statements can mention one transaction. A receipt may be unassigned during review, and a single expense can lack a receipt while evidence is incomplete. Publishing cashflow requires transaction evidence, not a receipt.
 
@@ -58,4 +59,4 @@ Evidence deletion or missing access marks a gap; it does not delete a financial 
 
 Planned Single income and Single expense records may lack transactions. Their budgets and forecasts are planning links. A cashflow entry still requires a posted transaction; one event may settle through several transactions.
 
-A Single expense can have zero or more Single expense items and can be supported by receipts. A receipt may document the whole expense or particular items. A reviewed reimbursement component on an Income statement can reference the expense or specific items. Retain an allocation amount and currency when one salary line covers several expenses. The sum of verified allocations must not exceed the reviewed reimbursement component amount. Do not count the same reimbursement at both parent and item level. The linked salary transaction remains one cashflow movement.
+A Single expense can have zero or more Single expense items and can be supported by receipts. A receipt may document the whole expense or particular items. A reviewed reimbursement Income statement item can support a reimbursement-kind Single income, which references the expense or specific items. Retain an allocation amount and currency when one salary line covers several expenses. The sum of verified expense allocations must not exceed the reviewed reimbursement Single income amount. Do not count the same reimbursement at both parent and item level. The linked salary transaction remains one cashflow movement.
