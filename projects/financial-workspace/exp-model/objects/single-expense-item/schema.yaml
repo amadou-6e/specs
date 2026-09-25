@@ -1,5 +1,5 @@
 schema_version: 2
-object: "procurement-item"
+object: "single-expense-item"
 identity_field: "item_id"
 primary_key:
   item_id:
@@ -8,11 +8,11 @@ primary_key:
     nullable: false
     description: "Persistent internal identity; not a display name."
 foreign_keys:
-  procurement_id:
+  single_expense_id:
     type: "ref"
     required: true
     nullable: false
-    target: "procurement"
+    target: "single-expense"
 fields:
   description:
     type: "string"

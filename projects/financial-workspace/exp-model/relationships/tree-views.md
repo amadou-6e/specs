@@ -8,14 +8,15 @@ Account
 +-- Transaction statement
 |   +-- Transaction
 +-- Transaction
-    +-- Procurement
-    |   +-- Procurement item
+    +-- Single expense [when settled]
+    |   +-- Single expense item
     |   +-- Receipt
     |       +-- Representation: email / PDF / scan / image
     +-- Payment occurrence
     |   +-- Recurring expense
     +-- Income statement
     |   +-- Employer
+    +-- Single income [when received]
     +-- Cashflow entry
         +-- Cashflow sheet (Notion dataset)
 
@@ -56,3 +57,27 @@ Account
 ```
 
 A Liability need not yet be linked to an Account. Its Liability terms are optional, and each Balance item belongs to either an Account or a Liability. Balance items remain dated observations, never cashflow rows.
+
+## Planning relationship views
+
+~~~text
+Account
+|-- [0..1 : 0..*] Budget
++-- [0..1 : 0..*] Forecast
+
+Budget
+|-- [0..* : 0..*] Single expense
++-- [0..* : 0..*] Single income
+
+Forecast
+|-- [0..* : 0..*] Single expense
++-- [0..* : 0..*] Single income
+
+Single expense
++-- [1 : 0..*] Single expense item
+
+Single income
++-- [0..* : 0..*] Transaction [only once received]
+~~~
+
+Budget and Forecast are optional Account-scoped planning objects. Planned Single expense and Single income events may have no Transaction. Their links to budgets and forecasts do not create cashflow rows.

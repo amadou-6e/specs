@@ -20,6 +20,8 @@ identity_field: "account_id"
 schema_ref: "schema.yaml"
 graph_ref: "../../relationships/graph.yaml"
 relationship_ids:
+  - "account-budgets"
+  - "account-forecasts"
   - "provides"
   - "issues-for"
   - "records"

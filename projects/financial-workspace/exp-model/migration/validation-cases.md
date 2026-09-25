@@ -6,7 +6,7 @@ These are acceptance scenarios grounded in prior rules and the exception registe
 | --- | --- |
 | Amazon order 303-7581825-5753936 | Two debits (121.92 and 55.89 EUR) and two refunds (62.36 and 55.89 EUR) produce four cashflow rows and net spending 59.56 EUR; retain one order and its item identities. |
 | Amazon order 303-6256092-0210767 | Three debits (15.99, 41.98, 9.99 EUR) total 67.96 EUR; each movement appears once. |
-| Vinted receipt-only cases | Procurement and receipt retained; cashflow settlement absent until evidence exists. |
+| Vinted receipt-only cases | Single expense and receipt retained; cashflow settlement absent until evidence exists. |
 | Temu PO-076-18990601027191094 | Preserve 63.63 EUR order value, 64.01 EUR debit and separate 50.19/13.82 EUR refunds. Retain reviewed 0.38 EUR discrepancy; do not generalize it into tolerance. |
 | DB calendar attachments | Extract itinerary from .ics; retain travel date, order date and payment date separately. |
 | Employer work exclusions | Work travel remains in all-transactions view with work classification, excluded from personal spending; reimbursements link without overwriting original payments. |

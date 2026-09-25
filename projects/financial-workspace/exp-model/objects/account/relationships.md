@@ -9,3 +9,5 @@
 | records | account | transaction | 0..* | 1 |
 | account-balance-items | account | balance-item | 0..* | 0..1 |
 | account-liabilities | account | liability | 0..* | 0..1 |
+| account-budgets | account | budget | 0..* | 0..1 |
+| account-forecasts | account | forecast | 0..* | 0..1 |

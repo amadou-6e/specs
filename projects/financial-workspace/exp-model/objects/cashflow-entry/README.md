@@ -15,7 +15,7 @@ cashflow-entry/
 
 Identity: entry_id.
 
-Includes: Sheet, transaction, flattened reporting properties. Optional: Receipt, procurement, commitment and income details.
+Includes: Sheet, transaction, flattened reporting properties. Optional: Receipt, single-expense, commitment and income details.
 
 - [Fields](schema.yaml) and [field descriptions](../field_catalogue.yml)
 - [Relationships](relationships.md)

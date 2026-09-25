@@ -8,6 +8,7 @@ Derived from [canonical graph](../../relationships/graph.yaml).
 | contains | transaction-statement | transaction | 0..* | 0..* |
 | substantiates-income | income-statement | transaction | 0..* | 0..* |
 | settles-occurrence | transaction | payment-occurrence | 0..* | 0..* |
-| settles-procurement | transaction | procurement | 0..* | 0..* |
+| settles-single-expense | transaction | single-expense | 0..* | 0..* |
 | projects | cashflow-entry | transaction | 1 | 0..* |
 | refunds | transaction | transaction | 0..* | 0..* |
+| settles-single-income | transaction | single-income | 0..* | 0..* |

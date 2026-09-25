@@ -160,7 +160,7 @@
     {
       "target_field": "order_dates",
       "notion_property": "Order Dates",
-      "source": "procurement.order_date",
+      "source": "single-expense.order_date",
       "derivation": "source-field",
       "transform": "collect-distinct",
       "missing": "null",
@@ -170,7 +170,7 @@
     {
       "target_field": "travel_dates",
       "notion_property": "Travel Dates",
-      "source": "procurement.travel_details",
+      "source": "single-expense.travel_details",
       "derivation": "source-field",
       "transform": "collect-distinct",
       "missing": "null",
@@ -188,9 +188,9 @@
       "notes": "Native property IDs/types must be verified before publication."
     },
     {
-      "target_field": "procurement_ids",
-      "notion_property": "Procurement Ids",
-      "source": "procurement.procurement_id",
+      "target_field": "single_expense_ids",
+      "notion_property": "Single expense Ids",
+      "source": "single-expense.single_expense_id",
       "derivation": "source-field",
       "transform": "collect-distinct",
       "missing": "null",
@@ -198,9 +198,19 @@
       "notes": "Native property IDs/types must be verified before publication."
     },
     {
+      "target_field": "single_income_ids",
+      "notion_property": "Single Income Ids",
+      "source": "single-income.single_income_id",
+      "derivation": "source-field",
+      "transform": "collect-distinct",
+      "missing": "null",
+      "notion_type": "rich_text",
+      "notes": "Only linked to a booked transaction; native property IDs/types must be verified before publication."
+    },
+    {
       "target_field": "item_descriptions",
       "notion_property": "Item Descriptions",
-      "source": "procurement-item.description",
+      "source": "single-expense-item.description",
       "derivation": "source-field",
       "transform": "collect-distinct",
       "missing": "null",

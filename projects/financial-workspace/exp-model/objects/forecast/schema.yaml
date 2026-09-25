@@ -1,0 +1,46 @@
+schema_version: 2
+object: "forecast"
+identity_field: "forecast_id"
+primary_key:
+  forecast_id:
+    type: "string"
+    required: true
+    nullable: false
+foreign_keys:
+  account_id:
+    type: "ref"
+    required: false
+    nullable: true
+    target: "account"
+fields:
+  name:
+    type: "string"
+    required: true
+    nullable: false
+  period_start:
+    type: "date"
+    required: true
+    nullable: false
+    format: "YYYY-MM-DD"
+  period_end:
+    type: "date"
+    required: true
+    nullable: false
+    format: "YYYY-MM-DD"
+  currency:
+    type: "string"
+    required: false
+    nullable: true
+  method:
+    type: "string"
+    required: false
+    nullable: true
+  reviewed_basis:
+    type: "string"
+    required: false
+    nullable: true
+constraints:
+  - "A forecast is a projection, not a booked transaction."
+  - "The end date is on or after the start date."
+  - "Forecast totals derive from linked projected events and must not double count their later transactions."
+validation_scope: "Typed specification contract; cross-record rules require workflow validation."

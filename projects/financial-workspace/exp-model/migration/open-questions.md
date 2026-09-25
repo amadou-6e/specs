@@ -2,7 +2,7 @@
 
 - Destination: reuse an existing Notion dataset or create a new transaction dataset; capture live schema first.
 - Mixed-category amounts: keep Mixed, or add explicit per-category amount columns/another allocation presentation.
-- Receipt-only procurement: retain a linked procurement view alongside actual cashflow; do not invent movements.
+- Receipt-only Single expense: retain a linked single-expense view alongside actual cashflow; do not invent movements.
 - Accounts with absent statements and non-booked transactions: define completeness per account/period.
 - Income and liability breakdown: preserve observed net transactions; model gross/deductions or principal/interest only with sufficient evidence.
 - Cross-currency allocation and account funding: approve reporting conversion and residual-review policy before automated totals.

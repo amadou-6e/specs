@@ -20,6 +20,7 @@ identity_field: "income_statement_id"
 schema_ref: "schema.yaml"
 graph_ref: "../../relationships/graph.yaml"
 relationship_ids:
+  - "supports-single-income"
   - "recurring-income-statements"
   - "issues"
   - "substantiates-income"

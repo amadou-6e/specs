@@ -1,0 +1,31 @@
+schema_version: 1
+name: "forecast"
+authority: "Replacement candidate"
+owner: "amadou-6e"
+children:
+  - "1 README.md"
+  - "1 schema.yaml"
+  - "1 relationships.md"
+  - "1 representations.md"
+status: "draft"
+kind: "financial-object"
+purpose: "A dated projection of future income and expenses; may be scoped to one account."
+includes:
+  - "Dated projection of income and expenses"
+  - "Optional Account attribution"
+excludes:
+  - "Booked payment"
+  - "Budget limit"
+evidence_forms: []
+identity_field: "forecast_id"
+schema_ref: "schema.yaml"
+graph_ref: "../../relationships/graph.yaml"
+relationship_ids:
+  - "account-forecasts"
+  - "single-expense-forecasts"
+  - "single-income-forecasts"
+representations: []
+provenance_ref: "../../representations/provenance.yaml"
+mapping_refs:
+  - "../../mappings/cashflow/mapping.yaml"
+maturity: "specified-not-replayed"

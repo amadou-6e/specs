@@ -1,5 +1,5 @@
 schema_version: 1
-name: procurement
+name: single-expense-item
 authority: Replacement candidate
 owner: amadou-6e
 children:
@@ -9,26 +9,23 @@ children:
   - "1 representations.md"
 status: draft
 kind: "financial-object"
-purpose: "One order/acquisition, regardless of payment splits."
+purpose: "One identifiable line in an acquisition."
 includes:
-  - "Merchant, order date when known, source"
-  - "Merchant order reference, order total, travel details"
+  - "Single expense, description, quantity"
+  - "Unit/line amount, category, receipt line"
 excludes:
   - "Source file format as financial identity"
   - "Workflow execution"
-identity_field: "procurement_id"
+identity_field: "item_id"
 schema_ref: "schema.yaml"
 graph_ref: "../../relationships/graph.yaml"
 relationship_ids:
-  - "settles-procurement"
   - "contains-item"
-  - "substantiates-purchase"
 representations:
 evidence_forms:
   - "../../representations/email"
   - "../../representations/pdf"
   - "../../representations/image"
-  - "../../representations/calendar"
 provenance_ref: "../../representations/provenance.yaml"
 mapping_refs:
   - "../../mappings/cashflow/mapping.yaml"

@@ -1,24 +1,57 @@
 schema_version: 2
-object: "procurement"
-identity_field: "procurement_id"
+object: "single-expense"
+identity_field: "single_expense_id"
 primary_key:
-  procurement_id:
+  single_expense_id:
     type: "string"
     required: true
     nullable: false
     description: "Persistent internal identity; not a display name."
 foreign_keys:
+  budget_ids:
+    type: "ref[]"
+    required: false
+    nullable: true
+    target: "budget"
+  forecast_ids:
+    type: "ref[]"
+    required: false
+    nullable: true
+    target: "forecast"
   representation_ids:
     type: "ref[]"
-    required: true
-    nullable: false
-    min_items: 1
+    required: false
+    nullable: true
+    min_items: 0
     target: "source-representation"
 fields:
-  merchant:
+  state:
     type: "string"
     required: true
     nullable: false
+    enum: ["planned", "partially-realized", "realized", "cancelled"]
+  expected_date:
+    type: "date"
+    required: false
+    nullable: true
+    format: "YYYY-MM-DD"
+  reviewed_basis:
+    type: "string"
+    required: false
+    nullable: true
+  description:
+    type: "string"
+    required: true
+    nullable: false
+  expected_amount:
+    type: "decimal"
+    required: false
+    nullable: true
+    encoding: "decimal-string"
+  merchant:
+    type: "string"
+    required: false
+    nullable: true
   order_date:
     type: "date"
     required: false
@@ -60,8 +93,10 @@ fields:
         required: false
         nullable: true
 constraints:
+  - "A planned expense may have no transaction or representation if reviewed_basis is supplied."
+  - "Realized cash requires linked transaction evidence; an expense record alone creates no cash movement."
   - "Required fields apply to accepted canonical records; incomplete extractions remain candidates."
   - "Unknown optional values are null; no invented defaults."
-  - "If total is supplied, currency must be supplied."
+  - "If total or expected_amount is supplied, currency must be supplied."
   - "Travel fields are only supplied from verified itinerary evidence."
 validation_scope: "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."

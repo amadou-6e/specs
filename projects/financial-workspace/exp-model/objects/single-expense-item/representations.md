@@ -1,4 +1,4 @@
-# Procurement item forms
+# Single expense item forms
 
 Line in email or PDF item table. Preserve parent order, quantity and source locator. One message can contain several items.
 

@@ -12,7 +12,7 @@ kind: "financial-object"
 purpose: "One transaction projected into a sheet."
 includes:
   - "Sheet, transaction, flattened reporting properties"
-  - "Receipt, procurement, commitment and income details"
+  - "Receipt, single-expense, commitment and income details"
 excludes:
   - "Source file format as financial identity"
   - "Workflow execution"

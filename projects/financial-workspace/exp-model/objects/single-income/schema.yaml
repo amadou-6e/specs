@@ -1,0 +1,65 @@
+schema_version: 2
+object: "single-income"
+identity_field: "single_income_id"
+primary_key:
+  single_income_id:
+    type: "string"
+    required: true
+    nullable: false
+foreign_keys:
+  representation_ids:
+    type: "ref[]"
+    required: false
+    nullable: true
+    target: "source-representation"
+  budget_ids:
+    type: "ref[]"
+    required: false
+    nullable: true
+    target: "budget"
+  forecast_ids:
+    type: "ref[]"
+    required: false
+    nullable: true
+    target: "forecast"
+fields:
+  source:
+    type: "string"
+    required: false
+    nullable: true
+  description:
+    type: "string"
+    required: true
+    nullable: false
+  state:
+    type: "string"
+    required: true
+    nullable: false
+    enum:
+      - "planned"
+      - "partially-realized"
+      - "realized"
+      - "cancelled"
+  expected_amount:
+    type: "decimal"
+    required: false
+    nullable: true
+    encoding: "decimal-string"
+  currency:
+    type: "string"
+    required: false
+    nullable: true
+  expected_date:
+    type: "date"
+    required: false
+    nullable: true
+    format: "YYYY-MM-DD"
+  reviewed_basis:
+    type: "string"
+    required: false
+    nullable: true
+constraints:
+  - "A planned record may have no transaction or source representation if reviewed_basis is supplied."
+  - "Realized money is evidenced by linked transactions; the income record itself does not create cash."
+  - "If expected_amount is supplied, currency is required."
+validation_scope: "Typed specification contract; cross-record rules require workflow validation."

@@ -1,7 +1,7 @@
-# Procurement item relationships
+# Single expense item relationships
 
 Derived from [canonical graph](../../relationships/graph.yaml).
 
 | Edge | Source | Target | Targets per source | Sources per target |
 | --- | --- | --- | --- | --- |
-| contains-item | procurement | procurement-item | 0..* | 1 |
+| contains-item | single-expense | single-expense-item | 0..* | 1 |

@@ -8,6 +8,11 @@ primary_key:
     nullable: false
     description: "Persistent internal identity; not a display name."
 foreign_keys:
+  single_income_ids:
+    type: "ref[]"
+    required: false
+    nullable: true
+    target: "single-income"
   sheet_id:
     type: "ref"
     required: true
@@ -28,12 +33,12 @@ foreign_keys:
     required: true
     nullable: false
     target: "financial-institution"
-  procurement_ids:
+  single_expense_ids:
     type: "ref[]"
     required: false
     nullable: true
     min_items: 0
-    target: "procurement"
+    target: "single-expense"
   recurring_expense_ids:
     type: "ref[]"
     required: false
@@ -90,7 +95,7 @@ fields:
     required: true
     nullable: false
     enum:
-      - "procurement"
+      - "single-expense"
       - "recurring-expense"
       - "other"
       - "unclassified"

@@ -7,12 +7,12 @@ normalization:
   conditional_equivalence:
     - fields: [transaction.merchant, cashflow-entry.counterparty]
       condition: "Cashflow entry counterparty projects Transaction merchant when available; another counterparty need not be a merchant."
-    - fields: [procurement.order_reference, receipt.order_reference]
+    - fields: [single-expense.order_reference, receipt.order_reference]
       condition: "Equivalent only when the Receipt explicitly cites the same order."
   distinct_roles:
     - "An *_id string on its owner is identity; the same name as ref on another object is a relationship reference."
     - "Transaction amount is a signed movement; Balance item amount is a stock observation; Commitment term amount is an agreed charge; Income statement item amount is a statement line."
-    - "Procurement total and Receipt total are separate source totals, even when equal."
+    - "Single expense total and Receipt total are separate source totals, even when equal."
     - "Receipt document_reference and order_reference identify different things unless the source explicitly uses one reference for both."
     - "booking_date, value_date, order_date, issue_date, due_date, as_of_date, effective_start and effective_end represent different events or intervals."
     - "representation_id identifies one source representation; representation_ids is a collection and is not a separate financial object."
@@ -57,7 +57,8 @@ objects:
       transaction_id: "Booked Transaction projected into this entry."
       account_id: "Account on which the Transaction was booked."
       institution_id: "Financial institution that provides the Account."
-      procurement_ids: "Procurement records linked to this Transaction."
+      single_expense_ids: "Single expense events linked to this booked Transaction."
+      single_income_ids: "Single income events linked to this booked Transaction."
       recurring_expense_ids: "Recurring expenses linked through payment occurrences."
       recurring_income_ids: "Recurring income streams linked to this booked income row."
     fields:
@@ -69,12 +70,12 @@ objects:
       reference: "Payment reference or purpose text carried by the Transaction."
       type: "Reviewed classification of the money movement."
       expense_category: "Reviewed expense grouping for filtered and aggregate cashflow views."
-      purchase_category: "More specific purchase grouping when the expense is procurement."
+      purchase_category: "More specific purchase grouping when the expense is single-expense."
       personal_work: "Reviewed personal versus work-related classification."
-      order_dates: "Order dates supported by linked Procurement records."
-      travel_dates: "Travel dates supported by linked Procurement details or receipts."
+      order_dates: "Order dates supported by linked Single expense records."
+      travel_dates: "Travel dates supported by linked Single expense details or receipts."
       service_periods: "Service periods of linked recurring Payment occurrences."
-      item_descriptions: "Descriptions of linked Procurement items; these are row attributes, not separate cash movements."
+      item_descriptions: "Descriptions of linked Single expense items; these are row attributes, not separate cash movements."
       recurring_expense_names: "Display names of the linked recurring expenses."
       receipt_links: "Links to reviewed Receipt evidence, which may be email, PDF, image or another source form."
       income_statement_links: "Links to Income statement evidence supporting an income or reimbursement row."
@@ -211,32 +212,81 @@ objects:
       expected_amount: "Expected payment amount before settlement review."
       currency: "Currency of the expected payment amount."
       settlement_state: "State of settlement of a Payment occurrence."
-  procurement:
-    schema: "procurement/schema.yaml"
+  single-expense:
+    schema: "single-expense/schema.yaml"
     primary_key:
-      procurement_id: "Persistent internal identity; not a display name."
+      single_expense_id: "Persistent internal identity; not a display name."
     foreign_keys:
-      representation_ids: "References to source representations supporting this Procurement."
+      representation_ids: "References to source representations supporting this Single expense."
+      budget_ids: "Budgets to which this expense is allocated."
+      forecast_ids: "Forecasts containing this projected expense."
     fields:
-      merchant: "Merchant named on a Procurement or Transaction."
+      state: "Planned, partially realized, realized, or cancelled."
+      expected_date: "Expected date before a payment is booked."
+      reviewed_basis: "Reviewed basis for an expense without source evidence."
+      description: "Description of the one-time expense event."
+      expected_amount: "Planned amount before a transaction is booked."
+      merchant: "Merchant named on a Single expense or Transaction."
       order_date: "Date on which the order was placed."
-      order_reference: "Merchant order reference shared by Procurement and Receipt when evidenced."
-      total: "Order total stated by the Procurement source; may differ from a settlement."
+      order_reference: "Merchant order reference shared by Single expense and Receipt when evidenced."
+      total: "Order total stated by the Single expense source; may differ from a settlement."
       currency: "Currency of the order total."
-      travel_details: "Travel itinerary details evidenced by the Procurement source."
-  procurement-item:
-    schema: "procurement-item/schema.yaml"
+      travel_details: "Travel itinerary details evidenced by the Single expense source."
+  single-income:
+    schema: "single-income/schema.yaml"
+    primary_key:
+      single_income_id: "Stable identity of a nonrecurring income event."
+    foreign_keys:
+      representation_ids: "Source representations supporting the income event."
+      budget_ids: "Budgets to which this income is allocated."
+      forecast_ids: "Forecasts containing this projected income."
+    fields:
+      source: "Payer or income source, when known."
+      description: "Description of the one-time income event."
+      state: "Planned, partially realized, realized, or cancelled."
+      expected_amount: "Expected amount, distinct from the booked transaction amount."
+      currency: "Currency of the expected amount."
+      expected_date: "Expected date before payment is booked."
+      reviewed_basis: "Reviewed basis for an income event without source evidence."
+  budget:
+    schema: "budget/schema.yaml"
+    primary_key:
+      budget_id: "Stable identity of a dated allocation or limit."
+    foreign_keys:
+      account_id: "Optional Account to which the budget applies."
+    fields:
+      name: "Budget name."
+      amount: "Authorized or planned budget amount, not a cash movement."
+      currency: "Budget currency."
+      period_start: "First day of the budget period."
+      period_end: "Last day of the budget period."
+      purpose: "Reason or scope of the budget."
+  forecast:
+    schema: "forecast/schema.yaml"
+    primary_key:
+      forecast_id: "Stable identity of a dated income and expense projection."
+    foreign_keys:
+      account_id: "Optional Account to which the forecast applies."
+    fields:
+      name: "Forecast name."
+      period_start: "First day of the forecast period."
+      period_end: "Last day of the forecast period."
+      currency: "Currency used for projected totals, when one is defined."
+      method: "Method used to produce the projection."
+      reviewed_basis: "Basis for manually reviewed estimates."
+  single-expense-item:
+    schema: "single-expense-item/schema.yaml"
     primary_key:
       item_id: "Persistent internal identity; not a display name."
     foreign_keys:
-      procurement_id: "Reference to the Procurement containing this purchased item."
+      single_expense_id: "Reference to the Single expense containing this purchased item."
     fields:
       description: "Description of the purchased item."
-      quantity: "Quantity of units on a Procurement item."
-      unit_amount: "Price per unit of a Procurement item."
-      line_amount: "Amount of a Procurement item line."
+      quantity: "Quantity of units on a Single expense item."
+      unit_amount: "Price per unit of a Single expense item."
+      line_amount: "Amount of a Single expense item line."
       currency: "Currency of the item amounts."
-      category: "Classification of a Procurement item."
+      category: "Classification of a Single expense item."
       receipt_locator: "Location of the corresponding item within a Receipt representation."
   receipt:
     schema: "receipt/schema.yaml"
@@ -248,7 +298,7 @@ objects:
       document_kind: "Kind of document represented by a Receipt."
       issuer: "Issuer shown on a Receipt."
       document_reference: "Reference printed on the Receipt itself."
-      order_reference: "Merchant order reference shared by Procurement and Receipt when evidenced."
+      order_reference: "Merchant order reference shared by Single expense and Receipt when evidenced."
       issue_date: "Date on which the Receipt document was issued."
       item_descriptions: "Descriptions of items listed on a Receipt without separate Receipt item objects."
       total: "Total printed on the Receipt document."
@@ -278,7 +328,7 @@ objects:
       currency: "Currency of the booked amount."
       booking_date: "Booking date recorded for this transaction."
       value_date: "Bank value date, distinct from booking date."
-      merchant: "Merchant named on a Procurement or Transaction."
+      merchant: "Merchant named on a Single expense or Transaction."
       reference: "Payment purpose or reference supplied with a Transaction."
       provider_transaction_id: "Transaction identifier assigned by the account provider; account-scoped."
       description: "Description shown for the booked movement."

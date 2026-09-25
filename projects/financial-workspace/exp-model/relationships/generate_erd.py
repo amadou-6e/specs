@@ -9,26 +9,27 @@ HERE=Path(__file__).resolve().parent
 GRAPH=json.loads((HERE/"graph.yaml").read_text(encoding="utf-8"))
 OUT=HERE/"layered-erd.drawio"
 PREVIEW=Path(tempfile.gettempdir())/"financial-workspace-layered-erd-preview.html"
-W,H=2500,1920
+W,H=2500,2440
 BW=250
 STEP=20
 NODES={
  "financial-institution":(570,235),"employer":(100,235),
- "recurring-expense":(1510,235),"recurring-income":(100,360),"procurement":(1980,235),"liability":(1040,235),
+ "recurring-expense":(1510,235),"recurring-income":(100,360),"single-expense":(1980,235),"liability":(1040,235),
  "account":(570,490),"income-statement":(100,490),
- "commitment-term":(1510,490),"procurement-item":(1980,490),"liability-term":(1040,490),
+ "commitment-term":(1510,490),"single-expense-item":(1980,490),"liability-term":(1040,490),
  "transaction-statement":(570,745),"income-statement-item":(100,745),
  "payment-occurrence":(1510,745),"receipt":(1980,745),"balance-item":(1040,745),
- "transaction":(1090,1050),"cashflow-entry":(1090,1370),"cashflow-sheet":(1090,1650),
+ "transaction":(1090,1050),"cashflow-entry":(1090,1370),"cashflow-sheet":(1090,1650),"single-income":(100,2050),"budget":(770,2050),"forecast":(1440,2050),
 }
 LANES=[
  ("Accounts and statements",535,140,360,770,"#EEF5FA"),
  ("Employment income",65,140,360,770,"#F5F1FA"),
  ("Recurring expenses",1475,140,360,770,"#F1F6EE"),
- ("Procurement and receipts",1945,140,360,770,"#FFF6EC"),
+ ("Single expenses and receipts",1945,140,360,770,"#FFF6EC"),
  ("Liabilities",1005,140,360,770,"#F8F0F1"),
  ("Booked movements",65,955,2300,320,"#EDF4F8"),
  ("Cashflow reporting",65,1295,2300,570,"#E9F4ED"),
+ ("Plans and single income",65,1900,2300,460,"#F4F0E8"),
 ]
 SYM={"1":"ERmandOne","0..1":"ERzeroToOne","0..*":"ERzeroToMany","1..*":"ERoneToMany"}
 OBJ={o["id"]:o for o in GRAPH["objects"]}
@@ -41,10 +42,10 @@ FKS={n:foreign_keys(n) for n in NODES}
 NODE_H={n:max(110,58+22*len(FKS[n])) for n in NODES}
 CATEGORIES={
  "Party":("#D7E7FB",{"financial-institution","employer"}),
- "Account or obligation":("#F7DDD6",{"account","liability","recurring-expense","recurring-income"}),
+ "Account or obligation":("#F7DDD6",{"account","liability","recurring-expense","recurring-income","budget","forecast"}),
  "Document":("#E8DFF8",{"transaction-statement","income-statement","receipt"}),
- "Activity":("#D7F0DF",{"transaction","payment-occurrence","procurement"}),
- "Detail or term":("#F7EDC9",{"balance-item","liability-term","commitment-term","procurement-item","income-statement-item"}),
+ "Activity":("#D7F0DF",{"transaction","payment-occurrence","single-expense","single-income"}),
+ "Detail or term":("#F7EDC9",{"balance-item","liability-term","commitment-term","single-expense-item","income-statement-item"}),
  "Reporting":("#D9EAF2",{"cashflow-entry","cashflow-sheet"}),
 }
 NODE_COLOR={n:color for color,names in CATEGORIES.values() for n in names}

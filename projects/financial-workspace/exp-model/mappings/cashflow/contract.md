@@ -13,11 +13,12 @@ The builder performs the joins before publication. Notion receives flattened, fi
 | Account / Institution | Resolved account and provider |
 | Counterparty / Reference | Preserve original bank reference; normalized merchant is additional |
 | Type | Income, expense, refund, transfer, other, unknown |
-| Expense category | Procurement, recurring expense, other, unclassified; one primary category |
+| Expense category | Single expense, recurring expense, other, unclassified; one primary category |
 | Purchase category | Existing detailed categories where supported; Mixed where necessary |
 | Personal/work | Personal, work, mixed, unknown |
 | Order date / Travel date / Service period | Separate enrichment fields; never replace Date |
-| Procurement IDs / Item descriptions | Joined procurement data; multiple values retained |
+| Single expense IDs / Item descriptions | Linked realized single expenses; multiple values retained |
+| Single income IDs | Linked realized single income events, when applicable |
 | Recurring Expense IDs / names | Linked recurring expenses |
 | Recurring Income IDs | Linked employer income streams, when applicable |
 | Receipt links / Income statement links / Statement links | All relevant source references; use rich text with multiple hyperlinks |
@@ -42,3 +43,5 @@ Calendar scaffold rows from the old procurement charts are presentation helpers,
 Validate transaction uniqueness, source links, monetary totals by account/currency and current destination schema. Produce a reviewable create/update/unchanged/conflict diff. Upsert by external transaction ID and retain returned page IDs and per-row receipts. Verify rows and totals after publication.
 
 Do not reuse legacy order Date or positive procurement Price as cashflow booking date or signed Amount. The existing uploader needs an explicit new contract before it can publish this sheet.
+
+Planned Single income and Single expense events remain outside this transaction-backed cashflow sheet until booked. Budget and Forecast allocations are planning links and must not increase cashflow totals.

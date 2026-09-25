@@ -1,21 +1,21 @@
-# Procurement
+# Single expense
 
 <!-- BEGIN GENERATED: contained-elements -->
 ## Contained elements
 
 ```text
-procurement/
+single-expense/
 ├── 1 README.md
 ├── 1 schema.yaml
 ├── 1 relationships.md
 └── 1 representations.md
 ```
 <!-- END GENERATED: contained-elements -->
-> One order/acquisition, regardless of payment splits.
+> One nonrecurring expense event, including a planned event before payment.
 
-Identity: procurement_id.
+Identity: single_expense_id.
 
-Includes: Merchant, order date when known, source. Optional: Merchant order reference, order total, travel details.
+Includes: Description or reviewed basis and realization state. Optional: Merchant, order reference, expected date/amount, travel details, budget and forecast links.
 
 - [Fields](schema.yaml)
 - [Relationships](relationships.md)

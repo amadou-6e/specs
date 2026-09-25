@@ -1,0 +1,47 @@
+schema_version: 2
+object: "budget"
+identity_field: "budget_id"
+primary_key:
+  budget_id:
+    type: "string"
+    required: true
+    nullable: false
+foreign_keys:
+  account_id:
+    type: "ref"
+    required: false
+    nullable: true
+    target: "account"
+fields:
+  name:
+    type: "string"
+    required: true
+    nullable: false
+  amount:
+    type: "decimal"
+    required: true
+    nullable: false
+    encoding: "decimal-string"
+  currency:
+    type: "string"
+    required: true
+    nullable: false
+  period_start:
+    type: "date"
+    required: true
+    nullable: false
+    format: "YYYY-MM-DD"
+  period_end:
+    type: "date"
+    required: true
+    nullable: false
+    format: "YYYY-MM-DD"
+  purpose:
+    type: "string"
+    required: false
+    nullable: true
+constraints:
+  - "A budget is a plan, not an account balance or cash movement."
+  - "The end date is on or after the start date."
+  - "Linked income and expenses retain their own currency; conversion is explicit."
+validation_scope: "Typed specification contract; cross-record rules require workflow validation."
