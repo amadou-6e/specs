@@ -19,7 +19,7 @@ NODES={
  "commitment-term":(1510,490),"single-expense-item":(1980,490),"liability-term":(1040,490),
  "transaction-statement":(570,745),"income-statement-item":(100,745),
  "payment-occurrence":(1510,745),"receipt":(1980,745),"balance-item":(1040,745),
- "transaction":(1090,1050),"cashflow-entry":(1090,1370),"cashflow-sheet":(1090,1650),"single-income":(100,2050),"budget":(770,2050),"forecast":(1440,2050),
+ "transaction":(1090,1050),"cashflow-entry":(1090,1370),"cashflow-sheet":(1090,1650),"single-income":(100,1045),"budget":(770,2050),"forecast":(1440,2050),
 }
 LANES=[
  ("Accounts and statements",535,140,360,770,"#EEF5FA"),
@@ -27,9 +27,10 @@ LANES=[
  ("Recurring expenses",1475,140,360,770,"#F1F6EE"),
  ("Single expenses and receipts",1945,140,360,770,"#FFF6EC"),
  ("Liabilities",1005,140,360,770,"#F8F0F1"),
- ("Booked movements",65,955,2300,320,"#EDF4F8"),
+ ("Single income - planned or received",65,955,360,320,"#EEF8F1"),
+ ("Booked movements",445,955,1920,320,"#EDF4F8"),
  ("Cashflow reporting",65,1295,2300,570,"#E9F4ED"),
- ("Plans and single income",65,1900,2300,460,"#F4F0E8"),
+ ("Budgets and forecasts",65,1900,2300,460,"#F4F0E8"),
 ]
 SYM={"1":"ERmandOne","0..1":"ERzeroToOne","0..*":"ERzeroToMany","1..*":"ERoneToMany"}
 OBJ={o["id"]:o for o in GRAPH["objects"]}
@@ -44,7 +45,8 @@ CATEGORIES={
  "Party":("#D7E7FB",{"financial-institution","employer"}),
  "Account or obligation":("#F7DDD6",{"account","liability","recurring-expense","recurring-income","budget","forecast"}),
  "Document":("#E8DFF8",{"transaction-statement","income-statement","receipt"}),
- "Activity":("#D7F0DF",{"transaction","payment-occurrence","single-expense","single-income"}),
+ "Activity":("#D7F0DF",{"transaction","payment-occurrence"}),
+ "Single events":("#FFE1A3",{"single-expense","single-income"}),
  "Detail or term":("#F7EDC9",{"balance-item","liability-term","commitment-term","single-expense-item","income-statement-item"}),
  "Reporting":("#D9EAF2",{"cashflow-entry","cashflow-sheet"}),
 }
@@ -209,9 +211,9 @@ for label,lx,ly,lw,lh,fill in LANES:
  parts.append(f'<rect x="{lx}" y="{ly}" width="{lw}" height="{lh}" fill="{fill}" stroke="#C7D3DE" stroke-width="1.5"/>')
  parts.append(f'<text x="{lx+16}" y="{ly+30}" font-family="Arial" font-size="17" font-weight="bold" fill="#40576D">{html.escape(label)}</text>')
 for i,(category,(color,_)) in enumerate(CATEGORIES.items()):
- lx=80+i*370
- parts.append(f'<rect x="{lx}" y="108" width="350" height="25" fill="{color}" stroke="none"/>')
- parts.append(f'<text x="{lx+175}" y="125" text-anchor="middle" font-family="Arial" font-size="13" fill="#243B52">{html.escape(category)}</text>')
+ lx=80+i*330
+ parts.append(f'<rect x="{lx}" y="108" width="310" height="25" fill="{color}" stroke="none"/>')
+ parts.append(f'<text x="{lx+155}" y="125" text-anchor="middle" font-family="Arial" font-size="13" fill="#243B52">{html.escape(category)}</text>')
 for path in preview_edges:
  pts=" ".join(f"{x:.1f},{y:.1f}" for x,y in path)
  parts.append(f'<polyline points="{pts}" fill="none" stroke="#7390A8" stroke-width="1.6"/>')
