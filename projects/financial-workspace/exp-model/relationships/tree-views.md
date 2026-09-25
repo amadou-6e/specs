@@ -74,10 +74,22 @@ Forecast
 +-- [0..* : 0..*] Single income
 
 Single expense
-+-- [1 : 0..*] Single expense item
+|-- [1 : 0..*] Single expense item
+|   +-- [0..* : 0..*] Receipt [when the receipt documents this item]
++-- [0..* : 0..*] Receipt [when the receipt documents the whole expense]
 
 Single income
 +-- [0..* : 0..*] Transaction [only once received]
 ~~~
 
 Budget and Forecast are optional Account-scoped planning objects. Planned Single expense and Single income events may have no Transaction. Their links to budgets and forecasts do not create cashflow rows.
+
+## Employer reimbursement links
+
+~~~text
+Income statement
++-- [1 : 0..*] Income statement item
+    +-- [0..* : 0..*] Single expense or Single expense item [reimbursement component only]
+~~~
+
+The Income statement item is a component of the salary evidence. It links to the expense being repaid; it does not create a second expense or a second booked salary transaction.

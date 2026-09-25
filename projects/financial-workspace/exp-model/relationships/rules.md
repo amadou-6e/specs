@@ -30,6 +30,17 @@ Canonical edges and cardinalities are in graph.yaml. targets_per_source counts t
 | projects | cashflow-entry | transaction | 1 | 0..* |
 | supported-by-receipt | cashflow-entry | receipt | 0..* | 0..* |
 | refunds | transaction | transaction | 0..* | 0..* |
+| settles-single-income | transaction | single-income | 0..* | 0..* |
+| supports-single-income | income-statement | single-income | 0..* | 0..* |
+| account-budgets | account | budget | 0..* | 0..1 |
+| account-forecasts | account | forecast | 0..* | 0..1 |
+| single-expense-budgets | budget | single-expense | 0..* | 0..* |
+| single-income-budgets | budget | single-income | 0..* | 0..* |
+| single-expense-forecasts | forecast | single-expense | 0..* | 0..* |
+| single-income-forecasts | forecast | single-income | 0..* | 0..* |
+| documents-expense-item | receipt | single-expense-item | 0..* | 0..* |
+| reimburses-single-expense | income-statement-item | single-expense | 0..* | 0..* |
+| reimburses-single-expense-item | income-statement-item | single-expense-item | 0..* | 0..* |
 
 A statement can be empty; multiple overlapping statements can mention one transaction. A receipt may be unassigned during review, and a single expense can lack a receipt while evidence is incomplete. Publishing cashflow requires transaction evidence, not a receipt.
 
@@ -44,13 +55,7 @@ Receipt links on cashflow entries are derived from reviewed source links. Enrich
 ## Lifecycle
 
 Evidence deletion or missing access marks a gap; it does not delete a financial transaction. Corrected observations supersede prior assertions. Rejected links remain auditable. Actual records are not cascade-deleted when a receipt, commitment or Notion page disappears.
-| settles-single-income | transaction | single-income | 0..* | 0..* |
-| supports-single-income | income-statement | single-income | 0..* | 0..* |
-| account-budgets | account | budget | 0..* | 0..1 |
-| account-forecasts | account | forecast | 0..* | 0..1 |
-| single-expense-budgets | budget | single-expense | 0..* | 0..* |
-| single-income-budgets | budget | single-income | 0..* | 0..* |
-| single-expense-forecasts | forecast | single-expense | 0..* | 0..* |
-| single-income-forecasts | forecast | single-income | 0..* | 0..* |
 
 Planned Single income and Single expense records may lack transactions. Their budgets and forecasts are planning links. A cashflow entry still requires a posted transaction; one event may settle through several transactions.
+
+A Single expense can have zero or more Single expense items and can be supported by receipts. A receipt may document the whole expense or particular items. A reviewed reimbursement component on an Income statement can reference the expense or specific items. Retain an allocation amount and currency when one salary line covers several expenses. The sum of verified allocations must not exceed the reviewed reimbursement component amount. Do not count the same reimbursement at both parent and item level. The linked salary transaction remains one cashflow movement.

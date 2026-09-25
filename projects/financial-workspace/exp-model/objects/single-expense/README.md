@@ -22,3 +22,5 @@ Includes: Description or reviewed basis and realization state. Optional: Merchan
 - [Source forms](representations.md)
 
 These are type definitions; no illustrative instance is claimed as an observed record.
+
+A Single expense may contain Single expense items and be supported by receipts. An employer reimbursement shown as an Income statement item may link to the whole expense or its documented items; the reimbursement does not create another expense.

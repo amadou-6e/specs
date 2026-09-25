@@ -356,6 +356,27 @@
       "target": "single-income",
       "targets_per_source": "0..*",
       "sources_per_target": "0..*"
+    },
+    {
+      "id": "documents-expense-item",
+      "source": "receipt",
+      "target": "single-expense-item",
+      "targets_per_source": "0..*",
+      "sources_per_target": "0..*"
+    },
+    {
+      "id": "reimburses-single-expense",
+      "source": "income-statement-item",
+      "target": "single-expense",
+      "targets_per_source": "0..*",
+      "sources_per_target": "0..*"
+    },
+    {
+      "id": "reimburses-single-expense-item",
+      "source": "income-statement-item",
+      "target": "single-expense-item",
+      "targets_per_source": "0..*",
+      "sources_per_target": "0..*"
     }
   ],
   "invariants": [
@@ -368,6 +389,9 @@
     "Each Balance item belongs to exactly one Account or Liability.",
     "Single income and Single expense may exist without transactions while planned; only matched posted transactions create cashflow entries.",
     "Budgets and forecasts never create cash movements or account balances.",
-    "One event may link to multiple budgets or forecasts; aggregation requires explicit allocation to avoid double counting."
+    "One event may link to multiple budgets or forecasts; aggregation requires explicit allocation to avoid double counting.",
+    "A reimbursement link from an Income statement item requires a reviewed reimbursement component; a subtotal or statement total is not allocated again.",
+    "Reimbursement links enrich the salary transaction; they do not create a second cashflow entry.",
+    "A reimbursement line allocated to Single expense items is not also counted at their parent Single expense level."
   ]
 }

@@ -7,3 +7,4 @@ Derived from [canonical graph](../../relationships/graph.yaml).
 | substantiates-purchase | receipt | single-expense | 0..* | 0..* |
 | supports-occurrence | receipt | payment-occurrence | 0..* | 0..* |
 | supported-by-receipt | cashflow-entry | receipt | 0..* | 0..* |
+| documents-expense-item | receipt | single-expense-item | 0..* | 0..* |

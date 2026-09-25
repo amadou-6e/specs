@@ -20,6 +20,8 @@ identity_field: "item_id"
 schema_ref: "schema.yaml"
 graph_ref: "../../relationships/graph.yaml"
 relationship_ids:
+  - "documents-expense-item"
+  - "reimburses-single-expense-item"
   - "contains-item"
 representations:
 evidence_forms:

@@ -22,3 +22,5 @@ Includes: Single expense, description, quantity. Optional: Unit/line amount, cat
 - [Source forms](representations.md)
 
 These are type definitions; no illustrative instance is claimed as an observed record.
+
+A receipt may document this item directly. A reviewed Income statement reimbursement component may repay this item without changing the parent expense amount.
