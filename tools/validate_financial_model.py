@@ -1,6 +1,7 @@
 """Checks semantic links in the Financial Workspace replacement model."""
 import json
 import re
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from schema_yaml import load_schema
@@ -19,6 +20,23 @@ def validate(root, errors, parse):
             return {}
     graph = read(base / "relationships/graph.yaml")
     objects = {o["id"]: o for o in graph.get("objects", [])}
+    erd_path = base / "relationships/layered-erd.drawio"
+    try:
+        erd_root = ET.parse(erd_path).getroot()
+    except (OSError, ET.ParseError) as exc:
+        error(erd_path, "invalid ERD XML: " + str(exc))
+    else:
+        cells = {cell.get("id"): cell for cell in erd_root.iter("mxCell") if cell.get("id")}
+        for oid in objects:
+            if cells.get(oid) is None or cells[oid].get("vertex") != "1":
+                error(erd_path, "missing object card " + oid)
+        for index, relation in enumerate(graph.get("relationships", [])):
+            edge_id = "edge-" + str(index)
+            cell = cells.get(edge_id)
+            if cell is None or cell.get("edge") != "1":
+                error(erd_path, "missing relationship edge " + edge_id)
+            elif cell.get("source") != relation["source"] or cell.get("target") != relation["target"]:
+                error(erd_path, "detached or incorrect endpoints on " + edge_id)
     schemas = {}
     schema_groups = {}
     for p in base.rglob("metadata.yaml"):
