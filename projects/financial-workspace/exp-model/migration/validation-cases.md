@@ -22,4 +22,4 @@ These are acceptance scenarios grounded in prior rules and the exception registe
 - [Existing Notion contract](../../model/systems/notion/schema.md)
 - [Recurring model](../../model/objects/recurring-expenses/schema.md)
 
-The existing recurring model supplies service, service period and effective contract terms. It does not prove that every recurring commitment or payment has been captured.
+The existing recurring model supplies service, service period and effective contract terms. It does not prove that every recurring expense or payment has been captured.

@@ -1,4 +1,4 @@
-# Recurring commitment forms
+# Recurring expense forms
 
 Lease, insurance policy, subscription email or amendment. Effective terms are versioned. Repeated charges suggest an commitment but do not prove a signed contract.
 

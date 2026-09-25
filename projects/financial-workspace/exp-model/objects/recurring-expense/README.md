@@ -1,10 +1,10 @@
-# Recurring commitment
+# Recurring expense
 
 <!-- BEGIN GENERATED: contained-elements -->
 ## Contained elements
 
 ```text
-recurring-commitment/
+recurring-expense/
 ├── 1 README.md
 ├── 1 schema.yaml
 ├── 1 relationships.md
@@ -13,7 +13,7 @@ recurring-commitment/
 <!-- END GENERATED: contained-elements -->
 > Continuing commitment.
 
-Identity: commitment_id.
+Identity: recurring_expense_id.
 
 Includes: Provider, service description, source or reviewed basis. Optional: Cadence, effective dates, versioned price terms.
 

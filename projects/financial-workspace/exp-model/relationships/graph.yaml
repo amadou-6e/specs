@@ -33,14 +33,19 @@
       "definition": "../objects/employer/README.md"
     },
     {
+      "id": "recurring-income",
+      "identity": "recurring_income_id",
+      "definition": "../objects/recurring-income/README.md"
+    },
+    {
       "id": "income-statement",
       "identity": "income_statement_id",
       "definition": "../objects/income-statement/README.md"
     },
     {
-      "id": "recurring-commitment",
-      "identity": "commitment_id",
-      "definition": "../objects/recurring-commitment/README.md"
+      "id": "recurring-expense",
+      "identity": "recurring_expense_id",
+      "definition": "../objects/recurring-expense/README.md"
     },
     {
       "id": "payment-occurrence",
@@ -143,7 +148,7 @@
     },
     {
       "id": "defines",
-      "source": "recurring-commitment",
+      "source": "recurring-expense",
       "target": "payment-occurrence",
       "targets_per_source": "0..*",
       "sources_per_target": "1"
@@ -213,7 +218,7 @@
     },
     {
       "id": "commitment-terms",
-      "source": "recurring-commitment",
+      "source": "recurring-expense",
       "target": "commitment-term",
       "targets_per_source": "0..*",
       "sources_per_target": "1"
@@ -259,6 +264,27 @@
       "target": "balance-item",
       "targets_per_source": "0..*",
       "sources_per_target": "0..1"
+    },
+    {
+      "id": "employer-recurring-income",
+      "source": "employer",
+      "target": "recurring-income",
+      "targets_per_source": "0..*",
+      "sources_per_target": "1"
+    },
+    {
+      "id": "recurring-income-statements",
+      "source": "recurring-income",
+      "target": "income-statement",
+      "targets_per_source": "0..*",
+      "sources_per_target": "0..1"
+    },
+    {
+      "id": "recurring-income-entries",
+      "source": "recurring-income",
+      "target": "cashflow-entry",
+      "targets_per_source": "0..*",
+      "sources_per_target": "0..*"
     }
   ],
   "invariants": [

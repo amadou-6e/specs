@@ -208,9 +208,9 @@
       "notes": "Native property IDs/types must be verified before publication."
     },
     {
-      "target_field": "commitment_ids",
-      "notion_property": "Commitment Ids",
-      "source": "recurring-commitment.commitment_id",
+      "target_field": "recurring_expense_ids",
+      "notion_property": "Recurring Expense Ids",
+      "source": "recurring-expense.recurring_expense_id",
       "derivation": "source-field",
       "transform": "collect-distinct",
       "missing": "null",
@@ -218,9 +218,19 @@
       "notes": "Native property IDs/types must be verified before publication."
     },
     {
-      "target_field": "commitment_names",
-      "notion_property": "Commitment Names",
-      "source": "recurring-commitment.description",
+      "target_field": "recurring_income_ids",
+      "notion_property": "Recurring Income Ids",
+      "source": "recurring-income.recurring_income_id",
+      "derivation": "source-field",
+      "transform": "collect-distinct",
+      "missing": "null",
+      "notion_type": "rich_text",
+      "notes": "Proposed property; verify native property ID and type before publication."
+    },
+    {
+      "target_field": "recurring_expense_names",
+      "notion_property": "Recurring Expense Names",
+      "source": "recurring-expense.description",
       "derivation": "source-field",
       "transform": "collect-distinct",
       "missing": "null",

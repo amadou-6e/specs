@@ -8,11 +8,11 @@ primary_key:
     nullable: false
     description: "Persistent Commitment term identity."
 foreign_keys:
-  commitment_id:
+  recurring_expense_id:
     type: "ref"
     required: true
     nullable: false
-    target: "recurring-commitment"
+    target: "recurring-expense"
 fields:
   effective_start:
     type: "date"
@@ -39,7 +39,7 @@ fields:
     required: true
     nullable: false
 constraints:
-  - "Each Commitment term belongs to exactly one Recurring commitment."
+  - "Each Commitment term belongs to exactly one Recurring expense."
   - "An commitment may have no Commitment term records."
   - "effective_end, when supplied, must not precede effective_start."
   - "Preserve evidence and reviewed corrections; do not invent terms for incomplete commitments."

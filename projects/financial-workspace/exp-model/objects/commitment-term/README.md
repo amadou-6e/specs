@@ -11,7 +11,7 @@ commitment-term/
 └── 1 representations.md
 ```
 <!-- END GENERATED: contained-elements -->
-One dated set of price and cadence terms for a Recurring commitment.
+One dated set of price and cadence terms for a Recurring expense.
 
 The relationship is optional for the commitment: zero or more Commitment term records.
 Each Commitment term belongs to exactly one commitment. Absence does not invalidate

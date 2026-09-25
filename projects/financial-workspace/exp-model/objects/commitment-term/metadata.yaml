@@ -1,7 +1,7 @@
 schema_version: 1
 name: commitment-term
 kind: "financial-object"
-purpose: "Dated price and cadence terms belonging to one Recurring commitment."
+purpose: "Dated price and cadence terms belonging to one Recurring expense."
 authority: Replacement candidate
 owner: amadou-6e
 status: draft

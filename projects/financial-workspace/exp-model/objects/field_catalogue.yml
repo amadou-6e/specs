@@ -58,7 +58,8 @@ objects:
       account_id: "Account on which the Transaction was booked."
       institution_id: "Financial institution that provides the Account."
       procurement_ids: "Procurement records linked to this Transaction."
-      commitment_ids: "Recurring commitments linked through the payment occurrence."
+      recurring_expense_ids: "Recurring expenses linked through payment occurrences."
+      recurring_income_ids: "Recurring income streams linked to this booked income row."
     fields:
       name: "Human-readable display title for the row."
       booking_date: "Date on which the source Transaction was booked."
@@ -74,7 +75,7 @@ objects:
       travel_dates: "Travel dates supported by linked Procurement details or receipts."
       service_periods: "Service periods of linked recurring Payment occurrences."
       item_descriptions: "Descriptions of linked Procurement items; these are row attributes, not separate cash movements."
-      commitment_names: "Display names of the linked recurring commitments."
+      recurring_expense_names: "Display names of the linked recurring expenses."
       receipt_links: "Links to reviewed Receipt evidence, which may be email, PDF, image or another source form."
       income_statement_links: "Links to Income statement evidence supporting an income or reimbursement row."
       statement_links: "Links to Transaction statement evidence for the booked movement."
@@ -99,7 +100,7 @@ objects:
     primary_key:
       term_id: "Persistent Commitment term identity."
     foreign_keys:
-      commitment_id: "Reference to the Recurring commitment whose terms apply."
+      recurring_expense_id: "Reference to the Recurring expense whose terms apply."
     fields:
       effective_start: "First date for which these terms or commitment apply."
       effective_end: "Last date for which these terms or commitment apply, if known."
@@ -122,12 +123,26 @@ objects:
     fields:
       name: "Human-readable name for display."
       provider_identifiers: "Identifiers assigned by the provider or registry."
+  recurring-income:
+    schema: "recurring-income/schema.yaml"
+    primary_key:
+      recurring_income_id: "Stable identity of an expected income stream."
+    foreign_keys:
+      employer_id: "Employer responsible for this income stream."
+      representation_ids: "Source representations supporting the income basis."
+    fields:
+      description: "Name or description of the income stream."
+      reviewed_basis: "Reviewed reason for treating the income as recurring."
+      cadence: "Expected frequency of payment."
+      effective_start: "First date the income stream applies."
+      effective_end: "Last date the income stream applies, when known."
   income-statement:
     schema: "income-statement/schema.yaml"
     primary_key:
       income_statement_id: "Persistent internal identity; not a display name."
     foreign_keys:
       employer_id: "Reference to the Employer that issued this Income statement."
+      recurring_income_id: "Optional recurring income stream documented by this statement."
       representation_ids: "References to source representations supporting this Income Statement."
     fields:
       period_start: "Beginning of the statement coverage period."
@@ -189,7 +204,7 @@ objects:
     primary_key:
       occurrence_id: "Persistent internal identity; not a display name."
     foreign_keys:
-      commitment_id: "Reference to the Recurring commitment for this expected payment."
+      recurring_expense_id: "Reference to the Recurring expense for this expected payment."
     fields:
       period: "Service period of the expected recurring payment."
       due_date: "Due date of one Payment occurrence."
@@ -238,16 +253,16 @@ objects:
       item_descriptions: "Descriptions of items listed on a Receipt without separate Receipt item objects."
       total: "Total printed on the Receipt document."
       currency: "Currency of the document total."
-  recurring-commitment:
-    schema: "recurring-commitment/schema.yaml"
+  recurring-expense:
+    schema: "recurring-expense/schema.yaml"
     primary_key:
-      commitment_id: "Persistent internal identity; not a display name."
+      recurring_expense_id: "Persistent internal identity; not a display name."
     foreign_keys:
-      representation_ids: "References to source representations supporting this Recurring Commitment."
+      representation_ids: "References to source representations supporting this Recurring expense."
     fields:
       provider: "Provider named by the source record."
       description: "Description of the recurring agreement or service."
-      reviewed_basis: "Reviewed evidence basis for a recurring commitment."
+      reviewed_basis: "Reviewed evidence basis for a recurring expense."
       cadence: "Frequency of the commitment or agreed payment."
       effective_start: "First date for which these terms or commitment apply."
       effective_end: "Last date for which these terms or commitment apply, if known."

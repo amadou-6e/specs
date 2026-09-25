@@ -4,4 +4,4 @@
 
 | Edge | Source | Target | Targets per source | Sources per target |
 | --- | --- | --- | --- | --- |
-| commitment-terms | recurring-commitment | commitment-term | 0..* | 1 |
+| commitment-terms | recurring-expense | commitment-term | 0..* | 1 |

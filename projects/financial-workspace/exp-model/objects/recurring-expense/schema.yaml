@@ -1,8 +1,8 @@
 schema_version: 2
-object: "recurring-commitment"
-identity_field: "commitment_id"
+object: "recurring-expense"
+identity_field: "recurring_expense_id"
 primary_key:
-  commitment_id:
+  recurring_expense_id:
     type: "string"
     required: true
     nullable: false

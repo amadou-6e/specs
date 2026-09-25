@@ -13,6 +13,11 @@ foreign_keys:
     required: true
     nullable: false
     target: "employer"
+  recurring_income_id:
+    type: "ref"
+    required: false
+    nullable: true
+    target: "recurring-income"
   representation_ids:
     type: "ref[]"
     required: true
@@ -65,6 +70,7 @@ constraints:
   - "If net is supplied, currency must be supplied."
   - "If deductions is supplied, currency must be supplied."
   - "If reimbursement is supplied, currency must be supplied."
+  - "If recurring_income_id is set, its Employer must equal employer_id."
   - "Gross, net, deductions and reimbursement retain observed summary values; Income statement items retain source lines."
   - "Do not count statement summaries and their item components as additional cashflow; reconcile discrepancies explicitly."
 validation_scope: "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."

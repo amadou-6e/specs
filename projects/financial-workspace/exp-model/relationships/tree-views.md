@@ -13,7 +13,7 @@ Account
     |   +-- Receipt
     |       +-- Representation: email / PDF / scan / image
     +-- Payment occurrence
-    |   +-- Recurring commitment
+    |   +-- Recurring expense
     +-- Income statement
     |   +-- Employer
     +-- Cashflow entry
@@ -25,20 +25,22 @@ Cashflow sheet
 
 The Cashflow entry attributes are described in the [field catalogue](../objects/field_catalogue.yml); they are not child objects in this relationship tree.
 
-## Recurring commitment subtree
+## Recurring expense subtree
 
 ```text
-Recurring commitment
+Recurring expense
 |-- [1 : 0..*] Commitment term
 +-- [1 : 0..*] Payment occurrence
 ```
 
-The zero lower bound makes Commitment term optional for an commitment. Each term belongs to exactly one commitment.
+The zero lower bound makes Commitment term optional for a recurring expense. Each term belongs to exactly one recurring expense.
 
-## Income statement subtree
+## Employment income subtree
 
 ```text
 Employer
+|-- [1 : 0..*] Recurring income
+|   +-- [0..1 : 0..*] Income statement
 +-- [1 : 0..*] Income statement
     +-- [1 : 0..*] Income statement item
 ```

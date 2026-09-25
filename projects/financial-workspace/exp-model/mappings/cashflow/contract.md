@@ -18,7 +18,7 @@ The builder performs the joins before publication. Notion receives flattened, fi
 | Personal/work | Personal, work, mixed, unknown |
 | Order date / Travel date / Service period | Separate enrichment fields; never replace Date |
 | Procurement IDs / Item descriptions | Joined procurement data; multiple values retained |
-| Commitment ID / Commitment name | Joined recurring commitment |
+| Commitment ID / Commitment name | Joined recurring expense |
 | Receipt links / Income statement links / Statement links | All relevant source references; use rich text with multiple hyperlinks |
 | Evidence status / Match status | Missing, partial, verified, ambiguous as applicable |
 | Reporting treatment | Include, internal transfer, wallet funding, liability movement, unresolved |

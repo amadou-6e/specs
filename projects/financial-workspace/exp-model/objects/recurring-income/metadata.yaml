@@ -1,5 +1,5 @@
 schema_version: 1
-name: recurring-commitment
+name: recurring-income
 authority: Replacement candidate
 owner: amadou-6e
 children:
@@ -9,22 +9,21 @@ children:
   - "1 representations.md"
 status: draft
 kind: "financial-object"
-purpose: "Continuing commitment."
+purpose: "Expected continuing income from one employer, separate from booked payments."
 includes:
-  - "Provider, service description, source or reviewed basis"
-  - "Cadence, effective dates, versioned price terms"
+  - "Employer, income basis, cadence, effective dates"
 excludes:
+  - "Booked cash movements"
   - "Source file format as financial identity"
-  - "Workflow execution"
-identity_field: "commitment_id"
+identity_field: "recurring_income_id"
 schema_ref: "schema.yaml"
 graph_ref: "../../relationships/graph.yaml"
 relationship_ids:
-  - "defines"
-  - "commitment-terms"
+  - "employer-recurring-income"
+  - "recurring-income-statements"
+  - "recurring-income-entries"
 representations:
   - "../../representations/pdf"
-  - "../../representations/image"
   - "../../representations/email"
 evidence_forms:
 provenance_ref: "../../representations/provenance.yaml"

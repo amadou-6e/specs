@@ -4,7 +4,7 @@ Canonical edges and cardinalities are in graph.yaml. targets_per_source counts t
 
 | Edge | Source | Target | Targets per source | Sources per target |
 | --- | --- | --- | --- | --- |
-| commitment-terms | recurring-commitment | commitment-term | 0..* | 1 |
+| commitment-terms | recurring-expense | commitment-term | 0..* | 1 |
 | income-statement-items | income-statement | income-statement-item | 0..* | 1 |
 | account-balance-items | account | balance-item | 0..* | 0..1 |
 | liability-balance-items | liability | balance-item | 0..* | 0..1 |
@@ -16,8 +16,11 @@ Canonical edges and cardinalities are in graph.yaml. targets_per_source counts t
 | records | account | transaction | 0..* | 1 |
 | contains | transaction-statement | transaction | 0..* | 0..* |
 | issues | employer | income-statement | 0..* | 1 |
+| employer-recurring-income | employer | recurring-income | 0..* | 1 |
+| recurring-income-statements | recurring-income | income-statement | 0..* | 0..1 |
+| recurring-income-entries | recurring-income | cashflow-entry | 0..* | 0..* |
 | substantiates-income | income-statement | transaction | 0..* | 0..* |
-| defines | recurring-commitment | payment-occurrence | 0..* | 1 |
+| defines | recurring-expense | payment-occurrence | 0..* | 1 |
 | settles-occurrence | transaction | payment-occurrence | 0..* | 0..* |
 | settles-procurement | transaction | procurement | 0..* | 0..* |
 | contains-item | procurement | procurement-item | 0..* | 1 |

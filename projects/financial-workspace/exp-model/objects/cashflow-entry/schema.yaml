@@ -34,12 +34,18 @@ foreign_keys:
     nullable: true
     min_items: 0
     target: "procurement"
-  commitment_ids:
+  recurring_expense_ids:
     type: "ref[]"
     required: false
     nullable: true
     min_items: 0
-    target: "recurring-commitment"
+    target: "recurring-expense"
+  recurring_income_ids:
+    type: "ref[]"
+    required: false
+    nullable: true
+    min_items: 0
+    target: "recurring-income"
 fields:
   name:
     type: "string"
@@ -122,7 +128,7 @@ fields:
     required: false
     nullable: true
     min_items: 0
-  commitment_names:
+  recurring_expense_names:
     type: "string[]"
     required: false
     nullable: true
@@ -179,6 +185,7 @@ fields:
     required: true
     nullable: false
 constraints:
+  - "Recurring income links classify booked income; they do not create additional cash movements."
   - "Required fields apply to accepted canonical records; incomplete extractions remain candidates."
   - "Unknown optional values are null; no invented defaults."
   - "Unique(sheet_id, transaction_id)."

@@ -8,11 +8,11 @@ primary_key:
     nullable: false
     description: "Persistent internal identity; not a display name."
 foreign_keys:
-  commitment_id:
+  recurring_expense_id:
     type: "ref"
     required: true
     nullable: false
-    target: "recurring-commitment"
+    target: "recurring-expense"
 fields:
   period:
     type: "string"

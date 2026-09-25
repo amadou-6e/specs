@@ -20,6 +20,7 @@ identity_field: "entry_id"
 schema_ref: "schema.yaml"
 graph_ref: "../../relationships/graph.yaml"
 relationship_ids:
+  - "recurring-income-entries"
   - "contains-entry"
   - "projects"
   - "supported-by-receipt"
