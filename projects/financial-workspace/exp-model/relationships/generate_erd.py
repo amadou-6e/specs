@@ -223,6 +223,3 @@ for n,(x,y) in NODES.items():
 parts.append("</svg></body></html>")
 PREVIEW.write_text("".join(parts),encoding="utf-8")
 print(f"{len(NODES)} entities, {len(rels)} relationships, one page; {best[0]} strict crossings; no connector crosses an unrelated entity.")
-
-
-
