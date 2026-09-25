@@ -9,7 +9,7 @@ HERE=Path(__file__).resolve().parent
 GRAPH=json.loads((HERE/"graph.yaml").read_text(encoding="utf-8"))
 OUT=HERE/"layered-erd.drawio"
 PREVIEW=Path(tempfile.gettempdir())/"financial-workspace-layered-erd-preview.html"
-W,H=2800,2990
+W,H=2800,2730
 BW=250
 STEP=20
 NODES={
@@ -20,8 +20,8 @@ NODES={
  "recurring-expense":(1860,235),"commitment-term":(1860,420),"payment-occurrence":(1860,620),
  "single-expense":(2300,235),"single-expense-item":(2300,450),
  "transaction":(1050,1150),"receipt":(1450,1150),
- "cashflow-entry":(1150,1610),"cashflow-sheet":(1150,2000),
- "budget":(800,2610),"forecast":(1670,2610),
+ "cashflow-entry":(1150,1560),"cashflow-sheet":(1150,1900),
+ "budget":(800,2350),"forecast":(1670,2350),
 }
 LANES=[
  ("Accounts and statements",65,140,350,840,"#EEF5FA"),
@@ -31,8 +31,8 @@ LANES=[
  ("Recurring expenses",1825,140,350,840,"#F1F6EE"),
  ("Single expenses",2265,140,350,840,"#FFF6EC"),
  ("Transactions and receipts",65,1020,2550,400,"#EDF4F8"),
- ("Cashflow reporting",65,1460,2550,820,"#E9F4ED"),
- ("Budgets and forecasts",65,2320,2550,560,"#F4F0E8"),
+ ("Cashflow reporting",65,1460,2550,670,"#E9F4ED"),
+ ("Budgets and forecasts",65,2150,2550,480,"#F4F0E8"),
 ]
 SYM={"1":"ERmandOne","0..1":"ERzeroToOne","0..*":"ERzeroToMany","1..*":"ERoneToMany"}
 OBJ={o["id"]:o for o in GRAPH["objects"]}
@@ -42,7 +42,7 @@ def foreign_keys(n):
  block=text.split("foreign_keys:",1)[1].split("\nfields:",1)[0] if "foreign_keys:" in text else ""
  return re.findall(r"^  ([A-Za-z_][A-Za-z_0-9]*):$",block,re.M)
 FKS={n:foreign_keys(n) for n in NODES}
-NODE_H={n:max(110,58+22*(len(FKS[n])+(1 if n in {"receipt","single-income"} else 0))) for n in NODES}
+NODE_H={n:max(110,58+22*(len(FKS[n])+(2 if n=="receipt" else (1 if n=="single-income" else 0)))) for n in NODES}
 CATEGORIES={
  "Party":("#D7E7FB",{"financial-institution","employer"}),
  "Account or obligation":("#F7DDD6",{"account","liability","recurring-expense","recurring-income","budget","forecast"}),
@@ -79,6 +79,8 @@ for (n,s),items in ports.items():
   endpoint[(i,end)]=(p,outer,rel,s)
 def grid(p):return (round(p[0]/STEP),round(p[1]/STEP))
 blocked={(gx,gy) for gx in range(W//STEP) for gy in range(0,7)}
+# Keep connectors clear of the top swimlane headings (y=140..185).
+blocked.update((gx,gy) for gx in range(1,W//STEP-1) for gy in range(7,10))
 for n,(x,y) in NODES.items():
  for gx in range(math.floor((x-8)/STEP),math.ceil((x+BW+8)/STEP)+1):
   for gy in range(math.floor((y-8)/STEP),math.ceil((y+NODE_H[n]+8)/STEP)+1):
@@ -143,7 +145,7 @@ for i,(category,(color,_)) in enumerate(CATEGORIES.items()):
 for n,(x,y) in NODES.items():
  name=n.replace("-"," ").title()
  fk_lines="".join(f"<br><font color='#475E72'>FK {key}</font>" for key in FKS[n])
- kind_line="<br>document_kind includes income-statement" if n=="receipt" else ("<br>income_kind: reimbursement or other" if n=="single-income" else "")
+ kind_line="<br>document_kind:<br>income-statement, etc." if n=="receipt" else ("<br>income_kind: reimbursement or other" if n=="single-income" else "")
  value=f"<b><font style='font-size:16px'>{name}</font></b><br><font color='#344E66'>PK {OBJ[n]['identity']}</font>{kind_line}{fk_lines}"
  fill=NODE_COLOR[n]
  vertex(n,value,x,y,BW,NODE_H[n],f"rounded=0;whiteSpace=wrap;html=1;fillColor={fill};strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;")
