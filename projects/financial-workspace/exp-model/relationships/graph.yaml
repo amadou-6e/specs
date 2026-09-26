@@ -28,11 +28,6 @@
       "definition": "../objects/transaction/README.md"
     },
     {
-      "id": "employer",
-      "identity": "employer_id",
-      "definition": "../objects/employer/README.md"
-    },
-    {
       "id": "recurring-income",
       "identity": "recurring_income_id",
       "definition": "../objects/recurring-income/README.md"
@@ -103,6 +98,11 @@
       "definition": "../objects/single-income/README.md"
     },
     {
+      "id": "single-income-item",
+      "identity": "single_income_item_id",
+      "definition": "../objects/single-income-item/README.md"
+    },
+    {
       "id": "budget",
       "identity": "budget_id",
       "definition": "../objects/budget/README.md"
@@ -141,13 +141,6 @@
       "target": "transaction",
       "targets_per_source": "0..*",
       "sources_per_target": "0..*"
-    },
-    {
-      "id": "issues-income-receipt",
-      "source": "employer",
-      "target": "receipt",
-      "targets_per_source": "0..*",
-      "sources_per_target": "0..1"
     },
     {
       "id": "substantiates-income",
@@ -276,13 +269,6 @@
       "sources_per_target": "0..1"
     },
     {
-      "id": "employer-recurring-income",
-      "source": "employer",
-      "target": "recurring-income",
-      "targets_per_source": "0..*",
-      "sources_per_target": "1"
-    },
-    {
       "id": "recurring-income-receipts",
       "source": "recurring-income",
       "target": "receipt",
@@ -379,6 +365,13 @@
       "target": "single-expense-item",
       "targets_per_source": "0..*",
       "sources_per_target": "0..*"
+    },
+    {
+      "id": "single-income-items",
+      "source": "single-income",
+      "target": "single-income-item",
+      "targets_per_source": "0..*",
+      "sources_per_target": "1"
     }
   ],
   "invariants": [
@@ -397,7 +390,7 @@
     "Expense allocations from a reimbursement Single income must not count both parent expense and its items.",
     "The linked payroll transaction remains one booked cashflow movement.",
     "An Income statement is a Receipt with document_kind income-statement; it is not a separate object.",
-    "Only an income-statement Receipt may have Income statement items, employer_id, recurring_income_id, or payroll summary fields.",
-    "An income-statement Receipt has exactly one issuing Employer; other Receipt kinds have no Employer."
+    "An income-statement Receipt has a recorded issuer name; issuer is a field, not an Employer object.",
+    "Each Single income item belongs to exactly one Single income and does not create a separate cashflow entry."
   ]
 }

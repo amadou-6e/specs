@@ -7,17 +7,17 @@ primary_key:
     required: true
     nullable: false
 foreign_keys:
-  employer_id:
-    type: "ref"
-    required: true
-    nullable: false
-    target: "employer"
   representation_ids:
     type: "ref[]"
     required: false
     nullable: true
     target: "source-representation"
 fields:
+  payer_name:
+    type: "string"
+    required: false
+    nullable: true
+    description: "Payer or employer shown in supporting documents; not a separate model object."
   description:
     type: "string"
     required: true
@@ -41,7 +41,7 @@ fields:
     nullable: true
     format: "YYYY-MM-DD"
 constraints:
-  - "The stream belongs to exactly one employer."
+  - "Payer identity is retained as a source-backed field when known."
   - "At least one source representation or reviewed basis is required."
   - "The end date must not precede the start date when both are known."
   - "Expected income is not a booked cash movement."

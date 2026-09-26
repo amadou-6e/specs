@@ -107,14 +107,6 @@ objects:
       amount: "Agreed amount for the Commitment term, not a booked payment."
       currency: "Currency of the agreed term amount."
       cadence: "Frequency of the commitment or agreed payment."
-  employer:
-    schema: "employer/schema.yaml"
-    primary_key:
-      employer_id: "Persistent internal identity; not a display name."
-    foreign_keys: {}
-    fields:
-      name: "Human-readable name for display."
-      provider_references: "Provider-scoped references associated with this entity."
   financial-institution:
     schema: "financial-institution/schema.yaml"
     primary_key:
@@ -128,9 +120,9 @@ objects:
     primary_key:
       recurring_income_id: "Stable identity of an expected income stream."
     foreign_keys:
-      employer_id: "Employer responsible for this income stream."
       representation_ids: "Source representations supporting the income basis."
     fields:
+      payer_name: "Payer or employer recorded for the income stream when known."
       description: "Name or description of the income stream."
       reviewed_basis: "Reviewed reason for treating the income as recurring."
       cadence: "Expected frequency of payment."
@@ -258,6 +250,18 @@ objects:
       currency: "Currency used for projected totals, when one is defined."
       method: "Method used to produce the projection."
       reviewed_basis: "Basis for manually reviewed estimates."
+  single-income-item:
+    schema: "single-income-item/schema.yaml"
+    primary_key:
+      single_income_item_id: "Stable identity of an item within a Single income event."
+    foreign_keys:
+      single_income_id: "Single income event containing this item."
+    fields:
+      description: "Description of this income component or allocation."
+      item_kind: "Reviewed kind of income component."
+      amount: "Amount attributed to this item, when supported."
+      currency: "Currency of the item amount."
+      source_locator: "Optional locator in a supporting Receipt or representation."
   single-expense-item:
     schema: "single-expense-item/schema.yaml"
     primary_key:
@@ -278,7 +282,6 @@ objects:
       receipt_id: "Persistent internal identity; not a display name."
     foreign_keys:
       representation_ids: "References to source representations supporting this Receipt."
-      employer_id: "Employer issuing an income-statement Receipt, when applicable."
       recurring_income_id: "Income stream documented by an income-statement Receipt, when applicable."
     fields:
       document_kind: "Kind of document represented by a Receipt, including income-statement."

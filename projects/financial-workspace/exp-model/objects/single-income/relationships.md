@@ -4,6 +4,7 @@
 
 | Edge | Source | Target | Targets per source | Sources per target |
 | --- | --- | --- | --- | --- |
+| single-income-items | single-income | single-income-item | 0..* | 1 |
 | settles-single-income | transaction | single-income | 0..* | 0..* |
 | supports-single-income | receipt | single-income | 0..* | 0..* |
 | single-income-budgets | budget | single-income | 0..* | 0..* |

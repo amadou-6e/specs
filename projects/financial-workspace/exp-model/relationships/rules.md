@@ -15,8 +15,6 @@ Canonical edges and cardinalities are in graph.yaml. targets_per_source counts t
 | issues-for | account | transaction-statement | 0..* | 1 |
 | records | account | transaction | 0..* | 1 |
 | contains | transaction-statement | transaction | 0..* | 0..* |
-| issues-income-receipt | employer | receipt | 0..* | 0..1 |
-| employer-recurring-income | employer | recurring-income | 0..* | 1 |
 | recurring-income-receipts | recurring-income | receipt | 0..* | 0..1 |
 | recurring-income-entries | recurring-income | cashflow-entry | 0..* | 0..* |
 | substantiates-income | receipt | transaction | 0..* | 0..* |
@@ -24,6 +22,7 @@ Canonical edges and cardinalities are in graph.yaml. targets_per_source counts t
 | settles-occurrence | transaction | payment-occurrence | 0..* | 0..* |
 | settles-single-expense | transaction | single-expense | 0..* | 0..* |
 | contains-item | single-expense | single-expense-item | 0..* | 1 |
+| single-income-items | single-income | single-income-item | 0..* | 1 |
 | substantiates-purchase | receipt | single-expense | 0..* | 0..* |
 | supports-occurrence | receipt | payment-occurrence | 0..* | 0..* |
 | contains-entry | cashflow-sheet | cashflow-entry | 0..* | 1 |
@@ -60,4 +59,4 @@ Evidence deletion or missing access marks a gap; it does not delete a financial 
 Planned Single income and Single expense records may lack transactions. Their budgets and forecasts are planning links. A cashflow entry still requires a posted transaction; one event may settle through several transactions.
 
 A Single expense can have zero or more Single expense items and can be supported by receipts. A receipt may document the whole expense or particular items. A reviewed reimbursement Income statement item on an income-statement Receipt can support a reimbursement-kind Single income, which references the expense or specific items. Retain an allocation amount and currency when one salary line covers several expenses. The sum of verified expense allocations must not exceed the reviewed reimbursement Single income amount. Do not count the same reimbursement at both parent and item level. The linked salary transaction remains one cashflow movement.
-An income-statement Receipt must have exactly one issuing Employer; other Receipt kinds do not acquire an Employer through this optional graph edge. Income-statement summary amounts and Income statement items are evidence, not separate booked transactions.
+An income-statement Receipt must retain its source-backed issuer name; issuer is a field, not a separate Employer object. Income-statement summary amounts and Income statement items are evidence, not separate booked transactions.

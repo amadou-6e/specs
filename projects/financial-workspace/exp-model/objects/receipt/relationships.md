@@ -4,7 +4,6 @@
 
 | Edge | Source | Target | Targets per source | Sources per target |
 | --- | --- | --- | --- | --- |
-| issues-income-receipt | employer | receipt | 0..* | 0..1 |
 | substantiates-income | receipt | transaction | 0..* | 0..* |
 | substantiates-purchase | receipt | single-expense | 0..* | 0..* |
 | supports-occurrence | receipt | payment-occurrence | 0..* | 0..* |

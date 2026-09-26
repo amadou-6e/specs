@@ -20,7 +20,7 @@ The builder performs the joins before publication. Notion receives flattened, fi
 | Single expense IDs / Item descriptions | Linked realized single expenses; multiple values retained |
 | Single income IDs | Linked realized single income events, when applicable |
 | Recurring Expense IDs / names | Linked recurring expenses |
-| Recurring Income IDs | Linked employer income streams, when applicable |
+| Recurring Income IDs | Linked recurring income streams, when applicable |
 | Receipt links (including income statements) / Statement links | All relevant source references; use rich text with multiple hyperlinks |
 | Evidence status / Match status | Missing, partial, verified, ambiguous as applicable |
 | Reporting treatment | Include, internal transfer, wallet funding, liability movement, unresolved |

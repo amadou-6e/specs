@@ -15,7 +15,6 @@ Account
     +-- Payment occurrence
     |   +-- Recurring expense
     +-- Receipt [income-statement kind]
-    |   +-- Employer
     +-- Single income [when received]
     +-- Cashflow entry
         +-- Cashflow sheet (Notion dataset)
@@ -36,15 +35,15 @@ Recurring expense
 
 The zero lower bound makes Commitment term optional for a recurring expense. Each term belongs to exactly one recurring expense.
 
-## Employment income subtree
+## Recurring income and receipt detail
 
 ```text
-Employer
-|-- [1 : 0..*] Recurring income
-|   +-- [0..1 : 0..*] Receipt [income-statement kind]
-+-- [1 : 0..*] Receipt [income-statement kind]
+Recurring income
++-- [0..1 : 0..*] Receipt [income-statement kind]
     +-- [1 : 0..*] Income statement item
 ```
+
+The payer or employer name is a field on Recurring income and the issuing name is a field on its Receipt. Neither is a separate object.
 
 ## Account and liability relationship tree view
 
@@ -79,17 +78,19 @@ Single expense
 +-- [0..* : 0..*] Receipt [when the receipt documents the whole expense]
 
 Single income
+|-- [1 : 0..*] Single income item
 +-- [0..* : 0..*] Transaction [only once received]
 ~~~
 
 Budget and Forecast are optional Account-scoped planning objects. Planned Single expense and Single income events may have no Transaction. Their links to budgets and forecasts do not create cashflow rows.
 
-## Employer reimbursement links
+## Reimbursement links
 
 ~~~text
 Receipt [income-statement kind]
 +-- [1 : 0..*] Income statement item
     +-- [0..* : 0..*] Single income [income_kind: reimbursement]
+        |-- [1 : 0..*] Single income item
         +-- [0..* : 0..*] Single expense or Single expense item
 ~~~
 

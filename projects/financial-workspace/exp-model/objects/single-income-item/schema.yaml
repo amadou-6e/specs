@@ -1,0 +1,48 @@
+schema_version: 2
+object: "single-income-item"
+identity_field: "single_income_item_id"
+primary_key:
+  single_income_item_id:
+    type: "string"
+    required: true
+    nullable: false
+foreign_keys:
+  single_income_id:
+    type: "ref"
+    required: true
+    nullable: false
+    target: "single-income"
+fields:
+  description:
+    type: "string"
+    required: true
+    nullable: false
+  item_kind:
+    type: "string"
+    required: true
+    nullable: false
+    enum:
+      - "earnings"
+      - "reimbursement"
+      - "other"
+      - "unclassified"
+  amount:
+    type: "decimal"
+    required: false
+    nullable: true
+    encoding: "decimal-string"
+  currency:
+    type: "string"
+    required: false
+    nullable: true
+  source_locator:
+    type: "string"
+    required: false
+    nullable: true
+constraints:
+  - "Each item belongs to exactly one Single income."
+  - "If amount is supplied, currency is required."
+  - "Items describe components or allocations; they do not create additional booked cashflow movements."
+  - "Do not sum an item and its parent Single income as separate income."
+  - "Unknown optional values are null, not zero."
+validation_scope: "Typed specification contract; allocations and source evidence require review."

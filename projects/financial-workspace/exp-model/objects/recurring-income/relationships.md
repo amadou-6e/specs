@@ -4,6 +4,5 @@
 
 | Edge | Source | Target | Targets per source | Sources per target |
 | --- | --- | --- | --- | --- |
-| employer-recurring-income | employer | recurring-income | 0..* | 1 |
 | recurring-income-receipts | recurring-income | receipt | 0..* | 0..1 |
 | recurring-income-entries | recurring-income | cashflow-entry | 0..* | 0..* |

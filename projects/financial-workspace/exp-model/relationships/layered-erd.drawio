@@ -13,7 +13,7 @@
         <mxCell id="lane-1" parent="1" style="swimlane;horizontal=1;startSize=45;rounded=0;html=1;fillColor=#F8F0F1;swimlaneFillColor=#F8F0F1;strokeColor=#C7D3DE;strokeWidth=1.5;fontColor=#40576D;fontSize=17;fontStyle=1;align=left;spacingLeft=16;container=0;" value="Liabilities" vertex="1">
           <mxGeometry height="840" width="350" x="505" y="140" as="geometry"/>
         </mxCell>
-        <mxCell id="lane-2" parent="1" style="swimlane;horizontal=1;startSize=45;rounded=0;html=1;fillColor=#F5F1FA;swimlaneFillColor=#F5F1FA;strokeColor=#C7D3DE;strokeWidth=1.5;fontColor=#40576D;fontSize=17;fontStyle=1;align=left;spacingLeft=16;container=0;" value="Employment income" vertex="1">
+        <mxCell id="lane-2" parent="1" style="swimlane;horizontal=1;startSize=45;rounded=0;html=1;fillColor=#F5F1FA;swimlaneFillColor=#F5F1FA;strokeColor=#C7D3DE;strokeWidth=1.5;fontColor=#40576D;fontSize=17;fontStyle=1;align=left;spacingLeft=16;container=0;" value="Recurring income" vertex="1">
           <mxGeometry height="840" width="350" x="945" y="140" as="geometry"/>
         </mxCell>
         <mxCell id="lane-3" parent="1" style="swimlane;horizontal=1;startSize=45;rounded=0;html=1;fillColor=#EEF8F1;swimlaneFillColor=#EEF8F1;strokeColor=#C7D3DE;strokeWidth=1.5;fontColor=#40576D;fontSize=17;fontStyle=1;align=left;spacingLeft=16;container=0;" value="Single income" vertex="1">
@@ -81,14 +81,11 @@
         <mxCell id="liability-term" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7EDC9;strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;" value="&lt;b&gt;&lt;font style='font-size:16px'&gt;Liability Term&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color='#344E66'&gt;PK liability_term_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK liability_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK representation_ids&lt;/font&gt;" vertex="1">
           <mxGeometry height="110" width="250" x="540" y="420" as="geometry"/>
         </mxCell>
-        <mxCell id="employer" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D7E7FB;strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;" value="&lt;b&gt;&lt;font style='font-size:16px'&gt;Employer&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color='#344E66'&gt;PK employer_id&lt;/font&gt;" vertex="1">
+        <mxCell id="recurring-income" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7DDD6;strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;" value="&lt;b&gt;&lt;font style='font-size:16px'&gt;Recurring Income&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color='#344E66'&gt;PK recurring_income_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK representation_ids&lt;/font&gt;" vertex="1">
           <mxGeometry height="110" width="250" x="980" y="235" as="geometry"/>
         </mxCell>
-        <mxCell id="recurring-income" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7DDD6;strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;" value="&lt;b&gt;&lt;font style='font-size:16px'&gt;Recurring Income&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color='#344E66'&gt;PK recurring_income_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK employer_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK representation_ids&lt;/font&gt;" vertex="1">
-          <mxGeometry height="110" width="250" x="980" y="410" as="geometry"/>
-        </mxCell>
         <mxCell id="income-statement-item" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7EDC9;strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;" value="&lt;b&gt;&lt;font style='font-size:16px'&gt;Income Statement Item&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color='#344E66'&gt;PK income_statement_item_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK receipt_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK representation_id&lt;/font&gt;" vertex="1">
-          <mxGeometry height="110" width="250" x="980" y="620" as="geometry"/>
+          <mxGeometry height="110" width="250" x="1850" y="1150" as="geometry"/>
         </mxCell>
         <mxCell id="recurring-expense" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7DDD6;strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;" value="&lt;b&gt;&lt;font style='font-size:16px'&gt;Recurring Expense&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color='#344E66'&gt;PK recurring_expense_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK representation_ids&lt;/font&gt;" vertex="1">
           <mxGeometry height="110" width="250" x="1860" y="235" as="geometry"/>
@@ -105,14 +102,14 @@
         <mxCell id="transaction" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D7F0DF;strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;" value="&lt;b&gt;&lt;font style='font-size:16px'&gt;Transaction&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color='#344E66'&gt;PK transaction_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK account_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK representation_ids&lt;/font&gt;" vertex="1">
           <mxGeometry height="110" width="250" x="1050" y="1150" as="geometry"/>
         </mxCell>
-        <mxCell id="receipt" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8DFF8;strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;" value="&lt;b&gt;&lt;font style='font-size:16px'&gt;Receipt&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color='#344E66'&gt;PK receipt_id&lt;/font&gt;&lt;br&gt;document_kind:&lt;br&gt;income-statement, etc.&lt;br&gt;&lt;font color='#475E72'&gt;FK representation_ids&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK employer_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK recurring_income_id&lt;/font&gt;" vertex="1">
+        <mxCell id="receipt" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8DFF8;strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;" value="&lt;b&gt;&lt;font style='font-size:16px'&gt;Receipt&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color='#344E66'&gt;PK receipt_id&lt;/font&gt;&lt;br&gt;document_kind:&lt;br&gt;income-statement, etc.&lt;br&gt;&lt;font color='#475E72'&gt;FK representation_ids&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK recurring_income_id&lt;/font&gt;" vertex="1">
           <mxGeometry height="168" width="250" x="1450" y="1150" as="geometry"/>
         </mxCell>
         <mxCell id="cashflow-entry" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D9EAF2;strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;" value="&lt;b&gt;&lt;font style='font-size:16px'&gt;Cashflow Entry&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color='#344E66'&gt;PK entry_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK single_income_ids&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK sheet_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK transaction_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK account_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK institution_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK single_expense_ids&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK recurring_expense_ids&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK recurring_income_ids&lt;/font&gt;" vertex="1">
           <mxGeometry height="234" width="250" x="650" y="1530" as="geometry"/>
         </mxCell>
         <mxCell id="single-income" value="&lt;b&gt;&lt;font style='font-size:16px'&gt;Single Income&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color='#344E66'&gt;PK single_income_id&lt;/font&gt;&lt;br&gt;income_kind: reimbursement or other&lt;br&gt;&lt;font color='#475E72'&gt;FK representation_ids&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK budget_ids&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK forecast_ids&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFE1A3;strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;" vertex="1" parent="1"><mxGeometry x="1420" y="235" width="250" height="146" as="geometry"/></mxCell>
-        <mxCell id="edge-0" edge="1" parent="1" source="financial-institution" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;" target="account" value="">
+        <mxCell id="single-income-item" parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7EDC9;strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;" value="&lt;b&gt;&lt;font style='font-size:16px'&gt;Single Income Item&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color='#344E66'&gt;PK single_income_item_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK single_income_id&lt;/font&gt;"><mxGeometry height="110" width="250" x="1420" y="450" as="geometry"/></mxCell><mxCell id="edge-0" edge="1" parent="1" source="financial-institution" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;" target="account" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="225" y="385"/>
@@ -145,11 +142,7 @@
           <mxGeometry relative="1" as="geometry">
             <Array as="points"><mxPoint x="440" y="665"/><mxPoint x="440" y="990"/><mxPoint x="1150" y="990"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge-4" edge="1" parent="1" source="employer" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1;exitY=0.5;entryX=0.2;entryY=0;" target="receipt" value="">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="1300" y="290"/><mxPoint x="1300" y="1010"/><mxPoint x="1500" y="1010"/></Array></mxGeometry>
-        </mxCell>
-        <mxCell id="edge-5" edge="1" parent="1" source="receipt" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.0000;exitY=0.5000;entryX=1.0000;entryY=0.5000;" target="transaction" value="">
+        <mxCell id="edge-4" edge="1" parent="1" source="receipt" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.0000;exitY=0.5000;entryX=1.0000;entryY=0.5000;" target="transaction" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1410" y="1234"/>
@@ -160,7 +153,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="edge-6" edge="1" parent="1" source="recurring-expense" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.3333;exitY=1.0000;entryX=0.5000;entryY=0.0000;" target="payment-occurrence" value="">
+        <mxCell id="edge-5" edge="1" parent="1" source="recurring-expense" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.3333;exitY=1.0000;entryX=0.5000;entryY=0.0000;" target="payment-occurrence" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1943.33" y="385"/>
@@ -172,15 +165,15 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="edge-7" edge="1" parent="1" source="transaction" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.8;exitY=0;entryX=0;entryY=0.5;" target="payment-occurrence" value="">
+        <mxCell id="edge-6" edge="1" parent="1" source="transaction" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.8;exitY=0;entryX=0;entryY=0.5;" target="payment-occurrence" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points"><mxPoint x="1250" y="995"/><mxPoint x="1770" y="995"/><mxPoint x="1770" y="650"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge-8" edge="1" parent="1" source="transaction" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.6;exitY=0;entryX=0;entryY=0.5;" target="single-expense" value="">
+        <mxCell id="edge-7" edge="1" parent="1" source="transaction" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.6;exitY=0;entryX=0;entryY=0.5;" target="single-expense" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points"><mxPoint x="1200" y="1005"/><mxPoint x="2190" y="1005"/><mxPoint x="2190" y="300"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge-9" edge="1" parent="1" source="single-expense" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.3333;exitY=1.0000;entryX=0.5000;entryY=0.0000;" target="single-expense-item" value="">
+        <mxCell id="edge-8" edge="1" parent="1" source="single-expense" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.3333;exitY=1.0000;entryX=0.5000;entryY=0.0000;" target="single-expense-item" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="2383.33" y="399"/>
@@ -190,27 +183,27 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="edge-10" edge="1" parent="1" source="receipt" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1;exitY=0.5;entryX=0;entryY=0.7;" target="single-expense" value="">
+        <mxCell id="edge-9" edge="1" parent="1" source="receipt" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.9;exitY=0;entryX=0;entryY=0.7;" target="single-expense" value="">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="2220" y="1234"/><mxPoint x="2220" y="320"/></Array></mxGeometry>
+            <Array as="points"><mxPoint x="1675" y="1000"/><mxPoint x="2220" y="1000"/><mxPoint x="2220" y="320"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge-11" edge="1" parent="1" source="receipt" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1;exitY=0.5;entryX=0;entryY=0.75;" target="payment-occurrence" value="">
+        <mxCell id="edge-10" edge="1" parent="1" source="receipt" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1;exitY=0.5;entryX=0;entryY=0.75;" target="payment-occurrence" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points"><mxPoint x="1770" y="1234"/><mxPoint x="1770" y="680"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge-12" edge="1" parent="1" source="cashflow-sheet" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" target="cashflow-entry" value="">
+        <mxCell id="edge-11" edge="1" parent="1" source="cashflow-sheet" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" target="cashflow-entry" value="">
           <mxGeometry relative="1" as="geometry">
             </mxGeometry>
         </mxCell>
-        <mxCell id="edge-13" edge="1" parent="1" source="cashflow-entry" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERmandOne;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" target="transaction" value="">
+        <mxCell id="edge-12" edge="1" parent="1" source="cashflow-entry" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERmandOne;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" target="transaction" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points"><mxPoint x="775" y="1415"/><mxPoint x="1175" y="1415"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge-14" edge="1" parent="1" source="cashflow-entry" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.8;exitY=0;entryX=0.5;entryY=1;" target="receipt" value="">
+        <mxCell id="edge-13" edge="1" parent="1" source="cashflow-entry" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.8;exitY=0;entryX=0.5;entryY=1;" target="receipt" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points"><mxPoint x="850" y="1390"/><mxPoint x="1575" y="1390"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge-15" edge="1" parent="1" source="transaction" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.0000;exitY=0.5000;entryX=0.0000;entryY=0.7500;" target="transaction" value="">
+        <mxCell id="edge-14" edge="1" parent="1" source="transaction" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.0000;exitY=0.5000;entryX=0.0000;entryY=0.7500;" target="transaction" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1010" y="1205"/>
@@ -220,7 +213,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="edge-16" edge="1" parent="1" source="recurring-expense" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.6667;exitY=1.0000;entryX=0.5000;entryY=0.0000;" target="commitment-term" value="">
+        <mxCell id="edge-15" edge="1" parent="1" source="recurring-expense" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.6667;exitY=1.0000;entryX=0.5000;entryY=0.0000;" target="commitment-term" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="2026.67" y="385"/>
@@ -230,15 +223,15 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="edge-17" edge="1" parent="1" source="receipt" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" target="income-statement-item" value="">
+        <mxCell id="edge-16" edge="1" parent="1" source="receipt" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="income-statement-item" value="">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="1575" y="1010"/><mxPoint x="1100" y="1010"/></Array></mxGeometry>
+            <Array as="points"><mxPoint x="1775" y="1234"/><mxPoint x="1775" y="1205"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge-18" edge="1" parent="1" source="account" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1;exitY=0.5;entryX=1;entryY=0.4;" target="balance-item" value="">
+        <mxCell id="edge-17" edge="1" parent="1" source="account" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1;exitY=0.5;entryX=1;entryY=0.4;" target="balance-item" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points"><mxPoint x="380" y="475"/><mxPoint x="380" y="860"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge-19" edge="1" parent="1" source="transaction-statement" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;" target="balance-item" value="">
+        <mxCell id="edge-18" edge="1" parent="1" source="transaction-statement" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;" target="balance-item" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="225" y="760"/>
@@ -246,7 +239,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="edge-20" edge="1" parent="1" source="account" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1.0000;exitY=0.5000;entryX=0.0000;entryY=0.5000;" target="liability" value="">
+        <mxCell id="edge-19" edge="1" parent="1" source="account" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1.0000;exitY=0.5000;entryX=0.0000;entryY=0.5000;" target="liability" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="390" y="475"/>
@@ -257,7 +250,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="edge-21" edge="1" parent="1" source="liability" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.3333;exitY=1.0000;entryX=0.5000;entryY=0.0000;" target="liability-term" value="">
+        <mxCell id="edge-20" edge="1" parent="1" source="liability" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.3333;exitY=1.0000;entryX=0.5000;entryY=0.0000;" target="liability-term" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="623.33" y="385"/>
@@ -267,73 +260,62 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="edge-22" edge="1" parent="1" source="liability" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0;exitY=0.5;entryX=1;entryY=0.35;" target="balance-item" value="">
+        <mxCell id="edge-21" edge="1" parent="1" source="liability" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0;exitY=0.5;entryX=1;entryY=0.35;" target="balance-item" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points"><mxPoint x="450" y="290"/><mxPoint x="450" y="850"/></Array></mxGeometry>
         </mxCell>
         <mxCell id="forecast" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7DDD6;strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;" value="&lt;b&gt;&lt;font style='font-size:16px'&gt;Forecast&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color='#344E66'&gt;PK forecast_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK account_id&lt;/font&gt;" vertex="1">
           <mxGeometry height="110" width="250" x="1820" y="1850" as="geometry"/>
         </mxCell>
-        <mxCell id="edge-23" edge="1" parent="1" source="employer" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.6667;exitY=1.0000;entryX=0.5000;entryY=0.0000;" target="recurring-income" value="">
+        <mxCell id="edge-22" edge="1" parent="1" source="recurring-income" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1;exitY=0.5;entryX=0.6;entryY=0;" target="receipt" value="">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1146.67" y="385"/>
-              <mxPoint x="1140" y="380"/>
-              <mxPoint x="1100" y="380"/>
-              <mxPoint x="1100" y="360"/>
-              <mxPoint x="1105" y="370"/>
-            </Array>
-          </mxGeometry>
+            <Array as="points"><mxPoint x="1340" y="290"/><mxPoint x="1340" y="1015"/><mxPoint x="1600" y="1015"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge-24" edge="1" parent="1" source="recurring-income" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1;exitY=0.5;entryX=0.6;entryY=0;" target="receipt" value="">
+        <mxCell id="edge-23" edge="1" parent="1" source="recurring-income" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1;exitY=0.5;entryX=0.2;entryY=0;" target="cashflow-entry" value="">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="1340" y="465"/><mxPoint x="1340" y="1015"/><mxPoint x="1600" y="1015"/></Array></mxGeometry>
+            <Array as="points"><mxPoint x="1320" y="290"/><mxPoint x="1320" y="1400"/><mxPoint x="700" y="1400"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge-25" edge="1" parent="1" source="recurring-income" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1;exitY=0.5;entryX=0.2;entryY=0;" target="cashflow-entry" value="">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="1320" y="465"/><mxPoint x="1320" y="1400"/><mxPoint x="700" y="1400"/></Array></mxGeometry>
-        </mxCell>
-        <mxCell id="edge-26" edge="1" parent="1" source="transaction" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.8;exitY=0;entryX=1;entryY=0.45;" target="single-income" value="">
+        <mxCell id="edge-24" edge="1" parent="1" source="transaction" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.8;exitY=0;entryX=1;entryY=0.45;" target="single-income" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points"><mxPoint x="1760" y="995"/><mxPoint x="1760" y="300"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge-27" edge="1" parent="1" source="receipt" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.6;exitY=0;entryX=0.6;entryY=1;" target="single-income" value="">
+        <mxCell id="edge-25" edge="1" parent="1" source="receipt" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.6;exitY=0;entryX=1;entryY=0.78;" target="single-income" value="">
           <mxGeometry relative="1" as="geometry">
-            </mxGeometry>
+            <Array as="points"><mxPoint x="1600" y="1000"/><mxPoint x="1740" y="1000"/><mxPoint x="1740" y="350"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge-28" edge="1" parent="1" source="account" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="budget" value="">
+        <mxCell id="edge-26" edge="1" parent="1" source="account" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="budget" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points"><mxPoint x="430" y="475"/><mxPoint x="430" y="1380"/><mxPoint x="1740" y="1380"/><mxPoint x="1740" y="1625"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge-29" edge="1" parent="1" source="account" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1;exitY=0.7;entryX=0;entryY=0.5;" target="forecast" value="">
+        <mxCell id="edge-27" edge="1" parent="1" source="account" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1;exitY=0.7;entryX=0;entryY=0.5;" target="forecast" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points"><mxPoint x="450" y="495"/><mxPoint x="450" y="1400"/><mxPoint x="1710" y="1400"/><mxPoint x="1710" y="1905"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge-30" edge="1" parent="1" source="budget" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="single-expense" value="">
+        <mxCell id="edge-28" edge="1" parent="1" source="budget" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="single-expense" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points"><mxPoint x="2200" y="1625"/><mxPoint x="2200" y="300"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge-31" edge="1" parent="1" source="budget" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" target="single-income" value="">
+        <mxCell id="edge-29" edge="1" parent="1" source="budget" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" target="single-income" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points"><mxPoint x="1750" y="1625"/><mxPoint x="1750" y="310"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge-32" edge="1" parent="1" source="forecast" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1;exitY=0.5;entryX=0;entryY=0.65;" target="single-expense" value="">
+        <mxCell id="edge-30" edge="1" parent="1" source="forecast" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1;exitY=0.5;entryX=0;entryY=0.65;" target="single-expense" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points"><mxPoint x="2230" y="1905"/><mxPoint x="2230" y="330"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge-33" edge="1" parent="1" source="forecast" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0;exitY=0.5;entryX=1;entryY=0.72;" target="single-income" value="">
+        <mxCell id="edge-31" edge="1" parent="1" source="forecast" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0;exitY=0.5;entryX=1;entryY=0.72;" target="single-income" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points"><mxPoint x="1730" y="1905"/><mxPoint x="1730" y="340"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge-34" edge="1" parent="1" source="receipt" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="single-expense-item" value="">
+        <mxCell id="edge-32" edge="1" parent="1" source="receipt" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.8;exitY=0;entryX=0;entryY=0.5;" target="single-expense-item" value="">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="2210" y="1234"/><mxPoint x="2210" y="505"/></Array></mxGeometry>
+            <Array as="points"><mxPoint x="1650" y="985"/><mxPoint x="2190" y="985"/><mxPoint x="2190" y="505"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge-35" edge="1" parent="1" source="income-statement-item" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1;exitY=0.5;entryX=0;entryY=0.45;" target="single-income" value="">
+        <mxCell id="edge-33" edge="1" parent="1" source="income-statement-item" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.5;exitY=0;entryX=1;entryY=0.5;" target="single-income" value="">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="1320" y="675"/><mxPoint x="1320" y="300"/></Array></mxGeometry>
+            <Array as="points"><mxPoint x="1975" y="1000"/><mxPoint x="1750" y="1000"/><mxPoint x="1750" y="310"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge-36" edge="1" parent="1" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1.0000;exitY=0.3333;entryX=0.0000;entryY=0.5000;" target="single-expense" source="single-income" value="">
+        <mxCell id="edge-34" edge="1" parent="1" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1.0000;exitY=0.3333;entryX=0.0000;entryY=0.5000;" target="single-expense" source="single-income" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1710" y="283.67"/>
@@ -345,7 +327,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="edge-37" edge="1" parent="1" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1.0000;exitY=0.6667;entryX=0.0000;entryY=0.5000;" target="single-expense-item" source="single-income" value="">
+        <mxCell id="edge-35" edge="1" parent="1" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1.0000;exitY=0.6667;entryX=0.0000;entryY=0.5000;" target="single-expense-item" source="single-income" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1710" y="332.33"/>
@@ -360,7 +342,7 @@
         <mxCell id="payment-occurrence" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D7F0DF;strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;" value="&lt;b&gt;&lt;font style='font-size:16px'&gt;Payment Occurrence&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color='#344E66'&gt;PK occurrence_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK recurring_expense_id&lt;/font&gt;" vertex="1">
           <mxGeometry height="110" width="250" x="1860" y="620" as="geometry"/>
         </mxCell>
-      </root>
+      <mxCell id="edge-36" parent="1" edge="1" source="single-income" target="single-income-item" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;"><mxGeometry relative="1" as="geometry"/></mxCell></root>
     </mxGraphModel>
   </diagram>
 </mxfile>

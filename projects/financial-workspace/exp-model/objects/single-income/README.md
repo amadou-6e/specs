@@ -21,4 +21,6 @@ Identity: single_income_id.
 
 This is a model definition; it does not claim an observed record.
 
+A Single income may contain zero or more Single income items. These describe components of the event, not additional payments.
+
 A reimbursement is a Single income instance with income_kind reimbursement. A reviewed Income statement item from an income-statement Receipt can support its amount; links to Single expenses or items identify what it repays. The payroll transaction remains one booked movement.
