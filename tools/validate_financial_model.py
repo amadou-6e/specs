@@ -85,6 +85,9 @@ def validate(root, errors, parse):
             income_lane, agreement_lane, expense_lane = lane("income"), lane("recurring-agreement"), lane("expense")
             if (income_lane, agreement_lane, expense_lane) != ("lane-3", "lane-2", "lane-5") or not (bounds("lane-3")[2] < bounds("lane-2")[0] < bounds("lane-2")[2] < bounds("lane-5")[0]):
                 error(candidate_path, "top-level lanes must read Income, Recurring Agreement, Expense left to right")
+            budget_box, forecast_box, cashflow_box = bounds("budget"), bounds("forecast"), bounds("cashflow-entry")
+            if budget_box and forecast_box and cashflow_box and not (budget_box[2] < cashflow_box[0] and forecast_box[2] < cashflow_box[0]):
+                error(candidate_path, "Budget and Forecast must sit left of Cashflow Entry")
             for parent, child in (("recurring-agreement", "agreement-term"), ("income", "income-item"), ("expense", "expense-item"), ("receipt", "receipt-item")):
                 parent_lane, child_lane = lane(parent), lane(child)
                 if parent_lane is None or parent_lane != child_lane:
