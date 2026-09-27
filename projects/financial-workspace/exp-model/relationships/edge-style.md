@@ -24,7 +24,7 @@ Apply these in order. Do not improve a lower-priority property by breaking a hig
 ## Geometry
 
 - Use a 10-unit routing grid. Use at least 30 units between a routed segment and an unrelated card or lane heading, measured to the card border where space permits.
-- Space parallel segments by 20 units. If the available corridor is too narrow, widen it or move the card; do not compress several lines into an indistinguishable bundle.
+- Give consecutive parallel trunks and same-side attachment ports an even 20-unit pitch when the corridor is clear. A minimum 20-unit gap with uneven gaps across the sequence is not sufficient. If an obstacle forces a deviation, separate the affected route into another clear corridor; do not compress several lines into an indistinguishable bundle.
 - Prefer the middle of a card side for a single connection. Spread multiple connections along that side in stable order, leaving at least 20 units between attachment points and room for the crow's-foot symbols.
 - Parent-child pairs within one column attach bottom-to-top and run vertically. Side-to-side links between adjacent columns run horizontally unless an obstacle requires a short detour.
 - For a distant target, use one vertical trunk near the source, one horizontal corridor, and one short destination approach where possible. Keep trunks outside unrelated cards. Do not route an edge through its own child card.

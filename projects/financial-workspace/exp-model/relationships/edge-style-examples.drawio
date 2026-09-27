@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <mxfile host="Electron" agent="Codex">
   <diagram id="edge-style-examples" name="Edge routing examples">
-    <mxGraphModel dx="3535" dy="2123" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1580" pageHeight="2200" math="0" shadow="0">
+    <mxGraphModel dx="4040" dy="2426" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1580" pageHeight="2200" math="0" shadow="0">
       <root>
         <mxCell id="0"/>
         <mxCell id="1" parent="0"/>
@@ -382,171 +382,114 @@
         <mxCell id="dQ30nYshYY-l6nsXGh4K-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="Visual defect" vertex="1">
           <mxGeometry height="60" width="120" x="570" y="1180" as="geometry"/>
         </mxCell>
-      <mxCell id="fanout-box-1" parent="1" vertex="1" value="07  Dense fan-out from one Account" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFFFFF;fontColor=#17324D;fontSize=31;fontStyle=1;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="40" y="1360" width="1500" height="52" as="geometry"/>
+        <mxCell id="fanout-box-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFFFFF;fontColor=#17324D;fontSize=31;fontStyle=1;align=left;verticalAlign=middle;spacing=8;" value="07  Dense fan-out from one Account" vertex="1">
+          <mxGeometry height="52" width="1500" x="40" y="1360" as="geometry"/>
         </mxCell>
-        <mxCell id="fanout-box-2" parent="1" vertex="1" value="The highlighted Account area in the candidate ERD: five independent relationships need five readable paths." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFFFFF;fontColor=#17324D;fontSize=17;fontStyle=0;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="40" y="1412" width="1500" height="31" as="geometry"/>
+        <mxCell id="fanout-box-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFFFFF;fontColor=#17324D;fontSize=17;fontStyle=0;align=left;verticalAlign=middle;spacing=8;" value="The highlighted Account area in the candidate ERD: five independent relationships need five readable paths." vertex="1">
+          <mxGeometry height="31" width="1500" x="40" y="1412" as="geometry"/>
         </mxCell>
-        <mxCell id="fanout-box-3" parent="1" vertex="1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8F5EC;strokeColor=#B8C9D4;fontColor=#17324D;fontSize=12;fontStyle=0;align=center;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="40" y="1466" width="720" height="640" as="geometry"/>
+        <mxCell id="fanout-box-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8F5EC;strokeColor=#B8C9D4;fontColor=#17324D;fontSize=12;fontStyle=0;align=center;verticalAlign=middle;spacing=8;" value="" vertex="1">
+          <mxGeometry height="640" width="720" x="40" y="1466" as="geometry"/>
         </mxCell>
-        <mxCell id="fanout-box-4" parent="1" vertex="1" value="USE: separate ports and trunks" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8F5EC;strokeColor=#E8F5EC;fontColor=#17324D;fontSize=23;fontStyle=1;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="62" y="1486" width="675" height="38" as="geometry"/>
+        <mxCell id="fanout-box-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8F5EC;strokeColor=#E8F5EC;fontColor=#17324D;fontSize=23;fontStyle=1;align=left;verticalAlign=middle;spacing=8;" value="USE: 20-unit ports and trunks" vertex="1">
+          <mxGeometry height="38" width="675" x="62" y="1486" as="geometry"/>
         </mxCell>
-        <mxCell id="fanout-box-5" parent="1" vertex="1" value="Account to Liability, Statement, Balance Item, Budget, Forecast" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8F5EC;strokeColor=#E8F5EC;fontColor=#17324D;fontSize=15;fontStyle=0;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="62" y="1529" width="675" height="29" as="geometry"/>
+        <mxCell id="fanout-box-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8F5EC;strokeColor=#E8F5EC;fontColor=#17324D;fontSize=15;fontStyle=0;align=left;verticalAlign=middle;spacing=8;" value="Account to Liability, Statement, Balance Item, Budget, Forecast" vertex="1">
+          <mxGeometry height="29" width="675" x="62" y="1529" as="geometry"/>
         </mxCell>
-        <mxCell id="fanout-box-6" parent="1" vertex="1" value="Account" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F9DDD7;strokeColor=#294968;fontColor=#17324D;fontSize=19;fontStyle=1;align=center;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="82" y="1738" width="160" height="120" as="geometry"/>
+        <mxCell id="fanout-box-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F9DDD7;strokeColor=#294968;fontColor=#17324D;fontSize=19;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="Account" vertex="1">
+          <mxGeometry height="120" width="160" x="82" y="1571" as="geometry"/>
         </mxCell>
-        <mxCell id="fanout-box-7" parent="1" vertex="1" value="Liability" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DDEBF4;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="540" y="1585" width="175" height="62" as="geometry"/>
+        <mxCell id="fanout-box-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DDEBF4;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="Liability" vertex="1">
+          <mxGeometry height="62" width="175" x="540" y="1685" as="geometry"/>
         </mxCell>
-        <mxCell id="fanout-box-8" parent="1" vertex="1" value="Transaction Statement" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DDEBF4;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="540" y="1695" width="175" height="62" as="geometry"/>
+        <mxCell id="fanout-box-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DDEBF4;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="Transaction Statement" vertex="1">
+          <mxGeometry height="62" width="175" x="540" y="1770" as="geometry"/>
         </mxCell>
-        <mxCell id="fanout-box-9" parent="1" vertex="1" value="Balance Item" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CE;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="540" y="1805" width="175" height="62" as="geometry"/>
+        <mxCell id="fanout-box-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CE;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="Balance Item" vertex="1">
+          <mxGeometry height="62" width="175" x="540" y="1855" as="geometry"/>
         </mxCell>
-        <mxCell id="fanout-box-10" parent="1" vertex="1" value="Budget" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DDEBF4;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="540" y="1915" width="175" height="62" as="geometry"/>
+        <mxCell id="fanout-box-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DDEBF4;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="Budget" vertex="1">
+          <mxGeometry height="62" width="175" x="540" y="1940" as="geometry"/>
         </mxCell>
-        <mxCell id="fanout-box-11" parent="1" vertex="1" value="Forecast" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DDEBF4;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="540" y="2025" width="175" height="62" as="geometry"/>
+        <mxCell id="fanout-box-11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DDEBF4;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="Forecast" vertex="1">
+          <mxGeometry height="62" width="175" x="540" y="2025" as="geometry"/>
         </mxCell>
-        <mxCell id="fanout-edge-12" parent="1" edge="1" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;">
+        <mxCell id="fanout-edge-12" edge="1" parent="1" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;" value="">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="242" y="1758" as="sourcePoint"/>
-            <mxPoint x="540" y="1616" as="targetPoint"/>
-            <Array as="points">
-              <mxPoint x="300" y="1758"/>
-              <mxPoint x="300" y="1616"/>
-            </Array>
-          </mxGeometry>
+            <mxPoint x="242" y="1591" as="sourcePoint"/><mxPoint x="540" y="1716" as="targetPoint"/><Array as="points"><mxPoint x="380" y="1591"/><mxPoint x="380" y="1716"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="fanout-edge-13" parent="1" edge="1" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;">
+        <mxCell id="fanout-edge-13" edge="1" parent="1" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;" value="">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="242" y="1778" as="sourcePoint"/>
-            <mxPoint x="540" y="1726" as="targetPoint"/>
-            <Array as="points">
-              <mxPoint x="320" y="1778"/>
-              <mxPoint x="320" y="1726"/>
-            </Array>
-          </mxGeometry>
+            <mxPoint x="242" y="1611" as="sourcePoint"/><mxPoint x="540" y="1801" as="targetPoint"/><Array as="points"><mxPoint x="360" y="1611"/><mxPoint x="360" y="1801"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="fanout-edge-14" parent="1" edge="1" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;">
+        <mxCell id="fanout-edge-14" edge="1" parent="1" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;" value="">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="242" y="1798" as="sourcePoint"/>
-            <mxPoint x="540" y="1836" as="targetPoint"/>
-            <Array as="points">
-              <mxPoint x="340" y="1798"/>
-              <mxPoint x="340" y="1836"/>
-            </Array>
-          </mxGeometry>
+            <mxPoint x="242" y="1631" as="sourcePoint"/><mxPoint x="540" y="1886" as="targetPoint"/><Array as="points"><mxPoint x="340" y="1631"/><mxPoint x="340" y="1886"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="fanout-edge-15" parent="1" edge="1" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;">
+        <mxCell id="fanout-edge-15" edge="1" parent="1" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;" value="">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="242" y="1818" as="sourcePoint"/>
-            <mxPoint x="540" y="1946" as="targetPoint"/>
-            <Array as="points">
-              <mxPoint x="300" y="1818"/>
-              <mxPoint x="300" y="1946"/>
-            </Array>
-          </mxGeometry>
+            <mxPoint x="242" y="1651" as="sourcePoint"/><mxPoint x="540" y="1971" as="targetPoint"/><Array as="points"><mxPoint x="320" y="1651"/><mxPoint x="320" y="1971"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="fanout-edge-16" parent="1" edge="1" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;">
+        <mxCell id="fanout-edge-16" edge="1" parent="1" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;" value="">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="242" y="1838" as="sourcePoint"/>
-            <mxPoint x="540" y="2056" as="targetPoint"/>
-            <Array as="points">
-              <mxPoint x="280" y="1838"/>
-              <mxPoint x="280" y="2056"/>
-            </Array>
-          </mxGeometry>
+            <mxPoint x="242" y="1671" as="sourcePoint"/><mxPoint x="540" y="2056" as="targetPoint"/><Array as="points"><mxPoint x="300" y="1671"/><mxPoint x="300" y="2056"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="fanout-box-17" parent="1" vertex="1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBECE8;strokeColor=#B8C9D4;fontColor=#17324D;fontSize=12;fontStyle=0;align=center;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="800" y="1466" width="720" height="640" as="geometry"/>
+        <mxCell id="fanout-box-17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBECE8;strokeColor=#B8C9D4;fontColor=#17324D;fontSize=12;fontStyle=0;align=center;verticalAlign=middle;spacing=8;" value="" vertex="1">
+          <mxGeometry height="640" width="720" x="800" y="1466" as="geometry"/>
         </mxCell>
-        <mxCell id="fanout-box-18" parent="1" vertex="1" value="AVOID: shared trunk looks like one link" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBECE8;strokeColor=#FBECE8;fontColor=#17324D;fontSize=23;fontStyle=1;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="822" y="1486" width="675" height="38" as="geometry"/>
+        <mxCell id="fanout-box-18" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBECE8;strokeColor=#FBECE8;fontColor=#17324D;fontSize=23;fontStyle=1;align=left;verticalAlign=middle;spacing=8;" value="AVOID: shared trunk looks like one link" vertex="1">
+          <mxGeometry height="38" width="675" x="822" y="1486" as="geometry"/>
         </mxCell>
-        <mxCell id="fanout-box-19" parent="1" vertex="1" value="Account to Liability, Statement, Balance Item, Budget, Forecast" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBECE8;strokeColor=#FBECE8;fontColor=#17324D;fontSize=15;fontStyle=0;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="822" y="1529" width="675" height="29" as="geometry"/>
+        <mxCell id="fanout-box-19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBECE8;strokeColor=#FBECE8;fontColor=#17324D;fontSize=15;fontStyle=0;align=left;verticalAlign=middle;spacing=8;" value="Account to Liability, Statement, Balance Item, Budget, Forecast" vertex="1">
+          <mxGeometry height="29" width="675" x="822" y="1529" as="geometry"/>
         </mxCell>
-        <mxCell id="fanout-box-20" parent="1" vertex="1" value="Account" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F9DDD7;strokeColor=#294968;fontColor=#17324D;fontSize=19;fontStyle=1;align=center;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="842" y="1738" width="160" height="120" as="geometry"/>
+        <mxCell id="fanout-box-20" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F9DDD7;strokeColor=#294968;fontColor=#17324D;fontSize=19;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="Account" vertex="1">
+          <mxGeometry height="120" width="160" x="842" y="1571" as="geometry"/>
         </mxCell>
-        <mxCell id="fanout-box-21" parent="1" vertex="1" value="Liability" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DDEBF4;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="1300" y="1585" width="175" height="62" as="geometry"/>
+        <mxCell id="fanout-box-21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DDEBF4;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="Liability" vertex="1">
+          <mxGeometry height="62" width="175" x="1300" y="1685" as="geometry"/>
         </mxCell>
-        <mxCell id="fanout-box-22" parent="1" vertex="1" value="Transaction Statement" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DDEBF4;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="1300" y="1695" width="175" height="62" as="geometry"/>
+        <mxCell id="fanout-box-22" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DDEBF4;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="Transaction Statement" vertex="1">
+          <mxGeometry height="62" width="175" x="1300" y="1770" as="geometry"/>
         </mxCell>
-        <mxCell id="fanout-box-23" parent="1" vertex="1" value="Balance Item" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CE;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="1300" y="1805" width="175" height="62" as="geometry"/>
+        <mxCell id="fanout-box-23" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CE;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="Balance Item" vertex="1">
+          <mxGeometry height="62" width="175" x="1300" y="1855" as="geometry"/>
         </mxCell>
-        <mxCell id="fanout-box-24" parent="1" vertex="1" value="Budget" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DDEBF4;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="1300" y="1915" width="175" height="62" as="geometry"/>
+        <mxCell id="fanout-box-24" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DDEBF4;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="Budget" vertex="1">
+          <mxGeometry height="62" width="175" x="1300" y="1940" as="geometry"/>
         </mxCell>
-        <mxCell id="fanout-box-25" parent="1" vertex="1" value="Forecast" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DDEBF4;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="1300" y="2025" width="175" height="62" as="geometry"/>
+        <mxCell id="fanout-box-25" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DDEBF4;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="Forecast" vertex="1">
+          <mxGeometry height="62" width="175" x="1300" y="2025" as="geometry"/>
         </mxCell>
-        <mxCell id="fanout-edge-26" parent="1" edge="1" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;">
+        <mxCell id="fanout-edge-26" edge="1" parent="1" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;" value="">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1002" y="1798" as="sourcePoint"/>
-            <mxPoint x="1300" y="1616" as="targetPoint"/>
-            <Array as="points">
-              <mxPoint x="1100" y="1798"/>
-              <mxPoint x="1100" y="1616"/>
-            </Array>
-          </mxGeometry>
+            <mxPoint x="1002" y="1631" as="sourcePoint"/><mxPoint x="1300" y="1716" as="targetPoint"/><Array as="points"><mxPoint x="1100" y="1631"/><mxPoint x="1100" y="1716"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="fanout-edge-27" parent="1" edge="1" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;">
+        <mxCell id="fanout-edge-27" edge="1" parent="1" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;" value="">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1002" y="1798" as="sourcePoint"/>
-            <mxPoint x="1300" y="1726" as="targetPoint"/>
-            <Array as="points">
-              <mxPoint x="1100" y="1798"/>
-              <mxPoint x="1100" y="1726"/>
-            </Array>
-          </mxGeometry>
+            <mxPoint x="1002" y="1631" as="sourcePoint"/><mxPoint x="1300" y="1801" as="targetPoint"/><Array as="points"><mxPoint x="1100" y="1631"/><mxPoint x="1100" y="1801"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="fanout-edge-28" parent="1" edge="1" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;">
+        <mxCell id="fanout-edge-28" edge="1" parent="1" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;" value="">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1002" y="1798" as="sourcePoint"/>
-            <mxPoint x="1300" y="1836" as="targetPoint"/>
-            <Array as="points">
-              <mxPoint x="1100" y="1798"/>
-              <mxPoint x="1100" y="1836"/>
-            </Array>
-          </mxGeometry>
+            <mxPoint x="1002" y="1631" as="sourcePoint"/><mxPoint x="1300" y="1886" as="targetPoint"/><Array as="points"><mxPoint x="1100" y="1631"/><mxPoint x="1100" y="1886"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="fanout-edge-29" parent="1" edge="1" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;">
+        <mxCell id="fanout-edge-29" edge="1" parent="1" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;" value="">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1002" y="1798" as="sourcePoint"/>
-            <mxPoint x="1300" y="1946" as="targetPoint"/>
-            <Array as="points">
-              <mxPoint x="1100" y="1798"/>
-              <mxPoint x="1100" y="1946"/>
-            </Array>
-          </mxGeometry>
+            <mxPoint x="1002" y="1631" as="sourcePoint"/><mxPoint x="1300" y="1971" as="targetPoint"/><Array as="points"><mxPoint x="1100" y="1631"/><mxPoint x="1100" y="1971"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="fanout-edge-30" parent="1" edge="1" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;">
+        <mxCell id="fanout-edge-30" edge="1" parent="1" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;" value="">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1002" y="1798" as="sourcePoint"/>
-            <mxPoint x="1300" y="2056" as="targetPoint"/>
-            <Array as="points">
-              <mxPoint x="1100" y="1798"/>
-              <mxPoint x="1100" y="2056"/>
-            </Array>
-          </mxGeometry>
+            <mxPoint x="1002" y="1631" as="sourcePoint"/><mxPoint x="1300" y="2056" as="targetPoint"/><Array as="points"><mxPoint x="1100" y="1631"/><mxPoint x="1100" y="2056"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="fanout-box-31" parent="1" vertex="1" value="Five edges overlap at one port and masquerade as a shared bus." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBECE8;strokeColor=#FBECE8;fontColor=#17324D;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="838" y="1880" width="620" height="30" as="geometry"/>
+        <mxCell id="fanout-box-31" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBECE8;strokeColor=#FBECE8;fontColor=#17324D;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;spacing=8;" value="Shared bus hides five links" vertex="1">
+          <mxGeometry height="47" width="185" x="827" y="1740" as="geometry"/>
         </mxCell>
-        <mxCell id="fanout-box-32" parent="1" vertex="1" value="Rule: preserve each relationship and its cardinality; fan out ports by at least 20 units, then route on separate clear channels." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFFFFF;fontColor=#17324D;fontSize=16;fontStyle=1;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="40" y="2133" width="1500" height="36" as="geometry"/>
+        <mxCell id="fanout-box-32" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFFFFF;fontColor=#17324D;fontSize=16;fontStyle=1;align=left;verticalAlign=middle;spacing=8;" value="Rule: use an even 20-unit pitch for ports and parallel trunks when clear space allows; preserve distinct routes and cardinalities." vertex="1">
+          <mxGeometry height="36" width="1500" x="40" y="2133" as="geometry"/>
+        </mxCell>
+        <mxCell id="dQ30nYshYY-l6nsXGh4K-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="spacings are uneven" vertex="1">
+          <mxGeometry height="60" width="120" x="827" y="1800" as="geometry"/>
         </mxCell>
       </root>
     </mxGraphModel>
