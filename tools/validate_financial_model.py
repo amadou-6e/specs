@@ -82,6 +82,9 @@ def validate(root, errors, parse):
                     if area and area[0] <= x <= area[2] and area[1] <= y <= area[3]:
                         return name
                 return None
+            income_lane, agreement_lane, expense_lane = lane("income"), lane("recurring-agreement"), lane("expense")
+            if (income_lane, agreement_lane, expense_lane) != ("lane-3", "lane-2", "lane-5") or not (bounds("lane-3")[2] < bounds("lane-2")[0] < bounds("lane-2")[2] < bounds("lane-5")[0]):
+                error(candidate_path, "top-level lanes must read Income, Recurring Agreement, Expense left to right")
             for parent, child in (("recurring-agreement", "agreement-term"), ("income", "income-item"), ("expense", "expense-item"), ("receipt", "receipt-item")):
                 parent_lane, child_lane = lane(parent), lane(child)
                 if parent_lane is None or parent_lane != child_lane:
