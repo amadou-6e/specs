@@ -11,7 +11,7 @@ cashflow-entry/
 └── 1 representations.md
 ```
 <!-- END GENERATED: contained-elements -->
-> One transaction projected into a sheet.
+> One expected or realized cashflow projected into a sheet.
 
 Identity: entry_id.
 

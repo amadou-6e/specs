@@ -21,8 +21,6 @@ schema_ref: "schema.yaml"
 graph_ref: "../../relationships/graph.yaml"
 relationship_ids:
   - "reimburses-single-expense"
-  - "single-expense-budgets"
-  - "single-expense-forecasts"
   - "settles-single-expense"
   - "contains-item"
   - "substantiates-purchase"

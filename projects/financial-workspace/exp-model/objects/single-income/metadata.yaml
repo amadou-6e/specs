@@ -28,8 +28,6 @@ relationship_ids:
   - "single-income-items"
   - "settles-single-income"
   - "supports-single-income"
-  - "single-income-budgets"
-  - "single-income-forecasts"
   - "statement-item-supports-single-income"
   - "reimburses-single-expense"
   - "reimburses-single-expense-item"

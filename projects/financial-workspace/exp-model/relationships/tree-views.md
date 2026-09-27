@@ -20,7 +20,7 @@ Account
         +-- Cashflow sheet (Notion dataset)
 
 Cashflow sheet
-+-- Cashflow entry [one per transaction]
++-- Cashflow entry [realized when linked to this transaction]
 ```
 
 The Cashflow entry attributes are described in the [field catalogue](../objects/field_catalogue.yml); they are not child objects in this relationship tree.
@@ -59,30 +59,23 @@ A Liability need not yet be linked to an Account. Its Liability terms are option
 
 ## Planning relationship views
 
-~~~text
+```text
 Account
 |-- [0..1 : 0..*] Budget
 +-- [0..1 : 0..*] Forecast
 
+Cashflow sheet
++-- [1 : 0..*] Cashflow entry [expected or realized]
+    +-- [0..* : 0..1] Transaction [required when realized]
+
 Budget
-|-- [0..* : 0..*] Single expense
-+-- [0..* : 0..*] Single income
++-- [0..* : 0..*] Cashflow entry
 
 Forecast
-|-- [0..* : 0..*] Single expense
-+-- [0..* : 0..*] Single income
++-- [0..* : 0..*] Cashflow entry
+```
 
-Single expense
-|-- [1 : 0..*] Single expense item
-|   +-- [0..* : 0..*] Receipt [when the receipt documents this item]
-+-- [0..* : 0..*] Receipt [when the receipt documents the whole expense]
-
-Single income
-|-- [1 : 0..*] Single income item
-+-- [0..* : 0..*] Transaction [only once received]
-~~~
-
-Budget and Forecast are optional Account-scoped planning objects. Planned Single expense and Single income events may have no Transaction. Their links to budgets and forecasts do not create cashflow rows.
+An expected Cashflow entry has a reviewed commitment or contract basis, expected date, signed amount and currency. Receipt support is optional. On settlement, preserve entry_id, link the posted Transaction and set realization_status to realized. Income and expense objects classify or explain the row; Budget and Forecast connect to the row itself.
 
 ## Reimbursement links
 

@@ -8,6 +8,16 @@ primary_key:
     nullable: false
     description: "Persistent internal identity; not a display name."
 foreign_keys:
+  budget_ids:
+    type: "ref[]"
+    required: false
+    nullable: true
+    target: "budget"
+  forecast_ids:
+    type: "ref[]"
+    required: false
+    nullable: true
+    target: "forecast"
   single_income_ids:
     type: "ref[]"
     required: false
@@ -20,18 +30,18 @@ foreign_keys:
     target: "cashflow-sheet"
   transaction_id:
     type: "ref"
-    required: true
-    nullable: false
+    required: false
+    nullable: true
     target: "transaction"
   account_id:
     type: "ref"
-    required: true
-    nullable: false
+    required: false
+    nullable: true
     target: "account"
   institution_id:
     type: "ref"
-    required: true
-    nullable: false
+    required: false
+    nullable: true
     target: "financial-institution"
   single_expense_ids:
     type: "ref[]"
@@ -58,9 +68,24 @@ fields:
     nullable: true
   booking_date:
     type: "date"
+    required: false
+    nullable: true
+    format: "YYYY-MM-DD"
+  expected_date:
+    type: "date"
+    required: false
+    nullable: true
+    format: "YYYY-MM-DD"
+  realization_status:
+    type: "string"
     required: true
     nullable: false
-    format: "YYYY-MM-DD"
+    enum: ["expected", "realized"]
+  expected_basis:
+    type: "string"
+    required: false
+    nullable: true
+    description: "Reviewed commitment, contract, or other basis for an expected entry."
   amount:
     type: "decimal"
     required: true
@@ -188,7 +213,9 @@ constraints:
   - "Recurring income links classify booked income; they do not create additional cash movements."
   - "Required fields apply to accepted canonical records; incomplete extractions remain candidates."
   - "Unknown optional values are null; no invented defaults."
-  - "Unique(sheet_id, transaction_id)."
-  - "amount, currency, booking_date and account_id equal the referenced transaction."
+  - "Unique(sheet_id, entry_id); a realized transaction appears in at most one entry per sheet."
+  - "Expected entries require expected_date and expected_basis; transaction_id and booking_date are null. Receipt support is optional."
+  - "Realized entries require a posted transaction; amount, currency, booking_date and account_id equal it."
+  - "An expected entry keeps its entry_id when realized; link the transaction instead of creating a second row."
   - "Aggregate by currency and reporting treatment; do not duplicate payment totals across item categories."
 validation_scope: "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."

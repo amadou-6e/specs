@@ -4,7 +4,7 @@ kind: model-entry
 authority: Replacement candidate
 owner: amadou-6e
 status: draft
-purpose: "Projects each booked transaction and reviewed enrichment into one cashflow row"
+purpose: "Projects expected movements and booked transactions with reviewed enrichment into cashflow rows"
 source_graph_ref: "../../relationships/graph.yaml"
 target_schema_ref: "../../objects/cashflow-entry/schema.yaml"
 mapping_ref: "mapping.yaml"

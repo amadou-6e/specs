@@ -1,17 +1,18 @@
 # Single cashflow sheet
 
-Target design: all available booked account transactions appear once in one Notion dataset. Existing Notion procurement and recurring databases are historical structures, not proof this target has been implemented.
+Target design: expected movements and all available booked account transactions appear in one Notion dataset. Each expected row keeps its identity when later realized. Existing Notion procurement and recurring databases are historical structures, not proof this target has been implemented.
 
 The builder performs the joins before publication. Notion receives flattened, filterable properties and source links. Optional native relations are navigation aids, never necessary for totals.
 
 | Property | Source and rule |
 | --- | --- |
-| External transaction ID | Stable canonical transaction_id; unique within destination |
+| Entry ID / External transaction ID | Stable entry_id for every row; transaction_id is null while expected and unique when realized |
 | Name | Reviewed counterparty/description; never a key |
-| Date | Transaction booking date; cashflow time axis |
-| Amount / Currency | Signed booked amount and account currency |
+| Date / Expected date | Booking date for realized entries; expected date for planned entries, with separate fields |
+| Amount / Currency | Signed expected amount until realized; then signed booked amount, with currency |
 | Account / Institution | Resolved account and provider |
 | Counterparty / Reference | Preserve original bank reference; normalized merchant is additional |
+| Realization status / Expected basis | Expected requires reviewed commitment or contract basis; realized requires posted transaction |
 | Type | Income, expense, refund, transfer, other, unknown |
 | Expense category | Single expense, recurring expense, other, unclassified; one primary category |
 | Purchase category | Existing detailed categories where supported; Mixed where necessary |
@@ -40,8 +41,8 @@ Calendar scaffold rows from the old procurement charts are presentation helpers,
 
 ## Publication contract
 
-Validate transaction uniqueness, source links, monetary totals by account/currency and current destination schema. Produce a reviewable create/update/unchanged/conflict diff. Upsert by external transaction ID and retain returned page IDs and per-row receipts. Verify rows and totals after publication.
+Validate transaction uniqueness, source links, monetary totals by account/currency and current destination schema. Produce a reviewable create/update/unchanged/conflict diff. Upsert by stable entry_id and enforce transaction uniqueness for realized rows and retain returned page IDs and per-row receipts. Verify rows and totals after publication.
 
 Do not reuse legacy order Date or positive procurement Price as cashflow booking date or signed Amount. The existing uploader needs an explicit new contract before it can publish this sheet.
 
-Planned Single income and Single expense events remain outside this transaction-backed cashflow sheet until booked. Budget and Forecast allocations are planning links and must not increase cashflow totals.
+Expected movements belong in the Cashflow sheet with realization_status expected. Budget and Forecast connect to Cashflow entries. Expected amounts are excluded from realized cash totals; separate views may combine or compare plans and actuals without double counting.

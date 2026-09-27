@@ -4,7 +4,7 @@
   "target_object": "cashflow-entry",
   "identity": [
     "sheet_id",
-    "transaction_id"
+    "entry_id"
   ],
   "fields": [
     {
@@ -30,12 +30,12 @@
     {
       "target_field": "transaction_id",
       "notion_property": "External transaction ID",
-      "source": "transaction.transaction_id",
-      "derivation": "source-field",
+      "source": null,
+      "derivation": "linked-transaction-if-realized",
       "transform": "copy-or-reviewed-value",
-      "missing": "block-publication",
+      "missing": "null-while-expected",
       "notion_type": "rich_text",
-      "notes": "Native property IDs/types must be verified before publication."
+      "notes": "Required only for realized entries; published transaction uniqueness is sheet-scoped."
     },
     {
       "target_field": "name",
@@ -50,22 +50,22 @@
     {
       "target_field": "booking_date",
       "notion_property": "Date",
-      "source": "transaction.booking_date",
-      "derivation": "source-field",
+      "source": null,
+      "derivation": "expected-or-booked-value",
       "transform": "copy-or-reviewed-value",
-      "missing": "block-publication",
+      "missing": "null-while-expected",
       "notion_type": "date",
-      "notes": "Native property IDs/types must be verified before publication."
+      "notes": "Booked value must agree with linked transaction when realized."
     },
     {
       "target_field": "amount",
       "notion_property": "Amount",
-      "source": "transaction.amount",
-      "derivation": "source-field",
+      "source": null,
+      "derivation": "expected-or-booked-amount",
       "transform": "copy-or-reviewed-value",
       "missing": "block-publication",
       "notion_type": "number",
-      "notes": "Native property IDs/types must be verified before publication."
+      "notes": "Signed expected amount until realized; then equals booked transaction amount."
     },
     {
       "target_field": "currency",
@@ -80,22 +80,22 @@
     {
       "target_field": "account_id",
       "notion_property": "Account",
-      "source": "transaction.account_id",
-      "derivation": "source-field",
+      "source": null,
+      "derivation": "expected-or-booked-value",
       "transform": "copy-or-reviewed-value",
-      "missing": "block-publication",
+      "missing": "null-while-expected",
       "notion_type": "rich_text",
-      "notes": "Native property IDs/types must be verified before publication."
+      "notes": "Booked value must agree with linked transaction when realized."
     },
     {
       "target_field": "institution_id",
       "notion_property": "Institution",
-      "source": "account.institution_id",
-      "derivation": "source-field",
+      "source": null,
+      "derivation": "expected-or-booked-value",
       "transform": "copy-or-reviewed-value",
-      "missing": "block-publication",
+      "missing": "null-while-expected",
       "notion_type": "rich_text",
-      "notes": "Native property IDs/types must be verified before publication."
+      "notes": "Booked value must agree with linked transaction when realized."
     },
     {
       "target_field": "counterparty",
@@ -205,7 +205,7 @@
       "transform": "collect-distinct",
       "missing": "null",
       "notion_type": "rich_text",
-      "notes": "Only linked to a booked transaction; native property IDs/types must be verified before publication."
+      "notes": "Optional support for expected entries; native property IDs/types must be verified before publication."
     },
     {
       "target_field": "item_descriptions",
@@ -316,14 +316,63 @@
       "missing": "block-publication",
       "notion_type": "rich_text",
       "notes": "Native property IDs/types must be verified before publication."
+    },
+    {
+      "target_field": "expected_date",
+      "notion_property": "Expected Date",
+      "source": null,
+      "derivation": "reviewed-planning-state",
+      "transform": "copy-or-reviewed-value",
+      "missing": "null",
+      "notion_type": "date",
+      "notes": "Expected entries require expected date and basis; realized entries require posted transaction."
+    },
+    {
+      "target_field": "realization_status",
+      "notion_property": "Realization Status",
+      "source": null,
+      "derivation": "reviewed-planning-state",
+      "transform": "copy-or-reviewed-value",
+      "missing": "block-publication",
+      "notion_type": "select",
+      "notes": "Expected entries require expected date and basis; realized entries require posted transaction."
+    },
+    {
+      "target_field": "expected_basis",
+      "notion_property": "Expected Basis",
+      "source": null,
+      "derivation": "reviewed-planning-state",
+      "transform": "copy-or-reviewed-value",
+      "missing": "null",
+      "notion_type": "rich_text",
+      "notes": "Expected entries require expected date and basis; realized entries require posted transaction."
+    },
+    {
+      "target_field": "budget_ids",
+      "notion_property": "Budget Ids",
+      "source": null,
+      "derivation": "reviewed-planning-links",
+      "transform": "copy-or-reviewed-value",
+      "missing": "null",
+      "notion_type": "rich_text",
+      "notes": "Optional IDs of planning objects linked to this Cashflow entry."
+    },
+    {
+      "target_field": "forecast_ids",
+      "notion_property": "Forecast Ids",
+      "source": null,
+      "derivation": "reviewed-planning-links",
+      "transform": "copy-or-reviewed-value",
+      "missing": "null",
+      "notion_type": "rich_text",
+      "notes": "Optional IDs of planning objects linked to this Cashflow entry."
     }
   ],
   "invariants": [
-    "One cashflow entry per (sheet_id, transaction_id).",
-    "Statement and transaction account IDs must agree.",
-    "Every published entry references one evidenced booked transaction.",
-    "No receipt match duplicates a posted movement.",
-    "Unknown and unclassified transactions remain in the sheet.",
-    "Refunds retain separate transaction identity."
+    "One stable entry_id per expected movement or booked transaction within a sheet.",
+    "Expected entries have expected_date and reviewed basis; transaction_id is null.",
+    "Realized entries link a posted transaction; each transaction appears once per sheet.",
+    "Linking a transaction realizes an expected entry without duplicating it.",
+    "Receipt support is optional in either state."
   ]
 }

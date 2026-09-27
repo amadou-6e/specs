@@ -22,8 +22,7 @@ schema_ref: "schema.yaml"
 graph_ref: "../../relationships/graph.yaml"
 relationship_ids:
   - "account-forecasts"
-  - "single-expense-forecasts"
-  - "single-income-forecasts"
+  - "forecast-cashflow-entries"
 representations: []
 provenance_ref: "../../representations/provenance.yaml"
 mapping_refs:

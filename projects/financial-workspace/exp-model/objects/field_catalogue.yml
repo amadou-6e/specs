@@ -54,17 +54,22 @@ objects:
       entry_id: "Stable identity of this Cashflow entry, independent of its display name."
     foreign_keys:
       sheet_id: "Cashflow sheet containing this entry."
-      transaction_id: "Booked Transaction projected into this entry."
-      account_id: "Account on which the Transaction was booked."
-      institution_id: "Financial institution that provides the Account."
+      budget_ids: "Budgets assigned to this expected or realized cashflow entry."
+      forecast_ids: "Forecasts containing this expected or realized cashflow entry."
+      transaction_id: "Posted Transaction that realizes this entry; null while expected."
+      account_id: "Expected or booked Account, when known."
+      institution_id: "Financial institution that provides the Account, when known."
       single_expense_ids: "Single expense events linked to this booked Transaction."
       single_income_ids: "Single income events linked to this booked Transaction."
       recurring_expense_ids: "Recurring expenses linked through payment occurrences."
       recurring_income_ids: "Recurring income streams linked to this booked income row."
     fields:
       name: "Human-readable display title for the row."
-      booking_date: "Date on which the source Transaction was booked."
-      amount: "Signed amount of the booked Transaction in its original currency."
+      booking_date: "Date on which the source Transaction was booked; null while expected."
+      expected_date: "Expected movement date from the reviewed commitment or contract basis."
+      realization_status: "Expected until linked to a posted Transaction, then realized."
+      expected_basis: "Reviewed commitment, contract, or other basis for an expected entry."
+      amount: "Signed expected amount until realized; then the booked Transaction amount."
       currency: "Currency of the booked Transaction amount."
       counterparty: "Merchant or other counterparty named on the Transaction when available."
       reference: "Payment reference or purpose text carried by the Transaction."
@@ -193,8 +198,6 @@ objects:
       single_expense_id: "Persistent internal identity; not a display name."
     foreign_keys:
       representation_ids: "References to source representations supporting this Single expense."
-      budget_ids: "Budgets to which this expense is allocated."
-      forecast_ids: "Forecasts containing this projected expense."
     fields:
       state: "Planned, partially realized, realized, or cancelled."
       expected_date: "Expected date before a payment is booked."
@@ -213,8 +216,6 @@ objects:
       single_income_id: "Stable identity of a nonrecurring income event."
     foreign_keys:
       representation_ids: "Source representations supporting the income event."
-      budget_ids: "Budgets to which this income is allocated."
-      forecast_ids: "Forecasts containing this projected income."
     fields:
       income_kind: "Type of one-time income; reimbursement identifies repayment of a linked Single expense or item."
       source: "Payer or income source, when known."

@@ -26,17 +26,15 @@ Canonical edges and cardinalities are in graph.yaml. targets_per_source counts t
 | substantiates-purchase | receipt | single-expense | 0..* | 0..* |
 | supports-occurrence | receipt | payment-occurrence | 0..* | 0..* |
 | contains-entry | cashflow-sheet | cashflow-entry | 0..* | 1 |
-| projects | cashflow-entry | transaction | 1 | 0..* |
+| projects | cashflow-entry | transaction | 0..1 | 0..* |
 | supported-by-receipt | cashflow-entry | receipt | 0..* | 0..* |
 | refunds | transaction | transaction | 0..* | 0..* |
 | settles-single-income | transaction | single-income | 0..* | 0..* |
 | supports-single-income | receipt | single-income | 0..* | 0..* |
 | account-budgets | account | budget | 0..* | 0..1 |
 | account-forecasts | account | forecast | 0..* | 0..1 |
-| single-expense-budgets | budget | single-expense | 0..* | 0..* |
-| single-income-budgets | budget | single-income | 0..* | 0..* |
-| single-expense-forecasts | forecast | single-expense | 0..* | 0..* |
-| single-income-forecasts | forecast | single-income | 0..* | 0..* |
+| budget-cashflow-entries | budget | cashflow-entry | 0..* | 0..* |
+| forecast-cashflow-entries | forecast | cashflow-entry | 0..* | 0..* |
 | documents-expense-item | receipt | single-expense-item | 0..* | 0..* |
 | statement-item-supports-single-income | income-statement-item | single-income | 0..* | 0..* |
 | reimburses-single-expense | single-income | single-expense | 0..* | 0..* |
@@ -56,7 +54,7 @@ Receipt links on cashflow entries are derived from reviewed source links. Enrich
 
 Evidence deletion or missing access marks a gap; it does not delete a financial transaction. Corrected observations supersede prior assertions. Rejected links remain auditable. Actual records are not cascade-deleted when a receipt, commitment or Notion page disappears.
 
-Planned Single income and Single expense records may lack transactions. Their budgets and forecasts are planning links. A cashflow entry still requires a posted transaction; one event may settle through several transactions.
+Cashflow entries may be expected before settlement. A reviewed commitment or contract supports an expected date and amount; the Receipt is optional. Realization requires a posted Transaction and preserves the entry ID. Budget and Forecast link to Cashflow entries, not directly to income or expense objects. One event may settle through several transactions.
 
 A Single expense can have zero or more Single expense items and can be supported by receipts. A receipt may document the whole expense or particular items. A reviewed reimbursement Income statement item on an income-statement Receipt can support a reimbursement-kind Single income, which references the expense or specific items. Retain an allocation amount and currency when one salary line covers several expenses. The sum of verified expense allocations must not exceed the reviewed reimbursement Single income amount. Do not count the same reimbursement at both parent and item level. The linked salary transaction remains one cashflow movement.
 An income-statement Receipt must retain its source-backed issuer name; issuer is a field, not a separate Employer object. Income-statement summary amounts and Income statement items are evidence, not separate booked transactions.

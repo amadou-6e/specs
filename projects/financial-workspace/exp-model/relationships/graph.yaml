@@ -202,7 +202,7 @@
       "id": "projects",
       "source": "cashflow-entry",
       "target": "transaction",
-      "targets_per_source": "1",
+      "targets_per_source": "0..1",
       "sources_per_target": "0..*"
     },
     {
@@ -311,30 +311,16 @@
       "sources_per_target": "0..1"
     },
     {
-      "id": "single-expense-budgets",
+      "id": "budget-cashflow-entries",
       "source": "budget",
-      "target": "single-expense",
+      "target": "cashflow-entry",
       "targets_per_source": "0..*",
       "sources_per_target": "0..*"
     },
     {
-      "id": "single-income-budgets",
-      "source": "budget",
-      "target": "single-income",
-      "targets_per_source": "0..*",
-      "sources_per_target": "0..*"
-    },
-    {
-      "id": "single-expense-forecasts",
+      "id": "forecast-cashflow-entries",
       "source": "forecast",
-      "target": "single-expense",
-      "targets_per_source": "0..*",
-      "sources_per_target": "0..*"
-    },
-    {
-      "id": "single-income-forecasts",
-      "source": "forecast",
-      "target": "single-income",
+      "target": "cashflow-entry",
       "targets_per_source": "0..*",
       "sources_per_target": "0..*"
     },
@@ -375,22 +361,22 @@
     }
   ],
   "invariants": [
-    "One cashflow entry per (sheet_id, transaction_id).",
     "Statement and transaction account IDs must agree.",
-    "Every published entry references one evidenced booked transaction.",
     "No receipt match duplicates a posted movement.",
     "Unknown and unclassified transactions remain in the sheet.",
     "Refunds retain separate transaction identity.",
     "Each Balance item belongs to exactly one Account or Liability.",
-    "Single income and Single expense may exist without transactions while planned; only matched posted transactions create cashflow entries.",
     "Budgets and forecasts never create cash movements or account balances.",
-    "One event may link to multiple budgets or forecasts; aggregation requires explicit allocation to avoid double counting.",
     "A reimbursement is a Single income instance with income_kind reimbursement, not a separate object.",
     "A reviewed reimbursement Receipt income-statement item may support that Single income; subtotals and totals are not allocated again.",
     "Expense allocations from a reimbursement Single income must not count both parent expense and its items.",
     "The linked payroll transaction remains one booked cashflow movement.",
     "An Income statement is a Receipt with document_kind income-statement; it is not a separate object.",
     "An income-statement Receipt has a recorded issuer name; issuer is a field, not an Employer object.",
-    "Each Single income item belongs to exactly one Single income and does not create a separate cashflow entry."
+    "Each Single income item belongs to exactly one Single income and does not create a separate cashflow entry.",
+    "Every Cashflow entry is expected or realized. Expected entries have a date, signed amount, currency, and reviewed commitment or contract basis; they need no Transaction or Receipt.",
+    "A realized Cashflow entry references a posted Transaction. A Receipt may enrich either status but never establishes realization.",
+    "An expected Cashflow entry retains its entry_id when realized; one posted Transaction maps to at most one entry per Cashflow sheet.",
+    "Budget and Forecast relate to Cashflow entries, never directly to income or expense objects. Allocations must prevent double counting."
   ]
 }

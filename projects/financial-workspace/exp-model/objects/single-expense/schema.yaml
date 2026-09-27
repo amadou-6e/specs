@@ -8,16 +8,6 @@ primary_key:
     nullable: false
     description: "Persistent internal identity; not a display name."
 foreign_keys:
-  budget_ids:
-    type: "ref[]"
-    required: false
-    nullable: true
-    target: "budget"
-  forecast_ids:
-    type: "ref[]"
-    required: false
-    nullable: true
-    target: "forecast"
   representation_ids:
     type: "ref[]"
     required: false

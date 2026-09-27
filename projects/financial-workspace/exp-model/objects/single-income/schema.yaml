@@ -12,16 +12,6 @@ foreign_keys:
     required: false
     nullable: true
     target: "source-representation"
-  budget_ids:
-    type: "ref[]"
-    required: false
-    nullable: true
-    target: "budget"
-  forecast_ids:
-    type: "ref[]"
-    required: false
-    nullable: true
-    target: "forecast"
 fields:
   income_kind:
     type: "string"

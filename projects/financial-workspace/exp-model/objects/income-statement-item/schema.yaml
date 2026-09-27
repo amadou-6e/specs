@@ -76,6 +76,6 @@ constraints:
   - "The referenced representation must support the parent Receipt."
   - "Do not sum components, subtotals and totals together; reconcile using the observed section structure."
   - "Unknown amounts remain null, not zero."
-  - "Statement items do not create cashflow entries; only booked transactions do."
+  - "Statement items do not create cashflow entries; expected cashflow needs a reviewed commitment or contract basis, and realization needs a posted Transaction."
   - "Only a reviewed reimbursement component may support a reimbursement-kind Single income; subtotals and totals are not allocated again."
 validation_scope: "Typed specification contract; section reconciliation and evidence require review."

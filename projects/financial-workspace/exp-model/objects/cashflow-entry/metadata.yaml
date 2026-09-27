@@ -24,6 +24,8 @@ relationship_ids:
   - "contains-entry"
   - "projects"
   - "supported-by-receipt"
+  - "budget-cashflow-entries"
+  - "forecast-cashflow-entries"
 representations:
   - "../../representations/notion-row"
   - "../../representations/structured-export"

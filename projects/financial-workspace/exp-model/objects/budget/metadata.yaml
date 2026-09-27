@@ -22,8 +22,7 @@ schema_ref: "schema.yaml"
 graph_ref: "../../relationships/graph.yaml"
 relationship_ids:
   - "account-budgets"
-  - "single-expense-budgets"
-  - "single-income-budgets"
+  - "budget-cashflow-entries"
 representations: []
 provenance_ref: "../../representations/provenance.yaml"
 mapping_refs:
