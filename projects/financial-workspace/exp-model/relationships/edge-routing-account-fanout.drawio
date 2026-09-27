@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" agent="Codex" version="24.7.17" type="device">
+  <diagram id="account-fanout" name="Account fanout">
+    <mxGraphModel dx="1700" dy="950" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1580" pageHeight="860" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="box-1" parent="1" vertex="1" value="07  Dense fan-out from one Account" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFFFFF;fontColor=#17324D;fontSize=31;fontStyle=1;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="40" y="24" width="1500" height="52" as="geometry"/>
+        </mxCell>
+        <mxCell id="box-2" parent="1" vertex="1" value="The highlighted Account area in the candidate ERD: five independent relationships need five readable paths." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFFFFF;fontColor=#17324D;fontSize=17;fontStyle=0;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="40" y="76" width="1500" height="31" as="geometry"/>
+        </mxCell>
+        <mxCell id="box-3" parent="1" vertex="1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8F5EC;strokeColor=#B8C9D4;fontColor=#17324D;fontSize=12;fontStyle=0;align=center;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="40" y="130" width="720" height="640" as="geometry"/>
+        </mxCell>
+        <mxCell id="box-4" parent="1" vertex="1" value="USE: separate ports and trunks" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8F5EC;strokeColor=#E8F5EC;fontColor=#17324D;fontSize=23;fontStyle=1;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="62" y="150" width="675" height="38" as="geometry"/>
+        </mxCell>
+        <mxCell id="box-5" parent="1" vertex="1" value="Account to Liability, Statement, Balance Item, Budget, Forecast" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8F5EC;strokeColor=#E8F5EC;fontColor=#17324D;fontSize=15;fontStyle=0;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="62" y="193" width="675" height="29" as="geometry"/>
+        </mxCell>
+        <mxCell id="box-6" parent="1" vertex="1" value="Account" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F9DDD7;strokeColor=#294968;fontColor=#17324D;fontSize=19;fontStyle=1;align=center;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="82" y="402" width="160" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="box-7" parent="1" vertex="1" value="Liability" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DDEBF4;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="540" y="249" width="175" height="62" as="geometry"/>
+        </mxCell>
+        <mxCell id="box-8" parent="1" vertex="1" value="Transaction Statement" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DDEBF4;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="540" y="359" width="175" height="62" as="geometry"/>
+        </mxCell>
+        <mxCell id="box-9" parent="1" vertex="1" value="Balance Item" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CE;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="540" y="469" width="175" height="62" as="geometry"/>
+        </mxCell>
+        <mxCell id="box-10" parent="1" vertex="1" value="Budget" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DDEBF4;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="540" y="579" width="175" height="62" as="geometry"/>
+        </mxCell>
+        <mxCell id="box-11" parent="1" vertex="1" value="Forecast" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DDEBF4;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="540" y="689" width="175" height="62" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge-12" parent="1" edge="1" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="242" y="422" as="sourcePoint"/>
+            <mxPoint x="540" y="280" as="targetPoint"/>
+            <Array as="points">
+              <mxPoint x="300" y="422"/>
+              <mxPoint x="300" y="280"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-13" parent="1" edge="1" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="242" y="442" as="sourcePoint"/>
+            <mxPoint x="540" y="390" as="targetPoint"/>
+            <Array as="points">
+              <mxPoint x="320" y="442"/>
+              <mxPoint x="320" y="390"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-14" parent="1" edge="1" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="242" y="462" as="sourcePoint"/>
+            <mxPoint x="540" y="500" as="targetPoint"/>
+            <Array as="points">
+              <mxPoint x="340" y="462"/>
+              <mxPoint x="340" y="500"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-15" parent="1" edge="1" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="242" y="482" as="sourcePoint"/>
+            <mxPoint x="540" y="610" as="targetPoint"/>
+            <Array as="points">
+              <mxPoint x="300" y="482"/>
+              <mxPoint x="300" y="610"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-16" parent="1" edge="1" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="242" y="502" as="sourcePoint"/>
+            <mxPoint x="540" y="720" as="targetPoint"/>
+            <Array as="points">
+              <mxPoint x="280" y="502"/>
+              <mxPoint x="280" y="720"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="box-17" parent="1" vertex="1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBECE8;strokeColor=#B8C9D4;fontColor=#17324D;fontSize=12;fontStyle=0;align=center;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="800" y="130" width="720" height="640" as="geometry"/>
+        </mxCell>
+        <mxCell id="box-18" parent="1" vertex="1" value="AVOID: shared trunk looks like one link" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBECE8;strokeColor=#FBECE8;fontColor=#17324D;fontSize=23;fontStyle=1;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="822" y="150" width="675" height="38" as="geometry"/>
+        </mxCell>
+        <mxCell id="box-19" parent="1" vertex="1" value="Account to Liability, Statement, Balance Item, Budget, Forecast" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBECE8;strokeColor=#FBECE8;fontColor=#17324D;fontSize=15;fontStyle=0;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="822" y="193" width="675" height="29" as="geometry"/>
+        </mxCell>
+        <mxCell id="box-20" parent="1" vertex="1" value="Account" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F9DDD7;strokeColor=#294968;fontColor=#17324D;fontSize=19;fontStyle=1;align=center;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="842" y="402" width="160" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="box-21" parent="1" vertex="1" value="Liability" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DDEBF4;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="1300" y="249" width="175" height="62" as="geometry"/>
+        </mxCell>
+        <mxCell id="box-22" parent="1" vertex="1" value="Transaction Statement" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DDEBF4;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="1300" y="359" width="175" height="62" as="geometry"/>
+        </mxCell>
+        <mxCell id="box-23" parent="1" vertex="1" value="Balance Item" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CE;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="1300" y="469" width="175" height="62" as="geometry"/>
+        </mxCell>
+        <mxCell id="box-24" parent="1" vertex="1" value="Budget" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DDEBF4;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="1300" y="579" width="175" height="62" as="geometry"/>
+        </mxCell>
+        <mxCell id="box-25" parent="1" vertex="1" value="Forecast" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DDEBF4;strokeColor=#294968;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="1300" y="689" width="175" height="62" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge-26" parent="1" edge="1" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1002" y="462" as="sourcePoint"/>
+            <mxPoint x="1300" y="280" as="targetPoint"/>
+            <Array as="points">
+              <mxPoint x="1100" y="462"/>
+              <mxPoint x="1100" y="280"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-27" parent="1" edge="1" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1002" y="462" as="sourcePoint"/>
+            <mxPoint x="1300" y="390" as="targetPoint"/>
+            <Array as="points">
+              <mxPoint x="1100" y="462"/>
+              <mxPoint x="1100" y="390"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-28" parent="1" edge="1" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1002" y="462" as="sourcePoint"/>
+            <mxPoint x="1300" y="500" as="targetPoint"/>
+            <Array as="points">
+              <mxPoint x="1100" y="462"/>
+              <mxPoint x="1100" y="500"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-29" parent="1" edge="1" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1002" y="462" as="sourcePoint"/>
+            <mxPoint x="1300" y="610" as="targetPoint"/>
+            <Array as="points">
+              <mxPoint x="1100" y="462"/>
+              <mxPoint x="1100" y="610"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-30" parent="1" edge="1" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=14;endSize=14;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1002" y="462" as="sourcePoint"/>
+            <mxPoint x="1300" y="720" as="targetPoint"/>
+            <Array as="points">
+              <mxPoint x="1100" y="462"/>
+              <mxPoint x="1100" y="720"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="box-31" parent="1" vertex="1" value="Five edges overlap at one port and masquerade as a shared bus." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBECE8;strokeColor=#FBECE8;fontColor=#17324D;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="838" y="544" width="620" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="box-32" parent="1" vertex="1" value="Rule: preserve each relationship and its cardinality; fan out ports by at least 20 units, then route on separate clear channels." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFFFFF;fontColor=#17324D;fontSize=16;fontStyle=1;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="40" y="797" width="1500" height="36" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
