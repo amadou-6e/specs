@@ -10,7 +10,6 @@ relationships/
 ├── 1 rules.md
 ├── 1 edge-style.md
 ├── 1 edge-style-examples.drawio
-├── 1 edge-routing-account-fanout.drawio
 ├── 1 tree-views.md
 ├── 1 records.yaml
 └── 1 unified-income-expense-candidate.drawio
