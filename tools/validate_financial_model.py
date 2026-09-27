@@ -37,6 +37,59 @@ def validate(root, errors, parse):
                 error(erd_path, "missing relationship edge " + edge_id)
             elif cell.get("source") != relation["source"] or cell.get("target") != relation["target"]:
                 error(erd_path, "detached or incorrect endpoints on " + edge_id)
+    # Candidate diagrams are proposals, but their own topology must remain coherent.
+    candidate_path = base / "relationships/unified-income-expense-candidate.drawio"
+    if candidate_path.exists():
+        try:
+            candidate_root = ET.parse(candidate_path).getroot()
+        except (OSError, ET.ParseError) as exc:
+            error(candidate_path, "invalid candidate ERD XML: " + str(exc))
+        else:
+            candidate_cells = [cell for cell in candidate_root.iter("mxCell") if cell.get("id")]
+            ids = [cell.get("id") for cell in candidate_cells]
+            if len(ids) != len(set(ids)):
+                error(candidate_path, "duplicate Draw.io cell IDs")
+            cc = {cell.get("id"): cell for cell in candidate_cells}
+            required = ("recurring-agreement", "agreement-term", "income", "income-item", "expense", "expense-item", "receipt", "receipt-item", "transaction", "cashflow-entry")
+            for oid in required:
+                if oid not in cc or cc[oid].get("vertex") != "1":
+                    error(candidate_path, "missing proposed object card " + oid)
+            for old in ("single-income", "single-expense", "payment-occurrence", "commitment-term", "income-statement-item", "recurring-agreement-income-view", "recurring-agreement-expense-view"):
+                if old in cc:
+                    error(candidate_path, "superseded object remains in candidate: " + old)
+            for cell in candidate_cells:
+                if cell.get("edge") == "1" and (cell.get("source") not in cc or cell.get("target") not in cc):
+                    error(candidate_path, "detached candidate edge " + cell.get("id", "?"))
+            def bounds(oid):
+                cell = cc.get(oid)
+                geo = cell.find("mxGeometry") if cell is not None else None
+                if geo is None:
+                    return None
+                try:
+                    x, y = float(geo.get("x")), float(geo.get("y"))
+                    w, h = float(geo.get("width")), float(geo.get("height"))
+                    return (x, y, x+w, y+h)
+                except (TypeError, ValueError):
+                    error(candidate_path, "invalid geometry on " + oid)
+                    return None
+            def lane(oid):
+                box = bounds(oid)
+                if box is None:
+                    return None
+                x, y = (box[0]+box[2])/2, (box[1]+box[3])/2
+                for name in ("lane-0", "lane-1", "lane-2", "lane-3", "lane-5", "lane-6", "lane-7"):
+                    area = bounds(name)
+                    if area and area[0] <= x <= area[2] and area[1] <= y <= area[3]:
+                        return name
+                return None
+            for parent, child in (("recurring-agreement", "agreement-term"), ("income", "income-item"), ("expense", "expense-item"), ("receipt", "receipt-item")):
+                parent_lane, child_lane = lane(parent), lane(child)
+                if parent_lane is None or parent_lane != child_lane:
+                    error(candidate_path, parent + " and " + child + " must share a swimlane")
+            for source, target, condition in (("recurring-agreement", "income", "direction = income"), ("recurring-agreement", "expense", "direction = expense"), ("recurring-agreement", "agreement-term", ""), ("income", "income-item", ""), ("expense", "expense-item", ""), ("receipt", "receipt-item", ""), ("receipt-item", "income-item", ""), ("receipt-item", "expense-item", "")):
+                matches = [cell for cell in candidate_cells if cell.get("edge") == "1" and cell.get("source") == source and cell.get("target") == target]
+                if len(matches) != 1 or (condition and condition not in matches[0].get("value", "")):
+                    error(candidate_path, "missing or ambiguous candidate relation " + source + " -> " + target)
     schemas = {}
     schema_groups = {}
     for p in base.rglob("metadata.yaml"):
