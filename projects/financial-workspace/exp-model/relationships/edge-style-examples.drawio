@@ -141,13 +141,7 @@
         </mxCell>
         <mxCell id="edge-39" edge="1" parent="1" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=16;endSize=16;startFill=0;endFill=0;" value="">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="140" y="793"/>
-              <mxPoint x="317" y="793"/>
-            </Array>
-            <mxPoint x="140" y="717" as="sourcePoint"/>
-            <mxPoint x="317" y="801" as="targetPoint"/>
-          </mxGeometry>
+            <mxPoint x="140" y="717" as="sourcePoint"/><mxPoint x="265" y="827" as="targetPoint"/><Array as="points"><mxPoint x="140" y="827"/></Array></mxGeometry>
         </mxCell>
         <mxCell id="box-40" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFE3AD;strokeColor=#44627C;fontColor=#17324D;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="Income" vertex="1">
           <mxGeometry height="53" width="110" x="440" y="664" as="geometry"/>
@@ -296,13 +290,7 @@
         </mxCell>
         <mxCell id="edge-79" edge="1" parent="1" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#B36C3E;strokeWidth=1.5;dashed=1;startArrow=none;endArrow=none;" value="">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="580" y="1177"/>
-              <mxPoint x="640" y="1177"/>
-            </Array>
-            <mxPoint x="580" y="1099" as="sourcePoint"/>
-            <mxPoint x="640" y="1208" as="targetPoint"/>
-          </mxGeometry>
+            <mxPoint x="580" y="1099" as="sourcePoint"/><mxPoint x="608" y="1228" as="targetPoint"/><Array as="points"><mxPoint x="580" y="1177"/><mxPoint x="640" y="1177"/><mxPoint x="640" y="1228"/></Array></mxGeometry>
         </mxCell>
         <mxCell id="box-80" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5F8FB;strokeColor=#B6C5D2;fontColor=#17324D;fontSize=12;fontStyle=0;align=center;verticalAlign=middle;spacing=8;" value="" vertex="1">
           <mxGeometry height="355" width="720" x="800" y="935" as="geometry"/>
@@ -377,10 +365,10 @@
           <mxGeometry height="25" width="1480" x="40" y="1301" as="geometry"/>
         </mxCell>
         <mxCell id="dQ30nYshYY-l6nsXGh4K-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="Visual defect" vertex="1">
-          <mxGeometry height="60" width="120" x="265" y="742" as="geometry"/>
+          <mxGeometry height="60" width="120" x="430" y="770" as="geometry"/>
         </mxCell>
         <mxCell id="dQ30nYshYY-l6nsXGh4K-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="Visual defect" vertex="1">
-          <mxGeometry height="60" width="120" x="570" y="1180" as="geometry"/>
+          <mxGeometry height="60" width="120" x="430" y="1060" as="geometry"/>
         </mxCell>
         <mxCell id="fanout-box-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFFFFF;fontColor=#17324D;fontSize=31;fontStyle=1;align=left;verticalAlign=middle;spacing=8;" value="07  Dense fan-out from one Account" vertex="1">
           <mxGeometry height="52" width="1500" x="40" y="1360" as="geometry"/>
