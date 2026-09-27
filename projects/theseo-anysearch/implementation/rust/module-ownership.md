@@ -34,6 +34,11 @@ and untested areas rather than assuming coverage from filenames.
 
 Which modules own world storage versus episode mutation? Which layer owns action transitions, PyO3 conversion, and viewer-only state? What public exports and internal paths are intended to remain stable? Which imported module paths no longer exist?
 
+Map the `core` crate, `extension_sdk` crate and its procedural macros, native
+executables, and test targets separately. Identify dependency direction and the
+boundary between built-in behavior and dynamically loaded experiment extensions;
+develop the latter in the [extension investigation](extensions.md).
+
 For each finding, label it **current**, **obsolete**, or **unverified**, and
 record the source file, test, and revision supporting that label.
 

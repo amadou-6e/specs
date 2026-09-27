@@ -27,3 +27,15 @@ partition is fixed; documents do not create nested implementation categories.
 
 Implementation guidance links to subsystem contracts and must not redefine their
 observable behavior.
+
+## Investigation queue
+
+These draft pages plan source-backed contributor guidance; they are not yet accepted
+rules. Resolve each against a pinned product revision and relevant tests:
+
+- [Python package and module ownership](module-ownership.md)
+- [Python extension implementation](extensions.md)
+- [Python code conventions](code-conventions.md)
+
+The existing [testing page](testing.md) also requires a source-and-test audit before
+its commands, paths, and coverage claims can be treated as current guidance.
