@@ -1,0 +1,64 @@
+schema_version: 2
+object: "receipt-item"
+identity_field: "receipt_item_id"
+primary_key:
+  receipt_item_id:
+    type: "string"
+    required: true
+    nullable: false
+foreign_keys:
+  receipt_id:
+    type: "ref"
+    required: true
+    nullable: false
+    target: "receipt"
+  representation_id:
+    type: "ref"
+    required: true
+    nullable: false
+    target: "source-representation"
+  single_expense_item_ids:
+    type: "ref[]"
+    required: false
+    nullable: true
+    target: "single-expense-item"
+fields:
+  label:
+    type: "string"
+    required: true
+    nullable: false
+  quantity:
+    type: "decimal"
+    required: false
+    nullable: true
+    encoding: "decimal-string"
+  unit_amount:
+    type: "decimal"
+    required: false
+    nullable: true
+    encoding: "decimal-string"
+  line_amount:
+    type: "decimal"
+    required: false
+    nullable: true
+    encoding: "decimal-string"
+  currency:
+    type: "string"
+    required: false
+    nullable: true
+  line_role:
+    type: "string"
+    required: true
+    nullable: false
+    enum: ["item", "discount", "shipping", "tax", "refund", "subtotal", "total", "other"]
+  source_locator:
+    type: "string"
+    required: true
+    nullable: false
+constraints:
+  - "Each Receipt item belongs to one non-income-statement Receipt and one supporting representation."
+  - "The representation must support the parent Receipt."
+  - "If unit_amount or line_amount is present, currency is required."
+  - "Printed totals, discounts, tax and item lines must not be added indiscriminately."
+  - "A reviewed link to a Single expense item does not create another purchase or cash movement."
+validation_scope: "Typed specification contract; line reconciliation and matching require review."

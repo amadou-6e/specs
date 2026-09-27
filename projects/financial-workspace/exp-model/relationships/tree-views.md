@@ -11,6 +11,7 @@ Account
     +-- Single expense [when settled]
     |   +-- Single expense item
     |   +-- Receipt
+    |       +-- Receipt item
     |       +-- Representation: email / PDF / scan / image
     +-- Payment occurrence
     |   +-- Recurring expense
@@ -88,3 +89,13 @@ Receipt [income-statement kind]
 ~~~
 
 The Income statement item is a component of the salary evidence. It supports a reimbursement-kind Single income, which links to the expense being repaid. This does not create a second expense or a second booked salary transaction.
+
+## Receipt line subtree
+
+```text
+Receipt [non-income-statement kind]
++-- [1 : 0..*] Receipt item
+    +-- [0..* : 0..*] Single expense item [reviewed match]
+```
+
+Income-statement Receipts use Income statement items instead. A Receipt item and its matched Single expense item do not represent two separate purchases.

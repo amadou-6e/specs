@@ -13,7 +13,7 @@ purpose: "Document supporting a financial event, including purchase receipts and
 includes:
   - "Document kind, source representation"
   - "Income statement as document_kind income-statement, with employer, period and payroll summaries"
-  - "Issuer, order/document reference, issue date, items, total, currency"
+  - "Issuer, order/document reference, issue date, Receipt item children, total, currency"
 excludes:
   - "Source file format as financial identity"
   - "Workflow execution"
@@ -28,7 +28,7 @@ relationship_ids:
   - "receipt-income-statement-items"
   - "recurring-income-receipts"
   - "supports-single-income"
-  - "documents-expense-item"
+  - "receipt-items"
 representations:
   - "../../representations/email"
   - "../../representations/pdf"

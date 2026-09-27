@@ -11,4 +11,4 @@
 | receipt-income-statement-items | receipt | income-statement-item | 0..* | 1 |
 | recurring-income-receipts | recurring-income | receipt | 0..* | 0..1 |
 | supports-single-income | receipt | single-income | 0..* | 0..* |
-| documents-expense-item | receipt | single-expense-item | 0..* | 0..* |
+| receipt-items | receipt | receipt-item | 0..* | 1 |

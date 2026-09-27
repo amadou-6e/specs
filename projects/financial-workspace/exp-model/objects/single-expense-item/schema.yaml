@@ -53,4 +53,5 @@ constraints:
   - "Unknown optional values are null; no invented defaults."
   - "If unit_amount is supplied, currency must be supplied."
   - "If line_amount is supplied, currency must be supplied."
+  - "New source-line matches use Receipt item relationships; receipt_locator is retained for legacy records."
 validation_scope: "Typed specification contract; natural-language cross-record constraints require publication/reconciliation checks."

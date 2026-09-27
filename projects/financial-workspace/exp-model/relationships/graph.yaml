@@ -73,6 +73,11 @@
       "definition": "../objects/commitment-term/README.md"
     },
     {
+      "id": "receipt-item",
+      "identity": "receipt_item_id",
+      "definition": "../objects/receipt-item/README.md"
+    },
+    {
       "id": "income-statement-item",
       "identity": "income_statement_item_id",
       "definition": "../objects/income-statement-item/README.md"
@@ -325,8 +330,15 @@
       "sources_per_target": "0..*"
     },
     {
-      "id": "documents-expense-item",
+      "id": "receipt-items",
       "source": "receipt",
+      "target": "receipt-item",
+      "targets_per_source": "0..*",
+      "sources_per_target": "1"
+    },
+    {
+      "id": "receipt-item-expense-items",
+      "source": "receipt-item",
       "target": "single-expense-item",
       "targets_per_source": "0..*",
       "sources_per_target": "0..*"
@@ -377,6 +389,8 @@
     "Every Cashflow entry is expected or realized. Expected entries have a date, signed amount, currency, and reviewed commitment or contract basis; they need no Transaction or Receipt.",
     "A realized Cashflow entry references a posted Transaction. A Receipt may enrich either status but never establishes realization.",
     "An expected Cashflow entry retains its entry_id when realized; one posted Transaction maps to at most one entry per Cashflow sheet.",
-    "Budget and Forecast relate to Cashflow entries, never directly to income or expense objects. Allocations must prevent double counting."
+    "Budget and Forecast relate to Cashflow entries, never directly to income or expense objects. Allocations must prevent double counting.",
+    "Receipt items are source document lines on non-income-statement Receipts; Income statement items remain the distinct line type for income-statement Receipts.",
+    "A Receipt item may map to zero or more Single expense items after review; their amounts are alternative descriptions of the same purchase and must not be added twice."
   ]
 }

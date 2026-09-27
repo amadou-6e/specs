@@ -85,9 +85,9 @@
           <mxGeometry height="110" width="250" x="980" y="235" as="geometry"/>
         </mxCell>
         <mxCell id="income-statement-item" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7EDC9;strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;" value="&lt;b&gt;&lt;font style='font-size:16px'&gt;Income Statement Item&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color='#344E66'&gt;PK income_statement_item_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK receipt_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK representation_id&lt;/font&gt;" vertex="1">
-          <mxGeometry height="110" width="250" x="1850" y="1150" as="geometry"/>
+          <mxGeometry height="110" width="250" x="980" y="450" as="geometry"/>
         </mxCell>
-        <mxCell id="recurring-expense" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7DDD6;strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;" value="&lt;b&gt;&lt;font style='font-size:16px'&gt;Recurring Expense&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color='#344E66'&gt;PK recurring_expense_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK representation_ids&lt;/font&gt;" vertex="1">
+        <mxCell id="receipt-item" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7EDC9;strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;" value="&lt;b&gt;&lt;font style='font-size:16px'&gt;Receipt Item&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color='#344E66'&gt;PK receipt_item_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK receipt_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK representation_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK single_expense_item_ids&lt;/font&gt;" vertex="1"><mxGeometry height="120" width="250" x="1850" y="1150" as="geometry"/></mxCell><mxCell id="recurring-expense" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7DDD6;strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;" value="&lt;b&gt;&lt;font style='font-size:16px'&gt;Recurring Expense&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color='#344E66'&gt;PK recurring_expense_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK representation_ids&lt;/font&gt;" vertex="1">
           <mxGeometry height="110" width="250" x="1860" y="235" as="geometry"/>
         </mxCell>
         <mxCell id="single-expense" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFE1A3;strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;" value="&lt;b&gt;&lt;font style='font-size:16px'&gt;Single Expense&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color='#344E66'&gt;PK single_expense_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK representation_ids&lt;/font&gt;" vertex="1">
@@ -223,9 +223,9 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="edge-16" edge="1" parent="1" source="receipt" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="income-statement-item" value="">
+        <mxCell id="edge-16" edge="1" parent="1" source="receipt" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startSize=18;endSize=18;startFill=0;endFill=0;startArrow=ERmandOne;endArrow=ERzeroToMany;exitX=0;exitY=0.4;entryX=1;entryY=0.5;" target="income-statement-item" value="">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="1775" y="1234"/><mxPoint x="1775" y="1205"/></Array></mxGeometry>
+            <Array as="points"><mxPoint x="1320" y="1217"/><mxPoint x="1320" y="505"/></Array></mxGeometry>
         </mxCell>
         <mxCell id="edge-17" edge="1" parent="1" source="account" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1;exitY=0.5;entryX=1;entryY=0.4;" target="balance-item" value="">
           <mxGeometry relative="1" as="geometry">
@@ -299,15 +299,15 @@
           <mxGeometry relative="1" as="geometry">
             <Array as="points"><mxPoint x="1640" y="1905"/><mxPoint x="1640" y="2015"/><mxPoint x="975" y="2015"/><mxPoint x="975" y="1722"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge-30" edge="1" parent="1" source="receipt" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.8;exitY=0;entryX=0;entryY=0.5;" target="single-expense-item" value="">
+        <mxCell id="edge-30" edge="1" parent="1" source="receipt" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startSize=18;endSize=18;startFill=0;endFill=0;startArrow=ERmandOne;endArrow=ERzeroToMany;exitX=1;exitY=0.5;entryX=0;entryY=0.7;" target="receipt-item" value="">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="1650" y="985"/><mxPoint x="2190" y="985"/><mxPoint x="2190" y="505"/></Array></mxGeometry>
+            <Array as="points"><mxPoint x="1775" y="1234"/><mxPoint x="1775" y="1234"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge-31" edge="1" parent="1" source="income-statement-item" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.5;exitY=0;entryX=1;entryY=0.5;" target="single-income" value="">
+        <mxCell id="edge-32" edge="1" parent="1" source="income-statement-item" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startSize=18;endSize=18;startFill=0;endFill=0;startArrow=ERzeroToMany;endArrow=ERzeroToMany;exitX=1;exitY=0.5;entryX=0;entryY=0.55;" target="single-income" value="">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="1975" y="1000"/><mxPoint x="1750" y="1000"/><mxPoint x="1750" y="310"/></Array></mxGeometry>
+            <Array as="points"><mxPoint x="1360" y="505"/><mxPoint x="1360" y="315"/></Array></mxGeometry>
         </mxCell>
-        <mxCell id="edge-32" edge="1" parent="1" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1.0000;exitY=0.3333;entryX=0.0000;entryY=0.5000;" target="single-expense" source="single-income" value="">
+        <mxCell id="edge-33" edge="1" parent="1" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1.0000;exitY=0.3333;entryX=0.0000;entryY=0.5000;" target="single-expense" source="single-income" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1710" y="283.67"/>
@@ -319,7 +319,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="edge-33" edge="1" parent="1" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1.0000;exitY=0.6667;entryX=0.0000;entryY=0.5000;" target="single-expense-item" source="single-income" value="">
+        <mxCell id="edge-34" edge="1" parent="1" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERzeroToMany;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=1.0000;exitY=0.6667;entryX=0.0000;entryY=0.5000;" target="single-expense-item" source="single-income" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1710" y="332.33"/>
@@ -334,7 +334,7 @@
         <mxCell id="payment-occurrence" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D7F0DF;strokeColor=#294968;strokeWidth=2;fontColor=#17324B;fontSize=13;align=left;verticalAlign=top;spacingTop=10;spacingLeft=13;" value="&lt;b&gt;&lt;font style='font-size:16px'&gt;Payment Occurrence&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color='#344E66'&gt;PK occurrence_id&lt;/font&gt;&lt;br&gt;&lt;font color='#475E72'&gt;FK recurring_expense_id&lt;/font&gt;" vertex="1">
           <mxGeometry height="110" width="250" x="1860" y="620" as="geometry"/>
         </mxCell>
-      <mxCell id="edge-34" parent="1" edge="1" source="single-income" target="single-income-item" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;"><mxGeometry relative="1" as="geometry"/></mxCell></root>
+      <mxCell id="edge-35" parent="1" edge="1" source="single-income" target="single-income-item" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=18;endSize=18;startFill=0;endFill=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;"><mxGeometry relative="1" as="geometry"/></mxCell><mxCell id="edge-31" edge="1" parent="1" source="receipt-item" target="single-expense-item" style="edgeStyle=segmentEdgeStyle;rounded=0;html=1;strokeColor=#3D607E;strokeWidth=1.8;startSize=18;endSize=18;startFill=0;endFill=0;startArrow=ERzeroToMany;endArrow=ERzeroToMany;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" value=""><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="2170" y="1210"/><mxPoint x="2170" y="505"/></Array></mxGeometry></mxCell></root>
     </mxGraphModel>
   </diagram>
 </mxfile>

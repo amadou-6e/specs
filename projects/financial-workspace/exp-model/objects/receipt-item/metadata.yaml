@@ -1,0 +1,33 @@
+schema_version: 1
+name: receipt-item
+authority: Replacement candidate
+owner: amadou-6e
+children:
+  - "1 README.md"
+  - "1 schema.yaml"
+  - "1 relationships.md"
+  - "1 representations.md"
+status: draft
+kind: "financial-object"
+purpose: "One source line printed in a purchase, refund, or booking Receipt."
+includes:
+  - "Original line label, quantity, amount, currency, and source locator"
+  - "Reviewed correspondence to Single expense items"
+excludes:
+  - "Income statement lines"
+  - "A second cash movement"
+identity_field: "receipt_item_id"
+schema_ref: "schema.yaml"
+graph_ref: "../../relationships/graph.yaml"
+relationship_ids:
+  - "receipt-items"
+  - "receipt-item-expense-items"
+representations: []
+evidence_forms:
+  - "../../representations/email"
+  - "../../representations/pdf"
+  - "../../representations/image"
+provenance_ref: "../../representations/provenance.yaml"
+mapping_refs:
+  - "../../mappings/cashflow/mapping.yaml"
+maturity: "specified-not-replayed"

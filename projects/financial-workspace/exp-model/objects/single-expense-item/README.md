@@ -23,4 +23,4 @@ Includes: Single expense, description, quantity. Optional: Unit/line amount, cat
 
 These are type definitions; no illustrative instance is claimed as an observed record.
 
-A receipt may document this item directly. A reimbursement-kind Single income may repay this item without changing the parent expense amount.
+A Receipt item may document this item after review. A reimbursement-kind Single income may repay this item without changing the parent expense amount.

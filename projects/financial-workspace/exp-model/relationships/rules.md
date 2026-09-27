@@ -35,7 +35,8 @@ Canonical edges and cardinalities are in graph.yaml. targets_per_source counts t
 | account-forecasts | account | forecast | 0..* | 0..1 |
 | budget-cashflow-entries | budget | cashflow-entry | 0..* | 0..* |
 | forecast-cashflow-entries | forecast | cashflow-entry | 0..* | 0..* |
-| documents-expense-item | receipt | single-expense-item | 0..* | 0..* |
+| receipt-items | receipt | receipt-item | 0..* | 1 |
+| receipt-item-expense-items | receipt-item | single-expense-item | 0..* | 0..* |
 | statement-item-supports-single-income | income-statement-item | single-income | 0..* | 0..* |
 | reimburses-single-expense | single-income | single-expense | 0..* | 0..* |
 | reimburses-single-expense-item | single-income | single-expense-item | 0..* | 0..* |
@@ -58,3 +59,5 @@ Cashflow entries may be expected before settlement. A reviewed commitment or con
 
 A Single expense can have zero or more Single expense items and can be supported by receipts. A receipt may document the whole expense or particular items. A reviewed reimbursement Income statement item on an income-statement Receipt can support a reimbursement-kind Single income, which references the expense or specific items. Retain an allocation amount and currency when one salary line covers several expenses. The sum of verified expense allocations must not exceed the reviewed reimbursement Single income amount. Do not count the same reimbursement at both parent and item level. The linked salary transaction remains one cashflow movement.
 An income-statement Receipt must retain its source-backed issuer name; issuer is a field, not a separate Employer object. Income-statement summary amounts and Income statement items are evidence, not separate booked transactions.
+
+Receipt item preserves a source line on a non-income-statement Receipt. Match it to Single expense item only after review; do not count both amounts as separate spending. Income statement item remains a distinct source line of an income-statement Receipt.

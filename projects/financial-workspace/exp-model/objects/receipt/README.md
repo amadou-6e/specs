@@ -15,12 +15,12 @@ receipt/
 
 Identity: receipt_id.
 
-Includes: Document kind, source representation. Optional: Issuer, order/document reference, issue date, items, total, currency.
+Includes: Document kind, source representation. Optional: Issuer, order/document reference, issue date, Receipt items, total, currency.
 
 - [Fields](schema.yaml)
 - [Relationships](relationships.md)
 - [Source forms](representations.md)
 
-An income statement is a Receipt with document_kind income-statement. Its detailed lines remain Income statement items. Existing income_statement_id values map to receipt_id during migration; do not create duplicate receipts.
+An income statement is a Receipt with document_kind income-statement. Its detailed lines remain Income statement items. Other Receipt lines are Receipt items, which may be matched to Single expense items. Existing income_statement_id values map to receipt_id during migration; do not create duplicate receipts.
 
 These are type definitions; no illustrative instance is claimed as an observed record.

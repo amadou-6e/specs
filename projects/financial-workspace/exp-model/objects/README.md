@@ -27,6 +27,7 @@ One folder per identifiable object. [Field catalogue](field_catalogue.yml) descr
 - [forecast](forecast/README.md)
 - [single-expense-item](single-expense-item/README.md)
 - [receipt](receipt/README.md)
+- [receipt-item](receipt-item/README.md)
 - [cashflow-sheet](cashflow-sheet/README.md)
 - [cashflow-entry](cashflow-entry/README.md)
 

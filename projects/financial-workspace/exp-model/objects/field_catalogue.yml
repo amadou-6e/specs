@@ -276,7 +276,23 @@ objects:
       line_amount: "Amount of a Single expense item line."
       currency: "Currency of the item amounts."
       category: "Classification of a Single expense item."
-      receipt_locator: "Location of the corresponding item within a Receipt representation."
+      receipt_locator: "Legacy source locator; use a reviewed Receipt item relationship for new matches."
+  receipt-item:
+    schema: "receipt-item/schema.yaml"
+    primary_key:
+      receipt_item_id: "Stable identity of a printed Receipt line."
+    foreign_keys:
+      receipt_id: "Parent non-income-statement Receipt."
+      representation_id: "Source representation containing the printed line."
+      single_expense_item_ids: "Reviewed matches to purchased Single expense items."
+    fields:
+      label: "Original text of the printed line."
+      quantity: "Quantity printed on the source line when available."
+      unit_amount: "Unit amount printed on the source line."
+      line_amount: "Line amount printed on the source document."
+      currency: "Currency of any supplied line or unit amount."
+      line_role: "Whether the line is an item, discount, shipping, tax, refund, subtotal, total, or other."
+      source_locator: "Page, row, message section, or equivalent locator of this line."
   receipt:
     schema: "receipt/schema.yaml"
     primary_key:
@@ -296,7 +312,7 @@ objects:
       document_reference: "Reference printed on the Receipt itself."
       order_reference: "Merchant order reference shared by Single expense and Receipt when evidenced."
       issue_date: "Date on which the Receipt document was issued."
-      item_descriptions: "Descriptions of items listed on a Receipt without separate Receipt item objects."
+      item_descriptions: "Legacy or derived summary of Receipt item labels; individual source lines belong to Receipt item."
       total: "Total printed on the Receipt document."
       currency: "Currency of the document total."
   recurring-expense:

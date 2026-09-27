@@ -100,6 +100,7 @@ constraints:
   - "If gross, net, deductions or reimbursement is supplied, currency is required."
   - "If recurring_income_id is set, its payer_name should agree with the Receipt issuer when both are evidenced; differences require review."
   - "Preserve observed statement summaries separately from detailed Income statement items."
+  - "For non-income-statement documents, Receipt items preserve source lines; item_descriptions is a legacy or derived summary, not an independent line identity."
   - "Required fields apply to accepted canonical records; incomplete extractions remain candidates."
   - "Unknown optional values are null; no invented defaults."
   - "If total is supplied, currency must be supplied."
