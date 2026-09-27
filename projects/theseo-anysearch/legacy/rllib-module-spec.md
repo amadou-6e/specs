@@ -1,3 +1,29 @@
+---
+title: Imported RLlib module specification
+status: superseded
+kind: legacy
+owners: [theseo-team]
+last_reviewed: 2026-09-28
+applies_to: [theseo-anysearch]
+supersedes: null
+related: []
+---
+
+> Historical source. This document is not current implementation guidance.
+> Its original wording is retained below for traceability.
+
+## Migration disposition
+
+The abstract-trainer, algorithm, runner, and tuner catalog predates the current
+RLlib package layout and cannot be assumed to describe implemented interfaces.
+Current investigation ownership is in [RLlib integration](../implementation/rllib/integration.md)
+and [training workflow](../implementation/rllib/training-workflow.md). Claims
+must be checked against product source and tests before promotion. Its original
+authority ended no later than classification under specs issue #110; an earlier
+supersession date has not been established.
+
+## Archived material
+
 # RLlib Module Specification
 
 ## Purpose

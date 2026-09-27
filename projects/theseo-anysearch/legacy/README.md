@@ -39,6 +39,7 @@ historical details require validation before being incorporated.
 | `rllib/explain/backend.md` | [Explain backend](rllib-explain-backend.md) | [Python design](../subsystems/policy-explainability/design/python.md) |
 | `rllib/explain/cli.md` | [Explain CLI](rllib-explain-cli.md) | [Interfaces](../subsystems/policy-explainability/contract/interfaces.md) |
 | `rllib/explain/policy-attribution.md` | [Policy attribution](rllib-policy-attribution.md) | [Explainability contract](../subsystems/policy-explainability/contract/README.md) |
+| `implementation/rllib/legacy-module-spec.md` | [RLlib module proposal](rllib-module-spec.md) | [RLlib integration investigation](../implementation/rllib/integration.md) and [training workflow investigation](../implementation/rllib/training-workflow.md) |
 
 The migration is a classification and authority cleanup, not a new audit of the
 product implementation. These candidate details remain deliberately unpromoted:
