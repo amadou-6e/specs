@@ -1,6 +1,6 @@
-﻿# Edge style for the candidate ERD
+# Edge style for the candidate ERD
 
-This is the routing contract for `unified-income-expense-candidate.drawio`. It changes the presentation of proposed relationships, not the relationship definitions or cardinalities in `graph.yaml` or the candidate. Apply it when simplifying the diagram; review the exact exported result after every edit.
+This is the routing contract for `unified-income-expense-candidate.drawio`. It changes the presentation of proposed relationships, not the relationship definitions or cardinalities in `graph.yaml` or the candidate. Apply it when simplifying the diagram; review the exact exported result after every edit. The [editable visual examples](edge-style-examples.drawio) show each rule as a use/avoid comparison.
 
 ## Visual language
 
