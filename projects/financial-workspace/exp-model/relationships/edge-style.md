@@ -34,3 +34,9 @@ Apply these in order. Do not improve a lower-priority property by breaking a hig
 ## Review before accepting a routed diagram
 
 Check every edge at both endpoints and trace its entire path at readable zoom. Count card/label crossings, edge crossings and bends; resolve card/label crossings first, then reduce the other counts. Check the whole page for consistent spacing and local areas for overlapping symbols or ambiguous near-parallel lines. The validator checks object and endpoint identity but cannot prove these geometric conditions, so inspect an export of the exact final Draw.io file.
+
+## Script-assisted crossing audit
+
+Run `python tools/audit_drawio_edges.py projects/financial-workspace/exp-model/relationships/unified-income-expense-candidate.drawio` from the `specs` repository root before final visual review. It prints edge IDs and coordinates where two saved orthogonal waypoint segments cross. The previous Account–Budget and Account–Forecast crossing is covered by a regression test in `tools/test_audit_drawio_edges.py`.
+
+Treat results as candidates to inspect and resolve, not an automatic pass/fail gate: some crossings are necessary, and Draw.io can route endpoint segments differently from the saved waypoints. The script deliberately omits those endpoint segments and cannot check card overlap, legibility, or rendered cardinality markers. Render the exact final file and trace every edge after running it. Record any crossings you retain and why they cannot be avoided.
