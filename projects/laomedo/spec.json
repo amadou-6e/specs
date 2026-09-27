@@ -1,0 +1,8 @@
+{
+  "name": "Laomedo",
+  "slug": "laomedo",
+  "source_repository": "https://github.com/amadou-6e/laomedo",
+  "status": "active",
+  "description": "Agent workflow design specifications and current AGENTVIZ UI reference material.",
+  "ui_layout": "view-owned-v1"
+}
