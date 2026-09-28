@@ -8,6 +8,6 @@ trace inspection, and a phased implementation estimate. It is a technical
 proposal, not a UI interaction specification.
 
 Feasibility findings test that proposal against upstream tools. The
-[upstream dependencies matrix](feasibility/upstream-dependencies.md) records
+[upstream dependencies matrix](feasibility/118.md) records
 inspected versions, licenses, extension points, and gaps for AGENTVIZ,
 Langflow, Codex, Claude Code, and Deep Agents.
