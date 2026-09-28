@@ -28,13 +28,13 @@ local workflows.
 Implementation guidance links to subsystem contracts and must not redefine their
 observable behavior.
 
-## Investigation queue
+## Draft guidance and investigation
 
-The following draft pages are investigation plans, not accepted implementation
-rules. Each must be resolved against a pinned product revision and test evidence
-before its plan is replaced with contributor guidance:
+The following pages are not yet accepted implementation rules. They retain
+their pinned-source evidence and unresolved test gaps:
 
-- [RLlib integration boundaries](integration.md)
+- [RLlib object investigation](integration.md)
+- [Algorithm adapters and support evidence](algorithms.md)
 
 The training lifecycle, curriculum, evaluation, checkpoint, Tune, and artifact
 ownership map belongs to the [training-and-tuning subsystem](../../subsystems/training-and-tuning/design/README.md).
