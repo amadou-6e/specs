@@ -35,10 +35,11 @@ Cross-stack rules live in this README or in a clearly named document directly un
 serialization, coordinate conventions, deterministic identity, compatibility,
 dependency policy, testing, and review expectations.
 
-The [test organization guide](test-organization.md) maps test placement by production
-concern across Python and Rust and proposes rules to prevent unrelated tests from
-accumulating in generic buckets. Language-specific execution and evidence limits
-remain in the Python and Rust testing guides.
+Put a test beside the production concern whose behavior it proves, then choose
+the appropriate unit or integration boundary. The annotated target trees and
+placement rules live with [Python testing](python/testing.md) and
+[Rust testing](rust/testing.md); cross-language checks should link both sides
+without duplicating every assertion.
 
 ## Local workflows and runbooks
 

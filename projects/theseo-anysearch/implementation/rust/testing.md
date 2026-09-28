@@ -10,9 +10,9 @@ related: []
 
 # Rust testing
 
-For placement of native unit, black-box integration, and Python-boundary tests by
-production concern, see the cross-stack [test organization guide](../test-organization.md).
-This page owns native test commands, prerequisites, and evidence limits.
+This page owns native test placement by production concern, commands,
+prerequisites, and evidence limits. [Python testing](../python/testing.md)
+owns the Python-facing boundary tests.
 
 This page inventories native verification and its current limits. It is a draft
 source-and-test audit, not a claim that the commands below were run or that every
@@ -22,6 +22,45 @@ read on 2026-09-28. Refresh the inventory against a new pinned revision before
 using it as a release gate.
 
 ## Test boundaries
+
+### Placement rules and annotated target tree
+
+Keep local invariants in `#[cfg(test)]` beside their owning Rust module. A
+larger focused body may live in a sibling `tests.rs` or `*_tests.rs` module;
+do not accumulate unrelated behavior there. Put black-box crate and extension
+boundaries under `core/tests/`. The SDK is a separate crate with its own tests.
+
+This is the existing target at the pinned revision; displayed paths exist and
+omitted inline test-bearing modules stay in place:
+
+```text
+theseo_anysearch/
+├── core/
+│   ├── src/                                  # native unit tests beside owners
+│   │   ├── bin/voxel_replay.rs                # replay binary
+│   │   ├── camera.rs                          # camera logic
+│   │   ├── replay/storage.rs                  # replay storage
+│   │   ├── bridge/python/environments/voxel/environment.rs  # PyO3 boundary
+│   │   ├── voxel/actions/pipeline.rs          # action pipeline
+│   │   ├── voxel/predicates/native.rs          # native predicates
+│   │   ├── voxel/world/ingest/voxelize.rs      # world ingest
+│   │   ├── voxel/world/disk_backed.rs          # world residency
+│   │   ├── voxel/environment/multi_heterogeneous_tests.rs  # focused sibling tests
+│   │   ├── voxel/environment/single/tests.rs  # focused submodule tests
+│   │   ├── voxel/world/regional_tests.rs       # focused sibling tests
+│   │   └── verification/tests.rs               # backend parity/fault checks
+│   └── tests/                                # black-box crate boundaries
+│       ├── ingest_to_world.rs                 # ingest -> world
+│       ├── ingest_to_env.rs                   # ingest -> environment
+│       └── scenario_v2_extension.rs          # compiled extension scenario
+└── extension_sdk/src/lib.rs                  # separate crate; embedded SDK tests
+```
+
+For Python/native behavior, test the native invariant here and the exposed
+binding or workflow from [Python integration](../python/testing.md); link the
+pair in the change review instead of duplicating every assertion. Benchmarks
+are separate measurements, not correctness tests. The tree records placement,
+not passing results.
 
 | Boundary | Current evidence at the pinned revision | What it does not establish |
 | --- | --- | --- |
