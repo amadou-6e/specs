@@ -1,0 +1,39 @@
+---
+title: RLlib environment integration
+status: draft
+kind: implementation
+owners: [theseo-team]
+last_reviewed: 2026-09-28
+applies_to: [theseo-anysearch]
+related: []
+---
+
+# RLlib environment integration
+
+This is source-wired contributor guidance, **not** a runtime support certificate. The source baseline is `theseo-anysearch` commit [`fd94554c`](https://github.com/amadou-6e/theseo-anysearch/tree/fd94554c9620096f94aaed95ffda6a1bbd4711ec), inspected on 2026-09-28. Focused tests were run on a different checkout, `ed8982e`, and cannot validate the pinned revision. The [observation and model subsystem](../../subsystems/observations-and-models/README.md) owns observable schemas; [training and tuning](../../subsystems/training-and-tuning/README.md) owns evaluation semantics. This page only describes the RLlib adaptation points.
+
+## Environment registration and spaces
+
+`VoxelEnv.register_with_ray` calls Tune's `register_env` with a creator equivalent to `lambda cfg: cls(cfg or env_config)`. The PPO, DQN, Rainbow, SAC, and APPO adapters register an ID and pass it with the environment configuration to `AlgorithmConfig.environment(...)`. This establishes the construction wiring, **not** that an EnvRunner was created or a rollout succeeded. See [`voxel_env.py`](https://github.com/amadou-6e/theseo-anysearch/blob/fd94554c9620096f94aaed95ffda6a1bbd4711ec/theseo_anysearch/environments/gymnasium/voxel_env.py#L234-L239) and the [algorithm adapters](https://github.com/amadou-6e/theseo-anysearch/tree/fd94554c9620096f94aaed95ffda6a1bbd4711ec/theseo_anysearch/rllib/algorithms).
+
+`VoxelEnv` constructs Dict observation spaces by observation mode and may include an `int8` `action_mask`; its action space comes from `build_action_space`. Native observation conversion appends the mask and rejects an all-masked state. The mask is produced using Rust action predicates and `encode_action`. The multi-agent environment instead exposes per-agent Dict observation and action spaces. Preserve this distinction when adapting an algorithm; the exact schema and mask meaning belong to the [observation subsystem](../../subsystems/observations-and-models/README.md). Sources: [`voxel_env.py`](https://github.com/amadou-6e/theseo-anysearch/blob/fd94554c9620096f94aaed95ffda6a1bbd4711ec/theseo_anysearch/environments/gymnasium/voxel_env.py#L1288-L1395) and [`multi_voxel_env.py`](https://github.com/amadou-6e/theseo-anysearch/blob/fd94554c9620096f94aaed95ffda6a1bbd4711ec/theseo_anysearch/environments/pettingzoo/multi_voxel_env.py#L281-L301).
+
+## Connector and policy adaptation
+
+The modern PPO configuration helper forwards EnvRunner counts, per-runner environments, GPU, and in-flight settings and installs `FlattenObservations` as its environment-to-module connector. DQN and Rainbow reuse this helper; DQN also sets rollout fragment length. These are **RLlib configuration API calls**. Actor creation, placement, resource use, and actual vectorization are separate questions for [Ray execution](../ray/execution.md). Flattening an observation that contains `action_mask` does **not** establish that the modern policy enforces the mask. Source: [`ppo.py`](https://github.com/amadou-6e/theseo-anysearch/blob/fd94554c9620096f94aaed95ffda6a1bbd4711ec/theseo_anysearch/rllib/algorithms/ppo.py), [`dqn.py`](https://github.com/amadou-6e/theseo-anysearch/blob/fd94554c9620096f94aaed95ffda6a1bbd4711ec/theseo_anysearch/rllib/algorithms/dqn.py), [`rainbow.py`](https://github.com/amadou-6e/theseo-anysearch/blob/fd94554c9620096f94aaed95ffda6a1bbd4711ec/theseo_anysearch/rllib/algorithms/rainbow.py).
+
+SAC, APPO, and multi-agent PPO disable the new API stack and do not use that flattening helper. They assign EnvRunner counts directly; APPO also assigns vectorization, GPU, and in-flight settings. The legacy CNN model separates `action_mask` from encoder inputs and applies it to logits, but that is evidence for the **legacy model path only**. Sources: [`sac.py`](https://github.com/amadou-6e/theseo-anysearch/blob/fd94554c9620096f94aaed95ffda6a1bbd4711ec/theseo_anysearch/rllib/algorithms/sac.py), [`appo.py`](https://github.com/amadou-6e/theseo-anysearch/blob/fd94554c9620096f94aaed95ffda6a1bbd4711ec/theseo_anysearch/rllib/algorithms/appo.py), [`ppo.py`](https://github.com/amadou-6e/theseo-anysearch/blob/fd94554c9620096f94aaed95ffda6a1bbd4711ec/theseo_anysearch/rllib/algorithms/ppo.py), and [`models/base.py`](https://github.com/amadou-6e/theseo-anysearch/blob/fd94554c9620096f94aaed95ffda6a1bbd4711ec/theseo_anysearch/rllib/models/base.py).
+
+For multi-agent PPO, the registered environment wraps `MultiVoxelEnv` in `ParallelPettingZooEnv`; the adapter probes per-agent spaces and constructs `PolicySpec` mappings. With no agents supplied it derives a shared policy from `agent_0`. Whether heterogeneous spaces can safely share that policy is **unverified**. APPO probes `VoxelEnv` and passes explicit spaces into `.environment(...)`; other single-agent adapters rely on registration. Sources: [`ppo.py`](https://github.com/amadou-6e/theseo-anysearch/blob/fd94554c9620096f94aaed95ffda6a1bbd4711ec/theseo_anysearch/rllib/algorithms/ppo.py), [`appo.py`](https://github.com/amadou-6e/theseo-anysearch/blob/fd94554c9620096f94aaed95ffda6a1bbd4711ec/theseo_anysearch/rllib/algorithms/appo.py).
+
+## Evaluation adapter boundary
+
+When evaluation is enabled, `configure_rllib_evaluation` sets the evaluation interval, evaluation-runner count, parallel flag, `explore=False` evaluation config, and `AnySearchEvaluationFunction`. Disabled evaluation sets no interval, zero runners, and no custom callback. The five single-agent adapters and multi-agent PPO bind the callback after algorithm construction. The helper accepts either an Algorithm argument or a weak-reference binding; its serialization and live execution have not been verified here. APPO does not pass its evaluation-frequency setting to the helper, leaving the helper default of one; this is a **possible configuration discrepancy**, not a proven runtime failure. Evaluation sampling, seeds, and metric meaning belong to [training and tuning](../../subsystems/training-and-tuning/README.md). Source: [`parallel.py`](https://github.com/amadou-6e/theseo-anysearch/blob/fd94554c9620096f94aaed95ffda6a1bbd4711ec/theseo_anysearch/rllib/trainer/evaluation/parallel.py) and [adapters](https://github.com/amadou-6e/theseo-anysearch/tree/fd94554c9620096f94aaed95ffda6a1bbd4711ec/theseo_anysearch/rllib/algorithms).
+
+The evaluation `_PolicyAdapter` manually Gymnasium-flattens observations for an `RLModule` using an environment or probe space; a legacy `Policy` uses `ObsPreprocessorConnector`. These routes are separate from the algorithm's environment-to-module connector, so equivalence needs a real-policy test. Source: [`parallel.py`](https://github.com/amadou-6e/theseo-anysearch/blob/fd94554c9620096f94aaed95ffda6a1bbd4711ec/theseo_anysearch/rllib/trainer/evaluation/parallel.py).
+
+## Evidence and next verification
+
+On checkout `ed8982e`, `.venv/Scripts/python.exe -m pytest tests/test_rllib/test_unit/test_ppo_rollout_config.py tests/test_rllib/test_unit/test_parallel_evaluation.py -q` passed **13 tests** in 3.89 seconds. These are configuration/helper tests, not a pinned-source integration run. The pinned test file includes an additional disabled-evaluation case absent from that checkout. `test_cnn_models.py` and `integration/test_algorithm_coverage.py` were read, **not run** for this page.
+
+Before accepting compatibility claims, build a real algorithm against the pinned source, verify modern masking at inference and rollout, test heterogeneous multi-agent spaces, compare evaluation frequency (especially APPO), and compare the evaluation adapter's observation transformation with the training connector. Record Ray worker and vectorization behavior in the [Ray page](../ray/execution.md), not here.
