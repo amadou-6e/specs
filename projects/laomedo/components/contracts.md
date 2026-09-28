@@ -11,10 +11,18 @@ implementation decision.
 | `SkillSnapshotRef` | `skill_id`, `revision_id`, `tree_hash`, selected file paths and hashes | Identifies exact bytes; never resolves through `latest` during execution |
 | `EditPolicyRef` | `policy_id`, `revision_id`, `hash` | Independent from instructions used by a skill consumer |
 | `InputSnapshotRef` | `snapshot_id`, `hash`, media type | Preserves the effective handoff payload, including any structured fields |
-| `WorkspaceSnapshotRef` | `snapshot_id`, `hash`, source revision | Identifies files visible before a run; a post-run snapshot is separate |
+| `WorkspaceSnapshotRef` | `snapshot_id`, `hash`, source revision | Identifies source files before skill materialization |
+| `EffectiveWorkspaceRef` | `snapshot_id`, `hash`, source workspace ref, materialized skill ref | Identifies the files actually offered at dispatch |
 | `AgentRunSpec` | `provider`, model selection, effort selection, input, skill and workspace refs, permission grant, session mode, limits | Frozen before dispatch and attached to every resulting event |
-| `AgentRunResult` | `run_id`, status, native session ID if issued, output ref, trace ref, file-change ref | May be partial on failure; unknown fields are not fabricated |
+| `AgentRunResult` | `run_id`, status, native session ID if issued, effective workspace ref, post-run workspace ref, output ref, trace ref, file-change ref | May be partial on failure; unknown fields are not fabricated |
 | `SkillDraftResult` | `draft_id`, base and proposed skill refs, policy ref, patch ref, validation results, edit run ID | Cannot silently promote itself |
+
+Before dispatch, the runner resolves IDs to complete hashed refs, materializes
+the selected skill, and freezes an `EffectiveWorkspaceRef`. After the turn,
+it captures a separate post-run workspace snapshot. A resumed session starts
+from that last post-run state, not the original pre-run source snapshot. For
+`resume`, the request's workspace ref must identify that expected last
+post-run state and match the session registry before dispatch.
 
 The `AgentRunSpec` supports `fresh` and `resume` session modes. `fork` is
 allowed only if the adapter can state what was copied and what was not. A new
@@ -45,12 +53,12 @@ are both recorded; an omitted setting is not inferred as an explicit choice.
   "provider": "codex",
   "model": { "selection": "explicit", "id": "provider-model-id" },
   "effort": { "selection": "explicit", "level": "high" },
-  "input_ref": "input-snapshot-id",
-  "skill_ref": "skill-id@revision-id",
-  "workspace_ref": "workspace-snapshot-id",
+  "input_ref": { "snapshot_id": "input-id", "hash": "sha256:input-hash", "media_type": "application/json" },
+  "skill_ref": { "skill_id": "skill-id", "revision_id": "revision-id", "tree_hash": "sha256:tree-hash", "file_hashes": { "SKILL.md": "sha256:file-hash" } },
+  "workspace_ref": { "snapshot_id": "workspace-id", "hash": "sha256:workspace-hash", "source_revision": "source-revision-id" },
   "permission_grant_ref": "read-only-grant-id",
   "session": { "mode": "fresh", "resume_id": null },
-  "limits": { "timeout_seconds": 600, "max_turns": 20 }
+  "limits": { "timeout_seconds": 600 }
 }
 ```
 

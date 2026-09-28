@@ -24,19 +24,22 @@ separate data policy.
 ## Boundaries and lifecycle
 
 Each run receives a unique ID and a workspace created from a pinned snapshot.
-The source workspace and selected skill revision are immutable inputs. Read-
-only runs enforce filesystem read-only access outside permitted temporary
-output. Skill edits use a dedicated draft worktree, never the canonical skill
+The source workspace and selected skill revision are immutable inputs. After
+materializing skills, the runner hashes the effective workspace separately;
+after execution it snapshots the resulting files. Read-only runs enforce
+filesystem read-only access outside permitted temporary output. Skill edits
+use a dedicated draft worktree, never the canonical skill
 directory. Validate resolved paths and symlinks before mounting or copying.
 
 Each provider has a runner-owned persistent profile root: `CODEX_HOME` for
 Codex and `CLAUDE_CONFIG_DIR` for Claude. The process environment must not
 inherit user-level profile paths or unrelated agent settings. A session
 registry maps a native thread/session ID to provider, owner, profile root,
-workspace snapshot, active working directory, skill revision, and grant.
-Resume fails closed if any binding is missing or incompatible. Session data
-survives a runner restart; transient workspaces are restored from snapshots
-or explicitly marked unavailable.
+source and effective workspace snapshots, last post-run workspace snapshot,
+active working directory, skill revision, and grant. Resume restores the
+last post-run snapshot so session history and visible files agree; it fails
+closed if that snapshot cannot be restored or a binding is incompatible.
+Session data survives a runner restart.
 
 Credentials live in the runner's credential store, not in a Langflow node,
 flow export, trace, or spec repository. Multi-user deployments isolate
@@ -52,7 +55,11 @@ these restrictions outside the agent's prompt and records the effective
 policy. Default flow execution is read-only with no replay of previous
 writes, messages, or external calls. A skill-edit grant permits writes only
 inside its draft root and approved validation output. Any later downstream
-write mode requires its own grant and idempotency strategy.
+write mode requires its own grant and idempotency strategy. Bundled skill
+scripts are disabled by a read-only grant unless it explicitly allows their
+execution. Permitted scripts may write temporary output only to a designated
+scratch directory, which is excluded from source snapshots but captured as
+an output artifact when relevant.
 
 An agent claiming a change was approved is not evidence of a grant. Any
 provider-side approval prompt must be routed through the runner and recorded
@@ -69,7 +76,11 @@ product decision.
 
 - Verify the personal Codex and Claude session directories are unchanged
   after an isolated run.
+- Verify neither runtime discovers skills from the user's personal profile
+  or home directory.
 - Restart the runner and resume a compatible session from its private store.
+- Resume after a file-changing draft turn restores the last post-run files;
+  reject resume when that snapshot is unavailable.
 - Attempt a path traversal, escaping symlink, source skill write, and network
   call under read-only grant; each must be blocked and traced.
 - Verify a draft edit can write allowed files while the canonical tree hash

@@ -48,7 +48,8 @@ skills before fixing a schema.
 2. Validate manifest, selected IDs, dependency closure, and file hashes.
 3. Emit the immutable ref and requested item content. Record whether the agent
    is offered the full bundle or a selected subset.
-4. Materialize only that frozen content in the isolated runner workspace. For
+4. Materialize only that frozen content in the isolated runner workspace and
+   capture an effective workspace hash after materialization. For
    Codex and Claude, use each runtime's native skill discovery path when the
    full selected bundle is compatible. If a subset is supplied as direct
    context instead, label the delivery mode; do not call it a native skill

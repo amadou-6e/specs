@@ -30,10 +30,12 @@ No profile or credential from the user's normal Codex installation is used.
 ## Run lifecycle
 
 1. Resolve and validate all refs, capability settings, and permission grant.
-2. Allocate a Laomedo run ID, private profile and pinned workspace snapshot.
+2. Allocate a Laomedo run ID and private profile. Materialize the pinned
+   skill, then capture an effective workspace hash that includes every file
+   offered to Codex. Preserve the source workspace hash separately.
 3. For `fresh`, start a new Codex thread. For `resume`, look up the native
-   thread ID from a prior run and verify provider, profile, workspace, and
-   permission compatibility before continuing.
+   thread ID from a prior run and verify provider, profile, last post-run
+   workspace snapshot, and permission compatibility before continuing.
 4. Stream native thread/turn/item events to
    [monitoring](../monitoring/run-traces.md) as they arrive. Preserve provider
    payloads and normalize a second view for cross-provider inspection.
@@ -48,7 +50,12 @@ a fresh invocation with captured input.
 ## Skill delivery
 
 Materialize the pinned bundle under the isolated workspace's Codex skill
-discovery path when compatible. Record the materialized path and file hashes.
+discovery path when compatible. Record the materialized path and file hashes
+in `EffectiveWorkspaceRef`; do not claim that the pre-run workspace hash
+describes the added files. The runner must verify Codex's skill search paths
+for its installed version, including project, profile, and home directories,
+and exclude personal skills before claiming isolation. `CODEX_HOME` alone
+must not be assumed to suppress every other discovery path.
 If a selected rule/example is injected as text instead, report that delivery
 mode and do not claim native skill execution. An offered skill is not proof
 that Codex read it; use observed file or skill events where available.
@@ -58,6 +65,8 @@ that Codex read it; use observed file or skill events where available.
 - A read-only task runs with a selected model and effort and records the
   requested and effective values and native thread ID.
 - Two runs do not add sessions to the user's personal Codex profile.
+- Only the pinned skill is discoverable; no skills from the user's personal
+  Codex profile or home directory are loaded.
 - A resume continues only the matching isolated thread and retains prior
   events; a fresh retry has a separate run ID.
 - Inspectors can open tool calls, results, errors, output, and partial events
@@ -70,5 +79,5 @@ The current local bridge proves a final-response call through the Codex Python
 SDK. It uses the user's default profile and only hashes `SKILL.md`, so it is
 not an acceptable implementation of this contract. The SDK's streamed turn
 events are a starting point; Codex App Server may better support a richer
-trace client. See [Codex SDK](https://learn.chatgpt.com/docs/codex-sdk) and
-[App Server](https://learn.chatgpt.com/docs/app-server).
+trace client. See [Codex SDK](https://developers.openai.com/codex/sdk/) and
+[App Server](https://developers.openai.com/codex/app-server/).

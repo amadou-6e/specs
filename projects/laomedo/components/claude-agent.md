@@ -34,9 +34,10 @@ separately from native skill loading.
 ## Run lifecycle
 
 1. Freeze refs and validate settings and permissions.
-2. Allocate a run ID and isolated workspace. Start a fresh SDK query, or
-   resume a stored Claude session only after verifying its bound profile,
-   workspace, skill revision, and permission grant.
+2. Allocate a run ID and isolated workspace. Materialize the selected skill
+   and freeze an effective workspace hash. Start a fresh SDK query, or resume
+   a stored Claude session only after restoring its last post-run workspace
+   snapshot and verifying profile, skill revision, and permission grant.
 3. Capture SDK messages and tool activity as raw events and normalize them in
    [monitoring](../monitoring/run-traces.md). Store session ID as soon as it
    becomes available.
@@ -53,8 +54,8 @@ cancellation keeps partial events and does not relabel the run as completed.
 - A task runs with a supported model/effort pair and a private Claude session.
 - A native selected skill is discoverable in the isolated project; unrelated
   user skills are not loaded.
-- Resume uses the same isolated session and workspace; a fresh run has a new
-  session and Laomedo run ID.
+- Resume uses the same isolated session and last post-run workspace state;
+  a fresh run has a new session and Laomedo run ID.
 - Tool calls, responses, errors, and partial output can be inspected after
   completion or failure.
 - A read-only task cannot write to the source skill or workspace.

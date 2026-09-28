@@ -10,7 +10,8 @@ view-owned Draw.io specification.
 Allocate a Laomedo `run_id` before dispatch. Correlate it with flow
 invocation ID, component ID, provider and native session ID, parent run or
 draft ID, definition revision, input snapshot, skill revision, policy
-revision, and workspace snapshot. Keep both raw provider events and a
+revision, source and effective workspace snapshots, and last post-run
+workspace snapshot. Keep both raw provider events and a
 normalized event projection. A normalized event has:
 
 | Field | Meaning |
@@ -34,7 +35,8 @@ changing the original evidence. Run status is a separate state machine:
 
 The run summary shows requested and effective model/effort, provider and
 native session ID, start/end, status, limits, selected skill and file hashes,
-permission grant, input/workspace refs, final output, file diff, and usage or
+permission grant, input/source/effective/post-run workspace refs, final
+output, file diff, and usage or
 cost only when supported. The event sequence allows inspection of messages,
 tool arguments/results, errors, approvals, and observed skill access. It
 links a skill draft to the edit run and its validation/evaluation runs.

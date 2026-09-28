@@ -22,16 +22,19 @@ skill revision remain unchanged when an experiment or edit draft is created.
 | [Runner isolation](../sandboxing/runner-isolation.md) | Private persistent profiles, workspace boundaries, grants, local versus remote storage |
 | [Run traces](../monitoring/run-traces.md) | Raw and normalized events, correlation, inspection, failure handling |
 
-These records map to the AGENTVIZ workflow handoff's three layers: a versioned
-**Definition**, an immutable observed **Execution**, and a linked **Experiment**
-that never overwrites its source. Recorded replay is not re-execution.
+The project separates a versioned **Definition** (settings, skill references,
+input contract), an immutable observed **Execution** (events, outputs,
+side effects), and a linked **Experiment** (a new run or edit draft with its
+own identity). An experiment never overwrites its source. Recorded replay is
+not re-execution, and a trace cannot prove every declared rule was loaded.
 
 ## Existing evidence and gaps
 
-The `.tools.local/laomedo-eval` fixture proves that a Langflow APIRequest node
-can call a local Codex bridge for a fixed read-only CSV task. The bridge
-currently pastes one `SKILL.md` into the prompt, uses the user's normal Codex
-profile, and stores only a final response, thread ID, and single-file hash.
+An uncommitted local fixture proved that a Langflow APIRequest node can call a
+Codex bridge for a fixed read-only CSV task. Reviewers cannot inspect that
+fixture in this repository. The bridge pasted one `SKILL.md` into the prompt,
+hashed that file, used the user's default Codex profile, and returned a
+final response and thread ID.
 It has no isolated profile, native skill bundle, model/effort controls,
 resumption, or inner trace. No local Claude adapter has been verified. These
 gaps define the starting point rather than completed capability.
@@ -85,10 +88,9 @@ unknown or unsupported, never silently normalized into a false capability.
 
 ## External references
 
-- AGENTVIZ's related local proposal is
-  `docs/CODEX-CLAUDE-WORKFLOW-HANDOFF.md` in the AGENTVIZ workspace.
-- [Codex SDK](https://learn.chatgpt.com/docs/codex-sdk) and
-  [App Server](https://learn.chatgpt.com/docs/app-server).
+- [Codex SDK](https://developers.openai.com/codex/sdk/) and
+  [App Server](https://developers.openai.com/codex/app-server/). Both URLs
+  currently redirect to the official `learn.chatgpt.com` documentation.
 - [Claude Agent SDK Python reference](https://code.claude.com/docs/en/agent-sdk/python),
   [sessions](https://code.claude.com/docs/en/agent-sdk/sessions), and
   [skills](https://code.claude.com/docs/en/agent-sdk/skills).
