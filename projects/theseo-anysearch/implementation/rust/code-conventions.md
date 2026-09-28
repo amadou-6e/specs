@@ -20,6 +20,9 @@ Sample public and private modules in `theseo_anysearch/core/src/`, the
 configuration, CI, and contributor instructions. Compare existing `///` item docs,
 `//!` module docs, comments, examples, and error text. Check commands in a clean
 environment rather than assuming a tool is configured or enforced.
+The imported [Rust naming examples](../../legacy/root-naming.md) are candidate
+evidence only, including old bridge paths; verify each against the pinned
+current crate tree before making it contributor policy.
 
 ## Questions to resolve
 

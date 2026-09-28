@@ -10,6 +10,10 @@ related: []
 
 # Rust module ownership: investigation plan
 
+The imported [repository map](../../legacy/root-project-structure.md) is
+historical. Verify its crate and module claims against a pinned current source
+revision before incorporating any of them here.
+
 This is a plan for developing current implementation guidance, not a claim that
 the archived design or an unrun test describes today's behavior. Baseline to
 inspect: `theseo-anysearch` `develop` at

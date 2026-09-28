@@ -1,3 +1,24 @@
+---
+title: Historical known bugs and production incidents
+status: archived
+kind: legacy
+owners: [theseo-team]
+last_reviewed: 2026-09-28
+applies_to: [theseo-anysearch]
+related: [../bugs/README.md, ../implementation/ray/trials-and-process-boundaries.md]
+---
+
+# Historical known bugs and production incidents
+
+> Imported incident notes, not a current defect register or verified fix record.
+> Current defect records belong in [bugs](../bugs/README.md); source-checked
+> Ray storage, trial, and placement behavior is in
+> [Ray trials and process boundaries](../implementation/ray/trials-and-process-boundaries.md).
+> The incident chronology and claimed regression results below still need
+> original issue/run evidence before promotion to individual bug records.
+
+## Original imported text
+
 # Known Bugs and Production Incidents
 
 This document records non-obvious bugs that have been observed in production,

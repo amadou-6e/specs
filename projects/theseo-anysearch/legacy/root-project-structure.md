@@ -1,3 +1,24 @@
+---
+title: Historical project structure map
+status: archived
+kind: legacy
+owners: [theseo-team]
+last_reviewed: 2026-09-28
+applies_to: [theseo-anysearch]
+related: [../architecture/README.md, ../implementation/python/module-ownership.md, ../implementation/rust/module-ownership.md]
+---
+
+# Historical project structure map
+
+> This imported tree describes an earlier repository and spec layout. Its
+> `spec/`, `tests/unit/`, `tests/integration/`, and missing-infrastructure
+> claims are not current. Use [architecture](../architecture/README.md) for
+> system relationships, [Python module ownership](../implementation/python/module-ownership.md)
+> and [Rust module ownership](../implementation/rust/module-ownership.md) for
+> source layout, and their testing pages for actual test placement.
+
+## Original imported text
+
 # Project Structure
 
 ## Repository Layout

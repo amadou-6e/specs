@@ -18,6 +18,8 @@ Pin and record the `theseo-anysearch` revision used for the audit.
 Inspect `theseo_anysearch/` package exports and directories, CLI entry points,
 settings models, worlds and environments, experiment orchestration, imitation,
 garden, and `rllib/` adapters; compare imports and tests with package READMEs.
+Use the [archived repository map](../../legacy/root-project-structure.md) only
+to identify migration questions; do not reuse its obsolete tree as the target.
 Inspect the PyO3 boundary with the [Rust bridge plan](../rust/python-bridge.md).
 
 ## Questions to resolve
