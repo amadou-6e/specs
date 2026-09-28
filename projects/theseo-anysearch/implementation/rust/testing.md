@@ -10,6 +10,10 @@ related: []
 
 # Rust testing
 
+For placement of native unit, black-box integration, and Python-boundary tests by
+production concern, see the cross-stack [test organization guide](../test-organization.md).
+This page owns native test commands, prerequisites, and evidence limits.
+
 This page inventories native verification and its current limits. It is a draft
 source-and-test audit, not a claim that the commands below were run or that every
 test passes. The inspected product baseline is

@@ -10,6 +10,10 @@ related: []
 
 # Python testing
 
+For where to add a test by production concern, tier, and fixture scope, see the
+cross-stack [test organization guide](../test-organization.md). This page owns
+Python test selection, prerequisites, and evidence limits.
+
 Status: source-pinned contributor guide, not a claim that every test passes. Inspected against AnySearch revision [`fd94554c`](https://github.com/amadou-6e/theseo-anysearch/tree/fd94554c9620096f94aaed95ffda6a1bbd4711ec) on 2026-09-28. Tests were read, **not run** at that revision.
 
 ## Layout and selection
