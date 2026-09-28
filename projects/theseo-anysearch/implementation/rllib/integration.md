@@ -1,5 +1,5 @@
 ---
-title: RLlib integration boundaries investigation
+title: RLlib object integration investigation
 status: draft
 kind: implementation
 owners: [theseo-team]
@@ -8,71 +8,54 @@ applies_to: [theseo-anysearch]
 related: []
 ---
 
-# RLlib integration boundaries: investigation plan
+# RLlib objects: investigation plan
 
-This is a plan for developing current implementation guidance, not a claim that
-the archived design or an unrun test describes today's behavior. Baseline to
-inspect: `theseo-anysearch` `develop` at
-`fd94554c9620096f94aaed95ffda6a1bbd4711ec`; refresh and record a newer
-revision if the audit starts after that commit.
+Start with the framework objects AnySearch actually creates, subclasses, calls,
+or persists. This is a source inventory, **not** a general explanation of RLlib
+and not an accepted compatibility guide. Inspect the product's `origin/develop`
+revision `fd94554c9620096f94aaed95ffda6a1bbd4711ec` or record a newer
+exact revision before accepting a finding.
 
-## Purpose and boundary
+## First-pass object inventory
 
-Identify the current adapters between AnySearch configurations, environments, models, algorithms, and RLlib. The [rllib implementation index](README.md) owns contributor
-guidance; subsystem contracts own observable behavior.
+| RLlib object | How AnySearch touches it | Source to audit next |
+| --- | --- | --- |
+| `AlgorithmConfig` | Algorithm adapters translate typed project settings into RLlib training, environment, evaluation, and EnvRunner configuration. | `rllib/algorithms/{ppo,dqn,appo,sac,rainbow}.py`; compare supported algorithms and versions rather than assuming every file is active. |
+| `Algorithm` | Trainer code builds and runs algorithms; checkpointing calls `save()` and `restore()`. `AnySearchDQN` subclasses RLlib DQN and changes learner-update/weight-sync behavior. | `rllib/trainer/`, `rllib/trainer/checkpointing.py`, `rllib/algorithms/dqn_runtime.py`. |
+| `RLModule` and model configuration | Project model settings become RLlib `DefaultModelConfig`; custom legacy `TorchModelV2` models are rejected on that path. The explanation scorer can restore only an `RLModule` from a learner checkpoint subtree. | `rllib/models/base.py`, algorithm adapters, `rllib/explain/scoring.py`. |
+| Learner and LearnerGroup | The DQN runtime subclass suppresses a TD-error metric in one configuration and wraps `learner_group.update`; its synchronization assumptions are framework-version sensitive. | `rllib/algorithms/dqn_runtime.py` and focused DQN tests. |
+| Policy and policy mapping | Multi-agent PPO constructs `PolicySpec` mappings; the explanation scorer retains an Algorithm/Policy-ID path alongside module-only scoring. | `rllib/algorithms/ppo.py`, `rllib/explain/scoring.py`. |
+| EnvRunner configuration | Adapters set rollout/evaluation runner counts and per-runner environment counts; a custom evaluator configures the evaluation pool. | `rllib/algorithms/`, `rllib/trainer/evaluation/parallel.py`. The resulting actors, placement, resource use, and vectorization execution belong to [Ray](../ray/execution.md). |
 
-## Evidence to inspect
+These touch points were found in source at the pinned revision. They do not prove
+that each path is exercised in production or stable across RLlib upgrades. In
+particular, the scorer's module-only `RLModule.from_checkpoint()` path and
+full-Algorithm restore path need real checkpoint tests before either is described
+as generally supported. The [policy-explainability subsystem](../../subsystems/policy-explainability/README.md)
+owns what a score or explanation means; this page only tracks RLlib integration.
 
-`rllib/algorithms/`, `models/`, `runner/`, environment registration and configuration translation, CLI training entry points, and relevant tests; compare archived [module proposal](../../legacy/rllib-module-spec.md).
+## Investigation sequence
 
-Read the owning subsystem specifications and their validation pages before
-accepting an archived statement. Inspect relevant source and tests at one exact
-product revision, then execute focused tests where practical. Record failures
-and untested areas rather than assuming coverage from filenames.
+1. For each row, trace construction, methods called, project-owned wrappers,
+   version-sensitive assumptions, and callers. Classify it **current**,
+   **obsolete**, or **unverified** with source and test references.
+2. Run focused unit tests, then one real train-save-restore-infer cycle for each
+   supported algorithm and model stack. Include negative checkpoint and
+   incompatible-space cases. Do not substitute mocks for checkpoint evidence.
+3. Trace the EnvRunner configuration into the [Ray execution audit](../ray/execution.md)
+   and the project settings into their owning subsystem contracts. Keep runtime
+   scheduling and behavioral semantics out of this object inventory.
+4. Replace this draft with a small, version-pinned contributor guide: which
+   adapters to edit, compatibility checks to preserve, and tests to run when
+   an RLlib object changes.
 
-## Questions to resolve
+## Evidence already gathered
 
-Which algorithm adapters are actually wired versus only present? Where are RLModule/model, environment, policy mapping, and observation/action-space compatibility established? How does the runner select execution without owning training? Which old abstract classes or roadmap claims are obsolete?
-
-Inventory the RLlib objects we actually construct or call: `AlgorithmConfig`,
-`Algorithm`, `RLModule`, Learner, Policy, EnvRunner configuration, checkpoint
-paths, and model registration. For each, distinguish upstream API from the
-AnySearch wrapper, adapter, or compatibility check. Investigate actors, worker
-placement, and vectorized execution in [Ray](../ray/execution.md).
-
-For each finding, label it **current**, **obsolete**, or **unverified**, and
-record the source file, test, and revision supporting that label.
-
-## Repository-specific concepts to classify
-
-- Typed experiment configuration, route/task sampling, policy-facing observation
-  encodings, action modes, and AnySearch algorithm adapter defaults.
-- Separate RLlib-provided registration and learning APIs from project-owned
-  adapters and compatibility checks.
-
-## Deliverable and acceptance
-
-A verified dependency map and extension checklist for adding an algorithm or model, with exact source and test references. Link spaces and model semantics to [observations and models](../../subsystems/observations-and-models/README.md). Replace this plan with accepted contributor guidance only after
-source and test evidence has been recorded. Keep unresolved claims explicit and
-do not copy historical text into a current rule without review.
-
-## Initial adapter inspection (2026-09-28)
-
-At `origin/develop` `fd94554c9620096f94aaed95ffda6a1bbd4711ec`, the
-`rllib/algorithms/{ppo,dqn,appo}.py` adapters translate project settings into
-RLlib `AlgorithmConfig`/EnvRunner/evaluation configuration; `rllib/models/base.py`
-translates project model settings into `DefaultModelConfig` and rejects a legacy
-custom model on the RLModule path. `rllib/trainer/checkpointing.py` calls
-`Algorithm.save()` and `restore()`. The explanation scorer uses
-`RLModule.from_checkpoint()` for its module-only path. These are **current source
-touch points**, not yet a complete or integration-tested compatibility map.
-
-The available `exp/296` checkout at
-`ed8982e218d39e064965661696f8b6da34bf2bb5` passed 18 focused unit tests:
+On the available product checkout `ed8982e218d39e064965661696f8b6da34bf2bb5`
+(`exp/296`), 18 focused unit tests passed:
 `.venv/Scripts/python.exe -m pytest
 tests/test_rllib/test_unit/test_ppo_rollout_config.py
 tests/test_rllib/test_unit/test_parallel_evaluation.py
-tests/test_rllib/test_unit/test_dqn_runtime.py -q`. This does not validate the
-effective Ray actor count, resource use, or a real checkpoint round trip; those
-remain **unverified** and belong to the [Ray execution audit](../ray/execution.md)
-and a future integration test.
+tests/test_rllib/test_unit/test_dqn_runtime.py -q`. The suite checks adapter and
+helper behavior but **not** a real checkpoint round trip, worker count, or
+measured resource use. Those remain unverified.

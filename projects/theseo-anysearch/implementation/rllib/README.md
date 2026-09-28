@@ -36,7 +36,6 @@ before its plan is replaced with contributor guidance:
 
 - [RLlib integration boundaries](integration.md)
 - [Training development workflow](training-workflow.md)
-- [RLlib checkpoint and policy-scoring adapter](explain-backend.md)
 
 The former `legacy-module-spec.md` has moved to the [legacy archive](../../legacy/rllib-module-spec.md).
 Its abstract-trainer and algorithm roadmap claims are not current guidance.
