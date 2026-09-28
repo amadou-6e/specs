@@ -18,12 +18,12 @@ revision if the audit starts after that commit.
 
 ## Purpose and boundary
 
-Give contributors a verified procedure for building, testing, diagnosing, and benchmarking the native core. The [rust implementation index](README.md) owns contributor
+Give contributors a verified procedure for building, diagnosing, releasing, and benchmarking the native core. The [Rust testing inventory](testing.md) owns test tiers and current CI coverage. The [rust implementation index](README.md) owns contributor
 guidance; subsystem contracts own observable behavior.
 
 ## Evidence to inspect
 
-Current `core/Cargo.toml`, Python build configuration, CI workflows, `core/src/verification/`, native tests and bench binaries; compare archived [testing plan](../../legacy/rust-testing.md).
+Current `theseo_anysearch/core/Cargo.toml`, Python build configuration, CI workflows, `theseo_anysearch/core/src/verification/`, and bench binaries; compare the [Rust testing inventory](testing.md) and archived [testing plan](../../legacy/rust-testing.md).
 
 Read the owning subsystem specifications and their validation pages before
 accepting an archived statement. Inspect relevant source and tests at one exact
@@ -32,7 +32,7 @@ and untested areas rather than assuming coverage from filenames.
 
 ## Questions to resolve
 
-What commands work on supported platforms? Which Rust/Python tests prove boundary parity? Which benches cover compiled worlds, regional replay, LOD, and cache behavior? What artifacts are generated, and which must not be committed? Which old test names and performance targets are no longer valid?
+What build and diagnostic commands work on supported platforms? Which benches cover compiled worlds, regional replay, LOD, and cache behavior? What artifacts are generated, and which must not be committed? Which old performance targets are no longer valid? Test coverage and boundary parity are tracked in [testing.md](testing.md).
 
 For each finding, label it **current**, **obsolete**, or **unverified**, and
 record the source file, test, and revision supporting that label.
@@ -46,6 +46,6 @@ record the source file, test, and revision supporting that label.
 
 ## Deliverable and acceptance
 
-Copyable commands with prerequisites, expected artifacts, failure diagnostics, and an evidence table distinguishing tests actually run from tests merely present. Keep behavioral acceptance in each subsystem's `validation.md`. Replace this plan with accepted contributor guidance only after
+Copyable build, diagnostic, release, and benchmark commands with prerequisites, expected artifacts, failure diagnostics, and an evidence table distinguishing checks actually run from checks merely described. Keep behavioral acceptance in each subsystem's `validation.md`. Replace this plan with accepted contributor guidance only after
 source and test evidence has been recorded. Keep unresolved claims explicit and
 do not copy historical text into a current rule without review.
