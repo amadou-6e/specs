@@ -35,7 +35,9 @@ rules. Each must be resolved against a pinned product revision and test evidence
 before its plan is replaced with contributor guidance:
 
 - [RLlib integration boundaries](integration.md)
-- [Training development workflow](training-workflow.md)
+
+The training lifecycle, curriculum, evaluation, checkpoint, Tune, and artifact
+ownership map belongs to the [training-and-tuning subsystem](../../subsystems/training-and-tuning/design/README.md).
 
 The former `legacy-module-spec.md` has moved to the [legacy archive](../../legacy/rllib-module-spec.md).
 Its abstract-trainer and algorithm roadmap claims are not current guidance.
