@@ -6,3 +6,8 @@ The [agent and skill components proposal](components/agent-and-skill-components.
 defines versioned skills, Codex and Claude execution, isolated persistence,
 trace inspection, and a phased implementation estimate. It is a technical
 proposal, not a UI interaction specification.
+
+Feasibility findings test that proposal against upstream tools. The
+[upstream dependencies matrix](feasibility/upstream-dependencies.md) records
+inspected versions, licenses, extension points, and gaps for AGENTVIZ,
+Langflow, Codex, Claude Code, and Deep Agents.
