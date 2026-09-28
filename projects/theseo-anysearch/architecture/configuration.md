@@ -6,7 +6,7 @@ owners: [theseo-team]
 last_reviewed: 2026-09-22
 applies_to: [theseo-anysearch]
 supersedes: null
-related: [README.md, cli.md]
+related: [architecture/cli]
 ---
 
 # Configuration architecture

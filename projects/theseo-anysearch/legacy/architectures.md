@@ -1,3 +1,15 @@
+---
+title: Historical Torch architectures
+status: archived
+kind: legacy
+owners: [theseo-team]
+last_reviewed: 2026-09-28
+applies_to: [theseo-anysearch]
+related: []
+---
+
+> Historical source; not an authoritative current design.
+
 # Torch Architectures
 
 All neural network models in AnySearch. Two families: **garden** (self-supervised

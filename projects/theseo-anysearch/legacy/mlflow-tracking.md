@@ -1,3 +1,15 @@
+---
+title: Historical MLflow tracking
+status: archived
+kind: legacy
+owners: [theseo-team]
+last_reviewed: 2026-09-28
+applies_to: [theseo-anysearch]
+related: []
+---
+
+> Historical source; not an authoritative current specification.
+
 # MLflow Tracking
 
 Every training run and tuning run logs hyperparameters, per-iteration metrics,

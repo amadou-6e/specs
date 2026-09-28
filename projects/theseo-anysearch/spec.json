@@ -3,5 +3,20 @@
   "slug": "theseo-anysearch",
   "source_repository": "https://github.com/amadou-6e/theseo-anysearch",
   "status": "active",
-  "description": "Product, architecture, training, environment, and UI specifications for Theseo Anysearch"
+  "description": "Product, architecture, training, environment, and UI specifications for Theseo Anysearch",
+  "categories": {
+    "architecture": { "type": "fixed" },
+    "subsystems": { "type": "folder-collection", "entry_files": ["README.md"] },
+    "experiments": { "type": "folder-collection", "entry_files": ["README.md"],
+      "statuses": ["planned", "running", "complete", "inconclusive", "stopped", "superseded"] },
+    "research": { "type": "folder-collection", "entry_files": ["README.md"] },
+    "decisions": { "type": "document-collection" },
+    "implementation": { "type": "fixed" },
+    "ui-design": { "type": "folder-collection", "entry_files": ["README.md"],
+      "support_dirs": ["captures"] },
+    "bugs": { "type": "document-collection", "numbered": false,
+      "statuses": ["reported", "confirmed", "fix-in-progress", "resolved", "not-reproducible", "superseded"] },
+    "legacy": { "type": "document-collection", "numbered": false,
+      "statuses": ["archived", "superseded"] }
+  }
 }

@@ -6,9 +6,9 @@ owners: [theseo-team]
 last_reviewed: 2026-09-22
 applies_to: [theseo-anysearch]
 related:
-  - ../../legacy/rust-voxel-spec.md
-  - ../../legacy/rust-world.md
-  - ../../legacy/rust-ingest.md
+  - legacy/rust-voxel-spec
+  - legacy/rust-world
+  - legacy/rust-ingest
 ---
 
 # Worlds and geometry
