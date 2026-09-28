@@ -15,6 +15,12 @@ the target document's governing category or project skill, if one exists. This
 skill coordinates roles; it does not replace a research-topic schema, subsystem
 contract, source-citation rule, or permission boundary.
 
+For an AnySearch research-topic document, also follow its
+[research-specification skill](../../../projects/theseo-anysearch/research/SKILL.md).
+That skill owns the topic's source/finding files, reciprocal indexes, and
+non-normative research status. The quality checks below apply more broadly,
+including implementation investigations that do not belong in a research topic.
+
 ## Scope the assignment
 
 The coordinating agent gives both workers the same bounded question, target
@@ -31,10 +37,15 @@ agreed workspace, or a complete structured handoff to the coordinator if no
 artifact location is authorized. The handoff contains:
 
 - question and search/inspection boundary, including what was not inspected;
+- reproducible discovery method: when and where the agent searched, inclusion
+  and exclusion criteria, access constraints, and likely selection bias;
 - each material source's location, owner, exact version/revision or access date,
-  inspected portion, and limitations;
-- atomic findings with direct evidence, counterevidence, confidence, and one of
-  **verified**, **inferred**, **reported**, or **unverified**;
+  inspected portion, evidence class, authority for the specific claim, and
+  limitations; prefer primary sources for technical claims;
+- atomic findings linked to those source records, with direct evidence,
+  counterevidence, applicability limits, confidence, and a classification such
+  as **directly verified**, **externally reported**, **inferred**, or
+  **unverified**; distinguish classification from confidence;
 - commands/tests actually run and their results, distinguished from tests merely
   read or proposed;
 - contradictions, open questions, and recommendations for additional checks;
@@ -43,12 +54,18 @@ artifact location is authorized. The handoff contains:
 
 The researcher does not write the final specification. A source file's existence,
 registration entry, passing mock test, or old specification is not proof that a
-runtime path works. Say precisely what each item establishes.
+runtime path works. Say precisely what each item establishes. Do not cite a
+search result or generated summary as if the underlying material was inspected,
+and do not transfer an external result to this project without naming the
+assumptions required.
 
 ## Handoff gate
 
 Before assigning the writer, the coordinator checks that every proposed claim
-has inspectable support and that unresolved or conflicting claims are marked.
+has inspectable support, that the search boundary can be reproduced, and that
+unresolved or conflicting claims are marked. Keep **not found**, **not
+inspected**, **not supported**, and **not applicable** distinct; none is a
+synonym for evidence of absence.
 Return an inadequate handoff to the researcher with specific questions. Do not
 silently fill evidence gaps by drafting plausible prose.
 
@@ -63,7 +80,8 @@ It should:
   behavior owned elsewhere;
 - distinguish accepted guidance from provisional findings and unsupported ideas;
 - cite exact sources/revisions near substantive claims and preserve uncertainty,
-  negative evidence, and version limits;
+  negative evidence, disagreements, applicability assumptions, and version
+  limits; make recommendations conditional on evidence strength;
 - report any missing, contradictory, or unsuitable evidence back to the
   coordinator instead of inventing a resolution;
 - produce a claim-to-evidence map or equivalent reviewable trace with the draft.
