@@ -29,7 +29,8 @@ The [Python](../python/README.md) partition retains general package and
 non-Ray multiprocessing conventions. Observable training, evaluation, and
 reproducibility guarantees remain with their subsystem contracts.
 
-## Investigation queue
+## Contained guidance
 
-- [Actors, workers, and vectorization](execution.md) is a draft investigation
-  plan, not accepted runtime guidance.
+- [Execution and resource placement](execution.md) maps source-declared runtime
+  ownership, Tune resources, serialization, and evaluation branches. It remains
+  draft until the pinned-revision live-Ray checks are run.
