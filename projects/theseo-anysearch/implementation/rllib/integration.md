@@ -25,7 +25,7 @@ exact revision before accepting a finding.
 | `RLModule` and model configuration | Project model settings become RLlib `DefaultModelConfig`; custom legacy `TorchModelV2` models are rejected on that path. The explanation scorer can restore only an `RLModule` from a learner checkpoint subtree. | `rllib/models/base.py`, algorithm adapters, `rllib/explain/scoring.py`. |
 | Learner and LearnerGroup | The DQN runtime subclass suppresses a TD-error metric in one configuration and wraps `learner_group.update`; its synchronization assumptions are framework-version sensitive. | `rllib/algorithms/dqn_runtime.py` and focused DQN tests. |
 | Policy and policy mapping | Multi-agent PPO constructs `PolicySpec` mappings; the explanation scorer retains an Algorithm/Policy-ID path alongside module-only scoring. | `rllib/algorithms/ppo.py`, `rllib/explain/scoring.py`. |
-| EnvRunner configuration | Adapters set rollout/evaluation runner counts and per-runner environment counts; a custom evaluator configures the evaluation pool. | `rllib/algorithms/`, `rllib/trainer/evaluation/parallel.py`. The resulting actors, placement, resource use, and vectorization execution belong to [Ray](../ray/execution.md). |
+| EnvRunner configuration | Adapters set rollout/evaluation runner counts and per-runner environment counts; a custom evaluator configures the evaluation pool. | `rllib/algorithms/`, `rllib/trainer/evaluation/parallel.py`. The resulting actors and vectorization belong to [Ray environment execution](../ray/environment-execution.md); placement and resources belong to [Ray resources](../ray/resources-and-placement.md). |
 
 These touch points were found in source at the pinned revision. They do not prove
 that each path is exercised in production or stable across RLlib upgrades. In
@@ -42,7 +42,7 @@ owns what a score or explanation means; this page only tracks RLlib integration.
 2. Run focused unit tests, then one real train-save-restore-infer cycle for each
    supported algorithm and model stack. Include negative checkpoint and
    incompatible-space cases. Do not substitute mocks for checkpoint evidence.
-3. Trace the EnvRunner configuration into the [Ray execution audit](../ray/execution.md)
+3. Trace the EnvRunner configuration into the [Ray environment execution audit](../ray/environment-execution.md)
    and the project settings into their owning subsystem contracts. Keep runtime
    scheduling and behavioral semantics out of this object inventory.
 4. Replace this draft with a small, version-pinned contributor guide: which

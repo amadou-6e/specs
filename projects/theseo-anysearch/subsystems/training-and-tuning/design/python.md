@@ -29,4 +29,4 @@ and evaluation. Mark each finding current, obsolete, or unverified before
 revising the map. RLlib object/API touch points belong in the
 [RLlib implementation inventory](../../../implementation/rllib/integration.md);
 actor/worker execution and vectorization belong in the
-[Ray implementation investigation](../../../implementation/ray/execution.md).
+[Ray implementation investigation](../../../implementation/ray/README.md).

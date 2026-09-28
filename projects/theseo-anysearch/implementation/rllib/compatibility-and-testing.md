@@ -88,7 +88,7 @@ runtime evidence.
 - The evaluation connector and callback configuration need real-policy parity
   checks, particularly across old/new stacks. Whether configured EnvRunners
   become particular actors, placements, or vectorized executions belongs to
-  [Ray execution](../ray/execution.md), not this page.
+  [Ray environment execution](../ray/environment-execution.md), not this page.
   [environment integration](environment-integration.md)
 
 ## Evidence required before a compatibility claim
