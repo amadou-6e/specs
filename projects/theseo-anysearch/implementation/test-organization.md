@@ -28,6 +28,73 @@ At the pinned revision, [`tests/conftest.py`](https://github.com/amadou-6e/these
 
 The [`tests/` tree](https://github.com/amadou-6e/theseo-anysearch/tree/fd94554c9620096f94aaed95ffda6a1bbd4711ec/tests) has 152 Python test modules across these ten roots. The examples indicate *where a new case should be considered*, not that every case presently passes.
 
+### Annotated existing target tree
+
+This is the **existing placement target** at the pinned revision, not a proposed
+reorganization. Each displayed path exists; omitted sibling files remain where
+they are. Comments explain the concern, tier, and boundary for choosing a home
+for a new test. A flat concern has no invented `test_unit/` or `test_integration/`
+directory. See the linked concern table below for exact source links.
+
+```text
+tests/
+├── conftest.py                            # cross-concern fixtures; auto-mark integration paths
+├── test_cli/                              # CLI command contract
+│   ├── test_unit/
+│   │   ├── test_cli.py                    # dispatch/arguments without real command boundary
+│   │   └── test_tune_validation.py        # CLI-side validation
+│   └── test_integration/
+│       └── test_cli_commands.py           # actual CLI invocation
+├── test_environments/                     # environment actions, observations, lifecycle, exports
+│   ├── test_unit/
+│   │   ├── test_action_spaces.py           # action-space logic
+│   │   └── test_shape_collision.py         # collision behavior
+│   └── test_integration/
+│       ├── conftest.py                     # environment-integration fixtures only
+│       └── test_voxel_env_core.py          # native environment boundary
+├── test_experiments/                      # experiment/run orchestration and artifacts
+│   ├── test_unit/
+│   │   ├── conftest.py                     # experiment-unit fixtures only
+│   │   ├── _support.py                     # adjacent helper, not a test module
+│   │   ├── test_experiment_runner_run.py   # run orchestration
+│   │   └── test_trajectory_storage.py      # trajectory format/storage
+│   └── test_integration/
+│       ├── test_execution_train_ray.py     # real Ray execution boundary
+│       └── test_native_extensions.py       # compiled extension in a run
+├── test_garden/test_unit/                 # model-garden data and store
+│   ├── test_garden_dataset.py
+│   └── test_garden_store.py
+├── test_heuristic/                        # flat: heuristic factory and strategies
+│   ├── test_factory.py
+│   └── test_voxel_strategies.py
+├── test_imitation/                        # flat: demonstration/pretraining concern
+│   ├── test_cache.py
+│   └── test_imitation_preflight.py
+├── test_rllib/                            # RLlib adapters, models, trainers, explain
+│   ├── test_unit/
+│   │   ├── _tune_runner_support.py         # adjacent helper, not a test module
+│   │   ├── test_dqn_runtime.py             # adapter-specific logic
+│   │   ├── test_tune_runner_resources.py   # current RLlib-root placement; review boundary
+│   │   └── test_explain/
+│   │       └── test_policy_scorer.py       # nested explain concern
+│   └── test_integration/
+│       ├── test_algorithm_coverage.py      # declared algorithm train trials
+│       └── test_ppo_trainer_ray.py         # real-Ray trainer boundary
+├── test_settings/test_unit/              # settings/configuration models
+│   ├── test_heterogeneous_agents.py
+│   └── test_scenarios.py
+├── test_world_providers/                 # flat: source adapters and provider cache
+│   ├── test_aerialgym_provider.py
+│   └── test_source_cache.py
+└── test_worlds/                          # world compilation, residency, route feasibility
+    ├── test_unit/
+    │   ├── test_compiler.py
+    │   └── test_residency.py
+    └── test_integration/
+        ├── test_obstacle_waypoint_preflight.py  # feasibility boundary
+        └── test_seeded_gate_catalog.py          # cross-concern world scenario
+```
+
 | Concern root | Behavior and boundaries to keep together | Existing shape or representative evidence |
 | --- | --- | --- |
 | `test_cli/` | Command parsing, dispatch, user-facing validation, output, and actual CLI invocation. | Six modules; [dispatch](https://github.com/amadou-6e/theseo-anysearch/blob/fd94554c9620096f94aaed95ffda6a1bbd4711ec/tests/test_cli/test_unit/test_cli.py), [Tune validation](https://github.com/amadou-6e/theseo-anysearch/blob/fd94554c9620096f94aaed95ffda6a1bbd4711ec/tests/test_cli/test_unit/test_tune_validation.py), [real CLI commands](https://github.com/amadou-6e/theseo-anysearch/blob/fd94554c9620096f94aaed95ffda6a1bbd4711ec/tests/test_cli/test_integration/test_cli_commands.py). |
@@ -46,6 +113,35 @@ Some boundaries remain ambiguous in the current layout. For example, [`tests/tes
 ## Rust concern map
 
 The native core keeps many focused `#[cfg(test)]` modules beside production code under [`theseo_anysearch/core/src/`](https://github.com/amadou-6e/theseo-anysearch/tree/fd94554c9620096f94aaed95ffda6a1bbd4711ec/theseo_anysearch/core/src). Keep local invariants beside their owning module: replay/viewer and camera/render; bridge and Python-exposed conversions; environment/action/reward/scenario; world ingest/residency; geometry/predicates; and verification. Larger sibling test files such as `multi_heterogeneous_tests.rs`, `single/tests.rs`, and `regional_tests.rs` are existing patterns for a module with a substantial focused test body, not a reason to aggregate unrelated tests.
+
+The native **existing target tree** has a different shape: most unit tests are
+inline in the owning `.rs` module, not in a parallel `tests/unit/` tree. The
+shown module paths and three `core/tests` targets exist at the pinned revision;
+other inline test-bearing modules are omitted. `#[cfg(test)]` is confirmed in
+the representative inline files below and in `extension_sdk/src/lib.rs`.
+
+```text
+theseo_anysearch/
+├── core/
+│   ├── src/                                  # native unit tests live with owners
+│   │   ├── bin/voxel_replay.rs                # replay binary behavior; inline tests
+│   │   ├── camera.rs                          # camera logic; inline tests
+│   │   ├── replay/storage.rs                  # replay storage; inline tests
+│   │   ├── bridge/python/environments/voxel/environment.rs  # PyO3-facing env; inline tests
+│   │   ├── voxel/actions/pipeline.rs          # action pipeline; inline tests
+│   │   ├── voxel/predicates/native.rs          # native predicate; inline tests
+│   │   ├── voxel/world/ingest/voxelize.rs      # ingest logic; inline tests
+│   │   ├── voxel/world/disk_backed.rs          # world residency; inline tests
+│   │   ├── voxel/environment/multi_heterogeneous_tests.rs  # focused sibling tests
+│   │   ├── voxel/environment/single/tests.rs  # focused submodule tests
+│   │   ├── voxel/world/regional_tests.rs       # focused sibling tests
+│   │   └── verification/tests.rs               # backend parity/fault checks
+│   └── tests/                                # black-box crate/boundary targets
+│       ├── ingest_to_world.rs                 # ingest -> world
+│       ├── ingest_to_env.rs                   # ingest -> environment
+│       └── scenario_v2_extension.rs          # compiled extension scenario
+└── extension_sdk/src/lib.rs                  # separate crate; embedded SDK tests
+```
 
 Use [`core/tests/`](https://github.com/amadou-6e/theseo-anysearch/tree/fd94554c9620096f94aaed95ffda6a1bbd4711ec/theseo_anysearch/core/tests) for black-box crate boundaries: `ingest_to_world.rs`, `ingest_to_env.rs`, and `scenario_v2_extension.rs` currently exercise that tier. The [extension SDK](https://github.com/amadou-6e/theseo-anysearch/tree/fd94554c9620096f94aaed95ffda6a1bbd4711ec/theseo_anysearch/extension_sdk) has its own crate-local tests. A benchmark smoke test may guard that a path executes but does not prove throughput, latency, or performance regression limits; those claims need separately designed measurement.
 
