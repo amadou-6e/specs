@@ -1,11 +1,12 @@
 # Implementation
 
 Implementation is a fixed, top-structured category for contributor guidance and local
-development workflows. It has exactly three technology partitions:
+development workflows. It has exactly four technology partitions:
 
 - [Python](python/README.md)
 - [Rust](rust/README.md)
 - [RLlib](rllib/README.md)
+- [Ray](ray/README.md)
 
 Adding another implementation partition requires an explicit update to
 [SPECS.md](../SPECS.md); contributors do not copy a template to create arbitrary
@@ -19,10 +20,11 @@ implementation/
 ├── 1 python/
 ├── 1 rust/
 ├── 1 rllib/
+├── 1 ray/
 └── 0..* cross-stack implementation documents
 ```
 
-The three partitions are fixed containers, not repeatable entries. Cross-stack
+The four partitions are fixed containers, not repeatable entries. Cross-stack
 documents are individual implementation entries and must not create new technology
 partitions implicitly.
 

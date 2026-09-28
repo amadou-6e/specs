@@ -19,8 +19,9 @@ local workflows.
 - Supported RLlib versions and compatibility boundaries.
 - Environment, model, and callback registration.
 - Observation, action, checkpoint, and policy-mapping integration.
-- Training, evaluation, pretraining handoff, and Tune behavior.
-- CPU and GPU resource declarations.
+- RLlib trainer, evaluation, pretraining handoff, and Tune API adaptation.
+- RLlib EnvRunner and vectorization configuration APIs; Ray worker execution,
+  scheduling, and resource effects belong under [Ray](../ray/README.md).
 - Metrics and diagnostic integration.
 - RLlib-specific tests, upgrades, and known framework hazards.
 
@@ -35,7 +36,7 @@ before its plan is replaced with contributor guidance:
 
 - [RLlib integration boundaries](integration.md)
 - [Training development workflow](training-workflow.md)
-- [Policy explainability backend](explain-backend.md)
+- [RLlib checkpoint and policy-scoring adapter](explain-backend.md)
 
 The former `legacy-module-spec.md` has moved to the [legacy archive](../../legacy/rllib-module-spec.md).
 Its abstract-trainer and algorithm roadmap claims are not current guidance.

@@ -1,5 +1,5 @@
 ---
-title: Policy explainability backend implementation investigation
+title: RLlib checkpoint and policy-scoring adapter investigation
 status: draft
 kind: implementation
 owners: [theseo-team]
@@ -8,70 +8,58 @@ applies_to: [theseo-anysearch]
 related: []
 ---
 
-# Policy explainability backend implementation: investigation plan
+# RLlib checkpoint and policy-scoring adapter: investigation plan
 
-This is a plan for developing current implementation guidance, not a claim that
-the archived design or an unrun test describes today's behavior. Baseline to
-inspect: `theseo-anysearch` `develop` at
-`fd94554c9620096f94aaed95ffda6a1bbd4711ec`; refresh and record a newer
-revision if the audit starts after that commit.
+This page concerns only the RLlib-dependent adapter used by the
+[policy-explainability subsystem](../../subsystems/policy-explainability/README.md).
+The subsystem owns the explanation pipeline, methods, inputs, reports, validity,
+and Python/Rust responsibility map. This is draft contributor guidance, not a
+second explanation contract.
 
-## Purpose and boundary
+Baseline to inspect: `theseo-anysearch` `origin/develop` at
+`fd94554c9620096f94aaed95ffda6a1bbd4711ec`; record a newer exact revision
+if the audit proceeds against one.
 
-Map the implemented policy-explanation pipeline so contributors can change it without reviving obsolete methodology. The [rllib implementation index](README.md) owns contributor
-guidance; subsystem contracts own observable behavior.
+## RLlib objects and touch points to inspect
 
-## Evidence to inspect
-
-`rllib/explain/` modules (`requests`, `scenarios`, `backend`, `traces`, `scoring`, `features`, `explainers`, `reports`, `service`, `native_bridge`, and `ui/`), CLI wiring, and focused tests; compare archived [backend](../../legacy/rllib-explain-backend.md), [CLI](../../legacy/rllib-explain-cli.md), and [attribution](../../legacy/rllib-policy-attribution.md).
-
-Read the owning subsystem specifications and their validation pages before
-accepting an archived statement. Inspect relevant source and tests at one exact
-product revision, then execute focused tests where practical. Record failures
-and untested areas rather than assuming coverage from filenames.
-
-## Questions to resolve
-
-How is an RLModule restored and scored for DQN/PPO? Where are state provenance, trace divergence, feature grouping, backgrounds, and native UI messages checked? Which former SHAP-first design claims were never implemented or are now superseded? What is the current test gap for live environment traces?
-
-For each finding, label it **current**, **obsolete**, or **unverified**, and
-record the source file, test, and revision supporting that label.
-
-## Repository-specific concepts to classify
-
-- AnySearch feature groups, chosen-versus-safe action scores, trace provenance
-  and divergence checks, report identities, and the persistent native UI bridge.
-- Separate generic attribution algorithms from the project's accepted grouped
-  occlusion behavior and explicitly reject obsolete SHAP-first assumptions.
-
-## Deliverable and acceptance
-
-A current module/responsibility table, extension and failure-path checklist, and focused test commands. Method meaning, accepted inputs, and report validity stay in [policy explainability](../../subsystems/policy-explainability/README.md). Replace this plan with accepted contributor guidance only after
-source and test evidence has been recorded. Keep unresolved claims explicit and
-do not copy historical text into a current rule without review.
-
-## Initial audit checkpoint (2026-09-28)
-
-This is a bounded source/test inspection, **not** acceptance of the full plan.
-The plan's `origin/develop` baseline is
-`fd94554c9620096f94aaed95ffda6a1bbd4711ec`. The available product checkout
-was `ed8982e218d39e064965661696f8b6da34bf2bb5` on `exp/296`, with unrelated
-uncommitted files; `service.py` and its replay/background test differ from
-`origin/develop`. The focused tests below therefore validate the checkout's
-explain implementation, not an isolated `develop` checkout.
-
-| Finding | Classification and evidence |
+| RLlib object or concept | AnySearch touch point and question |
 | --- | --- |
-| `service.py` restores DQN/PPO scorers from run/checkpoint, resolves trajectory or scenario sources, builds the schema/background, and invokes `PolicyExplanationBackend`. | **Current in inspected checkout**: `service.py`, `scoring.py`; focused tests described below. Live checkpoint restoration remains **unverified** by this pass. |
-| `backend.py` selects steps, scores actions, computes grouped chosen-versus-best-safe margins, and writes reports through `reports.py`; `features.py` owns grouping. | **Current in both inspected revisions**: those source modules and `test_backend_smoke.py`, `test_feature_schema.py`. This is a code-responsibility map, not a second behavior contract. |
-| `native_bridge.py` serves persistent JSON-line requests; `ui/session.py` holds the restored service. | **Current in both inspected revisions**: source modules and `test_native_bridge.py`; an actual Rust viewer process was **not** exercised. |
-| The archived backend's `artifacts.py` and `GroupedShapExplainer` package plan is not the current module layout. | **Obsolete as implementation guidance**: compare `legacy/rllib-explain-backend.md` with present `service.py`, `explainers.py`, and `reports.py`. No SHAP implementation was found in this package. |
-| `PolicyEvaluationTraceCollector._cursor()` reads `observation["cursor_pos"]`, while the live voxel wrapper reads cursor state from `env._rust_env.cursor_pos()`; its focused test supplies a synthetic `cursor_pos` observation. | **Current mismatch / live compatibility unverified**: `traces.py`, `environments/gymnasium/voxel_env.py`, and `test_trace_collector.py`. The owning subsystem's `validation.md` already records this gap. Do not use the fixture test as proof of live-environment compatibility. |
+| `Algorithm` and legacy `Policy` | `rllib/explain/scoring.py`: when do scorer paths restore a full algorithm, call `compute_single_action`, or use a policy ID? Which paths remain active? |
+| `RLModule` | `DQNPolicyScorer.from_module_checkpoint`, `PPOPolicyScorer`, `rllib/models/base.py`: how is a module restored, fed structured observations, and asked for inference outputs? |
+| Learner checkpoint layout | `scoring.py` checkpoint path resolution and trainer checkpoint writer: which path and metadata assumptions are project-specific, version-sensitive, and tested? |
+| DQN/PPO outputs | `scoring.py` and `test_policy_scorer.py`: where are Q-values, logits, selected actions, and optional critic values extracted and checked? |
+| Observation/action spaces | run-config reconstruction in `scoring.py`, `service.py`, and tests: how are policy-facing shapes and action count matched to the checkpoint? |
 
-Verification in the available checkout:
-`.venv/Scripts/python.exe -m pytest tests/test_rllib/test_unit/test_explain -q`
-returned **44 passed**. The system Python lacked `pytest`. This does not establish
-end-to-end checkpoint restoration, live VoxelEnv trace collection, or Rust viewer
-integration. Next, reproduce against a clean pinned revision, add/run a live trace
-test, and then resolve the mismatch in the owning implementation before promoting
-this page from draft to contributor guidance.
+The source contains a module-only `RLModule.from_checkpoint` path that avoids
+building a Ray `Algorithm` runtime, plus a full-algorithm restore path for
+older callers. Treat both as code observations, not evidence that both are
+supported for every checkpoint. Worker/actor/vectorization execution belongs
+in [Ray](../ray/execution.md); generic attribution, trace provenance, and the
+native UI bridge belong to the [subsystem design](../../subsystems/policy-explainability/design/README.md).
+
+## Investigation and acceptance
+
+Inspect `rllib/explain/scoring.py`, `rllib/models/`, `rllib/algorithms/`, trainer
+checkpoint writing, CLI explain entry points, and focused scorer/restoration
+tests at one pinned revision. Determine supported RLlib versions, modern versus
+legacy paths, checkpoint selection, error handling, and policy/space compatibility.
+Run a real saved DQN and PPO checkpoint through the scorer before claiming
+restoration works; mock scorer tests establish only adapter logic.
+
+Classify each finding **current**, **obsolete**, or **unverified** with source,
+test, and revision. The resulting contributor guide should be a small
+checkpoint/scorer change checklist, not a rewrite of the subsystem contract.
+
+## Initial inspection boundary (2026-09-28)
+
+The available product checkout was `ed8982e218d39e064965661696f8b6da34bf2bb5`
+on `exp/296`, not a clean `develop` checkout. The focused explain suite returned
+**44 passed** with `.venv/Scripts/python.exe -m pytest
+tests/test_rllib/test_unit/test_explain -q`; no real checkpoint was restored in
+this pass. The `service.py` and replay/background test differ from the pinned
+`develop` baseline. This result remains **unverified for live restoration**.
+
+The generic trace collector's `cursor_pos` mismatch and the cross-cutting module
+map are recorded by the [subsystem design](../../subsystems/policy-explainability/design/python.md)
+and [validation](../../subsystems/policy-explainability/validation.md), not owned
+by this RLlib adapter page.

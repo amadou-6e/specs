@@ -4,7 +4,11 @@ This page follows the pipeline at product revision
 `72a413a2f10ba1aeb9430c8e3412bffc30d1e68c`.
 
 `theseo_anysearch/rllib/explain/service.py` orchestrates a request.
-`theseo_anysearch/rllib/explain/backend.py` restores supported RLModules and spaces.
+`theseo_anysearch/rllib/explain/scoring.py` restores supported RLModules and
+reconstructs policy-facing spaces; `backend.py` coordinates selection, scoring,
+attribution, and report building once a scorer and trace exist. RLlib-specific
+checkpoint and scorer touch points are investigated under
+[implementation/rllib](../../../implementation/rllib/explain-backend.md).
 `theseo_anysearch/rllib/explain/scenarios.py` and
 `theseo_anysearch/rllib/explain/requests.py` validate inputs;
 `theseo_anysearch/rllib/explain/traces.py` reconstructs policy-evaluation traces;

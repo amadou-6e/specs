@@ -32,7 +32,7 @@ and untested areas rather than assuming coverage from filenames.
 
 ## Questions to resolve
 
-Which component owns iteration control, checkpoints, curriculum state, evaluation scheduling, trajectory capture, Tune trials, and Ray resources? Which modules are active and which are scaffolds? How are continuation, fine-tuning, and evaluation distinguished in current code? What state must tests restore?
+Which component owns iteration control, checkpoints, curriculum state, RLlib evaluation scheduling, trajectory capture, and Tune integration? Which modules are active and which are scaffolds? How are continuation, fine-tuning, and evaluation distinguished in current code? What state must tests restore? Audit Ray resource effects and worker execution separately in the [Ray plan](../ray/execution.md).
 
 For each finding, label it **current**, **obsolete**, or **unverified**, and
 record the source file, test, and revision supporting that label.
@@ -41,7 +41,7 @@ record the source file, test, and revision supporting that label.
 
 - Stage/curriculum state, concurrent evaluation, checkpoint-local auxiliary state,
   trajectory capture, and clone/apply execution recipes.
-- Separate Ray/RLlib mechanics from AnySearch's orchestration, identities, and
+- Separate RLlib mechanics from AnySearch's orchestration, identities, and
   artifact decisions; point each behavior claim to the owning subsystem.
 
 ## Deliverable and acceptance
