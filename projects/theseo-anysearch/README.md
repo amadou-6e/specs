@@ -52,7 +52,7 @@ continue to resolve.
 - [Naming conventions](naming.md)
 - [Project structure](project-structure.md)
 - [Experiment design](experiments.md)
-- [Volumetric navigation applications and starter assets](volumetric-navigation-applications.md)
+- [Volumetric navigation applications](volumetric-navigation-applications.md)
 - [Python specifications](python/)
 - [RLlib explanation specifications](rllib/explain/README.md)
 - [Rust specifications](rust/)

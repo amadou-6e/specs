@@ -1,6 +1,6 @@
 # Volumetric Navigation Application Library
 
-Status: proposed research program; assets acquired, adapters and experiments not implemented.
+Status: proposed research program; no external assets acquired, adapters and experiments not implemented.
 Owner: amadou-6e. Updated: 2026-09-13. Tracking: [specs#82](https://github.com/amadou-6e/specs/issues/82).
 
 ## Purpose And Boundaries
@@ -59,7 +59,7 @@ task validation. Current descriptors include detour, turns and vertical displace
 The optional clearance diagnostic uses face-direction queries, not a Euclidean
 distance field. Source composition is union-only. None of these establishes
 continuous finite-body collision safety, dynamic updates, water/current physics,
-multi-agent reservations or a Warframe importer.
+or multi-agent reservations.
 
 Prefer the existing pool or compiled-world interfaces for adapters. Do not
 convert every occupied voxel into a Python tuple or render mesh simply to import
@@ -81,8 +81,9 @@ Implement Dijkstra on tiny fixtures and A* on the same validated movement graph.
 Check legal diagonal edges and body inflation, then independently replay every
 returned path. Supplied benchmark optimum values are usable only after verifying
 the benchmark movement rules match; otherwise recompute and label derived tasks.
-Review memory requirements before dense allocation: 1108 x 647 x 723 is over
-500 million cells before channels, labels or search state. Use small crops first.
+Review memory requirements before dense allocation: a large benchmark map can
+exceed hundreds of millions of cells before channels, labels or search state.
+Use small crops first.
 
 ### G1: Useful Small Static Flight
 
@@ -109,17 +110,7 @@ Include inference, preprocessing, fallback and data-transfer costs in timing.
 Test a raw-input navigation agent trained on the same demonstrations if studying
 policy learning, rather than conflating guided-search and policy comparisons.
 
-### G2: External Geometry Transfer
-
-Use downloaded Warframe maps only after G1 selection. All maps, variants and
-crops remain external evaluation-only in this program. Import inspection and
-solver validation are allowed; learned-model scores must not guide training.
-Group results by source level/variant family, not individual queries. Shared
-geometry between named maps is possible: audit similarity before declaring
-independent worlds. If external results guide changes, mark that suite development
-data and obtain a fresh sealed family for the next confirmation.
-
-### G3: One New Mechanism At A Time
+### G2: One New Mechanism At A Time
 
 Add V02 water-domain restrictions, then V05 one moving blocker, and only then
 V06 shared-space traffic or V07 partial observation. Keep static small-world
@@ -161,46 +152,25 @@ and timeouts stay visible. A visually attractive replay is illustration, not evi
 
 ## Asset Library And Provenance
 
-The starter download is collision/navigation data, not a game art pack. It supports
-flight geometry and generic 3D routing, not water physics or moving obstacles.
-See [acquisition inventory](volumetric-navigation-assets.json) for file hashes and
-local locations. Payloads stay in ignored implementation `runtime/assets/`.
-
-Acquisition verified on 2026-09-13: 44 maps with matching scenario files; both
-ZIP archives pass CRC checks. Inventory covers 97 files and 298,143,392 bytes
-including original archives, extracted contents and local provenance. SHA-256
-is recorded per file. Header/name checks are complete; exhaustive coordinate,
-query feasibility and reference-distance verification belong to A1/A2, not this
-acquisition report. Re-download URLs are in the inventory; check archive hashes
-before extraction, reject path traversal entries and do not execute archive code.
+No external assets are acquired by this catalog. Warframe is out of scope and
+must not be reacquired ([specs#138](https://github.com/amadou-6e/specs/issues/138)).
+Record source, license and hashes for any future asset before use.
 
 | Asset | Role | Access/license and remaining work |
 | --- | --- | --- |
-| MovingAI Warframe full map and scenario archives | Acquired external evaluation corpus; Simple/Complex for adapter inspection, other families sealed from model tuning | Publisher labels data ODC Attribution; keep source/notice and license alongside derived data. Needs strict reader, coordinate/movement verification and Theseo conversion. Not a ready-to-load environment. |
-| Procedural room/shaft/portal, tube and clutter families | Proposed primary training ground for V01/V02/V03 | Not downloaded or implemented by this task. Use own seeded generators to control topology and avoid training on external evaluation maps. |
+| Procedural room/shaft/portal, tube and clutter families | Proposed primary training ground for V01/V02/V03 | Not implemented by this task. Use own seeded generators to control topology. |
 | SubT cave/tunnel tiles and worlds | Candidate later geometry source for V02/V07 | Not downloaded. Resolve each model's license and dependencies before acquisition; SDF/world graph needs collision-mesh transforms and voxelization. Its seeded generator exposes cave styles and tile counts. [Official tutorial](https://github.com/osrf/subt/wiki/World-Creation-Tutorial). |
-
-Attribution for Warframe-derived reports and visualizations: contains information
-from the MovingAI Warframe 3D voxel benchmark, provided by Digital Extremes and
-Daniel Brewer in collaboration with Nathan Sturtevant, made available under the
-[ODC Attribution License](https://opendatacommons.org/licenses/by/1-0/).
-Database licensing does not grant unrelated Warframe art or trademark rights.
-Cite Brewer and Sturtevant, *Benchmarks for Pathfinding in 3D Voxel Space*, SoCS 2018.
-The publisher notes corrected scenario generation in 2019.
-[Dataset and format](https://www.movingai.com/benchmarks/voxels.html),
-[download index](https://www.movingai.com/benchmarks/warframe/index.html).
 
 ## Execution Packages
 
 | Package | Depends on | Acceptance |
 | --- | --- | --- |
-| A0 provenance and application catalog | None | This document, archived download/license pages, checksummed inventory, review PR |
+| A0 application catalog | None | This document and its review PR |
 | A1 importer and coordinate fixtures | A0 | Strict format tests, safe bounded allocation, native occupancy round-trip, matching queries; no training |
 | A2 body-safe static baseline | A1 | Tiny-world optimum tests, swept-edge replay, matching reference rules, profiled memory and latency |
 | A3 procedural V01 task bank | A2 | Seeded topology/clearance controls, geometry-disjoint splits, manifests and expert paths |
 | A4 matched training and small-world assessment | A3 | Frozen search budget/metrics, all controls, fresh-seed evaluation, decision and replays |
-| A5 external transfer | A4 | Sealed-family evaluation with no test-time recipe selection |
-| A6 underwater/dynamic follow-ups | A4 | Separate issue and frozen protocol for each new mechanism |
+| A5 underwater/dynamic follow-ups | A4 | Separate issue and frozen protocol for each new mechanism |
 
 A1 and procedural generator design can proceed independently after A0; A3 label
 generation waits for A2. Asset-specific licensing research can run alongside both.
