@@ -17,7 +17,7 @@ related: []
 The abstract-trainer, algorithm, runner, and tuner catalog predates the current
 RLlib package layout and cannot be assumed to describe implemented interfaces.
 Current investigation ownership is in [RLlib integration](../implementation/rllib/integration.md)
-and [training workflow](../implementation/rllib/training-workflow.md). Claims
+and [training-and-tuning design](../subsystems/training-and-tuning/design/README.md). Claims
 must be checked against product source and tests before promotion. Its original
 authority ended no later than classification under specs issue #110; an earlier
 supersession date has not been established.

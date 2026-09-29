@@ -20,7 +20,8 @@ partition is fixed; documents do not create nested implementation categories.
 - Public API and typing expectations.
 - Configuration models and path handling.
 - Optional dependencies and provider discovery.
-- Multiprocessing, Ray, and Python-side determinism.
+- General Python multiprocessing and Python-side determinism; Ray actors,
+  workers, and distributed execution belong under [Ray](../ray/README.md).
 - The Python/Rust ownership and binding boundary.
 - Python test organization, diagnostics, and performance hazards.
 - Python-owned installation, training, tuning, cache, and recovery procedures.
