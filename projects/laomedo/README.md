@@ -16,3 +16,7 @@ The [bounded skill discovery findings](feasibility/119.md) for issue #119
 record Codex discovery, a manifest pilot, one completed combined skill
 invocation, auth isolation limits, and the bundled-script permissions to test.
 Claude execution and selected-subset isolation remain unproven.
+
+The [Codex runner isolation probes](feasibility/120.md) for issue #120
+build no-model checks for model/effort validation, profile isolation, thread
+persistence, and streamed events. Probes are written; results are pending.
