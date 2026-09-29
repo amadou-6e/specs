@@ -17,6 +17,11 @@ record Codex discovery, a manifest pilot, one completed combined skill
 invocation, auth isolation limits, and the bundled-script permissions to test.
 Claude execution and selected-subset isolation remain unproven.
 
+The [Skill Draft feasibility result](feasibility/122.md) records a versioned
+editing policy, deterministic draft validation, and two bounded Codex edit
+turns. The current runner did not produce an agent file edit, so automated
+skill editing remains a no-go on this evidence.
+
 The [Codex runner isolation findings](feasibility/120.md) for issue #120
 record a pinned CLI and a three-turn private ChatGPT handoff. Model/effort
 selection and post-restart resume worked, while no tool call appeared in the
