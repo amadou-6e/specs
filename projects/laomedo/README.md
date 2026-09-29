@@ -6,3 +6,8 @@ The [agent and skill components proposal](components/agent-and-skill-components.
 defines versioned skills, Codex and Claude execution, isolated persistence,
 trace inspection, and a phased implementation estimate. It is a technical
 proposal, not a UI interaction specification.
+
+The [bounded skill discovery findings](feasibility/119.md) for issue #119
+record Codex discovery, a manifest pilot, one completed combined skill
+invocation, auth isolation limits, and the bundled-script permissions to test.
+Claude execution and selected-subset isolation remain unproven.
