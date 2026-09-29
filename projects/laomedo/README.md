@@ -7,6 +7,11 @@ defines versioned skills, Codex and Claude execution, isolated persistence,
 trace inspection, and a phased implementation estimate. It is a technical
 proposal, not a UI interaction specification.
 
+Feasibility findings test that proposal against upstream tools. The
+[upstream dependencies matrix](feasibility/118.md) records
+inspected versions, licenses, extension points, and gaps for AGENTVIZ,
+Langflow, Codex, Claude Code, and Deep Agents.
+
 The [bounded skill discovery findings](feasibility/119.md) for issue #119
 record Codex discovery, a manifest pilot, one completed combined skill
 invocation, auth isolation limits, and the bundled-script permissions to test.
