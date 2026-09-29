@@ -1,3 +1,15 @@
+---
+title: Historical AnySearch Tune
+status: archived
+kind: legacy
+owners: [theseo-team]
+last_reviewed: 2026-09-28
+applies_to: [theseo-anysearch]
+related: []
+---
+
+> Historical source; not an authoritative current specification.
+
 # `anysearch tune` — Hyperparameter Search
 
 ## Overview

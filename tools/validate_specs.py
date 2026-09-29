@@ -247,6 +247,7 @@ def check_folder_collection_category(
     errors: list[str],
     *,
     allowed_statuses: set[str],
+    support_dirs: set[str] | None = None,
 ) -> set[str]:
     category = project / name
     readme = category / "README.md"
@@ -262,7 +263,8 @@ def check_folder_collection_category(
     if not template_dir.is_dir():
         errors.append(f"{name}/template/: missing copyable template folder")
 
-    entries = sorted(p for p in category.iterdir() if p.is_dir())
+    support_dirs = support_dirs or set()
+    entries = sorted(p for p in category.iterdir() if p.is_dir() and p.name not in support_dirs)
     for entry in entries:
         is_template = entry.name == "template"
         if not is_template and not FOLDER_ENTRY_NAME_PATTERN.match(entry.name):
@@ -288,13 +290,18 @@ def check_folder_collection_category(
 
 
 def check_references(
-    project: Path, name: str, category_type: str, errors: list[str], known_refs: set[str]
+    project: Path, name: str, category_type: str, errors: list[str], known_refs: set[str],
+    support_dirs: set[str] | None = None,
 ) -> None:
     """Check that every non-empty `related` entry and non-null `supersedes` value
     resolves to a real entry declared somewhere in this project's categories."""
     category = project / name
     if category_type == "folder-collection":
-        candidates = [p / "README.md" for p in category.iterdir() if p.is_dir() and p.name != "template"]
+        support_dirs = support_dirs or set()
+        candidates = [
+            p / "README.md" for p in category.iterdir()
+            if p.is_dir() and p.name != "template" and p.name not in support_dirs
+        ]
     else:
         candidates = [
             p for p in category.glob("*.md")
@@ -321,7 +328,7 @@ def check_typed_categories(project: Path, categories: dict, errors: list[str]) -
             errors.append(f"{name}: missing (required once a project declares categories in spec.json)")
 
     known_refs: set[str] = set()
-    per_category: list[tuple[str, str]] = []
+    per_category: list[tuple[str, str, set[str]]] = []
     for name, spec in categories.items():
         category_type = spec.get("type") if isinstance(spec, dict) else None
         if category_type not in ALLOWED_CATEGORY_TYPES:
@@ -350,7 +357,7 @@ def check_typed_categories(project: Path, categories: dict, errors: list[str]) -
             allowed_statuses = ALLOWED_STATUSES - {"template"}
         else:
             allowed_statuses = set(configured_statuses) - {"template"}
-        per_category.append((name, category_type))
+        support_dirs: set[str] = set()
         if category_type == "fixed":
             known_refs |= check_fixed_category(
                 project, name, errors, allowed_statuses=allowed_statuses
@@ -366,16 +373,30 @@ def check_typed_categories(project: Path, categories: dict, errors: list[str]) -
             )
         elif category_type == "folder-collection":
             entry_files = spec.get("entry_files") or ["README.md"]
+            support_dirs = spec.get("support_dirs", [])
+            if (
+                not isinstance(support_dirs, list)
+                or any(not isinstance(item, str) or not item for item in support_dirs)
+                or "template" in support_dirs
+                or any(not FOLDER_ENTRY_NAME_PATTERN.fullmatch(item)
+                       or not (project / name / item).is_dir()
+                       for item in support_dirs)
+            ):
+                errors.append(f"spec.json: categories.{name}.support_dirs must list existing direct child directories other than template")
+                support_dirs = []
+            support_dirs = set(support_dirs)
             known_refs |= check_folder_collection_category(
                 project,
                 name,
                 entry_files,
                 errors,
                 allowed_statuses=allowed_statuses,
+                support_dirs=support_dirs,
             )
+        per_category.append((name, category_type, support_dirs))
 
-    for name, category_type in per_category:
-        check_references(project, name, category_type, errors, known_refs)
+    for name, category_type, support_dirs in per_category:
+        check_references(project, name, category_type, errors, known_refs, support_dirs)
 
 
 def validate_markdown(path: Path, errors: list[str]) -> None:

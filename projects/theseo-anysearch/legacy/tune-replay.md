@@ -1,3 +1,15 @@
+---
+title: Historical Tune trial replay
+status: archived
+kind: legacy
+owners: [theseo-team]
+last_reviewed: 2026-09-28
+applies_to: [theseo-anysearch]
+related: []
+---
+
+> Historical source; not an authoritative current specification.
+
 # Tune Trial Replay
 
 ## Overview

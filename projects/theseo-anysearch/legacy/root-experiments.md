@@ -5,7 +5,7 @@ kind: legacy
 owners: [theseo-team]
 last_reviewed: 2026-09-28
 applies_to: [theseo-anysearch]
-related: [../experiments/README.md, ../subsystems/training-and-tuning/README.md]
+related: []
 ---
 
 # Historical experiment workflow proposal

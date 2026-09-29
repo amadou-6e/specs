@@ -5,7 +5,7 @@ kind: legacy
 owners: [theseo-team]
 last_reviewed: 2026-09-28
 applies_to: [theseo-anysearch]
-related: [../implementation/python/code-conventions.md, ../implementation/rust/code-conventions.md]
+related: []
 ---
 
 # Historical naming philosophy

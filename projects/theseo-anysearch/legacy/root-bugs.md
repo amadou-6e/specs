@@ -5,7 +5,7 @@ kind: legacy
 owners: [theseo-team]
 last_reviewed: 2026-09-28
 applies_to: [theseo-anysearch]
-related: [../bugs/README.md, ../implementation/ray/trials-and-process-boundaries.md]
+related: []
 ---
 
 # Historical known bugs and production incidents

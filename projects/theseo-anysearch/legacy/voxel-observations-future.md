@@ -1,3 +1,15 @@
+---
+title: Historical Future voxel observations
+status: archived
+kind: legacy
+owners: [theseo-team]
+last_reviewed: 2026-09-28
+applies_to: [theseo-anysearch]
+related: []
+---
+
+> Historical source; not an authoritative current specification.
+
 # Voxel Observation Candidates — Future Consideration
 
 Brainstorm of additional observation modes beyond the implemented `scalar`, `box`, and `radial`.

@@ -5,7 +5,7 @@ kind: legacy
 owners: [theseo-team]
 last_reviewed: 2026-09-28
 applies_to: [theseo-anysearch]
-related: [../architecture/README.md, ../implementation/python/module-ownership.md, ../implementation/rust/module-ownership.md]
+related: []
 ---
 
 # Historical project structure map
