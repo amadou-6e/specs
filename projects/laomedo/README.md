@@ -18,5 +18,6 @@ invocation, auth isolation limits, and the bundled-script permissions to test.
 Claude execution and selected-subset isolation remain unproven.
 
 The [Codex runner isolation probes](feasibility/120.md) for issue #120
-build no-model checks for model/effort validation, profile isolation, thread
-persistence, and streamed events. Probes are written; results are pending.
+add no-model checks for model/effort dispatch and profile isolation, plus two
+credential-gated probes for thread resume and streamed tool events. Probes are
+written; results are pending a pinned runner and a dedicated credential.
