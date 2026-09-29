@@ -40,7 +40,7 @@ tests/
 │       ├── test_ppo_trainer_ray.py                 # real PPO runner/evaluation path
 │       ├── test_dqn_trainer_ray.py                 # real DQN/Rainbow path
 │       ├── test_sac_trainer_ray.py                 # real SAC path
-│       ├── test_cnn_models_ray.py                  # real model training/restore
+│       ├── test_cnn_models_ray.py                  # requested CNN training/restore; support disputed
 │       ├── test_ray_ppo_real.py                    # real environment and evaluation
 │       └── test_algorithm_coverage.py             # real algorithm trial declarations
 ├── test_experiments/test_integration/
@@ -50,6 +50,11 @@ tests/
 └── test_cli/test_integration/
     └── test_cli_commands.py                        # Ray-marked run/inspect/resume/repeat cases
 ```
+
+The CNN integration file requests PPO training with a custom CNN, but the
+modern PPO model builder rejects that legacy `custom_model` path. Its test
+declaration is therefore not evidence that the combination works; see
+[RLlib compatibility](../rllib/compatibility-and-testing.md) for the conflict.
 
 For runtime lifecycle, assert owned versus external `ray.init` reuse and
 shutdown without terminating a caller-owned cluster. For trial/process

@@ -103,7 +103,7 @@ tests/
 ```
 
 The pinned [test tree](https://github.com/amadou-6e/theseo-anysearch/tree/fd94554c9620096f94aaed95ffda6a1bbd4711ec/tests)
-contains 152 Python test modules across these ten concerns. Use this map when
+contains 142 `test_*.py` files across these ten concerns. Use this map when
 filing a test:
 
 | Concern | Keep together | Representative evidence |
