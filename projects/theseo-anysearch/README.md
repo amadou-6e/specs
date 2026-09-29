@@ -85,7 +85,8 @@ placement rules; `spec.json` owns machine-readable project metadata.
 - [Theseo Model Garden](../theseo-model-garden/README.md)
 - [Theseo World Providers](../theseo-world-providers/README.md)
 - [Python implementation rules](implementation/python/README.md)
-- [RLlib explanation specifications](rllib/explain/README.md)
-- [Rust specifications](rust/)
+- [Policy explainability contract](subsystems/policy-explainability/README.md)
+- [Rust implementation guidance](implementation/rust/README.md)
+- [Imported Rust and RLlib historical documents](legacy/README.md)
 - [UI design workspace](ui-design/)
 

@@ -26,3 +26,16 @@ local workflows.
 
 Implementation guidance links to subsystem contracts and must not redefine their
 observable behavior.
+
+## Investigation queue
+
+The following draft pages are investigation plans, not accepted implementation
+rules. Each must be resolved against a pinned product revision and test evidence
+before its plan is replaced with contributor guidance:
+
+- [RLlib integration boundaries](integration.md)
+- [Training development workflow](training-workflow.md)
+- [Policy explainability backend](explain-backend.md)
+
+The former `legacy-module-spec.md` has moved to the [legacy archive](../../legacy/rllib-module-spec.md).
+Its abstract-trainer and algorithm roadmap claims are not current guidance.

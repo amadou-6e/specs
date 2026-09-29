@@ -1,3 +1,27 @@
+---
+title: Imported Explain Backend Specification
+status: superseded
+kind: legacy
+owners: [theseo-team]
+last_reviewed: 2026-09-27
+applies_to: [theseo-anysearch]
+supersedes: null
+related: []
+---
+
+> Historical source. This document is not an authoritative current specification.
+> Its original wording is retained below for traceability.
+
+## Migration disposition
+
+The historical package plan and test milestones do not define the current explanation backend. Current authority: [design python.md](../subsystems/policy-explainability/design/python.md).
+No unverified historical claim is promoted by this move. Its original authority
+ended no later than this classification under specs issue #110; an earlier
+supersession date has not been established. The source revision remains available
+in Git history.
+
+## Archived material
+
 # Explain Backend Specification
 
 ## Purpose
