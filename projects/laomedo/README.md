@@ -18,6 +18,7 @@ invocation, auth isolation limits, and the bundled-script permissions to test.
 Claude execution and selected-subset isolation remain unproven.
 
 The [Codex runner isolation findings](feasibility/120.md) for issue #120
-record a pinned CLI, no-model validation and profile-isolation results, plus
-credential-gated probes for thread resume and streamed tool events. The
-credentialed pass conditions remain untested.
+record a pinned CLI and a three-turn private ChatGPT handoff. Model/effort
+selection and post-restart resume worked, while no tool call appeared in the
+stream and the personal-session comparison remained inconclusive. The local
+MVP decision is no-go on this evidence.
