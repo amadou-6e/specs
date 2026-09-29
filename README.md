@@ -8,6 +8,7 @@ across projects.
 - `projects/<slug>/`: project-owned specifications and design artifacts.
 - `shared/templates/`: reusable starting points for new specification work.
 - `shared/conventions/`: the lifecycle and review rules shared by projects.
+- `shared/skills/`: reusable agent workflows for researching and writing specs.
 - `tools/`: dependency-free scaffolding and validation commands.
 
 BlogHub is the first imported project. Its specifications live under
