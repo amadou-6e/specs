@@ -35,6 +35,12 @@ Cross-stack rules live in this README or in a clearly named document directly un
 serialization, coordinate conventions, deterministic identity, compatibility,
 dependency policy, testing, and review expectations.
 
+Put a test beside the production concern whose behavior it proves, then choose
+the appropriate unit or integration boundary. The annotated target trees and
+placement rules live with [Python testing](python/testing.md) and
+[Rust testing](rust/testing.md); cross-language checks should link both sides
+without duplicating every assertion.
+
 ## Local workflows and runbooks
 
 This category also owns end-to-end local workflows formerly described as operations:

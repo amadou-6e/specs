@@ -37,4 +37,5 @@ before its plan is replaced with contributor guidance:
 - [Native extension implementation](extensions.md)
 - [Rust code conventions](code-conventions.md)
 - [Rust to Python bridge](python-bridge.md)
+- [Rust testing](testing.md)
 - [Native build and verification workflow](native-workflow.md)

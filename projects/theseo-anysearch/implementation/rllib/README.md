@@ -39,6 +39,7 @@ their pinned-source evidence and unresolved test gaps:
 - [RLlib checkpoint integration](checkpoints.md)
 - [Environment registration and RLlib adaptation](environment-integration.md)
 - [Compatibility, support evidence, and upgrade testing](compatibility-and-testing.md)
+- [RLlib test placement and evidence](testing.md)
 
 The training lifecycle, curriculum, evaluation, checkpoint, Tune, and artifact
 ownership map belongs to the [training-and-tuning subsystem](../../subsystems/training-and-tuning/design/README.md).

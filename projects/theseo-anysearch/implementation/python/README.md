@@ -38,5 +38,5 @@ rules. Resolve each against a pinned product revision and relevant tests:
 - [Python extension implementation](extensions.md)
 - [Python code conventions](code-conventions.md)
 
-The existing [testing page](testing.md) also requires a source-and-test audit before
-its commands, paths, and coverage claims can be treated as current guidance.
+The [testing guide](testing.md) records the source-pinned layout, selection,
+prerequisites, and CI boundaries; it does not claim unrun tests pass.

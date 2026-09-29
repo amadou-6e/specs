@@ -47,3 +47,4 @@ Upstream Ray internals, external CI, and live cluster state were not inspected.
 - [Environment execution](environment-execution.md): runner counts, vectorization, and actual environment instances.
 - [Evaluation execution](evaluation-execution.md): remote evaluation runners and local fallback.
 - [Measurement and tuning](measurement-and-tuning.md): Ray-specific telemetry and resource sweeps; the benchmark PR remains open.
+- [Ray test placement and evidence](testing.md): distributed test owners, markers, fixtures, and coverage limits.
