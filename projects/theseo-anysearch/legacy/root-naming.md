@@ -1,3 +1,23 @@
+---
+title: Historical naming philosophy
+status: archived
+kind: legacy
+owners: [theseo-team]
+last_reviewed: 2026-09-28
+applies_to: [theseo-anysearch]
+related: [../implementation/python/code-conventions.md, ../implementation/rust/code-conventions.md]
+---
+
+# Historical naming philosophy
+
+> These imported examples are candidate conventions, not enforced current
+> rules. Verify Python and Rust patterns against pinned source, formatter,
+> lint, and contributor evidence before promoting them to the respective
+> [Python](../implementation/python/code-conventions.md) or
+> [Rust](../implementation/rust/code-conventions.md) guidance.
+
+## Original imported text
+
 # Naming Philosophy
 
 ## Guiding Principle

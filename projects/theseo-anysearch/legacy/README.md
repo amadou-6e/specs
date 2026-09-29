@@ -54,3 +54,18 @@ product implementation. These candidate details remain deliberately unpromoted:
 - The archived [SHAP proposal](rllib-policy-attribution.md) and
   [backend plan](rllib-explain-backend.md) should not replace the current
   grouped-occlusion contract without a separately reviewed methodology change.
+
+## Transitional root documents (#130)
+
+Five imported root documents were moved here without promoting their old
+claims. Their previous paths remain available in Git history. The destination
+columns identify where current work belongs, not a claim that every historical
+detail has been revalidated.
+
+| Former root document | Archived source | Current owner and remaining work |
+| --- | --- | --- |
+| `bugs.md` | [Incident notes](root-bugs.md) | [Ray trial/process guidance](../implementation/ray/trials-and-process-boundaries.md) records source-checked behavior; [bugs](../bugs/README.md) needs individually evidenced issue-linked incidents before adopting the chronology. |
+| `experiments.md` | [Experiment workflow proposal](root-experiments.md) | [Training and tuning](../subsystems/training-and-tuning/README.md), [trajectory and replay](../subsystems/trajectory-and-replay/README.md), and [experiment records](../experiments/README.md); old CLI and format examples are not current instructions. |
+| `later.md` | [Model-garden idea](root-later-model-garden.md) | [Theseo Model Garden](../../theseo-model-garden/README.md); historical idea, not active backlog. |
+| `naming.md` | [Naming examples](root-naming.md) | [Python](../implementation/python/code-conventions.md) and [Rust](../implementation/rust/code-conventions.md) convention investigations must verify candidates before adoption. |
+| `project-structure.md` | [Old repository map](root-project-structure.md) | [Architecture](../architecture/README.md), [Python ownership](../implementation/python/module-ownership.md), [Rust ownership](../implementation/rust/module-ownership.md), and language-specific testing guides; old paths are not current. |

@@ -1,3 +1,23 @@
+---
+title: Historical experiment workflow proposal
+status: archived
+kind: legacy
+owners: [theseo-team]
+last_reviewed: 2026-09-28
+applies_to: [theseo-anysearch]
+related: [../experiments/README.md, ../subsystems/training-and-tuning/README.md]
+---
+
+# Historical experiment workflow proposal
+
+> This imported design mixes proposals and old implementation claims. Do not
+> use its CLI, YAML, protobuf, checkpoint, or output examples as current
+> instructions. Frozen studies live under [experiments](../experiments/README.md);
+> current run behavior belongs to [training and tuning](../subsystems/training-and-tuning/README.md)
+> and [trajectory and replay](../subsystems/trajectory-and-replay/README.md).
+
+## Original imported text
+
 # Experiments
 
 An *experiment* is a fully-specified, reproducible run. It is described by a YAML file,

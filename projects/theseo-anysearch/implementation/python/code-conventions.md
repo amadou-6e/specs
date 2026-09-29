@@ -19,6 +19,9 @@ Sample public and internal modules across `theseo_anysearch/`, package and test
 configuration, CI, contributor docs, type annotations, docstrings, module comments,
 CLI help, settings models, and tests. Check actual formatter, linter, type-checker,
 and documentation commands; do not infer enforcement from a tool's installation.
+Treat the imported [naming examples](../../legacy/root-naming.md) as candidate
+evidence only; verify package, class, method, flag, and JSON-key rules against
+the pinned current tree before adopting or rejecting each rule.
 
 ## Questions to resolve
 

@@ -22,10 +22,11 @@ design evidence reviewable independently from the implementation repository.
 
 ## Context
 
-This directory preserves the original specification workspace imported from the
-[Theseo Anysearch repository](https://github.com/amadou-6e/theseo-anysearch). Existing
-organization and filenames remain intact so historical references and Draw.io assets
-continue to resolve.
+This directory originated as a specification workspace imported from the
+[Theseo Anysearch repository](https://github.com/amadou-6e/theseo-anysearch).
+Historical source text is preserved under [legacy/](legacy/README.md) when its
+former root path or authority no longer fits the current taxonomy. Git history
+retains the original locations.
 
 ## Contained elements
 
@@ -79,9 +80,11 @@ placement rules; `spec.json` owns machine-readable project metadata.
 
 ## References
 
-- [Naming conventions](naming.md)
-- [Project structure](project-structure.md)
-- [Experiment design](experiments.md)
+- [Current architecture](architecture/README.md)
+- [Python and Rust contributor guidance](implementation/README.md)
+- [Experiment records](experiments/README.md)
+- [Durable bug records](bugs/README.md)
+- [Imported root documents and their replacements](legacy/README.md)
 - [Theseo Model Garden](../theseo-model-garden/README.md)
 - [Theseo World Providers](../theseo-world-providers/README.md)
 - [Python implementation rules](implementation/python/README.md)
