@@ -12,3 +12,12 @@ Feasibility findings test that proposal against upstream tools. The
 pin `claude-agent-sdk 0.2.161`, reproduce the missing-CLI blocker precisely,
 and prepare setting-source, streaming, and resume probes behind a credential
 gate.
+
+The [upstream dependencies matrix](feasibility/118.md) records
+inspected versions, licenses, extension points, and gaps for AGENTVIZ,
+Langflow, Codex, Claude Code, and Deep Agents.
+
+The [bounded skill discovery findings](feasibility/119.md) for issue #119
+record Codex discovery, a manifest pilot, one completed combined skill
+invocation, auth isolation limits, and the bundled-script permissions to test.
+Claude execution and selected-subset isolation remain unproven.
