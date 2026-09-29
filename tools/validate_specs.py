@@ -128,6 +128,7 @@ def check_entry_frontmatter(
     *,
     expect_template: bool,
     allowed_statuses: set[str],
+    expected_kind: str | None = None,
 ) -> dict | None:
     text = path.read_text(encoding="utf-8")
     fields = parse_frontmatter(text)
@@ -138,6 +139,11 @@ def check_entry_frontmatter(
     missing = REQUIRED_FRONTMATTER_FIELDS - fields.keys()
     if missing:
         errors.append(f"{relative}: frontmatter missing {sorted(missing)}")
+    if expected_kind is not None and fields.get("kind") != expected_kind:
+        errors.append(
+            f"{relative}: frontmatter kind must be {expected_kind!r}, "
+            f"found {fields.get('kind')!r}"
+        )
     status = fields.get("status")
     accepted_statuses = allowed_statuses | {"template"}
     if status not in accepted_statuses:
@@ -153,7 +159,8 @@ def check_entry_frontmatter(
 
 
 def check_fixed_category(
-    project: Path, name: str, errors: list[str], *, allowed_statuses: set[str]
+    project: Path, name: str, errors: list[str], *, allowed_statuses: set[str],
+    partitions: list[str] | None = None, expected_kind: str | None = None,
 ) -> set[str]:
     category = project / name
     readme = category / "README.md"
@@ -178,8 +185,18 @@ def check_fixed_category(
             expect_template=True,
             allowed_statuses=allowed_statuses,
         )
-    for path in sorted(category.glob("*.md")):
-        if path.name in NON_ENTRY_FILENAMES or path.name == "template.md":
+    if partitions is not None:
+        declared = set(partitions)
+        actual = {path.name for path in category.iterdir() if path.is_dir()}
+        for missing_partition in sorted(declared - actual):
+            errors.append(f"{name}/{missing_partition}/: declared partition is missing")
+        for unexpected_partition in sorted(actual - declared):
+            errors.append(f"{name}/{unexpected_partition}/: undeclared fixed partition")
+        for partition in sorted(declared & actual):
+            if not (category / partition / "README.md").exists():
+                errors.append(f"{name}/{partition}/README.md: missing container README")
+    for path in sorted(category.rglob("*.md")):
+        if path.name in NON_ENTRY_FILENAMES or path == template_doc:
             continue
         check_entry_frontmatter(
             path,
@@ -187,8 +204,9 @@ def check_fixed_category(
             errors,
             expect_template=False,
             allowed_statuses=allowed_statuses,
+            expected_kind=expected_kind,
         )
-        refs.add(f"{name}/{path.stem}")
+        refs.add(path.relative_to(project).with_suffix("").as_posix())
     return refs
 
 
@@ -302,6 +320,11 @@ def check_references(
             p / "README.md" for p in category.iterdir()
             if p.is_dir() and p.name != "template" and p.name not in support_dirs
         ]
+    elif category_type == "fixed":
+        candidates = [
+            p for p in category.rglob("*.md")
+            if p.name not in NON_ENTRY_FILENAMES and p != category / "template.md"
+        ]
     else:
         candidates = [
             p for p in category.glob("*.md")
@@ -359,8 +382,22 @@ def check_typed_categories(project: Path, categories: dict, errors: list[str]) -
             allowed_statuses = set(configured_statuses) - {"template"}
         support_dirs: set[str] = set()
         if category_type == "fixed":
+            partitions = spec.get("partitions")
+            if partitions is not None and (
+                not isinstance(partitions, list)
+                or any(not isinstance(item, str) or not FOLDER_ENTRY_NAME_PATTERN.fullmatch(item)
+                       for item in partitions)
+                or len(partitions) != len(set(partitions))
+            ):
+                errors.append(f"spec.json: categories.{name}.partitions must list unique direct child names")
+                partitions = None
+            expected_kind = spec.get("entry_kind")
+            if expected_kind is not None and not isinstance(expected_kind, str):
+                errors.append(f"spec.json: categories.{name}.entry_kind must be a string")
+                expected_kind = None
             known_refs |= check_fixed_category(
-                project, name, errors, allowed_statuses=allowed_statuses
+                project, name, errors, allowed_statuses=allowed_statuses,
+                partitions=partitions, expected_kind=expected_kind,
             )
         elif category_type == "document-collection":
             numbered = bool(spec.get("numbered", True))
