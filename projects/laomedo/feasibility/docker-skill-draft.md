@@ -6,15 +6,13 @@ not an approval to promote a skill or deploy a runner. It compares the Docker
 route with the [OS-sandbox Skill Draft study](122.md) under the same pinned
 synthetic edit policy.
 
-The source experiment is
-`amadou-6e/laomedo/experiments/feasibility/docker-skill-draft/`, on local
-branch `feat/146`. Its JSON observation files are sanitized; raw event streams,
-session state, and the ChatGPT login remain outside Git. The older source
-branch is reviewed in [Laomedo PR #4](https://github.com/amadou-6e/laomedo/pull/4),
-but its Docker additions and the new `feat/146` branch are local pending
-publication approval. The exact local spike commit is `d2525cd`; it is not
-yet reachable remotely. Link the published commit and PR here before treating
-the report as a complete remote deliverable.
+The [source experiment](https://github.com/amadou-6e/laomedo/tree/d2525cd/experiments/feasibility/docker-skill-draft)
+at [commit `d2525cd`](https://github.com/amadou-6e/laomedo/commit/d2525cd)
+is reviewed in [Laomedo PR #6](https://github.com/amadou-6e/laomedo/pull/6),
+stacked on the Docker runner baseline in
+[Laomedo PR #4](https://github.com/amadou-6e/laomedo/pull/4).
+Its JSON observation files are sanitized; raw event streams, session state,
+and the ChatGPT login remain outside Git.
 
 ## Predeclared checks and observations
 
