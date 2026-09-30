@@ -23,3 +23,6 @@ authoring contracts.
 The implementation currently resides in `theseo_anysearch/garden/` in the
 `theseo-anysearch` source repository. This specification split records product
 ownership; it does not claim that packaging has already been physically separated.
+The [repository-extraction plan](architecture/repository-extraction.md) pins the
+experimental source snapshot and distinguishes the planned package boundary from
+the current implementation.

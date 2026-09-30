@@ -208,6 +208,9 @@ The following remain unresolved rather than architectural guarantees:
 
 ## Focused documents
 
+- [Repository extraction](repository-extraction.md) records the planned standalone
+  boundary and its pinned experimental source snapshot.
+
 - [Historical monolith](model-garden-monolith.md) — imported design evidence pending
   full decomposition; it is not the template for new architecture pages and is not
   authoritative over current code or subsystem contracts.
