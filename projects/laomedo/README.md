@@ -18,9 +18,12 @@ invocation, auth isolation limits, and the bundled-script permissions to test.
 Claude execution and selected-subset isolation remain unproven.
 
 The [Skill Draft feasibility result](feasibility/122.md) records a versioned
-editing policy, deterministic draft validation, and two bounded Codex edit
-turns. The current runner did not produce an agent file edit, so automated
-skill editing remains a no-go on this evidence.
+editing policy, deterministic draft validation, and a bounded Codex edit,
+resume, and forbidden-write denial under the native Windows sandbox. The
+[Docker Skill Draft study](feasibility/docker-skill-draft.md) tests the parallel
+container route with an observed agent-originated denial, a pinned candidate,
+and persistent resume. Its go decision is limited to a single-user local
+prototype.
 
 The [Codex runner isolation findings](feasibility/120.md) for issue #120
 record a pinned CLI and a three-turn private ChatGPT handoff. Model/effort
