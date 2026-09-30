@@ -1,10 +1,13 @@
 # Python implementation
 
-The Model Garden Python implementation builds voxel datasets, trains representation
-models, publishes qualified encoders, and loads those encoders into AnySearch policy
-models. Its primary package is `theseo_anysearch/garden/`; the command-line adapter is
-`theseo_anysearch/cli/commands/garden.py`, and the AnySearch consumer integration is in
-`theseo_anysearch/rllib/models/cnn.py`.
+The Python implementation is currently split. The standalone `theseo_model_garden`
+package at commit `756e5dd18251ae877ed3277a37f39e16f4b90764` contains the
+`compact-spatial-code-v1` inference slice. The broader garden training, collection,
+and legacy registry code remains in `theseo_anysearch/garden/` at experimental source
+snapshot `88e220ccdbca8c87c56875b5d742427eb7947540`. The command-line adapter
+remains `theseo_anysearch/cli/commands/garden.py`; AnySearch consumer integration
+remains in `theseo_anysearch/rllib/models/cnn.py`. The responsibility map below
+describes those remaining AnySearch-hosted paths, not files already extracted.
 
 This page is contributor guidance for navigating and changing that implementation. It
 does not define dataset, encoder, qualification, or registry behavior; those guarantees

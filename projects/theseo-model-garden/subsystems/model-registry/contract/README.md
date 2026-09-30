@@ -3,6 +3,13 @@
 This page defines the observable behavior implemented by the local registry. It does
 not elevate the historical certification proposal into a current guarantee.
 
+This is the legacy AnySearch-hosted `GardenStore` contract, not the standalone
+`theseo_model_garden` compact package. The latter shipped at commit
+`756e5dd18251ae877ed3277a37f39e16f4b90764` with versioned manifests and hash
+checks. Neither format automatically loads or converts the other. The
+[extraction boundary](../../../architecture/repository-extraction.md) defines the
+old-path support window and migration requirements.
+
 ## Publication guarantees
 
 Given a model with an extractable encoder and a validated `GardenConfig`,
