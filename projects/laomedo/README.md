@@ -8,7 +8,13 @@ trace inspection, and a phased implementation estimate. It is a technical
 proposal, not a UI interaction specification.
 
 Feasibility findings test that proposal against upstream tools. The
-[upstream dependencies matrix](feasibility/118.md) records
+[Claude runner isolation probes](feasibility/121.md) for issue #121
+pin `claude-agent-sdk 0.2.161`, reproduce the missing-CLI blocker precisely,
+and prepare setting-source, streaming, and resume probes behind a credential
+gate. No model-backed condition was exercised, so the local Claude MVP is
+no-go on current evidence.
+
+The [upstream dependencies matrix](feasibility/118.md) records
 inspected versions, licenses, extension points, and gaps for AGENTVIZ,
 Langflow, Codex, Claude Code, and Deep Agents.
 
