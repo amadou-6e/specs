@@ -1,6 +1,6 @@
 # Standalone Model Garden extraction
 
-Status: planned boundary for [theseo-anysearch #501](https://github.com/amadou-6e/theseo-anysearch/issues/501) and [specs #134](https://github.com/amadou-6e/specs/issues/134). Current source authority is `theseo-anysearch` `origin/exp/perception-encoder` commit `88e220ccdbca8c87c56875b5d742427eb7947540` (99 tracked `theseo_anysearch/garden/` files). The new `theseo-model-garden` repository does not yet exist; `spec.json` continues to identify the present source repository.
+Status: staged boundary for [theseo-anysearch #501](https://github.com/amadou-6e/theseo-anysearch/issues/501) and [specs #134](https://github.com/amadou-6e/specs/issues/134). Current implementation source authority is `theseo-anysearch` `origin/exp/perception-encoder` commit `88e220ccdbca8c87c56875b5d742427eb7947540` (99 tracked `theseo_anysearch/garden/` files). The new [theseo-model-garden repository](https://github.com/amadou-6e/theseo-model-garden) now exists. Its [PR #2](https://github.com/amadou-6e/theseo-model-garden/pull/2) stages only the compact inference slice; the remaining implementation still lives in AnySearch. `spec.json` names the new project repository, not the historical implementation source.
 
 ## Migration strategy and ownership
 
