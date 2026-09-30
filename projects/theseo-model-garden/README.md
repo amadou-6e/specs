@@ -20,6 +20,8 @@ Each category owns its local template and authoring skill where entries are repe
 templates from peer projects are examples for those projects, not Model Garden
 authoring contracts.
 
-The implementation currently resides in `theseo_anysearch/garden/` in the
-`theseo-anysearch` source repository. This specification split records product
-ownership; it does not claim that packaging has already been physically separated.
+The compact inference slice now resides in
+[`theseo-model-garden`](https://github.com/amadou-6e/theseo-model-garden/tree/756e5dd18251ae877ed3277a37f39e16f4b90764).
+Training, collection, the legacy registry, and AnySearch's CLI/consumer adapter
+remain in `theseo-anysearch`. The [repository-extraction plan](architecture/repository-extraction.md)
+pins both sources and distinguishes the delivered slice from the remaining migration.

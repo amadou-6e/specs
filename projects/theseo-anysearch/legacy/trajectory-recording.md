@@ -1,3 +1,15 @@
+---
+title: Historical Trajectory recording
+status: archived
+kind: legacy
+owners: [theseo-team]
+last_reviewed: 2026-09-28
+applies_to: [theseo-anysearch]
+related: []
+---
+
+> Historical source; not an authoritative current specification.
+
 # Trajectory Recording
 
 Trajectory recording serialises the per-step state of VoxelEnv eval episodes to

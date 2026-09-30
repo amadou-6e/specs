@@ -242,7 +242,7 @@ numbered decision filename; do not create a folder for an ordinary decision reco
 
 ## Implementation
 
-Implementation is a fixed top-structured category with exactly three technology
+Implementation is a fixed top-structured category with exactly four technology
 partitions:
 
 ```text
@@ -252,14 +252,16 @@ implementation/
 │   └── README.md
 ├── rust/
 │   └── README.md
-└── rllib/
+├── rllib/
+│   └── README.md
+└── ray/
     └── README.md
 ```
 
 It defines contributor expectations, source organization, dependency boundaries,
 error and compatibility policy, testing, performance hazards, integration conventions,
 and local execution workflows. It does not use a template because contributors do not
-create arbitrary implementation partitions. Adding a fourth partition requires an
+create arbitrary implementation partitions. Adding a fifth partition requires an
 explicit revision of this guide.
 
 Local runbooks are folded into implementation: installation, training, tuning,

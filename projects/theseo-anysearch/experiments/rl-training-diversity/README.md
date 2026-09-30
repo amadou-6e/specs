@@ -5,8 +5,7 @@ kind: experiment
 owners: [theseo-team]
 last_reviewed: 2026-09-22
 applies_to: [theseo-anysearch]
-related:
-  - imported-protocol.md
+related: []
 ---
 
 # RL training diversity study

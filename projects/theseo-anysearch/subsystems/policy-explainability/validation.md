@@ -19,3 +19,11 @@ CLI gating is inspected in `tests/test_cli/test_unit/test_replay_explain_gating.
 The principal open gap is a live VoxelEnv test for the generic trace collector after
 removal of `cursor_pos`. Until that passes, legacy-fixture tests do not prove current
 environment compatibility.
+
+An initial implementation audit on 2026-09-28 ran the focused explain suite on
+product checkout `ed8982e218d39e064965661696f8b6da34bf2bb5` (`exp/296`):
+`.venv/Scripts/python.exe -m pytest tests/test_rllib/test_unit/test_explain -q`
+returned **44 passed**. This checkout differs from `origin/develop`
+`fd94554c9620096f94aaed95ffda6a1bbd4711ec` in `service.py` and one test.
+No live VoxelEnv trace, saved DQN/PPO checkpoint, or Rust viewer process was
+exercised, so the three corresponding integration claims remain unverified.

@@ -11,7 +11,8 @@ Feasibility findings test that proposal against upstream tools. The
 [Claude runner isolation probes](feasibility/121.md) for issue #121
 pin `claude-agent-sdk 0.2.161`, reproduce the missing-CLI blocker precisely,
 and prepare setting-source, streaming, and resume probes behind a credential
-gate.
+gate. No model-backed condition was exercised, so the local Claude MVP is
+no-go on current evidence.
 
 The [upstream dependencies matrix](feasibility/118.md) records
 inspected versions, licenses, extension points, and gaps for AGENTVIZ,
@@ -21,3 +22,9 @@ The [bounded skill discovery findings](feasibility/119.md) for issue #119
 record Codex discovery, a manifest pilot, one completed combined skill
 invocation, auth isolation limits, and the bundled-script permissions to test.
 Claude execution and selected-subset isolation remain unproven.
+
+The [Codex runner isolation findings](feasibility/120.md) for issue #120
+record a pinned CLI and a three-turn private ChatGPT handoff. Model/effort
+selection and post-restart resume worked, while no tool call appeared in the
+stream and the personal-session comparison remained inconclusive. The local
+MVP decision is no-go on this evidence.

@@ -2,6 +2,8 @@
 
 This records observed behavior at implementation revision `72a413a`. The shared routing sidecar schemas are defined in `theseo_anysearch/environments/routing_manifests.py`; this page specifies how the provider service admits them.
 
+The [package-boundary plan](../../../implementation/python/package-boundary.md) assigns future SDK, wheel and host ownership. [AnySearch PR #505](https://github.com/amadou-6e/theseo-anysearch/pull/505) stages the top-level package and old-path aliases; until merged, the paths below remain the observed `72a413a` implementation.
+
 ## Generation and verification
 
 1. Provider lookup loads a built-in fixture plus valid `theseo_anysearch.world_providers` entry points. A broken optional entry point is reported as unavailable without preventing other providers from listing or loading (`theseo_anysearch/world_providers/api.py`).

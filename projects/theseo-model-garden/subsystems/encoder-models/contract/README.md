@@ -15,6 +15,12 @@ encoders. It describes the implementation at Theseo Anysearch revision
 `49fef5f4f9d3fb21325931e1ce1eed89e743cdcc`; it does not promote experimental model
 quality into a runtime guarantee.
 
+This describes the legacy built-in AE/VAE/MVM implementations. The separate
+`compact-spatial-code-v1` inference slice now lives in `theseo-model-garden` at
+commit `756e5dd18251ae877ed3277a37f39e16f4b90764`; its tensor, preprocessing,
+and hash contract is recorded in the [repository extraction boundary](../../../architecture/repository-extraction.md).
+Do not infer that all legacy model architectures or training paths moved with it.
+
 ## Construction guarantees
 
 - `build_encoder()` accepts only `voxel_box_3dcnn`, `voxel_box_2dcnn`, and

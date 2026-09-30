@@ -26,3 +26,16 @@ workflows.
 
 Implementation guidance links to subsystem contracts and must not redefine their
 observable behavior.
+
+## Investigation queue
+
+The following draft pages are investigation plans, not accepted implementation
+rules. Each must be resolved against a pinned product revision and test evidence
+before its plan is replaced with contributor guidance:
+
+- [Native module ownership](module-ownership.md)
+- [Native extension implementation](extensions.md)
+- [Rust code conventions](code-conventions.md)
+- [Rust to Python bridge](python-bridge.md)
+- [Rust testing](testing.md)
+- [Native build and verification workflow](native-workflow.md)
