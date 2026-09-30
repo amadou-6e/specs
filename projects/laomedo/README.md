@@ -16,3 +16,9 @@ The [bounded skill discovery findings](feasibility/119.md) for issue #119
 record Codex discovery, a manifest pilot, one completed combined skill
 invocation, auth isolation limits, and the bundled-script permissions to test.
 Claude execution and selected-subset isolation remain unproven.
+
+The [Codex runner isolation findings](feasibility/120.md) for issue #120
+record a pinned CLI and a three-turn private ChatGPT handoff. Model/effort
+selection and post-restart resume worked, while no tool call appeared in the
+stream and the personal-session comparison remained inconclusive. The local
+MVP decision is no-go on this evidence.
