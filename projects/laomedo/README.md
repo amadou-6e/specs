@@ -36,3 +36,8 @@ rollout into AGENTVIZ and tests a small event projection without new model
 calls. Claude has no credentialed trace yet, and Langflow's outer span does
 not provide structured correlation to the private run. Full cross-provider
 monitoring remains unverified.
+
+The [feasibility synthesis](feasibility/124.md) recommends a bounded local
+Codex pilot using a separate Docker runner, with full dual-provider and hosted
+claims deferred until the missing Claude, authentication, trace, and licensing
+evidence exists.
