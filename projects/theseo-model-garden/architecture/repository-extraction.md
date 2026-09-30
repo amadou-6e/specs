@@ -1,6 +1,6 @@
 # Standalone Model Garden extraction
 
-Status: staged boundary for [theseo-anysearch #501](https://github.com/amadou-6e/theseo-anysearch/issues/501) and [specs #134](https://github.com/amadou-6e/specs/issues/134). Current implementation source authority is `theseo-anysearch` `origin/exp/perception-encoder` commit `88e220ccdbca8c87c56875b5d742427eb7947540` (99 tracked `theseo_anysearch/garden/` files). The new [theseo-model-garden repository](https://github.com/amadou-6e/theseo-model-garden) now exists. Its [PR #2](https://github.com/amadou-6e/theseo-model-garden/pull/2) stages only the compact inference slice; the remaining implementation still lives in AnySearch. `spec.json` names the new project repository, not the historical implementation source.
+Status: staged boundary for [theseo-anysearch #501](https://github.com/amadou-6e/theseo-anysearch/issues/501) and [specs #134](https://github.com/amadou-6e/specs/issues/134). Current implementation source authority is `theseo-anysearch` `origin/exp/perception-encoder` commit `88e220ccdbca8c87c56875b5d742427eb7947540` (99 tracked `theseo_anysearch/garden/` files). The new [theseo-model-garden repository](https://github.com/amadou-6e/theseo-model-garden) exists, but its [PR #2](https://github.com/amadou-6e/theseo-model-garden/pull/2) is unmerged and stages only the compact inference slice. `spec.json` therefore continues to name AnySearch as the current implementation source. Change it to the new repository in a reviewed follow-up after the initial code PR merges.
 
 ## Migration strategy and ownership
 
