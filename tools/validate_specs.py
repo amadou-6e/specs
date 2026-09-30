@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Validate repository structure without third-party dependencies."""
+"""Validate repository structure without third-party dependencies.
+
+For every opted-in fixed category, nested Markdown leaves are entries at any
+depth. README.md and SKILL.md are excluded as containers/support files;
+partitions and entry_kind add optional stricter checks, not recursive opt-in.
+"""
 
 from __future__ import annotations
 
