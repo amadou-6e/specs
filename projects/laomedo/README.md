@@ -23,8 +23,27 @@ record Codex discovery, a manifest pilot, one completed combined skill
 invocation, auth isolation limits, and the bundled-script permissions to test.
 Claude execution and selected-subset isolation remain unproven.
 
+The [Skill Draft feasibility result](feasibility/122.md) records a versioned
+editing policy, deterministic draft validation, and a bounded Codex edit,
+resume, and forbidden-write denial under the native Windows sandbox. The
+[Docker Skill Draft study](feasibility/docker-skill-draft.md) tests the parallel
+container route with an observed agent-originated denial, a pinned candidate,
+and persistent resume. Its go decision is limited to a single-user local
+prototype.
+
 The [Codex runner isolation findings](feasibility/120.md) for issue #120
 record a pinned CLI and a three-turn private ChatGPT handoff. Model/effort
 selection and post-restart resume worked, while no tool call appeared in the
 stream and the personal-session comparison remained inconclusive. The local
 MVP decision is no-go on this evidence.
+
+The [trace completeness study](feasibility/123.md) imports a private Codex
+rollout into AGENTVIZ and tests a small event projection without new model
+calls. Claude has no credentialed trace yet, and Langflow's outer span does
+not provide structured correlation to the private run. Full cross-provider
+monitoring remains unverified.
+
+The [feasibility synthesis](feasibility/124.md) recommends a bounded local
+Codex pilot using a separate Docker runner, with full dual-provider and hosted
+claims deferred until the missing Claude, authentication, trace, and licensing
+evidence exists.
