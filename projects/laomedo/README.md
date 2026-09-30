@@ -30,3 +30,9 @@ record a pinned CLI and a three-turn private ChatGPT handoff. Model/effort
 selection and post-restart resume worked, while no tool call appeared in the
 stream and the personal-session comparison remained inconclusive. The local
 MVP decision is no-go on this evidence.
+
+The [trace completeness study](feasibility/123.md) imports a private Codex
+rollout into AGENTVIZ and tests a small event projection without new model
+calls. Claude has no credentialed trace yet, and Langflow's outer span does
+not provide structured correlation to the private run. Full cross-provider
+monitoring remains unverified.
