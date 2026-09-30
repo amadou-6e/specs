@@ -59,6 +59,8 @@ Prompts, files, tool output, and raw traces may contain sensitive data.
 Restrict reads by run ownership and grant; keep credentials and tokens out of
 event payloads and exports. Record any redaction as a transformation, not as
 the original event. Exact retention and export rules remain open decisions.
+The [runner authentication contract](../sandboxing/runner-authentication.md)
+adds non-secret credential mode and provenance fields plus typed auth failures.
 
 ## Acceptance
 

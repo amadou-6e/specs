@@ -47,3 +47,8 @@ The [feasibility synthesis](feasibility/124.md) recommends a bounded local
 Codex pilot using a separate Docker runner, with full dual-provider and hosted
 claims deferred until the missing Claude, authentication, trace, and licensing
 evidence exists.
+
+The [runner authentication proposal](sandboxing/runner-authentication.md)
+defines credential ownership, supported mode candidates, lifecycle and
+failure handling, and the tests required before replacing the temporary
+private ChatGPT handoff or hosting multiple users.

@@ -24,6 +24,9 @@ mode must come from the recorded grant. Prompt instructions cannot override
 the filesystem and network boundary.
 
 Use a runner-specific `CLAUDE_CONFIG_DIR` and controlled working directory.
+The [runner authentication contract](../sandboxing/runner-authentication.md)
+defines the selected credential mode and prevents inherited API keys or
+personal login state from silently overriding it.
 Do not load skills, memories, or settings from the user's personal Claude
 profile. When native project skills are selected, materialize only the pinned
 bundle into the isolated project skill path and enable the required project

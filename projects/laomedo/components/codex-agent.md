@@ -26,6 +26,9 @@ Its available tools, filesystem access, network access, approval behavior,
 timeout, and workspace are determined by a recorded permission grant and
 [runner isolation](../sandboxing/runner-isolation.md), not by prompt text.
 No profile or credential from the user's normal Codex installation is used.
+The selected credential mode and broker reference follow
+[runner authentication](../sandboxing/runner-authentication.md); no raw token
+belongs in `AgentRunSpec` or its trace.
 
 ## Run lifecycle
 

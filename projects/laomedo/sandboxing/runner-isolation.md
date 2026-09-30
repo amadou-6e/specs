@@ -45,7 +45,9 @@ Credentials live in the runner's credential store, not in a Langflow node,
 flow export, trace, or spec repository. Multi-user deployments isolate
 credentials and profiles per user or tenant. A shared personal login is not a
 multi-user identity model. The first local prototype may be single-user, but
-must still use a dedicated runner identity/profile.
+must still use a dedicated runner identity/profile. The
+[runner authentication contract](runner-authentication.md) specifies
+credential modes, renewal, and the controller-to-tool secret boundary.
 
 ## Permission grants
 
