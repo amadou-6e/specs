@@ -5,11 +5,13 @@ collects and augments voxel datasets, trains encoder-decoder models, stores the
 encoder portion with metadata, and makes named artifacts discoverable to external
 consumers such as Theseo Anysearch.
 
-This map describes the implementation in the `theseo-anysearch` repository at
-revision `49fef5f4f9d3fb21325931e1ce1eed89e743cdcc`. Model Garden is a distinct
-product boundary in the specifications, but its current Python implementation and
-CLI are still physically hosted under `theseo_anysearch/garden/` and
-`theseo_anysearch/cli/commands/garden.py`. The imported
+The detailed flows below describe the legacy implementation in the `theseo-anysearch`
+repository at revision `49fef5f4f9d3fb21325931e1ce1eed89e743cdcc`; they are not a
+complete map of today's two repositories. The compact inference slice is now in the
+standalone repository at `756e5dd18251ae877ed3277a37f39e16f4b90764`. Training,
+collection, legacy registry, and AnySearch CLI/consumer code remain in AnySearch's
+experimental line. See [repository extraction](repository-extraction.md) for current
+ownership and migration status. The imported
 [historical monolith](model-garden-monolith.md) remains migration evidence; claims
 found only there are not treated as current behavior.
 
@@ -185,7 +187,7 @@ set.
 
 The following remain unresolved rather than architectural guarantees:
 
-- Physical separation into an independently installable Model Garden package.
+- Physical separation of training, collection, and legacy registry into the independently installable Model Garden package; the compact inference slice is already separated.
 - A complete immutable dataset and artifact identity covering content, code, and
   configuration lineage.
 - Atomic publication, locking, corruption detection, and recovery for local artifact
