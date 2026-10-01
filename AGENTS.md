@@ -3,6 +3,38 @@
 This repository contains specifications, not product implementation. Prefer changes
 that make intent, behavior, constraints, and verification clearer.
 
+## Reference map and skills
+
+- [README.md](README.md): repository layout, project scaffolding, and validation commands.
+- [Specification lifecycle](shared/conventions/spec_lifecycle.md): maturity, acceptance,
+  and review requirements.
+- [Typed folder convention](shared/conventions/typed_folder_system/README.md): structural
+  types and template expansion; each project's `SPECS.md` chooses its taxonomy.
+- [Spec authoring system](shared/skills/spec-authoring-system/SKILL.md): establish,
+  migrate, or maintain project structure, ownership, READMEs, templates, and evidence.
+  Use for system-level authoring work, not every single-file correction.
+- [Research](shared/skills/research/SKILL.md): separate research and writing with an
+  inspectable evidence handoff when that workflow is selected. Read applicable
+  project/category guidance too; this skill does not own every project's research schema.
+- [Create spec-linked PR](shared/skills/create-spec-linked-pr/SKILL.md): prepare or update
+  PR coverage, acceptance checklists, verification, and blocker follow-up links.
+
+Read the relevant skill before applying it. Skills guide authorized work; they do not
+authorize implementing open proposals, changing issue state, or activating repository
+settings. Follow the affected project's manifest, `SPECS.md`, category README, and
+nearby guidance for its concrete structure and canonical owners.
+
+## Approval boundaries
+
+- Ask for explicit approval before editing an existing GitHub issue's title, body,
+  labels, or state. Present the proposed changes first and preserve newer edits.
+- Treat open issues as proposals. Implement only work selected by the user; a roadmap
+  or a request to analyze the backlog is not authorization to implement it.
+- Do not silently apply configuration changes. Present drafts and obtain approval
+  before changing workflows, repository settings, or required merge checks.
+- Opening a PR for authorized work is separate from approving or merging it. Do not
+  claim approval, change maturity to accepted, or merge without supporting authorization.
+
 ## Working rules
 
 - Read the project manifest and nearby specifications before editing.
@@ -41,3 +73,52 @@ Problem or feedback -> specification issue -> typed issue branch -> spec and evi
 Use `<type>/<issue-number>` branches, for example `feat/12`, `fix/18`, `docs/21`, or
 `chore/24`. Pull requests should link the issue and identify the specifications whose
 status or behavior changed.
+
+1. Inspect Git status and the intended base before editing. Preserve unrelated work;
+   use an isolated branch/worktree when concurrent work would conflict.
+2. Read the owning project/category guidance and accepted coverage. For new projects,
+   use `tools/new_project.py` as described in the README. For new entries, copy the
+   owning category's template; do not invent a parallel structure.
+3. Write observable behavior, scope, failure conditions, and acceptance criteria.
+   Keep authoritative contracts separate from historical evidence and illustrative
+   templates. Record source revisions, actual checks, and unknowns honestly.
+4. When moving files, inspect local and published consumers, preserve necessary
+   compatibility pointers, and repair indexes and links. Never silently discard evidence.
+5. Run `python tools/validate_specs.py` and `git diff --check`, then inspect content,
+   references, and changed artifacts. Documentation-only changes need content/link
+   checks, not a product rebuild. Changes to tools need relevant existing tests too.
+   Validate changed skills using the skill-creator validator when available; disclose
+   unavailable checks. Passing structural validation does not prove runtime behavior.
+6. Commit and push completed work on the selected issue branch. Prepare the PR using
+   the PR creation skill and the repository template, retaining meaningful sections.
+   State the actual head/base and stack dependencies; do not conflate a reviewed
+   branch with merged coverage.
+7. Address review feedback, rerun checks affected by the changes, and update the PR
+   to describe the final result. Review and merge are distinct from submission; issue
+   closure still requires explicit approval under the rules above.
+
+## PR requirements
+
+Every PR, including fixes, includes:
+
+- Links to its issue, canonical spec sections and inspected revisions, and relevant
+  specification PRs. Follow project-specific spec-link exemptions and merge order;
+  Laomedo's non-`fix/` link rule is in its
+  [PR policy](projects/laomedo/implementation/spec-impact.md), not a universal branch rule.
+- A checklist derived from applicable specification or authoring acceptance criteria.
+  Check only verified outcomes, with evidence; explain failed, untested, inconclusive,
+  or inapplicable items. Generic lint/build checkboxes are not a substitute.
+- Commands/results and the tested revision, with limits on what those results establish.
+- Definitive unresolved blockers, their evidence and merge impact, and follow-up issue
+  links. Create a new issue when authorized or link an existing issue that owns the
+  same problem. If a required issue link cannot be supplied, report that requirement
+  as incomplete. Record recovered failures separately; say `None observed` when there
+  are no definitive blockers, while retaining any verification gaps.
+
+A follow-up issue does not waive an unmet acceptance criterion. Missing criteria are
+gaps, not permission to invent approved requirements. Never publish credentials or
+private raw transcripts as evidence.
+
+The existing GitHub workflow runs the specs validator. These instructions and skills
+do not activate automatic spec-link, checklist, blocker, or semantic coverage gates.
+Required-check configuration needs its own tested proposal and approval.
