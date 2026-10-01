@@ -7,6 +7,8 @@ execution.md, results.md and evidence/manifest.md (1 each); replication.md (0..1
 when actual replication occurs.
 
 - [Local skill-agent pilot](local-skill-agent-pilot/README.md): actual 2026-10-01 four-turn sequence.
+- [Native Codex node](native-codex-node/README.md): installed-flow fresh/resume evidence
+  and retained negative results; real cancellation remains inconclusive.
 - [Copyable example](template/README.md): unexecuted snapshot-rejection trial.
 
 Copy template/ directly, rename and replace every example fact/lifecycle. Freeze a real

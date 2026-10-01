@@ -58,7 +58,11 @@ native cancellation remains an acceptance gap. This issue does not waive #21.
 ## Pending acceptance
 
 Separate server startup/configuration and a fresh bounded model-turn ledger await
-explicit authorization. The historical pilot's 4/4 ledger remains exhausted and
+explicit authorization at the original implementation revision. The user subsequently
+approved the proposed server and four new turns; those are now recorded in the
+[canonical experiment](../experiments/native-codex-node/README.md). The new ledger
+is 4/4 and real cancellation remains inconclusive. An additional turn is requested,
+not assumed authorized. The historical pilot's 4/4 ledger remains exhausted and
 unchanged. No new credential copy is required: use the existing approved private
 Docker volume only. The intended real sequence is fresh edit/read, restart/resume
 through the node, independent fresh run, and bounded cancellation if approved.

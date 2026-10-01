@@ -21,6 +21,7 @@ by its original version, task, grant and date.
 | Isolation / read-only / remote mode | #120, #122, Docker sources | Earlier failures retained; general grant and remote storage unproven |
 | Claude parity | #121 | CLI blocker before model call; acceptance unknown |
 | Reusable Langflow custom node | Eight synthetic component/graph checks, 34 host checks | Real imported-server/model acceptance pending; UI Stop propagation deferred to Laomedo #22 |
+| Installed native-node fresh/resume | [Four-turn attempt](../../experiments/native-codex-node/iterations/2026-10-01/results.md) | Catalog, flow round trip, tool results, bound restart/resume and host isolation observed; cancellation inconclusive, sample fresh task failed |
 
 Current native-node detail: [implementation/acceptance record](../../implementation/native-langflow-node.md).
 
