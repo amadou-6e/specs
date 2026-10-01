@@ -18,6 +18,8 @@ that make intent, behavior, constraints, and verification clearer.
   project/category guidance too; this skill does not own every project's research schema.
 - [Create spec-linked PR](shared/skills/create-spec-linked-pr/SKILL.md): prepare or update
   PR coverage, acceptance checklists, verification, and blocker follow-up links.
+  Start from its [PR body template](shared/skills/create-spec-linked-pr/assets/pr-body.md)
+  and retain applicable sections from the repository's existing PR template.
 
 Read the relevant skill before applying it. Skills guide authorized work; they do not
 authorize implementing open proposals, changing issue state, or activating repository
@@ -89,8 +91,12 @@ status or behavior changed.
    checks, not a product rebuild. Changes to tools need relevant existing tests too.
    Validate changed skills using the skill-creator validator when available; disclose
    unavailable checks. Passing structural validation does not prove runtime behavior.
-6. Commit and push completed work on the selected issue branch. Prepare the PR using
-   the PR creation skill and the repository template, retaining meaningful sections.
+6. Commit and push completed work on the selected issue branch. Use
+   [create-spec-linked-pr](shared/skills/create-spec-linked-pr/SKILL.md) whenever
+   creating or substantively updating a PR, including a fix or documentation PR.
+   Read the skill, derive the acceptance checklist from governing specifications,
+   record verification and definitive blockers with follow-up issue links, and
+   prepare the body using its template and the repository template.
    State the actual head/base and stack dependencies; do not conflate a reviewed
    branch with merged coverage.
 7. Address review feedback, rerun checks affected by the changes, and update the PR
@@ -98,6 +104,11 @@ status or behavior changed.
    closure still requires explicit approval under the rules above.
 
 ## PR requirements
+
+The PR creation skill is the reusable procedure for these requirements. Keep
+procedural changes in that skill and project-specific rules in the owning project
+policy; update these links and requirements when either changes. Do not maintain
+a competing copy of the full skill workflow here.
 
 Every PR, including fixes, includes:
 
