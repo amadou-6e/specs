@@ -2,6 +2,10 @@
 
 Laomedo is a proposed design environment for agent workflows. The [historical AGENTVIZ reference workshop](deprecated/ui/README.md) records existing screen geometry and demo content. It does not specify new Laomedo behavior.
 
+The proposed [Work Graph capability](capabilities/work-graph.md) defines
+repository-work snapshots, dependency evidence, and a staged path to pinned
+agent execution. Its view-owned UI design is still to be specified.
+
 The [agent and skill components proposal](components/agent-and-skill-components.md)
 defines versioned skills, Codex and Claude execution, isolated persistence,
 trace inspection, and a phased implementation estimate. It is a technical
