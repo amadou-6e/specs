@@ -31,6 +31,26 @@ connectors and containing group bounds. After regenerating from Mermaid, normali
 diamond geometry only after layout; another layout pass can override those sizes.
 The grouped single-page render was visually inspected after those corrections.
 
+## Diagram vocabulary
+
+Node category is independent of workflow phase and execution status. The legend
+uses the same symbols and shapes as the actual journey:
+
+| Category | Marker | Meaning |
+| --- | --- | --- |
+| User action | Person icon, blue rectangle | Selection, configuration, inspection, editing or review |
+| Agent/system action | Gear icon, green rectangle | Execution, processing or publication by an agent or Laomedo |
+| Decision | Amber diamond | A branching choice or outcome; four journey diamonds and the legend diamond are 220 x 220 |
+| Artifact | Purple document shape with wavy lower edge | An issue, PR, library, trace, graph, summary or finding record |
+| Continuation | Return-arrow icon, grey capsule | Re-entry, handoff or end of this traversal |
+
+Mixed operations are separated where useful: creating a PR leads to its PR
+artifact; converting a failure report leads to an issue draft. These arrows express
+the user journey, not a frozen implementation event ordering. Icons are UTF-8 text;
+labels, shapes and colors also convey category rather than relying on icons alone.
+Document shapes and uniform diamonds are applied after text-to-Draw.io generation;
+regeneration must preserve those refinements or explicitly reapply and inspect them.
+
 ## Confirmed journey
 
 Select an issue, then configure direct-agent execution or a Langflow workflow.
