@@ -39,6 +39,10 @@ See [the specification lifecycle](shared/conventions/spec_lifecycle.md) for stat
 review conventions, and [the typed and named folder hierarchy](shared/conventions/typed_folder_system/README.md)
 for how categories and entries are structured.
 
+For collaborative project definition, use the
+[define-project-spec skill](shared/skills/define-project-spec/SKILL.md). It guides
+user scenarios, ownership, category selection and populated template adaptation.
+
 ## Validate
 
 ```bash

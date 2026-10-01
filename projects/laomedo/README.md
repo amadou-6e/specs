@@ -1,5 +1,11 @@
 # Laomedo specifications
 
+The draft [specification structure](SPECS.md) maps existing material to the typed
+folder system. Use the [guided authoring skill](../../shared/skills/define-project-spec/SKILL.md)
+to develop the product scenarios and ownership decisions together. The first
+[populated subsystem template](subsystems/template/README.md) demonstrates the
+contract/design/validation split; its example choices are illustrative.
+
 Laomedo is a proposed design environment for agent workflows. The [historical AGENTVIZ reference workshop](deprecated/ui/README.md) records existing screen geometry and demo content. It does not specify new Laomedo behavior.
 
 The [agent and skill components proposal](components/agent-and-skill-components.md)
