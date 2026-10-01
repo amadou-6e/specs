@@ -4,5 +4,40 @@
   "source_repository": "https://github.com/amadou-6e/laomedo",
   "status": "active",
   "description": "Agent workflow design specifications and archived AGENTVIZ UI reference material.",
-  "ui_layout": "view-owned-v1"
+  "ui_layout": "view-owned-v1",
+  "categories": {
+    "architecture": {
+      "type": "fixed"
+    },
+    "subsystems": {
+      "type": "folder-collection",
+      "entry_files": [
+        "README.md",
+        "contract/README.md",
+        "design/README.md",
+        "validation.md"
+      ]
+    },
+    "experiments": {
+      "type": "folder-collection",
+      "entry_files": [
+        "README.md",
+        "protocol.md",
+        "sources.md"
+      ]
+    },
+    "research": {
+      "type": "folder-collection",
+      "entry_files": [
+        "README.md",
+        "method.md"
+      ]
+    },
+    "implementation": {
+      "type": "fixed"
+    },
+    "deprecated": {
+      "type": "fixed"
+    }
+  }
 }
