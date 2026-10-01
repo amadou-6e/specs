@@ -3,7 +3,7 @@ title: Issue-to-agent user traversal
 status: draft
 kind: user-journey
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-01
+last_reviewed: 2026-10-02
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -33,21 +33,34 @@ The grouped single-page render was visually inspected after those corrections.
 
 ## Diagram vocabulary
 
-Node category is independent of workflow phase and execution status. The legend
-uses the same symbols and shapes as the actual journey:
+Card category identifies responsibility and is not an actor/owner field in the
+card body: **User**, **Agent**, **Laomedo**, or **External service**. Category is
+shown in the header, icon and color. Shared editing/publication paths name their
+alternate actors in details; this diagram grouping does not freeze implementation
+ownership or permissions. The category legend is separate from the node-type legend.
 
-| Category | Marker | Meaning |
+| Node type | Shape | Meaning |
 | --- | --- | --- |
-| User action | Person icon, blue rectangle | Selection, configuration, inspection, editing or review |
-| Agent/system action | Gear icon, green rectangle | Execution, processing or publication by an agent or Laomedo |
-| Decision | Amber diamond | A branching choice or outcome; four journey diamonds and the legend diamond are 220 x 220 |
-| Artifact | Purple document shape with wavy lower edge | An issue, PR, library, trace, graph, summary or finding record |
-| Continuation | Return-arrow icon, grey capsule | Re-entry, handoff or end of this traversal |
+| Action | Rectangle | Selection, configuration, inspection, processing or publication |
+| Decision | Diamond | A branching choice or outcome; four journey diamonds and the legend diamond are 220 x 220 |
+| Artifact | Document with wavy lower edge | An issue, PR, library, trace, graph, summary or finding record |
+| Continuation | Capsule with return-arrow marker | Re-entry, handoff or end of this traversal |
+
+Cards show a category/type header, title, purpose where it adds information, named
+inputs and outputs, and a type-specific detail line. Actions describe choices,
+completion, permissions or execution limits; artifacts describe storage, contents
+or retention; continuations describe carried context and destination. Unknown
+values stay unspecified. Diamonds retain a short question/category and branch
+labels rather than becoming crowded field tables.
+
+[Card authoring metadata](user-traversal.cards.json) stores category, inputs, outputs
+and details for the 39 journey nodes. It is draft diagram metadata, not a runtime
+API schema. Title/purpose and branch text remain in the diagram and generation input.
 
 Mixed operations are separated where useful: creating a PR leads to its PR
 artifact; converting a failure report leads to an issue draft. These arrows express
 the user journey, not a frozen implementation event ordering. Icons are UTF-8 text;
-labels, shapes and colors also convey category rather than relying on icons alone.
+labels and colors convey card category; shapes convey node type independently.
 Document shapes and uniform diamonds are applied after text-to-Draw.io generation;
 regeneration must preserve those refinements or explicitly reapply and inspect them.
 
