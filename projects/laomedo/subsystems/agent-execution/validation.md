@@ -23,6 +23,7 @@ by its original version, task, grant and date.
 | Reusable Langflow custom node | Eight synthetic component/graph checks, 34 host checks, installed catalog/flow round trip | UI Stop propagation deferred to Laomedo #22; browser visual placement not separately inspected |
 | Installed native-node fresh/resume | [Four-turn attempt](../../experiments/native-codex-node/iterations/2026-10-01/results.md) | Catalog, flow round trip, tool results, bound restart/resume and host isolation observed; cancellation inconclusive, sample fresh task failed |
 | Explicit node cancel / successful fresh task | [Authorized retry](../../experiments/native-codex-node/iterations/2026-10-01-retry/results.md) | Runner cancelled via transport teardown, 33 partial events; fresh native command confirms no marker; aggregate ledger 6/6 |
+| Two-agent handoff / bounded controller / selected artifacts | [Two-turn chain](../../experiments/agent-handoffs/iterations/2026-10-01/results.md), ac204ab | Real Codex chain completed 2/2; 54 host + 15 pinned checks pass; real loop/cross-provider acceptance unobserved |
 
 Current native-node detail: [implementation/acceptance record](../../implementation/native-langflow-node.md).
 
