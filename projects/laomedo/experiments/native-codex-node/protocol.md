@@ -33,3 +33,10 @@ task success, cancellation or sandbox denial. Raw traces stay outside Git.
 An additional turn requires explicit authorization and retained ledger; do not
 reset the four-turn attempt. UI Stop propagation is excluded and tracked in #22.
 
+The user subsequently authorized two additional submissions, increasing the same
+ledger cap to six without resetting its prior count. The corrected command-start
+cancellation trigger and explicit fresh fixture paths were announced before
+execution and are recorded as a [separate retry](iterations/2026-10-01-retry/README.md).
+The original four-turn attempt remains unchanged; this retrospective extension
+record does not claim an immutable prospective verifier.
+

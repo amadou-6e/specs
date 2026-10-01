@@ -61,8 +61,12 @@ Separate server startup/configuration and a fresh bounded model-turn ledger awai
 explicit authorization at the original implementation revision. The user subsequently
 approved the proposed server and four new turns; those are now recorded in the
 [canonical experiment](../experiments/native-codex-node/README.md). The new ledger
-is 4/4 and real cancellation remains inconclusive. An additional turn is requested,
-not assumed authorized. The historical pilot's 4/4 ledger remains exhausted and
+was 4/4 with cancellation inconclusive. The user then authorized two more turns;
+the [retry](../experiments/native-codex-node/iterations/2026-10-01-retry/results.md)
+passed explicit cancellation and a successful independent fresh task. The ledger
+is now 6/6; bounded #21 acceptance is complete and ready for review. No native
+interrupt acknowledgement or UI Stop support is claimed. The historical pilot's
+4/4 ledger remains exhausted and
 unchanged. No new credential copy is required: use the existing approved private
 Docker volume only. The intended real sequence is fresh edit/read, restart/resume
 through the node, independent fresh run, and bounded cancellation if approved.
