@@ -39,6 +39,7 @@ AGENTVIZ and subset skill editing are out of scope.
 | Task | Message or text; nonempty for fresh/resume |
 | Operation | Explicit fresh, resume, status or cancel; fresh default |
 | Skill ID/revision | Fresh runs require an immutable whole-skill SHA-256 revision; no latest fallback |
+| Skill Reference | Optional Data from the [Skill node](../../skill-registry/contract/langflow-node.md); matching inline values allowed, conflicts rejected; resume retains its bound snapshot |
 | Model/effort | Required for fresh/resume; runner validates actual provider support |
 | Prior Run | Structured Data from a previous run; mandatory for resume/status/cancel |
 | Prior Run JSON | Advanced manual/API alternative when no Data input is connected; malformed JSON fails before dispatch |
