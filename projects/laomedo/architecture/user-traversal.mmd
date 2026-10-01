@@ -1,9 +1,53 @@
 flowchart TB
-    START["Select a GitHub issue"] --> CHANNEL{"Configure through<br/>UI or chat agent?"}
+    subgraph SETUP["1. Select issue and configure execution"]
+        START
+        CHANNEL
+        CHAT
+        CONFIG
+        MODE
+        DIRECT
+        FLOW
+        SESSION
+        WORKSPACE
+        LAUNCH
+    end
+    subgraph OBSERVE["2. Run and inspect"]
+        LIVE
+        INSPECT
+    end
+    subgraph RESULTS["3. Inspect results and retain findings"]
+        DIGEST
+        SUMMARY
+        STORE
+        OUTCOME
+    end
+    subgraph DELIVERY["4A. PR delivery and review cycle"]
+        PR
+        REVIEW
+        END
+        FOLLOW
+        RERUN
+        REPEAT
+    end
+    subgraph RECOVERY["4B. Unsuccessful run to next issue"]
+        FAILURE
+        DRAFT
+        EDIT
+        ISSUE
+        NEXT
+    end
+    subgraph LIBRARIES["Supporting operation: curate and publish library"]
+        LIBRARY
+        PUBLISH
+        LIBPR
+        LIBDIRECT
+    end
+
+    START["Select a GitHub issue"] --> CHANNEL{"Configure via<br/>UI or<br/>chat agent?"}
     CHANNEL -->|UI| CONFIG["Configure execution" ]
     CHANNEL -->|Chat| CHAT["Chat agent uses Laomedo API<br/>Configure and launch runs<br/>Highlight UI elements for navigation"]
     CHAT --> CONFIG
-    CONFIG --> MODE{"Execution path?"}
+    CONFIG --> MODE{"Execution<br/>path?"}
     MODE -->|Direct agent: first scope| DIRECT["Choose agent<br/>Choose prompt template and skills<br/>Use recommendations or own library"]
     MODE -->|Langflow: planned path| FLOW["Choose Langflow graph<br/>Graph defines agents, exact skills,<br/>structured handoffs, reviews and loop limits"]
     DIRECT --> SESSION["Choose an existing agent session<br/>or start a new session"]
@@ -16,7 +60,7 @@ flowchart TB
     LIVE --> DIGEST["After execution: digestible action graph<br/>Expand actions into tool calls, searches,<br/>edits, shell commands and results"]
     DIGEST --> SUMMARY["Automatically retain precise,<br/>semi-structured run summary"]
     SUMMARY --> STORE["Optionally select findings to store<br/>Durable project knowledge with source/run links<br/>Publishing to GitHub is a separate action"]
-    SUMMARY --> OUTCOME{"PR delivered or<br/>unsuccessful run?"}
+    SUMMARY --> OUTCOME{"PR delivered<br/>or unsuccessful<br/>run?"}
     OUTCOME -->|PR delivered| PR["Create PR on user's GitHub<br/>or update the existing PR on follow-up"]
     PR --> REVIEW["User reviews the PR<br/>and decides whether another run is needed"]
     REVIEW -->|Accepted / no further run| END["End this user traversal<br/>Merge behavior is not specified here"]
@@ -30,7 +74,7 @@ flowchart TB
     ISSUE --> NEXT["Select the follow-up issue<br/>Use the same normal issue execution path"]
 
     DIRECT -.-> LIBRARY["Curate prompt templates and skill library<br/>Native Laomedo storage or connected GitHub backend<br/>Users and agents can edit"]
-    LIBRARY --> PUBLISH{"GitHub library publication mode?"}
+    LIBRARY --> PUBLISH{"Library<br/>publication<br/>mode?"}
     PUBLISH -->|Default| LIBPR["Publish library change through a PR"]
     PUBLISH -->|Review disabled by user| LIBDIRECT["Auto-edit / commit to configured branch"]
 

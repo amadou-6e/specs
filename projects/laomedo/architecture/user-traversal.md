@@ -23,6 +23,14 @@ reconciling them. The files were moved from runtime with identical SHA-256 hashe
 - Draw.io: `872d3d566908455ad64745e6ae1676d376bf97169e3689d20aa2c0251c7e027f`.
 - Mermaid: `e32eccc7cc55e498c6242202ebed41cf4bd2b4ace91005e59dbfcbe377dfb654`.
 
+These are the initial import hashes, not the current file hashes. Subsequent
+user-requested layout refinement groups setup, live inspection, results, PR review,
+failure recovery and library management into six editable subgraphs. All four
+decision diamonds are 220 x 220, centered on their laid-out positions, with adjusted
+connectors and containing group bounds. After regenerating from Mermaid, normalize
+diamond geometry only after layout; another layout pass can override those sizes.
+The grouped single-page render was visually inspected after those corrections.
+
 ## Confirmed journey
 
 Select an issue, then configure direct-agent execution or a Langflow workflow.
