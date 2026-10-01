@@ -1,0 +1,46 @@
+flowchart TB
+    START["Select a GitHub issue"] --> CHANNEL{"Configure through<br/>UI or chat agent?"}
+    CHANNEL -->|UI| CONFIG["Configure execution" ]
+    CHANNEL -->|Chat| CHAT["Chat agent uses Laomedo API<br/>Configure and launch runs<br/>Highlight UI elements for navigation"]
+    CHAT --> CONFIG
+    CONFIG --> MODE{"Execution path?"}
+    MODE -->|Direct agent: first scope| DIRECT["Choose agent<br/>Choose prompt template and skills<br/>Use recommendations or own library"]
+    MODE -->|Langflow: planned path| FLOW["Choose Langflow graph<br/>Graph defines agents, exact skills,<br/>structured handoffs, reviews and loop limits"]
+    DIRECT --> SESSION["Choose an existing agent session<br/>or start a new session"]
+    FLOW --> WORKSPACE["Choose existing local checkout<br/>or Laomedo-prepared isolated workspace"]
+    SESSION --> WORKSPACE
+    WORKSPACE --> LAUNCH["Launch a new run<br/>Run identity is separate from session identity"]
+    LAUNCH --> LIVE["Execution graph: GitHub Actions-style layout<br/>One agent: one Langflow-style card<br/>Multi-stage / Langflow: configured stage cards"]
+    LIVE --> INSPECT["Click a card during execution<br/>Inspect live telemetry trace"]
+    INSPECT --> LIVE
+    LIVE --> DIGEST["After execution: digestible action graph<br/>Expand actions into tool calls, searches,<br/>edits, shell commands and results"]
+    DIGEST --> SUMMARY["Automatically retain precise,<br/>semi-structured run summary"]
+    SUMMARY --> STORE["Optionally select findings to store<br/>Durable project knowledge with source/run links<br/>Publishing to GitHub is a separate action"]
+    SUMMARY --> OUTCOME{"PR delivered or<br/>unsuccessful run?"}
+    OUTCOME -->|PR delivered| PR["Create PR on user's GitHub<br/>or update the existing PR on follow-up"]
+    PR --> REVIEW["User reviews the PR<br/>and decides whether another run is needed"]
+    REVIEW -->|Accepted / no further run| END["End this user traversal<br/>Merge behavior is not specified here"]
+    REVIEW -->|Address review comments| FOLLOW["Choose existing or new session<br/>Hint agent that PR comments exist<br/>and should be addressed"]
+    FOLLOW --> RERUN["Launch a new linked run<br/>Keep same PR<br/>Retain separate trace, digest and summary"]
+    RERUN --> REPEAT["Continue with execution graph and telemetry<br/>Then retain this run's digest and summary"]
+    OUTCOME -->|Unsuccessful| FAILURE["Semi-structured unsuccessful-run report<br/>Work completed, blocker, evidence,<br/>remaining work and context links"]
+    FAILURE --> DRAFT["Convert report into next issue draft"]
+    DRAFT --> EDIT["User reviews and edits<br/>the proposed issue before publishing"]
+    EDIT --> ISSUE["Publish follow-up issue<br/>Context lets a differently oriented agent pick it up"]
+    ISSUE --> NEXT["Select the follow-up issue<br/>Use the same normal issue execution path"]
+
+    DIRECT -.-> LIBRARY["Curate prompt templates and skill library<br/>Native Laomedo storage or connected GitHub backend<br/>Users and agents can edit"]
+    LIBRARY --> PUBLISH{"GitHub library publication mode?"}
+    PUBLISH -->|Default| LIBPR["Publish library change through a PR"]
+    PUBLISH -->|Review disabled by user| LIBDIRECT["Auto-edit / commit to configured branch"]
+
+    classDef decision fill:#fff3d6,stroke:#a66b12,color:#302715;
+    classDef action fill:#eaf1ff,stroke:#5376a9,color:#172b45;
+    classDef inspect fill:#eaf7f3,stroke:#39856c,color:#17392c;
+    classDef failure fill:#fff0f0,stroke:#af6565,color:#4b2323;
+    classDef planned fill:#f2edfa,stroke:#8b72aa,color:#3b2b50;
+    class CHANNEL,MODE,OUTCOME,PUBLISH decision;
+    class START,CONFIG,DIRECT,SESSION,WORKSPACE,LAUNCH,PR,REVIEW,FOLLOW,RERUN,REPEAT,NEXT,END action;
+    class LIVE,INSPECT,DIGEST,SUMMARY,STORE inspect;
+    class FAILURE,DRAFT,EDIT,ISSUE failure;
+    class FLOW,CHAT,LIBRARY,LIBPR,LIBDIRECT planned;
