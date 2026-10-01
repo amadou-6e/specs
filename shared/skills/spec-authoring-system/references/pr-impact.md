@@ -2,6 +2,11 @@
 
 Every implementation PR selects one disposition and identifies its evidence:
 
+Use [create-spec-linked-pr](../../create-spec-linked-pr/SKILL.md) when preparing
+the actual PR. Every PR includes a spec-derived acceptance checklist and an
+explicit failure/blocker report. Definitive unresolved blockers link follow-up
+issues; an issue link does not excuse an unmet acceptance criterion.
+
 | Disposition | Required statement |
 | --- | --- |
 | Spec update | Canonical owner and affected guarantees, linked specs PR or exact spec revision, and validation evidence |

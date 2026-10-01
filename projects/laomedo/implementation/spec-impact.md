@@ -11,6 +11,30 @@ related: []
 
 # Specification impact for every implementation PR
 
+## PR authoring requirements
+
+Use the shared [PR creation skill](../../../shared/skills/create-spec-linked-pr/SKILL.md)
+and its [body template](../../../shared/skills/create-spec-linked-pr/assets/pr-body.md).
+Every PR includes a checklist derived from applicable spec criteria, with links
+to governing sections and evidence. Check only verified outcomes; identify
+untested, failed, inconclusive, and inapplicable criteria explicitly. Spec-only
+PRs use authoring and change acceptance criteria without claiming runtime proof.
+
+Every PR also reports definitive unresolved blockers and relevant failures.
+Each definitive blocker links a new follow-up issue, or an existing issue that
+already owns the same work, with evidence and merge impact. Recovered failures
+record their resolution. A follow-up issue does not authorize merging unmet
+requirements. If no blockers were observed, say so and retain verification gaps.
+Existing issue edits still require explicit approval.
+
+Non-`fix/` branches declare `Spec PR:` with a specs PR URL. Fix branches can
+declare `Spec PR: exempt (fix/ branch)` but retain coverage, checklist, and blocker
+requirements; behavior-changing fixes still require authoritative spec updates.
+This is contributor policy. The proposed link check and required-check rules
+are not installed or activated by this document.
+
+## Coverage and merge order
+
 Contributor policy; no new automatic merge gate is activated by this trial. Maintain
 one PR section with these fields:
 
