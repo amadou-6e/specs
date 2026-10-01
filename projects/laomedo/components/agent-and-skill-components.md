@@ -5,6 +5,14 @@ its dependencies. Each component has its own behavioral spec. None of these
 Markdown files specifies UI geometry, controls, states, or transitions; those
 require view-owned Draw.io specifications before UI implementation.
 
+Implementation update, 2026-10-01: the
+[local Langflow skill-agent pilot](../implementation/local-skill-agent-pilot.md)
+now verifies single-user Codex execution, native skill-read/tool events,
+snapshot-bound restart/resume, fresh-run separation, and cancellation. The
+sections below preserve the original proposal and estimates rather than a
+current checklist of missing prototype capabilities. Claude parity and full
+product contracts remain incomplete.
+
 ## What is being specified
 
 Laomedo should let a flow select an exact skill revision, run Codex or Claude

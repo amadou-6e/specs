@@ -4,6 +4,14 @@ Status: proposed. This is the shared execution boundary for Codex Agent,
 Claude Agent, and Skill Draft. It specifies behavior, not a deployment choice
 or a claim that a container alone provides security.
 
+Current implementation: the
+[2026-10-01 local pilot](../implementation/local-skill-agent-pilot.md) retains
+the tested Docker grant and mounts, uses independent workspaces and private
+persistent sessions, and verifies native resume against post-run hashes.
+Permission redesign is deferred. Its authorized existing single-user login
+in the private volume is a temporary exception to the production identity
+target; replacement remains with specs #129.
+
 ## Isolation goals
 
 An automated run must not create sessions in the user's personal Codex or
