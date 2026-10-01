@@ -39,6 +39,9 @@ shown in the header, icon and color. Shared editing/publication paths name their
 alternate actors in details; this diagram grouping does not freeze implementation
 ownership or permissions. The category legend is separate from the node-type legend.
 
+Card text is left-aligned with a consistent inset. Field markers are `IN:`, `OUT:`
+and `DETAIL:`; decision questions remain centered within their diamonds.
+
 | Node type | Shape | Meaning |
 | --- | --- | --- |
 | Action | Rectangle | Selection, configuration, inspection, processing or publication |
