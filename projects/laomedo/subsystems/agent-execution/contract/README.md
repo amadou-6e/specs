@@ -11,7 +11,8 @@ related: []
 
 # Agent execution contract index
 
-Canonical draft requirements: [Codex](codex.md), [Claude](claude.md), [isolation](isolation.md).
+Canonical draft requirements: [Codex](codex.md), [Claude](claude.md),
+[OpenCode](opencode.md), [isolation](isolation.md).
 Shared serialized records belong to [architecture](../../../architecture/shared-contracts.md).
 The [Langflow node interface](langflow-node.md) owns the proposed reusable custom
 component, fresh/resume operations, typed outputs and client lifecycle limitations.
