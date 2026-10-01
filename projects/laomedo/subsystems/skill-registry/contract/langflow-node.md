@@ -27,7 +27,19 @@ The runner remains authoritative for existence, exact bytes, hash checks and
 materialization before a model turn. Discovery, creation/editing, draft promotion,
 rule/example subsets and registry browsing are separate capabilities.
 
-The agent's Skill Reference Data input accepts the node output for fresh runs.
+The agent's Skill References Data input is a list port: connect one or more Skill
+nodes for fresh runs, up to sixteen distinct skill IDs. Reject duplicate IDs even
+when their revisions match, so two revisions cannot overwrite the same directory.
+For several connected references, reject nonempty advanced inline fields. One
+connected reference keeps the existing matching-inline compatibility rule.
+The runner accepts either legacy `skill_ref` or ordered `skill_refs`, never both.
+Materialize every exact bundle before dispatch; any failure removes the prepared
+run directory and submits no model turn. Records expose a `skills` list with each
+revision and offered-use evidence. The legacy `skill` field is populated only for
+single-skill runs. Offered does not prove the model read or obeyed every skill.
+Resume retains the complete original skill set through its existing snapshot binding.
+
+The agent's Skill References Data input accepts the node outputs for fresh runs.
 Advanced inline fields preserve existing flows. If both are present, matching
 values are allowed and conflicting identities fail before dispatch. Empty/unwired
 Data inputs must preserve the inline fallback. Resume continues its bound existing
