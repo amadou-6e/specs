@@ -13,6 +13,8 @@ related: []
 
 Canonical draft requirements: [Codex](codex.md), [Claude](claude.md), [isolation](isolation.md).
 Shared serialized records belong to [architecture](../../../architecture/shared-contracts.md).
+The [Langflow node interface](langflow-node.md) owns the proposed reusable custom
+component, fresh/resume operations, typed outputs and client lifecycle limitations.
 [Validation](../validation.md) qualifies maturity; pilot observations do not silently
 replace proposed read-only, identity or provider parity guarantees.
 
