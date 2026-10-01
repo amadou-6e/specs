@@ -2,6 +2,9 @@
 
 1. Inventory documents, authoritative sources, local changes, historical paths,
    artifact references, and links. Read substantive claims, not only filenames.
+   Include published issues/PRs and their relevant comments/reviews in known
+   consumer repositories; a local Markdown search is not a published-link audit.
+   Record the inspection scope, changing-reference date, and unavailable consumers.
 2. Assign one canonical owner to each contract and distinguish normative text,
    mechanism, runbook, evidence, recommendation, and archived reference.
 3. Record the destination map. Split mixed documents where authority changes;
@@ -16,6 +19,14 @@
 6. Retain the minimum redirects needed for durable old links, clearly naming
    the replacement authority. Do not keep active duplicates just to avoid
    changing internal links. Preserve editable diagrams and reference assets.
+   GitHub blob links do not follow file renames. Preserve short pointers at
+   published paths unless their consumers are explicitly updated within an
+   authorized scope. When consumer coverage is incomplete, retaining pointers
+   at all migrated document paths is preferable to claiming they are unused.
+   Declare pointer-only containers and their closed file sets in the structure
+   guide/manifest; pointers own no new behavior and have no copyable templates.
+   A Markdown pointer restores document access, not HTTP redirection or old
+   section-fragment behavior. Test targets and record any fragment limitations.
 7. Validate and review the entire migrated reading path. Report unclassified
    material and unresolved ownership instead of filling gaps with speculation.
 

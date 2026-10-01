@@ -14,6 +14,13 @@ This migration reviews local documents, not freshly executed implementation or u
 | research | folder collection | Characterized sources, atomic findings and exploratory synthesis |
 | implementation | fixed | Contributor workflow and migration documentation |
 | deprecated | fixed | Existing historical UI workshop and unchanged reference assets |
+| components, feasibility, monitoring, sandboxing | fixed compatibility containers | Closed sets of pointers preserving published paths; no new authoring or behavioral ownership |
+
+The six authoring categories above remain the content taxonomy. The four
+compatibility containers are declared in `spec.json` for structural validation,
+with `superseded` pointer entries only. They have no templates and are not
+destinations for new work. See the [published-reference audit](implementation/spec-migration.md#published-reference-audit)
+before proposing removal of any pointer.
 
 Change the category set only by reviewing SPECS.md and spec.json together. Both providers
 share execution/session ownership. Revision and draft share immutable skill identity and
