@@ -21,7 +21,8 @@ native sessions are never implicit transfer payloads. User-selected task text is
 not automatically redacted; callers must not select secrets as task text.
 
 Fresh handoff carries no native thread or prior snapshot. Resume requires matching
-provider, completed source, native thread, run, snapshot, model and effort; runner
+provider, completed source, native thread, run, snapshot, model, effort and exact
+ordered pinned skill set; runner
 bindings remain authoritative. Failed resume never becomes a fresh run.
 
 The Langflow Handoff node accepts a completed structured Run Reference and exposes

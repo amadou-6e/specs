@@ -13,6 +13,11 @@ checks (six independent loop stop/error subcases plus cancellation evidence). Ar
 tests cover selected bytes, hash mismatch, traversal/profile/credential paths,
 hard links, destination conflicts, shared-workspace rejection and restart provenance.
 
+Follow-up implementation `9a46a50` rejects changed skill sets during explicit resume
+and adds a same-provider resume test binding thread/snapshot/model/effort/skills.
+55 host tests pass at this revision; it submits no new live turns. The pinned
+runtime checks above were run at ac204ab, before this resume-only follow-up.
+
 Real loop, cross-provider chain and cross-provider file transfer remain unobserved.
 Fresh immediate remote cancellation remains limited by missing early run ID (#22);
 outstanding native command finalization remains #24. The new controller deployment

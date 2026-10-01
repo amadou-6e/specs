@@ -21,6 +21,9 @@ related: []
 - Langflow 1.12.3 image digest: `sha256:34055a07d446de51760e28dab6332e22624e5f48dca611567779992fc32c5ec0`.
 - Existing Codex CLI 0.159.2 Docker profile and pinned permission configuration;
   no image/auth/config change for this acceptance.
+- Resume-only follow-up [9a46a50](https://github.com/amadou-6e/laomedo/tree/9a46a50):
+  explicit pinned skill-set mismatch rejection and 55 passing host checks; no new
+  model turns. Earlier live evidence and pinned runtime checks retain ac204ab.
 
 Private authorization linkage, run records, raw events and full graph output remain
 outside Git. They are not published reproducibility artifacts.
