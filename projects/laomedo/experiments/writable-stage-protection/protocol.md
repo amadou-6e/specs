@@ -13,7 +13,7 @@ related: []
 
 ## Question and prerequisite
 
-Can an isolated, writable, external-write-capable stage write its checkout and its scoped disposable canary while failing to read or alter protected host, runner, source-skill and personal-credential canaries? This protocol must be reviewed before a Docker stage is launched. EXP-07 must first show the selected independent lease supervisor bounds its external-write grant and orphan lifetime. The target is one local, single-user pinned Docker image and one disposable checkout. No production repository, real push credential or personal login may enter the stage.
+Can an isolated, writable, external-write-capable stage write its checkout and its scoped disposable canary while failing to read or alter protected host, runner, source-skill and personal-credential canaries? This protocol must be reviewed before a Docker stage is launched. [EXP-07 passed its user-selected 60-second bound](../orphan-lease/iterations/2026-10-02/results.md) for a synthetic HTTP grant and worker; it did not prove production-stage grant integration. The target here is one local, single-user pinned Docker image and one disposable checkout. No production repository, real push credential or personal login may enter the stage.
 
 ## Exact injected protection failure
 

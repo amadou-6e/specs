@@ -11,4 +11,4 @@ related: []
 
 # Pending results
 
-Outcome: unexecuted and unreviewed. Neither effective Docker protection nor agent-originated denial is established. Until a reviewed protocol, EXP-07 result and separate nonpersonal model budget are available, unsupported protection must block a writable first-slice stage.
+Outcome: unexecuted and unreviewed. EXP-07 passed its synthetic orphan/grant bound, but neither effective E05 Docker protection nor agent-originated denial is established. Until a reviewed protocol and a separate nonpersonal model credential and turn budget are available, unsupported protection must block a writable first-slice stage.

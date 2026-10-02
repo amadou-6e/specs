@@ -11,4 +11,4 @@ related: []
 
 # Execution plan
 
-First complete EXP-07 and review the E05 protocol. Then prepare only disposable canaries and a test grant. No Docker stage, agent, model, personal credential or production repository has been used for E05. No actual implementation revision, container ID, tool event or denial evidence exists yet.
+EXP-07 passed its synthetic 60-second bound. Review the E05 protocol before preparing disposable canaries and a test grant. No Docker stage, agent, model, personal credential or production repository has been used for E05. No actual implementation revision, container ID, tool event or denial evidence exists yet.
