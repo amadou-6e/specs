@@ -12,7 +12,8 @@ related: []
 # OpenCode local provider adapter
 
 Scope: issue [Laomedo #27](https://github.com/amadou-6e/laomedo/issues/27).
-This is a draft adapter contract, not a completed authenticated Docker pilot.
+This is a draft local adapter contract. The bounded authenticated Docker pilot is
+recorded in the [latest results](../../../experiments/opencode-agent/iterations/2026-10-02/results.md).
 Reuse the [node lifecycle](langflow-node.md), [isolation owner](isolation.md),
 and immutable [skill references](../../skill-registry/contract/langflow-node.md).
 
@@ -41,27 +42,37 @@ offered skill establishes native load evidence, not subsequent compliance with i
 
 ## Authentication and isolation gate
 
-The installed CLI reports version 1.18.33 and no credentials in its default store.
-No running OpenCode process was observed in the read-only metadata check. This does
-not refute the user's authenticated Go setup; it leaves its runtime/profile unresolved.
-No credential material was read or copied. Official Go documentation describes a
-Go API key. Do not assume a ChatGPT token or OAuth refresh semantics.
+The active Console login is selected from the user's OpenCode database using a
+read-only connection. The local handoff stores only the selected Go credential and
+routing context in access-restricted runner state outside Git. The Console access
+token is copied only when the official provider configuration requires its exact
+substitution; no refresh token or complete personal database is copied. The
+private validity record binds the selected key by digest and records its expiry.
+The runner rejects an expired or near-expiry Console token before reserving a turn.
+Refresh remains the official client's responsibility.
 
-The Codex Docker image's controller credential protection depends on its command
-sandbox. It must not be assumed for OpenCode, whose native shell controller/tool
-separation has not been verified. Mounting a Go credential into a same-UID native
-OpenCode shell container is not an acceptable equivalent. No such mount is created.
-The production transport fails closed with `opencode_isolated_transport_required`.
-An explicitly injected transport enables protocol tests only, not proof of isolation.
+The pinned OpenCode controller and disposable command workers are separate Docker
+containers. The controller receives the selected `auth.json` as a read-only file
+mount; the worker receives neither the credential nor the controller profile or
+Docker socket. The controller's session directory can contain an empty Docker
+mount placeholder but no second plaintext auth copy. The broker admits one
+command at a time. It still binds to `0.0.0.0` for Docker Desktop bridge routing,
+protected by a random per-run bearer capability. Network exposure and all
+credential access routes have not been exhaustively audited.
 
-Before enabling live deployment, locate the actual authenticated profile through
-metadata-only inspection, define a pinned Docker/controller/tool boundary under the
-existing grants, and verify credential denial through every enabled native tool.
-Then authorize a separate aggregate turn/spend cap and run the actual imported flow.
-Production auth lifecycle remains specs #129. No server/config/flow is installed or
-restarted by this adapter slice.
+The runner without isolated transport fails closed with
+`opencode_isolated_transport_required`; an injected transport preflight reports
+`transport_configured`, not proof of isolation. Fresh and resume both verify that
+the workspace skill directories exactly match recorded pinned revisions before
+building the controller view. A changed or extra skill fails the turn. A cancel
+requested before message dispatch is checked before reserving and again before
+sending the message. Native abort remains the mechanism after dispatch.
 
-## Continuation findings on 2026-10-02
+The saved Langflow flow points at the local runner on port 8768. This is a bounded
+single-user local prototype only. Production auth lifecycle remains specs #129;
+hosted or multi-user use requires a broader network and credential-boundary audit.
+
+## Historical continuation findings on 2026-10-02
 
 The terminal login was found in the active Console account stored in SQLite,
 separate from legacy `auth.json`. Two previous message submissions failed with
@@ -88,7 +99,7 @@ environment was readable; the credential canary was absent. This is separation
 evidence, not a claim that `/proc` is globally unreadable or that agent-originated
 denial, network isolation or child termination has been established.
 
-At takeover verification, 48 host tests and 14 pinned Langflow checks passed
+At that earlier takeover verification, 48 host tests and 14 pinned Langflow checks passed
 (three OpenCode, eleven Codex). Live fresh/resume, actual skill calls and native
 cancellation remain pending a new turn allocation. Original isolation findings
 above describe the earlier draft, not a completed authenticated pilot.
@@ -118,8 +129,9 @@ child-command termination remains unverified. The adapter retains partial raw re
 Neither provider session creation nor an abort acknowledgement proves OS containment.
 Credential-free synthetic tests cover snapshot/session resume, fresh independence,
 native skill/tool normalization, unknown usage and fail-closed effort/transport paths.
-Real skill discovery, authentication reuse, Docker image pin, network behavior and
-native cancellation termination are still acceptance gaps.
+At that stage, real skill discovery, authentication reuse, Docker image pin, network
+behavior and native cancellation termination were acceptance gaps. See the latest
+results for the tested local routes and the remaining limits.
 
 ## Latest bounded observations
 
@@ -143,9 +155,10 @@ paths were absent, the controller skill view contained only the two pins, and
 the selected provider key was absent from saved/exported flow data, tracked
 repository files and inspected run results. Attempt 12's fixture typo and the
 attempt 13 checker correction are retained in the linked results. Ledger is
-13/14 with one unused authorized turn. The local prototype meets the tested
-#27 path; exhaustive disclosure-route and network claims remain outside this
-evidence.
+13/14 with one unused authorized turn at that point. The later review fixes and
+attempt 14 are recorded in the [results](../../../experiments/opencode-agent/iterations/2026-10-02/results.md).
+The final ledger is 14/14. The local prototype meets the tested #27 path;
+exhaustive disclosure-route and network claims remain outside this evidence.
 
 ## Sources checked (reference owner)
 
@@ -158,5 +171,6 @@ evidence.
 
 Sources inspected 2026-10-02. Local command evidence: `opencode.cmd --version`,
 `opencode.cmd run --help`, `opencode.cmd auth list`, process executable metadata.
-No model turn submitted. Go subscription availability and actual credential profile
-are not inferred from public documentation.
+At the initial source check, no model turn had been submitted. Later private
+authenticated runs are documented in the linked experiment; subscription
+availability and credential profile are not inferred from public documentation.

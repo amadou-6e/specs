@@ -46,3 +46,12 @@ too-literal `color: amber` predicate and reported that field false; a read-only
 verification of the unchanged worker event recognized the actual sentence
 `The sample color is amber. The sample count is 3.` All other original checks
 were true. Ledger after attempt 13: 13/14, with one authorized turn unused.
+
+The remaining authorized turn was used after review fixes. First, a canary-only
+Docker smoke verified the read-only controller auth mount and empty session auth
+placeholder. A separate no-model check verified the real private provider and
+selected model through the new mount. Neither submitted a model turn. Attempt 14
+then ran the unchanged saved six-node Langflow flow with no node tweaks. It
+completed with both pinned native skill loads, the exact worker command, fixture
+read and independent marker verification. The worker private-path checks passed.
+The cumulative ledger is 14/14; no further model turn is authorized.

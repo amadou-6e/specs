@@ -41,7 +41,7 @@ contained exactly the pinned skills. Comparison with the selected private
 provider key found it absent from the saved/exported flow, tracked files in
 both repositories and the inspected run results. The initially too-literal
 fixture checker was corrected against the unchanged raw worker event; the
-model turn was not repeated. Cumulative ledger is 13/14, one turn unused.
+model turn was not repeated. At that point the ledger was 13/14, one turn unused.
 
 Bounded single-user local prototype is supported by these observations. Network
 isolation, complete credential-route auditing, hosted/multi-user use and automatic
@@ -49,3 +49,36 @@ fresh UI Stop remain unverified. These tested routes support the local #27
 prototype; they do not prove the absence of every possible disclosure path.
 Production authentication stays with specs #129.
 No issue closure or merge is implied.
+
+## Review fixes and final bounded retest
+
+The review of implementation `4b92295` and specs `f6833d8` found that resume
+could accept a skill changed by its own previous worker, cancel could be lost
+before dispatch, controller setup could leak a broker, and a copied Console token
+could expire before a later turn. The implementation now rejects extra or changed
+pinned skill directories before resume/dispatch and after a completed turn;
+checks a pre-dispatch cancel flag; closes partial controller setup; and validates
+the selected key digest and remaining Console expiry before reserving a turn.
+It also limits the broker to one concurrent command, releases the runner lock on
+corrupt records, handles null skill input, and deduplicates tool parts by call ID.
+These fixes have synthetic regressions. Earlier private run records contained no
+duplicate call IDs, so duplicate inflation was a plausible code path, not an
+observed historical count error. The broker still binds to `0.0.0.0` for Docker
+Desktop bridge routing; its random bearer capability is the current access gate.
+
+The earlier persistent second plaintext `auth.json` was verified against the
+selected private source and removed. The controller now receives the source file
+as a read-only mount. A canary Docker smoke and a no-model check of the real
+provider both passed; Docker left only an empty session auth placeholder.
+No credential values or raw traces were published.
+
+Saved-flow attempt 14 used the new mount with no node tweaks. It returned HTTP
+200, completed, loaded both pinned skills through native tools, executed the
+exact worker command with exit zero, and independently verified the marker and
+amber/3 fixture. The tested worker private paths were absent, and the selected
+provider key was absent from saved/exported flow, tracked repositories and the
+inspected run results. The cumulative ledger is **14/14**; no model turns remain.
+The host suite passed 63 tests. This retest verifies the normal local path after
+the auth mount change, not a live skill-mutation attack or perfectly atomic
+pre-dispatch cancellation. Network isolation, all credential access routes,
+fresh UI Stop, and hosted/multi-user use remain outside the verified scope.
