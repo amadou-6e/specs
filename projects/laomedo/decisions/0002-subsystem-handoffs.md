@@ -50,7 +50,7 @@ order, and do not imply that unanswered mechanism questions were settled.
 
 | ID | Decision | Handoff affected |
 | --- | --- | --- |
-| D01 | Laomedo embeds a heavily modified Langflow editor and exposes all Langflow components. Langflow owns graph authoring and workflow sequencing. | H4-H7 |
+| D01 | Laomedo embeds a heavily modified Langflow editor and exposes all Langflow components. Langflow owns graph authoring, workflow sequencing and live run state. A Langflow process restart or crash ends the run; Laomedo does not resume an in-flight workflow. The safety/observability implications of exposing every component remain contested. | H4-H7 |
 | D02 | Single-agent execution also goes through Langflow as a one-agent workflow. Laomedo presents a simpler setup form for that path. | H4-H5 |
 | D03 | Each configured agent stage has its own agent, prompt, model, effort, files and skills. Defaults ease creation by being copied into a stage; later default edits do not change existing stages. | H5 |
 | D04 | A stage may receive both user-added files and artifacts from earlier stages through Langflow handoffs. | H5-H6 |
@@ -84,8 +84,8 @@ agent turns. A loop produces a new invocation of the same stage.
 | ID | Decision | Handoff affected |
 | --- | --- | --- |
 | D15 | An errored invocation blocks dependent stages while independent branches continue by default. A user can select end-on-error before launch, or interrupt all active agents immediately through Stop. | H6-H7 |
-| D16 | Closing Laomedo does not stop a workflow; the UI reconnects when reopened. | H7-H8 |
-| D17 | Container crashes trigger automatic recovery, with a default of three recovery attempts per invocation. Recovery resumes the same agent session and sends a prompt to inspect existing state before repeating actions. After those attempts fail, the invocation is marked errored. | H5-H8 |
+| D16 | Closing only the Laomedo UI does not stop a workflow while Langflow remains running; the UI reconnects when reopened. A Langflow restart or crash ends the run, not a transparent workflow recovery. How the UI reports that terminal loss remains open. | H7-H8 |
+| D17 | Agent-stage container crashes, while Langflow remains running, trigger automatic recovery with a default of three attempts per invocation. Recovery resumes the same agent session and prompts it to inspect existing state. After exhaustion the invocation is marked errored. Prompt-only protection against duplicate external effects is contested; this does not apply to a Langflow crash. | H5-H8 |
 | D18 | The execution overview is separate from the Langflow graph. It shows agent invocations and their timing; a waterfall is a candidate layout, not a chosen one. Each loop invocation appears separately and opens its own telemetry when selected. | H7-H8 |
 | D19 | Selective stage reruns using previous upstream outputs are desired, subject to verifying Langflow's capabilities. | Future H4-H6 command |
 
@@ -100,21 +100,64 @@ agent turns. A loop produces a new invocation of the same stage.
 | D24 | The run record contains configuration, status, trace, summary and references to outputs. Produced code, specs and other artifacts may live in the workspace or another persistent destination. The summary identifies artifact type, location and saved/published state. | H9-H10, H13 |
 | D25 | An unsuccessful run yields an editable semi-structured report. The user reviews it before publishing a follow-up issue; that issue can be run like any other issue. Findings are stored only when selected, with GitHub publication a separate action. | H13-H16 |
 
+## Contested choices and capability dependencies
+
+These rows preserve what was chosen during the interview; they are **not
+cleared for implementation** merely because a choice was recorded. The
+[systems-design review on PR #172](https://github.com/amadou-6e/specs/pull/172)
+challenged the following decisions. The user's subsequent clarification settles
+one boundary: Langflow owns live run state, and its restart or crash terminates
+the run. A separate Laomedo ledger for resuming the workflow is **not** part of
+this design. Persisted trace and result records may describe a terminated run;
+they do not reconstitute its execution.
+
+| Decisions | Reconsider before implementation |
+| --- | --- |
+| D01, D16 | How terminal Langflow loss is detected and reported; whether UI reconnection works while Langflow itself remains alive; how non-agent Langflow components fit approval and telemetry. Do not promise run recovery across Langflow restart. |
+| D07, D08 | Timer/event-service ownership, duplicate suppression, catch-up behavior, per-configuration concurrency and an event feedback-loop guard. |
+| D11, D12, D14 | Writer exclusion when parallel or unattended stages mount the same local checkout; whether direct local mounts should be restricted or isolated checkouts required. |
+| D13, D23 | Cross-stage session dependencies and workspace compatibility; the source workspace and current PR head for an existing-session follow-up after its previous container is removed. |
+| D15 | Whether Langflow can continue independent branches after a stage error, enforce loop limits, and prevent new dispatch after Stop. The pilot's node raises on error; desired default behavior is not verified. |
+| D17 | Whether mid-turn agent-container recovery is possible and how non-idempotent effects such as PR creation avoid duplication. A state-check prompt alone is not a guarantee. |
+| D20, D21, D22 | Who holds approval requests, their expiry/default for unattended runs, and whether non-agent components can bypass the same controls. |
+| D10, D23, D25 | Which stage may create/update the run's PR, how its reference is collected, and who produces a failure report when the agent cannot. |
+
+Unverified third-party or adapter capabilities affect D01 (all components),
+D04 (file/artifact handoffs), D15 (branch failure and Stop semantics), D16
+(reconnection to a live Langflow run), D17 (mid-turn native-session resume),
+D19 (selective stage rerun), and D23 (native-session resume after workspace or
+PR-head changes). D09 additionally requires a tested way to snapshot and run
+the exact Langflow flow and component code selected at launch. None of these
+capabilities was established by the spec validator or this documentation PR.
+
 ## Still open
 
-- The authoritative persisted workflow state during UI closure and reconnection,
-  and the reconciliation with the earlier
-  [shared-contract wording](../architecture/shared-contracts.md) about runner ownership.
-- Langflow's actual support for selective stage reruns, durable reconnection,
-  and artifact/file references across all component types.
-- The transport, identity and user interaction for external access requests;
-  decisions D20-D22 specify behavior but not an API.
+- The owner and runtime policy for timer/GitHub-event ingestion, duplicate
+  suppression, feedback-loop prevention, and runs triggered while the UI is
+  closed. This is separate from Langflow's ownership of an active run.
+- How a Langflow crash is detected and represented as a terminal run result,
+  including partial traces and orphaned agent-stage containers. There is no
+  plan here to resume the graph after Langflow restarts.
+- Langflow's actual support for selective stage reruns, UI reconnection while
+  Langflow remains live, branch-local failure, conditional loops, cancellation,
+  exact flow snapshots, and artifact/file references across component types.
+- The owner and transport for inter-stage files between separate containers,
+  including materialization into the receiving workspace and retention after
+  containers are removed.
+- The approval-request owner, identity, expiry and unattended default; decisions
+  D20-D22 state desired behavior but not an API.
+- The writer-exclusion rule for shared local workspaces and the dependency and
+  compatibility rules for shared or resumed native agent sessions.
+- The owner of one target PR in multi-stage runs, discovery of its current head,
+  and idempotence for PR creation after agent-container recovery.
+- The producer of failure reports when no agent result exists, plus the owner
+  and enforcement point for a run-level budget across stages, loops and retries.
 - Artifact destination defaults, overrides, controls, retention and handling of
   unsaved outputs. No storage system has been chosen.
 - The exact execution-overview layout and telemetry content/retention policy.
 - Wire formats, field names, error taxonomies, and where each proposed
   subsystem boundary lands in the implementation.
 
-These decisions are recorded here so later contracts can be drafted from them
-without reopening settled product questions. They do not remove the need to
-verify third-party capabilities or to review an implementation contract.
+These records preserve the interview, including choices now contested by the
+systems review. Reopen those choices before freezing dependent contracts; do
+not silently treat a recorded preference as an implemented or verified guarantee.

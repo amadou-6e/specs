@@ -25,7 +25,9 @@ rendered graph legible.
 Blue nodes are proposed Laomedo boundaries, green nodes have existing draft
 subsystem contracts, and orange nodes are external inputs or systems. Purple
 marks user review. Colors indicate documentation maturity, not process
-placement. Langflow owns workflow definitions and sequencing. Laomedo's
+placement. Langflow owns workflow definitions, sequencing and live run state.
+If Langflow restarts or crashes mid-run, that run ends; this graph does not
+specify transparent workflow recovery. Laomedo's
 Langflow integration launches and correlates runs; agent execution owns provider
 dispatch, session and workspace binding, and stage containers. Run traces own
 stored events and projections. Results own summaries and artifact references;
@@ -64,10 +66,11 @@ inventory stays focused on information crossing subsystem boundaries.
 
 ## Interface decisions still needed
 
-1. Decide which persisted workflow state is authoritative while Laomedo is
-   closed. Langflow performs sequencing, but the existing
-   [shared contracts](shared-contracts.md) still assign broad execution ownership
-   to a Laomedo runner. Reconcile those words before freezing H4, H6 and H7.
+1. Define how the UI reconnects to a run while Langflow remains live, and how
+   a Langflow restart/crash is detected and reported as a terminal run with
+   partial evidence. The [shared contracts](shared-contracts.md) assign
+   agent-invocation execution and session persistence to the runner, not
+   workflow-state recovery.
 2. Verify how all Langflow component types can exchange file and artifact
    references with agent stages. The required handoff is known; the actual
    component/API mechanism is not yet established.
