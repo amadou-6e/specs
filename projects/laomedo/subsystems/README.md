@@ -55,9 +55,9 @@ direct** handoff; it may still communicate through a listed boundary.
 These are issue-branch triages, not accepted runtime contracts. Sibling drafts
 must be reconciled when their PRs are integrated.
 
-| Subsystem | A/B/R/E/D | Pending experiments |
-| --- | --- | --- |
-| [Results and artifacts](results-artifacts/design/decision-readiness.md) | 6/6/1/4/5 | E01 crash assembly, E02 manifest replay, E03 checkout retention, E04 no-agent report/failed issue write |
+| Subsystem | A/B/R/E/D | First-slice blockers | Pending experiments |
+| --- | --- | --- | --- |
+| [Results and artifacts](results-artifacts/design/decision-readiness.md) | 6/6/1/4/5 | B04 retention/unsaved output, #175 GitHub effects, B03 failure-report provenance, B01 manifest supersession; B05 PR refresh for follow-up | E01 crash assembly, E02 manifest replay, E03 checkout retention, E04 no-agent report/failed issue write |
 
 ## Payload sketch conventions
 
