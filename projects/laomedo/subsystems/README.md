@@ -13,6 +13,12 @@ contract/design pages (0..*) are conditional. Templates define the internal sche
 - [Results and artifacts](results-artifacts/README.md): run summaries, artifact references and follow-up context.
 - [Copyable example](template/README.md): illustrative snapshot-bound execution boundary.
 
+## Decision readiness
+
+| Subsystem | Question classes | Pending experiments and source checks |
+| --- | --- | --- |
+| [Prompt and skill library](prompt-skill-library/design/decision-readiness.md) | 18: A6, B7, R0, E3, D2 | E01 Langflow-owned pre-dispatch freeze; E02 conditional GitHub publication. Neither run. R01–R03 source checks pending for chosen backend/publication route. |
+
 Contracts own target behavior, design explains mechanisms, validation qualifies maturity.
 Shared record definitions stay in architecture. Copy template/ directly, rename, replace
 every example fact and metadata/lifecycle, then add the entry to this index.
