@@ -170,9 +170,10 @@ exhaustive disclosure-route and network claims remain outside this evidence.
 
 Subsequent review fixes added runner API authentication and disabled networking
 for disposable command workers. Synthetic host tests passed against the revised
-stack without another model turn. The prior saved-flow run and private-path checks
-do not verify this exact new deployment; a no-model container boundary check and
-fresh saved-flow deployment validation remain outstanding. The earlier observed
+stack without another model turn. A no-model container canary showed no host
+route under Docker `--network none`, and three pinned Langflow component tests
+passed. The prior saved-flow run and private-path checks do not verify this
+exact new deployment; fresh saved-flow deployment validation remains outstanding. The earlier observed
 controller skill view contained only the two pins for the tested fresh run; resume
 pin enforcement is established by synthetic tests, not a live mutation attempt.
 

@@ -88,5 +88,8 @@ API, implementation PR #31 inherited runner API authentication and configured
 disposable command workers with Docker networking disabled. The revised branch
 passed 70 credential-free host tests. This did not submit another model turn or
 rerun the saved Langflow flow; the 14/14 ledger is unchanged. The earlier worker
-network result remains historical evidence, while this later boundary has so far
-been checked in code and synthetic tests only.
+network result remains historical evidence. A credential-free Docker canary
+using the pinned worker image and `--network none` showed an empty
+`/proc/net/route` table, and three pinned Langflow component tests passed.
+This verifies the configured network mode, not every route in a real worker or
+the revised saved flow end to end.
