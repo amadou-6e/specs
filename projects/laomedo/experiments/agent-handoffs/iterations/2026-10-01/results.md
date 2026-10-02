@@ -33,3 +33,21 @@ confirmed that #27 also used two turns, making the aggregate authorization 4/4.
 The previously reported two remaining turns were incorrect. Further live-loop
 acceptance requires a new two-turn allocation. Applying the separate localhost:7863
 deployment draft also awaits explicit configuration approval.
+
+## Real loop acceptance on 2026-10-02
+
+The user subsequently authorized two further turns. Harness `live_loop.py` executed
+the actual native bounded-controller graph in pinned Langflow 1.12.3, with no mocked
+runner calls. Execution `a6ac76c7-d09b-4ad5-8442-4cd8f126e9d1` stopped on success
+after exactly two completed iterations and answer `LAOMEDO_LOOP_28_COMPLETE`.
+Runs `2ddea53d-602e-4f18-a3b8-7a7a785e0a9a` and
+`698d8dbc-8296-40aa-a733-1004b56fdb8e` had distinct native threads. The second task
+was the first answer. Private execution records retain both transitions; sanitized
+run IDs and snapshot hashes are in the implementation's `live-loop-evidence.json`.
+The handoff runner ledger advanced cumulatively from 2/2 to 4/4; no ledger reset or
+authentication copy occurred. Together with the two OpenCode attempts, the new
+cross-ticket aggregate is 6/6 submitted turns. Original pilot ledger is unchanged.
+
+Real-loop acceptance is now observed. Separate browser-installed deployment still
+awaits configuration approval; cross-provider acceptance remains dependent on #27.
+No issue closure, merge, early remote cancellation or exactly-once guarantee is claimed.
