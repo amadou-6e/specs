@@ -12,6 +12,8 @@ related: []
 # Skill registry and drafts contract index
 
 Canonical draft requirements: [Revisions](revisions.md), [drafts](drafts.md).
+The [Langflow Skill node](langflow-node.md) owns the immutable reference component
+and its connection to the Codex Agent; it does not redefine store/draft behavior.
 Shared serialized records belong to [architecture](../../../architecture/shared-contracts.md).
 [Validation](../validation.md) qualifies maturity; pilot observations do not silently
 replace proposed read-only, identity or provider parity guarantees.
