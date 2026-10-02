@@ -121,7 +121,17 @@ native skill/tool normalization, unknown usage and fail-closed effort/transport 
 Real skill discovery, authentication reuse, Docker image pin, network behavior and
 native cancellation termination are still acceptance gaps.
 
-## Sources checked
+## Latest bounded observations
+
+[2026-10-02 results](../../../experiments/opencode-agent/iterations/2026-10-02/results.md)
+supersede the earlier failed-acceptance status above. Four further authorized turns
+produced successful direct CLI, real imported-flow native multi-skill fresh and
+same-session restart/resume, and native abort with observed worker termination.
+Ledger is cumulatively 10/10. The cancellation-status race was fixed and covered
+by a deterministic synthetic test; that final status correction has no new live
+submission. This remains a draft local prototype contract, not a hosted guarantee.
+
+## Sources checked (reference owner)
 
 - [OpenCode server API](https://opencode.ai/docs/server/): session/message/abort and provider inventory.
 - [Native skills](https://opencode.ai/docs/skills/): project `.agents/skills` discovery and skill tool.
