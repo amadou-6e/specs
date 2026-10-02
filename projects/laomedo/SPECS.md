@@ -9,6 +9,7 @@ This migration reviews local documents, not freshly executed implementation or u
 | Category | Type | Canonical responsibility |
 | --- | --- | --- |
 | architecture | fixed | Shared records, edges, target relationships, historical component proposal |
+| decisions | document collection | Reconstructed discussion trails, durable product choices, alternatives and open questions |
 | subsystems | folder collection | Execution/isolation, skill registry/drafts, raw traces/projection |
 | experiments | folder collection | Bounded protocol, attempts, evidence manifests, results |
 | research | folder collection | Characterized sources, atomic findings and exploratory synthesis |
@@ -16,7 +17,7 @@ This migration reviews local documents, not freshly executed implementation or u
 | deprecated | fixed | Existing historical UI workshop and unchanged reference assets |
 | components, feasibility, monitoring, sandboxing | fixed compatibility containers | Closed sets of pointers preserving published paths; no new authoring or behavioral ownership |
 
-The six authoring categories above remain the content taxonomy. The four
+The seven authoring categories above remain the content taxonomy. The four
 compatibility containers are declared in `spec.json` for structural validation,
 with `superseded` pointer entries only. They have no templates and are not
 destinations for new work. See the [published-reference audit](implementation/spec-migration.md#published-reference-audit)
@@ -24,14 +25,17 @@ before proposing removal of any pointer.
 
 Change the category set only by reviewing SPECS.md and spec.json together. Both providers
 share execution/session ownership. Revision and draft share immutable skill identity and
-promotion separation. Traces have independent storage/projection ownership. No decisions,
-bugs or live UI-design collection is instantiated because the sources contain recommendations,
-not accepted durable choices, durable defect records or reviewed Laomedo surfaces.
+promotion separation. Traces have independent storage/projection ownership. The decisions
+collection records user-confirmed choices and reconstructed discussion trails, with draft
+status until reviewed; it does not make unverified mechanisms accepted. No bugs or live
+UI-design collection is instantiated because the sources do not yet contain durable defect
+records or reviewed Laomedo surfaces.
 
 ## Copy-and-rename workflow
 
 Copy [subsystem](subsystems/template/README.md), [experiment](experiments/template/README.md)
-or [research](research/template/README.md) directly to a kebab-case peer. For example,
+or [research](research/template/README.md) directly to a kebab-case peer, or copy
+[decision](decisions/template.md) to the next numbered Markdown entry. For example,
 copy experiments/template/ to experiments/snapshot-rejection/, replace identity, example
 facts and links, and replace status: template in every copied entry page before indexing it.
 Do not nest another template directory. Required files are declared in spec.json; internal

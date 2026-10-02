@@ -3,13 +3,21 @@ title: Runner isolation and persistence
 status: draft
 kind: target-contract
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-01
+last_reviewed: 2026-10-02
 applies_to: [laomedo]
 supersedes: null
 related: []
 ---
 
 # Runner isolation and persistence
+
+> **Unresolved later-design conflict (2026-10-02):** the
+> [subsystem decision record](../../../architecture/subsystem-decision-record.md)
+> and [agent execution interfaces](interfaces.md) describe local workspace
+> mounts, per-stage containers and an optional shared external Codex home.
+> This earlier draft specifies read-only defaults and private provider profiles.
+> The grants, identity and profile rules must be reconciled in review before
+> either version is treated as an accepted implementation contract.
 
 Status: proposed. This is the shared execution boundary for Codex Agent,
 Claude Agent, and Skill Draft. It specifies behavior, not a deployment choice
