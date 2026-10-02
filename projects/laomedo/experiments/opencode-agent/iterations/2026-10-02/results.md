@@ -82,3 +82,11 @@ The host suite passed 63 tests. This retest verifies the normal local path after
 the auth mount change, not a live skill-mutation attack or perfectly atomic
 pre-dispatch cancellation. Network isolation, all credential access routes,
 fresh UI Stop, and hosted/multi-user use remain outside the verified scope.
+
+After the reviewer identified worker access to the unauthenticated host runner
+API, implementation PR #31 inherited runner API authentication and configured
+disposable command workers with Docker networking disabled. The revised branch
+passed 70 credential-free host tests. This did not submit another model turn or
+rerun the saved Langflow flow; the 14/14 ledger is unchanged. The earlier worker
+network result remains historical evidence, while this later boundary has so far
+been checked in code and synthetic tests only.

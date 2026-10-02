@@ -57,8 +57,14 @@ mount; the worker receives neither the credential nor the controller profile or
 Docker socket. The controller's session directory can contain an empty Docker
 mount placeholder but no second plaintext auth copy. The broker admits one
 command at a time. It still binds to `0.0.0.0` for Docker Desktop bridge routing,
-protected by a random per-run bearer capability. Network exposure and all
-credential access routes have not been exhaustively audited.
+protected by a random per-run bearer capability. Disposable command workers use
+Docker `--network none`, so they have no configured network path to the host
+runner API. The controller retains bridge networking for its model API and
+command broker. The runner API independently requires a persisted private bearer
+capability on every endpoint, including status and cancel. The Langflow OpenCode
+component reads the capability from a mounted read-only file, never from flow
+JSON. Broker LAN exposure and all credential access routes have not been
+exhaustively audited.
 
 The runner without isolated transport fails closed with
 `opencode_isolated_transport_required`; an injected transport preflight reports
@@ -66,7 +72,9 @@ The runner without isolated transport fails closed with
 the workspace skill directories exactly match recorded pinned revisions before
 building the controller view. A changed or extra skill fails the turn. A cancel
 requested before message dispatch is checked before reserving and again before
-sending the message. Native abort remains the mechanism after dispatch.
+sending the message. Native abort remains the mechanism after dispatch; a
+concurrent request can still race a final pre-dispatch check, so perfectly atomic
+cancel/submit exclusion is not claimed.
 
 The saved Langflow flow points at the local runner on port 8768. This is a bounded
 single-user local prototype only. Production auth lifecycle remains specs #129;
@@ -159,6 +167,14 @@ attempt 13 checker correction are retained in the linked results. Ledger is
 attempt 14 are recorded in the [results](../../../experiments/opencode-agent/iterations/2026-10-02/results.md).
 The final ledger is 14/14. The local prototype meets the tested #27 path;
 exhaustive disclosure-route and network claims remain outside this evidence.
+
+Subsequent review fixes added runner API authentication and disabled networking
+for disposable command workers. Synthetic host tests passed against the revised
+stack without another model turn. The prior saved-flow run and private-path checks
+do not verify this exact new deployment; a no-model container boundary check and
+fresh saved-flow deployment validation remain outstanding. The earlier observed
+controller skill view contained only the two pins for the tested fresh run; resume
+pin enforcement is established by synthetic tests, not a live mutation attempt.
 
 ## Sources checked (reference owner)
 
