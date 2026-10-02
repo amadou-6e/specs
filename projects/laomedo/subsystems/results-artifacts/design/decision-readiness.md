@@ -12,7 +12,7 @@ related: []
 # Results and artifacts decision readiness
 
 This is triage for [specs issue #180](https://github.com/amadou-6e/specs/issues/180),
-not acceptance or runtime evidence. The inspected base is `docs/167` at
+not acceptance or runtime evidence. The historical research base was `docs/167` at
 `3974d9aa1f380c72105e7f205f16e3eeae2c8d80` (2026-10-02). The
 [decision record](../../../architecture/subsystem-decision-record.md),
 [handoff inventory](../../../architecture/subsystem-handoffs.md),
@@ -20,9 +20,13 @@ not acceptance or runtime evidence. The inspected base is `docs/167` at
 [interface sketch](../contract/interfaces.md), and the linked providers and
 consumers are the local sources at that SHA. [#174 PR #188](https://github.com/amadou-6e/specs/pull/188),
 [#175 PR #182](https://github.com/amadou-6e/specs/pull/182), and
-[#179 PR #189](https://github.com/amadou-6e/specs/pull/189) are *unmerged
-drafts*, not base contracts. Their proposed crash-sweep and trace decisions
-inform dependencies only. The fate-shared crash constraint is the confirmed
+[#179 PR #189](https://github.com/amadou-6e/specs/pull/189) remain separate
+readiness drafts, not accepted runtime evidence. The merged
+[decision record](../../../decisions/0002-subsystem-handoffs.md) and current
+[IF-09](../../langflow-integration/contract/interfaces.md) and
+[IF-10](../../agent-execution/contract/schemas/if-10-output-manifest.md)
+sketches supersede older payload-gap observations below. Crash-sweep and trace
+experiments still inform dependencies. The fate-shared crash constraint is the confirmed
 user decision quoted in issue #180: a Laomedo/Langflow crash ends the run;
 restart marks it `crashed`; relaunch creates a newly identified linked run.
 Neither a crash nor a relaunch was run for this draft.
@@ -46,12 +50,12 @@ not a claim of implementation. No A row relies on [U] or a contested D-ID.
 | ID / question and coverage | Class | Tags | Blocking dependency | Next action |
 | --- | --- | --- | --- | --- |
 | T01 IF-09/IF-10/IF-11, H9/H10: join by exact run and invocation identity; absent input remains visibly missing | A | [C:D24] [I] | None for the invariant; persistence is E01 | Retain in contract; test E01 |
-| T02 IF-09, H13: display `crashed` as distinct from failed/interrupted/incomplete | A | [C:issue #180] [I] | IF-09 producer enum lacks it; peer change pending | Propose coordinated enum extension; do not imply current producer emits it |
+| T02 IF-09, H13: display `crashed` as distinct from failed/interrupted/incomplete | A | [C:issue #180] [I] | Current IF-09 sketches `crashed`; runtime persistence untested | Verify terminal event and projection; do not imply the producer emits it yet |
 | T03 IF-10, H9/H12: inventory only reported artifacts and confirmed PR refs; never infer a PR from a diff, prose or absent manifest | A | [C:D24] [I] | External effect discovery is B02 | Retain provenance rule and visible unknowns |
 | T04 IF-10/H9: unreachable location is `unknown` until deletion is verified; `lost` requires evidence | A | [C:D24] [I] | Checkout sweep is E03 | Keep uncertainty explicit in projection |
 | T05 IF-12/H13/H14: failure proposal stays editable until explicit user review/publish; failed write does not claim publication | A | [C:D25] [I] | Exact draft retention and duplicate-write rules are peer-owned | Retain current boundary; test E04 |
 | T06 IF-13/H16: new-session follow-up links prior run/PR and gets new run, invocation and trace IDs | A | [C:issue #180] [I] | Langflow creates run; no existing session in slice | Retain as first-slice request invariant |
-| T07 IF-10: partial and complete manifest supersession identity/order/precedence | B | [I] | #168 review found no manifest revision or supersedes field | Choose B01 before schema revision; test E02 |
+| T07 IF-10: partial and complete manifest supersession identity/order/precedence | B | [I] | Current IF-10 sketches revision and supersedes; persistence/consumer policy remains open | Resolve B01 against that sketch; test E02 before treating replacement as proven |
 | T08 H12, #172 H-12: how results discovers external PR/branch effects after crash without IF-10 | B | [I] | Agent execution owns the effect-policy choice in [#175](https://github.com/amadou-6e/specs/issues/175) Q07/Q16 | Consume that choice for B02; do not invent effects |
 | T09 H13, #172 H-15: failure-report provenance when no agent final message exists; whether a model summarizer is allowed | B | [C:D25] [I] | Trace completeness and summarizer policy | Choose B03; test E04 without model turns |
 | T10 D24/H9: artifact destination, retention, unsaved output and cleanup policy | B | [C:D24] [I] | Isolated checkout lifetime and actual persisted locations | Choose B04; test E03 |
@@ -68,8 +72,8 @@ not a claim of implementation. No A row relies on [U] or a contested D-ID.
 | T21 D25/H13: selected findings as durable project knowledge | D | [C:D25] | Optional after result inspection | Revisit when knowledge destination is selected |
 | T22 H12: live PR review-refresh implementation | D | [I] | B05 then R01; not needed to record confirmed creation | Revisit for follow-up UI freshness |
 
-T02 is a **proposed coordinated change**, not a rewrite of Langflow's
-unmerged IF-09 contract. T04 does not promise that cleanup preserves bytes.
+T02 is represented in the merged IF-09 sketch, not proof of a runtime
+producer. T04 does not promise that cleanup preserves bytes.
 The first-slice result can display `unknown` for an external effect or
 unreachable artifact without silently calling it absent.
 
@@ -135,7 +139,7 @@ separate authorized, isolated test; these fixtures cannot prove it.
 
 1. **Persist first.** [C:issue #180; I] Run and trace identity plus frozen
    context must be durable before dispatch; the user's #179 answer was to
-   refuse dispatch otherwise (recorded in unmerged PR #189). A durable result
+   refuse dispatch otherwise (recorded in the merged decision record). A durable result
    shell and incremental manifest/trace refs are candidates, not proven.
 2. **On restart.** [C:issue #180; I] Langflow/Laomedo marks nonterminal runs
    `crashed`; results assembles only surviving inputs and marks missing or
@@ -160,7 +164,7 @@ separate authorized, isolated test; these fixtures cannot prove it.
 | Claim group | Evidence at base SHA; limitation |
 | --- | --- |
 | T01–T06, T14 | [Results contract](../contract/interfaces.md), [IF-09](../../langflow-integration/contract/interfaces.md), [IF-10](../../agent-execution/contract/schemas/if-10-output-manifest.md), [IF-11](../../run-traces/contract/interfaces.md), D24/D25 and issue #180. These are proposed payloads, not tested persistence. |
-| T07/T15 | IF-10 has `partial`/`complete` but no revision/supersedes; #168 review flagged supersession. The invariant is draftable; protocol remains B01. |
+| T07/T15 | Current IF-10 sketches revision/supersedes; #168 review originally flagged the gap. Consumer policy and replay verification remain B01/E02. |
 | T08/T11/T22 | [H12](../../../architecture/subsystem-handoffs.md) shows GitHub→results, while IF-10 carries confirmed PR provenance; #172 review H-12/H-14 raised external effects and refresh. No direct GitHub lookup was proven. |
 | T09/T17 | D25 and #172 review H-15 require a failure report even without agent conclusion; neither source proves a summarizer. |
 | T10/T16/T18–T21 | D04/D19/D24/D25 and H6/H13/H16 identify intended scope; placement, transport and multiple-PR rules are open. |
