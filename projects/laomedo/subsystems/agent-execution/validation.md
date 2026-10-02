@@ -21,7 +21,11 @@ by its original version, task, grant and date.
 | Isolation / read-only / remote mode | #120, #122, Docker sources | Earlier failures retained; general grant and remote storage unproven |
 | Claude parity | #121 | CLI blocker before model call; acceptance unknown |
 | New IF-05/IF-06 stage invocation and same-session conflict | No new check | Target interface only; not executed |
-| Three-attempt same-session crash recovery and run-scoped approvals | No new check | Newer user decision; earlier pilot does not establish this behavior |
+| First-slice mid-turn container crash terminates invocation with partial/unknown evidence | No new check | Proposed first-slice rule; pilot clean restart does not test a killed turn |
+| Three-attempt same-session crash recovery | No new check | Deferred target pending controlled real-agent mid-turn crash/session-restart experiment, including repeated/lost external effects |
+| Run-scoped approvals | No new check | Broker, expiry and unattended default remain open |
+| IF-05 user files and durable pre-dispatch reservation | No new check | Separate hash-checked refs and refuse-dispatch rule specified; no product test |
+| IF-08 replay / IF-10 manifest supersession | No new check | Producer-stable dedup key remains open; manifest projection rule not tested |
 
 Canonical evidence: [pilot result](../../experiments/local-skill-agent-pilot/iterations/2026-10-01/results.md)
 and [feasibility ledger](../../research/runner-feasibility/sources/README.md).

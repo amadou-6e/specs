@@ -27,7 +27,7 @@ invocation correlation described below.
 | --- | --- | --- |
 | `SkillSnapshotRef` | `skill_id`, `revision_id`, `tree_hash`, selected file paths and hashes | Identifies exact bytes; never resolves through `latest` during execution |
 | `EditPolicyRef` | `policy_id`, `revision_id`, `hash` | Independent from instructions used by a skill consumer |
-| `InputSnapshotRef` | `snapshot_id`, `hash`, media type | Preserves the effective handoff payload, including any structured fields |
+| `InputSnapshotRef` | `snapshot_id`, `hash`, media type | Preserves one text/structured handoff payload; multiple user-added files require separate hash-checked file refs in IF-05 |
 | `WorkspaceSnapshotRef` | `snapshot_id`, `hash`, source revision | Identifies source files before skill materialization |
 | `EffectiveWorkspaceRef` | `snapshot_id`, `hash`, source workspace ref, materialized skill ref | Identifies the files actually offered at dispatch |
 | `AgentRunSpec` | `provider`, model selection, effort selection, input, skill and workspace refs, permission grant, session mode, limits | Frozen before dispatch and attached to every resulting event |
@@ -80,8 +80,16 @@ are both recorded; an omitted setting is not inferred as an explicit choice.
 ```
 
 The adapter validates supported model/effort combinations before starting.
-The request is immutable after dispatch. A retry gets a new `run_id` and links
-to the failed run so partial traces are not overwritten.
+The request is immutable after dispatch. A **user-requested new run** after a
+failure gets a new `run_id` and links to the failed run so partial traces are
+not overwritten. This is not automatic same-invocation crash recovery. The
+older D17 three-attempt idea is a [deferred target](../decisions/0002-subsystem-handoffs.md):
+first-slice mid-turn container crashes terminate with partial/unknown evidence.
+Only a controlled real-agent session-restart experiment can justify a later
+recovery identity and effect policy. The example's read-only grant is
+illustrative; the first-slice agent checkout is writable, with separate
+protection of runner, skill and unrelated host paths. Its Docker mechanism is
+not proved by this record.
 
 ## Ownership
 

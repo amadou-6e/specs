@@ -28,10 +28,10 @@ contract owns its behavior. IDs identify design discussions, not wire methods.
 
 | Interface | Provider → consumer | What crosses | Owning contract |
 | --- | --- | --- | --- |
-| IF-01 Issue context | Issue integration → Langflow integration | Selected issue/repository reference, optional event and existing PR reference | [Issue integration](issue-integration/contract/interfaces.md) |
+| IF-01 Selected-issue context | Issue integration → Langflow integration | Actual selected issue/repository reference and user-supplied target PR, when present; direct prompts and non-issue events bypass this exchange | [Issue integration](issue-integration/contract/interfaces.md) |
 | IF-02 Library resolution | Prompt and skill library → Langflow integration | Prompt and skill selection, exact resolved revisions | [Prompt and skill library](prompt-skill-library/contract/interfaces.md) |
 | IF-03 Skill revision lookup | Skill registry → Prompt and skill library | Immutable skill identity, exact revision and hashes | [Skill registry](skill-registry/contract/interfaces.md) |
-| IF-04 Skill materialization | Skill registry → Agent execution | Validated skill snapshot and dependency closure for the chosen workspace | [Skill registry](skill-registry/contract/interfaces.md) |
+| IF-04 Skill materialization | Agent execution requests from Skill registry; registry responds to Agent execution | Exact skill ref request, then validated snapshot and dependency closure for the chosen workspace | [Skill registry](skill-registry/contract/interfaces.md) |
 | IF-05 Agent invocation | Langflow integration → Agent execution | Stage invocation, frozen configuration, input/file refs, session and workspace choices | [Agent execution](agent-execution/contract/interfaces.md) |
 | IF-06 Invocation outcome | Agent execution → Langflow integration | Status, output refs and failure classification for one invocation | [Agent execution](agent-execution/contract/interfaces.md) |
 | IF-07 Workflow events | Langflow integration → Run traces | Workflow/run/stage/invocation lifecycle and correlation | [Langflow integration](langflow-integration/contract/interfaces.md) |
