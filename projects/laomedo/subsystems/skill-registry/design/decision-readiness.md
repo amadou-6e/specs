@@ -21,12 +21,11 @@ Tags: **[C]** confirmed decision (with D-ID), **[O]** bounded observation, **[I]
 
 | Question | Class | Tags | Blocking dependency | Next action |
 | --- | --- | --- | --- | --- |
-| A1. IF-04 full-skill destination in the isolated checkout | A | [O] pilot; [I] first-slice rule | None for a whole skill | Specify `.agents/skills/<skill_id>` as the selected destination; keep general workspace retention in B1. |
-| A2. IF-04 effective-workspace hash ordering | A | [O] pilot; [I] contract rule | None | Calculate after complete hash-validated materialization and before agent dispatch; keep the source and post-run hashes distinct. |
+| A2. IF-04 effective-workspace hash ordering | A | [O] pilot; [I] contract rule | B7 determines location, not hash ordering | Regardless of chosen path, calculate after complete hash-validated materialization and before agent dispatch; keep source and post-run hashes distinct. |
 | A3. IF-04 direction and fail-before-dispatch code categories | A | [I] from [interface map](../../README.md) and [IF-04 schema](../../agent-execution/contract/schemas/if-04-skill-materialization.md) | None; transport encoding remains open | Registry provides bytes/result; agent execution requests. Propose stable categories for unknown/invalid revision, missing dependency, hash mismatch, and unsafe path; never return an empty successful bundle. |
 | A4. IF-03 `latest`/pinned lookup identity | A | [C] D09; [I] from [shared ref](../../../architecture/shared-contracts.md) | GitHub-backed identity is R1, not needed for native first slice | Resolve once at launch and return exact revision plus tree/file hashes; execution never follows a moving alias. |
 | A5. IF-03 unknown/invalid revision | A | [I] [IF-03 contract](../contract/interfaces.md) | None | Return a coded error without fallback to another revision. |
-| A6. Native content-addressed read integrity | A | [O] whole-bundle pilot; [I] storage rule | No claim about crash atomicity | Verify immutable tree/file bytes against the selected reference on each lookup/materialization; reject mismatch. |
+| A6. Native content-addressed read integrity | A | [O] whole-bundle pilot; [I] storage rule | [#175 S13/E04](https://github.com/amadou-6e/specs/issues/175) must check Windows line-ending transformations | Verify immutable tree/file bytes against the selected reference on each lookup/materialization; reject mismatch rather than normalizing bytes silently. |
 | A7. Publishing a native revision pointer | A | [I] controllable design | E2 must verify crash behavior | Write candidate bytes, verify hashes, then publish the pointer; never present a candidate as current until verification completes. This is a design rule, not an observed crash guarantee. |
 | B1. Interrupted IF-04 materialization and checkout retention | B | [I]; [U] crash behavior | Agent execution's isolated-checkout sweep/retention choice (#175) | Decide between discard-on-crash and atomic temp-tree publication; then test E1. |
 | B2. Stale `pending` IF-14 drafts after backend death | B | [I] from [draft lifecycle](../contract/drafts.md) | Restart-sweep owner with #174/#175 | Choose which owner marks or reconciles incomplete draft records; never imply current pilot did it. |
@@ -34,6 +33,7 @@ Tags: **[C]** confirmed decision (with D-ID), **[O]** bounded observation, **[I]
 | B4. Canonical promotion authorization | B | [C] D06; [I] draft contract | User policy; #177 owns publication channel | Choose review gate, scoped automatic promotion, or GitHub merge as canonical. Keep immutable draft and canonical revision separate in every option. |
 | B5. Agent-authored IF-14 drafts and approval | B | [C] D20/D22 contested; [I] | Shared approval policy, #177 edit entry | Decide whether draft creation, promotion, or both need an explicit user grant. No agent edit silently promotes. |
 | B6. A linked relaunch after `crashed`: old ref or moved `latest` | B | [C] D09 for original launch; [I] for *new* run | #177 selector policy and #174 launch owner | Select old exact refs, new latest resolution, or explicit user choice; do not misapply “frozen including recovery” to a different run. |
+| B7. IF-04 full-skill destination without polluting or blocking git | B | [O] pilot used `.agents/skills/<skill_id>`; [I] location trade-off | [#175 S08/E04](https://github.com/amadou-6e/specs/issues/175) found git-clean and read-only-file hazards | Choose ignored in-checkout path or private provider-discoverable mount; do not make the pilot path a first-slice default. |
 | R1. GitHub-backed skill revision identity | R | [U] GitHub semantics | D06 and #177 backend design | Inspect primary Git/GitHub documentation and implementation: commit SHA + path versus tree/content hash, and which is the stable runtime ref. |
 | R2. Pinned GitHub revision after force-push or deletion | R | [U] GitHub retention behavior | R1 | Inspect primary Git/GitHub docs, retention/garbage-collection rules, and API responses; define a cache/availability policy only after that. |
 | E1. Registry materialization interrupted before IF-04 completion | E | [U] crash timing | B1; pinned fixture required | Run a no-model process-kill fixture during file/rename phases and test no partial tree reaches dispatch. |
@@ -41,7 +41,7 @@ Tags: **[C]** confirmed decision (with D-ID), **[O]** bounded observation, **[I]
 | D1. General dependency closure | D | [I] first-slice scope; [O] pilot lacks dependencies | First slice must reject dependency-bearing skills | Revisit when the first real selected skill declares dependencies; no A item assumes closure is already implemented. |
 | D2. Isolated rule/example item IDs and subsets | D | [O] [#119](../../../research/runner-feasibility/sources/119.md) examined item identity; [I] slice | First slice offers whole bundles only | Revisit for item selection or few-shot UI; do not describe whole-skill pilot as subset proof. |
 
-Counts: **A 7 / B 6 / R 2 / E 2 / D 2**. IF-03 is A4–A6 and R1–R2; IF-04 is A1–A3, B1, E1, and D1–D2; IF-14 is B2/B4/B5 and E2. IF-14 draft provenance itself remains required by the [draft contract](../contract/drafts.md): base, policy, actor/edit-run and candidate identity must not be lost. No row converts an existing proposal into a validated implementation.
+Counts: **A 6 / B 7 / R 2 / E 2 / D 2**. IF-03 is A4–A6 and R1–R2; IF-04 is A2–A3, B1/B7, E1, and D1–D2; IF-14 is B2/B4/B5 and E2. IF-14 draft provenance itself remains required by the [draft contract](../contract/drafts.md): base, policy, actor/edit-run and candidate identity must not be lost. No row converts an existing proposal into a validated implementation.
 
 ## User decisions
 
@@ -66,8 +66,10 @@ These options require user selection; none is silently adopted. Where a peer own
 | B6 | Reuse old exact skill refs on linked relaunch | Reproducible inputs; may repeat a known-bad revision. | Smallest new resolution logic. |
 | B6 | Resolve `latest` anew | Picks up fixes but changes inputs between linked runs; provenance must show both. | New resolution and comparison UI. |
 | B6 | Ask user per relaunch | Explicit choice and provenance; blocks unattended relaunch. | UX and interaction cost. |
+| B7 | Ignored path inside the checkout, with protected/verified skill bytes | Native discovery may work, but read-only files can block git cleanup and ignored files still need safe removal. | Git-safety tests and mount/write isolation. |
+| B7 | Private provider-discoverable mount outside the checkout | Avoids accidental `git add -A` and git-clean conflicts, but provider discovery and path binding must be verified. | Per-provider adapter and mount setup. |
 
-Priority for the first slice: **B1** (checkout cleanup/retention) and **B6** (only if linked relaunch is exposed in the slice); B2 matters if IF-14 drafts run in that slice. B3–B5 concern later curation/promotion unless a first-slice selected skill must be edited or published. #175 and #177 are the respective peer owners; this page does not settle their side.
+Priority for the first slice: **B7** (materialization location) and **B1** (checkout cleanup/retention), then **B6** only if linked relaunch is exposed. B7 is the registry-side requirement; #175 S08 owns stage git cleanliness and provider discovery testing. The canonical prompt-storage choice B3 belongs to [#177](https://github.com/amadou-6e/specs/issues/177); the canonical linked-relaunch selector B6 belongs to [#174](https://github.com/amadou-6e/specs/issues/174). These rows record dependencies, not independent votes. B2 matters if IF-14 drafts run in the slice. B4–B5 concern later curation/promotion unless a first-slice selected skill must be edited or published.
 
 ## Research handoffs
 

@@ -52,9 +52,9 @@ direct** handoff; it may still communicate through a listed boundary.
 
 ## Decision readiness
 
-| Subsystem | Classification | Pending experiments |
-| --- | --- | --- |
-| [Skill registry](skill-registry/design/decision-readiness.md) | A 7 / B 6 / R 2 / E 2 / D 2 | E1 interrupted IF-04 materialization; E2 interrupted native revision publication |
+| Subsystem | A/B/R/E/D | First-slice blockers | Pending experiments |
+| --- | --- | --- | --- |
+| [Skill registry](skill-registry/design/decision-readiness.md) | 6/7/2/2/2 | B7 materialization location with #175 S08; B1 interrupted checkout retention; B6 if linked relaunch is included | E1 interrupted IF-04 materialization; E2 interrupted native revision publication |
 
 ## Payload sketch conventions
 
