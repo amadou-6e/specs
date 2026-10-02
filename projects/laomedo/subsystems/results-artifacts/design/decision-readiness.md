@@ -52,10 +52,10 @@ not a claim of implementation. No A row relies on [U] or a contested D-ID.
 | T05 IF-12/H13/H14: failure proposal stays editable until explicit user review/publish; failed write does not claim publication | A | [C:D25] [I] | Exact draft retention and duplicate-write rules are peer-owned | Retain current boundary; test E04 |
 | T06 IF-13/H16: new-session follow-up links prior run/PR and gets new run, invocation and trace IDs | A | [C:issue #180] [I] | Langflow creates run; no existing session in slice | Retain as first-slice request invariant |
 | T07 IF-10: partial and complete manifest supersession identity/order/precedence | B | [I] | #168 review found no manifest revision or supersedes field | Choose B01 before schema revision; test E02 |
-| T08 H12, #172 H-12: how results discovers external PR/branch effects after crash without IF-10 | B | [I] | Agent-execution effect journal/lookup owner unresolved | Choose B02; do not invent effects |
+| T08 H12, #172 H-12: how results discovers external PR/branch effects after crash without IF-10 | B | [I] | Agent execution owns the effect-policy choice in [#175](https://github.com/amadou-6e/specs/issues/175) Q07/Q16 | Consume that choice for B02; do not invent effects |
 | T09 H13, #172 H-15: failure-report provenance when no agent final message exists; whether a model summarizer is allowed | B | [C:D25] [I] | Trace completeness and summarizer policy | Choose B03; test E04 without model turns |
 | T10 D24/H9: artifact destination, retention, unsaved output and cleanup policy | B | [C:D24] [I] | Isolated checkout lifetime and actual persisted locations | Choose B04; test E03 |
-| T11 H12/H16, #172 H-14: who refreshes PR review state for follow-up display | B | [I] | D10/D23 contested; GitHub read authorization | Choose B05; no silent refresh claim |
+| T11 H12/H16, #172 H-14: who refreshes PR review state for follow-up display | B | [I] | Issue integration owns the choice in [#176](https://github.com/amadou-6e/specs/issues/176) B10; GitHub read authorization | Consume that choice for B05; no silent refresh claim |
 | T12 H9/H10: ownership of an artifact store versus transport of bytes | B | [I] | Cross-subsystem boundary; multi-stage movement deferred | Choose B06; keep first slice reference-only |
 | T13 GitHub PR review-state read API and credential scope after an owner is selected | R | [U] | B05 must choose refresh owner and desired freshness | Inspect GitHub primary API/auth docs; no current API claim |
 | T14 Crash-time IF-09/10/11 assembly and restart view with absent or out-of-order inputs | E | [C:issue #180] [U] | Durable producer handoffs and restart marking | E01 |
@@ -95,8 +95,12 @@ first-slice crash result most directly.
 
 Ownership proposal, pending B06: prefer results for inventory and store policy,
 agent execution for byte materialization and cleanup, Langflow for handoff
-references. Reject automatic file transfer by results: IF-10 reports locations,
-not a safe transport primitive. Ownership proposal, pending B03: prefer a
+references. The later inter-stage transport question is deferred to [#175](https://github.com/amadou-6e/specs/issues/175)
+Q24; B06 here concerns the retained artifact store, not a second transport
+decision. Reject automatic file transfer by results: IF-10 reports locations,
+not a safe transport primitive. B02 and B05 record consumer needs; their
+canonical policy choices belong to #175 and #176 respectively. Ownership
+proposal, pending B03: prefer a
 deterministic results-owned failure report as minimum; a model summarizer is
 an optional, separately attributed action, not implicit agent output.
 
@@ -147,8 +151,11 @@ separate authorized, isolated test; these fixtures cannot prove it.
    acceptability depends on effect reconciliation, not on a prompt alone.
 5. **Detection.** [C:issue #180; I] Results need not detect a process crash
    independently. It receives the restart `crashed` state via IF-09; closing
-   the UI is not this event (D16). Container-only failure while the backend
-   lives follows D17, not this fate-shared rule.
+   the UI is not this event (D16). In the first slice, an agent-container
+   failure while the backend lives ends the invocation and run as `failed`;
+   D17's same-session recovery is deferred. A backend crash instead marks
+   the run `crashed`; its invocation-level vocabulary must be aligned with
+   [#175](https://github.com/amadou-6e/specs/issues/175), not inferred as an agent failure.
 
 ## Claim-to-evidence and review coverage
 
