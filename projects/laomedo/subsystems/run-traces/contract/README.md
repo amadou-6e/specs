@@ -17,10 +17,6 @@ below remains draft; automatic crash recovery within one invocation is a
 later user decision and needs explicit reconciliation with the older rule
 that a retry creates a new run.
 
-The received-events crash guarantee below is unverified for hard backend
-death; [decision readiness](../design/decision-readiness.md) separates the
-cancellation observation from proposed durability and orphan-tail tests.
-
 Status: proposed. Monitoring is a separate subsystem because a Langflow node
 trace records the outer call, not necessarily the Codex or Claude activity
 inside it. This document specifies stored evidence; a trace UI needs its own
