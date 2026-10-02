@@ -93,7 +93,24 @@ At takeover verification, 48 host tests and 14 pinned Langflow checks passed
 cancellation remain pending a new turn allocation. Original isolation findings
 above describe the earlier draft, not a completed authenticated pilot.
 
-## Cancellation and evidence limits (unchanged target)
+## Additional live attempts and routing correction
+
+Four further authorized turns were submitted through imported Langflow: attempts
+3, 4 and 5 returned HTTP 401; attempt 6 returned HTTP 400, "Model does not support
+this protocol." No native tool results or completed snapshots were observed, so
+resume was not submitted. The cumulative OpenCode ledger is 6/6, failures retained.
+This is failed acceptance, not a completed authenticated pilot.
+
+Catalog models retained `/zen/go/v1` despite the provider endpoint override.
+Carry explicit official model definitions and allowlisted SDKs so the Console
+inference route and each model's protocol override catalog defaults. Luna needs
+`@ai-sdk/openai`, not the provider-level OpenAI-compatible protocol. Final runtime
+preflight confirmed `/inference/go/openai/v1` and `@ai-sdk/openai`; no remaining
+model allocation exists to verify that final correction. Sanitized evidence is in
+the implementation's `examples/opencode-agent/live-evidence.json`. Port 8768 avoids
+the handoff runner. Host tests remain 48 passed; live acceptance gaps remain.
+
+## Cancellation and evidence limits (target retained)
 
 Status is durable and reports restarted running records as interrupted. Cancel uses
 the active session's native abort endpoint. A true response records acknowledgement;
