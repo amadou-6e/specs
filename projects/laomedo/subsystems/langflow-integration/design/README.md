@@ -25,3 +25,7 @@ No editor modification, API binding or orchestration persistence mechanism is
 implemented by this document. Observable behavior belongs to
 [interfaces](../contract/interfaces.md). Design container: README.md (1),
 focused mechanism pages (0..*).
+
+The [decision-readiness ledger](decision-readiness.md) separates first-slice
+intent from unresolved Langflow capabilities, owner choices and bounded
+experiments; it is not a second runtime contract.
