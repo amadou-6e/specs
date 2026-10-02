@@ -11,4 +11,4 @@ related: []
 
 # 2026-10-02 attempt
 
-Planned, not yet executed. The owner policy is selected, but the numeric exposure window is still awaiting a user decision. See [execution](execution.md), [results](results.md) and [evidence](evidence/manifest.md).
+The user selected a 60-second exposure bound. The synthetic Docker probe passed it and preserved the accepted-write gap before revocation. See [execution](execution.md), [results](results.md) and [evidence](evidence/manifest.md).

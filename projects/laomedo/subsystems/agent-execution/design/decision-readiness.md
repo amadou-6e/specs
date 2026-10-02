@@ -56,8 +56,8 @@ treated as accepted behavior.
 
 | ID | Question / exchange | Class, evidence | Dependency and next action |
 | --- | --- | --- | --- |
-| Q01 | Who stops an orphan with a writable checkout and push credential when the fate-shared backend dies? | B [I] | Choose a supervisor/lease owner, then E01; do not dispatch writable first-slice work without a tested termination path. |
-| Q02 | Does the chosen orphan mechanism actually stop the container and revoke access within its bound? | E [U] | E01, including backend hard-kill and externally visible canary. |
+| Q01 | Who stops an orphan with a writable checkout and push credential when the fate-shared backend dies? | A [C] | User selected an independent stage lease supervisor plus backend startup sweep, with a 60-second bound. [EXP-07](../../../experiments/orphan-lease/iterations/2026-10-02/results.md) tested the synthetic mechanism; real push credential integration remains unverified. |
+| Q02 | Does the chosen orphan mechanism actually stop the container and revoke access within its bound? | E [O] | EXP-07 passed for a disposable HTTP grant and synthetic worker. Recheck the effective boundary for the production stage and credential path before live writable dispatch. |
 | Q03 | Is the request/invocation identity committed before agent dispatch? | A [C] | The merged decision record requires durable identity and refusal if it cannot be established; verify the [IF-05 reservation](../contract/schemas/if-05-stage-invocation.md) experimentally. This does not imply run recovery. |
 | Q04 | Which native ID and event prefixes survive kills at each persistence boundary? | E [U] | E02; do not claim mid-turn recovery from the restart-only pilot. |
 | Q05 | How long is a writable checkout retained after a terminal run? | B [I] | Product tradeoff inferred from writable checkout and container cleanup; decide retention vs verified snapshot/deletion with [results ownership](../../results-artifacts/contract/interfaces.md). |
@@ -79,7 +79,7 @@ treated as accepted behavior.
 | Q21 | How does a follow-up run resume after its old container is deleted and PR branch moves? | D [U] | Existing-session follow-up needs snapshot/branch compatibility; first slice uses a fresh session. |
 | Q22 | Who brokers approvals used by both run agents and the chat assistant? | B [I] | Choose shared broker vs execution-local adapter and link chat owner; do not infer from a prompt. |
 | Q24 | Who stores bytes passed between separate stage containers? | D [I] | Propose results/artifacts owns durable bytes and execution materializes checked refs; confirm with Langflow/results owners before multi-stage files. |
-| Q25 | Who performs orphan reaping: stage supervisor or backend restart sweep? | B [I] | Decide with Q01; restart-only sweep cannot protect an unattended backend outage. |
+| Q25 | Who performs orphan reaping: stage supervisor or backend restart sweep? | A [C] | User selected independent supervisor for outage-time revoke/stop and backend startup sweep for persisted state reconciliation. EXP-07 observed both in a synthetic harness. |
 | Q26 | Which direction is IF-04? | A [I] | Execution requests exact bytes; registry responds. This is a reading of the draft interface, not a runtime observation; keep provider/consumer labels consistent across map and schema. |
 | Q27 | Does the per-run/stage network toggle cover required model/GitHub lanes or only extra egress, and is its default on or off? | B [U] | The existence of the toggle and Actions read are confirmed in #175; scope/default are not. Choose both before dispatch and test effective lanes in a separately designed network check. |
 | Q28 | Does execution spool IF-08 until acknowledged ingest, or own a single external raw file? | B [I] | [Run traces #179](https://github.com/amadou-6e/specs/issues/179) T03 owns the canonical-writer decision; this producer must implement its side and never create a second canonical log. |
@@ -136,8 +136,8 @@ its actual checks require R/E evidence.
 
 | B | Options and trade-off | Prerequisite |
 | --- | --- | --- |
-| Q01 | Lease/watchdog with bounded orphan lifetime, startup sweep with no outage bound, or both; choose tolerated exposure window. | E01 and Q25. |
-| Q25 | Execution supervisor owns reaping (persistent independent service cost) or fate-shared backend owns restart sweep (simpler, leaves outage gap); combined ownership is possible but needs clear authority. | Q01, E01. |
+| Q01 | **Selected:** independent lease supervisor plus startup sweep, with a 60-second maximum exposure window. Integrate the mechanism with real stage grants before live writable dispatch. | EXP-07 synthetic result and Q25. |
+| Q25 | **Selected:** independent supervisor revokes/stops during outage; backend restart sweep reconciles durable state. | Q01 and EXP-07 synthetic result. |
 | Q07 | Mediate and journal GitHub writes (audit/deduplication, more integration) or allow raw agent `git`/`gh` (flexible, effect identity uncertain). | First-slice PR safety, Q16. |
 | Q16 | Require a stable idempotency/effect key at a mediated write boundary or record only observed PR ref under raw CLI mode; the latter cannot promise exactly-once creation. | Q07 and results owner. |
 | Q13 | Producer supplies a durable source key if supported, or exposes key absence; [run traces #179](https://github.com/amadou-6e/specs/issues/179) chooses at-least-once/dedup projection. This is not a second trace-policy decision. | R01 and E03. |
@@ -167,10 +167,12 @@ its actual checks require R/E evidence.
 Each handoff should return inspected source/version, tested command or API,
 negative result, and exact first-slice effect. “Not inspected” is not “absent.”
 
-## Proposed experiments (not executed)
+## Experiments
 
-All experiments use synthetic local tasks with **zero model turns** where
-possible; the 2026-10-01 pilot spent its recorded 4/4 turns. Pin specs and
+The EXP-07 synthetic orphan/lease experiment was executed with zero model turns;
+the other experiments below remain proposals. Use synthetic local tasks with
+**zero model turns** where possible; the 2026-10-01 pilot spent its recorded
+4/4 turns. Pin specs and
 implementation SHA, Langflow 1.12.3, Codex CLI 0.159.2 where used, Docker
 Desktop/Windows build and permission grant before execution. Record exact
 commands, timestamps, mounts and cleanup. No raw credential or transcript goes
@@ -178,7 +180,7 @@ into this repo.
 
 | ID | Hypothesis and falsifier | Minimal procedure / observable outcome | Cost |
 | --- | --- | --- | --- |
-| E01 | Chosen lease/reaper bounds orphan lifetime; falsified if container retains push-capable access beyond bound. | Launch synthetic writable stage and external canary; hard-kill fate-shared backend; observe container, lease expiry, write/push attempts and startup sweep. Revoke test credential. | Local Docker, no model. |
+| E01 | Chosen lease/reaper bounds orphan lifetime; falsified if container retains push-capable access beyond bound. | [EXP-07 synthetic result](../../../experiments/orphan-lease/iterations/2026-10-02/results.md) passed its 60-second bound for a disposable HTTP grant and worker. Real push-capable access and production launch integration remain untested. | Local Docker, no model. |
 | E02 | Pre-dispatch identity and native ID/event flush survive each crash phase; falsified by missing/duplicated identities or falsely complete trace. | Inject kills before reserve, after reserve, after native-ID receipt and after event flush; restart, inspect persisted state without resuming the terminal run. | Local harness, no model for synthetic provider; real provider later. |
 | E03 | IF-08 chosen key handles delivery replay; falsified by an unmarked duplicate or silently lost event. | Replay/reorder same synthetic event with and without source ID through trace ingest; compare raw record, projection and completeness. | Local harness, no model. |
 | E04 | Selected skill path stays discoverable, ignored and hash-stable; falsified by missing native discovery, dirty git tree or unexpected byte change. | Materialize test skill, inspect git status and source/effective/post hashes across Windows line endings, file edit and cleanup. | Local checkout; provider discovery may require one bounded call later. |
@@ -235,13 +237,15 @@ was **not** retracted; an earlier review on #168 was the one retracted.
    `interrupted` with reason `backend_crash`) with partial/unknown evidence,
    consistent with the run's `crashed` state. That vocabulary requires a
    coordinated IF-06 change; it is not an agent failure. Arrange orphan cleanup through the selected
-   Q01/Q25 owner. Automatic same-turn D17 recovery is deferred. Cleanup
-   timing and completeness are unverified (E01/E02).
-3. **Can orphaned containers still write externally?** Yes, this is a live
-   *risk*, not an observed result: a Docker process might outlive the backend
-   and still hold a writable checkout/push-capable credential. A startup sweep
-   alone leaves an outage interval. Do not call the first slice safe until
-   Q01/Q25 choose a bounded mechanism and E01 tests the external-write canary.
+   Q01/Q25 owner. Automatic same-turn D17 recovery is deferred. Synthetic
+   EXP-07 observed supervisor cleanup and restart sweep within the selected
+   bound; production integration and E02 completeness remain unverified.
+3. **Can orphaned containers still write externally?** Yes. EXP-07 observed
+   three synthetic writes after backend kill was requested and before the
+   independent supervisor revoked the grant. The 60-second synthetic bound
+   passed, but a real push-capable credential and production stage may have
+   different access paths. Do not call the first slice safe until those paths
+   are governed by the selected mechanism and checked by E05.
 4. **Can relaunch duplicate side effects, and is that acceptable?** A user
    launch is a *new run*, not recovery. It may duplicate a PR or push if the
    previous agent acted before the crash but its ref was not persisted.
@@ -255,7 +259,7 @@ was **not** retracted; an earlier review on #168 was the one retracted.
    E02/E03 check state/event boundaries. No provider mid-turn recovery is
    promised by this detection.
 
-The first slice cannot be declared decision-ready while Q01/Q25, Q07/Q16,
+The first slice cannot be declared decision-ready while the chosen Q01/Q25 mechanism is not integrated with the real writable-stage grant, or while Q07/Q16,
 Q13, the network-toggle boundary and the post-E05 Docker policy are unresolved.
 Other B items may be scoped out only by explicit first-slice exclusions and
 matching preflight behavior; no experimental outcome is asserted here.
