@@ -6,10 +6,12 @@ contracts; the pilot does not implement all of them.
 
 Implementation: Laomedo [runner PR #13](https://github.com/amadou-6e/laomedo/pull/13),
 [Langflow PR #14](https://github.com/amadou-6e/laomedo/pull/14), and
-[evidence PR #15](https://github.com/amadou-6e/laomedo/pull/15), stacked on
-[Skill Draft core PR #5](https://github.com/amadou-6e/laomedo/pull/5).
-The tested implementation is commit `5e14c7a`; sanitized evidence was added
-in `8bfd0af`. These identify branch work, not a claim of merge to `main`.
+[evidence PR #15](https://github.com/amadou-6e/laomedo/pull/15). Skill Draft
+[core PR #5](https://github.com/amadou-6e/laomedo/pull/5) is merged into
+`develop`; #13 targets `develop`, followed by #14 and #15 in order.
+The historical model-backed implementation is commit `5e14c7a`; sanitized
+evidence was added in `8bfd0af`. Later no-model review fixes are described
+below. These identify branch work, not a claim of merge to `main`.
 
 ## Execution and ownership
 
@@ -57,6 +59,9 @@ are outside this iteration.
 `POST /v1/runs` accepts the following narrower request. The runner resolves
 the bundle's file hashes from the registry and validates model/effort support
 before reserving a turn.
+The current implementation also requires `Authorization: Bearer <api-token>`
+on this and every other `/v1/runs` endpoint. That HTTP header is separate from
+the JSON body and the model login.
 
 ```json
 {
@@ -85,7 +90,9 @@ saved flow or this specs repository.
 
 ## Resume, errors, and limits
 
-`GET /v1/runs/{run_id}` returns the persisted record.
+`GET /v1/runs/{run_id}` returns the persisted record after runner API
+authentication. Missing or invalid bearer capability returns HTTP 401 without
+reading a run or reserving a turn.
 `POST /v1/runs/{run_id}/resume` requires `task`, `model`, `effort`,
 `expected_thread_id`, and `expected_post_run_hash`. Resume verifies the native
 thread, profile, runtime pins, workspace and snapshot hashes, and protected
@@ -114,7 +121,7 @@ tests require a newly authorized bounded budget.
 | Restart/resume | Same native thread read the marker after host-runner restart and a new app-server; snapshot hash unchanged |
 | Fresh-run independence | Second Langflow run used a different thread; command output and host inspection confirmed no prior marker |
 | Missing snapshot | HTTP 400, `post_run_snapshot_mismatch`, ledger unchanged; held snapshot restored |
-| Cancellation | Cancel followed a native command start; status `cancelled`, 39 events retained; Langflow HTTP 500 named the run and cancellation |
+| Cancellation | Cancel followed a native command start; status `cancelled`, 39 events retained; Langflow HTTP 500 named the run and cancellation. Container termination was not verified for this historical turn. |
 | Cap enforcement | Exhausted request rejected before native thread creation; ledger remained 4/4 |
 
 The [sanitized acceptance report](https://github.com/amadou-6e/laomedo/blob/8bfd0af/examples/skill-agent-pilot/e2e-results.json)
@@ -122,6 +129,30 @@ was checked against private Langflow responses, native events, records, and
 actual snapshots. The
 [reproduction guide](https://github.com/amadou-6e/laomedo/blob/8bfd0af/examples/skill-agent-pilot/README.md)
 records setup and the four test steps. Raw transcripts are not committed.
+
+## Current implementation after no-model review fixes
+
+Laomedo #13 at `4a140c2`, #14 at `75141e9`, and #15 at `330c2c2` add a
+runner API boundary without repeating the four model turns. The runner creates
+one 64-hex capability at `<private-state>/api-token` and requires its bearer
+header on every `GET` and `POST` under `/v1/runs`, including status, resume,
+cancel, and fresh start. The Langflow component reads the file selected by
+`LAOMEDO_RUNNER_TOKEN_FILE` at call time. It must be mounted read-only into the
+Langflow server; the saved flow and command workers receive no token. Any custom
+component running in that Langflow server shares its trust boundary. On Windows,
+the private state directory's ACL protects the token file; Unix `0o600` alone
+does not establish a Windows ACL.
+
+For cancel or timeout, the runner now addresses its named Codex container,
+sends `turn/interrupt`, force-removes the container, and checks removal. A
+no-model Docker canary verified that path. The historical cancellation row
+above proves only status and partial-event retention, not immediate process
+termination in the old implementation. Client timeout or Langflow Stop alone
+still does not prove remote cancellation. The policy file content is unchanged;
+the runner pins its two reviewed byte forms, CRLF on Windows and LF on Linux.
+The code review found no remaining blocking issue on #13. A pre-dispatch cancel
+can still reserve one turn before it is interrupted; this remains a known local
+prototype limitation, not a claim of atomic cancellation.
 
 ## Remaining target-contract work
 
