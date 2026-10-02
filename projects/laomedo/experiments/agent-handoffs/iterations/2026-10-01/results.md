@@ -22,3 +22,14 @@ Real loop, cross-provider chain and cross-provider file transfer remain unobserv
 Fresh immediate remote cancellation remains limited by missing early run ID (#22);
 outstanding native command finalization remains #24. The new controller deployment
 configuration is a draft and has not replaced the user's current service.
+
+## Takeover verification on 2026-10-02
+
+At implementation `9a46a50`, the primary agent independently reran all 55 host
+tests and all 15 pinned Langflow checks (11 Codex, two handoff, two bounded
+controller); all passed. A reproducible real-loop acceptance harness was prepared,
+but no additional model call was submitted. Inspection of private provider ledgers
+confirmed that #27 also used two turns, making the aggregate authorization 4/4.
+The previously reported two remaining turns were incorrect. Further live-loop
+acceptance requires a new two-turn allocation. Applying the separate localhost:7863
+deployment draft also awaits explicit configuration approval.
