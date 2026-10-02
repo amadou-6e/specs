@@ -21,6 +21,8 @@ when actual replication occurs.
   crash-window evidence for run identity, frozen refs and no-replay sweep.
 - [UI versus backend death](ui-versus-backend-death/README.md): EXP-06
   pinned Langflow client-close and hard-kill observations with a startup sweep.
+- [Orphan lease](orphan-lease/README.md): EXP-07 protocol for the selected
+  independent supervisor plus startup sweep; numeric bound and run pending.
 
 Copy template/ directly, rename and replace every example fact/lifecycle. Freeze a real
 prospective protocol before dispatch. This migration authorized/spent no new model turns.
