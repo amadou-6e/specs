@@ -130,9 +130,11 @@ same-session restart/resume, and native abort with observed worker termination.
 The cancellation-status race was fixed and covered by a deterministic synthetic
 test. A later authorized live runner API retest returned `cancelled`, with native
 abort acknowledged, the owned worker absent and no delayed write. The cumulative
-ledger is 11/14 with three turns unused. The existing saved Langflow flow still
-points to port 8767; successful OpenCode flow calls used a per-run override to
-8768. This remains a draft local prototype contract, not a hosted guarantee.
+ledger is 11/14 with three turns unused. The existing saved Langflow flow's
+Runner URL was updated to port 8768 under explicit user approval and verified
+by readback. Successful model-backed flow calls before that edit used a per-run
+override to 8768. This remains a draft local prototype contract, not a hosted
+guarantee.
 
 ## Sources checked (reference owner)
 

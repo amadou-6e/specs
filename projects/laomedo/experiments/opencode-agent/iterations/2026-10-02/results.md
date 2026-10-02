@@ -24,8 +24,11 @@ acknowledged, its owned worker exited, and the delayed file was absent. The
 fresh run had no marker inherited from the earlier run. This verifies the
 status fix in the tested runner API path. Cumulative ledger is now 11/14,
 with three authorized turns unused. The historical failed result above remains
-unchanged. The saved Langflow flow still points to the separate runner on port
-8767; successful OpenCode flow calls used a per-run port 8768 override.
+unchanged. The saved Langflow flow's Runner URL was subsequently changed to
+port 8768 under explicit user approval and verified by readback. Its six nodes
+and five edges remained. Successful model-backed flow calls before that edit
+used a per-run port 8768 override; no new model-backed call tested the saved
+value after the edit.
 
 Bounded single-user local prototype is supported by these observations. Network
 isolation, complete credential-route auditing, hosted/multi-user use and automatic

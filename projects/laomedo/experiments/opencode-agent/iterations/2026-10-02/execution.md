@@ -19,8 +19,12 @@ acknowledged, the request returned `cancelled`, the owned worker was absent,
 and neither the delayed file nor a marker from another run appeared. Ledger
 after the test: 11/14; three authorized turns remain unused.
 
-The existing saved Langflow flow was inspected and still points to port 8767,
-while this OpenCode runner listens on 8768. Its attempted address update was
-rejected by automatic approval review under the configuration-change rule;
-the saved flow was not changed. Earlier successful flow calls used an explicit
-per-run port 8768 override. No further model turns were spent to repeat them.
+The existing saved Langflow flow initially pointed to port 8767 while this
+OpenCode runner listens on 8768. An attempted address update was rejected by
+automatic approval review under the configuration-change rule. After the user
+explicitly approved this exact edit, the saved Runner URL was updated to
+`http://host.docker.internal:8768`. Readback returned HTTP 200, the new URL,
+six nodes and five edges. Earlier successful flow calls used an explicit
+per-run port 8768 override. No model turn was spent on the configuration edit
+or readback, and no new model-backed run through the updated saved value is
+claimed.
