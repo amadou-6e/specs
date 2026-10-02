@@ -83,7 +83,8 @@ Use `<type>/<issue-number>` branches, for example `feat/12`, `fix/18`, `docs/21`
 status or behavior changed.
 
 1. Inspect Git status and the intended base before editing. Preserve unrelated work;
-   use an isolated branch/worktree when concurrent work would conflict.
+   use an issue branch in the visible checkout, or ask for direction if concurrent
+   work prevents a safe switch.
 2. Read the owning project/category guidance and accepted coverage. For new projects,
    use `tools/new_project.py` as described in the README. For new entries, copy the
    owning category's template; do not invent a parallel structure.

@@ -19,3 +19,7 @@ an issue. The publication path consumes only a reviewed follow-up draft.
 No transport, webhook deduplication strategy, credential store or retry policy
 is selected. Observable behavior belongs to [interfaces](../contract/interfaces.md).
 Design container: README.md (1), focused mechanism pages (0..*).
+
+The [decision-readiness ledger](decision-readiness.md) records the open
+GitHub-read, publication and event-policy choices separately from the draft
+interface shapes.

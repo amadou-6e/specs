@@ -11,13 +11,6 @@ related: []
 
 # Agent execution interfaces
 
-> First-slice choices and open questions are triaged in
-> [decision readiness](../design/decision-readiness.md). In particular, the
-> three-attempt container recovery below remains a later target: first-slice
-> container failure is terminal for its invocation. IF-08 deduplication,
-> IF-10 manifest supersession, approval ownership, network scope and writable
-> checkout protections are not established by these draft interfaces.
-
 Agent execution is the provider-neutral boundary used by Langflow agent nodes.
 It owns provider dispatch, session binding, Docker stage lifetime, workspace
 mount choice and external access requests. The [interface map](../../README.md)
@@ -28,41 +21,49 @@ lists each contact. Provider-specific behavior remains in
 
 - **Provider / consumer:** [Langflow integration](../../langflow-integration/contract/interfaces.md)
   requests an invocation; Agent execution validates and executes it.
-- **Minimum command:** Laomedo run identity; graph revision, stage and new
-  invocation identities; frozen provider, model, effort, prompt and skill refs;
-  structured/text input and user/upstream file refs; explicit session choice;
-  workspace mount choice; effective permission/grant ref and limits.
+- **Minimum command:** durably reserved Laomedo run, graph revision, stage and
+  new invocation identities; frozen provider, model, effort, prompt and skill
+  refs; structured/text input plus explicit, hash-checked user-file refs and
+  separately identified upstream artifact refs; session and workspace choice;
+  effective permission/grant ref and limits.
 - **Rule:** one stage can be invoked repeatedly, with separate invocation
   records but its own container persisting until workflow completion. A stage
   may choose a local mounted workspace or isolated checkout. Stage containers
   are not shared, though an external Codex home mount may be shared by
   configuration. Session data persists outside containers.
-- **Failure:** missing revision, incompatible resume binding, unavailable
-  input/mount or unsupported requested protection fails before dispatch. A
+- **Failure:** missing durable run/trace identity or dispatch reservation,
+  missing revision, incompatible resume binding, unavailable input/file/mount
+  or unsupported requested protection fails before dispatch. A
   concurrent attempt to use the same session errors at execution time; a
   predictable conflict can be warned about before launch without blocking it.
 
 ## IF-04 — obtain exact skill bytes
 
-Agent execution consumes [skill registry](../../skill-registry/contract/interfaces.md)
-materialization for the frozen skill ref. The registry returns validated
+Agent execution requests the frozen skill ref from
+[skill registry](../../skill-registry/contract/interfaces.md); the registry responds with validated
 content, dependency closure and hashes. A mutable catalog path alone is not
 enough. The exact effective workspace and post-run state remain linked to
 the invocation/session as in [shared contracts](../../../architecture/shared-contracts.md).
 
 ## IF-06 — report invocation outcome
 
-Return the invocation identity, terminal or partial status, native session
+Return the invocation identity, terminal status and separate evidence
+completeness, native session
 identity if available, output and artifact refs, and error classification to
 Langflow integration. An error identifies the affected invocation so Langflow
 can block dependent stages while permitting independent branches under the
 chosen end-on-error policy. Stop requests interrupt active agents promptly.
 
-Container crashes have up to three automatic recovery attempts by default,
-within the same invocation and native session. Each recovery sends the agent
-a prompt to inspect existing state before repeating a potentially completed
-action. After failed recovery attempts, report an invocation error. This
-differs from a user-requested new run or selective rerun.
+A mid-turn container crash terminates the first-slice invocation with
+`failed`/`container` and partial or unknown evidence. No automatic retry is
+dispatched. The original three-attempt, same-session recovery preference in
+[D17](../../../decisions/0002-subsystem-handoffs.md) is deferred until a
+controlled real-agent mid-turn crash/restart experiment reveals resumed,
+repeated and lost actions. A state-check prompt alone cannot prevent duplicate
+external writes. The older [shared contracts](../../../architecture/shared-contracts.md)
+refer to a **new linked run** for a user-requested retry, not automatic
+same-invocation recovery. A fate-shared backend crash ends the run and cannot
+be reported merely as an agent error.
 
 ## IF-08 — emit agent telemetry
 

@@ -11,9 +11,14 @@ related: []
 
 # Claude Agent component
 
-> The read-only acceptance target below predates the first-slice writable
-> checkout choice. [Decision readiness](../design/decision-readiness.md)
-> separates that choice from unverified Claude adapter capabilities.
+The [central D17 record](../../../decisions/0002-subsystem-handoffs.md)
+defers automatic mid-turn container recovery until a controlled real-agent
+session-restart experiment observes resumed, repeated and lost effects. A
+stored Claude session ID or a clean resume does not prove crash-safe recovery.
+The first slice ends a crashed invocation with partial/unknown evidence;
+user-requested relaunch is a new linked run. The read-only acceptance case
+below is a separate mode, not the writable PR-producing checkout chosen for
+the first single-agent slice.
 
 Status: proposed. This component runs Claude Code through the Claude Agent
 SDK in the isolated runner. It shares Laomedo's agent contract with Codex but

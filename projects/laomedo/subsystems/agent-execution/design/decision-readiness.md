@@ -14,29 +14,34 @@ related: []
 This is a triage of decisions, research and experiments needed before implementing
 the agent-execution boundary, **not** an accepted permission policy or a claim that
 the pilot satisfies it. It covers the provider adapters, stage container, checkout,
-session, preflight and IF-04/05/06/08/10 exchanges. Langflow owns workflow state
-and sequencing; a crash of the fate-shared Langflow/Laomedo backend ends that run.
+session, preflight and IF-04/05/06/08/10 exchanges. The Langflow runtime owns
+graph sequencing; Laomedo's Langflow integration owns its durable run record.
+A crash of the fate-shared Langflow/Laomedo backend ends that run.
 The backend must still account for any independently surviving, writable container.
 
 ## Evidence and notation
 
-The baseline is specs `docs/167` at
+The research baseline was specs `docs/167` at
 [`3974d9a`](https://github.com/amadou-6e/specs/commit/3974d9aa1f380c72105e7f205f16e3eeae2c8d80),
 inspected 2026-10-02: [interfaces](../contract/interfaces.md),
 [isolation](../contract/isolation.md), [Codex](../contract/codex.md),
 [Claude](../contract/claude.md), [exchange sketches](../contract/schemas/README.md),
 and the [2026-10-01 pilot](../../../experiments/local-skill-agent-pilot/iterations/2026-10-01/results.md).
-The later [decision clarification](https://github.com/amadou-6e/specs/blob/49463154045c8e3b2fa7eefc991519bbe0fda150/projects/laomedo/architecture/subsystem-decision-record.md)
-is a **separate, unmerged branch**; do not mistake it for this branch's contract.
+The later decision clarification is now part of the merged
+[decision record](../../../decisions/0002-subsystem-handoffs.md). Current
+[IF-05/06/08/10 sketches](../contract/schemas/README.md) also incorporate
+several #168 review fixes. The older baseline remains evidence of what this
+triage inspected, not a competing current contract. Rows below that say
+"specify" a shape already present in the sketches mean **verify and refine**
+it; they do not reopen the settled first-slice rule or claim runtime proof.
 The [#175 issue](https://github.com/amadou-6e/specs/issues/175) and its
 [writable-checkout](https://github.com/amadou-6e/specs/issues/175#issuecomment-5950569517),
 [network/Actions](https://github.com/amadou-6e/specs/issues/175#issuecomment-5950620596),
 and [setup-preflight](https://github.com/amadou-6e/specs/issues/175#issuecomment-5950727562)
 clarifications were accessed by the coordinating agent on 2026-10-02. Direct
-user clarification in this task defers the reduced-Docker-protection policy
-until an experiment and defers automatic mid-turn container recovery from the
-first slice. Those two conversation decisions need a durable decision-record
-update; this page records their effect without assigning a new D-number.
+user clarification defers the reduced-Docker-protection policy until an
+experiment and automatic mid-turn container recovery from the first slice.
+The latter is now recorded as [D17](../../../decisions/0002-subsystem-handoffs.md#execution-recovery-and-inspection).
 
 `A` = ready to specify from a confirmed choice; `B` = product choice still
 needed; `R` = research/owner handoff; `E` = bounded experiment needed;
@@ -53,19 +58,19 @@ treated as accepted behavior.
 | --- | --- | --- | --- |
 | Q01 | Who stops an orphan with a writable checkout and push credential when the fate-shared backend dies? | B [I] | Choose a supervisor/lease owner, then E01; do not dispatch writable first-slice work without a tested termination path. |
 | Q02 | Does the chosen orphan mechanism actually stop the container and revoke access within its bound? | E [U] | E01, including backend hard-kill and externally visible canary. |
-| Q03 | Is the request/invocation identity committed before agent dispatch? | A [I] | Necessary design response to confirmed terminal-crash behavior: specify durable pre-dispatch identity; [shared records](../../../architecture/shared-contracts.md) and Langflow owner must agree. This does not imply run recovery. |
+| Q03 | Is the request/invocation identity committed before agent dispatch? | A [C] | The merged decision record requires durable identity and refusal if it cannot be established; verify the [IF-05 reservation](../contract/schemas/if-05-stage-invocation.md) experimentally. This does not imply run recovery. |
 | Q04 | Which native ID and event prefixes survive kills at each persistence boundary? | E [U] | E02; do not claim mid-turn recovery from the restart-only pilot. |
 | Q05 | How long is a writable checkout retained after a terminal run? | B [I] | Product tradeoff inferred from writable checkout and container cleanup; decide retention vs verified snapshot/deletion with [results ownership](../../results-artifacts/contract/interfaces.md). |
 | Q06 | Can another stage's native session be reused safely? | D [C] | D13 target; omit cross-stage reuse from first slice until binding and profile isolation are proved. |
 | Q07 | Are GitHub writes mediated and journaled, or can the agent use raw `gh`/git? | B [I] | Decide effect identity/PR ownership before claiming deduplicated create/update after uncertainty. |
 | Q08 | Can a crashed provider container resume the *same in-progress turn*? | D [U] | D17 remains a later target. First slice reports `failed` and partial evidence; later E08 needs a fresh model budget. |
 | Q09 | Does a retry get a new run or invocation identity? | D [I] | Reconcile older Codex retry wording with same-invocation D17 before implementing later recovery; first slice has no automatic mid-turn retry. |
-| Q10 | Where do multiple user-added files travel in IF-05? | A [I] | Respond to #168 M1: add explicit user-file refs beside upstream refs; validate each resolved ref. Exact order/shape remains to be specified; current single `InputSnapshotRef` cannot express the set by itself. |
+| Q10 | Where do multiple user-added files travel in IF-05? | A [I] | The merged [IF-05 sketch](../contract/schemas/if-05-stage-invocation.md) now has `user_file_refs` separate from `input_ref` and upstream refs. Verify resolution and hash failure before dispatch; exact ordering remains open. |
 | Q11 | Who enforces per-invocation timeout? | A [I] | Proposed ownership: agent execution enforces and reports its limit; numeric default is S02, and Langflow owns run-level sequencing. |
 | Q12 | Does IF-06 `partial` mean a terminal outcome or only evidence completeness? | A [I] | Define one terminal status plus separate output/trace completeness; distinguish `interrupted` from partial output. |
-| Q13 | What stable source identity and ingest rule make IF-08 replays idempotent? | B [U] | Choose producer key/at-least-once semantics with [run traces](../../run-traces/contract/interfaces.md), then E03. Receipt sequence alone is insufficient. |
+| Q13 | What stable source identity can agent execution supply for IF-08 replay? | B [U] | [Run traces #179](https://github.com/amadou-6e/specs/issues/179) owns the dedup policy; this producer chooses a stable key capability or explicitly reports absence, then E03. Receipt sequence alone is insufficient. |
 | Q14 | What if the provider supplies no native event ID? | A [I] | Preserve source identity as absent/unknown, not fabricated; R01 checks provider APIs. |
-| Q15 | How does an IF-10 partial manifest get superseded by a later one? | A [I] | Specify stable manifest identity, revision and supersedes relation with [results](../../results-artifacts/contract/interfaces.md). |
+| Q15 | How does an IF-10 partial manifest get superseded by a later one? | A [I] | The merged [IF-10 sketch](../contract/schemas/if-10-output-manifest.md) has identity, revision and supersedes fields. Verify producer persistence and consumer replacement with [results](../../results-artifacts/contract/interfaces.md). |
 | Q16 | Which side-effect identity fields accompany a PR create/update? | B [U] | Resolve with Q07 and results owner; `target_pr` alone is not a write journal. |
 | Q17 | Is the first-slice stage checkout writable? | A [C] | Yes: isolated checkout, commit/push/PR path. Protect skill tree, runner store and host paths separately; old read-only text is superseded for this mode. |
 | Q18 | Are protected roots, symlinks and shared-home mounts actually contained when stage writes are allowed? | E [U] | E05 before accepting the Docker boundary. A Docker grant alone is not proof. |
@@ -73,15 +78,15 @@ treated as accepted behavior.
 | Q20 | Can two stages share a native session or external home? | D [C] | D12/D13 target, not first-slice support; later validate ownership and secrets. |
 | Q21 | How does a follow-up run resume after its old container is deleted and PR branch moves? | D [U] | Existing-session follow-up needs snapshot/branch compatibility; first slice uses a fresh session. |
 | Q22 | Who brokers approvals used by both run agents and the chat assistant? | B [I] | Choose shared broker vs execution-local adapter and link chat owner; do not infer from a prompt. |
-| Q23 | What happens to an unanswered approval while the UI is closed? | A [C] | Finite expiry and deny/fail outcome, recorded for the current invocation; numeric TTL and broker placement remain B. |
 | Q24 | Who stores bytes passed between separate stage containers? | D [I] | Propose results/artifacts owns durable bytes and execution materializes checked refs; confirm with Langflow/results owners before multi-stage files. |
 | Q25 | Who performs orphan reaping: stage supervisor or backend restart sweep? | B [I] | Decide with Q01; restart-only sweep cannot protect an unattended backend outage. |
-| Q26 | Which direction is IF-04? | A [O] | Execution requests exact bytes; registry responds. Keep provider/consumer labels consistent across map and schema. |
+| Q26 | Which direction is IF-04? | A [I] | Execution requests exact bytes; registry responds. This is a reading of the draft interface, not a runtime observation; keep provider/consumer labels consistent across map and schema. |
 | Q27 | Does the per-run/stage network toggle cover required model/GitHub lanes or only extra egress, and is its default on or off? | B [U] | The existence of the toggle and Actions read are confirmed in #175; scope/default are not. Choose both before dispatch and test effective lanes in a separately designed network check. |
+| Q28 | Does execution spool IF-08 until acknowledged ingest, or own a single external raw file? | B [I] | [Run traces #179](https://github.com/amadou-6e/specs/issues/179) T03 owns the canonical-writer decision; this producer must implement its side and never create a second canonical log. |
 | S01 | What sensible nonzero default turn cap replaces pilot 4/4 exhaustion? | B [O] | Choose after budget/user-experience review; preflight flags a cap that blocks the intended task. |
 | S02 | What invocation timeout default permits long coding/CI work? | B [I] | Product tradeoff inferred from long coding/CI work; choose with resource budget, approval wait and CI-wait rules. The 600-second figure is a shared-contract example, not an observed pilot limit. |
 | S03 | What Codex/Claude sandbox and approval prompts are nested inside the container? | R [U] | R01 verify pinned provider modes and request path; E05 tests effective restrictions. |
-| S04 | May execution continue when a requested Docker restriction is unavailable? | E [U] | **Policy deferred.** E05 measures failure/exposure first, then explicit B choice. Do not treat issue comment's proposed warn-and-proceed as a safe default. |
+| S04 | May execution continue when a requested Docker restriction is unavailable? | E [U] | **Policy deferred by direct user clarification on 2026-10-02, after [#175's earlier setup proposal](https://github.com/amadou-6e/specs/issues/175#issuecomment-5950727562).** Agent execution owns E05 design before first-slice preflight; no calendar deadline was selected. Until then, unsupported protection blocks dispatch rather than silently reducing it. |
 | S05 | Are home, temporary and cache locations writable without exposing personal profiles? | A [C] | Provide private writable paths, preflight path/capability; E05 verifies actual mounts. |
 | S06 | Can bundled skill scripts run in the writable stage? | A [C] | Allow subject to explicit grant and bounded paths unless user disables; test execution and provenance, not arbitrary host writes. |
 | S07 | Are git identity, push auth, signing and hooks usable inside the container? | R [U] | R02 inspect selected host/repo configuration; preflight each requested operation, never copy personal credentials implicitly. |
@@ -135,7 +140,8 @@ its actual checks require R/E evidence.
 | Q25 | Execution supervisor owns reaping (persistent independent service cost) or fate-shared backend owns restart sweep (simpler, leaves outage gap); combined ownership is possible but needs clear authority. | Q01, E01. |
 | Q07 | Mediate and journal GitHub writes (audit/deduplication, more integration) or allow raw agent `git`/`gh` (flexible, effect identity uncertain). | First-slice PR safety, Q16. |
 | Q16 | Require a stable idempotency/effect key at a mediated write boundary or record only observed PR ref under raw CLI mode; the latter cannot promise exactly-once creation. | Q07 and results owner. |
-| Q13 | Require stable provider keys where available plus at-least-once handling, or accept trace duplicates explicitly when absent. Never claim receipt-time IDs deduplicate a replay. | R01, E03, run-traces owner. |
+| Q13 | Producer supplies a durable source key if supported, or exposes key absence; [run traces #179](https://github.com/amadou-6e/specs/issues/179) chooses at-least-once/dedup projection. This is not a second trace-policy decision. | R01 and E03. |
+| Q28 | If traces owns canonical ingest, execution spools until acknowledged handoff; if execution owns the one external raw file, traces indexes it. | #179 T03 chooses the owner; this is a producer-side dependency, not a second vote on policy. |
 | Q05 | Retain checkout until review (easy continuation, longer credential/file exposure) or snapshot and delete (lower exposure, restore complexity). | Results/artifacts owner, S16. |
 | S16 | Retain dirty checkout, snapshot uncommitted files, or let them be lost with explicit warning; choose before claiming preservation at cap. | Q05 and results/artifacts owner. |
 | Q22 | Shared approval broker for chat and run agents, or execution-local broker plus compatible chat adapter. | S15 and user interaction owner. |
@@ -176,7 +182,7 @@ into this repo.
 | E02 | Pre-dispatch identity and native ID/event flush survive each crash phase; falsified by missing/duplicated identities or falsely complete trace. | Inject kills before reserve, after reserve, after native-ID receipt and after event flush; restart, inspect persisted state without resuming the terminal run. | Local harness, no model for synthetic provider; real provider later. |
 | E03 | IF-08 chosen key handles delivery replay; falsified by an unmarked duplicate or silently lost event. | Replay/reorder same synthetic event with and without source ID through trace ingest; compare raw record, projection and completeness. | Local harness, no model. |
 | E04 | Selected skill path stays discoverable, ignored and hash-stable; falsified by missing native discovery, dirty git tree or unexpected byte change. | Materialize test skill, inspect git status and source/effective/post hashes across Windows line endings, file edit and cleanup. | Local checkout; provider discovery may require one bounded call later. |
-| E05 (design deferred) | Can reduced Docker protection coexist with a writable, push-capable stage without exposing protected host/runner/skill paths or credentials? An unauthorized access would falsify that possibility. | **Experiment protocol is not selected.** First decide which Docker protection failure, protected assets, disposable canaries, test credential and safe-stop rule to use; only then specify procedure and outcome threshold. Do not use real personal credentials or dispatch a degraded stage meanwhile. | Local Docker may suffice without model calls; exact cost awaits protocol design and safety review. |
+| E05 (design deferred) | Can reduced Docker protection coexist with a writable, push-capable stage without exposing protected host/runner/skill paths or credentials? An unauthorized access would falsify that possibility. | **Agent execution owns the next protocol draft before first-slice preflight; no calendar date was authorized.** First decide which Docker protection failure, protected assets, disposable canaries, test credential and safe-stop rule to use; only then specify procedure and outcome threshold. Do not use real personal credentials or dispatch a degraded stage meanwhile. | Local Docker may suffice without model calls; exact cost awaits protocol design and safety review. |
 | E06 | Approval expiry and Stop cannot cause an unapproved resumed invocation; falsified by side effect after denial/expiry/terminal state. | Synthetic paused tool request; expire/deny while UI closed, race Stop with response, inspect state and effects. | Local harness, no model. |
 | E07 | Actions polling can be bounded without spending agent turns or silently exceeding timeout; falsified by hanging invocation or unseen CI failure. | Stub Actions status/log API and delayed completion, compare wall time, turn counter, timeout and trace. | Stub network, no model. |
 | E08 (later) | A real provider can safely resume after an interrupted mid-turn container crash. | Only after D17 is reopened: bounded Codex/Claude run, kill mid-turn, compare native session and side-effect identities. Do not infer from clean restart. | New model budget and provider access required. |
@@ -188,20 +194,20 @@ at `3974d9a` and [PR #172](https://github.com/amadou-6e/specs/pull/172)
 at `25aca35` to this triage or their other canonical owner. A row assigned
 elsewhere is **not** silently fixed by this document. Earlier
 [PR #166](https://github.com/amadou-6e/specs/pull/166) review scenarios are
-retained as hypotheses only: that verdict was retracted, so they are not
-accepted observed failures.
+retained as hypotheses, not accepted observed failures. Its disapproving verdict
+was **not** retracted; an earlier review on #168 was the one retracted.
 
 | Finding | Coverage or owner, with reason |
 | --- | --- |
-| #168 B2, IF-08 replay/deduplication | Q13/Q14, E03. Optional native keys plus receipt sequence cannot guarantee deduplication; trace ingest also needs its own decision. |
-| #168 M1, IF-05 user files | Q10. The current single input ref plus upstream refs leaves multiple user-added files unspecified. |
+| #168 B2, IF-08 replay/deduplication | Q13/Q14/Q28, E03. Optional native keys plus receipt sequence cannot guarantee deduplication; canonical policy belongs to #179. |
+| #168 M1, IF-05 user files | Q10. Explicit `user_file_refs` are now in the merged sketch; pre-dispatch byte/hash behavior remains untested. |
 | #168 M2, retry identities versus D17 | Q08/Q09 and E08 later. No first-slice automatic mid-turn retry. |
 | #168 minor IF-04 direction | Q26, with [skill registry](../../skill-registry/contract/interfaces.md) as byte provider. |
 | #168 minor IF-06 `interrupted`/`partial` | Q12; terminal state and evidence completeness are different concerns. |
-| #168 minor IF-10 supersession | Q15; results/artifacts also owns manifest interpretation. |
+| #168 minor IF-10 supersession | Q15; the merged schema records revisions, while results/artifacts still owns interpretation and tests. |
 | #168 B1, IF-01 trigger context | [Issue integration](../../issue-integration/contract/interfaces.md), not an agent-execution input shape until Langflow supplies a frozen invocation. |
 | #172 H1, durable reattach claim | Fate-shared crash decision supersedes reattach; residual orphan safety is Q01/Q25/E01 and pre-dispatch evidence Q03/E02. |
-| #172 H3, approval requests/expiry | Q22/Q23, S15 and E06. Shared broker owner remains B. |
+| #172 H3, approval requests/expiry | Q22, S15 and E06. Shared broker owner remains B. |
 | #172 H4, parallel local mounts | Q19 deferred; first slice uses isolated checkout, so locking local mounts is not specified here. |
 | #172 H5, cross-stage session reuse | Q06/Q20 deferred; private binding must be proved before support. |
 | #172 H6, inter-stage files | Q24/R04 deferred; durable byte owner is cross-subsystem, execution only materializes checked refs. |
@@ -225,8 +231,10 @@ accepted observed failures.
    absence of an ID means *unknown*, not “no agent ran.”
 2. **What does restart do: stop, clean up, and mark?** Langflow and Laomedo
    are fate-shared. Restart does not reattach or continue the crashed run.
-   It must identify incomplete invocations, mark them terminal `failed` with
-   partial/unknown evidence, and arrange orphan cleanup through the selected
+   It must identify incomplete invocations and mark them `crashed` (or
+   `interrupted` with reason `backend_crash`) with partial/unknown evidence,
+   consistent with the run's `crashed` state. That vocabulary requires a
+   coordinated IF-06 change; it is not an agent failure. Arrange orphan cleanup through the selected
    Q01/Q25 owner. Automatic same-turn D17 recovery is deferred. Cleanup
    timing and completeness are unverified (E01/E02).
 3. **Can orphaned containers still write externally?** Yes, this is a live

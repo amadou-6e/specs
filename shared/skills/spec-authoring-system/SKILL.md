@@ -10,6 +10,11 @@ the original author's memory. Its deliverables are a project structure guide,
 machine-readable category declarations, structural READMEs, copyable examples,
 canonical specifications, and a clear path from proposed behavior to evidence.
 
+For a newcomer or a request to explain the complete workflow, read
+[workflow.md](references/workflow.md): it presents ownership, manifest and metadata
+schema, lifecycle distinctions, template contents, authoring/review steps and
+validation limits in one standalone overview. Use project guides for local details.
+
 ## Establish the boundary
 
 Read the repository guidance, project manifest, existing specs, and relevant
