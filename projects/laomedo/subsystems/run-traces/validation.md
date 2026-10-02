@@ -3,13 +3,17 @@ title: Run traces validation
 status: draft
 kind: specification
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-01
+last_reviewed: 2026-10-02
 applies_to: [laomedo]
 supersedes: null
 related: []
 ---
 
 # Run traces validation
+
+The newer [workflow, agent and result interfaces](contract/interfaces.md)
+are design targets. Existing pilot events do not prove complete Langflow
+reconnection, repeated invocation correlation or same-session crash recovery.
 
 No implementation test was executed in this authoring migration. Evidence is bounded
 by its original version, task, grant and date.

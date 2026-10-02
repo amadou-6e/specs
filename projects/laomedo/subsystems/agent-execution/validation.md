@@ -3,7 +3,7 @@ title: Agent execution validation
 status: draft
 kind: specification
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-01
+last_reviewed: 2026-10-02
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -20,6 +20,8 @@ by its original version, task, grant and date.
 | Missing snapshot / cancellation / cap | Same four-turn pilot | HTTP 400 before reservation; 39 partial events; ledger 4/4 |
 | Isolation / read-only / remote mode | #120, #122, Docker sources | Earlier failures retained; general grant and remote storage unproven |
 | Claude parity | #121 | CLI blocker before model call; acceptance unknown |
+| New IF-05/IF-06 stage invocation and same-session conflict | No new check | Target interface only; not executed |
+| Three-attempt same-session crash recovery and run-scoped approvals | No new check | Newer user decision; earlier pilot does not establish this behavior |
 
 Canonical evidence: [pilot result](../../experiments/local-skill-agent-pilot/iterations/2026-10-01/results.md)
 and [feasibility ledger](../../research/runner-feasibility/sources/README.md).

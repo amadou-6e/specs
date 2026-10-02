@@ -61,6 +61,10 @@ The [individual decision record](subsystem-decision-record.md) preserves the
 user's choices behind these edges, including editor scope, copied defaults,
 container and session lifetime, recovery, approvals and PR behavior. This edge
 inventory stays focused on information crossing subsystem boundaries.
+The [subsystem interface map](../subsystems/README.md#interface-map) expands
+these graph edges into owned contract pages. It also identifies the run-context
+input required to assemble a result and the separate skill-registry boundary;
+those details are not drawn as additional nodes on this overview graph.
 
 ## Interface decisions still needed
 
