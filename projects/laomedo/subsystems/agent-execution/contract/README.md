@@ -11,12 +11,19 @@ related: []
 
 # Agent execution contract index
 
-Canonical draft requirements: [Codex](codex.md), [Claude](claude.md), [isolation](isolation.md),
-the newer [subsystem interfaces](interfaces.md), and the per-exchange
+Canonical draft requirements: [Codex](codex.md), [Claude](claude.md),
+[OpenCode](opencode.md), [isolation](isolation.md), the newer
+[subsystem interfaces](interfaces.md), and per-exchange
 [payload sketches](schemas/README.md). The newer discussion changes
 some assumptions in the older isolation draft; its conflict note must be
 resolved before implementation acceptance.
+The tested local [runner API boundary](runner-api.md) owns bearer authentication,
+endpoint behavior, and named-container teardown for the single-user prototype.
 Shared serialized records belong to [architecture](../../../architecture/shared-contracts.md).
+The [Langflow node interface](langflow-node.md) owns the proposed reusable custom
+component, fresh/resume operations, typed outputs and client lifecycle limitations.
+[Agent handoffs](handoffs.md) owns explicit transitions, bounded scheduling and the
+current incomplete artifact/provenance/live-acceptance boundaries.
 [Validation](../validation.md) qualifies maturity; pilot observations do not silently
 replace proposed read-only, identity or provider parity guarantees.
 

@@ -42,6 +42,12 @@
     "deprecated": {
       "type": "fixed"
     },
+    "capabilities": {
+      "type": "fixed",
+      "statuses": [
+        "superseded"
+      ]
+    },
     "components": {
       "type": "fixed",
       "statuses": [

@@ -11,6 +11,7 @@ contract/design pages (0..*) are conditional. Templates define the internal sche
 - [Skill registry](skill-registry/README.md): immutable skill revisions, drafts and promotion separation.
 - [Run traces](run-traces/README.md): raw events, identity, projection and evidence semantics.
 - [Results and artifacts](results-artifacts/README.md): run summaries, artifact references and follow-up context.
+- [Work Graph](work-graph/README.md): repository-work snapshots, dependency evidence and readiness.
 - [Copyable example](template/README.md): illustrative snapshot-bound execution boundary.
 
 Contracts own target behavior, design explains mechanisms, validation qualifies maturity.
