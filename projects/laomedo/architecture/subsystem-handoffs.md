@@ -39,7 +39,7 @@ produced files need not live in a run directory.
 | --- | --- | --- |
 | H1 | Direct request, timer or GitHub event → Langflow integration | Command: trigger type, saved configuration reference and version selector, input, event reference where applicable. `latest` is the default selector; an exact version is optional. |
 | H2 | Issue integration → Langflow integration | Reference: selected issue identity and repository; the agent reads current GitHub content and checks for open PRs. |
-| H3 | Prompt and skill library → Langflow integration | Reference: exact configuration, prompt and skill revisions resolved at run start, including those selected through `latest`. They stay fixed through the run and its recovery attempts. |
+| H3 | Prompt and skill library → Langflow integration | Reference: exact configuration, prompt and skill revisions resolved at run start, including those selected through `latest`. They stay fixed through the run. Any later recovery design must reuse them; first-slice crash recovery is deferred. |
 | H4 | Laomedo Langflow integration → Langflow runtime | Command: selected graph revision or single-agent graph, run input, Laomedo run identity and correlation context. |
 | H5 | Langflow runtime → Agent execution | Command: stage and invocation identities, agent configuration, input and file/artifact references, workspace and session selection. Each invocation may span many turns; a loop creates another invocation. |
 | H6 | Agent execution → Langflow runtime | Outcome: invocation identity, status, output/artifact references or error. An errored invocation blocks dependent stages; independent branches continue unless the configured end-on-error setting stops them. |

@@ -67,16 +67,16 @@ agent turns. A loop produces a new invocation of the same stage.
 | --- | --- | --- |
 | D07 | A run may start from a GitHub issue, directly from a prompt, on a timer, or from a configured GitHub event: opening an issue, opening a PR, or a failed Actions workflow. | H1-H2 |
 | D08 | Each timer or event hook selects a saved single-agent or Langflow configuration and supplies event context as run input. | H1-H4 |
-| D09 | Saved configurations, prompts and skills use `latest` by default; the user may pin a revision. At launch, Laomedo resolves every selector to an exact revision and keeps it fixed for the run, including recovery. | H1-H5 |
+| D09 | Saved configurations, prompts and skills use `latest` by default; the user may pin a revision. At launch, Laomedo resolves every selector to an exact revision and keeps it fixed throughout the run. Any later recovery design must preserve these frozen revisions; first-slice crash recovery is not implied. | H1-H5 |
 | D10 | The agent reads current GitHub issue context and checks for related open PRs. If the run supplies a PR, the agent continues it. Otherwise it opens a new PR and reports a related existing PR at completion. | H2, H11-H12 |
 
 ## Workspaces, sessions and containers
 
 | ID | Decision | Handoff affected |
 | --- | --- | --- |
-| D11 | For a single agent or each workflow stage, the user can choose an existing local workspace or an isolated checkout. Execution occurs in Docker on the user's machine with the selected workspace mounted. The same approval policy applies to both choices; local execution warns that auto-approval reduces interruptions but retains risk. | H5 |
+| D11 | For a single agent or each workflow stage, the user can choose an existing local workspace or an isolated checkout. Execution occurs in Docker on the user's machine with the selected workspace mounted. The stage checkout is writable so the agent can edit, commit, push and open a PR; runner, skill and unrelated host paths require separate protection. The same approval policy applies to both workspace choices; local execution warns that auto-approval reduces interruptions but retains risk. | H5 |
 | D12 | Agent stages do not share containers. Each stage's container persists across its invocations until the workflow ends, then is removed automatically. Stages may mount a common external Codex home directory. | H5-H8 |
-| D13 | Session persistence is user-assigned per stage: start a new session or reuse an existing one, including a session from another stage. Session data persists outside the container for recovery and telemetry. | H5, H8 |
+| D13 | Session persistence is user-assigned per stage: start a new session or reuse an existing one, including a session from another stage. Session data persists outside the container for telemetry and possible later recovery; persistence alone does not establish that a crashed turn can resume. Cross-stage reuse is outside the first slice. | H5, H8 |
 | D14 | Predictable simultaneous use of one session causes a pre-launch warning, but launch remains possible. An actual concurrent attempt errors at execution time. | H5-H6 |
 
 ## Execution, recovery and inspection
@@ -85,9 +85,20 @@ agent turns. A loop produces a new invocation of the same stage.
 | --- | --- | --- |
 | D15 | An errored invocation blocks dependent stages while independent branches continue by default. A user can select end-on-error before launch, or interrupt all active agents immediately through Stop. | H6-H7 |
 | D16 | Closing only the Laomedo UI does not stop a workflow while Langflow remains running; the UI reconnects when reopened. A Langflow restart or crash ends the run, not a transparent workflow recovery. How the UI reports that terminal loss remains open. | H7-H8 |
-| D17 | Agent-stage container crashes, while Langflow remains running, trigger automatic recovery with a default of three attempts per invocation. Recovery resumes the same agent session and prompts it to inspect existing state. After exhaustion the invocation is marked errored. Prompt-only protection against duplicate external effects is contested; this does not apply to a Langflow crash. | H5-H8 |
+| D17 | The interview proposed automatic recovery after an agent-stage container crash while Langflow remains running: up to three attempts, using the same native session and a prompt to inspect existing state. **This is a deferred target, not first-slice behavior.** In the first slice, a mid-turn container crash terminates that invocation with incomplete/unknown evidence; it is not automatically restarted. Before specifying recovery, run a bounded experiment that interrupts a real agent mid-turn, restarts it from the persisted session, and checks what it resumes, repeats or loses, including external effects. A prompt to inspect state alone does not prove safe recovery. A fate-shared Langflow/Laomedo backend crash ends the whole run under D01/D16. | H5-H8 |
 | D18 | The execution overview is separate from the Langflow graph. It shows agent invocations and their timing; a waterfall is a candidate layout, not a chosen one. Each loop invocation appears separately and opens its own telemetry when selected. | H7-H8 |
 | D19 | Selective stage reruns using previous upstream outputs are desired, subject to verifying Langflow's capabilities. | Future H4-H6 command |
+
+For the first single-agent slice, Laomedo must durably establish the run and
+trace identity before dispatch. If it cannot, it refuses dispatch rather than
+starting an untraceable agent. This is a confirmed launch rule, not evidence
+that the persistence boundary has been implemented or tested. A backend crash
+terminates the run; a stage-container crash terminates its invocation without
+automatic same-session recovery. Both retain partial or unknown evidence
+instead of reporting that no work occurred. The bounded restart experiment
+needed to revisit D17 is tracked in the
+[agent-execution readiness draft on PR #182](https://github.com/amadou-6e/specs/pull/182);
+its protocol and outcome are not yet established.
 
 ## Access and outcomes
 
@@ -118,7 +129,7 @@ they do not reconstitute its execution.
 | D11, D12, D14 | Writer exclusion when parallel or unattended stages mount the same local checkout; whether direct local mounts should be restricted or isolated checkouts required. |
 | D13, D23 | Cross-stage session dependencies and workspace compatibility; the source workspace and current PR head for an existing-session follow-up after its previous container is removed. |
 | D15 | Whether Langflow can continue independent branches after a stage error, enforce loop limits, and prevent new dispatch after Stop. The pilot's node raises on error; desired default behavior is not verified. |
-| D17 | Whether mid-turn agent-container recovery is possible and how non-idempotent effects such as PR creation avoid duplication. A state-check prompt alone is not a guarantee. |
+| D17 | Deferred pending a controlled real-agent mid-turn crash/session-restart experiment. Observe restored session state, repeated or lost actions, trace continuity and external effects before choosing a recovery protocol or retry count. A state-check prompt alone is not a guarantee. |
 | D20, D21, D22 | Who holds approval requests, their expiry/default for unattended runs, and whether non-agent components can bypass the same controls. |
 | D10, D23, D25 | Which stage may create/update the run's PR, how its reference is collected, and who produces a failure report when the agent cannot. |
 
@@ -138,6 +149,9 @@ capabilities was established by the spec validator or this documentation PR.
 - How a Langflow crash is detected and represented as a terminal run result,
   including partial traces and orphaned agent-stage containers. There is no
   plan here to resume the graph after Langflow restarts.
+- How a crashed stage container can safely resume its native session mid-turn
+  remains outside the first slice until the controlled restart experiment
+  establishes what the provider actually resumes, repeats or loses.
 - Langflow's actual support for selective stage reruns, UI reconnection while
   Langflow remains live, branch-local failure, conditional loops, cancellation,
   exact flow snapshots, and artifact/file references across component types.
@@ -149,7 +163,7 @@ capabilities was established by the spec validator or this documentation PR.
 - The writer-exclusion rule for shared local workspaces and the dependency and
   compatibility rules for shared or resumed native agent sessions.
 - The owner of one target PR in multi-stage runs, discovery of its current head,
-  and idempotence for PR creation after agent-container recovery.
+  and idempotence for PR creation in any later agent-container recovery design.
 - The producer of failure reports when no agent result exists, plus the owner
   and enforcement point for a run-level budget across stages, loops and retries.
 - Artifact destination defaults, overrides, controls, retention and handling of
