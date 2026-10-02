@@ -50,18 +50,6 @@
       "statuses": [
         "superseded"
       ]
-    },
-    "monitoring": {
-      "type": "fixed",
-      "statuses": [
-        "superseded"
-      ]
-    },
-    "sandboxing": {
-      "type": "fixed",
-      "statuses": [
-        "superseded"
-      ]
     }
   }
 }
