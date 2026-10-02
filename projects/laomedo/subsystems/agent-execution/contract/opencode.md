@@ -127,9 +127,12 @@ native cancellation termination are still acceptance gaps.
 supersede the earlier failed-acceptance status above. Four further authorized turns
 produced successful direct CLI, real imported-flow native multi-skill fresh and
 same-session restart/resume, and native abort with observed worker termination.
-Ledger is cumulatively 10/10. The cancellation-status race was fixed and covered
-by a deterministic synthetic test; that final status correction has no new live
-submission. This remains a draft local prototype contract, not a hosted guarantee.
+The cancellation-status race was fixed and covered by a deterministic synthetic
+test. A later authorized live runner API retest returned `cancelled`, with native
+abort acknowledged, the owned worker absent and no delayed write. The cumulative
+ledger is 11/14 with three turns unused. The existing saved Langflow flow still
+points to port 8767; successful OpenCode flow calls used a per-run override to
+8768. This remains a draft local prototype contract, not a hosted guarantee.
 
 ## Sources checked (reference owner)
 

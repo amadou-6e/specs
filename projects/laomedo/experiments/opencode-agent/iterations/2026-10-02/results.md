@@ -18,6 +18,15 @@
   status. Historical live record is not rewritten; final status fix is not live-tested.
 - Host suite after fixes: 50 passed. Cumulative ledger 10/10; no remaining turns.
 
+After a further four-turn authorization, live attempt 11 retested cancellation
+with the fixed runner. The response was `cancelled`, native abort was
+acknowledged, its owned worker exited, and the delayed file was absent. The
+fresh run had no marker inherited from the earlier run. This verifies the
+status fix in the tested runner API path. Cumulative ledger is now 11/14,
+with three authorized turns unused. The historical failed result above remains
+unchanged. The saved Langflow flow still points to the separate runner on port
+8767; successful OpenCode flow calls used a per-run port 8768 override.
+
 Bounded single-user local prototype is supported by these observations. Network
 isolation, complete credential-route auditing, hosted/multi-user use and automatic
 fresh UI Stop remain unverified. Production authentication stays with specs #129.
