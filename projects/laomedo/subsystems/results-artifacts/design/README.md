@@ -16,10 +16,6 @@ and agent-produced output refs by run and invocation identity. The run record
 may store references to a workspace, GitHub branch, PR, report or another
 persistent location. The destination is recorded rather than assumed.
 
-Read [decision readiness](decision-readiness.md) before treating this candidate
-as implementable. It separates first-slice invariants from crash experiments,
-product choices and deferred multi-stage behavior.
-
 The final artifact-placement rules require a later experiment covering output
 types, destination defaults, user overrides, retention and unsaved outputs.
 No storage engine or automatic relocation mechanism is chosen here.

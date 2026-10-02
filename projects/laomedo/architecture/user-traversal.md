@@ -15,6 +15,8 @@ The [editable user-traversal graph](user-traversal.drawio) records the product
 journey defined with the user on 2026-10-01. It is a draft cross-subsystem journey,
 not implemented behavior or a reviewed screen-layout specification. Future
 view-specific geometry and interactions belong to their owning Draw.io workshops.
+The reconstructed [discussion decisions](../decisions/0001-issue-to-agent-journey.md)
+explain how this journey was refined; they are not a verbatim chat log.
 
 The [Mermaid input](user-traversal.mmd) is retained as generation provenance.
 Draw.io is the editable design authority: do not regenerate over user edits without
