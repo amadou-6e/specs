@@ -19,9 +19,9 @@ every example fact and metadata/lifecycle, then add the entry to this index.
 
 ## Decision readiness
 
-| Subsystem | Triage (A/B/R/E/D) | Pending experiments |
-| --- | --- | --- |
-| [Run traces](run-traces/design/decision-readiness.md) | 9 / 6 / 1 / 2 / 4 | E01 hard-crash prefix; E02 dedup/replay policy; E03 orphan-writer tail (E02 also informs B choices). |
+| Subsystem | A/B/R/E/D | First-slice blockers | Pending experiments |
+| --- | --- | --- | --- |
+| [Run traces](run-traces/design/decision-readiness.md) | 9/6/1/2/4 | T01 event durability, T03 canonical raw writer, T04 orphan tail, T07/T10 dedup policy; T21 refuses dispatch without durable identity | E01 hard-crash prefix; E02 dedup/replay policy; E03 orphan-writer tail (E02 also informs B choices). |
 
 ## Interface map
 

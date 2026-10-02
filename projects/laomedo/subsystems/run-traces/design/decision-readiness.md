@@ -27,10 +27,10 @@ Classes: **A** controllable first-slice rule, **B** user choice, **R** primary-s
 | T04. Is an orphan tail frozen/quarantined or visibly growing? | B | [I] inspectability versus retention | T03, #175, E03 | Choose labeling/fencing; neither is complete. |
 | T05. How are non-terminal streams labeled on restart? | A | [C] fate-shared crash rule; [I] [IF-11](../contract/interfaces.md) gap | Durable run/trace index | Mark `partial`, reason `crashed`; propose an IF-11 reason field. |
 | T06. Does relaunch merge old/new events? | A | [C] new linked run | None | Allocate a distinct run/trace ID and prior-run link; never merge histories. |
-| T07. How does IF-08 dedup without native IDs? | B | [O] [IF-08 schema](../../agent-execution/contract/schemas/if-08-agent-event.md) IDs optional; [I] #123 synthetic limit | #175 producer identity, E02 | Choose producer-stable key or at-least-once uncertainty. |
+| T07. How does IF-08 dedup without native IDs? | B | [O] [IF-08 schema](../../agent-execution/contract/schemas/if-08-agent-event.md) IDs optional; [I] #123 synthetic limit | #175 produces source keys or declares absence; E02 | Run traces owns the dedup/uncertainty policy; choose producer-stable key or at-least-once uncertainty here. |
 | T08. Is receipt sequence a dedup key? | A | [O] IF-08 assigns it on ingest; [I] identity rule | None | No; it orders accepted receipts, not source events. |
 | T09. What Langflow lifecycle hooks/source IDs support IF-07? | R | [U] Langflow API | #174 lifecycle owner | Inspect pinned source/docs; if absent, consider invocation-record-derived lifecycle. |
-| T10. How are IF-07 observations deduplicated? | B | [O] [IF-07 sketch](../../langflow-integration/contract/interfaces.md) source ID optional; [I] | T09 and #174 B17, E02 | Choose adapter-stable transition key or preserve duplicate uncertainty. |
+| T10. How are IF-07 observations deduplicated? | B | [O] [IF-07 sketch](../../langflow-integration/contract/interfaces.md) source ID optional; [I] | T09 and #174 lifecycle-key producer; E02 | Choose adapter-stable transition key or preserve duplicate uncertainty here; #174 B17 consumes this policy. |
 | T11. Does D17 retry reuse run identity? | D | [O] [shared contract](../../../architecture/shared-contracts.md) new run; [C] contested D17 | D17 deferred, #175 identity work | Revisit before agent-container recovery; relaunch is already a new run. |
 | T12. What can a one-node trace show directly? | A | [O] pilot native/run refs; [I] first-slice scope | IF-08 data availability | Keep raw one-invocation receipts and native thread/session ID if supplied; missing stays unknown. |
 | T13. May projection invent a result/parent edge? | A | [O] #123 synthetic projector; [I] evidence rule | None | No; retain observed/declared/inferred provenance. |
@@ -66,7 +66,7 @@ These are alternatives, not selected contract behavior. T01, T03, T04 and T07 ar
 | T17 | Short guarded raw retention/redacted export | Less exposure, but later reprojection may be impossible. | Expiry/redaction/audit controls. |
 | T17 | Longer encrypted owner-only retention | Better forensics with more sensitive-data exposure. | Key management/storage/deletion work. |
 
-Proposed T03 boundary, pending user choice: run traces is the authoritative raw store and receipt-identity owner; agent execution is a producer that may spool until acknowledged handoff. Reject dual canonical logs. The alternative is one agent-execution-owned external file with run traces indexing it; that can preserve a tail but requires stronger fencing. Neither was hard-crash tested. #175 owns orphan cleanup, not this page.
+Proposed T03 boundary, pending user choice: run traces is the authoritative raw store and receipt-identity owner; agent execution is a producer that may spool until acknowledged handoff. Reject dual canonical logs. The alternative is one agent-execution-owned external file with run traces indexing it; that can preserve a tail but requires stronger fencing. Neither was hard-crash tested. [#175](https://github.com/amadou-6e/specs/issues/175) Q28 now records the producer-side raw-writer dependency and owns orphan cleanup. This page owns the T07/T10 dedup policy; #175 and #174 own key production, not parallel policy votes.
 
 ## Research handoff
 
@@ -103,4 +103,4 @@ Proposed T03 boundary, pending user choice: run traces is the authoritative raw 
 | IF-08 / H8 | Agent execution produces native events/IDs; traces owns receipts/projection. #175 orphan cleanup is provisional. |
 | IF-11 / H10 | Traces supplies independent trace link/completeness; results assembles missing inputs. |
 
-Cross-owner decisions: T03/T04 with agent execution writer/reaper, T09/T10 with Langflow adapter, T07 with event producer key. Before implementation, record the fate-shared crash rule as a new D-ID centrally and reconcile the older D17 wording; this subsystem PR does not edit peer decisions or contracts.
+Cross-owner decisions: T03/T04 with agent execution writer/reaper, T09/T10 with Langflow adapter, T07 with event producer key. Before implementation, record the fate-shared crash rule and the user's T21 refuse-dispatch choice as new D-IDs in one central decision-record PR, and reconcile the older D17 wording; this subsystem PR does not edit peer decisions or contracts.
