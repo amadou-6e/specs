@@ -15,6 +15,10 @@ Run traces own raw event storage, normalized projections and correlation for
 inspection. Their [existing event model](README.md#identity-and-event-model)
 remains canonical draft detail. See the [interface map](../../README.md).
 
+The deduplication, lifecycle-source and crash-durability guarantees below are
+contested or unverified; see [decision readiness](../design/decision-readiness.md)
+before implementing IF-07, IF-08 or IF-11.
+
 ## IF-07 — workflow lifecycle events
 
 Consume events from [Langflow integration](../../langflow-integration/contract/interfaces.md):

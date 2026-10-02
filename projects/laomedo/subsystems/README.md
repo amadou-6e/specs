@@ -17,6 +17,12 @@ Contracts own target behavior, design explains mechanisms, validation qualifies 
 Shared record definitions stay in architecture. Copy template/ directly, rename, replace
 every example fact and metadata/lifecycle, then add the entry to this index.
 
+## Decision readiness
+
+| Subsystem | Triage (A/B/R/E/D) | Pending experiments |
+| --- | --- | --- |
+| [Run traces](run-traces/design/decision-readiness.md) | 9 / 6 / 1 / 2 / 4 | E01 hard-crash prefix; E02 dedup/replay policy; E03 orphan-writer tail (E02 also informs B choices). |
+
 ## Interface map
 
 This is a draft map of **direct subsystem contacts** derived from the

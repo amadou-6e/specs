@@ -18,6 +18,11 @@ reconnection, repeated invocation correlation or same-session crash recovery.
 No implementation test was executed in this authoring migration. Evidence is bounded
 by its original version, task, grant and date.
 
+The [decision-readiness triage](design/decision-readiness.md#experiment-sketches)
+proposes pending, **unexecuted** E01 hard-crash durability, E02 replay/dedup
+projection and E03 orphan-tail experiments. None validates current crash or
+deduplication guarantees.
+
 | Guarantee | Evidence | Boundary / gap |
 | --- | --- | --- |
 | Matched tools / skill read | 2026-10-01 pilot | Native starts/results observed; returned label conservatively offered |
