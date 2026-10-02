@@ -50,6 +50,12 @@ cross-cutting interface used by agent execution and chat, not a PR-delivery or
 workspace-management subsystem. A pair absent from this table has no **known
 direct** handoff; it may still communicate through a listed boundary.
 
+## Decision readiness
+
+| Subsystem | Classification | Pending experiments |
+| --- | --- | --- |
+| [Skill registry](skill-registry/design/decision-readiness.md) | A 7 / B 6 / R 2 / E 2 / D 2 | E1 interrupted IF-04 materialization; E2 interrupted native revision publication |
+
 ## Payload sketch conventions
 
 Each owning `contract/interfaces.md` includes or links an approximate,

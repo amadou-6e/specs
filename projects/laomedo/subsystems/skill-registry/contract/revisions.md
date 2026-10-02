@@ -59,6 +59,11 @@ relative paths, and references escaping the bundle. Merely splitting
 files. The exact manifest format remains open; a pilot should test it on real
 skills before fixing a schema.
 
+Dependency-bearing selections and isolated rule/example subsets are outside
+the first-slice evidence. The [decision-readiness triage](../design/decision-readiness.md)
+records that their generalization remains unverified; it does not weaken this
+target contract.
+
 ## Execution behavior
 
 1. Resolve `skill_id` and requested revision and atomically freeze the bundle.

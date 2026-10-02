@@ -31,3 +31,7 @@ Canonical evidence: [pilot result](../../experiments/local-skill-agent-pilot/ite
 and [feasibility ledger](../../research/runner-feasibility/sources/README.md).
 Follow reports for exact revisions and private-artifact limits. A bounded observation
 does not accept every target guarantee.
+
+Pending, not executed for this triage: [E1 interrupted IF-04 materialization
+and E2 interrupted native revision publication](design/decision-readiness.md#experiment-sketches).
+Neither experiment has a result or validates crash recovery.
