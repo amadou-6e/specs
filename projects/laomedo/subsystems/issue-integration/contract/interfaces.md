@@ -43,12 +43,26 @@ that its text was frozen at selection time.
 - **Trigger:** user reviews and edits a failure-to-issue draft and requests
   publication.
 - **Minimum handoff:** target repository, reviewed title/body, prior run and
-  trace/artifact references, and the user's publication decision.
-- **Rule:** an unsuccessful run alone does not publish an issue. A successful
-  write returns the new GitHub issue reference; a failed write retains the
-  reviewed draft and reports the failure without claiming publication.
-- **Open:** duplicate-write detection, repository permissions and exact draft
-  retention policy.
+  trace/artifact references, the user's publication decision, and a unique
+  reconciliation marker included in the exact body presented for review.
+- **Proposed rule:** an unsuccessful run alone does not publish an issue. Before
+  any create request, issue integration persists the reviewed request bytes or
+  their recoverable reference and hash, marker, target, reviewer decision, and
+  one attempt identity. It marks an attempt as possibly sent before contacting
+  GitHub. An acknowledged, uniquely identified remote issue may be reported as
+  `published`; a definitely unsent attempt may be `failed`. A lost response,
+  timeout, process death, or inconclusive remote lookup remains `unknown`, not
+  `failed` or `published`.
+- **Reconciliation proposal:** find the marker in GitHub issue bodies and verify
+  exact equality, not just a search hit. Bind an issue reference only if exactly
+  one matching issue is confirmed. Zero matches do not establish non-creation;
+  multiple matches are a conflict. Neither result triggers an automatic second
+  POST. Persistent absence or conflict requires a user decision before any new
+  publication attempt. The reviewed draft remains available throughout.
+- **Open:** B04's user-resolution controls and any explicitly authorized retry
+  semantics, B05 publication identity/permissions, production pagination and
+  filtering, and exact draft/intent retention. The experiments establish no
+  exactly-once guarantee or safe retry timeout.
 
 GitHub PR creation remains an [agent-execution](../../agent-execution/README.md)
 activity. This subsystem may surface issue and PR references for selection but
@@ -72,19 +86,24 @@ IF-01 IssueContext {
 IF-12 ReviewedIssueProposal {
   proposal_id: string,
   target_repository: { host: "github", owner: string, name: string },
-  title: string, body: string, reviewed_by: Ref, reviewed_at: timestamp,
+  title: string, body: string, reconciliation_marker: string,
+  reviewed_by: Ref, reviewed_at: timestamp,
   source: { run_id: string, trace_ref?: Ref, artifact_refs: Ref[] },
   publication_decision: "publish"
 }
 IF-12 IssuePublicationResult {
-  proposal_id: string, status: "published" | "failed",
+  proposal_id: string, attempt_id: string,
+  status: "published" | "failed" | "unknown",
   issue?: { number: integer, url: string },
   error?: { code: string, message: string }
 }
 ```
 
 IF-01 contains references, not frozen issue text; a discovered PR is not
-`supplied_target_pr`. IF-12 returns `issue` only after confirmed publication.
+`supplied_target_pr`. IF-12 returns `issue` only after confirmed publication;
+`unknown` has no issue reference, even if GitHub may already hold the issue.
+The marker is immutable for one reviewed request and must appear exactly once
+in its final body; an edit requires renewed review before publication.
 IF-01 does not carry unrelated trigger subjects. Duplicate-write handling and
 exact authorization binding remain open. A
 public repository can be read without `auth_context_ref`; publication still
