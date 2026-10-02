@@ -19,9 +19,9 @@ every example fact and metadata/lifecycle, then add the entry to this index.
 
 ## Decision readiness
 
-| Subsystem | Triage | First-slice status |
-| --- | --- | --- |
-| [Agent execution](agent-execution/design/decision-readiness.md) | 43 questions: 12 A, 16 B, 2 R, 6 E, 7 D; four research handoffs and eight proposed experiments | Not decision-ready: orphan termination, GitHub write identity, event replay, network scope and Docker-protection policy remain open. Docker policy work is deferred until an experiment is designed and assessed. |
+| Subsystem | A/B/R/E/D | First-slice blockers | Pending experiments |
+| --- | --- | --- | --- |
+| [Agent execution](agent-execution/design/decision-readiness.md) | 11/17/2/6/7 | Orphan termination, GitHub effect identity, #179 replay policy/raw writer, network scope and Docker-protection policy | E01–E07 proposed, E08 later; E05 protocol design deferred, owned by agent execution before first-slice preflight. |
 
 ## Interface map
 
