@@ -4,6 +4,12 @@ Status: proposed. These are runtime and data contracts, not a UI layout. All
 IDs are opaque; exact serialization and schema versioning remain an
 implementation decision.
 
+The [local pilot adapter](../implementation/local-skill-agent-pilot.md)
+implements a narrower request/result and persisted run record. Real Langflow
+output links answer, run, native thread, skill revision, and trace reference.
+It does not yet implement every record or generalized definition-version and
+invocation correlation described below.
+
 ## Core records
 
 | Record | Required fields | Rule |

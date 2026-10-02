@@ -4,6 +4,14 @@ Status: proposed. This component asks Codex or Claude Code to edit a skill in
 an isolated draft workspace and returns a reviewable proposal. It does not
 promote the proposal automatically. Its UI needs a view-owned Draw.io spec.
 
+Implementation status: core draft storage/validation is reviewable in
+[Laomedo PR #5](https://github.com/amadou-6e/laomedo/pull/5), with native and
+Docker edit evidence in [#122](../feasibility/122.md) and the
+[Docker study](../feasibility/docker-skill-draft.md). The
+[2026-10-01 Langflow pilot](../implementation/local-skill-agent-pilot.md)
+tests skill consumption and workspace writes, not this full edit/promotion
+component or a Langflow skill-edit node.
+
 ## Input and output
 
 Required inputs are a base `SkillSnapshotRef`, an `EditPolicyRef`, an edit

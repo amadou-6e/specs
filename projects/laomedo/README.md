@@ -2,6 +2,26 @@
 
 Laomedo is a proposed design environment for agent workflows. The [historical AGENTVIZ reference workshop](deprecated/ui/README.md) records existing screen geometry and demo content. It does not specify new Laomedo behavior.
 
+## Current implementation status
+
+The [local Langflow skill-agent pilot](implementation/local-skill-agent-pilot.md)
+records the implemented single-user Codex route and its 2026-10-01 four-turn
+end-to-end test. The saved flow ran a pinned whole skill, retained matched
+native tool events, and returned answer/run/thread references. Snapshot-bound
+restart/resume, independent fresh runs, missing-snapshot rejection,
+cancellation, and cumulative cap enforcement passed. The ledger is 4/4.
+
+Implementation and sanitized evidence are in stacked Laomedo PRs
+[#13](https://github.com/amadou-6e/laomedo/pull/13),
+[#14](https://github.com/amadou-6e/laomedo/pull/14), and
+[#15](https://github.com/amadou-6e/laomedo/pull/15). Resume was tested through
+the runner API; the saved Langflow node starts fresh runs. AGENTVIZ is
+deferred, browser interaction is untested, and Claude parity, isolated
+rule/example nodes, production auth, and full monitoring remain incomplete.
+The existing Docker permissions are retained.
+
+## Target specifications and historical studies
+
 The [agent and skill components proposal](components/agent-and-skill-components.md)
 defines versioned skills, Codex and Claude execution, isolated persistence,
 trace inspection, and a phased implementation estimate. It is a technical

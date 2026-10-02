@@ -3,6 +3,12 @@
 Status: proposed. This is the read-only skill input to a flow. Its visual
 presentation and interactions need a view-owned Draw.io specification.
 
+Implementation status, 2026-10-01: the
+[local pilot](../implementation/local-skill-agent-pilot.md) implements exact
+whole-bundle registry lookup, file-hash validation, and native workspace
+materialization. The saved flow embeds a frozen skill ref. A separate Skill
+Revision Langflow node and isolated rule/example selection remain target work.
+
 ## Purpose
 
 Select and inspect an exact skill revision. The component exposes isolated

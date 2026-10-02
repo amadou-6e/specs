@@ -5,6 +5,13 @@ trace records the outer call, not necessarily the Codex or Claude activity
 inside it. This document specifies stored evidence; a trace UI needs its own
 view-owned Draw.io specification.
 
+Current evidence: the
+[local pilot](../implementation/local-skill-agent-pilot.md) retains matched
+native commands, a completed skill read, and partial events from cancellation.
+Real Langflow output carries run/thread and trace refs; inner usage remains
+`unknown`. Automated skill-read projection, full normalized monitoring, and
+browser inspection remain incomplete. AGENTVIZ is deferred for this iteration.
+
 ## Identity and event model
 
 Allocate a Laomedo `run_id` before dispatch. Correlate it with flow
