@@ -3,13 +3,19 @@ title: Run monitoring and agent traces
 status: draft
 kind: target-contract
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-01
+last_reviewed: 2026-10-02
 applies_to: [laomedo]
 supersedes: null
 related: []
 ---
 
 # Run monitoring and agent traces
+
+The newer [subsystem interfaces](interfaces.md) map workflow events, agent
+events and result-facing trace refs to the handoff graph. The event model
+below remains draft; automatic crash recovery within one invocation is a
+later user decision and needs explicit reconciliation with the older rule
+that a retry creates a new run.
 
 Status: proposed. Monitoring is a separate subsystem because a Langflow node
 trace records the outer call, not necessarily the Codex or Claude activity
