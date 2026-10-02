@@ -83,8 +83,10 @@ uses broader runner-ownership wording; this draft does not silently replace it.
 ## Approximate payloads
 
 See the [shared notation](../../README.md#payload-sketch-conventions).
-IF-05/IF-06 reuse the agent-execution sketches rather than defining a second
-command format here. IF-01/IF-02 are defined by their providers.
+IF-05/IF-06 reuse the agent-execution [stage invocation](../../agent-execution/contract/schemas/if-05-stage-invocation.md)
+and [invocation outcome](../../agent-execution/contract/schemas/if-06-invocation-outcome.md)
+sketches rather than defining a second command format here. IF-01/IF-02 are
+defined by their providers.
 
 ```text
 IF-07 WorkflowEvent {

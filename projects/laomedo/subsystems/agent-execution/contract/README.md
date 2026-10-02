@@ -12,12 +12,15 @@ related: []
 # Agent execution contract index
 
 Canonical draft requirements: [Codex](codex.md), [Claude](claude.md), [isolation](isolation.md),
-and the newer [subsystem interfaces](interfaces.md). The newer discussion changes
+the newer [subsystem interfaces](interfaces.md), and the per-exchange
+[payload sketches](schemas/README.md). The newer discussion changes
 some assumptions in the older isolation draft; its conflict note must be
 resolved before implementation acceptance.
 Shared serialized records belong to [architecture](../../../architecture/shared-contracts.md).
 [Validation](../validation.md) qualifies maturity; pilot observations do not silently
 replace proposed read-only, identity or provider parity guarantees.
 
-Contract container: README.md (1), indexed pages (1 each), additional owned interface/
-configuration pages (0..*). New pages must have one observable behavior owner.
+Contract container: README.md (1), indexed pages (1 each), `schemas/` (1),
+additional owned interface/configuration pages (0..*). The `schemas/` container
+has its own index and one file per direct exchange touching this subsystem.
+New pages must have one observable behavior owner.

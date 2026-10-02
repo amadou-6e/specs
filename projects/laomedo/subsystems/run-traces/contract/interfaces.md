@@ -58,7 +58,7 @@ policy was settled by the interface discussion.
 
 IF-07 and IF-08 use the producer sketches in
 [Langflow integration](../../langflow-integration/contract/interfaces.md#approximate-payloads)
-and [agent execution](../../agent-execution/contract/interfaces.md#approximate-payloads).
+and [agent execution](../../agent-execution/contract/schemas/if-08-agent-event.md).
 The trace-to-results handoff is approximately (see
 [notation](../../README.md#payload-sketch-conventions)):
 

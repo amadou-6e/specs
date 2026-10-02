@@ -64,16 +64,6 @@ IF-03 SkillRevisionFound {
   provenance: { backend: "native" | "github", source_ref: Ref }
 }
 
-IF-04 SkillMaterializationRequest {
-  invocation_id: string, snapshot: SkillSnapshotRef, target_workspace_ref: Ref
-}
-IF-04 SkillMaterializationResult {
-  invocation_id: string, snapshot: SkillSnapshotRef,
-  files: [{ relative_path: string, content_ref: Ref, hash: string }],
-  dependency_snapshots: SkillSnapshotRef[],
-  effective_workspace_ref: EffectiveWorkspaceRef
-}
-
 IF-14 SkillDraftProposal {
   skill_id: string, base: SkillSnapshotRef, edit_policy_ref: EditPolicyRef,
   change: { patch_ref: Ref } | { request_ref: Ref },
@@ -87,5 +77,7 @@ IF-14 SkillDraftReceipt {
 ```
 
 IF-03 missing/invalid revisions yield a coded error, not an empty snapshot.
-IF-04 returns only after path/dependency/hash validation. IF-14's receipt is
-neither a published nor active revision.
+IF-04's request/result shape is in the agent-execution
+[per-exchange file](../../agent-execution/contract/schemas/if-04-skill-materialization.md);
+the skill registry still owns its validation and materialization rules above.
+IF-14's receipt is neither a published nor active revision.

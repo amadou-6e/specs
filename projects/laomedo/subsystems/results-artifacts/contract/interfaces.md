@@ -55,20 +55,10 @@ Artifact placement, ownership, retention and unsaved-output behavior await the
 IF-09 and IF-11 use the producer sketches in
 [Langflow integration](../../langflow-integration/contract/interfaces.md#approximate-payloads)
 and [run traces](../../run-traces/contract/interfaces.md#approximate-payload).
-The remaining handoffs are approximately (see
+The assembled result and downstream handoffs are approximately (see
 [notation](../../README.md#payload-sketch-conventions)):
 
 ```text
-IF-10 OutputManifest {
-  run_id: string, stage_id: string, invocation_id: string,
-  outputs: [{ artifact_id: string, kind: string, location_ref: Ref,
-              content_hash?: string,
-              state: "local" | "saved" | "published" | "unknown" }],
-  target_pr?: { repository: Ref, number: integer, url: string,
-                state: "created" | "updated" },
-  manifest_state: "complete" | "partial"
-}
-
 RunResult {
   run_id: string, context: RunContext, trace?: TraceLink,
   output_manifests: OutputManifest[],
@@ -82,6 +72,8 @@ IF-12 ReviewedIssueProposal = Issue integration's IF-12 payload
 IF-13 FollowUpRunRequest = Langflow integration's IF-13 payload
 ```
 
+IF-10's shape is in the agent-execution
+[per-exchange file](../../agent-execution/contract/schemas/if-10-output-manifest.md).
 `RunResult` is a user-facing assembled projection, not an extra direct
 subsystem edge. `missing_inputs` makes partial assembly visible. IF-12 and
 IF-13 are defined once at their receiving boundaries to avoid diverging

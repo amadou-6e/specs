@@ -52,8 +52,10 @@ direct** handoff; it may still communicate through a listed boundary.
 
 ## Payload sketch conventions
 
-Each owning `contract/interfaces.md` includes an approximate, language-neutral
-payload shape for its interfaces. These sketches describe data crossing a
+Each owning `contract/interfaces.md` includes or links an approximate,
+language-neutral payload shape for its interfaces. Agent execution keeps its
+five touching exchanges in [separate schema files](agent-execution/contract/schemas/README.md).
+These sketches describe data crossing a
 boundary, not HTTP endpoints, Langflow component signatures, database tables or
 approved serialization. A field without `?` is required for that variant;
 `?` means optional. An absent required identity is an error, not `null` or an
