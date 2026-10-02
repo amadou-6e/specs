@@ -57,7 +57,7 @@ stable run, workflow-definition, stage, invocation, session, trace and artifact
 identities where applicable. The run records the exact resolved revisions so a
 later change to `latest` does not silently alter an active run.
 
-The [individual decision record](subsystem-decision-record.md) preserves the
+The [individual decision record](../decisions/0002-subsystem-handoffs.md) preserves the
 user's choices behind these edges, including editor scope, copied defaults,
 container and session lifetime, recovery, approvals and PR behavior. This edge
 inventory stays focused on information crossing subsystem boundaries.
