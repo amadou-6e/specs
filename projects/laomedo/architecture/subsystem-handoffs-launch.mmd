@@ -1,0 +1,27 @@
+flowchart TB
+  EVENTS["External<br/>GitHub event, timer or direct request"]
+  ISSUES["Laomedo<br/>Issue integration"]
+  LIBRARY["Laomedo<br/>Prompt and skill library"]
+  BRIDGE["Laomedo<br/>Langflow integration"]
+  LANGFLOW["Langflow<br/>Graph definitions and sequencing"]
+  AGENT["Laomedo<br/>Agent execution"]
+  TRACES["Laomedo<br/>Run traces"]
+  RESULTS["Laomedo<br/>Results and artifacts"]
+
+  EVENTS -->|H1| BRIDGE
+  ISSUES -->|H2| BRIDGE
+  LIBRARY -->|H3| BRIDGE
+  BRIDGE -->|H4| LANGFLOW
+  LANGFLOW -->|H5| AGENT
+  AGENT -->|H6| LANGFLOW
+  LANGFLOW -->|H7| TRACES
+  AGENT -->|H8| TRACES
+  AGENT -->|H9| RESULTS
+  TRACES -->|H10| RESULTS
+
+  classDef proposed fill:#eaf1ff,stroke:#5376a9,color:#203040,stroke-width:2px
+  classDef existing fill:#eaf7f3,stroke:#39856c,color:#203040,stroke-width:2px
+  classDef external fill:#fff0e5,stroke:#ad7145,color:#203040,stroke-width:2px
+  class ISSUES,LIBRARY,BRIDGE,RESULTS proposed
+  class AGENT,TRACES existing
+  class EVENTS,LANGFLOW external

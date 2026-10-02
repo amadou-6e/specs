@@ -19,3 +19,8 @@ identity and complete normalized monitoring remain gaps. New UI requires reviewe
 [Issue-to-agent user traversal](user-traversal.md) links the editable graph of the
 user-confirmed journey, its generation input and unresolved product choices. It is
 cross-subsystem navigation, not a screen-geometry or implementation specification.
+
+[Proposed subsystem handoffs](subsystem-handoffs.md) links a two-page editable
+Draw.io graph and inventories the commands, events and references crossing the
+current Laomedo boundaries. It records open interface decisions rather than
+asserting an implemented wire protocol.
