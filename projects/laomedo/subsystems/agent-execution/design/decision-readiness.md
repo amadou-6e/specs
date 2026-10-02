@@ -21,23 +21,27 @@ The backend must still account for any independently surviving, writable contain
 
 ## Evidence and notation
 
-The baseline is specs `docs/167` at
+The research baseline was specs `docs/167` at
 [`3974d9a`](https://github.com/amadou-6e/specs/commit/3974d9aa1f380c72105e7f205f16e3eeae2c8d80),
 inspected 2026-10-02: [interfaces](../contract/interfaces.md),
 [isolation](../contract/isolation.md), [Codex](../contract/codex.md),
 [Claude](../contract/claude.md), [exchange sketches](../contract/schemas/README.md),
 and the [2026-10-01 pilot](../../../experiments/local-skill-agent-pilot/iterations/2026-10-01/results.md).
-The later [decision clarification](https://github.com/amadou-6e/specs/blob/49463154045c8e3b2fa7eefc991519bbe0fda150/projects/laomedo/architecture/subsystem-decision-record.md)
-is a **separate, unmerged branch**; do not mistake it for this branch's contract.
+The later decision clarification is now part of the merged
+[decision record](../../../decisions/0002-subsystem-handoffs.md). Current
+[IF-05/06/08/10 sketches](../contract/schemas/README.md) also incorporate
+several #168 review fixes. The older baseline remains evidence of what this
+triage inspected, not a competing current contract. Rows below that say
+"specify" a shape already present in the sketches mean **verify and refine**
+it; they do not reopen the settled first-slice rule or claim runtime proof.
 The [#175 issue](https://github.com/amadou-6e/specs/issues/175) and its
 [writable-checkout](https://github.com/amadou-6e/specs/issues/175#issuecomment-5950569517),
 [network/Actions](https://github.com/amadou-6e/specs/issues/175#issuecomment-5950620596),
 and [setup-preflight](https://github.com/amadou-6e/specs/issues/175#issuecomment-5950727562)
 clarifications were accessed by the coordinating agent on 2026-10-02. Direct
-user clarification in this task defers the reduced-Docker-protection policy
-until an experiment and defers automatic mid-turn container recovery from the
-first slice. Those two conversation decisions need a durable decision-record
-update; this page records their effect without assigning a new D-number.
+user clarification defers the reduced-Docker-protection policy until an
+experiment and automatic mid-turn container recovery from the first slice.
+The latter is now recorded as [D17](../../../decisions/0002-subsystem-handoffs.md#execution-recovery-and-inspection).
 
 `A` = ready to specify from a confirmed choice; `B` = product choice still
 needed; `R` = research/owner handoff; `E` = bounded experiment needed;
@@ -54,19 +58,19 @@ treated as accepted behavior.
 | --- | --- | --- | --- |
 | Q01 | Who stops an orphan with a writable checkout and push credential when the fate-shared backend dies? | B [I] | Choose a supervisor/lease owner, then E01; do not dispatch writable first-slice work without a tested termination path. |
 | Q02 | Does the chosen orphan mechanism actually stop the container and revoke access within its bound? | E [U] | E01, including backend hard-kill and externally visible canary. |
-| Q03 | Is the request/invocation identity committed before agent dispatch? | A [I] | Necessary design response to confirmed terminal-crash behavior: specify durable pre-dispatch identity; [shared records](../../../architecture/shared-contracts.md) and Langflow owner must agree. This does not imply run recovery. |
+| Q03 | Is the request/invocation identity committed before agent dispatch? | A [C] | The merged decision record requires durable identity and refusal if it cannot be established; verify the [IF-05 reservation](../contract/schemas/if-05-stage-invocation.md) experimentally. This does not imply run recovery. |
 | Q04 | Which native ID and event prefixes survive kills at each persistence boundary? | E [U] | E02; do not claim mid-turn recovery from the restart-only pilot. |
 | Q05 | How long is a writable checkout retained after a terminal run? | B [I] | Product tradeoff inferred from writable checkout and container cleanup; decide retention vs verified snapshot/deletion with [results ownership](../../results-artifacts/contract/interfaces.md). |
 | Q06 | Can another stage's native session be reused safely? | D [C] | D13 target; omit cross-stage reuse from first slice until binding and profile isolation are proved. |
 | Q07 | Are GitHub writes mediated and journaled, or can the agent use raw `gh`/git? | B [I] | Decide effect identity/PR ownership before claiming deduplicated create/update after uncertainty. |
 | Q08 | Can a crashed provider container resume the *same in-progress turn*? | D [U] | D17 remains a later target. First slice reports `failed` and partial evidence; later E08 needs a fresh model budget. |
 | Q09 | Does a retry get a new run or invocation identity? | D [I] | Reconcile older Codex retry wording with same-invocation D17 before implementing later recovery; first slice has no automatic mid-turn retry. |
-| Q10 | Where do multiple user-added files travel in IF-05? | A [I] | Respond to #168 M1: add explicit user-file refs beside upstream refs; validate each resolved ref. Exact order/shape remains to be specified; current single `InputSnapshotRef` cannot express the set by itself. |
+| Q10 | Where do multiple user-added files travel in IF-05? | A [I] | The merged [IF-05 sketch](../contract/schemas/if-05-stage-invocation.md) now has `user_file_refs` separate from `input_ref` and upstream refs. Verify resolution and hash failure before dispatch; exact ordering remains open. |
 | Q11 | Who enforces per-invocation timeout? | A [I] | Proposed ownership: agent execution enforces and reports its limit; numeric default is S02, and Langflow owns run-level sequencing. |
 | Q12 | Does IF-06 `partial` mean a terminal outcome or only evidence completeness? | A [I] | Define one terminal status plus separate output/trace completeness; distinguish `interrupted` from partial output. |
 | Q13 | What stable source identity can agent execution supply for IF-08 replay? | B [U] | [Run traces #179](https://github.com/amadou-6e/specs/issues/179) owns the dedup policy; this producer chooses a stable key capability or explicitly reports absence, then E03. Receipt sequence alone is insufficient. |
 | Q14 | What if the provider supplies no native event ID? | A [I] | Preserve source identity as absent/unknown, not fabricated; R01 checks provider APIs. |
-| Q15 | How does an IF-10 partial manifest get superseded by a later one? | A [I] | Specify stable manifest identity, revision and supersedes relation with [results](../../results-artifacts/contract/interfaces.md). |
+| Q15 | How does an IF-10 partial manifest get superseded by a later one? | A [I] | The merged [IF-10 sketch](../contract/schemas/if-10-output-manifest.md) has identity, revision and supersedes fields. Verify producer persistence and consumer replacement with [results](../../results-artifacts/contract/interfaces.md). |
 | Q16 | Which side-effect identity fields accompany a PR create/update? | B [U] | Resolve with Q07 and results owner; `target_pr` alone is not a write journal. |
 | Q17 | Is the first-slice stage checkout writable? | A [C] | Yes: isolated checkout, commit/push/PR path. Protect skill tree, runner store and host paths separately; old read-only text is superseded for this mode. |
 | Q18 | Are protected roots, symlinks and shared-home mounts actually contained when stage writes are allowed? | E [U] | E05 before accepting the Docker boundary. A Docker grant alone is not proof. |
@@ -196,11 +200,11 @@ was **not** retracted; an earlier review on #168 was the one retracted.
 | Finding | Coverage or owner, with reason |
 | --- | --- |
 | #168 B2, IF-08 replay/deduplication | Q13/Q14/Q28, E03. Optional native keys plus receipt sequence cannot guarantee deduplication; canonical policy belongs to #179. |
-| #168 M1, IF-05 user files | Q10. The current single input ref plus upstream refs leaves multiple user-added files unspecified. |
+| #168 M1, IF-05 user files | Q10. Explicit `user_file_refs` are now in the merged sketch; pre-dispatch byte/hash behavior remains untested. |
 | #168 M2, retry identities versus D17 | Q08/Q09 and E08 later. No first-slice automatic mid-turn retry. |
 | #168 minor IF-04 direction | Q26, with [skill registry](../../skill-registry/contract/interfaces.md) as byte provider. |
 | #168 minor IF-06 `interrupted`/`partial` | Q12; terminal state and evidence completeness are different concerns. |
-| #168 minor IF-10 supersession | Q15; results/artifacts also owns manifest interpretation. |
+| #168 minor IF-10 supersession | Q15; the merged schema records revisions, while results/artifacts still owns interpretation and tests. |
 | #168 B1, IF-01 trigger context | [Issue integration](../../issue-integration/contract/interfaces.md), not an agent-execution input shape until Langflow supplies a frozen invocation. |
 | #172 H1, durable reattach claim | Fate-shared crash decision supersedes reattach; residual orphan safety is Q01/Q25/E01 and pre-dispatch evidence Q03/E02. |
 | #172 H3, approval requests/expiry | Q22, S15 and E06. Shared broker owner remains B. |
