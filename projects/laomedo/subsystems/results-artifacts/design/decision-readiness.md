@@ -56,7 +56,7 @@ not a claim of implementation. No A row relies on [U] or a contested D-ID.
 | T09 H13, #172 H-15: failure-report provenance when no agent final message exists; whether a model summarizer is allowed | B | [C:D25] [I] | Trace completeness and summarizer policy | Choose B03; test E04 without model turns |
 | T10 D24/H9: artifact destination, retention, unsaved output and cleanup policy | B | [C:D24] [I] | Isolated checkout lifetime and actual persisted locations | Choose B04; test E03 |
 | T11 H12/H16, #172 H-14: who refreshes PR review state for follow-up display | B | [I] | Issue integration owns the choice in [#176](https://github.com/amadou-6e/specs/issues/176) B10; GitHub read authorization | Consume that choice for B05; no silent refresh claim |
-| T12 H9/H10: ownership of an artifact store versus transport of bytes | B | [I] | Cross-subsystem boundary; multi-stage movement deferred | Choose B06; keep first slice reference-only |
+| T12 H9/H10: who owns retained artifact-store policy, distinct from later transport of bytes? | B | [I] | Cross-subsystem boundary; multi-stage movement deferred | Choose B06 for retention/store ownership; #175 Q24 covers later materialization |
 | T13 GitHub PR review-state read API and credential scope after an owner is selected | R | [U] | B05 must choose refresh owner and desired freshness | Inspect GitHub primary API/auth docs; no current API claim |
 | T14 Crash-time IF-09/10/11 assembly and restart view with absent or out-of-order inputs | E | [C:issue #180] [U] | Durable producer handoffs and restart marking | E01 |
 | T15 IF-10 partial→complete/replayed or reordered manifests: projection must not double-count | E | [I] [U] | B01 chooses identity and ordering | E02 synthetic replay fixture |
@@ -82,16 +82,14 @@ first-slice crash result most directly.
 | --- | --- | --- |
 | B01 manifest supersession | Stable manifest ID plus monotonic revision and explicit `supersedes` | Deterministic replacement after replay; requires producer persistence and schema migration. |
 | B01 | Append-only per-output events with idempotency keys | Avoids whole-manifest replacement; more events/indexing and harder completeness signal. |
-| B02 external effects | Agent execution journals confirmed GitHub writes before reporting IF-10 | Makes post-crash evidence available if journal survives; adds durable write and still cannot prove an unreported in-flight API result. |
-| B02 | Results performs authorized GitHub reconciliation on restart | Can discover a PR/branch absent from manifest; needs credentials, scope rules and conservative matching to avoid attaching unrelated work. |
+| B02 external effects | Consume the canonical [#175 Q07/Q16 write-identity options](https://github.com/amadou-6e/specs/issues/175); results shows only confirmed effects and marks absent IF-10 evidence unknown pending that choice | A surviving journal or authorized reconciliation may reveal more, but neither justifies inventing an unconfirmed PR. This is not a second effect-policy vote. |
 | B03 report provenance | Deterministic template from known IF-09/10/11 with explicit missing/unknown fields | Available without agent/model response, low cost; less narrative interpretation. |
 | B03 | Optional model-authored synthesis, labeled with model/version and cited evidence refs, plus deterministic fallback | More readable but adds cost, latency and unsupported-claim risk; no model use is authorized by this triage. |
 | B04 artifacts | Persist selected outputs before checkout cleanup and retain by explicit policy | Inspectable crash artifacts, storage/cleanup cost and data-scope choices. |
 | B04 | Retain only references and report unresolved/lost workspace-only outputs | Lower storage cost; may make crash work impossible to inspect; never call an unverified path saved. |
-| B05 PR refresh | Agent execution owns fresh PR lookup as part of invocation/follow-up preparation | Reuses its GitHub identity, but result view may remain stale between runs. |
-| B05 | Issue integration supplies a separate authorized PR read for results | Enables view freshness; broadens peer interface and auth surface. |
-| B06 store/transport | Results owns artifact inventory/store policy; agent execution materializes bytes; Langflow moves refs | Separates retained record from execution, but needs an explicit durable store decision. |
-| B06 | Agent execution owns store and inter-stage bytes, results only links refs | Simpler execution coupling, but long-term retention is tied to ephemeral container/workspace lifecycle. |
+| B05 PR refresh | Consume the canonical [#176 B10 owner/freshness options](https://github.com/amadou-6e/specs/issues/176); results labels the timestamp/source of the last known review state | A stale or failed read must not appear current. This is not a second PR-refresh owner vote. |
+| B06 retained store policy | Results owns inventory/store retention, agent execution materializes checked bytes later, Langflow carries refs | Separates retained record from execution; requires explicit durable store and access policy. |
+| B06 | Agent execution owns the durable artifact store; results links verified refs | Fewer storage boundaries but long-term retention becomes coupled to execution lifecycle; separate the later #175 Q24 inter-stage transport choice. |
 
 Ownership proposal, pending B06: prefer results for inventory and store policy,
 agent execution for byte materialization and cleanup, Langflow for handoff
