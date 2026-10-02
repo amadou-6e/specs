@@ -50,6 +50,15 @@ cross-cutting interface used by agent execution and chat, not a PR-delivery or
 workspace-management subsystem. A pair absent from this table has no **known
 direct** handoff; it may still communicate through a listed boundary.
 
+## Decision readiness
+
+These are issue-branch triages, not accepted runtime contracts. Sibling drafts
+must be reconciled when their PRs are integrated.
+
+| Subsystem | A/B/R/E/D | Pending experiments |
+| --- | --- | --- |
+| [Results and artifacts](results-artifacts/design/decision-readiness.md) | 6/6/1/4/5 | E01 crash assembly, E02 manifest replay, E03 checkout retention, E04 no-agent report/failed issue write |
+
 ## Payload sketch conventions
 
 Each owning `contract/interfaces.md` includes or links an approximate,

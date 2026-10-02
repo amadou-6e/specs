@@ -29,6 +29,13 @@ workflow may still have partial or unknown artifacts. An agent-created PR is
 recorded as an external GitHub reference; this subsystem does not perform the
 PR write or infer that a PR exists from a local diff.
 
+**Contested/unverified:** the payload below does not yet represent the
+confirmed fate-shared `crashed` state; IF-09's producer enum also lacks it.
+Manifest supersession, artifact retention, effects absent from IF-10, and
+report provenance have unresolved choices and tests. See
+[decision readiness](../design/decision-readiness.md#question-triage); do not
+interpret the current enum or summary as complete crash behavior.
+
 ## IF-12 — reviewed failure-to-issue proposal
 
 For an unsuccessful run, expose an editable report of completed work, failure,
@@ -36,6 +43,8 @@ evidence and remaining work. A user selects, reviews and may edit a proposed
 follow-up issue. Only then send that reviewed proposal and prior-run references
 to [issue integration](../../issue-integration/contract/interfaces.md). If
 publication fails, keep the draft's review state and report the failure.
+Exact draft retention and duplicate-write handling remain open with issue
+integration; see [decision readiness](../design/decision-readiness.md#choices-requiring-user-decision).
 
 ## IF-13 — follow-up run context
 
@@ -44,6 +53,10 @@ When the user requests another run, give
 prior run link, existing PR reference if supplied, and the user's explicit
 existing/new session choice. The next run gets its own run and trace identities
 while retaining links to the PR and previous run.
+
+For the first slice, only a new session is proposed. Existing-session
+follow-up and selective stage reruns remain deferred in
+[decision readiness](../design/decision-readiness.md#question-triage).
 
 Selected findings may be stored separately as durable project knowledge with
 source/run links. This is optional and does not imply GitHub publication.
