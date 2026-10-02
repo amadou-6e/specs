@@ -14,6 +14,9 @@ when actual replication occurs.
 - [Copyable example](template/README.md): unexecuted snapshot-rejection trial.
 - [Agent handoffs](agent-handoffs/README.md): successful two-turn real chain and
   credential-free bounded-loop/artifact/provenance checks; live loop unobserved.
+- [Langflow graph freeze](langflow-graph-freeze/README.md): EXP-03 synthetic
+  saved-flow edit during an active run; behavior stayed old, native revision
+  attestation remains absent.
 
 Copy template/ directly, rename and replace every example fact/lifecycle. Freeze a real
 prospective protocol before dispatch. This migration authorized/spent no new model turns.
