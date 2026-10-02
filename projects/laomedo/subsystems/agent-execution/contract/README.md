@@ -17,6 +17,8 @@ endpoint behavior, and named-container teardown for the single-user prototype.
 Shared serialized records belong to [architecture](../../../architecture/shared-contracts.md).
 The [Langflow node interface](langflow-node.md) owns the proposed reusable custom
 component, fresh/resume operations, typed outputs and client lifecycle limitations.
+[Agent handoffs](handoffs.md) owns explicit transitions, bounded scheduling and the
+current incomplete artifact/provenance/live-acceptance boundaries.
 [Validation](../validation.md) qualifies maturity; pilot observations do not silently
 replace proposed read-only, identity or provider parity guarantees.
 
