@@ -27,10 +27,25 @@ with three authorized turns unused. The historical failed result above remains
 unchanged. The saved Langflow flow's Runner URL was subsequently changed to
 port 8768 under explicit user approval and verified by readback. Its six nodes
 and five edges remained. Successful model-backed flow calls before that edit
-used a per-run port 8768 override; no new model-backed call tested the saved
-value after the edit.
+used a per-run port 8768 override before the edit.
+
+Saved-flow attempts 12 and 13 used the edited flow with **no node tweaks**.
+Both returned HTTP 200, completed, loaded both pinned skills through native
+skill calls and supported queryable runner status. Attempt 12's worker command
+exited one after the agent appended a period to the fixture filename. Attempt
+13's exact worker command exited zero. The worker saw only the two pinned skill
+names and read the amber/3 fixture; host readback verified its workspace
+marker. Its path-presence command found no controller auth file or personal
+skill/session/config directories in the worker. The controller's skill view
+contained exactly the pinned skills. Comparison with the selected private
+provider key found it absent from the saved/exported flow, tracked files in
+both repositories and the inspected run results. The initially too-literal
+fixture checker was corrected against the unchanged raw worker event; the
+model turn was not repeated. Cumulative ledger is 13/14, one turn unused.
 
 Bounded single-user local prototype is supported by these observations. Network
 isolation, complete credential-route auditing, hosted/multi-user use and automatic
-fresh UI Stop remain unverified. Production authentication stays with specs #129.
+fresh UI Stop remain unverified. These tested routes support the local #27
+prototype; they do not prove the absence of every possible disclosure path.
+Production authentication stays with specs #129.
 No issue closure or merge is implied.

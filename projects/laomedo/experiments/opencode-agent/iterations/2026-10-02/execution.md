@@ -26,5 +26,23 @@ explicitly approved this exact edit, the saved Runner URL was updated to
 `http://host.docker.internal:8768`. Readback returned HTTP 200, the new URL,
 six nodes and five edges. Earlier successful flow calls used an explicit
 per-run port 8768 override. No model turn was spent on the configuration edit
-or readback, and no new model-backed run through the updated saved value is
-claimed.
+or readback.
+
+The user selected proof of the remaining #27 acceptance gaps using the three
+unused turns. Attempt 12 called the saved six-node Langflow flow with no node
+tweaks. It returned HTTP 200, completed, loaded both pinned skills natively,
+listed only those skills from the worker, and reached the private-path presence
+checks. The worker exited one because the agent appended a period to the
+fixture filename. The failed tool result remains in the private record and
+the submitted turn remains counted.
+
+Attempt 13 repeated the saved flow without tweaks after the probe prompt was
+corrected. The exact worker command exited zero. The runner status was
+queryable and `completed`; both native skill calls completed, only the two
+pinned skills were visible in the controller view and worker listing, the
+private-path presence checks passed, and independent host readback found the
+workspace marker. The worker returned fixture amber/3. A first checker used a
+too-literal `color: amber` predicate and reported that field false; a read-only
+verification of the unchanged worker event recognized the actual sentence
+`The sample color is amber. The sample count is 3.` All other original checks
+were true. Ledger after attempt 13: 13/14, with one authorized turn unused.

@@ -136,6 +136,17 @@ by readback. Successful model-backed flow calls before that edit used a per-run
 override to 8768. This remains a draft local prototype contract, not a hosted
 guarantee.
 
+Saved-flow attempts 12 and 13 then used that stored URL without request tweaks.
+Attempt 13 completed with both native skill loads, a successful worker command,
+queryable status and independent marker readback. The tested worker private
+paths were absent, the controller skill view contained only the two pins, and
+the selected provider key was absent from saved/exported flow data, tracked
+repository files and inspected run results. Attempt 12's fixture typo and the
+attempt 13 checker correction are retained in the linked results. Ledger is
+13/14 with one unused authorized turn. The local prototype meets the tested
+#27 path; exhaustive disclosure-route and network claims remain outside this
+evidence.
+
 ## Sources checked (reference owner)
 
 - [OpenCode server API](https://opencode.ai/docs/server/): session/message/abort and provider inventory.

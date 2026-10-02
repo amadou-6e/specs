@@ -6,6 +6,10 @@ Reproduction harnesses are direct_cli.py, flow_acceptance.py and cancel_acceptan
 The later live cancellation retest is in
 examples/opencode-agent/live-cancellation-retest.json. It records attempt 11,
 the observed `cancelled` status and independent worker/file checks.
+Saved-flow proof and its retained first-attempt limitation are in
+examples/opencode-agent/saved-flow-proof-evidence.json. The reproducible
+no-tweaks harness is saved_flow_proof.py; its read-only verification phase
+corrects a literal fixture-label predicate without rewriting the live event.
 
 Private artifacts: native controller/worker events, exact API responses, persisted
 run/session state and credentials. Never copy those into this repository. Sanitized
