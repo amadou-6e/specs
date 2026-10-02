@@ -61,7 +61,39 @@ Then authorize a separate aggregate turn/spend cap and run the actual imported f
 Production auth lifecycle remains specs #129. No server/config/flow is installed or
 restarted by this adapter slice.
 
-## Cancellation and evidence limits
+## Continuation findings on 2026-10-02
+
+The terminal login was found in the active Console account stored in SQLite,
+separate from legacy `auth.json`. Two previous message submissions failed with
+HTTP 401 before tool results because the handoff incorrectly treated redacted
+`debug config` output as a credential. Those attempts remain in the 2/2 ledger.
+
+The corrected resolver reads only active account access-token/expiry/server and
+organization fields using a read-only database connection. Request account config
+at its official `https://opencode.ai` origin, preserve the `/console` prefix, use
+JSON request headers, and reject redirects. Accept only a concrete Go credential
+or the exact Console-token environment substitution; reject redacted values,
+canaries, arbitrary templates, expired tokens and organization mismatches.
+Copy only the selected credential and routing context into private runner state.
+Never copy refresh tokens or the complete personal database. Refresh remains the
+official client's responsibility. The corrected handoff succeeded with no model turn.
+
+The explicit controller/tool transport uses a pinned OpenCode controller image and
+separate disposable Docker command workers with the existing grants. Disable
+controller tools except allowlisted native skills and the per-run authenticated
+MCP broker. Workers receive no controller profile/environment/auth mount or Docker
+socket. Direct command probes showed workspace writes succeed, canonical/store
+writes fail and controller-auth paths cannot be read. A worker's own `/proc`
+environment was readable; the credential canary was absent. This is separation
+evidence, not a claim that `/proc` is globally unreadable or that agent-originated
+denial, network isolation or child termination has been established.
+
+At takeover verification, 48 host tests and 14 pinned Langflow checks passed
+(three OpenCode, eleven Codex). Live fresh/resume, actual skill calls and native
+cancellation remain pending a new turn allocation. Original isolation findings
+above describe the earlier draft, not a completed authenticated pilot.
+
+## Cancellation and evidence limits (unchanged target)
 
 Status is durable and reports restarted running records as interrupted. Cancel uses
 the active session's native abort endpoint. A true response records acknowledgement;
@@ -78,6 +110,8 @@ native cancellation termination are still acceptance gaps.
 - [Native skills](https://opencode.ai/docs/skills/): project `.agents/skills` discovery and skill tool.
 - [Go](https://opencode.ai/docs/go/): provider credential mode.
 - [Configuration](https://opencode.ai/docs/config/): personal/project and inline configuration precedence.
+- [Pinned account implementation](https://github.com/anomalyco/opencode/blob/v1.18.33/packages/opencode/src/account/account.ts): active account configuration route and Console token semantics.
+- [Pinned config implementation](https://github.com/anomalyco/opencode/blob/v1.18.33/packages/opencode/src/config/config.ts): active organization config and Console-token substitution.
 
 Sources inspected 2026-10-02. Local command evidence: `opencode.cmd --version`,
 `opencode.cmd run --help`, `opencode.cmd auth list`, process executable metadata.
