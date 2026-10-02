@@ -1,0 +1,83 @@
+flowchart TB
+    subgraph SETUP["1. Select issue and configure execution"]
+        SOURCE["<b>↗ EXTERNAL SERVICE · Artifact</b><br/><b>GitHub issue</b><br/><b>IN:</b> GitHub repository<br/><b>OUT:</b> Issue context<br/><b>DETAIL:</b> Storage: GitHub; access and retention unspecified"] --> START["<b>👤 USER · Action</b><br/><b>Select issue</b><br/><b>IN:</b> GitHub issue<br/><b>OUT:</b> Selected issue<br/><b>DETAIL:</b> Completion: issue selected"]
+        START --> CHANNEL{"👤 User<br/>Configure via<br/>UI or<br/>chat agent?"}
+        CHANNEL -->|UI| CONFIG["<b>👤 USER · Action</b><br/><b>Configure execution</b><br/><b>IN:</b> Selected issue<br/><b>OUT:</b> Run configuration<br/><b>DETAIL:</b> Choices: direct UI or chat-assisted API"]
+        CHANNEL -->|Chat| CHAT["<b>⚙ AGENT · Action</b><br/><b>Chat agent uses Laomedo API</b><br/>Configure and launch runs Highlight UI elements for navigation<br/><b>IN:</b> User request and Laomedo API<br/><b>OUT:</b> Configuration, launch, navigation hints<br/><b>DETAIL:</b> Permissions and limits: unspecified"]
+        CHAT --> CONFIG
+        CONFIG --> MODE{"👤 User<br/>Execution<br/>path?"}
+        MODE -->|Direct agent: first scope| DIRECT["<b>👤 USER · Action</b><br/><b>Prepare agent, prompt and skills</b><br/>Select, edit or create a variation via UI or chat<br/><b>IN:</b> Available agents and library<br/><b>OUT:</b> Prepared agent, prompt and skills<br/><b>DETAIL:</b> Review configuration before launch; library publication is separate"]
+        MODE -->|Langflow: planned path| FLOW["<b>👤 USER · Action</b><br/><b>Prepare Langflow graph</b><br/>Select, edit or create a variation via UI or chat<br/><b>IN:</b> Available Langflow graphs<br/><b>OUT:</b> Prepared workflow<br/><b>DETAIL:</b> Review agents, skills, handoffs, reviews and loop limits before launch"]
+        DIRECT --> SESSION["<b>👤 USER · Action</b><br/><b>Choose existing session</b><br/>or start a new session<br/><b>IN:</b> Available sessions<br/><b>OUT:</b> Session selection<br/><b>DETAIL:</b> Choices: existing or new"]
+        SESSION --> WORKSPACE["<b>👤 USER · Action</b><br/><b>Choose local checkout</b><br/>or prepared isolated workspace<br/><b>IN:</b> Available workspace options<br/><b>OUT:</b> Selected workspace<br/><b>DETAIL:</b> Choices: local checkout or isolated workspace; default unspecified"]
+        FLOW --> WORKSPACE
+        WORKSPACE --> LAUNCH["<b>👤 USER · Action</b><br/><b>Launch a new run</b><br/>Run and session identities are separate<br/><b>IN:</b> Configuration, session and workspace<br/><b>OUT:</b> New run<br/><b>DETAIL:</b> Confirmation policy: unspecified"]
+    end
+    subgraph OBSERVE["2. Run and inspect"]
+        EXECUTE["<b>⚙ AGENT · Action</b><br/><b>Execute configured stages</b><br/><b>IN:</b> Issue, configured prompt and skills<br/><b>OUT:</b> Actions and execution events<br/><b>DETAIL:</b> Provider and execution limits: selected per run / unspecified"] --> LIVE["<b>▦ LAOMEDO · Artifact</b><br/><b>Execution graph and live trace</b><br/>GitHub Actions-style stages Single agent: one Langflow-style card<br/><b>IN:</b> Execution events<br/><b>OUT:</b> Inspectable graph and trace<br/><b>DETAIL:</b> Retention: unspecified"]
+        LIVE --> INSPECT["<b>👤 USER · Action</b><br/><b>Click card to inspect telemetry</b><br/><b>IN:</b> Stage card<br/><b>OUT:</b> Telemetry inspection<br/><b>DETAIL:</b> Action: click a card"]
+        INSPECT --> LIVE
+    end
+    subgraph RESULTS["3. Inspect results and retain findings"]
+        BUILD["<b>▦ LAOMEDO · Action</b><br/><b>Retain run record and action digest</b><br/><b>IN:</b> Run actions and results<br/><b>OUT:</b> Run record, digest and artifact references<br/><b>DETAIL:</b> Record configuration, trace, status and summary; outputs may live elsewhere"] --> DIGEST["<b>▦ LAOMEDO · Artifact</b><br/><b>Expandable action graph</b><br/>Tool calls, searches, edits, shell commands and results<br/><b>IN:</b> Run actions<br/><b>OUT:</b> Expandable action records<br/><b>DETAIL:</b> Includes tool calls, searches, edits and shell commands"]
+        BUILD --> SUMMARY["<b>▦ LAOMEDO · Artifact</b><br/><b>Run summary and artifact inventory</b><br/><b>IN:</b> Completed or stopped run<br/><b>OUT:</b> Semi-structured summary<br/><b>DETAIL:</b> List artifact type, location and saved/published state; schema remains draft"]
+        SUMMARY --> STORE["<b>👤 USER · Action</b><br/><b>Optionally select findings to store</b><br/><b>IN:</b> Findings in run summary<br/><b>OUT:</b> Selected findings for storage<br/><b>DETAIL:</b> Optional; GitHub publication is separate"]
+        STORE --> KNOWLEDGE["<b>▦ LAOMEDO · Artifact</b><br/><b>Durable project findings</b><br/>Source and run links GitHub publication is separate<br/><b>IN:</b> Selected findings<br/><b>OUT:</b> Durable project knowledge<br/><b>DETAIL:</b> Source/run links; storage and retention unspecified"]
+        SUMMARY --> OUTCOME{"▦ Laomedo<br/>PR delivered<br/>or unsuccessful<br/>run?"}
+    end
+    subgraph DELIVERY["4A. PR delivery and review cycle"]
+        PR["<b>⚙ AGENT · Action</b><br/><b>Create or update PR on user's GitHub</b><br/><b>IN:</b> Changes and existing PR when applicable<br/><b>OUT:</b> Created or updated PR<br/><b>DETAIL:</b> Success: PR available; publication failures remain unspecified"] --> PRDOC["<b>↗ EXTERNAL SERVICE · Artifact</b><br/><b>GitHub pull request</b><br/><b>IN:</b> Published changes<br/><b>OUT:</b> GitHub PR and review context<br/><b>DETAIL:</b> Storage: user's GitHub repository"]
+        PRDOC --> REVIEW["<b>👤 USER · Action</b><br/><b>Review PR and decide whether to rerun</b><br/><b>IN:</b> PR and run results<br/><b>OUT:</b> Review and follow-up choice<br/><b>DETAIL:</b> Choices: no further run or address comments"]
+        REVIEW -->|No further run| END(["<b>👤 USER · Continuation</b><br/><b>↪ End traversal</b><br/>IN: No further run requested<br/>OUT: Traversal ends<br/>DETAIL: PR merge behavior unspecified"])
+        REVIEW -->|Address comments| FOLLOW["<b>👤 USER · Action</b><br/><b>Choose existing or new session</b><br/><b>IN:</b> Existing PR and session options<br/><b>OUT:</b> Follow-up session selection<br/><b>DETAIL:</b> Choices: existing session or new session"]
+        FOLLOW --> RERUN(["<b>▦ LAOMEDO · Continuation</b><br/><b>↪ New linked run, same PR</b><br/>IN: Existing PR and chosen session<br/>OUT: New linked run<br/>DETAIL: Separate trace, digest and summary"])
+        RERUN --> ADDRESS["<b>⚙ AGENT · Action</b><br/><b>Retrieve and address PR comments</b><br/>Agent is hinted that comments exist<br/><b>IN:</b> PR reference and comment hint<br/><b>OUT:</b> Review-response work<br/><b>DETAIL:</b> Agent retrieves comments; exact skill/prompt selected per run"]
+        ADDRESS --> REPEAT(["<b>▦ LAOMEDO · Continuation</b><br/><b>↪ Continue execution and inspection</b><br/>IN: Follow-up run<br/>OUT: Execution and inspection path<br/>DETAIL: Carry PR/run links; stopping limits unspecified"])
+    end
+    subgraph RECOVERY["4B. Unsuccessful run to next issue"]
+        FAILURE["<b>▦ LAOMEDO · Artifact</b><br/><b>Unsuccessful-run report</b><br/>Completed work, blocker, evidence, remaining work and context links<br/><b>IN:</b> Unsuccessful run<br/><b>OUT:</b> Failure report<br/><b>DETAIL:</b> Completed work, blocker, evidence and remaining work"]
+        FAILURE --> DRAFT["<b>▦ LAOMEDO · Action</b><br/><b>Convert report into issue draft</b><br/><b>IN:</b> Failure report<br/><b>OUT:</b> Issue draft<br/><b>DETAIL:</b> Publishing requires user review/editing"]
+        DRAFT --> DRAFTDOC["<b>▦ LAOMEDO · Artifact</b><br/><b>Follow-up issue draft</b><br/><b>IN:</b> Failure report conversion<br/><b>OUT:</b> Editable issue proposal<br/><b>DETAIL:</b> Not yet published; retention unspecified"]
+        DRAFTDOC --> EDIT["<b>👤 USER · Action</b><br/><b>Review, edit and publish issue</b><br/><b>IN:</b> Issue draft<br/><b>OUT:</b> Reviewed and published issue<br/><b>DETAIL:</b> Review and editing before publication"]
+        EDIT --> ISSUE["<b>↗ EXTERNAL SERVICE · Artifact</b><br/><b>Published follow-up issue</b><br/>Context for a differently oriented agent<br/><b>IN:</b> Reviewed issue proposal<br/><b>OUT:</b> Published follow-up issue<br/><b>DETAIL:</b> Carries previous run context and evidence"]
+        ISSUE --> NEXT(["<b>👤 USER · Continuation</b><br/><b>↪ Normal issue execution path</b><br/>IN: Follow-up issue<br/>OUT: Normal issue execution path<br/>DETAIL: Agent, session and skills selected normally"])
+    end
+    subgraph LIBRARIES["Supporting operation: curate and publish library"]
+        LIBRARY["<b>👤 USER · Action</b><br/><b>Curate prompts and skills</b><br/>Users and agents can edit Native or GitHub-backed storage<br/><b>IN:</b> Prompts and skills<br/><b>OUT:</b> Curated library changes<br/><b>DETAIL:</b> Agents can also edit; native or GitHub backend"]
+        LIBRARY --> LIBDOC["<b>▦ LAOMEDO · Artifact</b><br/><b>Prompt and skill library</b><br/><b>IN:</b> Curated prompts and skills<br/><b>OUT:</b> Selectable library entries<br/><b>DETAIL:</b> Backend: native or GitHub; version/access policy unspecified"]
+        LIBDOC --> PUBLISH{"👤 User<br/>Library<br/>publication<br/>mode?"}
+        PUBLISH -->|Default| LIBPR["<b>⚙ AGENT · Action</b><br/><b>Publish library change through PR</b><br/><b>IN:</b> Library edits and GitHub backend<br/><b>OUT:</b> Library PR<br/><b>DETAIL:</b> Default review path; user can publish too"]
+        PUBLISH -->|Review disabled| LIBDIRECT["<b>⚙ AGENT · Action</b><br/><b>Auto-edit configured branch</b><br/><b>IN:</b> Library edits and review-disabled setting<br/><b>OUT:</b> Updated GitHub branch<br/><b>DETAIL:</b> Explicitly configured option; user can publish too"]
+    end
+    subgraph LEGEND["Node types — shapes independent of card category"]
+        LU["Action"]
+        LS["Card body: title, purpose, IN, OUT, detail"]
+        LD{"Decision"}
+        LA["Artifact / record"]
+        LC(["↪ Continuation / end"])
+    end
+    subgraph CATEGORIES["Card categories — responsibility, not an owner field"]
+        CU["👤 USER"]
+        CA["⚙ AGENT"]
+        CL["▦ LAOMEDO"]
+        CE["↗ EXTERNAL SERVICE"]
+    end
+    LAUNCH --> EXECUTE
+    LIVE --> BUILD
+    OUTCOME -->|PR delivered| PR
+    OUTCOME -->|Unsuccessful| FAILURE
+    DIRECT -.->|Optional library management| LIBRARY
+    classDef user fill:#eaf1ff,stroke:#5376a9,color:#203040;
+    class START,CHANNEL,CONFIG,MODE,DIRECT,FLOW,SESSION,WORKSPACE,LAUNCH,INSPECT,STORE,REVIEW,END,FOLLOW,EDIT,NEXT,LIBRARY,PUBLISH user;
+    classDef agent fill:#eaf7f3,stroke:#39856c,color:#203040;
+    class CHAT,EXECUTE,PR,ADDRESS,LIBPR,LIBDIRECT agent;
+    classDef laomedo fill:#f2edfa,stroke:#8b72aa,color:#203040;
+    class LIVE,BUILD,DIGEST,SUMMARY,KNOWLEDGE,OUTCOME,RERUN,REPEAT,FAILURE,DRAFT,DRAFTDOC,LIBDOC laomedo;
+    classDef externalservice fill:#fff0e5,stroke:#ad7145,color:#203040;
+    class SOURCE,PRDOC,ISSUE externalservice;
+    classDef legend fill:#f5f5f5,stroke:#697280,color:#203040;
+    class LU,LS,LD,LA,LC legend;
+    class CU user;
+    class CA agent;
+    class CL laomedo;
+    class CE externalservice;

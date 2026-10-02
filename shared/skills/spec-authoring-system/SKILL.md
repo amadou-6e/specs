@@ -10,6 +10,11 @@ the original author's memory. Its deliverables are a project structure guide,
 machine-readable category declarations, structural READMEs, copyable examples,
 canonical specifications, and a clear path from proposed behavior to evidence.
 
+For a newcomer or a request to explain the complete workflow, read
+[workflow.md](references/workflow.md): it presents ownership, manifest and metadata
+schema, lifecycle distinctions, template contents, authoring/review steps and
+validation limits in one standalone overview. Use project guides for local details.
+
 ## Establish the boundary
 
 Read the repository guidance, project manifest, existing specs, and relevant
@@ -57,6 +62,14 @@ Writing the skill or policy does not activate CI, branch protection, external
 issue edits, or credentials. Apply enforcement configuration only within the
 user's authorized scope. Distinguish authored policy, locally validated checks,
 and actually active merge requirements in the handoff.
+
+## Editorial pass for workflow diagrams
+
+When authoring a workflow, user journey, or decision tree, read
+[diagram-editorial.md](references/diagram-editorial.md). Apply its category,
+marking, field, and sizing pass before presenting the first diagram. Use the
+worked examples to guide discussion, not to impose Laomedo's categories on
+other projects. Preserve confirmed behavior and existing user edits.
 
 ## Verify and hand off
 

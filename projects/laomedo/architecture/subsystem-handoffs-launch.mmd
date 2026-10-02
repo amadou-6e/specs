@@ -1,0 +1,36 @@
+flowchart TB
+  EVENTS["Direct prompt or<br/>selected issue"]
+  FUTURE_TRIGGERS["Later: timer / GitHub event<br/>trigger owner open"]
+  ISSUES["Laomedo<br/>Issue integration"]
+  LIBRARY["Laomedo<br/>Prompt and skill library"]
+  BRIDGE["Laomedo<br/>Langflow integration"]
+  RECORD["Laomedo<br/>Durable run identity / status<br/>not a graph scheduler"]
+  LANGFLOW["Langflow<br/>Graph definitions and sequencing"]
+  AGENT["Laomedo<br/>Agent execution"]
+  APPROVAL["Later: approval broker<br/>owner / expiry open"]
+  FILES["Later: inter-stage files<br/>byte owner open"]
+  TRACES["Laomedo<br/>Run traces"]
+  RESULTS["Laomedo<br/>Results and artifacts"]
+
+  EVENTS -->|H1| BRIDGE
+  FUTURE_TRIGGERS -.-> BRIDGE
+  ISSUES -->|H2| BRIDGE
+  LIBRARY -->|H3| BRIDGE
+  BRIDGE -->|H4| LANGFLOW
+  BRIDGE -.-> RECORD
+  LANGFLOW -->|H5| AGENT
+  APPROVAL -.-> AGENT
+  AGENT -->|H6| LANGFLOW
+  LANGFLOW -->|H7| TRACES
+  AGENT -->|H8| TRACES
+  AGENT -->|H9| RESULTS
+  TRACES -->|H10| RESULTS
+
+  classDef proposed fill:#eaf1ff,stroke:#5376a9,color:#203040,stroke-width:2px
+  classDef existing fill:#eaf7f3,stroke:#39856c,color:#203040,stroke-width:2px
+  classDef external fill:#fff0e5,stroke:#ad7145,color:#203040,stroke-width:2px
+  class ISSUES,LIBRARY,BRIDGE,RECORD,RESULTS proposed
+  class AGENT,TRACES existing
+  class EVENTS,LANGFLOW external
+  classDef unresolved fill:#fff8dd,stroke:#a78024,color:#4b3910,stroke-width:2px,stroke-dasharray:5 3
+  class FUTURE_TRIGGERS,APPROVAL,FILES unresolved

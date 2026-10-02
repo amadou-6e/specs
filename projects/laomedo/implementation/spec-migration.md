@@ -16,6 +16,7 @@ Historical implementation/evidence identities and observations remain unchanged.
 
 | Original path | Canonical owner |
 | --- | --- |
+| `capabilities/work-graph.md` | [subsystems/work-graph/contract/work-graph.md](../subsystems/work-graph/contract/work-graph.md) |
 | `components/agent-and-skill-components.md` | [architecture/component-proposal.md](../architecture/component-proposal.md) |
 | `components/contracts.md` | [architecture/shared-contracts.md](../architecture/shared-contracts.md) |
 | `components/codex-agent.md` | [subsystems/agent-execution/contract/codex.md](../subsystems/agent-execution/contract/codex.md) |
@@ -42,9 +43,9 @@ At the original migration, every old path in the table retained a short
 compatibility pointer. Full bodies exist only at their canonical destinations.
 The local Markdown inventory was insufficient: published issue and PR
 references also depended on old paths. The later [#169 cleanup](#retirement-of-two-pointer-folders)
-removes only `sandboxing/` and `monitoring/`; the two remaining compatibility
-containers (`components/` and `feasibility/`) still own closed pointer sets,
-not active contracts.
+removes only `sandboxing/` and `monitoring/`; the three remaining compatibility
+containers (`capabilities/`, `components/` and `feasibility/`) still own closed
+pointer sets, not active contracts.
 The deprecated UI path and binary artifacts remain unchanged.
 
 The original migration created no new experiment, independent replication,
@@ -89,7 +90,7 @@ authorized removal of the pointer-only `sandboxing/` and `monitoring/` folders.
 The complete isolation and trace contracts were already in the subsystem
 destinations in the table above; no substantive contract or evidence body was
 deleted. `spec.json`, the project taxonomy and root navigation now list only
-`components/` and `feasibility/` as compatibility categories.
+`capabilities/`, `components/` and `feasibility/` as compatibility categories.
 
 Before removal, searches in the known `amadou-6e/specs` and
 `amadou-6e/laomedo` issue/PR bodies found the retired paths in specs issues
@@ -107,14 +108,10 @@ cannot be rewritten or guaranteed; the direct canonical links above are the
 replacement. This is a compatibility tradeoff accepted to avoid legacy folder
 clutter, not a change to runner isolation or trace behavior.
 
-## Concurrent proposals
+## Related proposal history
 
-[PR #154](https://github.com/amadou-6e/specs/pull/154) proposes a conversational
-`define-project-spec` skill for eliciting user scenarios and ownership choices.
-That is distinct from this trial's repeatable authoring-system migration skill;
-neither is treated as a substitute for the other. Reconcile their overlapping
-Laomedo structure guides and templates before merging both approaches.
-[PR #152](https://github.com/amadou-6e/specs/pull/152) proposes Work Graph behavior.
-This trial does not incorporate or approve that capability. Its eventual
-contract owner and reading paths need reconciliation with the chosen taxonomy.
-No changes to those PRs or their issues are included here.
+[PR #154](https://github.com/amadou-6e/specs/pull/154) was closed as superseded
+by the merged authoring system. Its distinct focused owner-interview method
+remains a potential follow-up, not a second active skill. [PR #152](https://github.com/amadou-6e/specs/pull/152)
+merged the Work Graph contract into its owned subsystem; this migration record
+preserves the `capabilities/` pointer and does not change Work Graph behavior.

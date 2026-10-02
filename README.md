@@ -6,7 +6,6 @@ across projects.
 ## Repository layout
 
 - `projects/<slug>/`: project-owned specifications and design artifacts.
-- `shared/templates/`: reusable starting points for new specification work.
 - `shared/conventions/`: the lifecycle and review rules shared by projects.
 - `shared/skills/`: reusable agent workflows for researching and writing specs.
 - `tools/`: dependency-free scaffolding and validation commands.
@@ -22,9 +21,13 @@ python tools/new_project.py example "Example" \
   --source-repository https://github.com/amadou-6e/example
 ```
 
-Then complete the generated brief and create feature specs as the work becomes
-concrete. A specification should explain the problem and observable outcome before
-it prescribes implementation.
+The command creates a minimal bootstrap, not a typed authoring system. Define the
+project's ownership and structure with the
+[authoring overview](shared/skills/spec-authoring-system/references/workflow.md),
+then use its project-owned category templates. The
+[typed-folder example](shared/conventions/typed_folder_system/example/projects/example-project/SPECS.md)
+demonstrates all three structural types. A specification should explain the
+problem and observable outcome before it prescribes implementation.
 
 ## Workflow
 
