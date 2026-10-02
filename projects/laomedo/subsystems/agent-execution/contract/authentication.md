@@ -11,13 +11,16 @@ related: []
 
 # Runner authentication and credential lifecycle
 
-Status: **proposed contract for issue #129**, 2026-10-01. This is a design
-investigation, not an implemented credential store or release authorization.
+This is a proposed contract for issue #129, not an implemented credential
+store or release authorization.
 It consumes the [skill-discovery](../../../research/runner-feasibility/sources/119.md),
 [Codex runner](../../../research/runner-feasibility/sources/120.md),
 [Claude runner](../../../research/runner-feasibility/sources/121.md),
 and [feasibility synthesis](../../../research/runner-feasibility/sources/124.md) results. No credential,
 account, or provider configuration was changed for this report.
+Time-sensitive provider claims were checked on **2026-10-02** against the linked
+OpenAI token/app-server and Anthropic authentication/federation documentation;
+eligibility and behavior of Laomedo's pinned runtime remain unverified.
 
 ## Decision and deployment gates
 
@@ -99,6 +102,17 @@ variable value, or auth file. The runner resolves it only after checking run
 owner, tenant, provider, environment, approved credential mode, and requested
 capability. A run record carries:
 
+| Field | Meaning |
+| --- | --- |
+| `credential_ref` | Opaque broker reference; absent from exported flows and agent prompts. |
+| `credential_mode` | Exact mode from the matrix, never inferred from a token prefix. |
+| `principal_ref` | Internal, pseudonymous user or service-account reference. |
+| `provider_account_ref` | Provider organization, workspace, or project reference, protected by access control. |
+| `billing_context` | ChatGPT plan, OpenAI Platform project, Claude Console workspace, or named cloud provider. |
+| `credential_generation` | Monotonic broker version used for rotation and incident review, not secret bytes or a token hash. |
+| `auth_state` | `ready`, `refreshing`, `reauthorization_required`, `expired`, `revoked`, or `unavailable`. |
+| `provenance` | How identity was established: verified OAuth identity, admin-created service account, or federated rule. |
+
 GitHub authorization is a separate grant, not an agent-provider credential.
 For a run that may push or open/update a PR, the runner must resolve a
 run-scoped `github_grant_ref` for that repository and actor. Its allowed
@@ -115,17 +129,6 @@ insufficient GitHub grant fails the affected operation without falling back to
 the host's `gh` session or a mounted Git credential helper. The exact GitHub
 grant broker and API handoff with [issue integration](../../issue-integration/contract/README.md)
 remain a first-slice design decision, not an implemented guarantee.
-
-| Field | Meaning |
-| --- | --- |
-| `credential_ref` | Opaque broker reference; absent from exported flows and agent prompts. |
-| `credential_mode` | Exact mode from the matrix, never inferred from a token prefix. |
-| `principal_ref` | Internal, pseudonymous user or service-account reference. |
-| `provider_account_ref` | Provider organization, workspace, or project reference, protected by access control. |
-| `billing_context` | ChatGPT plan, OpenAI Platform project, Claude Console workspace, or named cloud provider. |
-| `credential_generation` | Monotonic broker version used for rotation and incident review, not secret bytes or a token hash. |
-| `auth_state` | `ready`, `refreshing`, `reauthorization_required`, `expired`, `revoked`, or `unavailable`. |
-| `provenance` | How identity was established: verified OAuth identity, admin-created service account, or federated rule. |
 
 The broker keeps refresh credentials and service keys in OS-protected local
 storage for one user or a managed secret store for a remote service. It persists
@@ -150,7 +153,9 @@ token file, IPC endpoint with reusable credentials, or host secret manager.
 
 The official Codex app-server recipe places the OAuth access token in the
 app-server child's `ACCESS_TOKEN` environment and requires an app-server
-restart with a replacement token before `thread/resume`. That is a
+restart with a replacement token before `thread/resume`. This describes a
+provider-controller token swap between completed turns in a still-live run,
+not recovery of a crashed backend or interrupted turn. It is a
 **controller exposure** which Laomedo must audit: if Codex tool execution
 inherits the value or can inspect the controller process, the current
 architecture fails the secret boundary. Use a separate OS/container identity
@@ -182,11 +187,16 @@ the selected credential is missing.
    documents one-hour access tokens and replacement refresh tokens with
    30-day validity for this flow. Never replay an old refresh token after an
    ambiguous exchange outcome without the provider's recovery procedure.
-4. **Restart.** Reload broker state independently of the disposable
-   workspace. Restart Codex app-server with the new access token, then resume
-   the native thread only after the exact post-run workspace snapshot passes
-   [runner isolation](isolation.md) checks. Auth renewal does not
-   silently create a fresh agent thread.
+4. **Replace a controller token between completed turns.** If the Langflow
+   backend and run remain live, a broker may replace the Codex app-server
+   process with a new access token and use the documented `thread/resume`
+   transport operation for the saved native thread. Before another turn, verify
+   the exact post-turn workspace snapshot under [runner isolation](isolation.md).
+   This is **not** recovery from a Langflow/backend restart or a mid-turn
+   container crash. Either event ends the affected run or invocation with
+   partial/unknown evidence under [D16/D17](../../../decisions/0002-subsystem-handoffs.md#execution-recovery-and-inspection);
+   no same-run or same-turn continuation is implied. Broker state may reload
+   after backend restart, but the terminated run does not resume.
 5. **Rotate.** For static keys, provision a new generation, verify it in a
    credential-only check, switch new dispatches, drain or stop old processes,
    then disable/delete the old key. For federation, rotate the issuer or rule
@@ -198,12 +208,17 @@ the selected credential is missing.
    trace evidence without exposing credentials. Reconnect or rotate, then
    require an explicit resume decision; never switch accounts silently.
 
-Run-scoped GitHub grants expire or are revoked when their invocation ends;
-stopping or losing an invocation must not leave an orphan grant usable by a
-later run. The broker reconciles active grants against durable run identities
-after restart, revokes unmatched grants before dispatch, and records only
-non-secret grant IDs and revocation outcomes. A provider account connection may
-persist for future consented runs, but its per-run derived grant must not.
+Run-scoped GitHub grants expire or are revoked when their invocation ends.
+Backend death must not leave a push-capable orphan usable throughout an
+unbounded outage: issuer-enforced expiry or an independent lease/supervisor
+must bound grant use **while the backend is down**. A restart sweep is only a
+second line of cleanup. The maximum lifetime and enforcement owner remain the
+open [Q01/Q25 decision and E01 test](../design/decision-readiness.md); until
+chosen and verified, writable dispatch with that grant is blocked. The broker
+reconciles active grants against durable run identities after restart, revokes
+unmatched grants before dispatch, and records only non-secret grant IDs and
+revocation outcomes. A provider account connection may persist for future
+consented runs, but its per-run derived grant must not.
 
 The temporary #119-#122 ChatGPT handoff remains outside Git until its owner
 retires it. Migration means establish a new app-owned or dedicated identity,
@@ -233,8 +248,9 @@ The design is accepted only after tests on the pinned runner version:
 
 | Scenario | Required observation |
 | --- | --- |
-| Disposable workspace deletion | Broker credential and private native session survive; deleted workspace files and tool process retain no credential. |
-| Runner restart and native resume | Broker reloads identity, renews if due, and resumes the same native thread only after hash-verified post-run files. |
+| Disposable workspace deletion | Broker credential and private native session data survive independently; deleted workspace files and tool process retain no credential. Survival of session data does not authorize automatic run recovery. |
+| Between-turn Codex app-server token replacement | With the Langflow backend and run still live, replacement controller uses the new token; any next turn uses the saved thread ID only after hash-verified post-turn files. No mid-turn recovery is claimed. |
+| Backend restart | Broker state reloads, but the previous run is terminal `crashed`; no agent turn is resumed or redispatched. Partial/unknown effects remain visible. |
 | Refresh race and ambiguous response | At most one refresh writer; no two active copies of one rotating refresh chain; ambiguous failure requires safe recovery. |
 | Expiry, revoked consent/key, wrong scope/account | Typed auth error with no model turn and no silent fallback to another credential or billing mode. |
 | Static-key rotation or federation rule change | New dispatch uses the new generation; old generation is rejected after retirement. |
@@ -242,7 +258,7 @@ The design is accepted only after tests on the pinned runner version:
 | Tool and script secret access | Agent-originated shell and bundled script attempts to read env, mounted files, process data, and broker IPC are denied with observed tool events. |
 | Trace and export leak | Synthetic canary credentials do not appear in raw or projected trace, crash logs, Langflow output, AGENTVIZ import, or flow export. |
 | Multi-user cross-access | User B cannot select, read, refresh, resume, or inspect user A's credential or session; revocation affects only its owner. |
-| GitHub grant scope and orphan cleanup | A run can push, create/update a PR, and read only its approved checks/logs; it cannot edit workflow files without a separate grant. An interrupted or lost run's grant is revoked before later dispatch, with no fallback to host credentials. |
+| GitHub grant scope and orphan cleanup | A run can push, create/update a PR, and read only its approved checks/logs; it cannot edit workflow files without a separate grant. An interrupted or lost run's grant expires or is revoked within the selected bound even while the backend is down, with no fallback to host credentials. |
 
 Tests use synthetic canary secrets first, then a dedicated credential only
 under a separately approved bounded run. No model call or provider account
