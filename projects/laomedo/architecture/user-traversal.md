@@ -70,6 +70,10 @@ regeneration must preserve those refinements or explicitly reapply and inspect t
 ## Confirmed journey
 
 Select an issue, then configure direct-agent execution or a Langflow workflow.
+Preparation includes selecting an existing setup, editing prompts/skills or the
+graph, or creating a variation through the UI or with chat-agent assistance.
+Review the resulting configuration before launch. Run-local edits do not
+automatically publish to the shared library; publication is a separate action.
 The first scope is direct-agent execution, with recommended prompts/skills and
 a user-curated library. Langflow defines stage-specific agents/skills, structured
 handoffs, reviews and loop limits. UI and chat-assisted API configuration share
@@ -81,6 +85,18 @@ a single agent has one Langflow-style card. Inspect telemetry by clicking a card
 Completed runs expose an expandable action digest and retained semi-structured
 summary. Users optionally promote selected findings into project knowledge with
 source/run links; publishing them to GitHub is a separate action.
+
+The run record holds configuration, trace, status, summary and artifact references.
+Produced code, specifications, reports and datasets are separate artifacts, not
+necessarily files inside a run directory. Their appropriate destination may be
+the workspace, a GitHub branch or another persistent store. The completion summary
+lists each artifact's type, location and saved/published state. This is a draft
+information requirement, not a frozen output schema.
+
+The graph marks a later artifact-placement experiment separately from execution:
+it must investigate destination defaults, user overrides, artifact controls and
+unsaved-output handling. No particular storage system or automatic relocation is
+chosen here. Red user annotations are retained beside their reviewed areas.
 
 Delivery creates a GitHub PR. Review feedback starts a new linked run updating
 that same PR; the user selects an existing session or a new one. The agent is
