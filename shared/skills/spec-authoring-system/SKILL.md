@@ -58,6 +58,14 @@ issue edits, or credentials. Apply enforcement configuration only within the
 user's authorized scope. Distinguish authored policy, locally validated checks,
 and actually active merge requirements in the handoff.
 
+## Editorial pass for workflow diagrams
+
+When authoring a workflow, user journey, or decision tree, read
+[diagram-editorial.md](references/diagram-editorial.md). Apply its category,
+marking, field, and sizing pass before presenting the first diagram. Use the
+worked examples to guide discussion, not to impose Laomedo's categories on
+other projects. Preserve confirmed behavior and existing user edits.
+
 ## Verify and hand off
 
 Run the existing repository validator and content/link checks. Inspect template

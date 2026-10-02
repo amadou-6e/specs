@@ -8,6 +8,7 @@ This repository records target behavior and observed limitations separately.
 
 - Authors: [structure and workflow](SPECS.md), then a category template.
 - Implementers: [architecture](architecture/README.md), [shared records](architecture/shared-contracts.md), then [owned subsystems](subsystems/README.md).
+- Product reviewers: [decision records](decisions/README.md) for the discussions behind both graphs.
 - Capability reviewers: [pilot](experiments/local-skill-agent-pilot/README.md), original results and subsystem validation.
 - Investigators: [feasibility synthesis](research/runner-feasibility/README.md), sources and atomic findings.
 - UI authors: [historical AGENTVIZ workshop](deprecated/ui/README.md), which defines no new Laomedo behavior.
@@ -17,6 +18,7 @@ This repository records target behavior and observed limitations separately.
 | --- | --- | --- |
 | README.md, SPECS.md, spec.json | 1 each | Navigation, authoring policy, structural declarations |
 | architecture/, implementation/ | 1 each | Shared relationships and contributor procedures |
+| decisions/ | 1 | Numbered decision records and reconstructed discussion trails |
 | subsystems/, experiments/, research/ | 1 each | Contracts, bounded trials, exploratory knowledge |
 | deprecated/ | 1 | Existing non-authoritative historical assets |
 | capabilities/, components/, feasibility/, monitoring/, sandboxing/ | 1 each | Fixed compatibility pointers preserving published paths; no new specifications |
