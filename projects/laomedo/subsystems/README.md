@@ -7,6 +7,7 @@ contract/design pages (0..*) are conditional. Templates define the internal sche
 - [Agent execution](agent-execution/README.md): provider dispatch, grants and session/workspace binding.
 - [Skill registry](skill-registry/README.md): immutable revision, selection, drafts and promotion separation.
 - [Run traces](run-traces/README.md): raw events, identity, projection and evidence semantics.
+- [Work Graph](work-graph/README.md): repository-work snapshots, dependency evidence and readiness.
 - [Copyable example](template/README.md): illustrative snapshot-bound execution boundary.
 
 Contracts own target behavior, design explains mechanisms, validation qualifies maturity.
