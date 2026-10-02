@@ -13,6 +13,8 @@ related: []
 
 Canonical draft requirements: [Codex](codex.md), [Claude](claude.md),
 [OpenCode](opencode.md), [isolation](isolation.md).
+The tested local [runner API boundary](runner-api.md) owns bearer authentication,
+endpoint behavior, and named-container teardown for the single-user prototype.
 Shared serialized records belong to [architecture](../../../architecture/shared-contracts.md).
 The [Langflow node interface](langflow-node.md) owns the proposed reusable custom
 component, fresh/resume operations, typed outputs and client lifecycle limitations.
