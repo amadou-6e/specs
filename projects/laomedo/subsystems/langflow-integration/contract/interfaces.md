@@ -16,6 +16,14 @@ embedded Langflow runtime is an external dependency: its actual hooks and
 durability must be verified before this becomes an implementable API. A run is
 distinct from a stage invocation and from a native agent session.
 
+The [decision-readiness triage](../design/decision-readiness.md) records a
+later user clarification: fate-shared Langflow/Laomedo backend death ends that
+graph run as `crashed`; UI closure does not. The payload sketches and
+reconnection, Stop and failure language below predate this clarification and
+require reconciliation before implementation. Source-event identity, graph
+freezing and independent-branch behavior remain unverified; receipt order
+cannot by itself deduplicate replayed IF-07 events.
+
 ## Run entry and definition resolution — H1-H4
 
 - **Consumes IF-01** from [issue integration](../../issue-integration/contract/interfaces.md):

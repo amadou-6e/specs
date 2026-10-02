@@ -50,6 +50,12 @@ cross-cutting interface used by agent execution and chat, not a PR-delivery or
 workspace-management subsystem. A pair absent from this table has no **known
 direct** handoff; it may still communicate through a listed boundary.
 
+## Decision readiness
+
+| Subsystem | Triage | Pending evidence |
+| --- | --- | --- |
+| Langflow integration | [28 questions: A6, B7, R3, E5, D7](langflow-integration/design/decision-readiness.md) | E01-E05 proposed, not executed; one-node pilot does not establish graph-crash or multi-stage behavior. |
+
 ## Payload sketch conventions
 
 Each owning `contract/interfaces.md` includes or links an approximate,

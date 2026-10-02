@@ -13,6 +13,12 @@ related: []
 
 No Langflow API check or product test was run for this new boundary.
 
+The [decision-readiness triage](design/decision-readiness.md#bounded-no-model-experiments-to-design-and-run-later)
+defines E01-E05. All remain proposed and **not executed**. The prior
+[one-node pilot](../../experiments/local-skill-agent-pilot/iterations/2026-10-01/results.md)
+does not prove backend-crash, graph-freeze, long-call timeout, Stop-race or
+independent-branch behavior.
+
 | Interface | Check before acceptance | Evidence status |
 | --- | --- | --- |
 | Entry and resolution | `latest` and pinned revisions resolve once; a changed library revision does not alter an active run | Not executed |
