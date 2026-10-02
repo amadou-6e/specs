@@ -19,6 +19,8 @@ when actual replication occurs.
   attestation remains absent.
 - [Durable pre-dispatch](durable-pre-dispatch/README.md): EXP-04 synthetic
   crash-window evidence for run identity, frozen refs and no-replay sweep.
+- [UI versus backend death](ui-versus-backend-death/README.md): EXP-06
+  pinned Langflow client-close and hard-kill observations with a startup sweep.
 
 Copy template/ directly, rename and replace every example fact/lifecycle. Freeze a real
 prospective protocol before dispatch. This migration authorized/spent no new model turns.
