@@ -51,11 +51,6 @@ The registry does not own prompt revisions, saved Langflow graphs, workspace
 selection or a GitHub publishing policy. Those boundaries need their own
 contracts and must not be introduced by renaming the existing registry.
 
-The GitHub-backed identity/retention policy, pending-draft restart handling,
-promotion authorization and linked-relaunch selector are contested or
-unverified; see [decision readiness](../design/decision-readiness.md). The
-whole-skill pilot does not establish those behaviors.
-
 ## Approximate payloads
 
 See the [shared notation](../../README.md#payload-sketch-conventions).

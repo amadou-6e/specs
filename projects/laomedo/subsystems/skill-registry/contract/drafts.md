@@ -67,11 +67,6 @@ If the edit times out, crashes, or violates policy, preserve the partial trace
 and quarantined draft evidence, mark it ineligible for promotion, and leave the
 base untouched. A later retry creates a new draft and run ID.
 
-Whether the registry or agent execution reconciles a draft still marked
-`pending` after a fate-shared backend crash is unresolved. See
-[decision readiness](../design/decision-readiness.md); this lifecycle text is
-a target, not evidence of an implemented startup sweep.
-
 ## Acceptance
 
 - The original skill tree hash remains unchanged after success and failure.
