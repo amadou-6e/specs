@@ -12,6 +12,8 @@ related: []
 # Agent execution contract index
 
 Canonical draft requirements: [Codex](codex.md), [Claude](claude.md), [isolation](isolation.md).
+The tested local [runner API boundary](runner-api.md) owns bearer authentication,
+endpoint behavior, and named-container teardown for the single-user prototype.
 Shared serialized records belong to [architecture](../../../architecture/shared-contracts.md).
 [Validation](../validation.md) qualifies maturity; pilot observations do not silently
 replace proposed read-only, identity or provider parity guarantees.
