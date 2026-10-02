@@ -20,3 +20,7 @@ No product test was run for this new boundary. Proposed acceptance checks:
 
 The [handoff graph](../../architecture/subsystem-handoffs.md) is design evidence,
 not a runtime result. Pin implementation and API versions when these checks run.
+The [decision-readiness triage](design/decision-readiness.md#e-experiments)
+lists pending crash-at-publication and event-delivery experiments. None has
+run; this page does not assert duplicate prevention, GitHub write recovery or
+event-loop safety.

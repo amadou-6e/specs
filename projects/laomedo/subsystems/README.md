@@ -17,6 +17,15 @@ Contracts own target behavior, design explains mechanisms, validation qualifies 
 Shared record definitions stay in architecture. Copy template/ directly, rename, replace
 every example fact and metadata/lifecycle, then add the entry to this index.
 
+## Decision readiness
+
+These are draft triage maps, not accepted subsystem contracts. Counts describe
+classified questions in the linked page, not completed implementation.
+
+| Subsystem | Questions | Open choices and evidence |
+| --- | --- | --- |
+| [Issue integration](issue-integration/design/decision-readiness.md) | 23: A 9, B 10, R 1, E 2, D 1 | Ten B choices; R01–R03 source checks and E01–E03 experiments are pending; publication retry after an uncertain write remains undecided. |
+
 ## Interface map
 
 This is a draft map of **direct subsystem contacts** derived from the

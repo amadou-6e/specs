@@ -30,6 +30,11 @@ that its text was frozen at selection time.
 - **Open:** event deduplication, GitHub authorization binding and whether the
   issue reference is revalidated before dispatch.
 
+The required `issue` in the sketch below describes **selected-issue IF-01**,
+not every run trigger: direct-prompt launch bypasses IF-01. Timer, PR-opened and
+failed-workflow subjects, issue freshness and GitHub read identity remain
+contested or unverified; see [decision readiness](../design/decision-readiness.md).
+
 ## IF-12 — reviewed follow-up issue publication
 
 - **Provider / consumer:** [Results and artifacts](../../results-artifacts/contract/interfaces.md)
@@ -43,6 +48,12 @@ that its text was frozen at selection time.
   reviewed draft and reports the failure without claiming publication.
 - **Open:** duplicate-write detection, repository permissions and exact draft
   retention policy.
+
+`published | failed` below does not represent an unacknowledged in-flight
+GitHub write after a crash. Retry/reconciliation, publication identity and
+draft retention detail remain contested or unverified; see
+[decision readiness](../design/decision-readiness.md). Do not treat a local
+failure to receive a response as proof that no issue was created.
 
 GitHub PR creation remains an [agent-execution](../../agent-execution/README.md)
 activity. This subsystem may surface issue and PR references for selection but

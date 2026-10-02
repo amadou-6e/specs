@@ -18,4 +18,7 @@ an issue. The publication path consumes only a reviewed follow-up draft.
 
 No transport, webhook deduplication strategy, credential store or retry policy
 is selected. Observable behavior belongs to [interfaces](../contract/interfaces.md).
+The [decision-readiness triage](decision-readiness.md) separates first-slice
+contract candidates from choices, research, experiments and deferred event work;
+it is not an accepted mechanism.
 Design container: README.md (1), focused mechanism pages (0..*).
