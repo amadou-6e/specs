@@ -15,9 +15,9 @@ contract/design pages (0..*) are conditional. Templates define the internal sche
 
 ## Decision readiness
 
-| Subsystem | Question classes | Pending experiments and source checks |
-| --- | --- | --- |
-| [Prompt and skill library](prompt-skill-library/design/decision-readiness.md) | 18: A6, B7, R0, E3, D2 | E01 Langflow-owned pre-dispatch freeze; E02 conditional GitHub publication. Neither run. R01–R03 source checks pending for chosen backend/publication route. |
+| Subsystem | A/B/R/E/D | First-slice blockers | Pending experiments |
+| --- | --- | --- | --- |
+| [Prompt and skill library](prompt-skill-library/design/decision-readiness.md) | 6/7/0/3/2 | B01 revision identity and B03 first-slice backend; #174 owns durable freeze and linked-relaunch selector | E01 received by #174 E06; E02 conditional GitHub publication. Neither run; R01–R03 source checks depend on backend choice. |
 
 Contracts own target behavior, design explains mechanisms, validation qualifies maturity.
 Shared record definitions stay in architecture. Copy template/ directly, rename, replace
