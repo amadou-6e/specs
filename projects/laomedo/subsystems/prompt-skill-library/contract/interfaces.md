@@ -13,10 +13,6 @@ related: []
 
 The catalog supplies versioned selections to run setup; it does not own
 Langflow graph sequencing or agent dispatch. See the [interface map](../../README.md).
-The [decision-readiness triage](../design/decision-readiness.md) identifies
-unsettled prompt identity, backend, relaunch and publication choices, plus
-unverified pre-dispatch persistence and inline-to-IF-05 mapping. It does not
-change the target sketch below or establish a tested Langflow adapter.
 
 ## IF-02 — resolve prompt and skill selections
 

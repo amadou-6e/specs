@@ -21,9 +21,3 @@ registry evidence does not validate prompt storage or GitHub publication.
 | Publication | Verify user/agent GitHub PR default and explicit direct-edit mode against configured permissions | Not executed |
 
 Record actual backend and registry revisions with later evidence.
-
-The [decision-readiness triage](design/decision-readiness.md) proposes two
-unexecuted fault experiments: E01 checks Langflow-owned persistence of frozen
-refs before dispatch, and conditional E02 checks ambiguous GitHub publication
-after backend death. Neither is satisfied by the existing pilot. No result,
-pass, or model-turn budget is claimed here.

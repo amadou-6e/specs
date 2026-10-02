@@ -20,7 +20,3 @@ The native/GitHub backend boundary, prompt version store and publication
 conflict policy are not chosen. Observable behavior belongs to
 [interfaces](../contract/interfaces.md). Design container: README.md (1),
 focused mechanism pages (0..*).
-
-[Decision readiness](decision-readiness.md) triages the first-slice questions,
-cross-owner dependencies, and proposed source checks/experiments. Its options
-are not accepted defaults.
