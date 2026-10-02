@@ -11,20 +11,12 @@ contract/design pages (0..*) are conditional. Templates define the internal sche
 - [Skill registry](skill-registry/README.md): immutable skill revisions, drafts and promotion separation.
 - [Run traces](run-traces/README.md): raw events, identity, projection and evidence semantics.
 - [Results and artifacts](results-artifacts/README.md): run summaries, artifact references and follow-up context.
+- [Work Graph](work-graph/README.md): repository-work snapshots, dependency evidence and readiness.
 - [Copyable example](template/README.md): illustrative snapshot-bound execution boundary.
 
 Contracts own target behavior, design explains mechanisms, validation qualifies maturity.
 Shared record definitions stay in architecture. Copy template/ directly, rename, replace
 every example fact and metadata/lifecycle, then add the entry to this index.
-
-## Decision readiness
-
-These are draft triage maps, not accepted subsystem contracts. Counts describe
-classified questions in the linked page, not completed implementation.
-
-| Subsystem | A/B/R/E/D | First-slice blockers | Pending experiments |
-| --- | --- | --- | --- |
-| [Issue integration](issue-integration/design/decision-readiness.md) | 9/10/1/2/1 | B01/B02 for selected-issue picker; B04/B05 for reviewed publication; direct prompt bypasses issue reads | R01–R03 source checks and E01–E03 experiments pending; uncertain publication retry remains undecided. |
 
 ## Interface map
 
@@ -37,10 +29,10 @@ contract owns its behavior. IDs identify design discussions, not wire methods.
 
 | Interface | Provider → consumer | What crosses | Owning contract |
 | --- | --- | --- | --- |
-| IF-01 Issue context | Issue integration → Langflow integration | Selected issue/repository reference, optional event and existing PR reference | [Issue integration](issue-integration/contract/interfaces.md) |
+| IF-01 Selected-issue context | Issue integration → Langflow integration | Actual selected issue/repository reference and user-supplied target PR, when present; direct prompts and non-issue events bypass this exchange | [Issue integration](issue-integration/contract/interfaces.md) |
 | IF-02 Library resolution | Prompt and skill library → Langflow integration | Prompt and skill selection, exact resolved revisions | [Prompt and skill library](prompt-skill-library/contract/interfaces.md) |
 | IF-03 Skill revision lookup | Skill registry → Prompt and skill library | Immutable skill identity, exact revision and hashes | [Skill registry](skill-registry/contract/interfaces.md) |
-| IF-04 Skill materialization | Skill registry → Agent execution | Validated skill snapshot and dependency closure for the chosen workspace | [Skill registry](skill-registry/contract/interfaces.md) |
+| IF-04 Skill materialization | Agent execution requests from Skill registry; registry responds to Agent execution | Exact skill ref request, then validated snapshot and dependency closure for the chosen workspace | [Skill registry](skill-registry/contract/interfaces.md) |
 | IF-05 Agent invocation | Langflow integration → Agent execution | Stage invocation, frozen configuration, input/file refs, session and workspace choices | [Agent execution](agent-execution/contract/interfaces.md) |
 | IF-06 Invocation outcome | Agent execution → Langflow integration | Status, output refs and failure classification for one invocation | [Agent execution](agent-execution/contract/interfaces.md) |
 | IF-07 Workflow events | Langflow integration → Run traces | Workflow/run/stage/invocation lifecycle and correlation | [Langflow integration](langflow-integration/contract/interfaces.md) |

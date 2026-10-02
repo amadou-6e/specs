@@ -6,7 +6,7 @@ addressable draft payload shapes, not executable schemas or settled wire formats
 
 | Exchange | Direction | Schema |
 | --- | --- | --- |
-| IF-04 skill materialization | Agent execution requests from skill registry | [if-04-skill-materialization.md](if-04-skill-materialization.md) |
+| IF-04 skill materialization | Agent execution requests from skill registry; registry responds to agent execution | [if-04-skill-materialization.md](if-04-skill-materialization.md) |
 | IF-05 stage invocation | Langflow integration sends to agent execution | [if-05-stage-invocation.md](if-05-stage-invocation.md) |
 | IF-06 invocation outcome | Agent execution returns to Langflow integration | [if-06-invocation-outcome.md](if-06-invocation-outcome.md) |
 | IF-08 agent event | Agent execution sends to run traces | [if-08-agent-event.md](if-08-agent-event.md) |

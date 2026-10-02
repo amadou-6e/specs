@@ -133,7 +133,7 @@ tests require a newly authorized bounded budget.
 | Restart/resume | Same native thread read the marker after host-runner restart and a new app-server; snapshot hash unchanged |
 | Fresh-run independence | Second Langflow run used a different thread; command output and host inspection confirmed no prior marker |
 | Missing snapshot | HTTP 400, `post_run_snapshot_mismatch`, ledger unchanged; held snapshot restored |
-| Cancellation | Cancel followed a native command start; status `cancelled`, 39 events retained; Langflow HTTP 500 named the run and cancellation |
+| Cancellation | Cancel followed a native command start; status `cancelled`, 39 events retained; Langflow HTTP 500 named the run and cancellation. Immediate container termination was not verified for this historical turn. |
 | Cap enforcement | Exhausted request rejected before native thread creation; ledger remained 4/4 |
 
 The [sanitized acceptance report](https://github.com/amadou-6e/laomedo/blob/8bfd0af/examples/skill-agent-pilot/e2e-results.json)
@@ -141,6 +141,13 @@ was checked against private Langflow responses, native events, records, and
 actual snapshots. The
 [reproduction guide](https://github.com/amadou-6e/laomedo/blob/8bfd0af/examples/skill-agent-pilot/README.md)
 records setup and the four test steps. Raw transcripts are not committed.
+
+The current [runner API boundary](../../../../subsystems/agent-execution/contract/runner-api.md)
+adds bearer authentication and named-container teardown after this historical
+model-backed result. A later no-model Docker probe verified teardown; the four
+pilot turns were not replayed. The implementation review found a possible
+pre-dispatch cancellation charge, so the current prototype does not promise
+atomic cancellation before `turn/start`.
 
 ## Remaining target-contract work
 

@@ -9,6 +9,9 @@
     "architecture": {
       "type": "fixed"
     },
+    "decisions": {
+      "type": "document-collection"
+    },
     "subsystems": {
       "type": "folder-collection",
       "entry_files": [
@@ -38,6 +41,12 @@
     },
     "deprecated": {
       "type": "fixed"
+    },
+    "capabilities": {
+      "type": "fixed",
+      "statuses": [
+        "superseded"
+      ]
     },
     "components": {
       "type": "fixed",
