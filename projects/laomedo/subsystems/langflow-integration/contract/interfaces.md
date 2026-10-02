@@ -79,3 +79,49 @@ and trace linkage for reconnection after the UI closes. The authoritative
 persisted workflow state and its recovery protocol are unresolved. The
 [existing shared contract](../../../architecture/shared-contracts.md) still
 uses broader runner-ownership wording; this draft does not silently replace it.
+
+## Approximate payloads
+
+See the [shared notation](../../README.md#payload-sketch-conventions).
+IF-05/IF-06 reuse the agent-execution sketches rather than defining a second
+command format here. IF-01/IF-02 are defined by their providers.
+
+```text
+IF-07 WorkflowEvent {
+  run_id: string, graph_revision_ref: Ref, stage_id?: string,
+  invocation_id?: string, source_event_id?: string,
+  transition: "run_started" | "stage_ready" | "invocation_started"
+            | "invocation_completed" | "invocation_failed"
+            | "run_completed" | "run_failed" | "run_interrupted",
+  observed_at?: timestamp,
+  detail_ref?: Ref
+}
+
+IF-09 RunContext {
+  run_id: string, graph: { definition_id: string, revision_ref: Ref },
+  trigger: { kind: "direct" | "timer" | "github_event", source_ref?: Ref },
+  resolved_config_ref: Ref, resolved_config_hash: string,
+  started_at: timestamp,
+  terminal?: { status: "completed" | "failed" | "interrupted"
+                    | "incomplete", ended_at?: timestamp }
+}
+
+IF-13 FollowUpRunRequest {
+  prior_run_id: string, target_pr?: { repository: Ref, number: integer, url: string },
+  sessions: [{ stage_id: string, mode: "new" | "existing",
+               native_session_ref?: Ref }],
+  requested_by: Ref, configuration_ref: Ref,
+  reviewer_comment_hint: boolean
+}
+IF-13 FollowUpRunCreated {
+  prior_run_id: string, new_run_id: string, target_pr?: Ref
+}
+```
+
+IF-09 is emitted at launch with `terminal` absent and updated with a terminal
+or explicitly incomplete state; it is not reconstructed from IF-07 alone.
+IF-13 makes the choice per agent stage: `native_session_ref` is required for
+`existing` and absent for `new`.
+The hint tells the agent to inspect PR comments; it does not copy potentially
+stale comments into the run. Langflow transport and durable state authority
+remain unverified. Run traces assigns IF-07 receipt time and sequence on ingest.

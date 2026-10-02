@@ -49,3 +49,40 @@ Selected findings may be stored separately as durable project knowledge with
 source/run links. This is optional and does not imply GitHub publication.
 Artifact placement, ownership, retention and unsaved-output behavior await the
 [later experiment](../../../architecture/user-traversal.md#boundaries-and-open-choices).
+
+## Approximate payloads
+
+IF-09 and IF-11 use the producer sketches in
+[Langflow integration](../../langflow-integration/contract/interfaces.md#approximate-payloads)
+and [run traces](../../run-traces/contract/interfaces.md#approximate-payload).
+The remaining handoffs are approximately (see
+[notation](../../README.md#payload-sketch-conventions)):
+
+```text
+IF-10 OutputManifest {
+  run_id: string, stage_id: string, invocation_id: string,
+  outputs: [{ artifact_id: string, kind: string, location_ref: Ref,
+              content_hash?: string,
+              state: "local" | "saved" | "published" | "unknown" }],
+  target_pr?: { repository: Ref, number: integer, url: string,
+                state: "created" | "updated" },
+  manifest_state: "complete" | "partial"
+}
+
+RunResult {
+  run_id: string, context: RunContext, trace?: TraceLink,
+  output_manifests: OutputManifest[],
+  summary: { status: "completed" | "failed" | "interrupted" | "incomplete",
+             completed_work: string[], findings: string[],
+             failure?: string, remaining_work: string[] },
+  target_pr?: Ref, missing_inputs: string[]
+}
+
+IF-12 ReviewedIssueProposal = Issue integration's IF-12 payload
+IF-13 FollowUpRunRequest = Langflow integration's IF-13 payload
+```
+
+`RunResult` is a user-facing assembled projection, not an extra direct
+subsystem edge. `missing_inputs` makes partial assembly visible. IF-12 and
+IF-13 are defined once at their receiving boundaries to avoid diverging
+copies; this subsystem produces those same shapes after user review/selection.

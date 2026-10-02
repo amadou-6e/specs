@@ -50,3 +50,42 @@ read or used it; observed use belongs to [run traces](../../run-traces/contract/
 The registry does not own prompt revisions, saved Langflow graphs, workspace
 selection or a GitHub publishing policy. Those boundaries need their own
 contracts and must not be introduced by renaming the existing registry.
+
+## Approximate payloads
+
+See the [shared notation](../../README.md#payload-sketch-conventions).
+
+```text
+IF-03 SkillRevisionLookup {
+  skill_id: string, selector: "latest" | revision_id
+}
+IF-03 SkillRevisionFound {
+  requested: SkillRevisionLookup, snapshot: SkillSnapshotRef,
+  provenance: { backend: "native" | "github", source_ref: Ref }
+}
+
+IF-04 SkillMaterializationRequest {
+  invocation_id: string, snapshot: SkillSnapshotRef, target_workspace_ref: Ref
+}
+IF-04 SkillMaterializationResult {
+  invocation_id: string, snapshot: SkillSnapshotRef,
+  files: [{ relative_path: string, content_ref: Ref, hash: string }],
+  dependency_snapshots: SkillSnapshotRef[],
+  effective_workspace_ref: EffectiveWorkspaceRef
+}
+
+IF-14 SkillDraftProposal {
+  skill_id: string, base: SkillSnapshotRef, edit_policy_ref: EditPolicyRef,
+  change: { patch_ref: Ref } | { request_ref: Ref },
+  actor_ref: Ref, edit_run_id?: string
+}
+IF-14 SkillDraftReceipt {
+  draft_id: string, base: SkillSnapshotRef, proposed_ref?: Ref,
+  validation: { status: "pending" | "passed" | "failed", report_ref?: Ref },
+  promotion_status: "not_promoted"
+}
+```
+
+IF-03 missing/invalid revisions yield a coded error, not an empty snapshot.
+IF-04 returns only after path/dependency/hash validation. IF-14's receipt is
+neither a published nor active revision.

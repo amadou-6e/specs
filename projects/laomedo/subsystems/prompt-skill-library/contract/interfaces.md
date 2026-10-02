@@ -45,3 +45,26 @@ The exact authorization and merge/sync mechanisms remain open.
 The library's prompt revision store is not silently folded into the existing
 skill registry. Its ownership and storage mechanism require a separate design
 decision before an implementation contract can be frozen.
+
+## Approximate payload
+
+See the [shared notation](../../README.md#payload-sketch-conventions).
+
+```text
+IF-02 LibrarySelectionRequest {
+  run_id: string, stage_id: string,
+  prompt: { kind: "library", id: string, selector: "latest" | revision_id }
+        | { kind: "inline", input_ref: InputSnapshotRef },
+  skills: [{ id: string, selector: "latest" | revision_id }]
+}
+IF-02 ResolvedLibrarySelection {
+  run_id: string, stage_id: string,
+  prompt: { revision_id?: string, content_ref: Ref, content_hash: string,
+            selected_by: "latest" | "pinned" | "inline" },
+  skills: [{ selected_by: "latest" | "pinned", snapshot: SkillSnapshotRef }]
+}
+```
+
+`latest` is resolved before execution. Inline text is captured as an input
+snapshot, not silently promoted into a library revision. The exact prompt
+serialization and backend synchronization are still open.

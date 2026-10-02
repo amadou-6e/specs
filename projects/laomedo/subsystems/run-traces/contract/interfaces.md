@@ -53,3 +53,27 @@ up to three crash-recovery attempts within the same invocation and session.
 Those may be distinct operations, but the identity and event sequence rules
 must be reconciled before implementation. No raw telemetry content/retention
 policy was settled by the interface discussion.
+
+## Approximate payload
+
+IF-07 and IF-08 use the producer sketches in
+[Langflow integration](../../langflow-integration/contract/interfaces.md#approximate-payloads)
+and [agent execution](../../agent-execution/contract/interfaces.md#approximate-payloads).
+The trace-to-results handoff is approximately (see
+[notation](../../README.md#payload-sketch-conventions)):
+
+```text
+IF-11 TraceLink {
+  run_id: string, trace_ref: Ref, digest_ref?: Ref,
+  event_count: integer, last_received_sequence?: integer,
+  stream_state: "complete" | "partial" | "unknown",
+  invocations: [{ stage_id: string, invocation_id: string,
+                  native_session_ref?: Ref, event_count: integer,
+                  stream_state: "complete" | "partial" | "unknown" }],
+  usage?: { value: number, unit: string, source: string }
+}
+```
+
+`usage` is absent when unknown, not zero. `complete` describes evidence
+receipt, not whether the agent achieved the user's goal. Content-retention
+and native-to-normalized event projection remain open.

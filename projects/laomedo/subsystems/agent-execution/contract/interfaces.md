@@ -88,3 +88,52 @@ dedicated private profiles. The newer [decision record](../../../architecture/su
 allows a mounted local workspace and potentially shared external Codex home.
 Those policies conflict as written; this interface draft does not silently
 relax the older contract. A reviewed permission/isolation decision is needed.
+
+## Approximate payloads
+
+See the [shared notation](../../README.md#payload-sketch-conventions).
+`AgentRunSpec` and workspace refs follow the
+[shared records](../../../architecture/shared-contracts.md); this sketch adds
+workflow-stage correlation rather than replacing those records.
+
+```text
+IF-05 StageInvocation {
+  run_id: string, graph_revision_ref: Ref, stage_id: string,
+  invocation_id: string, attempt_number: integer,
+  agent: { provider: string, model: { requested: string, effective?: string },
+           effort: { requested?: string, effective?: string } },
+  prompt: { content_ref: Ref, hash: string }, skills: SkillSnapshotRef[],
+  input_ref: InputSnapshotRef, upstream_artifact_refs: Ref[],
+  session: { mode: "fresh" | "resume", native_session_ref?: Ref,
+             expected_post_run_workspace_ref?: Ref },
+  workspace: { mode: "local_mount" | "isolated_checkout", source_ref: Ref,
+               optional_shared_home_ref?: Ref },
+  permission_grant_ref: Ref, limits: { timeout_seconds: integer,
+                                      turn_limit?: integer, spend_limit?: number }
+}
+
+IF-06 InvocationOutcome {
+  run_id: string, stage_id: string, invocation_id: string,
+  status: "completed" | "failed" | "interrupted" | "partial",
+  native_session_ref?: Ref, output_ref?: Ref, artifact_refs: Ref[],
+  post_run_workspace_ref?: Ref,
+  error?: { code: string, class: "input" | "permission" | "session_conflict"
+                  | "provider" | "container" | "interrupted", message: string,
+            recoverable: boolean }
+}
+
+IF-08 AgentEvent {
+  run_id: string, stage_id: string, invocation_id: string,
+  recovery_attempt: integer, native_session_ref?: Ref,
+  source_event_id?: string, source_sequence?: integer,
+  observed_at?: timestamp,
+  kind: string, payload_ref?: Ref, normalized_summary?: string
+}
+```
+
+`attempt_number` distinguishes stage loop invocations; `recovery_attempt`
+distinguishes crash recovery within one invocation. Neither is a new run ID.
+Exact provider event taxonomy, permission-grant format and whether an effective
+model is known before dispatch remain open.
+Run traces assigns receipt time and sequence on ingest; the agent producer
+does not claim those values or whole-stream completeness.

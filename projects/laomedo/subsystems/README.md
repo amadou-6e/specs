@@ -49,3 +49,18 @@ integration publishes reviewed issues. The shared approval mechanism is a
 cross-cutting interface used by agent execution and chat, not a PR-delivery or
 workspace-management subsystem. A pair absent from this table has no **known
 direct** handoff; it may still communicate through a listed boundary.
+
+## Payload sketch conventions
+
+Each owning `contract/interfaces.md` includes an approximate, language-neutral
+payload shape for its interfaces. These sketches describe data crossing a
+boundary, not HTTP endpoints, Langflow component signatures, database tables or
+approved serialization. A field without `?` is required for that variant;
+`?` means optional. An absent required identity is an error, not `null` or an
+invented `unknown` value. `Ref` means an opaque identifier or structured
+reference, resolved and access-checked by the receiving boundary. IDs such as
+`run_id`, `stage_id` and `invocation_id` are opaque strings; timestamp encoding
+remains to be decided. Hashes identify exact content when available. The
+[shared records](../architecture/shared-contracts.md) remain canonical for
+`SkillSnapshotRef`, `InputSnapshotRef` and workspace snapshots. Transport,
+schema versioning and external Langflow API binding remain open.
