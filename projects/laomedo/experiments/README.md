@@ -17,6 +17,8 @@ when actual replication occurs.
 - [Langflow graph freeze](langflow-graph-freeze/README.md): EXP-03 synthetic
   saved-flow edit during an active run; behavior stayed old, native revision
   attestation remains absent.
+- [Durable pre-dispatch](durable-pre-dispatch/README.md): EXP-04 synthetic
+  crash-window evidence for run identity, frozen refs and no-replay sweep.
 
 Copy template/ directly, rename and replace every example fact/lifecycle. Freeze a real
 prospective protocol before dispatch. This migration authorized/spent no new model turns.
