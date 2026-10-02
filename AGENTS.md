@@ -39,6 +39,12 @@ nearby guidance for its concrete structure and canonical owners.
 
 ## Working rules
 
+- Do specification work in this repository's visible top-level local checkout
+  (`specs/` when embedded in a project workspace), never in an auxiliary specs
+  worktree. Keep draft files at their canonical paths so the user can inspect
+  them in the workspace. Before changing branches, inspect the checkout and
+  preserve existing edits; if it cannot be switched safely, stop and ask the
+  user rather than moving or overwriting their work.
 - Read the project manifest and nearby specifications before editing.
 - Preserve project-specific organization unless a migration is explicitly requested.
 - Do not overwrite user-authored Draw.io changes. Inspect the current Git diff before
