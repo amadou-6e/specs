@@ -21,7 +21,7 @@ Tags: **[C]** confirmed decision (with D-ID), **[O]** bounded observation, **[I]
 
 | Question | Class | Tags | Blocking dependency | Next action |
 | --- | --- | --- | --- | --- |
-| A2. IF-04 effective-workspace hash ordering | A | [O] pilot; [I] contract rule | B7 determines location, not hash ordering | Regardless of chosen path, calculate after complete hash-validated materialization and before agent dispatch; keep source and post-run hashes distinct. |
+| A2. IF-04 effective-workspace hash ordering | A | [O] pilot; [I] contract rule | B7 determines the location and therefore the effective-workspace **hash definition** | Ordering alone is draftable now: compute after complete hash-validated materialization and before agent dispatch. Define whether mounted external skill bytes or their immutable ref enter the effective hash only after B7; keep source/post-run hashes distinct. |
 | A3. IF-04 direction and fail-before-dispatch code categories | A | [I] from [interface map](../../README.md) and [IF-04 schema](../../agent-execution/contract/schemas/if-04-skill-materialization.md) | None; transport encoding remains open | Registry provides bytes/result; agent execution requests. Propose stable categories for unknown/invalid revision, missing dependency, hash mismatch, and unsafe path; never return an empty successful bundle. |
 | A4. IF-03 `latest`/pinned lookup identity | A | [C] D09; [I] from [shared ref](../../../architecture/shared-contracts.md) | GitHub-backed identity is R1, not needed for native first slice | Resolve once at launch and return exact revision plus tree/file hashes; execution never follows a moving alias. |
 | A5. IF-03 unknown/invalid revision | A | [I] [IF-03 contract](../contract/interfaces.md) | None | Return a coded error without fallback to another revision. |
@@ -54,18 +54,14 @@ These options require user selection; none is silently adopted. Where a peer own
 | B2 | Registry startup reconciles pending drafts | Registry can mark orphan drafts failed/ineligible from its own journal; avoids eternal pending records. | Requires durable operation markers and restart scan. |
 | B2 | Agent execution emits a terminal edit outcome | Uses execution ownership; a fate-shared backend death may prevent this event and leave stale pending drafts. | Less registry logic but needs a restart fallback. |
 | B2 | Leave pending, mark ineligible on read | Avoids a sweep but users can see indefinite pending state; must distinguish ineligible from a live edit. | Cheapest write path, weaker inspection clarity. |
-| B3 | Shared generic revision registry for prompts and skills | One identity/storage system, but prompt lifecycle can contaminate skill-only validation and dependencies. | Higher schema/policy migration cost. |
-| B3 | Shared byte store with separate prompt/skill indexes | Deduplicates immutable bytes while keeping ownership distinct; cross-index garbage collection needs definition. | Moderate shared-storage work. |
-| B3 | Separate stores | Clean ownership and independent rollout; duplicates storage and synchronization tools. | Lower coupling, higher operations cost. |
+| B3 | Use the canonical [#177 B06 prompt-store options](https://github.com/amadou-6e/specs/issues/177); registry supplies skill bytes/index only until that choice is made | Shared machinery may reduce duplication but can contaminate skill-only validation; separate storage retains clear authority at higher operations cost. | No independent registry vote; schema migration follows #177. |
 | B4 | Human review before every canonical promotion | Stops unreviewed draft from becoming active; adds queue/latency. | Reviewer time. |
 | B4 | Scoped auto-promotion under explicit grant | Faster iteration; a mistaken policy or check can publish bad content. | Grant/audit controls and rollback design. |
 | B4 | GitHub merge defines canonical revision | Leverages PR review; native backend needs reconciliation and offline handling. | GitHub dependency and sync logic. |
 | B5 | Allow agent draft creation, always gate promotion | Preserves useful agent edits while keeping active skill safe; unchecked drafts may accumulate. | Draft quota/cleanup and review queue. |
 | B5 | Gate draft creation and promotion | Limits storage and untrusted edits; interrupts unattended curation. | Approval latency. |
 | B5 | Grant-scoped direct canonical edit | Fastest, but risks bypassing the draft/promotion boundary unless rewritten as two explicit operations. | Highest policy and audit burden. |
-| B6 | Reuse old exact skill refs on linked relaunch | Reproducible inputs; may repeat a known-bad revision. | Smallest new resolution logic. |
-| B6 | Resolve `latest` anew | Picks up fixes but changes inputs between linked runs; provenance must show both. | New resolution and comparison UI. |
-| B6 | Ask user per relaunch | Explicit choice and provenance; blocks unattended relaunch. | UX and interaction cost. |
+| B6 | Use the canonical [#174 B20 relaunch-selector options](https://github.com/amadou-6e/specs/issues/174); registry resolves the exact ref requested | Prior bytes improve reproducibility but may be obsolete; moved `latest` changes inputs; explicit choice adds interaction cost. | No independent registry vote; every new run records the chosen exact bytes. |
 | B7 | Ignored path inside the checkout, with protected/verified skill bytes | Native discovery may work, but read-only files can block git cleanup and ignored files still need safe removal. | Git-safety tests and mount/write isolation. |
 | B7 | Private provider-discoverable mount outside the checkout | Avoids accidental `git add -A` and git-clean conflicts, but provider discovery and path binding must be verified. | Per-provider adapter and mount setup. |
 
