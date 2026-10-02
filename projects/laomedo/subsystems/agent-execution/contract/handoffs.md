@@ -3,7 +3,7 @@ title: Agent handoffs and bounded controllers
 status: draft
 kind: specification
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-01
+last_reviewed: 2026-10-02
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -52,9 +52,14 @@ artifact store. Sequential shared workspaces remain unsupported and are rejected
 ## Execution limits and stopping
 
 The controller requires positive maximum iterations, aggregate submitted-turn
-budget and deadline of at most 24 hours. One budget reservation occurs before each
-adapter call, including uncertain sends. Every dispatch uses remaining deadline
-and shared cancellation signal. Stop on explicit success predicate, chain end,
+budget and deadline of at most 24 hours. One conservative reservation occurs
+before each adapter call, including uncertain sends. A definite HTTP rejection
+without a run ID from an explicit validation or authorization 4xx releases that
+reservation; timeout, 5xx or transport failure retains
+it because submission may have occurred. The deadline bounds dispatch attempts,
+not remote execution: a timed-out fresh POST may leave a model turn running.
+Every dispatch uses remaining deadline and shared cancellation signal. Stop on
+explicit success predicate, chain end,
 iteration/turn/deadline limit, cancellation, agent failure, repeated output, empty
 output or predicate exception. Retain transitions and partial results. No retries.
 
@@ -67,10 +72,14 @@ answer, iteration/turn/deadline limits and private execution-state directory. Bo
 outputs share one dispatch per build; invalid targets fail before dispatch. Its
 runtime package must be available to Langflow. A separate-volume deployment
 configuration is a draft, not an automatic change to shared services.
+The deployment draft disables Langflow auto-login and mounts a read-only runner
+API capability file. Clients send that capability as a bearer header. It is
+separate from the model login and never enters a flow or execution record.
 
 Duplicate dispatch is rejected within one controller instance. Private records
 persist each conservative turn reservation before send, selected input/provenance,
 native run outcomes and partial cancellation evidence via atomic file replacement.
+Concurrent cancel and run updates serialize their record writes.
 Restart inspection labels interrupted/uncertain state and never replays dispatch.
 Durable exactly-once dispatch and automatic restart continuation are not claimed.
 Rerunning means creating a new explicit execution. Fresh HTTP POST lacks an early
