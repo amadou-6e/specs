@@ -11,6 +11,11 @@ related: []
 
 # IF-06: invocation outcome
 
+> `partial` currently overlaps terminal statuses. The separation of terminal
+> outcome from evidence completeness is triaged as
+> [Q12](../../design/decision-readiness.md#question-ledger); automatic
+> same-invocation container recovery is deferred from the first slice.
+
 Agent execution reports one invocation to
 [Langflow integration](../../../langflow-integration/contract/interfaces.md).
 See the [interface contract](../interfaces.md#if-06--report-invocation-outcome).

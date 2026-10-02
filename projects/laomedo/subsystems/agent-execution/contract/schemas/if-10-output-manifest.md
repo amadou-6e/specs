@@ -11,6 +11,9 @@ related: []
 
 # IF-10: output manifest
 
+> The revision/supersession of a partial manifest is unresolved in this
+> sketch; see [Q15](../../design/decision-readiness.md#question-ledger).
+
 Agent execution sends known outputs to
 [results and artifacts](../../../results-artifacts/contract/interfaces.md).
 See the [interface contract](../interfaces.md#if-10--report-produced-outputs).

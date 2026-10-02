@@ -11,6 +11,10 @@ related: []
 
 # IF-05: stage invocation
 
+> The user-file multiplicity and first-slice workspace/grant details in this
+> sketch remain open; see [Q10 and Q17](../../design/decision-readiness.md#question-ledger).
+> The single `input_ref` is not a complete list of user-added files.
+
 [Langflow integration](../../../langflow-integration/contract/interfaces.md) sends
 a frozen stage request to agent execution. See the
 [interface contract](../interfaces.md#if-05--invoke-a-configured-agent-stage).

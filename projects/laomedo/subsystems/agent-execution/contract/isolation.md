@@ -18,6 +18,13 @@ related: []
 > This earlier draft specifies read-only defaults and private provider profiles.
 > The grants, identity and profile rules must be reconciled in review before
 > either version is treated as an accepted implementation contract.
+> For the **first-slice isolated-checkout stage**, the user subsequently chose
+> a writable checkout with commit/push/PR capability; the read-only default
+> below is superseded for that mode, not deleted. See the
+> [decision-readiness triage](../design/decision-readiness.md#question-ledger).
+> Whether reduced Docker protection can ever permit dispatch is deferred until
+> an experiment is designed and assessed. No warning alone authorizes weaker
+> protection.
 
 Status: proposed. This is the shared execution boundary for Codex Agent,
 Claude Agent, and Skill Draft. It specifies behavior, not a deployment choice
@@ -94,6 +101,13 @@ as an observed decision. Unsupported restrictions block dispatch rather than
 silently weakening the boundary.
 
 ## Failure and verification
+
+The read-only-grant checks below remain useful for that legacy mode but do
+**not** verify the first-slice writable checkout. For that slice, the
+[readiness triage](../design/decision-readiness.md) additionally requires
+stage-write versus protected-root tests, disposable external-write/orphan
+tests, and a separately designed Docker-protection experiment. None has run;
+do not infer writable-stage safety from a read-only test.
 
 Timeout, cancellation, crash, or runner restart closes or recovers the job
 without promoting a draft or labeling partial output complete. Persist the

@@ -11,6 +11,10 @@ related: []
 
 # Claude Agent component
 
+> The read-only acceptance target below predates the first-slice writable
+> checkout choice. [Decision readiness](../design/decision-readiness.md)
+> separates that choice from unverified Claude adapter capabilities.
+
 Status: proposed. This component runs Claude Code through the Claude Agent
 SDK in the isolated runner. It shares Laomedo's agent contract with Codex but
 keeps provider-specific session and skill behavior explicit. UI controls and

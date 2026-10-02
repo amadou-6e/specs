@@ -11,6 +11,11 @@ related: []
 
 # Codex Agent component
 
+> The older read-only-first wording and retry identity below are not the
+> first-slice writable-checkout/recovery policy. See
+> [decision readiness](../design/decision-readiness.md#question-ledger),
+> especially Q08/Q09/Q17; no mid-turn recovery is accepted for that slice.
+
 Status: proposed. This component runs Codex as a flow step through the
 isolated runner. It is distinct from using Codex to design the flow. A
 view-owned Draw.io spec must define its controls and states before UI work.

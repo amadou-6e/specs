@@ -11,6 +11,13 @@ related: []
 
 # Agent execution interfaces
 
+> First-slice choices and open questions are triaged in
+> [decision readiness](../design/decision-readiness.md). In particular, the
+> three-attempt container recovery below remains a later target: first-slice
+> container failure is terminal for its invocation. IF-08 deduplication,
+> IF-10 manifest supersession, approval ownership, network scope and writable
+> checkout protections are not established by these draft interfaces.
+
 Agent execution is the provider-neutral boundary used by Langflow agent nodes.
 It owns provider dispatch, session binding, Docker stage lifetime, workspace
 mount choice and external access requests. The [interface map](../../README.md)

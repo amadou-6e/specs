@@ -11,6 +11,10 @@ related: []
 
 # IF-08: agent event
 
+> Optional source keys do not establish replay deduplication. See
+> [Q13/Q14 and E03](../../design/decision-readiness.md#question-ledger) before
+> treating this draft as a reliable exactly-once stream.
+
 Agent execution sends an event to [run traces](../../../run-traces/contract/interfaces.md).
 See the [interface contract](../interfaces.md#if-08--emit-agent-telemetry).
 

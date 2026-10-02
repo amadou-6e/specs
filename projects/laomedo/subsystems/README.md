@@ -17,6 +17,12 @@ Contracts own target behavior, design explains mechanisms, validation qualifies 
 Shared record definitions stay in architecture. Copy template/ directly, rename, replace
 every example fact and metadata/lifecycle, then add the entry to this index.
 
+## Decision readiness
+
+| Subsystem | Triage | First-slice status |
+| --- | --- | --- |
+| [Agent execution](agent-execution/design/decision-readiness.md) | 43 questions: 12 A, 16 B, 2 R, 6 E, 7 D; four research handoffs and eight proposed experiments | Not decision-ready: orphan termination, GitHub write identity, event replay, network scope and Docker-protection policy remain open. Docker policy work is deferred until an experiment is designed and assessed. |
+
 ## Interface map
 
 This is a draft map of **direct subsystem contacts** derived from the

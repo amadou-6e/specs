@@ -23,6 +23,13 @@ by its original version, task, grant and date.
 | New IF-05/IF-06 stage invocation and same-session conflict | No new check | Target interface only; not executed |
 | Three-attempt same-session crash recovery and run-scoped approvals | No new check | Newer user decision; earlier pilot does not establish this behavior |
 
+The [decision-readiness triage](design/decision-readiness.md) proposes E01-E08;
+**none was executed** in this authoring task. In the first slice, automatic
+mid-turn container recovery is deferred and a crash reports a failed
+invocation. A Docker reduced-protection policy is also deferred until its
+experiment is designed, reviewed and run. The pilot's clean restart/resume
+does not test either container crash recovery or an orphaned writable stage.
+
 Canonical evidence: [pilot result](../../experiments/local-skill-agent-pilot/iterations/2026-10-01/results.md)
 and [feasibility ledger](../../research/runner-feasibility/sources/README.md).
 Follow reports for exact revisions and private-artifact limits. A bounded observation
