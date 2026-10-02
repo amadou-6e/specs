@@ -15,20 +15,26 @@ These are proposed boundaries from the [interface map](../../README.md), not
 deployed endpoints. A reference identifies a GitHub resource without asserting
 that its text was frozen at selection time.
 
-## IF-01 — issue context for run setup
+## IF-01 — selected-issue context for run setup
 
 - **Provider / consumer:** Issue integration →
   [Langflow integration](../../langflow-integration/contract/interfaces.md).
-- **Trigger:** a user selects an issue, or an enabled GitHub issue/PR event
-  selects a saved run configuration.
-- **Minimum handoff:** repository identity, issue identity, event identity and
-  type if event-triggered, and a PR reference only when the user supplied one.
-  The launch layer adds its own run identity and version selection.
+- **Trigger:** a user selects an issue. A later issue-opened event may use this
+  exchange only after a trigger service supplies an actual issue reference.
+- **Minimum handoff:** repository and selected-issue identity, plus a PR
+  reference only when the user supplied one. The launch layer adds its own
+  run identity and version selection.
 - **Rule:** the agent retrieves current issue content and checks open PRs while
   executing. A related open PR does not silently become the target PR. Missing
   or inaccessible GitHub content remains an error/unknown, not an empty issue.
-- **Open:** event deduplication, GitHub authorization binding and whether the
-  issue reference is revalidated before dispatch.
+- **Boundary:** direct-prompt and timer launches have no issue and bypass
+  IF-01. A PR-opened event has a PR subject, and a failed Actions event has
+  a workflow-run subject; neither fabricates an issue. The proposed
+  [launch-context union](../../langflow-integration/contract/interfaces.md#approximate-payloads)
+  holds those subjects when a future trigger service is defined.
+- **Open:** trigger-service ownership and event deduplication, GitHub
+  authorization binding and whether the selected issue is revalidated before
+  dispatch. Timer/PR/Actions event launches are outside the first slice.
 
 ## IF-12 — reviewed follow-up issue publication
 
@@ -57,8 +63,8 @@ These are data sketches, not finalized wire schemas; see the
 IF-01 IssueContext {
   repository: { host: "github", owner: string, name: string },
   issue: { number: integer, url: string },
-  trigger: { kind: "direct" | "github_event", event_id?: string,
-             event_type?: string, occurred_at?: timestamp },
+  selection: { kind: "user_selected" | "issue_opened_event",
+               delivery_id?: string, occurred_at?: timestamp },
   supplied_target_pr?: { number: integer, url: string },
   auth_context_ref?: Ref
 }
@@ -79,6 +85,7 @@ IF-12 IssuePublicationResult {
 
 IF-01 contains references, not frozen issue text; a discovered PR is not
 `supplied_target_pr`. IF-12 returns `issue` only after confirmed publication.
-Duplicate-write handling and exact authorization binding remain open. A
+IF-01 does not carry unrelated trigger subjects. Duplicate-write handling and
+exact authorization binding remain open. A
 public repository can be read without `auth_context_ref`; publication still
 requires an authorized GitHub identity.

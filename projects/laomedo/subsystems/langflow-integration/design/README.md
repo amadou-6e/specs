@@ -21,10 +21,6 @@ workflow lifecycle and artifact/file handoffs. A separate execution overview
 shows agent invocation timing and telemetry; it does not mirror every Langflow
 component. Waterfall presentation and selective rerun remain open.
 
-The [decision-readiness triage](decision-readiness.md) separates the bounded
-one-agent slice from unresolved Langflow capabilities, product choices and
-future multi-stage work. It is a planning record, not an implementation claim.
-
 No editor modification, API binding or orchestration persistence mechanism is
 implemented by this document. Observable behavior belongs to
 [interfaces](../contract/interfaces.md). Design container: README.md (1),

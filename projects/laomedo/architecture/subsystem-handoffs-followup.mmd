@@ -2,12 +2,16 @@ flowchart TB
   AGENT["Laomedo<br/>Agent execution"]
   RESULTS["Laomedo<br/>Results and artifacts"]
   GITHUB["External<br/>GitHub PR / issue"]
+  PR_OWNER["Later: target PR owner<br/>open for multi-stage runs"]
+  REVIEW_FETCH["Later: review fetch<br/>owner open"]
   REVIEW["User<br/>Review results"]
   ISSUES["Laomedo<br/>Issue integration"]
   ENTRY["Laomedo<br/>Run entry"]
 
   AGENT -->|H11| GITHUB
-  GITHUB -->|H12| RESULTS
+  AGENT -.-> PR_OWNER
+  AGENT -->|H12 PR ref| RESULTS
+  GITHUB -.-> REVIEW_FETCH
   RESULTS -->|H13| REVIEW
   REVIEW -->|H14| ISSUES
   ISSUES -->|H15| GITHUB
@@ -21,3 +25,5 @@ flowchart TB
   class AGENT existing
   class GITHUB external
   class REVIEW user
+  classDef unresolved fill:#fff8dd,stroke:#a78024,color:#4b3910,stroke-width:2px,stroke-dasharray:5 3
+  class PR_OWNER,REVIEW_FETCH unresolved

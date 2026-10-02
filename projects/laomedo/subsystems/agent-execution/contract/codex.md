@@ -22,6 +22,17 @@ fresh-run independence, and cancellation. It uses the existing writable
 Docker workspace and authorized private single-user login. General grants,
 full shared contracts, and production auth remain target work.
 
+The [central D17 record](../../../decisions/0002-subsystem-handoffs.md) now
+treats automatic mid-turn container recovery as **deferred**, not first-slice
+behavior. The clean snapshot-bound resume observed in the pilot is not evidence
+that a killed in-progress turn can resume without repeated or lost effects.
+The first slice ends a crashed invocation with partial/unknown evidence. A
+user-requested new run has a new run ID; any later automatic same-invocation
+recovery requires a controlled real-agent crash/restart experiment. The older
+read-only first-release language below is a separate mode, not the writable
+checkout chosen for the first single-agent PR-producing slice; permissions
+must be reconciled before dispatch.
+
 ## Contract
 
 Consume `AgentRunSpec` and emit `AgentRunResult` as defined in
@@ -63,7 +74,7 @@ to specs #129. It makes no new credential copy.
 5. Freeze final output, file diff, actual settings, and terminal status.
 
 An interrupted run may have a native thread ID and partial output. Store both.
-Retrying a failed step creates a new Laomedo run ID; resume is a distinct
+User-requested retry after a failed step creates a new Laomedo run ID; resume is a distinct
 operation with explicit linkage. A copied prompt is not an exact thread fork.
 If the Codex API cannot provide a requested fork, report unsupported and offer
 a fresh invocation with captured input.

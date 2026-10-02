@@ -25,7 +25,3 @@ durable workflow-state ownership remain open.
 Read the [contract](contract/README.md), [design](design/README.md) and
 [validation](validation.md). Entry schema: those pages plus this overview
 (1 each); focused contract/design pages (0..*).
-
-The [decision-readiness triage](design/decision-readiness.md) records which
-questions can be specified now and which require a user choice, source
-research or a bounded experiment. It is not accepted runtime behavior.

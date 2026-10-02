@@ -16,6 +16,7 @@ Historical implementation/evidence identities and observations remain unchanged.
 
 | Original path | Canonical owner |
 | --- | --- |
+| `capabilities/work-graph.md` | [subsystems/work-graph/contract/work-graph.md](../subsystems/work-graph/contract/work-graph.md) |
 | `components/agent-and-skill-components.md` | [architecture/component-proposal.md](../architecture/component-proposal.md) |
 | `components/contracts.md` | [architecture/shared-contracts.md](../architecture/shared-contracts.md) |
 | `components/codex-agent.md` | [subsystems/agent-execution/contract/codex.md](../subsystems/agent-execution/contract/codex.md) |
@@ -42,7 +43,7 @@ Every original document path in the table remains a short compatibility pointer.
 Full bodies exist only at their canonical destinations. The local Markdown
 inventory was insufficient: published issue and PR references also depend on
 these paths. Historical revision URLs remain valid, and mutable `main` or
-branch URLs can now reach the pointers after migration. The four restored
+branch URLs can now reach the pointers after migration. The five restored
 containers own only closed pointer sets, not additional active contracts.
 The deprecated UI path and binary artifacts remain unchanged.
 
