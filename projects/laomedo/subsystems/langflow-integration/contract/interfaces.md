@@ -16,6 +16,14 @@ embedded Langflow runtime is an external dependency: its actual hooks and
 durability must be verified before this becomes an implementable API. A run is
 distinct from a stage invocation and from a native agent session.
 
+**Contested/unverified:** the [decision-readiness triage](../design/decision-readiness.md)
+classifies the issue-only IF-01 shape, immutable flow snapshot, synchronous
+long-running calls, branch/loop behavior, Stop race, IF-07 source IDs and
+follow-up/session semantics. The 2026-10-02 fate-shared crash choice makes
+`crashed` a proposed terminal IF-09 value; the sketch below predates it. The
+first slice defers D17 agent-container recovery. Treat the assertions below
+on those topics as target intent, not established Langflow behavior.
+
 ## Run entry and definition resolution — H1-H4
 
 - **Consumes IF-01** from [issue integration](../../issue-integration/contract/interfaces.md):

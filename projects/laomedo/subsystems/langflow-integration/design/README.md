@@ -25,3 +25,8 @@ No editor modification, API binding or orchestration persistence mechanism is
 implemented by this document. Observable behavior belongs to
 [interfaces](../contract/interfaces.md). Design container: README.md (1),
 focused mechanism pages (0..*).
+
+The [decision-readiness triage](decision-readiness.md) separates first-slice
+choices from contested policy, vendor research, pending experiments and later
+scope. It records the 2026-10-02 fate-shared crash choice without asserting
+that the older contracts or Langflow runtime already implement it.

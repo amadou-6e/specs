@@ -17,6 +17,12 @@ Contracts own target behavior, design explains mechanisms, validation qualifies 
 Shared record definitions stay in architecture. Copy template/ directly, rename, replace
 every example fact and metadata/lifecycle, then add the entry to this index.
 
+## Decision readiness
+
+| Subsystem | A / B / R / E / D questions | Pending experiments |
+| --- | --- | --- |
+| [Langflow integration](langflow-integration/design/decision-readiness.md) | 8 / 10 / 5 / 7 / 2 | UI reconnect, flow freeze, long call, Stop, branch failure, loop limit, fate-shared crash, lifecycle events and inter-stage file references; none executed |
+
 ## Interface map
 
 This is a draft map of **direct subsystem contacts** derived from the
