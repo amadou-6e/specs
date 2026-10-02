@@ -43,11 +43,15 @@ def main() -> int:
         json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
     )
 
-    template = (ROOT / "shared" / "templates" / "project-brief.md").read_text(
-        encoding="utf-8"
-    )
     (project / "README.md").write_text(
-        template.replace("<name>", args.name), encoding="utf-8"
+        f"# {args.name}\n\n"
+        "This is a bootstrap, not a completed specification or typed authoring system.\n"
+        "Define the problem, users, scope, constraints and open decisions before implementation.\n\n"
+        "Use the [authoring overview](../../shared/skills/spec-authoring-system/references/workflow.md)\n"
+        "to establish SPECS.md, manifest categories, container READMEs and project-owned templates.\n"
+        "The bootstrap directories may be reorganized as part of that explicit setup;\n"
+        "they do not declare category ownership or opt into typed validation.\n",
+        encoding="utf-8",
     )
     print(f"Created {project.relative_to(ROOT)}")
     return 0

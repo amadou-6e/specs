@@ -4,6 +4,10 @@ Apply the [shared typed-folder convention](../../shared/conventions/typed_folder
 Agent authoring check, user critique pending: 2026-10-01; inspected specs revision 2854612a32a40b6b455734cd2d758f92f86f1897.
 This migration reviews local documents, not freshly executed implementation or upstream APIs.
 
+Start with the [end-to-end authoring overview](../../shared/skills/spec-authoring-system/references/workflow.md)
+for the complete operational workflow, schemas, lifecycle distinctions and annotated
+template contents. This guide supplies Laomedo's project-specific ownership choices.
+
 ## Closed taxonomy
 
 | Category | Type | Canonical responsibility |
