@@ -24,3 +24,6 @@ cross-subsystem navigation, not a screen-geometry or implementation specificatio
 Draw.io graph and inventories the commands, events and references crossing the
 current Laomedo boundaries. It records open interface decisions rather than
 asserting an implemented wire protocol.
+[Subsystem decision record](subsystem-decision-record.md) preserves the
+individual user choices used to derive those handoffs and identifies the
+remaining open product and feasibility questions.
