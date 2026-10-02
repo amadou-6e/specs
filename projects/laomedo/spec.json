@@ -9,6 +9,9 @@
     "architecture": {
       "type": "fixed"
     },
+    "decisions": {
+      "type": "document-collection"
+    },
     "subsystems": {
       "type": "folder-collection",
       "entry_files": [

@@ -85,10 +85,16 @@ to the failed run so partial traces are not overwritten.
 
 ## Ownership
 
-The runner owns execution and session persistence. The skill registry owns
+The runner owns agent-invocation execution and native session persistence.
+Langflow owns live workflow sequencing and run state. Closing the Laomedo UI
+does not stop a run while Langflow remains live; a Langflow restart or crash
+ends that run, rather than transferring workflow recovery to the runner.
+Persisted result/trace records are historical evidence, not a second live
+workflow-state authority. The skill registry owns
 immutable bundles and drafts. Monitoring owns event storage and projections.
 Langflow components are adapters to these records and must not contain the
-only copy of any run, skill revision, or trace.
+only copy of any run identity, skill revision, or trace. This does not imply
+that Laomedo keeps a resumable copy of Langflow's live run state.
 
 See [sandboxing](../subsystems/agent-execution/contract/isolation.md) and
 [monitoring](../subsystems/run-traces/contract/README.md) for the shared execution boundaries.
