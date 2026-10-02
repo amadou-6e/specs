@@ -52,9 +52,9 @@ direct** handoff; it may still communicate through a listed boundary.
 
 ## Decision readiness
 
-| Subsystem | Triage | Pending evidence |
-| --- | --- | --- |
-| Langflow integration | [28 questions: A6, B7, R3, E5, D7](langflow-integration/design/decision-readiness.md) | E01-E05 proposed, not executed; one-node pilot does not establish graph-crash or multi-stage behavior. |
+| Subsystem | A/B/R/E/D | First-slice blockers | Pending experiments |
+| --- | --- | --- | --- |
+| [Langflow integration](langflow-integration/design/decision-readiness.md) | 6/7/3/6/7 | R01→E02 freeze; R02 node API; E03 long call; E01 UI closure; R03/#179 event policy; E06 durable refs; #175 orphan control; B20 for linked relaunch | E01–E06 proposed, not executed; the one-node pilot does not establish graph-crash or multi-stage behavior. |
 
 ## Payload sketch conventions
 
