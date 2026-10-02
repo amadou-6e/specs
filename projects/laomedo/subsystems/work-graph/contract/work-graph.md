@@ -131,4 +131,3 @@ budget and retained ledger. Hosted execution remains subject to
   ticket closure, before enabling automatic scheduling.
 - Specify source write-back and automatic scheduling separately from the
   initial explicit-launch path.
-
