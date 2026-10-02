@@ -22,9 +22,9 @@ every example fact and metadata/lifecycle, then add the entry to this index.
 These are draft triage maps, not accepted subsystem contracts. Counts describe
 classified questions in the linked page, not completed implementation.
 
-| Subsystem | Questions | Open choices and evidence |
-| --- | --- | --- |
-| [Issue integration](issue-integration/design/decision-readiness.md) | 23: A 9, B 10, R 1, E 2, D 1 | Ten B choices; R01–R03 source checks and E01–E03 experiments are pending; publication retry after an uncertain write remains undecided. |
+| Subsystem | A/B/R/E/D | First-slice blockers | Pending experiments |
+| --- | --- | --- | --- |
+| [Issue integration](issue-integration/design/decision-readiness.md) | 9/10/1/2/1 | B01/B02 for selected-issue picker; B04/B05 for reviewed publication; direct prompt bypasses issue reads | R01–R03 source checks and E01–E03 experiments pending; uncertain publication retry remains undecided. |
 
 ## Interface map
 
