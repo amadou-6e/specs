@@ -17,3 +17,5 @@ related: []
 - [EXP-07 lease protocol](../orphan-lease/protocol.md) is a prerequisite; no E05 runtime evidence is claimed here.
 - [2026-10-03 protocol review](https://github.com/amadou-6e/specs/pull/195#pullrequestreview-5399309348) approved create-only steps 1-2 and required exact inspect, network, denial-evidence and host-symlink amendments before stage startup.
 - [2026-10-03 verifier review](https://github.com/amadou-6e/laomedo/pull/58#pullrequestreview-5399309404) reproduced eight create-only Docker downgrades accepted by the earlier verifier.
+- [2026-10-03 protocol re-review](https://github.com/amadou-6e/specs/pull/195#pullrequestreview-5399354210) accepted amendments A-D but identified `MaskedPaths`, `ReadonlyPaths`, full `HostConfig` and sidecar gaps before stage startup.
+- [2026-10-03 verifier re-review](https://github.com/amadou-6e/laomedo/pull/58#pullrequestreview-5399354158) found seven of the original eight real downgrades rejected and documented the remaining `systempaths` and full-projection gaps.
