@@ -24,13 +24,14 @@ direct prompt, selected issue and later event subjects. The merged
 backend-crash intent. The ledger below retains unanswered GitHub-read,
 publication and event-policy questions; it does not roll back those sketches.
 
-**Evidence update, 2026-10-02:** the historical statement that no runtime
+**Evidence update, 2026-10-03:** the historical statement that no runtime
 experiment was inspected applies only to the original triage pass. Bounded
 [EXP-14](https://github.com/amadou-6e/laomedo/pull/52) and
 [EXP-15](https://github.com/amadou-6e/laomedo/pull/55) have since merged;
-[EXP-02](https://github.com/amadou-6e/laomedo/pull/51) has passing checks and
-an approving comment review, but is not yet integrated coverage. The
-observation and its limits are recorded below. The
+[EXP-02](https://github.com/amadou-6e/laomedo/pull/51) merged into `develop`
+at [`2f228d6`](https://github.com/amadou-6e/laomedo/commit/2f228d6aeaceab70529a43b1721fa0c1d6ee43a7)
+after passing checks and an approving comment review. The E01/E02
+observations and their limits are recorded below. The
 [IF-12 draft](../contract/interfaces.md#if-12--reviewed-follow-up-issue-publication)
 is a proposed response, not a deployed or accepted wire contract.
 
