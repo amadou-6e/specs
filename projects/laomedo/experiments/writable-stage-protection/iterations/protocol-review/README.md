@@ -11,4 +11,4 @@ related: []
 
 # Protocol review
 
-The [protocol](../../protocol.md) is drafted but not reviewed or executed. Read [execution](execution.md), [results](results.md) and [evidence manifest](evidence/manifest.md).
+The [protocol](../../protocol.md) was reviewed for steps 1-2 only. Those create-only checks passed; steps 3-6 remain unapproved and unexecuted. Read [execution](execution.md), [results](results.md) and [evidence manifest](evidence/manifest.md).
