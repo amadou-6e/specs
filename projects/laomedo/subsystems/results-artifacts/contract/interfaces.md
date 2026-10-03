@@ -35,7 +35,9 @@ For an unsuccessful run, expose an editable report of completed work, failure,
 evidence and remaining work. A user selects, reviews and may edit a proposed
 follow-up issue. Only then send that reviewed proposal and prior-run references
 to [issue integration](../../issue-integration/contract/interfaces.md). If
-publication fails, keep the draft's review state and report the failure.
+publication definitely fails or remains `unknown`, keep the draft's review
+state, show the distinct outcome, and show no issue reference until issue
+integration confirms one. Results does not decide whether another POST is safe.
 
 ## IF-13 — follow-up run context
 

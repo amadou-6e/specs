@@ -24,6 +24,17 @@ direct prompt, selected issue and later event subjects. The merged
 backend-crash intent. The ledger below retains unanswered GitHub-read,
 publication and event-policy questions; it does not roll back those sketches.
 
+**Evidence update, 2026-10-03:** the historical statement that no runtime
+experiment was inspected applies only to the original triage pass. Bounded
+[EXP-14](https://github.com/amadou-6e/laomedo/pull/52) and
+[EXP-15](https://github.com/amadou-6e/laomedo/pull/55) have since merged;
+[EXP-02](https://github.com/amadou-6e/laomedo/pull/51) merged into `develop`
+at [`2f228d6`](https://github.com/amadou-6e/laomedo/commit/2f228d6aeaceab70529a43b1721fa0c1d6ee43a7)
+after passing checks and an approving comment review. The E01/E02
+observations and their limits are recorded below. The
+[IF-12 draft](../contract/interfaces.md#if-12--reviewed-follow-up-issue-publication)
+is a proposed response, not a deployed or accepted wire contract.
+
 `A` means spec-verifiable first-slice behavior; `B` needs a product choice; `R` needs a primary-source check; `E` needs an experiment; `D` is deferred from the first slice. `[C]` is a recorded user choice, `[O]` a directly observed document/pilot fact, `[I]` an inference, and `[U]` unverified. These tags qualify the **basis**, not implementation maturity. A choice in the 2026-10-02 decision record is product intent, not proof of GitHub or Langflow behavior. No `A` relies on `[U]` or a contested choice.
 
 ## Question triage
@@ -38,11 +49,11 @@ publication and event-policy questions; it does not roll back those sketches.
 | Q06. Which permissions and API responses are actually needed for reads and publication? | R | [U] vendor/API behavior | R01 | Check pinned GitHub primary documentation and the chosen auth route; do not infer from a public-repo read. |
 | Q07. What selected-issue version is retained for later inspection? | B | [I] live-read versus reproducibility | Q04 | Choose reference-only, dispatch-time digest/snapshot, or both; define privacy and retention consequences. |
 | Q08. Can an unreviewed failure draft publish an issue? | A | [C] D25; [O] IF-12 | None | Keep explicit user review/edit and separate publish action as a gate. |
-| Q09. What local state exists before the issue-create request? | A | [I] crash inspectability; [O] IF-12 lacks intent | None | Persist proposal identity, reviewed bytes/hash, target repo, reviewer decision, and a publication attempt/intention before the external POST. This does not prove the remote result. |
+| Q09. What local state exists before the issue-create request? | A | [I] crash inspectability; [O] EXP-14 persistence probe; [O] draft IF-12 proposal | None | Persist proposal identity, exact reviewed bytes/hash and body marker, target repo, reviewer decision, and an attempt/intention before the external POST. This does not prove the remote result. |
 | Q10. Can two local clicks create two attempts concurrently? | A | [I] same-process duplicate risk | Q09 | Serialize attempts for one proposal in a live process; retain a visible pending state. Cross-crash exactly-once is **not** claimed. |
-| Q11. What happened if the process died after sending POST but before recording acknowledgement? | E | [I] remote effect uncertainty; [O] no pilot test | E01, then B04 | Run a fault-injected fake endpoint; keep state `unknown` until reconciliation rather than call it failed. |
-| Q12. How should an unknown publication be reconciled before retry? | B | [I] duplicate risk | R02 and E01/E02 | Select query/marker/manual-confirmation policy; never infer exactly-once from a local intent record alone. |
-| Q13. What happens to a draft after an acknowledged failed write? | A | [C] D25; [O] IF-12 | None | Retain reviewed draft and error; do not return an issue reference or mark published. |
+| Q11. What happened if the process died after sending POST but before recording acknowledgement? | E | [O] EXP-14 synthetic probe; [I] full-backend effect | E01 observed, then B04 | The child-kill result is `unknown` after fake acceptance; retain the untested full-backend and product projection boundary. |
+| Q12. How should an unknown publication be reconciled before retry? | B | [O] EXP-15 false-negative lookup; [I] production consistency | R02 and E01/E02 observed; B04 resolution controls open | Never auto-retry on absence; require exact marker match or a user decision, without inferring exactly-once from local intent. |
+| Q13. What happens after a definitely unsent request or acknowledged rejection? | A | [C] D25; [O] draft IF-12; [O] documented GitHub create statuses | None | Retain reviewed draft and error; do not return an issue reference or mark published. An HTTP 5xx, timeout, or lost response is Q11/Q12, not a confirmed failure. |
 | Q14. Which GitHub identity may publish the reviewed follow-up issue, and how is consent bound? | B | [I] external write authority | R01; distinct from Q05 picker reads | Decide grant and actor attribution; a model credential or generic run permission is not automatically issue-publish authority. |
 | Q15. Can a discovered related PR silently become `supplied_target_pr`? | A | [O] current IF-01 draft | None | No: preserve the field distinction in this selected-issue payload. Whether a later relaunch targets an existing PR is still contested D10/D23 policy, not decided here. |
 | Q16. Who ingests timer, issue-opened, PR-opened and failed-workflow events? | B | [C] D07/D08; [I] missing service | Later trigger architecture | Choose issue-integration ingress/poll service versus a separate trigger service; Langflow remains run sequencer. Implementation is deferred. |
@@ -51,7 +62,7 @@ publication and event-policy questions; it does not roll back those sketches.
 | Q19. Who fetches current PR review state for a follow-up? | B | [I] passive H12 is insufficient | Later follow-up path | Choose issue integration versus distinct GitHub-context service; results only displays known references. Implementation is deferred. |
 | Q20. How do PR-opened and failed-workflow triggers run without an issue? | D | [O] merged launch-context sketch; [C] D07 | Later event launch design | Event-subject variants are now sketched, but ingress, deduplication and runtime behavior are deferred; do not fabricate an IF-01 issue. |
 | Q21. What is the run state after fate-shared backend crash? | A | [C] latest first-slice clarification | Langflow run-state owner | Consume Langflow's terminal `crashed` status for issue-publication inspection; issue integration does not project or own run state. This says nothing about the remote POST. |
-| Q22. Can an in-flight GitHub write survive backend death? | E | [I] external service may continue; [O] pilot untested | E01/E02 | Inject a kill around POST and inspect local and remote evidence. |
+| Q22. Can an in-flight GitHub write survive backend death? | E | [O] EXP-14 publisher-child kill and EXP-15 suppressed response; [I] full-backend effect | E01/E02 observed in bounded forms | Retain full fate-shared backend death as untested; do not generalize child-kill evidence to it. |
 | Q23. Which PR does a new run target after a previous run or review? | B | [I] related-versus-supplied ambiguity; [O] IF-01 draft | Later follow-up policy with Langflow/agent execution | Decide whether the previous PR becomes `supplied_target_pr` by default, requires explicit selection, or is not reused. Issue integration only carries the supplied reference. |
 
 The A items identify behavior to retain or verify, not proof that the payload sketches are implementable. Q01's direct-prompt separation and Q21's terminal backend-crash intent are already represented by the merged [interface](../contract/interfaces.md) and [decision record](../../../decisions/0002-subsystem-handoffs.md); the publication and event mechanisms remain open.
@@ -65,7 +76,7 @@ The options are genuine alternatives, not recommendations disguised as accepted 
 | B01 (Q04) issue freshness | Revalidate at dispatch (fewer stale launches, extra GitHub call and permission dependency); or accept the selected reference and let the agent's live read fail (simpler launch, later error); or freeze a selection-time snapshot (repeatable input but contradicts D10's live read unless both are kept). | Deleted/transferred/inaccessible issue may be misreported as empty or agent starts on the wrong context. |
 | B02 (Q05) picker/read identity | User-authorized GitHub identity preserves user-specific access; service identity simplifies unattended execution but enlarges centrally held authority. Public unauthenticated read can be a limited route. The agent's live read uses its run grant, as #175 owns. | Cross-user disclosure, missing private access, or rate-limit failures; credential custody and refresh cost. Direct-prompt launch needs no issue read. |
 | B03 (Q07) inspection state | Reference only minimizes storage but cannot prove what the agent saw; dispatch-time digest/snapshot adds auditability with private-text retention; both keeps provenance and live-read distinction at greater complexity. | Later review mistakes current issue body for the one used during execution. |
-| B04 (Q12) uncertain issue creation | Reconcile by remote query/unique marker before retry; require user confirmation when ambiguous; or permit retry with visible duplicate risk. Marker/search consistency is not yet verified. | Duplicate issues after acknowledgement loss, or indefinite ambiguous pending state; remote search and operational support cost. |
+| B04 (Q12) uncertain issue creation | The [EXP-15 review](https://github.com/amadou-6e/laomedo/pull/55) supports exact-marker reconciliation and **no automatic retry** after uncertainty. A user decision is needed when matching stays absent or ambiguous; the controls for abandoning or explicitly authorizing a new attempt, and its duplicate-risk disclosure, remain to be chosen. One observed marker-visibility interval is not a search-consistency guarantee. | A premature retry can duplicate issues; indefinite `unknown` without a user-resolution path is also unacceptable. Production pagination, retention and support costs remain open. |
 | B05 (Q14) publish authority | Per-action user approval limits write scope but cannot publish unattended; run-scoped grant permits unattended publication only after review but needs revocation/audit; separate service actor changes attribution and security boundary. | Unauthorized publication or a reviewed draft that cannot be published. |
 | B06 (Q23) relaunch target | Default the previous PR into `supplied_target_pr` (fast continuation, risk of wrong branch); require explicit user selection (clear intent, more friction); or start with no target and permit a new PR (simple default, duplicate work risk). | Wrong PR updated or duplicate PR opened; Langflow owns follow-up run setup and agent execution owns PR writes, not issue integration. |
 | B07 (Q16) event ingress owner | Issue integration owns GitHub webhook/poll ingress plus timer handoff (one GitHub-context owner but broader subsystem scope); or a separate trigger service owns all ingress (clear scheduler lifecycle, extra boundary); or Langflow alone receives triggers (fewer components but couples delivery to run sequencing). | Missed/duplicate events when the chosen process is down; deployment, state and operational ownership cost. |
@@ -85,9 +96,23 @@ Research must report source owner/version/access date, exact inspected API text,
 | R02 | Does GitHub issue creation expose an idempotency key? What query/search or list semantics and indexing delay apply to a unique proposal marker? Check official API docs. | Distinguish supported guarantee, absent guarantee, and uninspected behavior for B04 and E02. |
 | R03 (later) | GitHub webhook delivery IDs/retries, polling APIs and Actions failure/PR-opened event fields. Check official GitHub docs for the chosen ingress route. | Event-subject and missed-event requirements for Q16–Q20; no first-slice event implementation implied. |
 
+R02 update (accessed 2026-10-02): the official GitHub
+[issue-create/list documentation](https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28)
+does not document an idempotency-key input for issue creation; the separate
+[issue-search endpoint](https://docs.github.com/en/rest/search/search?apiVersion=2022-11-28)
+does not provide a bounded visibility promise for a just-created issue.
+These are limits of the inspected documentation, not proof of a nonexistent
+private guarantee. E02 supplies one observed false-negative interval; it
+cannot turn absence into a safe retry signal. R01 permissions/error mapping
+and R03 event behavior remain separate research tasks.
+
 ## E experiments
 
-All experiments below are **proposed, not run**. The pilot's 4/4 model-turn cap is exhausted; the first two can use synthetic HTTP and no model. Freeze versions, a disposable repository for any live write, exact kill point, expected observations and artifact retention before execution. Do not use a user's production repository for fault injection.
+The table retains the original experiment sketches and estimates. E01 and E02
+have since run in bounded form; their actual outcomes and deviations follow.
+E03 remains **proposed, not run**. The earlier pilot's 4/4 model-turn cap was
+not expanded: E01/E02 used zero model turns. Do not use a production repository
+for fault injection.
 
 | E | Hypothesis and falsifier | Pinned setup / procedure / observable outcome | Estimated cost |
 | --- | --- | --- | --- |
@@ -95,13 +120,29 @@ All experiments below are **proposed, not run**. The pilot's 4/4 model-turn cap 
 | E02 disposable GitHub reconciliation | A marker/query policy finds a created issue after lost acknowledgement without creating a second one within a measured window. Falsified by missing/late search, wrong match, or duplicate on retry. | After R02, pin API version and auth route; in an explicitly authorized disposable repo create uniquely marked issues, suppress response, query/list repeatedly, record delay and IDs, clean up by normal issue close only if authorized. | Estimated 1–2 engineering hours plus up to 30 minutes observation; zero model turns, about 2–5 issue creates and 20–50 reads. Requires later external-write authorization. |
 | E03 later trigger delivery | Selected ingress preserves event identity, detects replay and avoids CI self-trigger loops. Falsified by a duplicate launch or recursive PR/CI-trigger run. | Only after Q16 owner and R03: pin webhook relay or poller version, replay event payloads, restart service, inspect durable offsets/ancestry, exercise a fake failed-CI chain. | Estimated 1–2 engineering days for a selected ingress adapter and replay harness, under 1 hour execution; zero model turns if agent dispatch is stubbed. |
 
+### E01/E02 observed results and limits
+
+| Experiment and pinned evidence | Observation | What remains unproved |
+| --- | --- | --- |
+| E01 / [Laomedo EXP-14 at merged `602d6aa`](https://github.com/amadou-6e/laomedo/blob/602d6aace30df756f5455c2d8a2c6535dd7951da/experiments/issue-integration/44/README.md), [tests](https://github.com/amadou-6e/laomedo/blob/602d6aace30df756f5455c2d8a2c6535dd7951da/tests/test_issue_publication_probe.py) | A localhost fake accepted 0 requests after a kill before send, 1 after a kill following acceptance but before response persistence, and 1 after response persistence. The first two local records inspect as `unknown`; the last survives as `published #123`. No uncertain case resends. | Only the publisher child was killed, not the fate-shared backend. The attempt ID traveled in fake request headers; real GitHub does not retain those as an issue-body reconciliation key. No product UI or host-power-loss claim. |
+| E02 / [Laomedo EXP-15 at merged `243c103`](https://github.com/amadou-6e/laomedo/blob/243c103a4f88d0b197f3a56224717e520c8805a7/experiments/issue-integration/45/README.md), [sanitized record](https://github.com/amadou-6e/laomedo/blob/243c103a4f88d0b197f3a56224717e520c8805a7/experiments/issue-integration/45/evidence.json) | One response-suppressed issue-create POST produced issue #1 in an authorized private disposable repository. Two early list/search pairs found no exact marker; a later pair found exactly one. There were 3 total issue creates (including controls), 22 scheduled read queries and no repeat POST. | Times are approximate pair-completion times from an unpersisted post-return reference. One repository/run cannot establish a safe absence timeout, exactly-once creation, behavior under load, or a real network partition. Raw text-search hits require exact body-marker verification; a production list must paginate. |
+
+The observed counterexample is enough to reject **automatic resend justified only
+by a negative lookup**: absence occurred despite successful creation. It does
+not establish a general visibility bound. For both a pre-send crash and an
+after-acceptance crash, a local `unknown` record needs the same marker lookup;
+if no unique exact match can be established, the user must resolve the
+uncertainty. A durable attempt should carry the marker in the reviewed issue
+body, not rely on a custom request header. The [draft IF-12 interface](../contract/interfaces.md#if-12--reviewed-follow-up-issue-publication)
+captures this proposed behavior without claiming it is implemented.
+
 ## Crash behaviour
 
-1. **Persisted for inspection:** before any issue-create POST, retain reviewed proposal bytes/hash, proposal ID, target repository, reviewer decision, and attempt/intent identity. Current IF-12 payload lacks the intent and `unknown` outcome; the required extension remains a candidate contract edit, not an implemented fact.
+1. **Persisted for inspection:** before any issue-create POST, retain reviewed proposal bytes/hash, body marker, proposal ID, target repository, reviewer decision, and attempt/intent identity. The historical triage found IF-12 lacking an intent and `unknown` outcome; the linked draft interface now proposes them, but product implementation remains absent.
 2. **Restart behavior:** Langflow owns the run's terminal `crashed` status after fate-shared backend crash; issue integration consumes that status and inspects its own incomplete publication attempts on startup. It must not label an unacknowledged external write `failed` merely because its process died. Cleanup of the run does not undo a remote issue.
-3. **Surviving writers:** a remote GitHub POST may complete after the client dies. This is an external in-flight effect, not a lingering Docker agent. E01/E02 must establish the observation and reconciliation window.
-4. **Relaunch duplication:** another run or a user retry can issue another POST; a local proposal ID alone cannot make GitHub creation exactly-once. B04 decides whether to reconcile, ask, or permit explicitly acknowledged duplication.
-5. **Detection:** startup can detect an incomplete local intent; only a remote read or an acknowledged response can establish whether an issue exists. A read with no match may still be inconclusive until R02/E02 establish search behavior.
+3. **Surviving writers:** a remote GitHub POST may complete after the client dies. This is an external in-flight effect, not a lingering Docker agent. E01/E02 demonstrate bounded uncertainty and a false-negative lookup, but do not establish full-backend behavior or a safe reconciliation timeout.
+4. **Relaunch duplication:** another run or a user retry can issue another POST; a local proposal ID alone cannot make GitHub creation exactly-once. B04 excludes automatic resend on absence; how a user explicitly resolves or authorizes another attempt remains open.
+5. **Detection:** startup can detect an incomplete local intent; only a remote read or an acknowledged response can establish whether an issue exists. E02 directly observed two negative lookup pairs after a successful create, so no-match remains inconclusive; the experiment established no safe retry timeout.
 
 These answers reconcile the proposed fate-shared crash policy with IF-12's external write boundary, without importing the deferred [agent-container recovery](https://github.com/amadou-6e/specs/issues/175) policy.
 
