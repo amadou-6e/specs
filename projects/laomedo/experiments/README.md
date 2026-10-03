@@ -19,6 +19,8 @@ when actual replication occurs.
   attestation remains absent.
 - [Durable pre-dispatch](durable-pre-dispatch/README.md): EXP-04 synthetic
   crash-window evidence for run identity, frozen refs and no-replay sweep.
+- [Pinned skill materialization](pinned-skill-materialization/README.md):
+  EXP-08 LF/CRLF exact-byte, Git-cleanliness and tamper-refusal probe.
 - [UI versus backend death](ui-versus-backend-death/README.md): EXP-06
   pinned Langflow client-close and hard-kill observations with a startup sweep.
 - [Orphan lease](orphan-lease/README.md): EXP-07 protocol for the selected
