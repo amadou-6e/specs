@@ -28,9 +28,10 @@ publication and event-policy questions; it does not roll back those sketches.
 experiment was inspected applies only to the original triage pass. Bounded
 [EXP-14](https://github.com/amadou-6e/laomedo/pull/52) and
 [EXP-15](https://github.com/amadou-6e/laomedo/pull/55) have since merged;
-[EXP-02](https://github.com/amadou-6e/laomedo/pull/51) has passing checks but
-is still an unreviewed PR, not integrated coverage. The observation and its
-limits are recorded below. The [IF-12 draft](../contract/interfaces.md#if-12--reviewed-follow-up-issue-publication)
+[EXP-02](https://github.com/amadou-6e/laomedo/pull/51) has passing checks and
+an approving comment review, but is not yet integrated coverage. The
+observation and its limits are recorded below. The
+[IF-12 draft](../contract/interfaces.md#if-12--reviewed-follow-up-issue-publication)
 is a proposed response, not a deployed or accepted wire contract.
 
 `A` means spec-verifiable first-slice behavior; `B` needs a product choice; `R` needs a primary-source check; `E` needs an experiment; `D` is deferred from the first slice. `[C]` is a recorded user choice, `[O]` a directly observed document/pilot fact, `[I]` an inference, and `[U]` unverified. These tags qualify the **basis**, not implementation maturity. A choice in the 2026-10-02 decision record is product intent, not proof of GitHub or Langflow behavior. No `A` relies on `[U]` or a contested choice.
@@ -51,7 +52,7 @@ is a proposed response, not a deployed or accepted wire contract.
 | Q10. Can two local clicks create two attempts concurrently? | A | [I] same-process duplicate risk | Q09 | Serialize attempts for one proposal in a live process; retain a visible pending state. Cross-crash exactly-once is **not** claimed. |
 | Q11. What happened if the process died after sending POST but before recording acknowledgement? | E | [O] EXP-14 synthetic probe; [I] full-backend effect | E01 observed, then B04 | The child-kill result is `unknown` after fake acceptance; retain the untested full-backend and product projection boundary. |
 | Q12. How should an unknown publication be reconciled before retry? | B | [O] EXP-15 false-negative lookup; [I] production consistency | R02 and E01/E02 observed; B04 resolution controls open | Never auto-retry on absence; require exact marker match or a user decision, without inferring exactly-once from local intent. |
-| Q13. What happens after a definitely unsent publication attempt? | A | [C] D25; [O] draft IF-12 | None | Retain reviewed draft and error; do not return an issue reference or mark published. An ambiguous POST is Q11/Q12, not a confirmed failure. |
+| Q13. What happens after a definitely unsent request or acknowledged rejection? | A | [C] D25; [O] draft IF-12; [O] documented GitHub create statuses | None | Retain reviewed draft and error; do not return an issue reference or mark published. An HTTP 5xx, timeout, or lost response is Q11/Q12, not a confirmed failure. |
 | Q14. Which GitHub identity may publish the reviewed follow-up issue, and how is consent bound? | B | [I] external write authority | R01; distinct from Q05 picker reads | Decide grant and actor attribution; a model credential or generic run permission is not automatically issue-publish authority. |
 | Q15. Can a discovered related PR silently become `supplied_target_pr`? | A | [O] current IF-01 draft | None | No: preserve the field distinction in this selected-issue payload. Whether a later relaunch targets an existing PR is still contested D10/D23 policy, not decided here. |
 | Q16. Who ingests timer, issue-opened, PR-opened and failed-workflow events? | B | [C] D07/D08; [I] missing service | Later trigger architecture | Choose issue-integration ingress/poll service versus a separate trigger service; Langflow remains run sequencer. Implementation is deferred. |

@@ -50,9 +50,14 @@ that its text was frozen at selection time.
   their recoverable reference and hash, marker, target, reviewer decision, and
   one attempt identity. It marks an attempt as possibly sent before contacting
   GitHub. An acknowledged, uniquely identified remote issue may be reported as
-  `published`; a definitely unsent attempt may be `failed`. A lost response,
-  timeout, process death, or inconclusive remote lookup remains `unknown`, not
-  `failed` or `published`.
+  `published`. `failed` means either the request definitely never left the
+  client, or GitHub acknowledged a non-creating rejection with a complete
+  response (for this endpoint, for example documented HTTP 400, 403, 404,
+  410, or 422 for invalid input, missing permission, or disabled issues).
+  An HTTP 5xx response,
+  lost response, timeout, process death, or inconclusive remote lookup remains
+  `unknown`, not `failed` or `published`; an arbitrary transport error is not
+  proof that GitHub rejected the write.
 - **Reconciliation proposal:** find the marker in GitHub issue bodies and verify
   exact equality, not just a search hit. Bind an issue reference only if exactly
   one matching issue is confirmed. Zero matches do not establish non-creation;
@@ -61,8 +66,9 @@ that its text was frozen at selection time.
   publication attempt. The reviewed draft remains available throughout.
 - **Open:** B04's user-resolution controls and any explicitly authorized retry
   semantics, B05 publication identity/permissions, production pagination and
-  filtering, and exact draft/intent retention. The experiments establish no
-  exactly-once guarantee or safe retry timeout.
+  filtering, exact draft/intent retention, and how a user resolution extends
+  the result state (for example abandonment or manual binding with provenance).
+  The experiments establish no exactly-once guarantee or safe retry timeout.
 
 GitHub PR creation remains an [agent-execution](../../agent-execution/README.md)
 activity. This subsystem may surface issue and PR references for selection but
@@ -102,8 +108,11 @@ IF-12 IssuePublicationResult {
 IF-01 contains references, not frozen issue text; a discovered PR is not
 `supplied_target_pr`. IF-12 returns `issue` only after confirmed publication;
 `unknown` has no issue reference, even if GitHub may already hold the issue.
-The marker is immutable for one reviewed request and must appear exactly once
-in its final body; an edit requires renewed review before publication.
+The marker is immutable **per reviewed request**, not per POST attempt, and
+must appear exactly once in its final body; an edit requires renewed review
+before publication. If a user later authorizes another attempt for that same
+reviewed request, reusing the marker makes two created issues detectable as a
+conflict instead of hiding a duplicate behind a new marker.
 IF-01 does not carry unrelated trigger subjects. Duplicate-write handling and
 exact authorization binding remain open. A
 public repository can be read without `auth_context_ref`; publication still
