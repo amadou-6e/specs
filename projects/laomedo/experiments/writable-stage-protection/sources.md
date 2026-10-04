@@ -1,0 +1,23 @@
+---
+title: Writable stage protection sources
+status: draft
+kind: experiment-sources
+owners: [laomedo-maintainers]
+last_reviewed: 2026-10-02
+applies_to: [laomedo]
+supersedes: null
+related: []
+---
+
+# Sources
+
+- [Agent execution E05, S04 and Q17/Q18](../../subsystems/agent-execution/design/decision-readiness.md), specs 6ff8995.
+- [Execution isolation target](../../subsystems/agent-execution/contract/isolation.md), still draft and containing a noted older read-only versus writable-checkout conflict.
+- [EXP-18 issue](https://github.com/amadou-6e/laomedo/issues/48) requires protocol review before a pinned Docker test.
+- [EXP-07 lease protocol](../orphan-lease/protocol.md) is a prerequisite; no E05 runtime evidence is claimed here.
+- [2026-10-03 protocol review](https://github.com/amadou-6e/specs/pull/195#pullrequestreview-5399309348) approved create-only steps 1-2 and required exact inspect, network, denial-evidence and host-symlink amendments before stage startup.
+- [2026-10-03 verifier review](https://github.com/amadou-6e/laomedo/pull/58#pullrequestreview-5399309404) reproduced eight create-only Docker downgrades accepted by the earlier verifier.
+- [2026-10-03 protocol re-review](https://github.com/amadou-6e/specs/pull/195#pullrequestreview-5399354210) accepted amendments A-D but identified `MaskedPaths`, `ReadonlyPaths`, full `HostConfig` and sidecar gaps before stage startup.
+- [2026-10-03 verifier re-review](https://github.com/amadou-6e/laomedo/pull/58#pullrequestreview-5399354158) found seven of the original eight real downgrades rejected and documented the remaining `systempaths` and full-projection gaps.
+- [2026-10-04 verifier review](https://github.com/amadou-6e/laomedo/pull/58#pullrequestreview-5406644179) rejected all 30 real downgrade variants and approved direct no-model steps 3-4 with an inspected sidecar launch condition.
+- [2026-10-04 protocol review](https://github.com/amadou-6e/specs/pull/195#pullrequestreview-5406644232) approved those steps under the same condition; agent-originated step 5 still needs separate authorization.

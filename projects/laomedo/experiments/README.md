@@ -23,6 +23,8 @@ when actual replication occurs.
   pinned Langflow client-close and hard-kill observations with a startup sweep.
 - [Orphan lease](orphan-lease/README.md): EXP-07 protocol for the selected
   independent supervisor plus startup sweep; numeric bound and run pending.
+- [Writable stage protection](writable-stage-protection/README.md): EXP-18
+  unreviewed E05 protocol draft; no Docker-stage or agent-originated test yet.
 
 Copy template/ directly, rename and replace every example fact/lifecycle. Freeze a real
 prospective protocol before dispatch. This migration authorized/spent no new model turns.
