@@ -21,7 +21,8 @@ experiment evidence is added below with its own pinned version, task and date.
 | Isolation / read-only / remote mode | #120, #122, Docker sources | Earlier failures retained; general grant and remote storage unproven |
 | Claude parity | #121 | CLI blocker before model call; acceptance unknown |
 | New IF-05/IF-06 stage invocation and same-session conflict | No new check | Target interface only; not executed |
-| First-slice mid-turn container crash terminates invocation with partial/unknown evidence | [EXP-05 synthetic crash probe](../../experiments/agent-evidence-crash/iterations/2026-10-03/results.md) | Seven process-kill/control windows preserved committed IDs/raw receipts and marked unknown or partial; no real provider, container or full-backend kill tested |
+| First-slice mid-turn container crash terminates invocation with partial/unknown evidence | No new check | Proposed rule; EXP-05 kills a fate-shared process, not a container while its backend survives |
+| Fate-shared run/backend process crash retains only committed evidence | [EXP-05 synthetic crash probe](../../experiments/agent-evidence-crash/iterations/2026-10-03/results.md) | Six process kills plus a normal control preserved committed IDs/raw receipts, ended the run as crashed, and marked streams unknown or partial; no actual backend, container or provider was killed |
 | Three-attempt same-session crash recovery | No new check | Deferred target pending controlled real-agent mid-turn crash/session-restart experiment, including repeated/lost external effects |
 | Run-scoped approvals | No new check | Broker, expiry and unattended default remain open |
 | IF-05 user files and durable pre-dispatch reservation | No new check | Separate hash-checked refs and refuse-dispatch rule specified; no product test |

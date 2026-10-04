@@ -30,6 +30,11 @@ projection in the unit test. This supports the bounded synthetic persistence
 claim, not a claim that real provider events have stable IDs or complete
 streams.
 
+This fixture holds run storage and invocation in one killed process. It is a
+synthetic analogue of a fate-shared backend crash, **not** a container crash
+with the backend still running. It cannot verify the separate first-slice
+container-crash rule, which should end the invocation as `failed`.
+
 The first-slice rule remains terminal on backend crash. An absent source
 event ID remains absent; receipt sequence is not a deduplication key. EXP-09
 must test a selected T07 replay policy before repeated/reordered events are

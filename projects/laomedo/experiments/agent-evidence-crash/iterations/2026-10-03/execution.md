@@ -12,8 +12,10 @@ related: []
 # Execution
 
 On Windows with Python 3.12.10, at Laomedo
-[`e274903`](https://github.com/amadou-6e/laomedo/commit/e274903242a4f1724fc598ba50de9cff4f433690),
-run `python experiments/exp05/probe.py`. The parent starts seven child
+[`9e0bbca`](https://github.com/amadou-6e/laomedo/commit/9e0bbca7a35727be88d7815d2799c9d359a4a848),
+run `python experiments/exp05/probe.py`. The default check does not overwrite
+the committed evidence; `python experiments/exp05/probe.py --record` is the
+explicit LF-only evidence-writing mode. The parent starts seven child
 processes in independent temporary SQLite databases. Each uses WAL and
 `synchronous=FULL`, exits at its selected boundary, and is inspected after
 a restart sweep. Raw projection is derived only from committed receipts.
@@ -27,7 +29,9 @@ including identity validation and repeat sweep. The main
 tests locally at this revision. CI invokes that suite against the installed
 wheel and runs source-only experiment tests separately. The parent probe passed
 all seven expected exit/status
-assertions. Its first assertion version checked counts but not every exit
+assertions. The repeat test writes any newly generated observation to a
+temporary file rather than changing the pinned artifact. Its first assertion
+version checked counts but not every exit
 code; the harness was strengthened before the pinned observation was committed.
 An initial CI run at `9bcb64a` failed because a wheel-only test attempted
 to import an uninstalled `experiments` module. The test was moved to the

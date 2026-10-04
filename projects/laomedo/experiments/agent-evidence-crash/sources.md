@@ -19,7 +19,7 @@ related: []
 - [EXP-04 run-store result](../durable-pre-dispatch/iterations/2026-10-02/results.md)
   is the prerequisite. Its implementation was merged in
   [Laomedo PR #54](https://github.com/amadou-6e/laomedo/pull/54).
-- [Laomedo source at `e274903`](https://github.com/amadou-6e/laomedo/tree/e274903242a4f1724fc598ba50de9cff4f433690)
+- [Laomedo source at `9e0bbca`](https://github.com/amadou-6e/laomedo/tree/9e0bbca7a35727be88d7815d2799c9d359a4a848)
   contains the EXP-05 harness, tests and sanitized observation. This is a
   published issue branch revision, not yet a merged implementation result.
 - [Run-traces T07](../../subsystems/run-traces/design/decision-readiness.md)
