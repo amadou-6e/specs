@@ -19,6 +19,8 @@ when actual replication occurs.
   attestation remains absent.
 - [Durable pre-dispatch](durable-pre-dispatch/README.md): EXP-04 synthetic
   crash-window evidence for run identity, frozen refs and no-replay sweep.
+- [Pinned skill materialization](pinned-skill-materialization/README.md):
+  EXP-08 LF/CRLF exact-byte, protected/unprotected Git-clone and tamper-refusal probe.
 - [Agent evidence crash](agent-evidence-crash/README.md): EXP-05 synthetic
   invocation/native-ID/raw-event persistence across process-kill windows.
 - [UI versus backend death](ui-versus-backend-death/README.md): EXP-06
