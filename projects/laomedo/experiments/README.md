@@ -23,6 +23,8 @@ when actual replication occurs.
   EXP-08 LF/CRLF exact-byte, protected/unprotected Git-clone and tamper-refusal probe.
 - [Agent evidence crash](agent-evidence-crash/README.md): EXP-05 synthetic
   invocation/native-ID/raw-event persistence across process-kill windows.
+- [Agent-event replay](agent-event-replay/README.md): EXP-09 synthetic
+  at-least-once receipt preservation and explicit action-identity uncertainty.
 - [UI versus backend death](ui-versus-backend-death/README.md): EXP-06
   pinned Langflow client-close and hard-kill observations with a startup sweep.
 - [Orphan lease](orphan-lease/README.md): EXP-07 protocol for the selected
