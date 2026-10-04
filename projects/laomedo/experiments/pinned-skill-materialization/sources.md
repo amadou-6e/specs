@@ -19,7 +19,7 @@ related: []
 - [Skill registry](../../subsystems/skill-registry/contract/README.md)
   owns immutable revisions. [Agent execution](../../subsystems/agent-execution/contract/interfaces.md)
   owns effective delivery and provider evidence.
-- [Laomedo `0ed7dfac`](https://github.com/amadou-6e/laomedo/commit/0ed7dfac634b8c650b7022edcfb390e35b8c40e1)
+- [Laomedo `839f2bb`](https://github.com/amadou-6e/laomedo/commit/839f2bbaa41f4bf0d3801f3f2e34796a6e57314b)
   contains the synthetic probe, tests and sanitized observation. At
   submission it is a published issue branch, not a merged product capability.
 - [Laomedo #9](https://github.com/amadou-6e/laomedo/issues/9) and
