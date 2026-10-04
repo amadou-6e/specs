@@ -18,7 +18,7 @@ related: []
   at specs `6b614e34eac93dea31ce4e80143c001fb4cdd066` supplied the
   selected, still-draft test oracle. [Specs PR #203](https://github.com/amadou-6e/specs/pull/203)
   was open when this attempt ran.
-- [Laomedo source `ff743ce`](https://github.com/amadou-6e/laomedo/commit/ff743ce228b9a419d68f2674d3dc0e7e3931f28e)
+- [Laomedo source `3115d5b`](https://github.com/amadou-6e/laomedo/commit/3115d5bec3f15f250f5b1605873185e537cbe3d4)
   contains the test, probe and sanitized observation. Its base was
   `89d0dd6b2881179ec61ba58e4307221f7a21d79b`, containing the merged
   [EXP-05 raw store](../agent-evidence-crash/README.md). This source was

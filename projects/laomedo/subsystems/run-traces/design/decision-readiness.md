@@ -79,7 +79,7 @@ Proposed T03 boundary, pending user choice: run traces is the authoritative raw 
 
 E02's IF-08 portion was later executed synthetically as
 [EXP-09](../../../experiments/agent-event-replay/iterations/2026-10-04/results.md)
-at Laomedo `ff743ce`; it did not exercise a native provider or IF-07 T10.
+at Laomedo `3115d5b`; it did not exercise a native provider or IF-07 T10.
 E01 and E03 remain unexecuted. The sketches below use synthetic fixtures,
 zero model turns, a pinned Laomedo adapter/fixture commit, OS/Docker,
 filesystem and fsync settings, and the exact selected protocol. Include

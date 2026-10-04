@@ -15,8 +15,8 @@ related: []
 | --- | ---: | --- | --- | --- |
 | Identical source-ID redelivery after reopening store | 2 / 2 | uncertain; count absent | complete | Both payload digests equal; neither delivery collapsed |
 | One source ID, conflicting payloads | 2 / 2 | uncertain; count absent | complete | Both summaries and distinct digests retained |
-| Keyless result-before-call plus redelivery | 3 / 3 | uncertain; count absent | partial | Receipt order is result, call, result after restart sweep; no call link inferred |
-| Same source ID in two invocations | 1 / 1 per invocation | uncertain; count absent | complete in each | Separate histories retain call and result despite shared ID |
+| Keyless result-before-call plus redelivery | 3 / 3 | uncertain; count absent | partial | Receipt order is result, call, result after restart sweep; all expose `call-1`, but no link is inferred |
+| Same source ID in two invocations | 1 / 1 per invocation | uncertain; count absent | complete in each | Separate histories retain call and result with shared source ID and `call-2`, without a cross-invocation link |
 
 Reprojecting each case twice left raw receipts and stored projection rows
 unchanged. A completed stream still had an unknown unique-action count;

@@ -12,7 +12,7 @@ related: []
 # Execution
 
 On Windows with Python 3.12.10, Laomedo source
-[`ff743ce`](https://github.com/amadou-6e/laomedo/commit/ff743ce228b9a419d68f2674d3dc0e7e3931f28e)
+[`3115d5b`](https://github.com/amadou-6e/laomedo/commit/3115d5bec3f15f250f5b1605873185e537cbe3d4)
 ran the source-only synthetic probe. The prospective protocol was already
 committed at `c3b46f9` before that run. `python -m experiments.exp09.probe
 --record` wrote the sanitized LF observation once; normal probe/test commands
@@ -32,3 +32,10 @@ The code reopens the SQLite store object for a synthetic reconnect, not a
 native or network connection. The crash case invokes EXP-05's restart sweep;
 it does not kill a real backend. These are validity boundaries, not passing
 evidence for those omitted mechanisms.
+
+After the first run, an inspectability correction exposed the synthetic
+`tool_call_id` in the sanitized readback and asserted that matching IDs remain
+visible across reordered events and separate invocations. The prospective
+cases and pass/fail threshold did not change. The tests and observation were
+rerun at `3115d5b`; the original `ff743ce` result is superseded as the
+evidence pin, not silently treated as the final artifact.
