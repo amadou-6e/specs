@@ -35,7 +35,11 @@ session. Keep partial events from crash, denial or interruption. Preserve
 available native source identifiers and the separate receipt sequence. Neither
 optional native IDs nor receipt order guarantee deduplication; mark potential
 replays uncertain instead of silently counting them as distinct actions or
-fabricating a stable identity. IF-08 replay policy remains open.
+fabricating a stable identity. The first-slice policy is
+[at-least-once receipts with explicit uncertainty](../../../decisions/0003-agent-event-replay.md):
+retain every committed delivery, including conflicting repeated IDs. A
+source-specific producer-key guarantee requires separate verification before
+any deduplication. This choice does not settle IF-07 lifecycle deduplication.
 
 The execution overview reads agent invocation timing and status and opens
 single-invocation telemetry. Its exact waterfall/card layout is undecided and
@@ -70,6 +74,8 @@ The trace-to-results handoff is approximately (see
 IF-11 TraceLink {
   run_id: string, trace_ref: Ref, digest_ref?: Ref,
   event_count: integer, last_received_sequence?: integer,
+  action_uniqueness: "uncertain" | "verified",
+  unique_action_count?: integer,
   stream_state: "complete" | "partial" | "unknown",
   invocations: [{ stage_id: string, invocation_id: string,
                   native_session_ref?: Ref, event_count: integer,
@@ -78,6 +84,9 @@ IF-11 TraceLink {
 }
 ```
 
-`usage` is absent when unknown, not zero. `complete` describes evidence
+`event_count` counts received deliveries, not unique native actions.
+`unique_action_count` is absent while `action_uniqueness` is `uncertain`;
+neither omission nor uncertainty means zero actions. `usage` is absent when
+unknown, not zero. `complete` describes evidence
 receipt, not whether the agent achieved the user's goal. Content-retention
 and native-to-normalized event projection remain open.

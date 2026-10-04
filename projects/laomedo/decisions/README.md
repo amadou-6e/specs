@@ -24,6 +24,8 @@ until review confirms the record; acceptance is not implied by saving it.
   changes behind the user-traversal graph.
 - [0002 — Subsystem handoffs](0002-subsystem-handoffs.md): D01–D25 and the
   interview trail behind the subsystem graph.
+- [0003 — Agent-event replay](0003-agent-event-replay.md): first-slice IF-08
+  at-least-once receipts and explicit action-identity uncertainty.
 
 The [journey graph](../architecture/user-traversal.md) and
 [handoff graph](../architecture/subsystem-handoffs.md) remain the editable visual
