@@ -16,7 +16,11 @@ related: []
 | Source versus effective skill tree hash | equal | equal |
 | Post-edit skill tree hash | changed | changed |
 | Source and stored revision after effective edit | unchanged | unchanged |
-| Source Git status before/materialize/edit/cleanup | clean at all four points | clean at all four points |
+| Unprotected agent checkout | Skill untracked; `git add -A` stages it; ordinary `git clean -nd` would remove it | Same |
+| Protected agent checkout (`.git/info/exclude`) | Git status clean; `git add -A` stages nothing; ordinary `git clean -nd` omits skill | Same |
+| Force clean (`git clean -ndx`) | Would remove skill despite exclude rule | Same |
+| Tracked fixture checkout with `core.autocrlf=true` | Git converts LF to CRLF | Same |
+| Source Git status and post-cleanup protected checkout | clean | clean |
 | Parent-path read, unsafe ID, tampered revision | rejected | rejected |
 | Runner use evidence | `offered` | `offered` |
 | Native provider discovery | unverified | unverified |
@@ -28,7 +32,10 @@ without altering the source or immutable store. A tampered stored revision
 failed before an effective skill target appeared. The observed path is
 `.agents/skills/exp08-sample/SKILL.md`.
 
-These results support only deterministic materialization and cleanliness
-in a disposable source tree. They do not prove Codex saw or used the skill,
-Docker mount behavior, all Windows reparse-point cases, or production
-session semantics. No model-backed follow-up was authorized in this attempt.
+These results expose checkout pollution without protection and support
+deterministic materialization plus cleanliness **only when the disposable
+agent clone has the tested local exclude rule**. They do not show that the
+production runner installs that rule, or protects against `git clean -x`.
+They do not prove Codex saw or used the skill, Docker mount behavior, all
+Windows reparse-point cases, or production session semantics. No model-backed
+follow-up was authorized in this attempt.
