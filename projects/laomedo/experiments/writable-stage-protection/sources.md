@@ -19,3 +19,5 @@ related: []
 - [2026-10-03 verifier review](https://github.com/amadou-6e/laomedo/pull/58#pullrequestreview-5399309404) reproduced eight create-only Docker downgrades accepted by the earlier verifier.
 - [2026-10-03 protocol re-review](https://github.com/amadou-6e/specs/pull/195#pullrequestreview-5399354210) accepted amendments A-D but identified `MaskedPaths`, `ReadonlyPaths`, full `HostConfig` and sidecar gaps before stage startup.
 - [2026-10-03 verifier re-review](https://github.com/amadou-6e/laomedo/pull/58#pullrequestreview-5399354158) found seven of the original eight real downgrades rejected and documented the remaining `systempaths` and full-projection gaps.
+- [2026-10-04 verifier review](https://github.com/amadou-6e/laomedo/pull/58#pullrequestreview-5406644179) rejected all 30 real downgrade variants and approved direct no-model steps 3-4 with an inspected sidecar launch condition.
+- [2026-10-04 protocol review](https://github.com/amadou-6e/specs/pull/195#pullrequestreview-5406644232) approved those steps under the same condition; agent-originated step 5 still needs separate authorization.
