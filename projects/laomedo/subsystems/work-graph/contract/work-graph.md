@@ -116,9 +116,18 @@ the request is insufficient. Keep secrets out of the persisted binding.
 
 For a bounded single-user, zero-turn check, the host may issue one-use grants
 from a private ledger outside Git and every stage mount. Its CLI requests a
-typed work-key confirmation; the ledger binds the selected graph ID, runner, scope,
-expiry and limits, then atomically redeems a matching reference before run
-reservation. This local mechanism does not by itself make untrusted stage code
+typed work-key confirmation; the ledger binds the selected work key and
+relevant content digest, runner, scope, expiry and limits, while retaining the
+reviewed graph snapshot ID as evidence. The content digest covers the selected
+work and transitive prerequisites and excludes fetch time. A `pinned` launch
+compares the grant with the frozen selection; a `refreshed` launch compares it
+with the newly fetched selection. To authorize `refreshed`, the host first
+fetches and presents current content, issues a grant from that reviewed
+snapshot, then re-fetches at launch and refuses any relevant content change
+before redeeming the grant. A matching reference is atomically redeemed before
+run reservation. Grants issued under the older snapshot-ID-only rule cannot
+be redeemed by the content-bound route. This local mechanism does not by
+itself make untrusted stage code
 safe: the issuer must remain outside the stage's process and filesystem view,
 and effective time and model-turn limits must be enforced by the runner. The
 typed confirmation alone does not authenticate an operator. Until
@@ -134,6 +143,14 @@ them against the export before reserving the run, then records one dispatch
 attempt before sending one execute command. A timeout stops the named worker
 container and leaves the run outcome `unknown` without automatic replay.
 The local CLI exposes fetch, grant issue and launch operations. This route
+requires a disposable loopback Langflow server with auto-login enabled; its
+token is held only in host memory. The worker uses a locally present pinned
+image without pulling it at launch and runs as a numeric non-root user. The
+worker's hash report checks that it loaded the host-supplied flow bytes; it
+does not attest arbitrary custom component behavior. Grant redemption occurs
+before that hash check, so a failed check consumes the grant without reserving
+a run. The future approval/retry policy belongs to #95, and adversarial
+component isolation belongs to #96. This route
 does not grant a model turn, prove operator identity beyond the local session,
 or establish safe protocol behavior against malicious custom component code.
 
