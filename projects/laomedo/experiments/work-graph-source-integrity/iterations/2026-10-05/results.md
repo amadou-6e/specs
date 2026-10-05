@@ -24,4 +24,6 @@ related: []
 
 All eight corpus cases matched the separately committed oracle exactly. The native provenance marker was preserved on each edge; source issue URLs, bodies, update markers, labels and numbers matched the response pages. The snapshot refresh produced two distinct digests and the tampered artifact raised `ValueError`. The existing Work Graph unit suite ran separately: 12 tests passed.
 
-This tests the imported GraphQL response shape, not a live GitHub query or the account's access to private issues. Cross-repository dependencies deliberately remain unresolved unless their source is available; an open dependent is `unknown`, not ready. Readiness is inspection data and does not authorize dispatch. No negative source-integrity observation remains unresolved in this bounded corpus.
+This first result did not compare projected item readiness, and its filtered case hid a closed blocker. It therefore did not, by itself, establish that filtering preserves readiness from the complete graph. The [amendment](amendment-results.md) retains this original result and tests the missing open-blocker case.
+
+This tests the imported GraphQL response shape, not a live GitHub query or the account's access to private issues. Cross-repository dependencies deliberately remain unresolved unless their source is available; an open dependent is `unknown`, not ready. Readiness is inspection data and does not authorize dispatch. The synthetic corpus was prepared by the implementation author without reusing development fixtures, not by an independent second party.

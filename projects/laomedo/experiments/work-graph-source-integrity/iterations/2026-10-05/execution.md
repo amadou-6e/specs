@@ -24,3 +24,7 @@ uv pip install --python (Join-Path $env:TEMP 'laomedo-exp01-20261005\venv\Script
 ```
 
 The run used zero model turns, no credentials, no GitHub API calls, and no issue or PR mutations. Temporary wheel, environment, and saved snapshots remain outside Git. A copy of the probe result with its private host path replaced by a placeholder is published in the Laomedo experiment directory.
+
+## Filtered-readiness amendment
+
+The original eight-case artifact was retained. Review identified the missing projected-readiness assertion. The nine-case corpus, handwritten oracle and updated probe were committed at Laomedo `de32cc8` before rerun, and the [amendment plan](amendment-plan.md) was committed at specs `b3a0462` before rerun. The fresh wheel was built from `de32cc8` with the same offline `uv` command pattern above, installed in a new disposable environment under `laomedo-exp01-amend-20261005`, and probed with `-I` into its own `run` directory. The published [sanitized amendment result](https://github.com/amadou-6e/laomedo/blob/b2648e1b0f5803c149c12d45550ff44fd43eb9ed/experiments/exp01/result-amendment.json) is separate from the first result. No product Work Graph implementation file changed between the two runs.

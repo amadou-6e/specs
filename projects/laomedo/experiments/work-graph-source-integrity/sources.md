@@ -16,3 +16,5 @@ related: []
 - [Laomedo Work Graph package](https://github.com/amadou-6e/laomedo/tree/0ead228a0adea44afd0467dea4acec93177af0b9/laomedo/work_graph) is the initial implementation baseline. Its development fixtures/tests are context only, not the EXP-01 oracle.
 
 The dedicated [fixture response corpus](https://github.com/amadou-6e/laomedo/blob/7597c89d4dd2b305522f011240223079fd547ac9/experiments/exp01/corpus.json) and [hand-checked oracle](https://github.com/amadou-6e/laomedo/blob/7597c89d4dd2b305522f011240223079fd547ac9/experiments/exp01/oracle.json) were committed before execution. No live GitHub response, account token, or private issue body is a source for this attempt.
+
+The [amended corpus and oracle](https://github.com/amadou-6e/laomedo/tree/de32cc8/experiments/exp01) were committed before the nine-case rerun. Both sets were prepared by the same author as the implementation without copying development fixtures; neither is a second-party oracle.

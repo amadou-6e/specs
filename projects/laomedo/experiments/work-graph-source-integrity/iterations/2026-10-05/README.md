@@ -11,8 +11,8 @@ related: []
 
 # Installed-wheel fixture attempt
 
-The independently authored eight-case corpus passed against an installed Laomedo wheel. The bounded result is a **go for the tested source-integrity and readiness behavior under synthetic GitHub responses**. It is not evidence of live GitHub access, private-issue permissions, or launch authorization.
+The separately authored eight-case corpus passed against an installed Laomedo wheel. Review found that the filtered projection did not compare readiness and hid only a closed blocker. The [prospective amendment](amendment-plan.md) added a hidden open blocker and projected-readiness comparison before rerun; [all nine amended cases passed](amendment-results.md). The bounded result is a **go for the tested source-integrity and readiness behavior under synthetic GitHub responses**. It is not evidence of live GitHub access, private-issue permissions, or launch authorization.
 
-See [execution](execution.md), [results](results.md), and [evidence manifest](evidence/manifest.md).
+See [execution](execution.md), [original results](results.md), [amendment results](amendment-results.md), and [evidence manifest](evidence/manifest.md).
 
-The review found a filtered-readiness coverage gap in this first run. The [prospective amendment](amendment-plan.md) freezes the added hidden-open-blocker case and projected-readiness comparison before its separate rerun; the original result remains intact.
+The original eight-case result remains intact as a separate artifact.
