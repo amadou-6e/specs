@@ -125,6 +125,18 @@ typed confirmation alone does not authenticate an operator. Until
 those boundaries are verified, the grant remains a fixture-only authorization
 check and cannot authorize a model-backed Work Graph launch.
 
+The local zero-turn route keeps the GitHub login, disposable Langflow API token,
+grant ledger and durable run store on the host. It fetches the saved flow once
+and passes only that frozen export and package code to a network-disabled
+Docker worker using read-only mounts and scratch tmpfs. The worker builds the
+pinned Langflow graph and reports graph/component hashes. The host verifies
+them against the export before reserving the run, then records one dispatch
+attempt before sending one execute command. A timeout stops the named worker
+container and leaves the run outcome `unknown` without automatic replay.
+The local CLI exposes fetch, grant issue and launch operations. This route
+does not grant a model turn, prove operator identity beyond the local session,
+or establish safe protocol behavior against malicious custom component code.
+
 The runner supplies status and results. Work Graph associates each run with
 its frozen work snapshot and exposes references to output, file changes and
 [trace evidence](../../run-traces/contract/README.md). Preserve partial results on
