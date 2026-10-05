@@ -104,8 +104,13 @@ at Laomedo `dee05c2`, with amended direct-capture replication at `1fc002a`.
 The pinned synthetic probe showed late effects after
 outer-client and v2 server timeouts; the component's 2-second HTTP timeout
 produced an uncertainty-aware 500 only after the 5-second endpoint effect.
-The post-408 job status and IF-06/07 partial trace were not captured, so Q11
-remains a first-slice integration gate rather than a completed safety claim.
+The post-408 job status was subsequently inspected in
+[EXP-65](../../../experiments/post-timeout-job-status/iterations/2026-10-05/results.md):
+four read-only polls returned terminal `JOB_FAILED`, including one before the
+late external effect. That status is not proof of cancellation or effect
+reconciliation. IF-06/07 partial trace and real-agent cancellation were not
+captured, so Q11 remains a first-slice integration gate rather than a
+completed safety claim.
 
 ## Crash accounting and ownership proposal
 
