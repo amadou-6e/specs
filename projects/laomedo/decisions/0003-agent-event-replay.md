@@ -3,7 +3,7 @@ title: Preserve agent-event redelivery uncertainty
 status: draft
 kind: decision
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-04
+last_reviewed: 2026-10-05
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -13,13 +13,15 @@ related: []
 
 ## Status and source
 
-This is a reconstructed decision from the 2026-10-04 conversation following
-the merged [EXP-05 evidence](../experiments/agent-evidence-crash/iterations/2026-10-03/results.md).
-The user asked to continue after the assistant recommended T07's
-at-least-once/explicit-uncertainty option. The exact transcript is not stored
-here; [specs #202](https://github.com/amadou-6e/specs/issues/202) records the
-selected scope. This record is draft pending review. No provider replay test
-has yet validated implementation behavior.
+The candidate policy followed the merged
+[EXP-05 evidence](../experiments/agent-evidence-crash/iterations/2026-10-03/results.md).
+The earlier request to continue did not by itself select an alternative.
+On 2026-10-05, after the alternatives were explained, the user explicitly
+chose to keep every delivery and show unique-action counts as uncertain unless
+the source IDs are verified. That confirmation is recorded on
+[specs #202](https://github.com/amadou-6e/specs/issues/202#issuecomment-5991554384).
+This decision remains a draft specification pending PR review; synthetic
+EXP-09 evidence does not validate native-provider replay.
 
 ## Context and alternatives
 
