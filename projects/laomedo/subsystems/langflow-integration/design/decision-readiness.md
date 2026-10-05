@@ -100,7 +100,8 @@ Each proposal uses a synthetic deterministic node, not an LLM turn. Pin Langflow
 
 E03's bounded runtime portion was executed as
 [EXP-10](../../../experiments/long-call-timeout/iterations/2026-10-05/results.md)
-at Laomedo `dee05c2`. The pinned synthetic probe showed late effects after
+at Laomedo `dee05c2`, with amended direct-capture replication at `1fc002a`.
+The pinned synthetic probe showed late effects after
 outer-client and v2 server timeouts; the component's 2-second HTTP timeout
 produced an uncertainty-aware 500 only after the 5-second endpoint effect.
 The post-408 job status and IF-06/07 partial trace were not captured, so Q11

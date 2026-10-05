@@ -24,11 +24,18 @@ the second reached Langflow but failed flow creation because the copied
 example's fixed ID collided. Both stopped **before any case dispatched**.
 The fixture initialized volume ownership and omitted the copied flow ID.
 The valid third start ran the four frozen calls once each, on 2026-10-05
-09:53 UTC, with no retry of a potentially active call.
+09:53 UTC, with no retry of a potentially active call. Its verbose live
+response was manually condensed for the first committed observation at
+`dee05c2`; that file does not prove the final capture code produced its own
+compact shape. A prospective [amendment](../../protocol.md) was committed at
+`8ceb50d` before a separate four-call replication at 10:13 UTC. The current
+compact observation at `1fc002a` was written directly by the probe, not
+manually edited. Both valid runs retain one entry/effect per case and the same
+qualitative outcome; first-run data remains pinned in Git history.
 
 Effective v2 server timeout was read back as **3 seconds** before calls.
 `python -m experiments.exp10.probe --record` produced the compact
-[observation](evidence/manifest.md) at Laomedo `dee05c2`.
+[replication observation](evidence/manifest.md) at Laomedo `1fc002a`.
 `python -m unittest experiments.exp10.test_probe -v` passed four checks,
 including mutations that remove a late effect or fabricate a safe/timely
 response. The main `python -m unittest discover -s tests -p 'test_*.py'`

@@ -20,8 +20,12 @@ related: []
 - Laomedo base was [`a365238`](https://github.com/amadou-6e/laomedo/commit/a36523845a1e718fb79fb40d42002a03c0cb4861),
   including EXP-04's durable-run prototype. The frozen protocol is
   [`e4f4685`](https://github.com/amadou-6e/laomedo/commit/e4f4685e0a58d3825ab6c6c7175e57fff3ca116a),
-  and probe/tests/observation are at
+  and the first-run probe/tests/observation are at
   [`dee05c2`](https://github.com/amadou-6e/laomedo/commit/dee05c2532de264796cccdc0543b658b0770d966).
+  The prospective amendment is at
+  [`8ceb50d`](https://github.com/amadou-6e/laomedo/commit/8ceb50de3c9e820b04268543bba9410dd82c31f1),
+  and the direct-capture replication is at
+  [`1fc002a`](https://github.com/amadou-6e/laomedo/commit/1fc002a2837dc8e4c86c6c6c1cddf2e48c578bb8).
   At experiment time this was issue branch `feat/40`, not a merged product
   capability.
 - The runtime image was `langflowai/langflow@sha256:34055a07d446de51760e28dab6332e22624e5f48dca611567779992fc32c5ec0`

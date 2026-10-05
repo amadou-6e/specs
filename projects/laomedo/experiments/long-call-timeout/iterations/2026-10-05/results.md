@@ -13,10 +13,10 @@ related: []
 
 | Boundary | Caller result | Effect relative to caller response |
 | --- | --- | --- |
-| Control: 0.2 s endpoint, 8 s component limit | HTTP 200 in 1.016 s | Before success |
-| Outer caller: 1 s limit, 4 s endpoint | `TimeoutError` in 1.016 s | About 3.1 s **after** timeout |
-| Component: 2 s HTTP limit, 5 s endpoint | HTTP 500 in 5.375 s; message says remote execution may still be active | Before the 500 response; runner response was disconnected |
-| Langflow v2 sync: verified 3 s ceiling, 6 s endpoint | HTTP 408 `EXECUTION_TIMEOUT` with job ID in 3.032 s | About 3.1 s **after** 408 |
+| Control: 0.2 s endpoint, 8 s component limit | HTTP 200 in 1.063 s | Before success |
+| Outer caller: 1 s limit, 4 s endpoint | `TimeoutError` in 1.000 s | About 3.1 s **after** timeout |
+| Component: 2 s HTTP limit, 5 s endpoint | HTTP 500 in 5.282 s; message says remote execution may still be active | Before the 500 response; runner response was disconnected |
+| Langflow v2 sync: verified 3 s ceiling, 6 s endpoint | HTTP 408 `EXECUTION_TIMEOUT` with job ID in 3.031 s | About 3.1 s **after** 408 |
 
 The [sanitized observation](evidence/manifest.md) retains UTC timestamps,
 caller durations, response categories and runner records. Each case had one
@@ -25,6 +25,12 @@ stop** the synthetic side effect. The component's error wording preserved
 uncertainty, but its configured 2-second socket timeout did not produce a
 2-second whole-graph response in this run. These are distinct timeout layers;
 the v2 server ceiling does not describe the v1 route.
+
+The table uses the amended **direct-capture replication** at Laomedo
+`1fc002a`. The historical first run at `dee05c2` had the same response
+categories and late-effect ordering; its elapsed times and identities differ
+and remain in that committed observation. The replication confirms the
+compact capture path without claiming identical timing.
 
 This is a **first-slice hazard, not a safe-timeout pass**. The probe did not
 query the v2 job after HTTP 408, capture IF-06/07 partial trace state for

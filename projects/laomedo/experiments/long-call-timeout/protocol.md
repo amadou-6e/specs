@@ -18,6 +18,11 @@ loopback-only synthetic runner, four delays and timeout limits, one attempt
 per case, and **zero model turns**. It forbids inferring that a timed-out
 external action stopped without effect evidence.
 
+Before a later replication, [amendment 01](https://github.com/amadou-6e/laomedo/blob/8ceb50de3c9e820b04268543bba9410dd82c31f1/experiments/exp10/AMENDMENT-01.md)
+authorized one separate four-call run to verify that the current probe writes
+its compact observation directly. It did not change the four cases or limits;
+the first run remains historical evidence.
+
 Cases: a 0.2-second control; a 4-second runner delay with a 1-second outer
 client timeout; a 5-second delay with a 2-second component HTTP timeout; and
 a 6-second delay with a verified 3-second Langflow v2 synchronous server

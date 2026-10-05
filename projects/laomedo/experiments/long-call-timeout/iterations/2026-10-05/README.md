@@ -11,7 +11,8 @@ related: []
 
 # 2026-10-05 attempt
 
-One valid four-call synthetic run followed two failed fixture starts that
-dispatched no case. Read the [execution](execution.md), [results](results.md)
+The first valid four-call synthetic run followed two failed fixture starts that
+dispatched no case. An amended, separate four-call replication then verified
+direct compact capture. Read the [execution](execution.md), [results](results.md)
 and [evidence manifest](evidence/manifest.md). This is not an independent
 replication of a native provider call.
