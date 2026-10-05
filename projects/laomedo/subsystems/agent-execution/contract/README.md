@@ -19,6 +19,8 @@ some assumptions in the older isolation draft; its conflict note must be
 resolved before implementation acceptance.
 The tested local [runner API boundary](runner-api.md) owns bearer authentication,
 endpoint behavior, and named-container teardown for the single-user prototype.
+The proposed [early-run cancellation handoff](early-run-cancellation.md) owns
+idempotent asynchronous identity, pre-dispatch cancel and positive stop evidence.
 Shared serialized records belong to [architecture](../../../architecture/shared-contracts.md).
 The [Langflow node interface](langflow-node.md) owns the proposed reusable custom
 component, fresh/resume operations, typed outputs and client lifecycle limitations.

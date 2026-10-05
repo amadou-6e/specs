@@ -79,6 +79,13 @@ known run ID is supported and must retain partial evidence. Async start/early
 run identity is separate follow-up work, not a hidden acceptance claim.
 Track that limitation in [Laomedo #22](https://github.com/amadou-6e/laomedo/issues/22).
 
+The additive [early-run target](early-run-cancellation.md) proposes an
+asynchronous fresh start with a durable request identity and early run
+reference. Status/cancel can then use that reference without waiting for the
+turn to finish. It does **not** establish that Langflow UI Stop invokes the
+node's cancel path; that behavior needs installed-runtime evidence before it
+is claimed or made a first-slice guarantee.
+
 ## Acceptance and evidence
 
 - Palette discovery uses the documented installed component path on pinned runtime.
