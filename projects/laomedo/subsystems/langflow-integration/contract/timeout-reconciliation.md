@@ -12,9 +12,11 @@ related: []
 # Timeout and late-effect reconciliation
 
 This is the proposed first-slice Laomedo boundary for [#66](https://github.com/amadou-6e/laomedo/issues/66).
-It is informed by [EXP-10](../../../experiments/long-call-timeout/README.md)
-and [EXP-65](../../../experiments/post-timeout-job-status/README.md), not an
-implemented or accepted behavior. Langflow still owns graph sequencing;
+It is informed by [EXP-10](../../../experiments/long-call-timeout/README.md),
+[EXP-65](../../../experiments/post-timeout-job-status/README.md) and the
+bounded synthetic [EXP-66 integration](../../../experiments/timeout-trace-integration/README.md).
+The #66 store implementation exercises part of this draft contract but the
+first-slice behavior is not accepted. Langflow still owns graph sequencing;
 Laomedo owns durable identity, receipt and status projection. No component
 retries a timed-out agent invocation automatically.
 

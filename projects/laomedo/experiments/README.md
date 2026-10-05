@@ -29,7 +29,10 @@ when actual replication occurs.
   outer-client, component HTTP and v2 server timeouts with late synthetic effects.
 - [Post-timeout job status](post-timeout-job-status/README.md): follow-up
   read-only v2 job polls returned terminal `JOB_FAILED` before a late synthetic
-  effect; Laomedo partial trace and real-agent cancellation remain untested.
+  effect; it did not test a Laomedo trace.
+- [Timeout trace integration](timeout-trace-integration/README.md): EXP-66
+  synthetic live Langflow call preserved timeout, `JOB_FAILED` deliveries and
+  late effect as a durable partial Laomedo trace; real-agent cancellation remains untested.
 - [UI versus backend death](ui-versus-backend-death/README.md): EXP-06
   pinned Langflow client-close and hard-kill observations with a startup sweep.
 - [Orphan lease](orphan-lease/README.md): EXP-07 protocol for the selected
