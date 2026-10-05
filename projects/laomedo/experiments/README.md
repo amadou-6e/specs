@@ -25,8 +25,7 @@ when actual replication occurs.
   independent supervisor plus startup sweep; numeric bound and run pending.
 - [Writable stage protection](writable-stage-protection/README.md): EXP-18
   reviewed direct no-model Docker stage passed; agent-originated E05 test is
-  unrun, with four turns authorized and a proposed personal-subscription exception
-  awaiting review.
+  unrun; subscription-auth work is deferred with 0/4 turns used.
 
 Copy template/ directly, rename and replace every example fact/lifecycle. Freeze a real
 prospective protocol before dispatch. This migration authorized/spent no new model turns.
