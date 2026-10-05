@@ -39,6 +39,8 @@ when actual replication occurs.
   independent supervisor plus startup sweep; numeric bound and run pending.
 - [Issue to agent to PR integration](issue-agent-pr-integration/README.md):
   EXP-19 credential-free phase-zero protocol; no model or GitHub write.
+- [Work Graph source integrity](work-graph-source-integrity/README.md):
+  EXP-01 independent installed-package fixture protocol and readiness oracle; no live run yet.
 
 Copy template/ directly, rename and replace every example fact/lifecycle. Freeze a real
 prospective protocol before dispatch. This migration authorized/spent no new model turns.
