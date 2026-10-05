@@ -11,11 +11,11 @@ related: []
 
 # Results
 
-The credential-free phase passed its five frozen conditions at Laomedo commit `096075f31cfc88ea6dc226ab0b1deeb0af33756b`:
+The credential-free phase passed its five frozen conditions at Laomedo commit `af87e6ccd91876f510789afece1cf7dc8cd8c033`:
 
 | Condition | Observed result |
 | --- | --- |
-| Ready issue | One dispatch; run completed; two raw receipts and two projections; frozen work key, source marker, input digest, graph snapshot, run ID, trace ID and component revision matched the saved result; local Git commit `61a47d71ff7c0bb50dfa2d3fc5eccc4eac78f8aa` on a unique branch; zero remotes and no target PR. |
+| Ready issue | One dispatch; run completed; two raw receipts and two projections; frozen work key, source marker, input digest, graph snapshot, run ID, trace ID, component revision and candidate commit matched the saved result binding; local Git commit `a119e3da725aac78dd378bf22e9bd4a868006998` on a unique branch; zero remotes and no target PR. |
 | Changed source body and update marker | Refused before any run reservation or dispatch with `source_snapshot_changed`; no candidate. |
 | Opened prerequisite | Refused before dispatch with `source_not_ready`; no candidate. |
 | Incomplete blocker connection | Refused before dispatch with `source_not_ready`; no candidate. |
