@@ -3,7 +3,7 @@ title: Agent execution interfaces
 status: draft
 kind: target-contract
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-02
+last_reviewed: 2026-10-05
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -36,6 +36,18 @@ lists each contact. Provider-specific behavior remains in
   or unsupported requested protection fails before dispatch. A
   concurrent attempt to use the same session errors at execution time; a
   predictable conflict can be warned about before launch without blocking it.
+
+For a locally executed Langflow stage, the adapter builds a graph from one
+launch-time saved-flow export using the pinned runtime. It resolves full
+component source for every executable vertex, compares that source and the
+vertex/edge data with the built graph, and persists graph and component
+revisions before dispatch. The checked graph object is the one executed.
+Submitting a flow ID to an API that reloads mutable saved state does not
+preserve this identity. Missing source, mismatched built vertices, unsupported
+runtime revision or an incomplete durable record refuses before dispatch. One
+frozen stage instance permits only one durable reservation and dispatch attempt.
+This rule does not attest a remote Langflow server's own execution from its
+response alone, and does not decide Work Graph freshness or grant validity.
 
 ## IF-04 — obtain exact skill bytes
 

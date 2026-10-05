@@ -3,7 +3,7 @@ title: Agent execution validation
 status: draft
 kind: specification
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-03
+last_reviewed: 2026-10-05
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -21,6 +21,7 @@ experiment evidence is added below with its own pinned version, task and date.
 | Isolation / read-only / remote mode | #120, #122, Docker sources | Earlier failures retained; general grant and remote storage unproven |
 | Claude parity | #121 | CLI blocker before model call; acceptance unknown |
 | New IF-05/IF-06 stage invocation and same-session conflict | No new check | Target interface only; not executed |
+| IF-05 launch graph and component revision refusal | Pinned Langflow 1.12.3 image, credential-free `tests/test_langflow_stage_adapter.py` (2026-10-05) | A local in-process adapter built the exact saved-flow graph, refused missing or mismatched runtime code before reservation, and kept a paused run's original graph while a later launch used changed code. The adapter is not yet wired to a saved-flow API endpoint or the Work Graph launch gate; no remote-server attestation or model turn was established. |
 | First-slice mid-turn container crash terminates invocation with partial/unknown evidence | No new check | Proposed rule; EXP-05 kills a fate-shared process, not a container while its backend survives |
 | Fate-shared run/backend process crash retains only committed evidence | [EXP-05 synthetic crash probe](../../experiments/agent-evidence-crash/iterations/2026-10-03/results.md) | Six process kills plus a normal control preserved committed IDs/raw receipts, ended the run as crashed, and marked streams unknown or partial; no actual backend, container or provider was killed |
 | Three-attempt same-session crash recovery | No new check | Deferred target pending controlled real-agent mid-turn crash/session-restart experiment, including repeated/lost external effects |
