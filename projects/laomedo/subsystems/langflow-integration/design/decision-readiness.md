@@ -3,7 +3,7 @@ title: Langflow integration decision readiness
 status: draft
 kind: specification
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-02
+last_reviewed: 2026-10-05
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -117,7 +117,7 @@ completed safety claim.
 The five questions must have explicit answers in the future contract; this is a proposed minimum accounting rule, not evidence that the current Langflow adapter implements it.
 
 1. **Before dispatch:** persist run ID, graph revision, resolved configuration hash/refs, trigger, start, and stage reservation. If persistence fails, do not dispatch. Laomedo's Langflow integration owns this record; the Langflow runtime still sequences the graph. This is not a second workflow scheduler.
-2. **After restart:** mark prior nonterminal runs `crashed`, fence new dispatch for them, retain partial IF-07/08/09 evidence, and ask agent execution to reap orphan containers. A restart sweep alone may not bound a live orphan while the backend is down; the [provisional #175 readiness draft](https://github.com/amadou-6e/specs/blob/5dc5c1e/projects/laomedo/subsystems/agent-execution/design/decision-readiness.md) leaves supervisor/lease ownership and its test open.
+2. **After restart:** mark prior nonterminal runs `crashed`, fence new dispatch for them, retain partial IF-07/08/09 evidence, and ask agent execution to reap orphan containers. A restart sweep alone may not bound a live orphan while the backend is down; the [provisional #175 readiness draft](https://github.com/amadou-6e/specs/blob/5dc5c1e/projects/laomedo/subsystems/agent-execution/design/decision-readiness.md) leaves supervisor/lease ownership and its test open. [EXP-91](https://github.com/amadou-6e/laomedo/blob/f67909dd3e8db9c45d7b93adab518a576fce2f6f/experiments/exp91/RESULTS.md) now shows the narrower runner-crash case directly: its record became `interrupted` but its synthetic Docker container survived, and the saved record lacked the exact container name. This is a failed cleanup check, not evidence that the proposed reaper exists.
 3. **Surviving effects:** separately running containers, GitHub pushes/PRs and provider spend might continue after backend death. Their exact survival is unverified; record known effects, unknown effects, and evidence gaps without labeling a partial run clean or rolled back.
 4. **Relaunch warning:** a user-requested follow-up gets new run and invocation IDs; warn that it can duplicate writes and spend. Resolve B20 before selecting old frozen revisions versus `latest`. Prompt-only “inspect first” does not make external writes idempotent.
 5. **Detection owner:** Langflow integration detects its own incomplete run records on startup and emits the terminal context. Agent execution owns container cleanup effectiveness; results owns presentation; run traces owns evidence projection. A separate watchdog/lease may be required to bound orphans during an outage, but this page does not select one.
