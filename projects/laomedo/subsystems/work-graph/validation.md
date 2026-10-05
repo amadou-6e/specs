@@ -21,3 +21,12 @@ related: []
 
 The current evidence does not establish UI, agent dispatch or automatic issue
 state changes. The [contract](contract/work-graph.md) remains a broader target.
+
+The local #82 branch also has a one-use SQLite grant ledger and typed work-key
+confirmation CLI. Credential-free tests refuse an in-repository grant
+path, a mismatched graph and replay, and exercise one pinned Langflow fixture
+with a zero-turn grant. This is a local authorization check, not a safe
+production grant: the current stage executes in-process, Windows access-control
+inheritance has not been audited, and timeout/model-turn limits are not
+enforced around untrusted component code. Live GitHub source, a saved-flow API
+export and a trusted grant have not yet been exercised in one isolated launch.
