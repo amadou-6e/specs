@@ -77,7 +77,17 @@ Proposed T03 boundary, pending user choice: run traces is the authoritative raw 
 
 ## Experiment sketches
 
-**Not executed here.** All use synthetic fixtures, zero model turns, a pinned Laomedo adapter/fixture commit, OS/Docker, filesystem and fsync settings, and the exact selected protocol. Include Langflow `1.12.3` image digest `sha256:34055a07d446de51760e28dab6332e22624e5f48dca611567779992fc32c5ec0` when it participates. The pilot's 4/4 model turns cannot be reused. Estimates below exclude fixture construction.
+E02's IF-08 portion was later executed synthetically as
+[EXP-09](../../../experiments/agent-event-replay/iterations/2026-10-04/results.md)
+at Laomedo `3115d5b`, then amended with a falsifying control at `e285068`;
+neither run exercised a native provider or IF-07 T10.
+E01 and E03 remain unexecuted. The sketches below use synthetic fixtures,
+zero model turns, a pinned Laomedo adapter/fixture commit, OS/Docker,
+filesystem and fsync settings, and the exact selected protocol. Include
+Langflow `1.12.3` image digest
+`sha256:34055a07d446de51760e28dab6332e22624e5f48dca611567779992fc32c5ec0`
+when it participates. The pilot's 4/4 model turns cannot be reused. Estimates
+below exclude fixture construction.
 
 | Experiment / unblocks | Hypothesis / falsifier | Minimal pinned procedure | Outcome / estimated cost |
 | --- | --- | --- | --- |
@@ -97,7 +107,7 @@ Proposed T03 boundary, pending user choice: run traces is the authoritative raw 
 
 | Finding / boundary | Disposition |
 | --- | --- |
-| [#168 review](https://github.com/amadou-6e/specs/pull/168) B2 / IF-08 | T07–T08/E02 accept the finding: optional source IDs plus receipt sequence do not guarantee dedup. The [IF-08 text](../contract/interfaces.md) now selects at-least-once uncertainty; the replay test remains open. |
+| [#168 review](https://github.com/amadou-6e/specs/pull/168) B2 / IF-08 | T07–T08/E02 accept the finding: optional source IDs plus receipt sequence do not guarantee dedup. The [IF-08 text](../contract/interfaces.md) selects at-least-once uncertainty; [EXP-09](../../../experiments/agent-event-replay/iterations/2026-10-04/results.md) tests the synthetic receipt path, while native provider replay remains open. |
 | #168 M2 | T11 separates old shared-contract retry/new-run wording from deferred D17 same-invocation recovery. #168 B1 trigger shape and M1 input files belong to issue integration/agent execution, not traces. |
 | [#172 review](https://github.com/amadou-6e/specs/pull/172) H-1 | Reject proposed graph reattach/run-ledger remedy under later fate-shared decision; retain orphan/duplicate problem in T03–T04/T20. |
 | #172 H-15/H-16 | Results owns failure-report assembly; traces owns IF-11 completeness and honest usage/cost (T14–T15/T19). |
