@@ -13,7 +13,8 @@ related: []
 
 | Planned artifact | Producer | Location | Access |
 | --- | --- | --- | --- |
-| Frozen issue/graph/flow/runner/skill pins and grant ledger | Preflight harness | Private state; sanitized hashes here after execution | Private and repository summary |
+| Frozen issue/graph/flow/runner/skill pins | Read-only preparation at Laomedo `9f676ce` | Private plan and graph snapshot; sanitized IDs and hashes in [execution](../execution.md) | Private and repository summary |
+| Model and GitHub write grant ledger | Explicit user grant | Pending; no model or publication grant recorded | Private and repository summary |
 | Native run and raw events | Existing Codex runner | Private state outside Git | Private only |
 | Validated selected output artifact and branch/commit | Trusted host publisher | Private state; sanitized hashes here after execution | Private and repository summary |
 | Published draft PR and Work Graph run binding | Trusted host publisher | Actual URL and binding after confirmed GitHub acknowledgement | Repository |
