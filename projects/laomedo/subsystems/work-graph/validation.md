@@ -46,5 +46,8 @@ shows that the one-use grant now binds to the host OS principal rather than a
 caller-supplied name, refuses a different principal, and redirects ordinary
 component `print` output away from the stage protocol. A crafted print-based
 completion message was ignored. These checks do not prove human intent from
-another same-principal host process, protect against lower-level file-descriptor
-writes, or extend the zero-turn path to model agents.
+another same-principal host process or extend the zero-turn path to model
+agents. A [further stdout control](https://github.com/amadou-6e/laomedo/blob/f54b45b/experiments/exp82/fd-observation.json)
+also discarded a forged raw write to file descriptor 1 while preserving the
+real output. Code sharing the worker process may still discover or manipulate
+other open descriptors; adversarial protocol integrity remains unproven.
