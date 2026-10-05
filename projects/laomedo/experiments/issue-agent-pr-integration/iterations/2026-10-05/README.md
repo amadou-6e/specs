@@ -11,4 +11,4 @@ related: []
 
 # Initial attempt
 
-This attempt follows the [prospective protocol](../../protocol.md). Execution and observations are pending. See [execution](execution.md), [results](results.md) and [manifest](evidence/manifest.md). No model turn or external write is authorized by this attempt.
+This attempt followed the [prospective protocol](../../protocol.md), frozen at specs commit `c073ba01069accc2713b2ab96fa45a7b2088d67d` before the probe was executed. See [execution](execution.md), [results](results.md) and [manifest](evidence/manifest.md). It used no model turn or external write.
