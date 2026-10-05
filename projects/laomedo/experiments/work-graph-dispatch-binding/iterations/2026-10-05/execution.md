@@ -24,3 +24,5 @@ uv pip install --python (Join-Path $env:TEMP 'laomedo-exp16-20261005\venv\Script
 ```
 
 The existing `test_work_graph.py`, `test_workflow_run_store.py` and `test_exp19_probe.py` suites passed separately: 12, 3 and 3 tests. The experiment used zero model turns, no GitHub requests or writes, no real stage launch and no production grant. The [published result](https://github.com/amadou-6e/laomedo/blob/1906f8b3440c4beef0f9325bf2cb452a3351e418/experiments/exp16/result.json) replaces only the disposable installed-package path with a placeholder; raw SQLite and wheel artifacts remain outside Git.
+
+The probe's `corpus_sha256` is the local Windows working-tree byte hash, including CRLF line endings. The Git blob uses LF bytes; both hashes are in the [manifest](evidence/manifest.md). The committed source revision and parsed synthetic response pages, rather than platform-specific line endings, anchor reproduction of the decisions.
