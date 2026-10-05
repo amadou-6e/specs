@@ -11,12 +11,12 @@ related: []
 
 # Evidence manifest
 
-| Planned artifact | Producer | Location | Access |
+| Artifact | Producer | Location | Access |
 | --- | --- | --- | --- |
-| Frozen issue/graph/flow/runner/skill pins | Read-only preparation at Laomedo `9f676ce` | Private plan and graph snapshot; sanitized IDs and hashes in [execution](../execution.md) | Private and repository summary |
-| Model and GitHub write grant ledger | Explicit user grant | Pending; no model or publication grant recorded | Private and repository summary |
-| Native run and raw events | Existing Codex runner | Private state outside Git | Private only |
-| Validated selected output artifact and branch/commit | Trusted host publisher | Private state; sanitized hashes here after execution | Private and repository summary |
-| Published draft PR and Work Graph run binding | Trusted host publisher | Actual URL and binding after confirmed GitHub acknowledgement | Repository |
+| Frozen issue, graph, flow, runner and skill pins | Read-only preparation at Laomedo `7697588` | Private plans and graph snapshots; sanitized hashes in [execution](../execution.md) | Private files and repository summary |
+| Six-turn and one-draft-PR grant | Explicit user grant | Private `grant.json`; bounds summarized in [execution](../execution.md) | Private file and repository summary |
+| Imported Langflow flow and exported graph digest | Isolated localhost Langflow | Private flow-import records; sanitized ID in [execution](../execution.md) | Private files and repository summary |
+| Three native run records, raw events and cumulative turn ledger | Subscription-backed Codex runner | Private runner state outside Git; status and count in [results](../results.md) | Private only for raw events and credentials |
+| Verified agent artifact and `test/49` draft PR | Not produced because all model turns failed | None | Not observed |
 
-No evidence may be marked observed before its corresponding action completes.
+The private failed attempts are retained separately. No raw message, credential, runner token, or unreviewed generated text is committed.

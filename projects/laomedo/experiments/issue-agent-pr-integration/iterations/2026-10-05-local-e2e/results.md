@@ -11,4 +11,8 @@ related: []
 
 # Results
 
-The [credential-free preparation](execution.md) froze a coherent live issue and Work Graph snapshot and passed the runner's zero-turn Docker preflight. This is preparation evidence only. No Langflow graph run, model turn, agent-created artifact, or GitHub PR publication has been observed in this attempt. The phase-zero fake-agent result remains separate historical evidence.
+**No-go for the real issue-to-agent-to-PR claim.** The selected issue and Work Graph snapshot were coherent, the pinned Skill and Codex Agent flow imported into an isolated Langflow server, and the runner's local permission and API preflights passed. Two flow-triggered model turns and one minimal direct-runner turn reached native threads but ended `failed` before a command or selected artifact. The turn ledger is **3/6**. No draft output PR or confirmed Work Graph publication binding exists.
+
+The same failure on the minimal direct-runner prompt places the observed blocker below Langflow, but does not distinguish login validity, model entitlement, service availability, CLI settings, or runner transport. A local login-status report and anonymous network checks are insufficient to resolve that distinction. [Follow-up #68](https://github.com/amadou-6e/laomedo/issues/68) must diagnose it with safe, structured evidence before another model turn. The separate browser-auth lifecycle remains in [specs #129](https://github.com/amadou-6e/specs/issues/129). The user-authorized `test/49` draft-PR publication was correctly not attempted because the artifact gate never passed.
+
+This result does not change the completed phase-zero fake-agent observation, and it does not close [EXP-19 #49](https://github.com/amadou-6e/laomedo/issues/49).
