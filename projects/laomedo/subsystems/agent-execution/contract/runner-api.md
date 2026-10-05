@@ -38,6 +38,18 @@ returns HTTP 202 when accepted. Invalid inputs fail before model dispatch where
 possible. A failed or timed-out accepted run retains its run ID, category, and
 partial events; client timeout is not evidence that remote work stopped.
 
+The single-user Codex runner may expose a `native_error_summary` for the
+current native turn. Its categories are exact values from the pinned CLI
+app-server `codexErrorInfo` schema, with unknown variants mapped to `unknown`.
+It may count error and retry events and retain integer HTTP status codes from
+the four schema variants that carry them. The summary and public
+`error_category` must never copy free-text messages, URLs, additional details,
+account identifiers, request headers, or arbitrary provider fields. If a
+failed native turn has no separate runner error, `error_category` may use the
+last allowlisted category prefixed by `codex_`. Raw events remain in private
+run evidence; this projection does not prove the cause of an authorization or
+connection failure by itself.
+
 For active Codex turns, the runner addresses a uniquely named container,
 sends native `turn/interrupt`, force-removes the owned container, and verifies
 removal on cancel or timeout. If removal cannot be verified, it records
