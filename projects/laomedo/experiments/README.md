@@ -40,7 +40,11 @@ when actual replication occurs.
 - [Issue to agent to PR integration](issue-agent-pr-integration/README.md):
   EXP-19 credential-free phase-zero protocol; no model or GitHub write.
 - [Work Graph source integrity](work-graph-source-integrity/README.md):
-  EXP-01 independent installed-package fixture protocol and readiness oracle; no live run yet.
+  EXP-01 installed-package fixture verification, including the hidden-open-blocker
+  filtered-readiness amendment; no live GitHub access was tested.
+- [Work Graph dispatch binding](work-graph-dispatch-binding/README.md):
+  EXP-16 credential-free installed-wheel mock-runner snapshot, freshness,
+  blocker, grant and run/trace binding result; real adapter remains unverified.
 
 Copy template/ directly, rename and replace every example fact/lifecycle. Freeze a real
 prospective protocol before dispatch. This migration authorized/spent no new model turns.
