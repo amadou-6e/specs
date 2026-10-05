@@ -19,5 +19,6 @@ related: []
 | Output-parent fixture and source-integrity regression | Laomedo `42c8a5f` | Checked-in source fixture and test | Repository |
 | New issue/graph/flow plan and Langflow run | Read-only preparation and turn 8/10 | Private plan, imported flow, run and trace; sanitized IDs in [execution](../execution.md) | Private files and repository summary |
 | Verified report and `test/49` draft PR | Agent output and trusted host publisher | [Draft PR #71](https://github.com/amadou-6e/laomedo/pull/71), commit `769b47b36572251f702cf7e84674f96316d8bdde`; private byte-for-byte comparison | Repository report and private binding |
+| Credential fingerprint publication check | Private, read-only comparison after publication | Six fingerprints, three PR diffs/bodies, 31 selected repository/agent text files; zero matches in [results](../results.md#credential-boundary-and-publication-scan) | Summary in repository; login, runner token and scan inputs private |
 
 The turn 7 canary was disposable diagnostic output and was not published. Only the verified turn 8 report appears in PR #71. Raw rollouts and login material remain private.
