@@ -24,7 +24,15 @@ completeness did not imply action identity. Receipt sequence ordered
 deliveries, not provider actions. The sanitized [observation](evidence/manifest.md)
 contains synthetic summaries and hashes, not native provider payloads.
 
-This passes the **bounded synthetic** T07 oracle. It does not establish that
+The amended run applied the same delivery/uncertainty oracle to a negative
+control. The historical #123 projector retained only **1 of 2** identical
+reconnect deliveries and rejected the two distinct payloads sharing an ID.
+The oracle also rejected a fabricated `verified` uniqueness/count assertion.
+These failures show that the amended checks detect those specific invalid
+projections; they do not establish native-provider replay behavior.
+
+This passes the **bounded synthetic** T07 oracle, including the disclosed
+negative control at Laomedo `e285068`. It does not establish that
 real Codex/Claude events redeliver in this way, supply stable IDs, or that a
 production trace adapter and UI render uncertainty. IF-07 lifecycle T10,
 power-loss durability, and the raw writer/storage decisions remain open.

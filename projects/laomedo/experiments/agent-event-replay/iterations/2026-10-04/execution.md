@@ -39,3 +39,13 @@ visible across reordered events and separate invocations. The prospective
 cases and pass/fail threshold did not change. The tests and observation were
 rerun at `3115d5b`; the original `ff743ce` result is superseded as the
 evidence pin, not silently treated as the final artifact.
+
+After review found that the uncertainty check could pass by construction,
+amendment 01 was committed at Laomedo `8bb8e5d` before the amended run. Source
+`e285068` ran `python -m experiments.exp09.probe --record` once, then
+`python -m unittest experiments.exp09.test_probe -v` (6 passed), the combined
+EXP-05/08/09 suite (11 passed), and the main test suite (120 passed). The
+negative control invokes the historical #123 projector on the synthetic
+receipts and records the oracle's expected rejection. The original observation
+at `3115d5b` remains available in Git history; it is not presented as the
+amended observation. No native provider or network was exercised.

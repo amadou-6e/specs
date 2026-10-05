@@ -30,3 +30,9 @@ no model turns, and no provider, network or GitHub write in the probe. The
 selected draft oracle was specs `6b614e34eac93dea31ce4e80143c001fb4cdd066`.
 
 The exact file and source revision are in the [evidence manifest](iterations/2026-10-04/evidence/manifest.md).
+
+After review, a prospective [amendment](https://github.com/amadou-6e/laomedo/blob/8bb8e5d/experiments/exp09/AMENDMENT-01.md)
+was committed before the revised probe ran. It adds a falsifying control using
+the historical #123 source-ID projector and an asserted unique-action count.
+The original cases and thresholds remain frozen; the amended run is separately
+pinned in the evidence manifest.
