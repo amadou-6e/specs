@@ -25,6 +25,10 @@ rewrite past events. IF-07 source IDs may be absent; receipt sequence is
 assigned after arrival and cannot identify a redelivery. Producer-stable keys,
 or an explicit no-dedup policy with visible uncertainty, remain open.
 
+The proposed [post-timeout reconciliation](../../langflow-integration/contract/timeout-reconciliation.md)
+retains `408`, `JOB_FAILED` and a later effect as separate correlated receipts.
+Neither a native terminal job status nor HTTP 500 proves that effects stopped.
+
 ## IF-08 — agent activity events
 
 Consume raw/native or normalized events from

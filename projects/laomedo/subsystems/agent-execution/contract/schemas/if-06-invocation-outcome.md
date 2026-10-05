@@ -38,3 +38,10 @@ as `crashed`, rather than being reported as an agent error. Partial outputs
 remain referenced. `workspace_conflict` is reserved for later local-mount
 execution; first-slice isolated checkouts do not implement shared-mount locks.
 The exact provider-to-error mapping remains open.
+
+A Langflow-side `408 EXECUTION_TIMEOUT` can be projected as a failed affected
+invocation with `evidence_state=unknown|partial`; it is not evidence that the
+remote agent stopped. The proposed
+[timeout reconciliation rule](../../../langflow-integration/contract/timeout-reconciliation.md)
+keeps native job status, effect state and IF-07 receipts distinct. Real-runner
+mapping and cancellation confirmation remain unverified.
