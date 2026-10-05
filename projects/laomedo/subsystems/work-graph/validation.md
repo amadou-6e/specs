@@ -27,7 +27,8 @@ confirmation CLI. Credential-free tests refuse an in-repository grant path,
 a mismatched graph and replay. The first pinned Langflow fixture executed
 in-process and did not establish isolation.
 
-A subsequent zero-turn Docker route kept the grant ledger, GitHub login and
+A subsequent zero-turn Docker route, recorded in the
+[sanitized isolated observation](https://github.com/amadou-6e/laomedo/blob/74b4b8b/experiments/exp82/isolated-observation.json), kept the grant ledger, GitHub login and
 disposable Langflow API token on the host. A worker with network disabled,
 read-only package/flow mounts and scratch tmpfs reported graph/component
 hashes before reservation. The host recorded one dispatch and the expected
