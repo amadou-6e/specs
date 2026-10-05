@@ -57,10 +57,12 @@ not by itself that a native turn stopped. Evidence stays `partial|unknown`
 until its actual completeness is established. The raw-event reference is a
 pointer to private data, not a copy of raw events into a public trace.
 If the runner wait deadline expires after dispatch, the workflow outcome is
-`unknown` with a timeout error class and an append-only `runner_result_pending`
-receipt. That does not imply native cancellation, and a later effect can still
-attach to the same invocation. Cancellation must target the bound native run,
-not merely a caller-supplied execution ID.
+`incomplete` with IF-09 terminal reason `runner_result_pending`, a timeout
+error class and an append-only `runner_result_pending` receipt. The native
+outcome and evidence completeness remain unknown. This does not imply native
+cancellation, and a later effect can still attach to the same invocation.
+Cancellation must target the bound native run, not merely a caller-supplied
+execution ID.
 A complete runner rejection is recorded as a failed invocation without
 inventing a native run binding. A missing or uncertain response is not such a
 rejection.

@@ -141,7 +141,8 @@ IF-09 RunContext {
   resolved_config_ref: Ref, resolved_config_hash: string,
   started_at: timestamp,
   terminal?: { status: "completed" | "failed" | "interrupted"
-                    | "crashed" | "incomplete", ended_at?: timestamp }
+                    | "crashed" | "incomplete", ended_at?: timestamp,
+               reason?: string }
 }
 
 IF-13 FollowUpRunRequest {
@@ -165,6 +166,10 @@ deduplication and event feedback-loop guard are unresolved. `delivery_id`
 must be stable for redelivery but its producer and enforcement remain open.
 IF-09 is persisted before dispatch with `terminal` absent and updated with a
 terminal or explicitly incomplete state; it is not reconstructed from IF-07 alone.
+For a native runner wait deadline, IF-09 emits `status: "incomplete"` and
+`reason: "runner_result_pending"`. The reason identifies this timeout layer;
+it is not proof that the native run stopped. Results preserves that reason
+without inventing a completed or failed native outcome.
 IF-13 makes the choice per agent stage: `native_session_ref` is required for
 `existing` and absent for `new`. The later `existing` mode also requires a
 checked `workspace_basis`; it is not first-slice support.
