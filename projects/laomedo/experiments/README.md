@@ -25,6 +25,8 @@ when actual replication occurs.
   invocation/native-ID/raw-event persistence across process-kill windows.
 - [Agent-event replay](agent-event-replay/README.md): EXP-09 synthetic
   at-least-once receipt preservation and explicit action-identity uncertainty.
+- [Long-call timeout](long-call-timeout/README.md): EXP-10 pinned Langflow
+  outer-client, component HTTP and v2 server timeouts with late synthetic effects.
 - [UI versus backend death](ui-versus-backend-death/README.md): EXP-06
   pinned Langflow client-close and hard-kill observations with a startup sweep.
 - [Orphan lease](orphan-lease/README.md): EXP-07 protocol for the selected
