@@ -86,8 +86,10 @@ runner contract. Validate freshness and prerequisite evidence again at
 dispatch. If the source changed, require an explicit choice of the pinned or
 refreshed snapshot, recorded in the binding.
 
-For launch-time comparison, hash the selected work and its transitive
-prerequisites, including item update/body markers and native dependency
+The launch adapter re-fetches through the read-only source connector inside
+the launch operation; a caller-supplied earlier `current` snapshot is not a
+freshness check. For launch-time comparison, hash the selected work and its
+transitive prerequisites, including item update/body markers and native dependency
 edges. The fetch timestamp is excluded: a re-fetch of unchanged content
 does not require a new choice merely because the snapshot ID changed.
 When content changes, `pinned` keeps the selected earlier work, graph and
