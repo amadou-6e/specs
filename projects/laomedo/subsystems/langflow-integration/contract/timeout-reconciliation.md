@@ -30,6 +30,10 @@ status observation or effect receipt must refer to these same IDs. A job ID
 returned after dispatch is an additional native correlation field, not a
 replacement for Laomedo IDs. Receipt order is append-only and receives a
 local sequence; it is not proof of a unique external action.
+An effect correlated to a dispatched invocation is recorded in **any**
+post-dispatch state, including `running`, `timed_out` and `crashed`. An
+invocation that never dispatched cannot acquire an effect receipt. A later
+timeout or crash sweep must preserve an effect already observed.
 
 The first slice may store one agent invocation, but identities must not
 conflate run, stage, invocation, native job and native agent session. A
@@ -44,10 +48,10 @@ Keep these dimensions separate:
 
 | Observation | Workflow/invocation projection | Effect and trace projection |
 | --- | --- | --- |
-| Synchronous `408 EXECUTION_TIMEOUT` | Workflow `timed_out`; affected IF-06 invocation `failed` with provider timeout classification, if its identity is known | `evidence_state=unknown` or `partial`; external effect `unknown`, not `none` or `cancelled` |
+| Langflow v2 server `408 EXECUTION_TIMEOUT` | Workflow `timed_out` with server-timeout provenance; affected IF-06 invocation `failed` with `error.class="timeout"`, if its identity is known | `evidence_state=unknown` or `partial`; preserve any already observed effect, otherwise effect remains `unknown`, not `none` or `cancelled` |
 | GET returns HTTP 500 and `detail.code=JOB_FAILED` | Native Langflow job `failed`; do not rewrite the earlier timeout as a successful or confirmed-cancelled invocation | Effect remains unknown until independently observed; record the native response as an IF-07 receipt |
-| GET returns HTTP 500 without `JOB_FAILED`, or lookup is inaccessible | Native status `unknown` and query error | Do not infer job failure from HTTP status alone |
-| Correlated runner effect arrives after timeout or terminal native job status | Keep the original terminal workflow/invocation outcome and append an effect receipt under its IDs | Effect `observed`; trace remains `partial` until its required evidence is genuinely complete; never project “failed with no effects” |
+| GET returns HTTP 500 without `JOB_FAILED`, or lookup is inaccessible | Append an unknown **lookup observation** and query error; if a prior `JOB_FAILED` established native job `failed`, retain that projection | Do not infer job failure from this lookup alone or downgrade an already known failure |
+| Correlated runner effect arrives at any point after dispatch | Preserve the current workflow/invocation outcome and append an effect receipt under its IDs | Effect `observed`; trace remains `partial` until its required evidence is genuinely complete; never project “failed with no effects” |
 | Runner positively confirms cancellation | Cancellation may be reported only for the affected remote invocation, with its source evidence | Preserve earlier receipts and any effects; cancellation does not erase them |
 
 For `IF-11`, expose exact delivery count and last received sequence,

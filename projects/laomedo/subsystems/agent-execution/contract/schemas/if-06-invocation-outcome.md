@@ -23,7 +23,8 @@ InvocationOutcome {
   native_session_ref?: Ref, output_ref?: Ref, artifact_refs: Ref[],
   post_run_workspace_ref?: Ref,
   error?: { code: string, class: "input" | "permission" | "session_conflict"
-                  | "workspace_conflict" | "provider" | "container", message: string,
+                  | "workspace_conflict" | "provider" | "container" | "timeout",
+            message: string,
             recoverable: boolean }
 }
 ```
@@ -39,9 +40,11 @@ remain referenced. `workspace_conflict` is reserved for later local-mount
 execution; first-slice isolated checkouts do not implement shared-mount locks.
 The exact provider-to-error mapping remains open.
 
-A Langflow-side `408 EXECUTION_TIMEOUT` can be projected as a failed affected
-invocation with `evidence_state=unknown|partial`; it is not evidence that the
-remote agent stopped. The proposed
+A Langflow v2 server-side `408 EXECUTION_TIMEOUT` can be projected as a failed
+affected invocation with `error.class="timeout"` and
+`evidence_state=unknown|partial`; it is not evidence that the remote agent
+stopped. This distinguishes the server ceiling from an outer-client or
+component timeout, whose exact IF-06 mappings remain open. The proposed
 [timeout reconciliation rule](../../../langflow-integration/contract/timeout-reconciliation.md)
 keeps native job status, effect state and IF-07 receipts distinct. Real-runner
 mapping and cancellation confirmation remain unverified.
