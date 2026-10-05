@@ -38,6 +38,13 @@ returns HTTP 202 when accepted. Invalid inputs fail before model dispatch where
 possible. A failed or timed-out accepted run retains its run ID, category, and
 partial events; client timeout is not evidence that remote work stopped.
 
+The proposed [early-run and cancellation handoff](early-run-cancellation.md)
+adds `POST /v1/runs/async` with a caller-supplied request identity and early
+queryable run ID; it leaves this synchronous API intact. Its pre-dispatch
+cancel, idempotency, restart and positive-confirmation rules are target
+behavior, not yet product-validated. An accepted cancel request alone is not
+remote cancellation.
+
 The single-user Codex runner may expose a `native_error_summary` for the
 current native turn. Its categories are exact values from the pinned CLI
 app-server `codexErrorInfo` schema, with unknown variants mapped to `unknown`.
