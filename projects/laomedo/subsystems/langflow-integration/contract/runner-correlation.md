@@ -61,6 +61,9 @@ If the runner wait deadline expires after dispatch, the workflow outcome is
 receipt. That does not imply native cancellation, and a later effect can still
 attach to the same invocation. Cancellation must target the bound native run,
 not merely a caller-supplied execution ID.
+A complete runner rejection is recorded as a failed invocation without
+inventing a native run binding. A missing or uncertain response is not such a
+rejection.
 
 Synthetic acceptance must cover exact replay, conflicting and cross-invocation
 bindings, malformed references, missing pre-dispatch reservation, a late
