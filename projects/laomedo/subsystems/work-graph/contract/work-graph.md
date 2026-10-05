@@ -3,7 +3,7 @@ title: Work Graph contract
 status: draft
 kind: target-contract
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-02
+last_reviewed: 2026-10-05
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -86,11 +86,33 @@ runner contract. Validate freshness and prerequisite evidence again at
 dispatch. If the source changed, require an explicit choice of the pinned or
 refreshed snapshot, recorded in the binding.
 
+The launch adapter re-fetches through the read-only source connector inside
+the launch operation; a caller-supplied earlier `current` snapshot is not a
+freshness check. For launch-time comparison, hash the selected work and its
+transitive prerequisites, including item update/body markers and native dependency
+edges. The fetch timestamp is excluded: a re-fetch of unchanged content
+does not require a new choice merely because the snapshot ID changed.
+When content changes, `pinned` keeps the selected earlier work, graph and
+input while checking eligibility on the complete current graph;
+`refreshed` binds current work, graph and input. Persist both the bound graph
+snapshot ID and the current authorization graph snapshot ID, their relevant
+content digests and the explicit choice. This makes a pinned run's different
+input and authorization graphs reconstructible.
+
 Graph readiness is an input to dispatch eligibility. Eligibility also requires
 a valid run definition, supported runner settings, a recorded grant and
 explicit operator authorization. Any prerequisite override must identify
 the affected edge and rationale. Automatic scheduling is a later policy
 decision; selecting a node does not authorize execution.
+
+The launch adapter refuses missing or incomplete current source, unavailable
+selected work, unresolved/cyclic prerequisites, and an open blocker before
+reservation. An override applies only to the exact known open edge with a
+nonempty rationale; multiple or unknown open edges cannot be collapsed into
+one override. A trusted grant authority must verify the grant reference,
+operator authorization, selected work, bound graph, runner, stage scope,
+expiry and effective limits before reservation. A self-asserted grant in
+the request is insufficient. Keep secrets out of the persisted binding.
 
 The runner supplies status and results. Work Graph associates each run with
 its frozen work snapshot and exposes references to output, file changes and
