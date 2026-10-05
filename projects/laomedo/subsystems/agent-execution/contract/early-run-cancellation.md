@@ -61,6 +61,10 @@ The Langflow Codex node may expose an additive nonblocking start operation
 that returns the early run reference, followed by its existing status/cancel
 operations. A graph that waits for completion must retain that ID while
 polling and must not treat cancellation of its own HTTP wait as remote stop.
+The bounded controller must save the acknowledged ID before it resumes its
+completion wait. If Stop was requested before acknowledgement, it forwards
+that request as soon as the ID becomes available; it does not discard Stop or
+claim a remote stop without the runner's terminal evidence.
 Whether Langflow UI Stop reliably invokes node cleanup is a **separate
 unverified capability**; do not promise automatic Stop propagation before a
 bounded installed-runtime test demonstrates it.
