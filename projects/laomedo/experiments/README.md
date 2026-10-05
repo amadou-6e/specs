@@ -43,8 +43,8 @@ when actual replication occurs.
   EXP-01 installed-package fixture verification, including the hidden-open-blocker
   filtered-readiness amendment; no live GitHub access was tested.
 - [Work Graph dispatch binding](work-graph-dispatch-binding/README.md):
-  EXP-16 prospective credential-free mock-runner snapshot, freshness, blocker,
-  grant and run/trace binding protocol.
+  EXP-16 credential-free installed-wheel mock-runner snapshot, freshness,
+  blocker, grant and run/trace binding result; real adapter remains unverified.
 
 Copy template/ directly, rename and replace every example fact/lifecycle. Freeze a real
 prospective protocol before dispatch. This migration authorized/spent no new model turns.

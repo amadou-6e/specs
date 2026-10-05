@@ -1,3 +1,3 @@
 # Attempts
 
-No attempt has run. After the fixture and expected outcomes are frozen, add a dated attempt with an overview, execution record, result matrix and evidence manifest. Keep negative and inconclusive observations.
+[2026-10-05 installed-wheel mock attempt](2026-10-05/README.md): 20 frozen cases matched, including 14 pre-dispatch refusals, four completed mock calls, one runner rejection and one unknown outcome. The real adapter remains unverified.
