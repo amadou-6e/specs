@@ -56,6 +56,11 @@ runner's local `cancel_confirmed` means its teardown boundary was verified,
 not by itself that a native turn stopped. Evidence stays `partial|unknown`
 until its actual completeness is established. The raw-event reference is a
 pointer to private data, not a copy of raw events into a public trace.
+If the runner wait deadline expires after dispatch, the workflow outcome is
+`unknown` with a timeout error class and an append-only `runner_result_pending`
+receipt. That does not imply native cancellation, and a later effect can still
+attach to the same invocation. Cancellation must target the bound native run,
+not merely a caller-supplied execution ID.
 
 Synthetic acceptance must cover exact replay, conflicting and cross-invocation
 bindings, malformed references, missing pre-dispatch reservation, a late
@@ -64,3 +69,7 @@ same IDs, and reopen without redispatch. This contract does not establish
 Langflow UI Stop propagation, real-agent timeout effects, or runner-crash
 orphan cleanup. Those remain separate first-slice gates under #22/#66 and
 [Q11](../design/decision-readiness.md).
+
+The synthetic implementation on Laomedo #83 exercises a local authenticated
+runner HTTP endpoint with a fake agent transport; it does not exercise a real
+model, Langflow UI wiring, or agent-container teardown.
