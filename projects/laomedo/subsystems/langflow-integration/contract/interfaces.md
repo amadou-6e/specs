@@ -44,6 +44,10 @@ workspace choice. A loop creates a new invocation identity for the same
 stage. The outcome returns that invocation identity, status, output refs and
 error classification to Langflow. The Langflow-specific mechanism for all
 component types to exchange artifact refs is open.
+For the first fresh Codex slice, the durable [runner correlation](runner-correlation.md)
+binds the separate runner run ID and raw-event reference to the already
+reserved invocation; a runner acknowledgement without that binding is not
+a complete IF-06/07 handoff.
 
 Predictable simultaneous use of one session is a pre-launch warning, not a
 launch block for the later multi-stage design. Actual concurrent use errors
@@ -60,6 +64,10 @@ Each event carries run, graph revision, stage and invocation correlation where
 applicable, plus source event identity when Langflow provides it. Missing
 native IDs are recorded as unknown rather than fabricated. Receipt order is
 not a producer-stable deduplication key; IF-07 replay policy is open.
+When the source is the local runner, include its namespaced run identity only
+after the [binding](runner-correlation.md) is durable. Retain a pending or
+uncertain observation when the acknowledgement is missing; never infer the
+runner ID from timing.
 
 ## IF-09 — run context to results and artifacts
 
@@ -118,6 +126,7 @@ RunLaunchContext =
 IF-07 WorkflowEvent {
   run_id: string, graph_revision_ref: Ref, stage_id?: string,
   invocation_id?: string, source_event_id?: string,
+  runner_run_id?: string,
   transition: "run_started" | "stage_ready" | "invocation_started"
             | "invocation_completed" | "invocation_failed"
             | "run_completed" | "run_failed" | "run_interrupted"
@@ -132,7 +141,8 @@ IF-09 RunContext {
   resolved_config_ref: Ref, resolved_config_hash: string,
   started_at: timestamp,
   terminal?: { status: "completed" | "failed" | "interrupted"
-                    | "crashed" | "incomplete", ended_at?: timestamp }
+                    | "crashed" | "incomplete", ended_at?: timestamp,
+               reason?: string }
 }
 
 IF-13 FollowUpRunRequest {
@@ -156,6 +166,10 @@ deduplication and event feedback-loop guard are unresolved. `delivery_id`
 must be stable for redelivery but its producer and enforcement remain open.
 IF-09 is persisted before dispatch with `terminal` absent and updated with a
 terminal or explicitly incomplete state; it is not reconstructed from IF-07 alone.
+For a native runner wait deadline, IF-09 emits `status: "incomplete"` and
+`reason: "runner_result_pending"`. The reason identifies this timeout layer;
+it is not proof that the native run stopped. Results preserves that reason
+without inventing a completed or failed native outcome.
 IF-13 makes the choice per agent stage: `native_session_ref` is required for
 `existing` and absent for `new`. The later `existing` mode also requires a
 checked `workspace_basis`; it is not first-slice support.

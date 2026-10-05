@@ -84,3 +84,6 @@ copies; this subsystem produces those same shapes after user review/selection.
 A backend-crashed run stays `crashed` even if an agent's final outcome is
 missing. The IF-10 supersession rule is a proposed projection policy, not
 evidence that output revisions or external PR writes are idempotent.
+For IF-09 `terminal.status: "incomplete"`, results preserves the producer's
+machine-readable `terminal.reason` in `context`; in particular,
+`runner_result_pending` is not converted into a failed or cancelled native run.
