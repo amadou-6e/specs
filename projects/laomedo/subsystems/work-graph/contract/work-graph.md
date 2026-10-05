@@ -114,6 +114,17 @@ operator authorization, selected work, bound graph, runner, stage scope,
 expiry and effective limits before reservation. A self-asserted grant in
 the request is insufficient. Keep secrets out of the persisted binding.
 
+For a bounded single-user, zero-turn check, the host may issue one-use grants
+from a private ledger outside Git and every stage mount. Its CLI requests a
+typed work-key confirmation; the ledger binds the selected graph ID, runner, scope,
+expiry and limits, then atomically redeems a matching reference before run
+reservation. This local mechanism does not by itself make untrusted stage code
+safe: the issuer must remain outside the stage's process and filesystem view,
+and effective time and model-turn limits must be enforced by the runner. The
+typed confirmation alone does not authenticate an operator. Until
+those boundaries are verified, the grant remains a fixture-only authorization
+check and cannot authorize a model-backed Work Graph launch.
+
 The runner supplies status and results. Work Graph associates each run with
 its frozen work snapshot and exposes references to output, file changes and
 [trace evidence](../../run-traces/contract/README.md). Preserve partial results on
