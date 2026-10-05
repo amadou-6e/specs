@@ -40,3 +40,14 @@ zero-turn route without printing the API token. These are local integration
 observations, not proof of an authenticated human operator, Windows ACL
 isolation, resistance to forged worker protocol messages from malicious
 component code, model-turn enforcement or a hosted/multi-user launch.
+
+A [later hardening observation](https://github.com/amadou-6e/laomedo/blob/ce6af7a/experiments/exp82/hardening-observation.json)
+shows that the one-use grant now binds to the host OS principal rather than a
+caller-supplied name, refuses a different principal, and redirects ordinary
+component `print` output away from the stage protocol. A crafted print-based
+completion message was ignored. These checks do not prove human intent from
+another same-principal host process or extend the zero-turn path to model
+agents. A [further stdout control](https://github.com/amadou-6e/laomedo/blob/f54b45b/experiments/exp82/fd-observation.json)
+also discarded a forged raw write to file descriptor 1 while preserving the
+real output. Code sharing the worker process may still discover or manipulate
+other open descriptors; adversarial protocol integrity remains unproven.

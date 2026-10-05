@@ -40,3 +40,7 @@ requires [EXP-09](https://github.com/amadou-6e/laomedo/issues/39) evidence.
 `runner_run_id` is the local runner's identity, never the top-level Laomedo
 `run_id`; it is included only after the durable
 [binding](../../../langflow-integration/contract/runner-correlation.md).
+Before binding, post-dispatch failure and request-conflict receipts still
+carry the Laomedo `run_id` and `invocation_id`, but omit `runner_run_id` rather
+than guessing it from timing. Their safe error category is recorded without
+private task text or raw events.
