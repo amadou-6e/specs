@@ -40,7 +40,7 @@ normalized event projection. A normalized event has:
 
 | Field | Meaning |
 | --- | --- |
-| `event_id`, `run_id`, `sequence` | Stable identity and order within one run |
+| `event_id`, `run_id`, `sequence` | Stable receipt/projection identity and order within one run; not proof of a unique provider action |
 | `source` and `source_event_id` | Provider or runner origin and original ID if supplied |
 | `kind` | Start, message, tool call/result, file change, skill access, approval, usage, error, end |
 | `observed_at`, `source_time` | Receipt time and native timestamp when available |
@@ -73,10 +73,22 @@ consume a derived export, but a derived graph must preserve event provenance.
 
 ## Reliability and access
 
+For first-slice IF-08, apply the
+[at-least-once replay decision](../../../decisions/0003-agent-event-replay.md):
+store each committed raw delivery, even if it resembles an earlier one. A
+provider's optional source ID is not a deduplication key unless its stability
+and scope have been verified. Preserve repeated and conflicting payloads.
+Projection may report an exact **delivery** count, but must not present an
+unverified unique-action count or label a repeated-looking delivery as a
+confirmed distinct action. Identity uncertainty must remain visible to the
+inspection and results handoffs. Reprojection must not erase raw receipts.
+
 Write a terminal status even if the provider exits unexpectedly. If event
 capture stops early, mark the trace incomplete and retain the last sequence
-number. A retry is a new run linked to the prior run. Duplicate provider
-events from reconnect or resume must not create duplicate normalized events.
+number. A retry is a new run linked to the prior run. Repeated provider
+deliveries from reconnect or resume may produce distinct receipt-backed
+display records, but must not be labeled confirmed distinct actions without
+verified producer identity. Do not silently collapse them.
 Usage totals, costs, and missing counters remain distinct from zero.
 
 Prompts, files, tool output, and raw traces may contain sensitive data.

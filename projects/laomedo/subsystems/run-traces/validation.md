@@ -23,7 +23,8 @@ by its original version, task, grant and date.
 | Matched tools / skill read | 2026-10-01 pilot | Native starts/results observed; returned label conservatively offered |
 | Partial capture | Pilot cancellation | 39 events retained; crash/reconnect untested |
 | Raw identity / projection | #123 | Codex import and synthetic tests; Claude trace absent |
-| IF-07/IF-08 redelivery | No new check | Native IDs may be absent; receipt sequence is not stable across redelivery, so deduplication is unproven and potential replay must remain visible |
+| IF-08 at-least-once redelivery and action-identity uncertainty | EXP-09 pending | [T07 policy](../../decisions/0003-agent-event-replay.md) is selected, not yet tested; raw delivery count may be exact, unique-action count remains absent/uncertain without a verified producer key |
+| IF-07 lifecycle redelivery | No new check | T10 remains a separate choice; receipt sequence is not stable across redelivery |
 | Inner usage / governance | Pilot and #123 | Usage unknown; retention/export/access policy open |
 
 Canonical evidence: [pilot result](../../experiments/local-skill-agent-pilot/iterations/2026-10-01/results.md)
