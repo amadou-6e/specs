@@ -24,7 +24,8 @@ when actual replication occurs.
 - [Orphan lease](orphan-lease/README.md): EXP-07 protocol for the selected
   independent supervisor plus startup sweep; numeric bound and run pending.
 - [Writable stage protection](writable-stage-protection/README.md): EXP-18
-  unreviewed E05 protocol draft; no Docker-stage or agent-originated test yet.
+  reviewed direct no-model Docker stage passed; agent-originated E05 test is
+  unrun, with four turns authorized and no nonpersonal credential available.
 
 Copy template/ directly, rename and replace every example fact/lifecycle. Freeze a real
 prospective protocol before dispatch. This migration authorized/spent no new model turns.
