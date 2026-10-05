@@ -75,6 +75,37 @@ Langflow UI Stop propagation, real-agent timeout effects, or runner-crash
 orphan cleanup. Those remain separate first-slice gates under #22/#66 and
 [Q11](../design/decision-readiness.md).
 
+## Read-only recovery after a lost acknowledgement
+
+For [Laomedo #87](https://github.com/amadou-6e/laomedo/issues/87), freeze a
+digest of the exact runner request body alongside `runner_request_id` before
+the POST (`sha256:` of canonical JSON with sorted keys and compact separators,
+excluding the top-level `request_id`, matching the runner's current digest).
+A fresh bridge must verify that the body it sends still has that
+digest. The local runner offers authenticated `GET /v1/requests/{request_id}`:
+it only reads durable runner records and returns one matching run's
+`client_request_id`, `request_hash`, `run_id`, `provider`, `raw_event_ref` and
+current status. It rejects malformed IDs and conflicting multiple matches;
+it never starts, resumes or cancels a run. The response omits private raw
+events, task text and credentials.
+
+Recovery is an explicit operator/controller action, not an automatic retry.
+After a lost acknowledgement or binding-write failure, Laomedo reads that
+endpoint using the original request ID and binds only if its request digest,
+provider, run ID and event reference all match the frozen invocation. A
+not-found lookup, unreachable runner or ambiguous response leaves the
+invocation `incomplete`; none proves the POST failed or authorizes another
+POST. Exact rebinding is idempotent. After binding, cancellation can target
+the recovered native run.
+
+Every post-dispatch exception must leave a bounded, append-only IF-07/08
+receipt with an error category and the original invocation ID. If the native
+outcome is uncertain, IF-09 uses `incomplete` with a machine-readable reason;
+the trace must not remain silently `dispatching` or claim native cancellation.
+A runner `409 request_identity_conflict` is an explicit conflict receipt,
+not a no-run rejection. These synthetic recovery checks do not establish
+Langflow UI Stop, real-agent timeout effects or runner-crash cleanup.
+
 The synthetic implementation on Laomedo #83 exercises a local authenticated
 runner HTTP endpoint with a fake agent transport; it does not exercise a real
 model, Langflow UI wiring, or agent-container teardown.
