@@ -17,6 +17,7 @@ See the [interface contract](../interfaces.md#if-08--emit-agent-telemetry).
 ```text
 AgentEvent {
   run_id: string, stage_id: string, invocation_id: string,
+  runner_run_id?: string,
   native_session_ref?: Ref,
   source_event_id?: string, source_sequence?: integer,
   observed_at?: timestamp,
@@ -36,3 +37,6 @@ action count from optional IDs. This event does not claim whole-stream
 completeness. Native event taxonomy, content retention, source-specific key
 verification and detailed projection rules remain open; the policy still
 requires [EXP-09](https://github.com/amadou-6e/laomedo/issues/39) evidence.
+`runner_run_id` is the local runner's identity, never the top-level Laomedo
+`run_id`; it is included only after the durable
+[binding](../../../langflow-integration/contract/runner-correlation.md).

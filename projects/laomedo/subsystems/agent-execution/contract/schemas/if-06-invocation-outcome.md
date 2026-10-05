@@ -21,6 +21,8 @@ InvocationOutcome {
   status: "completed" | "failed" | "interrupted",
   evidence_state: "complete" | "partial" | "unknown",
   native_session_ref?: Ref, output_ref?: Ref, artifact_refs: Ref[],
+  runner?: { provider: string, request_id: string, run_id: string,
+             raw_event_ref: Ref },
   post_run_workspace_ref?: Ref,
   error?: { code: string, class: "input" | "permission" | "session_conflict"
                   | "workspace_conflict" | "provider" | "container" | "timeout",
@@ -39,6 +41,11 @@ as `crashed`, rather than being reported as an agent error. Partial outputs
 remain referenced. `workspace_conflict` is reserved for later local-mount
 execution; first-slice isolated checkouts do not implement shared-mount locks.
 The exact provider-to-error mapping remains open.
+The `runner` object uses the native runner's namespace, not the top-level
+Laomedo `run_id`. It is present only after the durable
+[correlation binding](../../../langflow-integration/contract/runner-correlation.md).
+Its raw-event reference may still point to a partial stream; presence is not
+proof that cancellation, effect accounting or evidence completeness succeeded.
 
 A Langflow v2 server-side `408 EXECUTION_TIMEOUT` can be projected as a failed
 affected invocation with `error.class="timeout"` and

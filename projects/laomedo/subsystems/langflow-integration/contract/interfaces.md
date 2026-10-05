@@ -44,6 +44,10 @@ workspace choice. A loop creates a new invocation identity for the same
 stage. The outcome returns that invocation identity, status, output refs and
 error classification to Langflow. The Langflow-specific mechanism for all
 component types to exchange artifact refs is open.
+For the first fresh Codex slice, the durable [runner correlation](runner-correlation.md)
+binds the separate runner run ID and raw-event reference to the already
+reserved invocation; a runner acknowledgement without that binding is not
+a complete IF-06/07 handoff.
 
 Predictable simultaneous use of one session is a pre-launch warning, not a
 launch block for the later multi-stage design. Actual concurrent use errors
@@ -60,6 +64,10 @@ Each event carries run, graph revision, stage and invocation correlation where
 applicable, plus source event identity when Langflow provides it. Missing
 native IDs are recorded as unknown rather than fabricated. Receipt order is
 not a producer-stable deduplication key; IF-07 replay policy is open.
+When the source is the local runner, include its namespaced run identity only
+after the [binding](runner-correlation.md) is durable. Retain a pending or
+uncertain observation when the acknowledgement is missing; never infer the
+runner ID from timing.
 
 ## IF-09 — run context to results and artifacts
 
@@ -118,6 +126,7 @@ RunLaunchContext =
 IF-07 WorkflowEvent {
   run_id: string, graph_revision_ref: Ref, stage_id?: string,
   invocation_id?: string, source_event_id?: string,
+  runner_run_id?: string,
   transition: "run_started" | "stage_ready" | "invocation_started"
             | "invocation_completed" | "invocation_failed"
             | "run_completed" | "run_failed" | "run_interrupted"

@@ -28,6 +28,10 @@ or an explicit no-dedup policy with visible uncertainty, remain open.
 The proposed [post-timeout reconciliation](../../langflow-integration/contract/timeout-reconciliation.md)
 retains `408`, `JOB_FAILED` and a later effect as separate correlated receipts.
 Neither a native terminal job status nor HTTP 500 proves that effects stopped.
+The proposed [runner binding](../../langflow-integration/contract/runner-correlation.md)
+adds a namespaced runner ID and private raw-event pointer to the already
+reserved invocation. A missing runner acknowledgement leaves that identity
+unknown, not an inferred match.
 
 ## IF-08 — agent activity events
 
