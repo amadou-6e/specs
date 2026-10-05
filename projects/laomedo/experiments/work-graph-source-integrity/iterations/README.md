@@ -1,3 +1,3 @@
 # Attempts
 
-No attempt has run. Add a dated folder containing an overview, execution, results, and evidence manifest after the prospective protocol and independent oracle are frozen.
+[2026-10-05 installed-wheel fixture run](2026-10-05/README.md) passed all eight frozen cases with no model turn or GitHub write. It covers synthetic source responses only.
