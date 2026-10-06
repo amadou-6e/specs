@@ -155,6 +155,34 @@ component isolation belongs to #96. This route
 does not grant a model turn, prove operator identity beyond the local session,
 or establish safe protocol behavior against malicious custom component code.
 
+For the #96 control boundary, the host controller derives the frozen graph
+and component-code digests directly from the saved export before reservation.
+It never accepts a component-supplied `ready`, digest, `complete`, or `failed`
+line as control evidence. A disposable validation container may check whether
+the pinned Langflow runtime can build the export, but its stdout is discarded
+and its exit status is only a compatibility check. After successful validation,
+the host reserves the run and starts a separate executor container once. The
+host determines process termination from Docker, not executor stdout; stdout
+is untrusted result data. A nonzero exit is failure, and timeout or lost
+container status remains unknown with no automatic replay. The Docker image,
+numeric user, network restriction, mounts, and capability policy do not widen.
+
+This boundary prevents custom component writes to inherited or discovered
+container descriptors from impersonating the host's control messages. It
+attests the frozen input bytes the host supplied, not faithful execution of
+arbitrary component code. A malicious component may choose its own output or
+terminate its own executor process; a zero exit therefore means only that the
+executor process ended successfully, not that its result is truthful. Do not
+promote process completion to a model-backed, hosted, or adversarial semantic
+correctness claim.
+
+For this Docker route, `completed` records only a zero executor-process exit.
+The durable run records `completion_basis: process_exit` and leaves
+`evidence_complete: false`. No consumer may treat this status or untrusted
+stdout as semantic graph success without separate output verification.
+Validation builds the flow in a disposable container and can execute custom
+component construction code; it is not a passive parse or an attestation.
+
 The runner supplies status and results. Work Graph associates each run with
 its frozen work snapshot and exposes references to output, file changes and
 [trace evidence](../../run-traces/contract/README.md). Preserve partial results on
