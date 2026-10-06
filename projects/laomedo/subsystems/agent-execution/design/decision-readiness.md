@@ -3,7 +3,7 @@ title: Agent execution decision readiness
 status: draft
 kind: specification
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-02
+last_reviewed: 2026-10-06
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -57,7 +57,7 @@ treated as accepted behavior.
 | ID | Question / exchange | Class, evidence | Dependency and next action |
 | --- | --- | --- | --- |
 | Q01 | Who stops an orphan with a writable checkout and push credential when the fate-shared backend dies? | A [C] | User selected an independent stage lease supervisor plus backend startup sweep, with a 60-second bound. [EXP-07](../../../experiments/orphan-lease/iterations/2026-10-02/results.md) tested the synthetic mechanism; real push credential integration remains unverified. |
-| Q02 | Does the chosen orphan mechanism actually stop the container and revoke access within its bound? | E [O] | EXP-07 passed for a disposable HTTP grant and synthetic worker. [EXP-93](https://github.com/amadou-6e/laomedo/blob/b61a630/experiments/exp93/RESULTS.md) stopped an exact labelled Docker sleeper after a **single runner-process** kill, without a scoped write grant. Its later one-shot Windows `taskkill /T /F` diagnostic was **negative**: the child supervisor died with the runner and wrote no cleanup result. Neither systemd-cgroup survival nor real push-grant revocation is established; a model stage remains unverified before live writable dispatch. |
+| Q02 | Does the chosen orphan mechanism actually stop the container and revoke access within its bound? | E [O] | EXP-07 passed for a disposable HTTP grant and synthetic worker. [EXP-93](https://github.com/amadou-6e/laomedo/blob/b61a630/experiments/exp93/RESULTS.md) stopped an exact labelled Docker sleeper after a **single runner-process** kill, without a scoped write grant. Its later one-shot Windows `taskkill /T /F` diagnostic was **negative**: the child supervisor died with the runner and wrote no cleanup result. [Amendment 2](https://github.com/amadou-6e/laomedo/blob/7707ba2/experiments/exp93/RESULTS.md) moved supervision to an **independently started** lease service: under the same whole-tree kill it survived, revoked its **synthetic** run-scoped write grant in 4.921 s and verified exact container removal in 5.568 s. That service was started outside the runner's tree by the probe; its production launch mechanism, real GitHub/mediated grant revocation ([decision 0004](../../../decisions/0004-mediated-git-gh.md)), systemd-cgroup/job-object or double failure, and a model stage remain unverified before live writable dispatch. |
 | Q03 | Is the request/invocation identity committed before agent dispatch? | A [C] | The merged decision record requires durable identity and refusal if it cannot be established; verify the [IF-05 reservation](../contract/schemas/if-05-stage-invocation.md) experimentally. This does not imply run recovery. |
 | Q04 | Which native ID and event prefixes survive kills at each persistence boundary? | E [U] | E02; do not claim mid-turn recovery from the restart-only pilot. |
 | Q05 | How long is a writable checkout retained after a terminal run? | B [I] | Product tradeoff inferred from writable checkout and container cleanup; decide retention vs verified snapshot/deletion with [results ownership](../../results-artifacts/contract/interfaces.md). |
