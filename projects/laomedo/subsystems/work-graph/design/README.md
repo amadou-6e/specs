@@ -18,3 +18,6 @@ complete snapshot. The implementation is in [Laomedo PR #17](https://github.com/
 A future view needs a reviewed design in this subsystem before UI work. Runner
 launch and rerun require separate authorization and must preserve the frozen
 work and graph snapshot references in the [contract](../contract/work-graph.md).
+
+The proposed [host approval authority](approval-authority.md) defines the
+separate human approval boundary for #95. It is not implemented yet.
