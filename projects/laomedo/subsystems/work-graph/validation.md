@@ -66,3 +66,14 @@ The worker also pins `--pull=never` and a numeric non-root user. This does not
 expand the tested flow to untrusted custom component code; #96 owns that
 boundary. The local CLI requires a disposable auto-login-enabled Langflow
 server and cannot use the earlier auto-login-disabled deployment as-is.
+
+For #96, test the host/executor split with a pinned zero-turn Docker fixture.
+Freeze the expected graph and component digests on the host, then inject
+component writes to ordinary stdout, raw file descriptor 1, enumerated open
+descriptors and inherited pipes. A forged `ready` line must not reserve or
+dispatch a stage when validation fails. A forged `complete` line followed by
+a failing executor must not produce a completed run. Verify one durable
+run/trace identity for dispatch failure and timeout, no replay, exact container
+cleanup and unchanged image, user, network, mount and capability settings.
+Report container output as untrusted data and distinguish a successful Docker
+process exit from verified semantic execution.
