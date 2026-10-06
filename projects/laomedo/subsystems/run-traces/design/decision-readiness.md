@@ -27,7 +27,7 @@ Classes: **A** controllable first-slice rule, **B** user choice, **R** primary-s
 | T04. Is an orphan tail frozen/quarantined or visibly growing? | B | [I] inspectability versus retention | T03, #175, E03 | Choose labeling/fencing; neither is complete. |
 | T05. How are non-terminal streams labeled on restart? | A | [C] fate-shared crash rule; [I] [IF-11](../contract/interfaces.md) gap | Durable run/trace index | Mark `partial`, reason `crashed`; propose an IF-11 reason field. |
 | T06. Does relaunch merge old/new events? | A | [C] new linked run | None | Allocate a distinct run/trace ID and prior-run link; never merge histories. |
-| T07. How does IF-08 dedup without native IDs? | B | [O] [IF-08 schema](../../agent-execution/contract/schemas/if-08-agent-event.md) IDs optional; [I] #123 synthetic limit | #175 produces source keys or declares absence; E02 | Run traces owns the dedup/uncertainty policy; choose producer-stable key or at-least-once uncertainty here. |
+| T07. How does IF-08 handle redelivery without native IDs? | A | [C] [2026-10-04 decision](../../../decisions/0003-agent-event-replay.md); [O] [IF-08 schema](../../agent-execution/contract/schemas/if-08-agent-event.md) IDs optional | E02 tests the selected policy; #175 may later verify producer keys | Preserve all committed deliveries and report action identity as uncertain absent a verified producer key. Do not claim confirmed unique actions from receipt order or optional IDs. |
 | T08. Is receipt sequence a dedup key? | A | [O] IF-08 assigns it on ingest; [I] identity rule | None | No; it orders accepted receipts, not source events. |
 | T09. What Langflow lifecycle hooks/source IDs support IF-07? | R | [U] Langflow API | #174 lifecycle owner | Inspect pinned source/docs; if absent, consider invocation-record-derived lifecycle. |
 | T10. How are IF-07 observations deduplicated? | B | [O] [IF-07 sketch](../../langflow-integration/contract/interfaces.md) source ID optional; [I] | T09 and #174 lifecycle-key producer; E02 | Choose adapter-stable transition key or preserve duplicate uncertainty here; #174 B17 consumes this policy. |
@@ -44,11 +44,14 @@ Classes: **A** controllable first-slice rule, **B** user choice, **R** primary-s
 | T21. What if run/trace ID cannot be durably reserved? | A | [C] direct user clarification, 2026-10-02; [I] invariant | Run-index reservation | **Refuse dispatch** with visible error; no in-memory fallback. |
 | T22. Is Codex/Claude projection parity ready? | D | [O] #123 lacks Claude trace | Claude sample/budget | Revisit for second provider; do not infer parity. |
 
-Counts: **A 9 / B 6 / R 1 / E 2 / D 4** (22). There are three experiment sketches because E02 tests the B-class deduplication choices; only T02 and T20 are E-class questions. IF-07: T09–T10; IF-08: T07–T08, T12–T13; IF-11: T05, T14–T15, T19. D18: T16. T21 is a direct user clarification after the research handoff, not an implemented feature.
+Counts: **A 10 / B 5 / R 1 / E 2 / D 4** (22). There are three experiment sketches because E02 tests the selected T07 rule and still-open T10 choice; only T02 and T20 are E-class questions. IF-07: T09–T10; IF-08: T07–T08, T12–T13; IF-11: T05, T14–T15, T19. D18: T16. T21 is a direct user clarification after the research handoff, not an implemented feature.
 
 ## User decisions
 
-These are alternatives, not selected contract behavior. T01, T03, T04 and T07 are first-slice blockers; T10 blocks IF-07 if emitted rather than derived. T17 blocks a broad raw-content access promise. Costs are relative, not measured.
+Except for the recorded T07 selection below, these are alternatives, not
+selected contract behavior. T01, T03 and T04 remain first-slice choices;
+T07 still needs E02 evidence. T10 blocks IF-07 if emitted rather than derived.
+T17 blocks a broad raw-content access promise. Costs are relative, not measured.
 
 | Item | Option | Consequence / failure prevented or caused | Cost |
 | --- | --- | --- | --- |
@@ -59,8 +62,8 @@ These are alternatives, not selected contract behavior. T01, T03, T04 and T07 ar
 | T03 | Agent execution owns one durable external raw file | May retain more events during backend loss, but orphan writer can append. | File fencing, reconciliation, access control. |
 | T04 | Freeze confirmed prefix; quarantine later tail | Stable `crashed` trace and separable orphan evidence. | Fence/quarantine mechanism and UI. |
 | T04 | Show visibly growing partial/orphan tail | Retains observation, but terminal trace changes over time. | Versioned status/read snapshots. |
-| T07 | Require producer-stable key | Can dedup redelivery; keyless provider needs durable adapter key or fails. | Producer journal and key contract. |
-| T07 | Accept at-least-once receipts with uncertainty | Keyless provider works, but action counts may include repeats. | Projection and review ambiguity. |
+| T07, not selected | Require producer-stable key | Could dedup redelivery, but a keyless provider needs a durable adapter key or fails. | Producer journal and key contract. |
+| T07, selected | Accept at-least-once receipts with uncertainty | Keyless provider works; delivery counts may include repeats and unique-action counts are unknown. | Projection and review ambiguity; E02 verification. |
 | T10 | Require adapter-stable transition key | Deterministic IF-07 dedup even without native ID. | Adapter state and hook research. |
 | T10 | Keep all lifecycle receipts with uncertainty | Avoids false collapse, but duplicate transitions may inflate activity. | Richer read model. |
 | T17 | Short guarded raw retention/redacted export | Less exposure, but later reprojection may be impossible. | Expiry/redaction/audit controls. |
@@ -74,12 +77,22 @@ Proposed T03 boundary, pending user choice: run traces is the authoritative raw 
 
 ## Experiment sketches
 
-**Not executed.** All use synthetic fixtures, zero model turns, a pinned Laomedo adapter/fixture commit, OS/Docker, filesystem and fsync settings, and the exact selected protocol. Include Langflow `1.12.3` image digest `sha256:34055a07d446de51760e28dab6332e22624e5f48dca611567779992fc32c5ec0` when it participates. The pilot's 4/4 model turns cannot be reused. Estimates below exclude fixture construction.
+E02's IF-08 portion was later executed synthetically as
+[EXP-09](../../../experiments/agent-event-replay/iterations/2026-10-04/results.md)
+at Laomedo `3115d5b`, then amended with a falsifying control at `e285068`;
+neither run exercised a native provider or IF-07 T10.
+E01 and E03 remain unexecuted. The sketches below use synthetic fixtures,
+zero model turns, a pinned Laomedo adapter/fixture commit, OS/Docker,
+filesystem and fsync settings, and the exact selected protocol. Include
+Langflow `1.12.3` image digest
+`sha256:34055a07d446de51760e28dab6332e22624e5f48dca611567779992fc32c5ec0`
+when it participates. The pilot's 4/4 model turns cannot be reused. Estimates
+below exclude fixture construction.
 
 | Experiment / unblocks | Hypothesis / falsifier | Minimal pinned procedure | Outcome / estimated cost |
 | --- | --- | --- | --- |
 | E01 — T02/T01 durability | Acknowledged receipts survive hard backend death to chosen boundary; falsified by an acknowledged missing event presented as complete or unreported gap. | Hard-kill before append, after write/before flush, and after ack; restart and compare producer ledger, raw prefix, receipt sequence and IF-11. Repeat each cut point. | Specify measured prefix/loss only for pinned FS/protocol or revise T01. ~10–30 min execution plus fixture. |
-| E02 — T07/T10 dedup | Chosen key/uncertainty rule creates no fabricated confirmed unique action; falsified by duplicate action represented as distinct confirmed or conflicting payload collapsed. | Replay keyed, keyless, reordered and conflicting-ID IF-07/IF-08 fixtures through pinned ingest/projector; compare raw receipts and projections. Include call ID reused by start/completion. | Require producer key or explicit at-least-once uncertainty; #123 synthetic tests do not prove provider replay. ~10–20 min plus fixture. |
+| E02 — T07 replay; T10 separately pending | Selected at-least-once rule creates no fabricated confirmed unique action; falsified by duplicate action represented as distinct confirmed or conflicting payload collapsed. | Replay keyed, keyless, reordered, conflicting-ID and reconnect IF-08 fixtures through pinned ingest/projector; compare raw receipts, delivery counts, identity uncertainty and completeness. Include a call ID reused by start/completion without assuming the ID names both events. IF-07 needs its own T10 selection before a lifecycle claim. | Confirm or revise the bounded IF-08 policy; #123 synthetic tests do not prove provider replay. ~10–20 min plus fixture. |
 | E03 — T20/T03/T04 orphan tail | Chosen policy detects post-crash writes and keeps them separate from confirmed prefix; falsified by unmarked growing `crashed` trace or lost tail claimed complete. | Run synthetic external writer, hard-kill backend while appending; inspect before restart and after #175 reaper sweep. No model/GitHub. | Specify fence/quarantine or versioned partial tail; coordinate #175 E01. ~10–30 min plus fixture/reaper. |
 
 ## Crash behaviour
@@ -94,7 +107,7 @@ Proposed T03 boundary, pending user choice: run traces is the authoritative raw 
 
 | Finding / boundary | Disposition |
 | --- | --- |
-| [#168 review](https://github.com/amadou-6e/specs/pull/168) B2 / IF-08 | T07–T08/E02 accept the finding: optional source IDs plus receipt sequence do not guarantee dedup. The merged [IF-08 text](../contract/interfaces.md) now states that uncertainty; the policy choice and replay test remain open. |
+| [#168 review](https://github.com/amadou-6e/specs/pull/168) B2 / IF-08 | T07–T08/E02 accept the finding: optional source IDs plus receipt sequence do not guarantee dedup. The [IF-08 text](../contract/interfaces.md) selects at-least-once uncertainty; [EXP-09](../../../experiments/agent-event-replay/iterations/2026-10-04/results.md) tests the synthetic receipt path, while native provider replay remains open. |
 | #168 M2 | T11 separates old shared-contract retry/new-run wording from deferred D17 same-invocation recovery. #168 B1 trigger shape and M1 input files belong to issue integration/agent execution, not traces. |
 | [#172 review](https://github.com/amadou-6e/specs/pull/172) H-1 | Reject proposed graph reattach/run-ledger remedy under later fate-shared decision; retain orphan/duplicate problem in T03–T04/T20. |
 | #172 H-15/H-16 | Results owns failure-report assembly; traces owns IF-11 completeness and honest usage/cost (T14–T15/T19). |
@@ -103,4 +116,4 @@ Proposed T03 boundary, pending user choice: run traces is the authoritative raw 
 | IF-08 / H8 | Agent execution produces native events/IDs; traces owns receipts/projection. #175 orphan cleanup is provisional. |
 | IF-11 / H10 | Traces supplies independent trace link/completeness; results assembles missing inputs. |
 
-Cross-owner decisions: T03/T04 with agent execution writer/reaper, T09/T10 with Langflow adapter, T07 with event producer key. Before implementation, record the fate-shared crash rule and the user's T21 refuse-dispatch choice as new D-IDs in one central decision-record PR, and reconcile the older D17 wording; this subsystem PR does not edit peer decisions or contracts.
+Cross-owner decisions: T03/T04 with agent execution writer/reaper, T09/T10 with Langflow adapter, and any future source-specific producer-key guarantee with agent execution. T07's first-slice policy is recorded in [decision 0003](../../../decisions/0003-agent-event-replay.md); the older fate-shared crash and T21 decision-record work remains separate.

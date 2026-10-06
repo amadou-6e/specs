@@ -35,7 +35,9 @@ For an unsuccessful run, expose an editable report of completed work, failure,
 evidence and remaining work. A user selects, reviews and may edit a proposed
 follow-up issue. Only then send that reviewed proposal and prior-run references
 to [issue integration](../../issue-integration/contract/interfaces.md). If
-publication fails, keep the draft's review state and report the failure.
+publication definitely fails or remains `unknown`, keep the draft's review
+state, show the distinct outcome, and show no issue reference until issue
+integration confirms one. Results does not decide whether another POST is safe.
 
 ## IF-13 — follow-up run context
 
@@ -82,3 +84,6 @@ copies; this subsystem produces those same shapes after user review/selection.
 A backend-crashed run stays `crashed` even if an agent's final outcome is
 missing. The IF-10 supersession rule is a proposed projection policy, not
 evidence that output revisions or external PR writes are idempotent.
+For IF-09 `terminal.status: "incomplete"`, results preserves the producer's
+machine-readable `terminal.reason` in `context`; in particular,
+`runner_result_pending` is not converted into a failed or cancelled native run.

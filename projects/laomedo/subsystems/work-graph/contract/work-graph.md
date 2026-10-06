@@ -3,7 +3,7 @@ title: Work Graph contract
 status: draft
 kind: target-contract
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-02
+last_reviewed: 2026-10-05
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -86,11 +86,102 @@ runner contract. Validate freshness and prerequisite evidence again at
 dispatch. If the source changed, require an explicit choice of the pinned or
 refreshed snapshot, recorded in the binding.
 
+The launch adapter re-fetches through the read-only source connector inside
+the launch operation; a caller-supplied earlier `current` snapshot is not a
+freshness check. For launch-time comparison, hash the selected work and its
+transitive prerequisites, including item update/body markers and native dependency
+edges. The fetch timestamp is excluded: a re-fetch of unchanged content
+does not require a new choice merely because the snapshot ID changed.
+When content changes, `pinned` keeps the selected earlier work, graph and
+input while checking eligibility on the complete current graph;
+`refreshed` binds current work, graph and input. Persist both the bound graph
+snapshot ID and the current authorization graph snapshot ID, their relevant
+content digests and the explicit choice. This makes a pinned run's different
+input and authorization graphs reconstructible.
+
 Graph readiness is an input to dispatch eligibility. Eligibility also requires
 a valid run definition, supported runner settings, a recorded grant and
 explicit operator authorization. Any prerequisite override must identify
 the affected edge and rationale. Automatic scheduling is a later policy
 decision; selecting a node does not authorize execution.
+
+The launch adapter refuses missing or incomplete current source, unavailable
+selected work, unresolved/cyclic prerequisites, and an open blocker before
+reservation. An override applies only to the exact known open edge with a
+nonempty rationale; multiple or unknown open edges cannot be collapsed into
+one override. A trusted grant authority must verify the grant reference,
+operator authorization, selected work, bound graph, runner, stage scope,
+expiry and effective limits before reservation. A self-asserted grant in
+the request is insufficient. Keep secrets out of the persisted binding.
+
+For a bounded single-user, zero-turn check, the host may issue one-use grants
+from a private ledger outside Git and every stage mount. Its CLI requests a
+typed work-key confirmation; the ledger binds the selected work key and
+relevant content digest, runner, scope, expiry and limits, while retaining the
+reviewed graph snapshot ID as evidence. The content digest covers the selected
+work and transitive prerequisites and excludes fetch time. A `pinned` launch
+compares the grant with the frozen selection; a `refreshed` launch compares it
+with the newly fetched selection. To authorize `refreshed`, the host first
+fetches and presents current content, issues a grant from that reviewed
+snapshot, then re-fetches at launch and refuses any relevant content change
+before redeeming the grant. A matching reference is atomically redeemed before
+run reservation. Grants issued under the older snapshot-ID-only rule cannot
+be redeemed by the content-bound route. This local mechanism does not by
+itself make untrusted stage code
+safe: the issuer must remain outside the stage's process and filesystem view,
+and effective time and model-turn limits must be enforced by the runner. The
+typed confirmation alone does not authenticate an operator. Until
+those boundaries are verified, the grant remains a fixture-only authorization
+check and cannot authorize a model-backed Work Graph launch.
+
+The local zero-turn route keeps the GitHub login, disposable Langflow API token,
+grant ledger and durable run store on the host. It fetches the saved flow once
+and passes only that frozen export and package code to a network-disabled
+Docker worker using read-only mounts and scratch tmpfs. The worker builds the
+pinned Langflow graph and reports graph/component hashes. The host verifies
+them against the export before reserving the run, then records one dispatch
+attempt before sending one execute command. A timeout stops the named worker
+container and leaves the run outcome `unknown` without automatic replay.
+The local CLI exposes fetch, grant issue and launch operations. This route
+requires a disposable loopback Langflow server with auto-login enabled; its
+token is held only in host memory. The worker uses locally present image
+`langflowai/langflow@sha256:34055a07d446de51760e28dab6332e22624e5f48dca611567779992fc32c5ec0`
+with `--pull=never` and numeric user `1000:1000`. The
+worker's hash report checks that it loaded the host-supplied flow bytes; it
+does not attest arbitrary custom component behavior. Grant redemption occurs
+before that hash check, so a failed check consumes the grant without reserving
+a run. The future approval/retry policy belongs to #95, and adversarial
+component isolation belongs to #96. This route
+does not grant a model turn, prove operator identity beyond the local session,
+or establish safe protocol behavior against malicious custom component code.
+
+For the #96 control boundary, the host controller derives the frozen graph
+and component-code digests directly from the saved export before reservation.
+It never accepts a component-supplied `ready`, digest, `complete`, or `failed`
+line as control evidence. A disposable validation container may check whether
+the pinned Langflow runtime can build the export, but its stdout is discarded
+and its exit status is only a compatibility check. After successful validation,
+the host reserves the run and starts a separate executor container once. The
+host determines process termination from Docker, not executor stdout; stdout
+is untrusted result data. A nonzero exit is failure, and timeout or lost
+container status remains unknown with no automatic replay. The Docker image,
+numeric user, network restriction, mounts, and capability policy do not widen.
+
+This boundary prevents custom component writes to inherited or discovered
+container descriptors from impersonating the host's control messages. It
+attests the frozen input bytes the host supplied, not faithful execution of
+arbitrary component code. A malicious component may choose its own output or
+terminate its own executor process; a zero exit therefore means only that the
+executor process ended successfully, not that its result is truthful. Do not
+promote process completion to a model-backed, hosted, or adversarial semantic
+correctness claim.
+
+For this Docker route, `completed` records only a zero executor-process exit.
+The durable run records `completion_basis: process_exit` and leaves
+`evidence_complete: false`. No consumer may treat this status or untrusted
+stdout as semantic graph success without separate output verification.
+Validation builds the flow in a disposable container and can execute custom
+component construction code; it is not a passive parse or an attestation.
 
 The runner supplies status and results. Work Graph associates each run with
 its frozen work snapshot and exposes references to output, file changes and

@@ -3,7 +3,7 @@ title: Langflow integration decision readiness
 status: draft
 kind: specification
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-02
+last_reviewed: 2026-10-05
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -42,7 +42,7 @@ The review comments on [#166](https://github.com/amadou-6e/specs/pull/166), [#16
 | Q08 | Can a runnable graph revision and component-code identity be frozen? | R [U] | R01 inspect pinned Langflow source/docs for export/snapshot and component resolution; E02 then tests actual mutation behavior. | Yes |
 | Q09 | Is there a stable agent-node API for binding per-stage input and selectors? | R [U] | R02 inspect pinned component/runtime APIs; no commitment to parse an internal flow JSON shape. | Yes |
 | Q10 | Does mutation of a saved flow after launch leave the active run unchanged? | E [U] | E02; required by D09 but not proved by the one-node pilot. | Yes |
-| Q11 | What does a timeout do to a long synchronous agent call? | E [U] | E03; inspect Langflow timeout and downstream cancellation separately. | Yes |
+| Q11 | What does a timeout or UI Stop do to an active agent call? | E [O] pinned synthetic [EXP-10](../../../experiments/long-call-timeout/iterations/2026-10-05/results.md) and [EXP-89 with machine-written evidence](https://github.com/amadou-6e/laomedo/blob/a97ad507fcd41af332e3d9ff77d2b0ef0b907487/experiments/exp89/RESULTS.md); [U] backend-to-component Stop signal and real-agent effect/trace | Outer-client and v2 server timeouts left late synthetic effects. EXP-89's visible Playground Stop did not cancel the bound synthetic runner on the tested `start` path; it did not record whether Langflow signalled the component, so the missing link's cause is unknown. Its blocking `fresh` case is inconclusive. Specify and test an explicit Stop-to-runner path, post-timeout IF-06/07 evidence, real-agent cancellation and crash cleanup before first-slice acceptance. | Yes |
 | Q12 | Can Stop prevent a waiting stage from dispatching after Stop was accepted? | E [U] | E04; test concurrent Stop and scheduler release. Q04 defines desired state semantics first. | No |
 | Q13 | Does an independent branch continue when another agent node raises? | E [U] | E05; current pilot node raises on error but has no independent branch. Until proven, do not promise D15 behavior. | No |
 | Q14 | Are conditional loops, invocation limits and rerun handoffs supported for the target graphs? | D [U] | After first slice, research component/graph constraints then design a bounded experiment; do not infer this from one-node execution. | No |
@@ -86,23 +86,38 @@ These are options for review, not selected defaults. The failure/cost column nam
 
 ## Bounded, no-model experiments to design and run later
 
-Each proposal uses a synthetic deterministic node, not an LLM turn. Pin Langflow `1.12.3` and image digest `sha256:34055a07d446de51760e28dab6332e22624e5f48dca611567779992fc32c5ec0` for comparison with the pilot, plus the exact local adapter/fixture commit, Docker Desktop/Windows versions, storage path, graph export/hash, request payload and clock. If the current runtime differs, record a second revision rather than silently transferring the result. Preserve raw API status, event IDs/times, graph snapshots and container/process state in a sanitized evidence manifest; never commit credentials. These are protocols, **not executed results**.
+Each proposal uses a synthetic deterministic node, not an LLM turn. Pin Langflow `1.12.3` and image digest `sha256:34055a07d446de51760e28dab6332e22624e5f48dca611567779992fc32c5ec0` for comparison with the pilot, plus the exact local adapter/fixture commit, Docker Desktop/Windows versions, storage path, graph export/hash, request payload and clock. If the current runtime differs, record a second revision rather than silently transferring the result. Preserve raw API status, event IDs/times, graph snapshots and container/process state in a sanitized evidence manifest; never commit credentials. These rows are prospective protocols; the bounded E03 result is linked below and does not prove its missing integration checks.
 
 | ID | Hypothesis and falsifier | Procedure, observable outcome and approximate cost |
 | --- | --- | --- |
 | E01 (Q05) UI close vs backend kill | H: UI close leaves run active and reconnectable; killing fate-shared backend ends it and a restart sweep marks `crashed`. Falsified by UI-close termination, hidden continuation after backend death, or no terminal record. | Start long synthetic node, close browser only and reconnect; then repeat with backend hard kill and restart. Record run/stage/container states and whether independent container/GitHub effects survive. Two local synthetic runs, minutes, zero model turns. |
 | E02 (Q10) flow freeze | H: an in-flight run uses the launch-time graph/component revisions even if the saved flow is edited. Falsified if a later stage sees the edit or no exact snapshot can be recovered. | Export/hash graph and component identities; hold a synthetic stage, edit graph, release, compare observed execution and frozen record. Requires R01 and a disposable flow; two synthetic variants, minutes, zero model turns. |
 | E03 (Q11) long-call timeout | H: timeout yields a visible terminal invocation and does not imply the external action was stopped unless cancellation is observed. Falsified by silent hang, success after terminal timeout without effect accounting, or wrongly complete trace. | Invoke deterministic blocking local endpoint beyond each configured client/build/server timeout; inspect Langflow error/return, downstream process and IF-06/07 timestamps. Duration must exceed the actual configured limit and may be hours; zero model turns. |
+
 | E04 (Q12) Stop race | H: once Stop is accepted, no waiting stage dispatches. Falsified by any post-acceptance invocation start. | First test a one-node invocation paused immediately before dispatch, then a barrier-controlled predecessor and waiting successor; issue Stop at each release boundary and inspect monotonic event times and downstream call counter. Requires B04. Several short local schedules, zero model turns; exact repeat count recorded before execution. |
 | E05 (Q13) independent failure | H: a raised agent-node error blocks descendants but permits an independent branch unless end-on-error is selected. Falsified by unrelated branch suppression or unintended descendant execution. | Deterministic diamond graph with one raising branch and one delayed independent branch; compare default and end-on-error modes, event and result states. Two synthetic runs, minutes, zero model turns. |
 | E06 (Q29) resolved refs before dispatch | H: resolved refs, graph identity and launch context are durably recoverable before the first agent invocation. Falsified by a dispatched invocation without that record after restart. | With a synthetic no-model node, hard-kill before the record write, between write and durable acknowledgment, and after acknowledgment but before dispatch. Compare the persisted record with the invocation counter after restart. Pin filesystem and flush behavior. Several short local runs, zero model turns. |
+
+E03's bounded runtime portion was executed as
+[EXP-10](../../../experiments/long-call-timeout/iterations/2026-10-05/results.md)
+at Laomedo `dee05c2`, with amended direct-capture replication at `1fc002a`.
+The pinned synthetic probe showed late effects after
+outer-client and v2 server timeouts; the component's 2-second HTTP timeout
+produced an uncertainty-aware 500 only after the 5-second endpoint effect.
+The post-408 job status was subsequently inspected in
+[EXP-65](../../../experiments/post-timeout-job-status/iterations/2026-10-05/results.md):
+four read-only polls returned terminal `JOB_FAILED`, including one before the
+late external effect. That status is not proof of cancellation or effect
+reconciliation. IF-06/07 partial trace and real-agent cancellation were not
+captured, so Q11 remains a first-slice integration gate rather than a
+completed safety claim.
 
 ## Crash accounting and ownership proposal
 
 The five questions must have explicit answers in the future contract; this is a proposed minimum accounting rule, not evidence that the current Langflow adapter implements it.
 
 1. **Before dispatch:** persist run ID, graph revision, resolved configuration hash/refs, trigger, start, and stage reservation. If persistence fails, do not dispatch. Laomedo's Langflow integration owns this record; the Langflow runtime still sequences the graph. This is not a second workflow scheduler.
-2. **After restart:** mark prior nonterminal runs `crashed`, fence new dispatch for them, retain partial IF-07/08/09 evidence, and ask agent execution to reap orphan containers. A restart sweep alone may not bound a live orphan while the backend is down; the [provisional #175 readiness draft](https://github.com/amadou-6e/specs/blob/5dc5c1e/projects/laomedo/subsystems/agent-execution/design/decision-readiness.md) leaves supervisor/lease ownership and its test open.
+2. **After restart:** mark prior nonterminal runs `crashed`, fence new dispatch for them, retain partial IF-07/08/09 evidence, and ask agent execution to reap orphan containers. A restart sweep alone may not bound a live orphan while the backend is down; the [provisional #175 readiness draft](https://github.com/amadou-6e/specs/blob/5dc5c1e/projects/laomedo/subsystems/agent-execution/design/decision-readiness.md) leaves supervisor/lease ownership and its test open. [EXP-91](https://github.com/amadou-6e/laomedo/blob/f67909dd3e8db9c45d7b93adab518a576fce2f6f/experiments/exp91/RESULTS.md) now shows the narrower runner-crash case directly: its record became `interrupted` but its synthetic Docker container survived, and the saved record lacked the exact container name. This is a failed cleanup check, not evidence that the proposed reaper exists.
 3. **Surviving effects:** separately running containers, GitHub pushes/PRs and provider spend might continue after backend death. Their exact survival is unverified; record known effects, unknown effects, and evidence gaps without labeling a partial run clean or rolled back.
 4. **Relaunch warning:** a user-requested follow-up gets new run and invocation IDs; warn that it can duplicate writes and spend. Resolve B20 before selecting old frozen revisions versus `latest`. Prompt-only “inspect first” does not make external writes idempotent.
 5. **Detection owner:** Langflow integration detects its own incomplete run records on startup and emits the terminal context. Agent execution owns container cleanup effectiveness; results owns presentation; run traces owns evidence projection. A separate watchdog/lease may be required to bound orphans during an outage, but this page does not select one.
@@ -122,4 +137,4 @@ The proposal rejects a second Laomedo workflow scheduler as a way to “recover�
 | #168 IF-07/08 deduplication | Q17 and run-traces ownership; IF-08 belongs to [agent execution](../../agent-execution/contract/interfaces.md#if-08--emit-agent-telemetry). |
 | #168 user files and retry contradiction | Multi-stage files Q23 and [IF-05](../../agent-execution/contract/interfaces.md#if-05--invoke-a-configured-agent-stage); same-invocation D17 is deferred Q27. |
 
-No future B choice, vendor capability or experimental result is implied by this draft. The first-slice column makes the boundary explicit. The one-node path needs Q08/R01→Q10/E02 for freeze, Q09/R02 for the agent-node binding, Q11/E03 for long synchronous calls, Q05/E01 for D16 UI closure, Q16/R03 and #179's Q17 policy for trace lifecycle, Q29/E06 for durable pre-dispatch refs, and #175's orphan-control choice for Q03. Q20/B20 is additionally needed when linked relaunch is included. Q04 Stop, Q15 arbitrary editor components, Q21 aggregate multi-invocation budget and Q22 multi-stage PR ownership are **not** first-slice gates. The selected one-invocation limit remains necessary, but an aggregate graph budget adds no separate first-slice control.
+No future B choice, untested vendor capability or broader experimental result is implied by this draft. The first-slice column makes the boundary explicit. The one-node path needs Q08/R01→Q10/E02 for freeze, Q09/R02 for the agent-node binding, Q11/E03 for long synchronous calls, Q05/E01 for D16 UI closure, Q16/R03 and #179's Q17 policy for trace lifecycle, Q29/E06 for durable pre-dispatch refs, and #175's orphan-control choice for Q03. Q20/B20 is additionally needed when linked relaunch is included. Q04 Stop, Q15 arbitrary editor components, Q21 aggregate multi-invocation budget and Q22 multi-stage PR ownership are **not** first-slice gates. The selected one-invocation limit remains necessary, but an aggregate graph budget adds no separate first-slice control.

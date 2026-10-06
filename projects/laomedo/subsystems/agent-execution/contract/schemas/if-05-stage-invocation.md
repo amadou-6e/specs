@@ -22,6 +22,7 @@ StageInvocation {
   run_id: string, graph_revision_ref: Ref, stage_id: string,
   invocation_id: string, loop_index: integer,
   dispatch_reservation_ref: Ref,
+  runner_request_id?: string, runner_request_hash?: string,
   agent: { provider: string, model: { requested: string, effective?: string },
            effort: { requested?: string, effective?: string } },
   prompt: { content_ref: Ref, hash: string }, skills: SkillSnapshotRef[],
@@ -42,6 +43,12 @@ StageInvocation {
 `loop_index` distinguishes loop invocations, not crash-recovery attempts.
 `dispatch_reservation_ref` identifies the durable pre-dispatch run/stage/
 invocation reservation; if it cannot be committed, execution refuses dispatch.
+For the first fresh Codex slice, `runner_request_id` is the already reserved
+`invocation_id` UUID. Recovery adds `runner_request_hash`, a digest of the
+exact native request body frozen before POST and checked again on read-only
+lookup. The caller must not generate a new request ID on a timeout retry or
+resubmit automatically. The separate runner identity is bound on acknowledgement under
+the [Langflow integration contract](../../../langflow-integration/contract/runner-correlation.md).
 `input_ref` carries the text/structured handoff, not an implicit collection of
 files. Every user-added file has its own checked `user_file_refs` entry; an
 upstream artifact is kept distinct and needs byte materialization by a later

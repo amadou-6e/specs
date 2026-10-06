@@ -16,6 +16,11 @@ context and follow-up requests. Agent invocation and outcome are jointly
 described there but their agent-side behavior belongs to
 [agent execution](../../agent-execution/contract/interfaces.md). Shared record
 definitions remain in [architecture](../../../architecture/shared-contracts.md).
+The proposed [timeout and late-effect reconciliation](timeout-reconciliation.md)
+qualifies IF-06/07 and Q11 without changing Langflow's graph-state ownership.
+The proposed [runner correlation](runner-correlation.md) specifies the durable
+join from one Laomedo invocation to the local runner's separate identity and
+private raw-event reference.
 
 Contract container: README.md (1), focused interface/configuration pages
 (0..*). [Validation](../validation.md) qualifies maturity.

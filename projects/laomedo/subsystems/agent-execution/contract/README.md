@@ -20,11 +20,16 @@ some assumptions in the older isolation draft; its conflict note must be
 resolved before implementation acceptance.
 The tested local [runner API boundary](runner-api.md) owns bearer authentication,
 endpoint behavior, and named-container teardown for the single-user prototype.
+The proposed [early-run cancellation handoff](early-run-cancellation.md) owns
+idempotent asynchronous identity, pre-dispatch cancel and positive stop evidence.
 Shared serialized records belong to [architecture](../../../architecture/shared-contracts.md).
 The [Langflow node interface](langflow-node.md) owns the proposed reusable custom
 component, fresh/resume operations, typed outputs and client lifecycle limitations.
 [Agent handoffs](handoffs.md) owns explicit transitions, bounded scheduling and the
 current incomplete artifact/provenance/live-acceptance boundaries.
+[Mediated GitHub access](github-write-mediation.md) owns the user-selected
+`git`/`gh` capability-parity and revocable-run-grant target; its transport and
+Q16 effect semantics are not yet selected.
 [Validation](../validation.md) qualifies maturity; pilot observations do not silently
 replace proposed read-only, identity or provider parity guarantees.
 

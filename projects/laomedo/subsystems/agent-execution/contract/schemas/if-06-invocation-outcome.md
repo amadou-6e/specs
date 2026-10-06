@@ -21,9 +21,12 @@ InvocationOutcome {
   status: "completed" | "failed" | "interrupted",
   evidence_state: "complete" | "partial" | "unknown",
   native_session_ref?: Ref, output_ref?: Ref, artifact_refs: Ref[],
+  runner?: { provider: string, request_id: string, run_id: string,
+             raw_event_ref: Ref },
   post_run_workspace_ref?: Ref,
   error?: { code: string, class: "input" | "permission" | "session_conflict"
-                  | "workspace_conflict" | "provider" | "container", message: string,
+                  | "workspace_conflict" | "provider" | "container" | "timeout",
+            message: string,
             recoverable: boolean }
 }
 ```
@@ -38,3 +41,17 @@ as `crashed`, rather than being reported as an agent error. Partial outputs
 remain referenced. `workspace_conflict` is reserved for later local-mount
 execution; first-slice isolated checkouts do not implement shared-mount locks.
 The exact provider-to-error mapping remains open.
+The `runner` object uses the native runner's namespace, not the top-level
+Laomedo `run_id`. It is present only after the durable
+[correlation binding](../../../langflow-integration/contract/runner-correlation.md).
+Its raw-event reference may still point to a partial stream; presence is not
+proof that cancellation, effect accounting or evidence completeness succeeded.
+
+A Langflow v2 server-side `408 EXECUTION_TIMEOUT` can be projected as a failed
+affected invocation with `error.class="timeout"` and
+`evidence_state=unknown|partial`; it is not evidence that the remote agent
+stopped. This distinguishes the server ceiling from an outer-client or
+component timeout, whose exact IF-06 mappings remain open. The proposed
+[timeout reconciliation rule](../../../langflow-integration/contract/timeout-reconciliation.md)
+keeps native job status, effect state and IF-07 receipts distinct. Real-runner
+mapping and cancellation confirmation remain unverified.
