@@ -144,8 +144,9 @@ attempt before sending one execute command. A timeout stops the named worker
 container and leaves the run outcome `unknown` without automatic replay.
 The local CLI exposes fetch, grant issue and launch operations. This route
 requires a disposable loopback Langflow server with auto-login enabled; its
-token is held only in host memory. The worker uses a locally present pinned
-image without pulling it at launch and runs as a numeric non-root user. The
+token is held only in host memory. The worker uses locally present image
+`langflowai/langflow@sha256:34055a07d446de51760e28dab6332e22624e5f48dca611567779992fc32c5ec0`
+with `--pull=never` and numeric user `1000:1000`. The
 worker's hash report checks that it loaded the host-supplied flow bytes; it
 does not attest arbitrary custom component behavior. Grant redemption occurs
 before that hash check, so a failed check consumes the grant without reserving
