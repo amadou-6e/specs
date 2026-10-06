@@ -27,8 +27,9 @@ component, fresh/resume operations, typed outputs and client lifecycle limitatio
 [Agent handoffs](handoffs.md) owns explicit transitions, bounded scheduling and the
 current incomplete artifact/provenance/live-acceptance boundaries.
 [Mediated GitHub access](github-write-mediation.md) owns the user-selected
-`git`/`gh` capability-parity and revocable-run-grant target; its transport and
-Q16 effect semantics are not yet selected.
+`git`/`gh` capability-parity and revocable-run-grant target, including proposed
+Q16 effect identity and uncertain-write handling. Its transport and real
+credential source are not yet selected.
 [Validation](../validation.md) qualifies maturity; pilot observations do not silently
 replace proposed read-only, identity or provider parity guarantees.
 
