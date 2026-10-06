@@ -26,6 +26,9 @@ The [Langflow node interface](langflow-node.md) owns the proposed reusable custo
 component, fresh/resume operations, typed outputs and client lifecycle limitations.
 [Agent handoffs](handoffs.md) owns explicit transitions, bounded scheduling and the
 current incomplete artifact/provenance/live-acceptance boundaries.
+[Mediated GitHub access](github-write-mediation.md) owns the user-selected
+`git`/`gh` capability-parity and revocable-run-grant target; its transport and
+Q16 effect semantics are not yet selected.
 [Validation](../validation.md) qualifies maturity; pilot observations do not silently
 replace proposed read-only, identity or provider parity guarantees.
 
