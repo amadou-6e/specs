@@ -27,6 +27,17 @@ confirmation CLI. Credential-free tests refuse an in-repository grant path,
 a mismatched graph and replay. The first pinned Langflow fixture executed
 in-process and did not establish isolation.
 
+Review of Laomedo PR #86 found that snapshot-ID grant binding made every
+`refreshed` launch fail when the launch re-fetch changed only `fetched_at`.
+The revised local ledger binds the reviewed work and transitive-prerequisite
+content digest while keeping the reviewed snapshot ID for evidence. A
+credential-free test issues a real ledger grant from changed reviewed content,
+re-fetches the same content under another timestamp, and dispatches the
+`refreshed` selection once. A changed-content negative control refuses before
+reservation or grant consumption. Old snapshot-ID-only grants are not
+redeemable after the schema update. This is a local fixture authorization
+result, not human authentication; #95 owns that boundary.
+
 A subsequent zero-turn Docker route, recorded in the
 [sanitized isolated observation](https://github.com/amadou-6e/laomedo/blob/74b4b8b/experiments/exp82/isolated-observation.json), kept the grant ledger, GitHub login and
 disposable Langflow API token on the host. A worker with network disabled,
@@ -51,3 +62,7 @@ agents. A [further stdout control](https://github.com/amadou-6e/laomedo/blob/f54
 also discarded a forged raw write to file descriptor 1 while preserving the
 real output. Code sharing the worker process may still discover or manipulate
 other open descriptors; adversarial protocol integrity remains unproven.
+The worker also pins `--pull=never` and a numeric non-root user. This does not
+expand the tested flow to untrusted custom component code; #96 owns that
+boundary. The local CLI requires a disposable auto-login-enabled Langflow
+server and cannot use the earlier auto-login-disabled deployment as-is.
