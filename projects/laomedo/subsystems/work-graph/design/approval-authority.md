@@ -68,6 +68,16 @@ structure receives client-provided JSON, so this proposal cannot infer a
 platform-generated origin. A fixture value is not a production pin. The
 service must verify the exact chosen values in both approval and redemption.
 
+On Windows, an SCM service cannot directly show an operator window from session
+0. The local implementation must therefore either run a persistent interactive
+broker under the dedicated protected account or use a service-controlled helper
+in the operator's session. A helper cannot return a bare `approved` flag; the
+service must supply the exact request to display, initiate the challenge, and
+verify the resulting assertion. The interactive route, its process identity,
+and its ability to resist a same-user caller starting an unreviewed ceremony
+remain an acceptance gate, not an assumed property of a Windows service.
+See [Microsoft's interactive-services guidance](https://learn.microsoft.com/en-us/windows/desktop/Services/interactive-services).
+
 Denial, expiry, service crash, lost response, and inconclusive lookup do not
 authorize dispatch. Replays fail without consuming a fresh approval. A caller
 cannot obtain approval by editing a local confirmation string or copying a
