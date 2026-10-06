@@ -22,6 +22,16 @@ configuration, credential public keys, and ledger must be writable only by that
 identity and administrators. An ordinary process may submit a pending request,
 but cannot mint a grant or alter its approval record.
 
+The protected service must also own the launch capability. A caller that can
+invoke Docker or pass a fabricated `grant_authority` callable directly to the
+stage can bypass an otherwise protected issuer. In the production route, the
+agent and ordinary same-user client must not have direct access to the Docker
+Engine, the issuer ledger, or a launch entry point that accepts caller-supplied
+authorization. The service accepts only the reviewed request and grant
+reference, performs the final source and stage checks, consumes the grant, and
+dispatches the stage itself. The existing injectable local launcher remains a
+test fixture until that route and OS access boundary are exercised.
+
 The registered public key and issuer code are trust anchors. The ledger's
 mutable one-use state also needs integrity protection: rechecking a valid
 signature cannot detect a reset `redeemed_at` value or a duplicate grant row
@@ -33,8 +43,11 @@ an unprotected ledger alone cannot enforce one use.
 
 The protected service must display the canonical request itself before it
 starts the authenticator ceremony: work URL and body digest, prerequisite
-content digest, graph identity, runner identity, workspace scope, expiry,
-timeout, and turn limit. The Windows Hello or security-key prompt does not
+content digest, exact task digest, graph identity, runner identity, workspace
+scope, expiry, timeout, and turn limit. The protected launch route recomputes
+the task digest from the submitted prompt and refuses a mismatch, even though
+this may consume the one-use grant before dispatch. The Windows Hello or
+security-key prompt does not
 display these fields. A ceremony started by an ordinary caller, or one whose
 displayed request differs from the signed request, cannot authorize a grant.
 The service binds a fresh challenge and nonce to that exact request digest.
