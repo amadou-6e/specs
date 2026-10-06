@@ -37,6 +37,11 @@ re-fetches the same content under another timestamp, and dispatches the
 reservation or grant consumption. Old snapshot-ID-only grants are not
 redeemable after the schema update. This is a local fixture authorization
 result, not human authentication; #95 owns that boundary.
+The implementation at [Laomedo `da1c88a`](https://github.com/amadou-6e/laomedo/commit/da1c88ae7f247be39fd51fc2d234b6a4ac3c8754)
+merged into `develop` as [`d69c9a2`](https://github.com/amadou-6e/laomedo/commit/d69c9a26d5bd591d2e99fb7f4a76b825fc66c343).
+Its host suite passed 172 tests with four optional-runtime skips; the
+credential-free Docker grant probe passed, and both Python 3.10 and 3.13
+installed-wheel CI jobs passed on rerun.
 
 A subsequent zero-turn Docker route, recorded in the
 [sanitized isolated observation](https://github.com/amadou-6e/laomedo/blob/74b4b8b/experiments/exp82/isolated-observation.json), kept the grant ledger, GitHub login and
