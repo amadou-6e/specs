@@ -175,6 +175,13 @@ executor process ended successfully, not that its result is truthful. Do not
 promote process completion to a model-backed, hosted, or adversarial semantic
 correctness claim.
 
+For this Docker route, `completed` records only a zero executor-process exit.
+The durable run records `completion_basis: process_exit` and leaves
+`evidence_complete: false`. No consumer may treat this status or untrusted
+stdout as semantic graph success without separate output verification.
+Validation builds the flow in a disposable container and can execute custom
+component construction code; it is not a passive parse or an attestation.
+
 The runner supplies status and results. Work Graph associates each run with
 its frozen work snapshot and exposes references to output, file changes and
 [trace evidence](../../run-traces/contract/README.md). Preserve partial results on

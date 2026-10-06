@@ -77,3 +77,7 @@ run/trace identity for dispatch failure and timeout, no replay, exact container
 cleanup and unchanged image, user, network, mount and capability settings.
 Report container output as untrusted data and distinguish a successful Docker
 process exit from verified semantic execution.
+Add a component that emits forged lines and attacker-chosen text, then calls
+`os._exit(0)` before the graph output node. It should record `completed` only
+on a `process_exit` basis with incomplete evidence, while keeping the forged
+text confined to untrusted result data.
