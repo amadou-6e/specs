@@ -129,6 +129,18 @@ insufficient GitHub grant fails the affected operation without falling back to
 the host's `gh` session or a mounted Git credential helper. The exact GitHub
 grant broker and API handoff with [issue integration](../../issue-integration/contract/README.md)
 remain a first-slice design decision, not an implemented guarantee.
+This is the **first-slice grant**, not the full capability target in
+[decision 0004](../../../decisions/0004-mediated-git-gh.md) and the
+[mediation contract](github-write-mediation.md): parity with authorized
+`git`/`gh` operations never widens a run's selected grant. General `gh api`
+or GraphQL access must enforce the same repository, operation and separate
+workflow-file approval rules. Agent-created follow-up issues remain subject
+to the user's reviewed-publication decision in
+[IF-12](../../issue-integration/contract/interfaces.md#if-12--reviewed-follow-up-issue-publication),
+not an implicit issue-write grant. The later
+[Q16 proposal](https://github.com/amadou-6e/specs/pull/250) addresses
+uncertain mediated writes; until it is reviewed and merged, this page makes
+no safe-retry or exactly-once claim.
 
 The broker keeps refresh credentials and service keys in OS-protected local
 storage for one user or a managed secret store for a remote service. It persists
@@ -206,7 +218,10 @@ the selected credential is missing.
    quarantine active controllers with that credential, and mark affected
    sessions `reauthorization_required` or `revoked`. Preserve workspace and
    trace evidence without exposing credentials. Reconnect or rotate, then
-   require an explicit resume decision; never switch accounts silently.
+   require an explicit decision before another turn; never switch accounts
+   silently. A still-live run may continue **between completed turns** only
+   under step 4's checks. After a backend crash or terminal state, any later
+   execution is a user-requested **new run**, not native session recovery.
 
 Run-scoped GitHub grants expire or are revoked when their invocation ends.
 Backend death must not leave a push-capable orphan usable throughout an
