@@ -22,14 +22,38 @@ configuration, credential public keys, and ledger must be writable only by that
 identity and administrators. An ordinary process may submit a pending request,
 but cannot mint a grant or alter its approval record.
 
-The operator must review the canonical request before approval: work URL and
-body digest, prerequisite content digest, graph identity, runner identity,
-workspace scope, expiry, timeout, and turn limit. The service binds a fresh
-challenge and nonce to that exact request digest. It verifies a registered
-WebAuthn assertion, including signature, credential ID, relying-party ID hash,
-origin, user presence and user verification, challenge, expiry, and applicable
-signature counter checks. Challenge consumption and grant creation are atomic.
+The registered public key and issuer code are trust anchors. The ledger's
+mutable one-use state also needs integrity protection: rechecking a valid
+signature cannot detect a reset `redeemed_at` value or a duplicate grant row
+carrying the same approved assertion. The service must own challenge creation,
+approval state, grant creation, and atomic one-use redemption. A same-user
+process must be unable to edit or roll back those records. An independently
+protected monotonic consumption record could replace a protected ledger, but
+an unprotected ledger alone cannot enforce one use.
+
+The protected service must display the canonical request itself before it
+starts the authenticator ceremony: work URL and body digest, prerequisite
+content digest, graph identity, runner identity, workspace scope, expiry,
+timeout, and turn limit. The Windows Hello or security-key prompt does not
+display these fields. A ceremony started by an ordinary caller, or one whose
+displayed request differs from the signed request, cannot authorize a grant.
+The service binds a fresh challenge and nonce to that exact request digest.
+It verifies a registered WebAuthn assertion, including signature, credential
+ID, relying-party ID hash, exact origin, user presence and user verification,
+challenge, expiry, and applicable signature counter checks. Redemption must
+reverify the stored assertion against the protected registered key and the
+stored canonical request. Challenge consumption and grant creation are atomic.
 Changing any reviewed field requires a new ceremony.
+
+The initial implementation accepts ES256 only. A zero signature counter is
+permitted only when both the stored and new counters are zero; otherwise the
+new counter must be strictly greater. A real Windows ceremony must pin the
+service's RP ID, exact `clientDataJSON.origin`, credential ID, algorithm and
+user-verification policy before this design is activated. The native
+[`WEBAUTHN_CLIENT_DATA`](https://learn.microsoft.com/en-us/windows/win32/api/webauthn/ns-webauthn-webauthn_client_data)
+structure receives client-provided JSON, so this proposal cannot infer a
+platform-generated origin. A fixture value is not a production pin. The
+service must verify the exact chosen values in both approval and redemption.
 
 Denial, expiry, service crash, lost response, and inconclusive lookup do not
 authorize dispatch. Replays fail without consuming a fresh approval. A caller
@@ -38,12 +62,13 @@ grant file. The authority records request and grant IDs and a redacted outcome;
 private credentials and assertions do not enter agent-visible files or PRs.
 
 Credential-free tests should first demonstrate the existing same-user bypass,
-then exercise request binding, replay, expiry, denial, and crash windows using
-fixture keys and a separately owned issuer process. A later test needs an actual
-Windows service identity, ACL audit, and operator authenticator ceremony. Until
-those tests pass, #95 remains open and the existing issuer stays labeled as a
-fixture. Administrator or service compromise and a human approving misleading
-request content are outside this local boundary.
+then exercise request binding, ledger tampering and rollback, replay, expiry,
+denial, and crash windows using fixture keys. A later test needs an actual
+Windows service identity, ACL audit, protected operator display and real
+authenticator ceremony. Until those tests pass, #95 remains open and the
+existing issuer stays labeled as a fixture. Administrator or service
+compromise and a human approving misleading content actually shown by the
+protected display are outside this local boundary.
 
 The proposed ceremony follows the [Windows WebAuthn API](https://learn.microsoft.com/en-us/windows/win32/api/webauthn/),
 [Windows service security guidance](https://learn.microsoft.com/en-us/windows/win32/services/service-security-and-access-rights),
