@@ -3,7 +3,7 @@ title: Work Graph validation
 status: draft
 kind: validation
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-05
+last_reviewed: 2026-10-06
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -35,8 +35,10 @@ credential-free test issues a real ledger grant from changed reviewed content,
 re-fetches the same content under another timestamp, and dispatches the
 `refreshed` selection once. A changed-content negative control refuses before
 reservation or grant consumption. Old snapshot-ID-only grants are not
-redeemable after the schema update. This is a local fixture authorization
-result, not human authentication; #95 owns that boundary.
+redeemable after the schema update. This is a local run-scoping result, not
+human authentication. The later product decision retired #95's separate
+human-authentication requirement; any same-user process can mint this grant
+and launch a stage. The historical test result is unchanged.
 The implementation at [Laomedo `da1c88a`](https://github.com/amadou-6e/laomedo/commit/da1c88ae7f247be39fd51fc2d234b6a4ac3c8754)
 merged into `develop` as [`d69c9a2`](https://github.com/amadou-6e/laomedo/commit/d69c9a26d5bd591d2e99fb7f4a76b825fc66c343).
 Its host suite passed 172 tests with four optional-runtime skips; the

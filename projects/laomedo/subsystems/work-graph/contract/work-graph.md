@@ -3,7 +3,7 @@ title: Work Graph contract
 status: draft
 kind: target-contract
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-05
+last_reviewed: 2026-10-06
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -100,19 +100,22 @@ content digests and the explicit choice. This makes a pinned run's different
 input and authorization graphs reconstructible.
 
 Graph readiness is an input to dispatch eligibility. Eligibility also requires
-a valid run definition, supported runner settings, a recorded grant and
-explicit operator authorization. Any prerequisite override must identify
-the affected edge and rationale. Automatic scheduling is a later policy
+a valid run definition, supported runner settings, and a recorded run grant.
+The grant scopes one launch; it does not authenticate a separate human
+approval. Any prerequisite override must identify the affected edge and
+rationale. Automatic scheduling is a later policy
 decision; selecting a node does not authorize execution.
 
 The launch adapter refuses missing or incomplete current source, unavailable
 selected work, unresolved/cyclic prerequisites, and an open blocker before
 reservation. An override applies only to the exact known open edge with a
 nonempty rationale; multiple or unknown open edges cannot be collapsed into
-one override. A trusted grant authority must verify the grant reference,
-operator authorization, selected work, bound graph, runner, stage scope,
-expiry and effective limits before reservation. A self-asserted grant in
-the request is insufficient. Keep secrets out of the persisted binding.
+one override. The host must verify the grant reference, selected work, bound
+graph, runner, stage scope, expiry and effective limits before reservation.
+A self-asserted grant in the request is insufficient. Keep secrets out of the
+persisted binding. Any process running as the same Windows user can mint the
+current local grant and launch a stage, so the grant is a run-scoping and
+replay control, not independent human authorization.
 
 For a bounded single-user, zero-turn check, the host may issue one-use grants
 from a private ledger outside Git and every stage mount. Its CLI requests a
@@ -127,12 +130,15 @@ snapshot, then re-fetches at launch and refuses any relevant content change
 before redeeming the grant. A matching reference is atomically redeemed before
 run reservation. Grants issued under the older snapshot-ID-only rule cannot
 be redeemed by the content-bound route. This local mechanism does not by
-itself make untrusted stage code
-safe: the issuer must remain outside the stage's process and filesystem view,
+itself make untrusted stage code safe: the issuer must remain outside the
+stage's process and filesystem view,
 and effective time and model-turn limits must be enforced by the runner. The
-typed confirmation alone does not authenticate an operator. Until
-those boundaries are verified, the grant remains a fixture-only authorization
-check and cannot authorize a model-backed Work Graph launch.
+typed confirmation alone does not authenticate an operator. A model-backed
+Work Graph route needs verified stage isolation and enforced turn/time limits,
+plus the selected agent provider's login. It does not require a separate
+Windows Hello, FIDO2 or Docker credential ceremony for stage approval. The
+[runner authentication issue](https://github.com/amadou-6e/specs/issues/129)
+owns provider login lifecycle.
 
 The local zero-turn route keeps the GitHub login, disposable Langflow API token,
 grant ledger and durable run store on the host. It fetches the saved flow once
@@ -150,8 +156,8 @@ with `--pull=never` and numeric user `1000:1000`. The
 worker's hash report checks that it loaded the host-supplied flow bytes; it
 does not attest arbitrary custom component behavior. Grant redemption occurs
 before that hash check, so a failed check consumes the grant without reserving
-a run. The future approval/retry policy belongs to #95, and adversarial
-component isolation belongs to #96. This route
+a run. Silent reissue after an ambiguous outcome is not authorized;
+adversarial component isolation belongs to #96. This route
 does not grant a model turn, prove operator identity beyond the local session,
 or establish safe protocol behavior against malicious custom component code.
 
