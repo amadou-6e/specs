@@ -3,7 +3,7 @@ title: Agent execution validation
 status: draft
 kind: specification
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-06
+last_reviewed: 2026-10-07
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -20,6 +20,7 @@ experiment evidence is added below with its own pinned version, task and date.
 | Missing snapshot / cancellation / cap | Same four-turn pilot | HTTP 400 before reservation; 39 partial events; ledger 4/4 |
 | Isolation / read-only / remote mode | #120, #122, Docker sources | Earlier failures retained; general grant and remote storage unproven |
 | Provider and GitHub credentials | [Authentication contract](contract/authentication.md) and current provider documentation | Proposed broker, mode separation, per-run GitHub grants, secret-boundary and orphan cleanup are not implemented or runtime-tested |
+| GitHub account connection | [Browser-default and explicit-token contract](contract/github-account-connection.md); [exercise #108](https://github.com/amadou-6e/laomedo/issues/108) | User-facing modes selected; no browser exchange, token connection, host-credential negative control or real account lifecycle has been executed |
 | Claude parity | #121 | CLI blocker before model call; acceptance unknown |
 | New IF-05/IF-06 stage invocation and same-session conflict | No new check | Target interface only; not executed |
 | IF-05 launch graph and component revision refusal | Pinned Langflow 1.12.3 image, credential-free `tests/test_langflow_stage_adapter.py` and [saved-flow API observation](https://github.com/amadou-6e/laomedo/blob/420e2e9/experiments/exp77/observation.json) (2026-10-05) | A local in-process adapter refused missing or mismatched runtime code before reservation. A disposable server's saved-flow API supplied the launch export; a paused local run retained old graph/code after the saved flow changed, while the next launch used new graph/code. The adapter runs the checked graph locally, so a separate remote `/run` response is not attested. Production grant authority, live Work Graph freshness and model execution were not established. |

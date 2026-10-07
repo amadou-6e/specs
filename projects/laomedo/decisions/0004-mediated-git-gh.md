@@ -3,7 +3,7 @@ title: Mediate agent git and gh capabilities
 status: draft
 kind: decision
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-06
+last_reviewed: 2026-10-07
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -39,6 +39,11 @@ existing runner, a particular proxy, or a particular credential can already
 provide it. A familiar CLI-facing workflow may be retained, but its transport
 and enforcement mechanism are not selected here.
 
+On 2026-10-07 the user also selected [browser-based GitHub account connection
+by default, with explicit tokens as an alternative](../subsystems/agent-execution/contract/github-account-connection.md),
+and rejected reuse of local host credentials. This settles the user-facing
+connection modes, not their OAuth/token mechanism or implementation evidence.
+
 The mediator must be able to stop accepting the run's writes on grant expiry,
 cancel or orphan cleanup without relying solely on killing the agent
 container. It must not expose an ambient host `gh` login or reusable GitHub
@@ -68,8 +73,10 @@ the selected 60-second orphan bound, while another run's grant remains valid.
   specifies no automatic resend of an uncertain mutation; mediation still
   does not make GitHub writes exactly once, and real-provider behavior is
   unverified.
-- Credential source and custody, CLI/transport compatibility, signing/hooks,
-  audit retention and service placement need research and a frozen experiment.
+- Browser-flow/token mechanisms and custody, CLI/transport compatibility,
+  signing/hooks, audit retention and service placement need research and a
+  frozen experiment. The selected connection modes do not imply a host-credential
+  fallback or relax the run-grant boundary.
 - The supervisor must survive the selected whole-tree/service-manager failure
   boundary; the current child process does not. This record does not select a
   platform service mechanism or lift #93/Q11.
