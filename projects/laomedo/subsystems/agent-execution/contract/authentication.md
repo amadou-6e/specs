@@ -108,6 +108,12 @@ containers. The private ledger is 4/6 total, with 2/4 of the extension used.
 Separately, a fake-model probe deleted a disposable workspace after
 same-runner resume; a reconstructed runner completed a new run using the
 same synthetic broker reference with zero model turns.
+Host tests also distinguish a pre-turn credential-generation change, which
+refuses model submission, from mid-turn revocation, account replacement,
+generation replacement and refresh uncertainty. Mid-turn loss stays
+`unknown`, records a sanitized cause and outcome, and retains the consumed
+turn and partial trace. These are synthetic checks; the provider lifecycle
+was not mutated during the live runs.
 This supports the bounded single-user local route, not actual refresh
 rotation, provider revocation, host reboot recovery, native per-event
 executor attestation, independent network isolation, or hosted use. The
