@@ -20,6 +20,9 @@ that make intent, behavior, constraints, and verification clearer.
   PR coverage, acceptance checklists, verification, and blocker follow-up links.
   Start from its [PR body template](shared/skills/create-spec-linked-pr/assets/pr-body.md)
   and retain applicable sections from the repository's existing PR template.
+- [Claude reviewer](shared/skills/claude-reviewer/SKILL.md): request an independent,
+  read-only Claude Code review directly. Its reviewer session follows the current
+  Codex conversation and reuses the existing subscription login.
 
 Read the relevant skill before applying it. Skills guide authorized work; they do not
 authorize implementing open proposals, changing issue state, or activating repository
