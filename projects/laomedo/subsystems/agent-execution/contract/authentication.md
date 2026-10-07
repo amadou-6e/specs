@@ -105,6 +105,9 @@ separate `apply_patch` file canary in the executor. Host checks found the
 expected files and completed tool events, no access or refresh token in the
 private run files or persistent controller profile, and no remaining split
 containers. The private ledger is 4/6 total, with 2/4 of the extension used.
+Separately, a fake-model probe deleted a disposable workspace after
+same-runner resume; a reconstructed runner completed a new run using the
+same synthetic broker reference with zero model turns.
 This supports the bounded single-user local route, not actual refresh
 rotation, provider revocation, host reboot recovery, native per-event
 executor attestation, independent network isolation, or hosted use. The
