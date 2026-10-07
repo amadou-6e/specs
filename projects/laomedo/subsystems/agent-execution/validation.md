@@ -57,6 +57,14 @@ experiment evidence is added below with its own pinned version, task and date.
 | Two-agent handoff / bounded controller / selected artifacts | [Two-turn chain](../../experiments/agent-handoffs/iterations/2026-10-01/results.md), ac204ab | Real Codex chain completed 2/2; 54 host + 15 pinned checks pass; real loop/cross-provider acceptance unobserved |
 | Playground Stop to bound synthetic runner | [EXP-94 draft result at `7d37ff6`](https://github.com/amadou-6e/laomedo/blob/7d37ff6/experiments/exp94/RESULTS.md); [canonical Langflow validation entry](../langflow-integration/validation.md) | Visible Stop reached the exact synthetic run before acknowledgement and during blocking fresh execution; a late Stop did not cancel a completed run. Four one-shot cases, zero model turns. Native turn status, real-agent effects, and container teardown remain unverified; #22/Q11 stays open. |
 
+For the S6 row, the unauthenticated public-ref read-back, exact process
+absence and 68-file post-run token scan are separately reported in the
+[EXP-104 issue checkpoint](https://github.com/amadou-6e/laomedo/issues/104#issuecomment-6042860339),
+not in the committed machine observation. The probe itself captured the
+67-file in-run canary and exact-container cleanup. These separate checks
+were performed after the one-shot run and are not independent attestation
+of the token's GitHub repository selection.
+
 Current native-node detail: [implementation/acceptance record](../../implementation/native-langflow-node.md).
 
 Canonical evidence: [pilot result](../../experiments/local-skill-agent-pilot/iterations/2026-10-01/results.md)
