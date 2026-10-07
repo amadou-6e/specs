@@ -84,6 +84,9 @@ every offered file and command tool stays in the executor. The earlier two
 successful live turns establish this account's local access and reuse across
 runner processes, not the protected tool boundary. The four additionally
 authorized model turns remain unused while this gate is closed.
+The tested disposable `PreToolUse` deny-hook and explicit profile-path deny
+did not stop this code-mode patch on 0.159.2, even though the temporary
+configuration file was loaded. Neither control is active in the runner.
 
 If that route is unavailable, a dedicated OpenAI Platform project API key is
 the local fallback **only after the owner chooses its separate billing
