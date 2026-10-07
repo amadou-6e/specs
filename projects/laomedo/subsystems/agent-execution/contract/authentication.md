@@ -22,8 +22,10 @@ Time-sensitive provider claims were checked on **2026-10-02** against the linked
 OpenAI token/app-server and Anthropic authentication/federation documentation;
 eligibility and behavior of Laomedo's pinned runtime remain unverified.
 The contract was re-reviewed on **2026-10-07** against the selected orphan
-policy and the merged local OpenCode adapter. This did not refresh external
-provider claims or run a new credentialed turn.
+policy and the merged local OpenCode adapter. The local-project eligibility
+statement below was checked on **2026-10-07** against OpenAI's linked cookbook
+and quickstart; the other external provider claims were not refreshed, and no
+new credentialed turn was run.
 
 ## Decision and deployment gates
 
@@ -48,10 +50,20 @@ app-owned [Sign in with ChatGPT](https://developers.openai.com/siwc/quickstart)
 connection and the documented [Codex app-server token
 path](https://developers.openai.com/siwc/token-sharing-open-source/codex-app-server).
 It would replace the copied IDE login with one app-owned refresh chain.
-Availability must be verified first: ChatGPT plan usage currently covers
-open-source partners and selected private clients, and an eligible user must
-grant the separate plan-usage permission. A private Laomedo repository does
-not by itself prove access. The broker must test whether app-server tool
+Availability must be verified first. OpenAI's
+[local-project guide](https://developers.openai.com/cookbook/articles/sign-in-with-chatgpt)
+explicitly includes personal projects that run locally, alongside open-source
+projects and selected private apps. The
+[quickstart](https://developers.openai.com/siwc/quickstart) summarizes the
+program more narrowly as open-source partners and selected private clients.
+The cookbook says plan usage includes "personal projects that run locally";
+the quickstart says it is available to "selected private clients". The
+local-project route supports trying Laomedo privately; it does not prove
+this account's consent, plan entitlement, model access, or hosted eligibility.
+Only a validated OAuth grant with `chatgpt.tokens.use.direct` followed by a
+successful model request establishes local plan access for that account and
+request. Hosted eligibility remains a separate decision. The broker
+must test whether app-server tool
 subprocesses can see its access-token environment; until an observed denial
 exists, this mode is **not approved for untrusted tool execution**. These are
 design gates, not claims demonstrated by the #119-#122 probes.
@@ -94,7 +106,7 @@ a bounded single-user local prototype.
 | Mode | Principal and billing | Local use | Hosted use and lifecycle |
 | --- | --- | --- | --- |
 | Temporary copied Codex ChatGPT login | One personal ChatGPT session and plan | Already used only for bounded spikes | Reject. A copied refresh chain can conflict with the original; no app-owned provisioning or tenant identity. |
-| App-owned Sign in with ChatGPT | Consenting eligible user and ChatGPT plan or available credits | Preferred candidate if Laomedo is eligible | Selected private clients only at present; hosted use needs explicit eligibility, per-user ownership, and tool-env proof. Broker owns rotating refresh token. |
+| App-owned Sign in with ChatGPT | Consenting eligible user and ChatGPT plan or available credits | Personal local-project route may be tried privately; grant and inference remain the gate | Hosted use needs explicit eligibility, per-user ownership, and tool-env proof. Broker owns rotating refresh token. |
 | OpenAI Platform project API key | Project or service-account identity; Platform billing | Opt-in fallback with separate billing | Secret-store rotation and scoped project access; never label it ChatGPT plan access. |
 | Codex workload identity federation | Managed ChatGPT workspace user or service account; workspace Codex access | Optional when managed workspace is available | Beta and enablement-dependent. Exchange short-lived external identity for Codex access; no copied login file. |
 | OpenCode Go `console_token` | Active user's OpenCode Console account and selected Go routing; billing provenance needs verification | Local adapter selects the active Console token without copying refresh state | Official client owns refresh; hosted identity and controller/tool isolation remain unverified. |
@@ -309,7 +321,7 @@ change is needed to validate this document.
 
 ## Open product and legal decisions
 
-- Confirm whether a private Laomedo client qualifies for app-owned ChatGPT
+- Confirm whether this local Laomedo installation obtains app-owned ChatGPT
   plan usage, which users and workspaces are eligible, and whether its preview
   limits fit Codex's required tools. A
   [self-hosted VM transfer](https://developers.openai.com/siwc/token-sharing-open-source/self-hosted-vms)
