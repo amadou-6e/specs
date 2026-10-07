@@ -22,8 +22,10 @@ Time-sensitive provider claims were checked on **2026-10-02** against the linked
 OpenAI token/app-server and Anthropic authentication/federation documentation;
 eligibility and behavior of Laomedo's pinned runtime remain unverified.
 The contract was re-reviewed on **2026-10-07** against the selected orphan
-policy and the merged local OpenCode adapter. This did not refresh external
-provider claims or run a new credentialed turn.
+policy and the merged local OpenCode adapter. The local-project eligibility
+statement below was checked on **2026-10-07** against OpenAI's linked cookbook
+and quickstart; the other external provider claims were not refreshed, and no
+new credentialed turn was run.
 
 ## Decision and deployment gates
 
@@ -54,7 +56,9 @@ explicitly includes personal projects that run locally, alongside open-source
 projects and selected private apps. The
 [quickstart](https://developers.openai.com/siwc/quickstart) summarizes the
 program more narrowly as open-source partners and selected private clients.
-The local-project route supports trying Laomedo privately; it does not prove
+The cookbook says plan usage includes "personal projects that run locally";
+the quickstart says it is available to "selected private clients". The
+local-project route supports trying Laomedo privately; it does not prove
 this account's consent, plan entitlement, model access, or hosted eligibility.
 Only a validated OAuth grant with `chatgpt.tokens.use.direct` followed by a
 successful model request establishes local plan access for that account and
