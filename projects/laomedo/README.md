@@ -21,7 +21,7 @@ This repository records target behavior and observed limitations separately.
 | decisions/ | 1 | Numbered decision records and reconstructed discussion trails |
 | subsystems/, experiments/, research/ | 1 each | Contracts, bounded trials, exploratory knowledge |
 | deprecated/ | 1 | Existing non-authoritative historical assets |
-| capabilities/, components/, feasibility/, monitoring/, sandboxing/ | 1 each | Fixed compatibility pointers preserving published paths; no new specifications |
+| capabilities/, components/, feasibility/ | 1 each | Fixed compatibility pointers preserving published paths; no new specifications |
 
 The pilot retains existing Docker permissions and a private single-user login. Hosted
 identity, Claude parity, browser interaction and full monitoring remain unverified.

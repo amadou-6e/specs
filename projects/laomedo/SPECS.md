@@ -19,13 +19,15 @@ template contents. This guide supplies Laomedo's project-specific ownership choi
 | research | folder collection | Characterized sources, atomic findings and exploratory synthesis |
 | implementation | fixed | Contributor workflow and migration documentation |
 | deprecated | fixed | Existing historical UI workshop and unchanged reference assets |
-| capabilities, components, feasibility, monitoring, sandboxing | fixed compatibility containers | Closed sets of pointers preserving published paths; no new authoring or behavioral ownership |
+| capabilities, components, feasibility | fixed compatibility containers | Closed sets of pointers preserving published paths; no new authoring or behavioral ownership |
 
-The seven authoring categories above remain the content taxonomy. The five
+The seven authoring categories above remain the content taxonomy. The three
 compatibility containers are declared in `spec.json` for structural validation,
 with `superseded` pointer entries only. They have no templates and are not
-destinations for new work. See the [published-reference audit](implementation/spec-migration.md#published-reference-audit)
-before proposing removal of any pointer.
+destinations for new work. `monitoring/` and `sandboxing/` were retired after
+their known published references were migrated; see the
+[published-reference audit](implementation/spec-migration.md#published-reference-audit)
+before proposing removal of another pointer.
 
 Change the category set only by reviewing SPECS.md and spec.json together. Both providers
 share execution/session ownership. Revision and draft share immutable skill identity and
