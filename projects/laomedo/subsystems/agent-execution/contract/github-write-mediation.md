@@ -51,6 +51,11 @@ GitHub credential. The mediator checks run, invocation, repository, grant,
 operation and expiry against durable records. It journals request identity,
 authorization decision, dispatch and known result without storing credential
 values in traces. Denial and uncertainty are distinct from confirmed success.
+The trusted approval and grant carry the selected GitHub `connection_id` and
+credential generation. The broker validates user and repository ownership;
+the mediator rejects a new effect if that generation is no longer current,
+and the credential owner resolves only the matching connection. A legacy
+unbound grant is not sufficient evidence of the account-connection path.
 It must stop accepting the run's writes when a grant is revoked, expires, or
 the owned stage is orphaned; the selected orphan bound is 60 seconds. A
 stopped container alone is not revocation evidence. Another run's grant must
@@ -71,8 +76,11 @@ remain unaffected.
   environment. Count a parity gap as a gap, not a pass.
 - Kill the runner at the selected failure boundaries, then attempt a write
   through the same run capability. Verify denial within 60 seconds and that
-  another valid run is unaffected. The existing EXP-93 whole-tree result is
-  negative, so this criterion is currently unmet.
+  another valid run is unaffected. EXP-93's child-supervisor whole-tree
+  result was negative; the later independently started lease-service probe
+  survived that kill and revoked a **synthetic** grant, but did not test a
+  real GitHub credential or the production service launch. This criterion
+  remains unmet for live writes.
 
 No transport/proxy architecture, token minting scheme, Git signing/hook
 semantics or exact API mapping is accepted here. Those require a reviewed
