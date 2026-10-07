@@ -98,6 +98,18 @@ independent network namespaces, hosted isolation, refresh and revocation
 remain open; the two earlier live turns prove local account access and
 reuse across runner processes only.
 
+After the correction merged, two additional live `gpt-6-luna`/`low` turns
+used the same app-owned connection in separate runner processes without a
+second browser sign-in. Both completed the pinned skill's shell task and a
+separate `apply_patch` file canary in the executor. Host checks found the
+expected files and completed tool events, no access or refresh token in the
+private run files or persistent controller profile, and no remaining split
+containers. The private ledger is 4/6 total, with 2/4 of the extension used.
+This supports the bounded single-user local route, not actual refresh
+rotation, provider revocation, host reboot recovery, native per-event
+executor attestation, independent network isolation, or hosted use. The
+sanitized observation is recorded in the validation table.
+
 If that route is unavailable, a dedicated OpenAI Platform project API key is
 the local fallback **only after the owner chooses its separate billing
 path**. For a managed hosted Codex workload, evaluate
