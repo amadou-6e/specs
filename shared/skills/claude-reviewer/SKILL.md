@@ -36,3 +36,8 @@ Use equivalent absolute paths when this skill is used elsewhere. The per-process
 ## Apply the review
 
 Check each finding against source and tests. Fix confirmed in-scope defects, rerun affected checks, and ask the same Claude reviewer session to recheck the new revision. Explain rejected or out-of-scope findings with evidence. A clean review is evidence for the stated revision, not proof that all behavior works. Keep issue-edit, configuration, publication, and merge approval rules in force.
+
+Where repository guidance permits merging after independent review, a review of
+the final PR head can satisfy that merge requirement once its checks pass. It is
+not a human approval and does not waive a pause for a recommendation that
+conflicts with the human's interests or instructions.
