@@ -62,9 +62,12 @@ the selected 60-second orphan bound, while another run's grant remains valid.
 
 ## Open questions
 
-- Q16 still owns operation/effect identity, retry and duplicate-write
-  semantics, especially after an uncertain PR create/update result. Mediation
-  permits a journal but does not by itself make GitHub writes exactly once.
+- Q16 owns operation/effect identity, retry and duplicate-write semantics,
+  especially after an uncertain PR create/update result. The later
+  [Q16 contract proposal](../subsystems/agent-execution/contract/github-write-mediation.md#q16-effect-identity-and-uncertain-writes-proposed)
+  specifies no automatic resend of an uncertain mutation; mediation still
+  does not make GitHub writes exactly once, and real-provider behavior is
+  unverified.
 - Credential source and custody, CLI/transport compatibility, signing/hooks,
   audit retention and service placement need research and a frozen experiment.
 - The supervisor must survive the selected whole-tree/service-manager failure
