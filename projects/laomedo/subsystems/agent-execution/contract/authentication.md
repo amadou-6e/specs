@@ -75,6 +75,16 @@ subprocesses can see its access-token environment; until an observed denial
 exists, this mode is **not approved for untrusted tool execution**. These are
 design gates, not claims demonstrated by the #119-#122 probes.
 
+A later #107 credential-free negative control on pinned Codex CLI 0.159.2
+showed an unselected `apply_patch` call writing into the credential
+controller's private profile, although shell commands used the executor.
+The local runner therefore refuses app-owned split preflight and dispatch
+before any model turn until a reviewed configuration and a probe prove that
+every offered file and command tool stays in the executor. The earlier two
+successful live turns establish this account's local access and reuse across
+runner processes, not the protected tool boundary. The four additionally
+authorized model turns remain unused while this gate is closed.
+
 If that route is unavailable, a dedicated OpenAI Platform project API key is
 the local fallback **only after the owner chooses its separate billing
 path**. For a managed hosted Codex workload, evaluate
