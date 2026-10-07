@@ -11,21 +11,27 @@ related: []
 
 # Runner authentication and credential lifecycle
 
-This is a proposed contract for issue #129, not an implemented credential
-store or release authorization.
+This remains the target contract for issue #129, not a hosted release
+authorization. A bounded single-user local Codex prototype is implemented at
+[Laomedo `b76b6f3`](https://github.com/amadou-6e/laomedo/blob/b76b6f3a3e51c345a4cc49a3a141527317a255d9/experiments/feasibility/107/README.md)
+in draft PR #109. Its two live turns do not establish refresh rotation,
+sign-out with OpenAI, multi-user custody or hosted isolation.
 It consumes the [skill-discovery](../../../research/runner-feasibility/sources/119.md),
 [Codex runner](../../../research/runner-feasibility/sources/120.md),
 [Claude runner](../../../research/runner-feasibility/sources/121.md),
-and [feasibility synthesis](../../../research/runner-feasibility/sources/124.md) results. No credential,
-account, or provider configuration was changed for this report.
+and [feasibility synthesis](../../../research/runner-feasibility/sources/124.md) results. The original feasibility report changed no credential,
+account, or provider configuration; the later #107 prototype is recorded below.
 Time-sensitive provider claims were checked on **2026-10-02** against the linked
 OpenAI token/app-server and Anthropic authentication/federation documentation;
-eligibility and behavior of Laomedo's pinned runtime remain unverified.
+the provider's broader eligibility and lifecycle claims remain unverified.
 The contract was re-reviewed on **2026-10-07** against the selected orphan
 policy and the merged local OpenCode adapter. The local-project eligibility
 statement below was checked on **2026-10-07** against OpenAI's linked cookbook
 and quickstart; the other external provider claims were not refreshed, and no
-new credentialed turn was run.
+new credentialed turn was run during that document review. The later #107
+bounded check connected one app-owned ChatGPT account and completed two
+`gpt-6-luna` turns on the pinned split runner before and after process restart;
+see the separately pinned [validation evidence](../validation.md).
 
 ## Decision and deployment gates
 
@@ -49,8 +55,8 @@ For a **single-user local Codex pilot**, the preferred design candidate is an
 app-owned [Sign in with ChatGPT](https://developers.openai.com/siwc/quickstart)
 connection and the documented [Codex app-server token
 path](https://developers.openai.com/siwc/token-sharing-open-source/codex-app-server).
-It would replace the copied IDE login with one app-owned refresh chain.
-Availability must be verified first. OpenAI's
+The opt-in local prototype uses its own broker store and no copied IDE login.
+Actual refresh rotation remains untested. OpenAI's
 [local-project guide](https://developers.openai.com/cookbook/articles/sign-in-with-chatgpt)
 explicitly includes personal projects that run locally, alongside open-source
 projects and selected private apps. The
@@ -58,8 +64,9 @@ projects and selected private apps. The
 program more narrowly as open-source partners and selected private clients.
 The cookbook says plan usage includes "personal projects that run locally";
 the quickstart says it is available to "selected private clients". The
-local-project route supports trying Laomedo privately; it does not prove
-this account's consent, plan entitlement, model access, or hosted eligibility.
+local-project route supports trying Laomedo privately. The bounded #107 check
+established consent and one account's ability to run two eligible model
+requests, but it does not establish other accounts' or hosted eligibility.
 Only a validated OAuth grant with `chatgpt.tokens.use.direct` followed by a
 successful model request establishes local plan access for that account and
 request. Hosted eligibility remains a separate decision. The broker
@@ -106,7 +113,7 @@ a bounded single-user local prototype.
 | Mode | Principal and billing | Local use | Hosted use and lifecycle |
 | --- | --- | --- | --- |
 | Temporary copied Codex ChatGPT login | One personal ChatGPT session and plan | Already used only for bounded spikes | Reject. A copied refresh chain can conflict with the original; no app-owned provisioning or tenant identity. |
-| App-owned Sign in with ChatGPT | Consenting eligible user and ChatGPT plan or available credits | Personal local-project route may be tried privately; grant and inference remain the gate | Hosted use needs explicit eligibility, per-user ownership, and tool-env proof. Broker owns rotating refresh token. |
+| App-owned Sign in with ChatGPT | Consenting eligible user and ChatGPT plan or available credits | One local account connected and completed two bounded Codex turns in #107; repeatability after token rotation remains untested | Hosted use needs explicit eligibility, per-user ownership, and tool-env proof. Broker owns rotating refresh token. |
 | OpenAI Platform project API key | Project or service-account identity; Platform billing | Opt-in fallback with separate billing | Secret-store rotation and scoped project access; never label it ChatGPT plan access. |
 | Codex workload identity federation | Managed ChatGPT workspace user or service account; workspace Codex access | Optional when managed workspace is available | Beta and enablement-dependent. Exchange short-lived external identity for Codex access; no copied login file. |
 | OpenCode Go `console_token` | Active user's OpenCode Console account and selected Go routing; billing provenance needs verification | Local adapter selects the active Console token without copying refresh state | Official client owns refresh; hosted identity and controller/tool isolation remain unverified. |
