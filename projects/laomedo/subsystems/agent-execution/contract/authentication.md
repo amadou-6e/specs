@@ -101,9 +101,11 @@ reuse across runner processes only.
 After the correction merged, two additional live `gpt-6-luna`/`low` turns
 used the same app-owned connection in separate runner processes without a
 second browser sign-in. Both completed the pinned skill's shell task and a
-separate `apply_patch` file canary in the executor. Host checks found the
-expected files and completed tool events, no access or refresh token in the
-private run files or persistent controller profile, and no remaining split
+separate `apply_patch` file canary in the shared workspace. Executor placement
+for `apply_patch` rests on the corrected synthetic exact-file probe above;
+the live shared-workspace canary cannot establish placement by itself. Host
+checks found the expected files and completed tool events, no access or refresh
+token in the private run files or persistent controller profile, and no remaining split
 containers. The private ledger is 4/6 total, with 2/4 of the extension used.
 Separately, a fake-model probe deleted a disposable workspace after
 same-runner resume; a reconstructed runner completed a new run using the
