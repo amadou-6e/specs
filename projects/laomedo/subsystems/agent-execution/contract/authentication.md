@@ -134,6 +134,10 @@ capability. A run record carries:
 | `provenance` | How identity was established: verified OAuth identity, selected official-client account, admin-created service account, or federated rule. |
 
 GitHub authorization is a separate grant, not an agent-provider credential.
+The selected user-facing [GitHub account connection](github-account-connection.md)
+uses browser sign-in by default or an explicit token; it does not import local
+host `gh` or Git Credential Manager credentials. Its concrete broker and
+connection lifecycle remain proposed, not implemented.
 For a run that may push or open/update a PR, the runner must resolve a
 run-scoped `github_grant_ref` for that repository and actor. Its allowed
 operations must be explicit: repository contents write for branch pushes,
@@ -157,10 +161,10 @@ or GraphQL access must enforce the same repository, operation and separate
 workflow-file approval rules. Agent-created follow-up issues remain subject
 to the user's reviewed-publication decision in
 [IF-12](../../issue-integration/contract/interfaces.md#if-12--reviewed-follow-up-issue-publication),
-not an implicit issue-write grant. The later
-[Q16 proposal](https://github.com/amadou-6e/specs/pull/250) addresses
-uncertain mediated writes; until it is reviewed and merged, this page makes
-no safe-retry or exactly-once claim.
+not an implicit issue-write grant. The
+[merged Q16 contract](https://github.com/amadou-6e/specs/commit/56192486b2dad9158a0bbd435b781cb211237dd3)
+addresses uncertain mediated writes, but does not establish exactly-once
+remote effects or prove the proposed connection modes.
 
 The broker keeps refresh credentials and service keys in OS-protected local
 storage for one user or a managed secret store for a remote service. It persists

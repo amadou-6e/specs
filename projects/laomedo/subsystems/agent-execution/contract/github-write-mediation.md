@@ -3,7 +3,7 @@ title: Mediated GitHub access for agent stages
 status: draft
 kind: target-contract
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-06
+last_reviewed: 2026-10-07
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -13,9 +13,11 @@ related: []
 
 This page owns the target execution boundary selected in
 [decision 0004](../../../decisions/0004-mediated-git-gh.md). It is **not** a
-claim about the present local runner. The GitHub identity/permission source,
-CLI transport, credential custody and multi-user isolation still need design
-and evidence. The Q16 rules below are a proposed contract, not an implemented
+claim about the present local runner. [GitHub account connection](github-account-connection.md)
+selects browser sign-in by default and explicit tokens as an alternative, but
+their concrete identity/permission verification, CLI transport, credential
+custody and multi-user isolation still need design and evidence. The Q16 rules
+below are a proposed contract, not an implemented
 exactly-once guarantee.
 
 ## User-visible capability
@@ -33,8 +35,8 @@ approval. Workflow-file writes require their separately approved permission.
 The first-slice grant identified in [#175](https://github.com/amadou-6e/specs/issues/175)
 covers pushing the run's branch, PR create/update and Actions read; a broader
 CLI capability target does **not** enlarge that particular grant. The
-[authentication proposal #150](https://github.com/amadou-6e/specs/pull/150)
-remains unmerged and must align its concrete grant scope before use.
+[authentication contract merged in #150](https://github.com/amadou-6e/specs/commit/af7e7ea4c4e8d721aecc570c620e3943f607b9f0)
+defines the narrower first-slice grant, but the live broker remains unverified.
 Agent-created follow-up issues still require the user's review under
 [IF-12](../../issue-integration/contract/interfaces.md#if-12--reviewed-follow-up-issue-publication);
 calling `gh api` or GraphQL must not bypass that boundary. The mediator must

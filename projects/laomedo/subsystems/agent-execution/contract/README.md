@@ -3,7 +3,7 @@ title: Agent execution contracts
 status: draft
 kind: specification
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-02
+last_reviewed: 2026-10-07
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -13,7 +13,8 @@ related: []
 
 Canonical draft requirements: [Codex](codex.md), [Claude](claude.md),
 [OpenCode](opencode.md), [isolation](isolation.md),
-[authentication and credential lifecycle](authentication.md), the newer
+[authentication and credential lifecycle](authentication.md),
+[GitHub account connection](github-account-connection.md), the newer
 [subsystem interfaces](interfaces.md), and per-exchange
 [payload sketches](schemas/README.md). The newer discussion changes
 some assumptions in the older isolation draft; its conflict note must be
@@ -29,8 +30,9 @@ component, fresh/resume operations, typed outputs and client lifecycle limitatio
 current incomplete artifact/provenance/live-acceptance boundaries.
 [Mediated GitHub access](github-write-mediation.md) owns the user-selected
 `git`/`gh` capability-parity and revocable-run-grant target, including proposed
-Q16 effect identity and uncertain-write handling. Its transport and real
-credential source are not yet selected.
+Q16 effect identity and uncertain-write handling. GitHub account connection
+owns the selected browser-default and explicit-token modes; their concrete
+transport, custody and runtime validation are still open.
 [Validation](../validation.md) qualifies maturity; pilot observations do not silently
 replace proposed read-only, identity or provider parity guarantees.
 
