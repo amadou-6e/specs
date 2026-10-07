@@ -37,8 +37,18 @@ nearby guidance for its concrete structure and canonical owners.
   or a request to analyze the backlog is not authorization to implement it.
 - Do not silently apply configuration changes. Present drafts and obtain approval
   before changing workflows, repository settings, or required merge checks.
-- Opening a PR for authorized work is separate from approving or merging it. Do not
-  claim approval, change maturity to accepted, or merge without supporting authorization.
+- For user-selected work, an independent review of the final PR head through the
+  linked Claude reviewer skill or the requesting human's review authorizes merging
+  without another permission request when `git diff --check` and every configured
+  CI check on that head pass. Recheck the new head after any change made in response
+  to review. A blocking finding is resolved only by reviewer recheck or a human
+  decision. If the reviewer recommends any change you judge contrary to the human's
+  interests or instructions, pause the merge and ask the human to decide; do not
+  silently apply or dismiss that recommendation. Do not merge with an unresolved
+  blocking finding, a failed check, or an unmet stack dependency. This rule does
+  not authorize issue edits, configuration changes, maturity changes, or any user
+  experience decision. Do not describe an independent review or self-merge as
+  human approval.
 
 ## Working rules
 
@@ -110,8 +120,11 @@ status or behavior changed.
    State the actual head/base and stack dependencies; do not conflate a reviewed
    branch with merged coverage.
 7. Address review feedback, rerun checks affected by the changes, and update the PR
-   to describe the final result. Review and merge are distinct from submission; issue
-   closure still requires explicit approval under the rules above.
+   to describe the final result. Have the final head reviewed or rechecked, then
+   merge after checks pass when no blocking finding or human-interest conflict
+   remains. Pause for the human on a reviewer recommendation judged contrary to
+   their interests or instructions. Issue closure still requires explicit approval
+   under the rules above.
 
 ## PR requirements
 
