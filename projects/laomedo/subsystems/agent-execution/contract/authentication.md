@@ -3,7 +3,7 @@ title: Runner authentication and credential lifecycle
 status: draft
 kind: target-contract
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-02
+last_reviewed: 2026-10-07
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -21,6 +21,9 @@ account, or provider configuration was changed for this report.
 Time-sensitive provider claims were checked on **2026-10-02** against the linked
 OpenAI token/app-server and Anthropic authentication/federation documentation;
 eligibility and behavior of Laomedo's pinned runtime remain unverified.
+The contract was re-reviewed on **2026-10-07** against the selected orphan
+policy and the merged local OpenCode adapter. This did not refresh external
+provider claims or run a new credentialed turn.
 
 ## Decision and deployment gates
 
@@ -32,6 +35,13 @@ credential and launches a provider controller with a constructed environment.
 The controller's tool executor must receive a separate environment with no
 credential, token file, refresh state, or secret-store access. Merely setting
 `CODEX_HOME` or `CLAUDE_CONFIG_DIR` does not prove that boundary.
+
+The selected agent provider's account connection is the only sign-in required
+to run that agent. Laomedo does not add a Windows Hello or FIDO2 ceremony, a
+second operator login, or a Docker credential prompt for stage approval. Run
+grants and mediated GitHub capabilities still scope actions, but the current
+same-user local Work Graph grant does not authenticate human approval; see the
+[Work Graph contract](../../work-graph/contract/work-graph.md).
 
 For a **single-user local Codex pilot**, the preferred design candidate is an
 app-owned [Sign in with ChatGPT](https://developers.openai.com/siwc/quickstart)
@@ -65,6 +75,14 @@ credentialed turn, so Claude Agent SDK isolation and trace behavior remain
 unverified. A separate licensing review must decide whether the intended
 distribution and hosting of its bundled CLI are permitted.
 
+For OpenCode, the [local adapter](opencode.md#authentication-and-isolation-gate)
+reads the active Console account from the user's database without copying its
+refresh token or full profile. It selects only the Go credential and routing
+context for private runner state. The runner rejects a near-expiry Console
+token before reserving a turn; the official client remains responsible for
+refresh. This is local adapter behavior, not a hosted credential lifecycle or
+proof that every controller-to-tool access route is closed.
+
 Hosted or multi-user release is **no-go** until the credential mode is
 eligible, per-user or per-tenant authorization and isolation are tested, tool
 subprocesses cannot read broker credentials, refresh and revocation pass, and
@@ -79,6 +97,8 @@ a bounded single-user local prototype.
 | App-owned Sign in with ChatGPT | Consenting eligible user and ChatGPT plan or available credits | Preferred candidate if Laomedo is eligible | Selected private clients only at present; hosted use needs explicit eligibility, per-user ownership, and tool-env proof. Broker owns rotating refresh token. |
 | OpenAI Platform project API key | Project or service-account identity; Platform billing | Opt-in fallback with separate billing | Secret-store rotation and scoped project access; never label it ChatGPT plan access. |
 | Codex workload identity federation | Managed ChatGPT workspace user or service account; workspace Codex access | Optional when managed workspace is available | Beta and enablement-dependent. Exchange short-lived external identity for Codex access; no copied login file. |
+| OpenCode Go `console_token` | Active user's OpenCode Console account and selected Go routing; billing provenance needs verification | Local adapter selects the active Console token without copying refresh state | Official client owns refresh; hosted identity and controller/tool isolation remain unverified. |
+| OpenCode Go `provider_key` | Active user's OpenCode Console account and provider key selected from its Go configuration; billing provenance needs verification | Local adapter selects the key without copying the complete profile | Hosted provisioning, key rotation, and controller/tool isolation remain unverified. |
 | Claude personal API key | Personal Claude Console identity and API billing | Single-user development only | Reject for shared automation. |
 | Claude service-account API key | Claude Console service account/workspace and API billing | Supported candidate after #121 runtime is available | Secret-store rotation, expiry, revocation, and licensing review. |
 | Claude workload identity federation | Claude Console service account/workspace and API billing | Optional when IdP exists | Preferred hosted candidate where supported; short-lived exchanged token and scoped federation rule. |
@@ -108,10 +128,10 @@ capability. A run record carries:
 | `credential_mode` | Exact mode from the matrix, never inferred from a token prefix. |
 | `principal_ref` | Internal, pseudonymous user or service-account reference. |
 | `provider_account_ref` | Provider organization, workspace, or project reference, protected by access control. |
-| `billing_context` | ChatGPT plan, OpenAI Platform project, Claude Console workspace, or named cloud provider. |
+| `billing_context` | ChatGPT plan, OpenAI Platform project, OpenCode Console/Go account with billing provenance to verify, Claude Console workspace, or named cloud provider. |
 | `credential_generation` | Monotonic broker version used for rotation and incident review, not secret bytes or a token hash. |
 | `auth_state` | `ready`, `refreshing`, `reauthorization_required`, `expired`, `revoked`, or `unavailable`. |
-| `provenance` | How identity was established: verified OAuth identity, admin-created service account, or federated rule. |
+| `provenance` | How identity was established: verified OAuth identity, selected official-client account, admin-created service account, or federated rule. |
 
 GitHub authorization is a separate grant, not an agent-provider credential.
 For a run that may push or open/update a PR, the runner must resolve a
@@ -154,7 +174,8 @@ must not delete the account connection.
 At dispatch, the broker creates a clean provider-controller environment,
 allowlisting only required paths, settings, and the selected credential
 channel. It clears inherited `HOME`, profile/config paths, `OPENAI_API_KEY`,
-`ANTHROPIC_API_KEY`, `ANTHROPIC_AUTH_TOKEN`, cloud credential variables,
+`ANTHROPIC_API_KEY`, `ANTHROPIC_AUTH_TOKEN`, `OPENCODE_CONSOLE_TOKEN`,
+cloud credential variables,
 proxy secrets, and other competing auth sources before adding the selected
 mode. Claude's documented precedence means even an **empty** API-key variable
 can shadow federation, so unused variables must be unset. A tool-command
@@ -227,13 +248,16 @@ Run-scoped GitHub grants expire or are revoked when their invocation ends.
 Backend death must not leave a push-capable orphan usable throughout an
 unbounded outage: issuer-enforced expiry or an independent lease/supervisor
 must bound grant use **while the backend is down**. A restart sweep is only a
-second line of cleanup. The maximum lifetime and enforcement owner remain the
-open [Q01/Q25 decision and E01 test](../design/decision-readiness.md); until
-chosen and verified, writable dispatch with that grant is blocked. The broker
-reconciles active grants against durable run identities after restart, revokes
-unmatched grants before dispatch, and records only non-secret grant IDs and
-revocation outcomes. A provider account connection may persist for future
-consented runs, but its per-run derived grant must not.
+second line of cleanup. [Q01/Q25](../design/decision-readiness.md) select an
+independent lease supervisor for outage-time revocation and stop, plus a
+backend startup sweep for durable reconciliation, with a 60-second maximum
+exposure bound. The synthetic [E01 result](../design/decision-readiness.md)
+does not prove real push-credential revocation or production integration;
+writable dispatch with that grant remains blocked until those checks pass.
+The broker reconciles active grants against durable run identities after
+restart, revokes unmatched grants before dispatch, and records only
+non-secret grant IDs and revocation outcomes. A provider account connection
+may persist for future consented runs, but its per-run derived grant must not.
 
 The temporary #119-#122 ChatGPT handoff remains outside Git until its owner
 retires it. Migration means establish a new app-owned or dedicated identity,
