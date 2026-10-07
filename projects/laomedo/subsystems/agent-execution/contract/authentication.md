@@ -75,21 +75,28 @@ subprocesses can see its access-token environment; until an observed denial
 exists, this mode is **not approved for untrusted tool execution**. These are
 design gates, not claims demonstrated by the #119-#122 probes.
 
-A later #107 credential-free negative control on pinned Codex CLI 0.159.2
-showed an unselected `apply_patch` call writing into the credential
-controller's private profile, although shell commands used the executor.
-The local runner therefore refuses app-owned split preflight and dispatch
-before any model turn until a reviewed configuration and a probe prove that
-every offered file and command tool stays in the executor. The earlier two
-successful live turns establish this account's local access and reuse across
-runner processes, not the protected tool boundary. The four additionally
-authorized model turns remain unused while this gate is closed.
-The tested disposable `PreToolUse` deny-hook and explicit profile-path deny
-did not stop this code-mode patch on 0.159.2. Their text was present in the
-controller's temporary config file; hook registration and execution were not
-observed. The test used `externalSandbox`, so it does not show whether the
-profile rule would bind under Codex-enforced sandboxing. Neither control is
-active in the runner.
+A later #107 archive-wide probe appeared to show an unselected `apply_patch`
+writing into the credential controller. That finding was a false positive:
+the searched controller archive contained the patch tool-call input in its
+session history. A corrected exact-file probe first verified a control file
+was readable in the controller profile, then found the patch target absent
+there and present in the executor after agent-originated `apply_patch`.
+The disposable `PreToolUse` hook candidate gave the same route, with no
+observed hook feedback; no hook or profile-path deny is active. The earlier
+archive-wide claims and fail-closed gate are retained as historical,
+superseded results in the validation record.
+
+For pinned Codex CLI 0.159.2, an `apply_patch` without an Environment ID
+resolves to the primary turn environment. The local runner selects exactly
+one registered executor for thread start, resume, and turn start, and refuses
+missing or ambiguous selection before dispatch. The corrected synthetic
+probe and the earlier negative control for omitted turn selection support a
+bounded single-user local test with the four additional authorized model
+turns, still unused at this correction point. Every new version or route
+requires its own tool-boundary check. Native event-level executor attestation,
+independent network namespaces, hosted isolation, refresh and revocation
+remain open; the two earlier live turns prove local account access and
+reuse across runner processes only.
 
 If that route is unavailable, a dedicated OpenAI Platform project API key is
 the local fallback **only after the owner chooses its separate billing
