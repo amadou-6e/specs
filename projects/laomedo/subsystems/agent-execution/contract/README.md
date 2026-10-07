@@ -12,7 +12,8 @@ related: []
 # Agent execution contract index
 
 Canonical draft requirements: [Codex](codex.md), [Claude](claude.md),
-[OpenCode](opencode.md), [isolation](isolation.md), the newer
+[OpenCode](opencode.md), [isolation](isolation.md),
+[authentication and credential lifecycle](authentication.md), the newer
 [subsystem interfaces](interfaces.md), and per-exchange
 [payload sketches](schemas/README.md). The newer discussion changes
 some assumptions in the older isolation draft; its conflict note must be
