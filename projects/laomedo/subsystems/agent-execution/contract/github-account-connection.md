@@ -11,16 +11,25 @@ related: []
 
 # GitHub account connection for mediated agent runs
 
-This proposed contract records the user's choice in [specs #253](https://github.com/amadou-6e/specs/issues/253): browser-based GitHub sign-in is the default connection path, and explicit token connection is an alternative. Laomedo does **not** reuse, import, mount, or fall back to credentials from the host's `gh` session, Git Credential Manager, shell environment, or Git configuration. The connection is distinct from [Codex/Claude provider authentication](authentication.md) and from the [per-run mediated grant](github-write-mediation.md). No browser or token connection has been implemented or exercised yet.
+This proposed contract records the user's choice in [specs #253](https://github.com/amadou-6e/specs/issues/253): browser-based GitHub sign-in is the default connection path, and explicit token connection is an alternative. Laomedo does **not** reuse, import, mount, or fall back to credentials from the host's `gh` session, Git Credential Manager, shell environment, or Git configuration. The connection is distinct from [Codex/Claude provider authentication](authentication.md) and from the [per-run mediated grant](github-write-mediation.md). No production browser or token connection has been implemented or exercised; [#108's draft synthetic probe](https://github.com/amadou-6e/laomedo/pull/110) is not a live GitHub login.
 
 ## Connection modes and user control
 
 | Mode | User-visible behavior | Credential handling |
 | --- | --- | --- |
 | Browser sign-in (default) | Laomedo opens GitHub's authorization flow; the user chooses an account and approves the requested access. Laomedo shows the verified account, available repositories, connection state, and how to disconnect or reconnect. | The broker completes and verifies the authorization exchange and retains its reusable credential outside disposable workspaces. A GitHub App user-access-token web flow is a candidate, not yet the selected implementation. |
-| Explicit token | The user deliberately supplies a supported GitHub token to Laomedo, chooses its intended repository scope, and sees the verified account, permissions, expiry when available, and removal/rotation controls. Laomedo must reject unsupported, expired, wrong-account, wrong-repository, or insufficiently scoped tokens before a writable run. | The broker stores the token as a secret. It must not infer refresh capability for a user-supplied static token. Supported token classes, verification APIs, secure entry and custody require research before implementation. |
+| Explicit token | The user deliberately supplies a supported GitHub token to Laomedo, chooses its intended repository scope, and sees the verified account, permissions, expiry when available, and removal/rotation controls. Laomedo must reject unsupported, expired, wrong-account, wrong-repository, or insufficiently scoped tokens before a writable run. Broad-scope classic tokens are refused by default; any exception needs a separately reviewed justification and explicit user approval. | The broker stores the token as a secret. It must not infer refresh capability for a user-supplied static token. Supported token classes, verification APIs, secure entry and custody require research before implementation. |
 
 Neither mode authorizes a run merely by being connected. The user selects a connection and approves a repository-and-operation-specific run grant. The broker resolves that connection for the chosen owner, records a non-secret reference and credential generation, then gives the stage only a revocable capability to ask the [mediator](github-write-mediation.md) to perform permitted operations. GitHub permission is an upper bound; the narrower run grant, reviewed-issue publication rule, and separate workflow-file approval remain in force.
+
+The trusted run approval and durable mediator grant both carry that selected
+`connection_id` and credential generation. The approval owner checks that the
+connection belongs to the user and covers the repository; the mediator checks
+that the generation is still current before a **new** effect. The
+credential-owning transport resolves only that same connection/generation,
+never an ambient or unrelated token. Rotation or disconnect makes old grants
+unusable for new effects. A remote effect already dispatched before revocation
+may remain uncertain under Q16; generation checks do not undo it.
 
 ## Boundary and failure behavior
 
@@ -30,7 +39,12 @@ Neither mode authorizes a run merely by being connected. The user selects a conn
 - Disconnect or credential replacement must make the mediator refuse new effects under the old connection generation, including effects requested by still-running stages. If denial cannot be verified, the connection reports incomplete revocation rather than success. The broker separately records whether the provider token itself was revoked; removing a Laomedo record is not proof of provider revocation. Other users' connections and unrelated runs remain unaffected.
 - An unavailable broker, absent selected connection, failed verification, or insufficient permission is an authentication/authorization error, not a reason to use local `gh`, Git Credential Manager, `GH_TOKEN`, or any ambient Git credential helper. No opt-in host-credential flag is part of this design.
 
-The exact GitHub browser authorization mechanism, token classes, local and hosted secret stores, callback transport, renewal policy, and permission-verification method remain open design work. [GitHub documents a GitHub App web application flow](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app) and [fine-grained token permissions](https://docs.github.com/en/rest/authentication/permissions-required-for-fine-grained-personal-access-tokens); these are research inputs, not evidence that Laomedo implements either mode. This contract must not be read as approval to connect a personal account for an experiment.
+The exact GitHub browser authorization mechanism, supported token classes,
+local and hosted secret stores, callback transport, renewal policy, and
+permission-verification method remain open design work. Whether GitHub's
+device authorization flow satisfies the browser-default experience on a
+remote or headless host is explicitly **undecided**; no device-flow fallback
+is selected here. [GitHub documents a GitHub App web application flow](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app) and [fine-grained token permissions](https://docs.github.com/en/rest/authentication/permissions-required-for-fine-grained-personal-access-tokens); these are research inputs, not evidence that Laomedo implements either mode. This contract must not be read as approval to connect a personal account for an experiment.
 
 ## Validation path
 

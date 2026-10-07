@@ -26,8 +26,11 @@ offered mediated and journaled GitHub writes versus raw agent `git`/`gh` with
 ambient credentials. The raw route gives agents a familiar broad interface,
 but a credential copied out of an orphaned container cannot be revoked just
 by stopping that container. [EXP-93](https://github.com/amadou-6e/laomedo/issues/93)
-also found that its child supervisor dies under a whole-tree kill. Neither
-result proves a production mediated path.
+found that its *child* supervisor died under a whole-tree kill. The later
+[independently started service result](https://github.com/amadou-6e/laomedo/blob/7707ba2/experiments/exp93/RESULTS.md)
+survived the observed whole-tree runner kill and revoked a **synthetic**
+grant. Neither result proves a production mediated path or a production
+service launch.
 
 ## Decision and scope
 
@@ -77,6 +80,8 @@ the selected 60-second orphan bound, while another run's grant remains valid.
   signing/hooks, audit retention and service placement need research and a
   frozen experiment. The selected connection modes do not imply a host-credential
   fallback or relax the run-grant boundary.
-- The supervisor must survive the selected whole-tree/service-manager failure
-  boundary; the current child process does not. This record does not select a
-  platform service mechanism or lift #93/Q11.
+- An independently started service survived the observed whole-tree runner
+  kill; the child supervisor did not. Service-manager stops, simultaneous
+  service failure, deployment lifetime, real GitHub grant revocation, and a
+  model stage remain unverified. This record does not select a production
+  service mechanism or lift #93/Q11.
