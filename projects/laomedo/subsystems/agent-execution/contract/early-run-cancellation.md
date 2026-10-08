@@ -81,3 +81,5 @@ separately frozen cap and positive native cancellation/container evidence for
 both pre-thread and active-tool points, linked to IF-06/07 partial trace.
 [Q11](../../langflow-integration/design/decision-readiness.md) remains open
 until those observations exist.
+
+The [2026-10-08 Phase C observation](../../../experiments/orphan-lease/iterations/2026-10-08/results.md) provides direct-runner native active-tool interrupt and exact-container stop evidence. It does not verify Langflow UI Stop propagation or the complete cross-store trace join, so this target contract is not marked fully accepted.
