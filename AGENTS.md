@@ -42,9 +42,11 @@ nearby guidance for its concrete structure and canonical owners.
   authorizes merging without another permission request when `git diff --check`
   and every configured CI check on the final head pass. Re-review when the PR's
   own diff changes meaningfully, including logic changes; allow one focused
-  recheck per blocking finding. For nonblocking wording, BOM, or encoding fixes,
-  and clean parent merges with an unchanged own-diff, use deterministic diff
-  checks and CI instead of another reviewer turn. A blocking finding is resolved
+  recheck per blocking finding. For nonblocking wording or BOM/encoding fixes in
+  non-executable documents, and clean parent merges with an unchanged own-diff
+  and no new interaction risk, use deterministic diff checks and CI instead of
+  another reviewer turn. Parser/tests remain required for executable encoding
+  changes. A blocking finding is resolved
   only by reviewer recheck or a human decision. If a recommendation conflicts
   with the human's interests or instructions, pause the merge and ask them to
   decide. Do not merge with an unresolved blocker, failed check, or unmet stack
