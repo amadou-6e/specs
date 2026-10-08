@@ -1,4 +1,4 @@
-﻿---
+---
 title: Agent execution validation
 status: draft
 kind: specification
