@@ -113,6 +113,9 @@ try {
     $startInfo.RedirectStandardInput = $true
     $startInfo.RedirectStandardOutput = $true
     $startInfo.RedirectStandardError = $true
+    # Keep long-lived reviewer conversations compact without changing the
+    # user's interactive Claude sessions or global settings.
+    $startInfo.EnvironmentVariables['CLAUDE_AUTOCOMPACT_PCT_OVERRIDE'] = '60'
     $utf8 = New-Object System.Text.UTF8Encoding($false)
     $startInfo.StandardOutputEncoding = $utf8
     $startInfo.StandardErrorEncoding = $utf8

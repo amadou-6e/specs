@@ -19,6 +19,12 @@ Use [Invoke-ClaudeReview.ps1](scripts/Invoke-ClaudeReview.ps1) from the same tru
 
 The script discovers the newest installed Claude Code VS Code executable, checks that the existing `claude.ai` subscription login is active, and uses that login in place. It does not copy, export, or print auth files or tokens. Keep the ordinary `HOME`, `USERPROFILE`, and Claude config directory; do not set provider credential overrides, use `--bare`, or create a disposable Claude profile. If authentication is missing or expired, report that once rather than asking the user to sign in for each review.
 
+For this long-lived reviewer conversation, the launcher sets Claude Code's
+`CLAUDE_AUTOCOMPACT_PCT_OVERRIDE=60` in the child process only. It does not
+change global Claude settings or the user's interactive sessions. Existing
+reviewer context above 60% may compact on a later review turn; this does not
+create a new reviewer session.
+
 Claude needs provider network access for the review turn. If the calling tool context blocks that connection, run the same script in an authorized network-enabled context with the same OS profile and state directory. Do not respond by copying the login or starting a different reviewer session.
 
 Write a prompt file in the trusted workspace, then run:
