@@ -113,6 +113,10 @@ try {
     $startInfo.RedirectStandardInput = $true
     $startInfo.RedirectStandardOutput = $true
     $startInfo.RedirectStandardError = $true
+    if ($env:DISABLE_AUTO_COMPACT -or $env:DISABLE_COMPACT) {
+        throw 'Claude auto-compaction is disabled in the parent environment; the 60% reviewer threshold cannot be guaranteed.'
+    }
+    $startInfo.EnvironmentVariables['CLAUDE_AUTOCOMPACT_PCT_OVERRIDE'] = '60'
     $utf8 = New-Object System.Text.UTF8Encoding($false)
     $startInfo.StandardOutputEncoding = $utf8
     $startInfo.StandardErrorEncoding = $utf8
