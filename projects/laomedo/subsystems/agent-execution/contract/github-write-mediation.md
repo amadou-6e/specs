@@ -85,6 +85,8 @@ remain unaffected.
 No transport/proxy architecture, token minting scheme, Git signing/hook
 semantics or exact API mapping is accepted here. Those require a reviewed
 design and bounded experiment before the current #93 draft can be promoted.
+The [candidate transport and comparison matrix](../design/mediated-cli-transport.md)
+is such a design proposal, not an acceptance of its architecture or a parity result.
 
 ## Q16: effect identity and uncertain writes (proposed)
 

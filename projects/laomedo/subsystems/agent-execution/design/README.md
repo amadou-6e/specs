@@ -22,3 +22,6 @@ are needed for currently inspected material.
 The [decision-readiness ledger](decision-readiness.md) separates first-slice
 choices, unresolved ownership, research and bounded experiments. It is a draft
 triage, not an additional execution contract.
+The [mediated CLI transport proposal](mediated-cli-transport.md) compares a
+credential-free per-run Git/CLI adapter with a proxy alternative and defines
+the parity evidence still required by Laomedo #100.
