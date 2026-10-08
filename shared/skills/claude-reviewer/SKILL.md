@@ -37,13 +37,14 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File `
   -PromptFile 'C:\CodeWorkspace\agentviz\claude-review.local\prompt.txt'
 ```
 
-Use equivalent absolute paths when this skill is used elsewhere. The per-process execution-policy override runs only this checked-in script and does not change machine settings. The state and prompt paths must be ignored by Git and remain outside tracked specifications. The state file contains only session identifiers and initialization status, never credentials. The script confines Claude's tools to file reading, disables customizations and MCP servers, denies permission prompts, and times out after three minutes by default. It returns Claude's structured result on stdout; preserve a concise finding summary and the reviewed revision in the work handoff.
+Use equivalent absolute paths when this skill is used elsewhere. The per-process execution-policy override runs only this checked-in script and does not change machine settings. The state and prompt paths must be ignored by Git and remain outside tracked specifications. The state file contains only session identifiers, initialization status, and a pending prompt digest, never credentials or prompt text. The script confines Claude's tools to file reading, disables customizations and MCP servers, denies permission prompts, and times out after three minutes by default. It returns Claude's structured result on stdout; preserve a concise finding summary and the reviewed revision in the work handoff.
 
-## Apply the review
+## Apply the review without micro-reviews
 
-Check each finding against source and tests. Fix confirmed in-scope defects, rerun affected checks, and ask the same Claude reviewer session to recheck the new revision. Explain rejected or out-of-scope findings with evidence. A clean review is evidence for the stated revision, not proof that all behavior works. Keep issue-edit, configuration, publication, and merge approval rules in force.
+Request one full review of the PR's substantive own-diff. Check findings against source and tests, fix confirmed in-scope defects, and rerun affected checks. Request one focused recheck for each blocking finding. Request another full review only if the PR's own diff changes meaningfully, such as a logic change or roughly 20 or more changed lines; the line count is a cue, not a safe harbor for small security changes. Batch fixes before that recheck. If a blocker remains after its focused recheck, stop and resolve it with the human or a genuinely new substantive review, rather than repeating the same prompt.
 
-Where repository guidance permits merging after independent review, a review of
-the final PR head can satisfy that merge requirement once its checks pass. It is
-not a human approval and does not waive a pause for a recommendation that
-conflicts with the human's interests or instructions.
+Do not ask Claude to recheck nonblocking wording, README, BOM, or encoding corrections it already suggested. Verify those with targeted content checks, `git diff --check`, and required CI. For a clean parent merge, compare the PR's own diff before and after with `git range-diff` or an equivalent patch comparison. If the own-diff is unchanged and there was no conflict resolution in relevant logic, record that evidence and use final-head CI without another review. Review a changed resolution or new interaction risk. Preserve the last substantive reviewed revision, the later diff comparison, and the final tested head in the handoff.
+
+Explain rejected or out-of-scope findings with evidence. A clean review supports the reviewed change, not every future edit. Keep issue-edit, configuration, publication, and merge approval rules in force. An independent review is not human approval and does not waive a pause for a recommendation that conflicts with the human's interests or instructions.
+
+On a timeout, native error, or quota refusal, do not blindly resubmit the same prompt. The launcher first attempts to recover a completed result from the same local session transcript. If no completed result exists, treat the request as uncertain and stop; inspect that transcript and make an explicit next decision before sending a new, distinct prompt. Never create a new reviewer session just to retry.

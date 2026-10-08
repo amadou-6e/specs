@@ -8,6 +8,7 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'Recover-ClaudeReview.ps1')
 
 if (-not $CodexSessionId) {
     throw 'CODEX_SESSION_ID is unavailable. Pass -CodexSessionId to bind the reviewer to a stable Codex conversation.'
@@ -79,9 +80,12 @@ try {
         if (-not $record.PSObject.Properties['initialized']) {
             $record | Add-Member -NotePropertyName initialized -NotePropertyValue $true
         }
+        if (-not $record.PSObject.Properties['pending_prompt_sha256']) {
+            $record | Add-Member -NotePropertyName pending_prompt_sha256 -NotePropertyValue $null
+        }
     } else {
         $claudeId = [guid]::NewGuid().ToString()
-        $record = [pscustomobject]@{ codex_session_id = $codexId; claude_session_id = $claudeId; initialized = $false }
+        $record = [pscustomobject]@{ codex_session_id = $codexId; claude_session_id = $claudeId; initialized = $false; pending_prompt_sha256 = $null }
         $record | ConvertTo-Json -Compress | Set-Content -LiteralPath $recordPath -Encoding UTF8
     }
     if ($record.codex_session_id -ne $codexId) {
@@ -127,12 +131,37 @@ try {
         $promptBytes = $withoutBom
     }
     if ($promptBytes.Length -eq 0) { throw 'The reviewer prompt file is empty.' }
+    $promptText = $utf8.GetString($promptBytes)
+    $sha = [Security.Cryptography.SHA256]::Create()
+    try {
+        $promptHash = [BitConverter]::ToString($sha.ComputeHash($promptBytes)).Replace('-', '').ToLowerInvariant()
+    } finally {
+        $sha.Dispose()
+    }
+    if ($record.pending_prompt_sha256) {
+        if ($record.pending_prompt_sha256 -ne $promptHash) {
+            throw 'A prior reviewer request is unresolved. Inspect its transcript before sending a different prompt.'
+        }
+        $transcript = Get-ChildItem -LiteralPath $projectsDirectory -File -Recurse -Filter "$claudeId.jsonl" -ErrorAction SilentlyContinue | Select-Object -First 1
+        $recovery = if ($transcript) { Get-ClaudeTranscriptReview -TranscriptPath $transcript.FullName -Prompt $promptText } else { $null }
+        if (-not $recovery -or -not $recovery.Matched -or -not $recovery.Result) {
+            throw 'The identical reviewer request is still uncertain; refusing a duplicate model submission. Inspect the same session transcript.'
+        }
+        $record.pending_prompt_sha256 = $null
+        $record.initialized = $true
+        $record | ConvertTo-Json -Compress | Set-Content -LiteralPath $recordPath -Encoding UTF8
+        [Console]::OutputEncoding = $utf8
+        Write-Output ([pscustomobject]@{ type = 'result'; subtype = 'recovered'; is_error = $false; session_id = $claudeId; result = $recovery.Result } | ConvertTo-Json -Compress -Depth 5)
+        return
+    }
     $process = New-Object System.Diagnostics.Process
     $process.StartInfo = $startInfo
     try {
         if (-not $process.Start()) {
             throw 'Claude Code did not start.'
         }
+        $record.pending_prompt_sha256 = $promptHash
+        $record | ConvertTo-Json -Compress | Set-Content -LiteralPath $recordPath -Encoding UTF8
         $outputTask = $process.StandardOutput.ReadToEndAsync()
         $errorTask = $process.StandardError.ReadToEndAsync()
         $inputFailed = $false
@@ -184,6 +213,7 @@ try {
         throw 'Claude Code returned an unexpected session ID; refusing to change the reviewer binding.'
     }
     $record.initialized = $true
+    $record.pending_prompt_sha256 = $null
     $record | ConvertTo-Json -Compress | Set-Content -LiteralPath $recordPath -Encoding UTF8
     [Console]::OutputEncoding = $utf8
     Write-Output $json

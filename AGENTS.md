@@ -37,18 +37,20 @@ nearby guidance for its concrete structure and canonical owners.
   or a request to analyze the backlog is not authorization to implement it.
 - Do not silently apply configuration changes. Present drafts and obtain approval
   before changing workflows, repository settings, or required merge checks.
-- For user-selected work, an independent review of the final PR head through the
-  linked Claude reviewer skill or the requesting human's review authorizes merging
-  without another permission request when `git diff --check` and every configured
-  CI check on that head pass. Recheck the new head after any change made in response
-  to review. A blocking finding is resolved only by reviewer recheck or a human
-  decision. If the reviewer recommends any change you judge contrary to the human's
-  interests or instructions, pause the merge and ask the human to decide; do not
-  silently apply or dismiss that recommendation. Do not merge with an unresolved
-  blocking finding, a failed check, or an unmet stack dependency. This rule does
-  not authorize issue edits, configuration changes, maturity changes, or any user
-  experience decision. Do not describe an independent review or self-merge as
-  human approval.
+- For user-selected work, an independent review of the PR's substantive change
+  through the linked Claude reviewer skill or the requesting human's review
+  authorizes merging without another permission request when `git diff --check`
+  and every configured CI check on the final head pass. Re-review when the PR's
+  own diff changes meaningfully, including logic changes; allow one focused
+  recheck per blocking finding. For nonblocking wording, BOM, or encoding fixes,
+  and clean parent merges with an unchanged own-diff, use deterministic diff
+  checks and CI instead of another reviewer turn. A blocking finding is resolved
+  only by reviewer recheck or a human decision. If a recommendation conflicts
+  with the human's interests or instructions, pause the merge and ask them to
+  decide. Do not merge with an unresolved blocker, failed check, or unmet stack
+  dependency. This rule does not authorize issue edits, configuration changes,
+  maturity changes, or user experience decisions. Do not describe an independent
+  review or self-merge as human approval.
 
 ## Working rules
 
@@ -119,12 +121,12 @@ status or behavior changed.
    prepare the body using its template and the repository template.
    State the actual head/base and stack dependencies; do not conflate a reviewed
    branch with merged coverage.
-7. Address review feedback, rerun checks affected by the changes, and update the PR
-   to describe the final result. Have the final head reviewed or rechecked, then
-   merge after checks pass when no blocking finding or human-interest conflict
-   remains. Pause for the human on a reviewer recommendation judged contrary to
-   their interests or instructions. Issue closure still requires explicit approval
-   under the rules above.
+7. Address review feedback, rerun checks affected by the changes, and update the
+   PR to describe the final result. Follow the linked reviewer skill's bounded
+   re-review rule; record the reviewed revision and deterministic checks for any
+   later non-substantive edits or clean parent merges. Merge after final-head
+   checks pass and no blocking finding or human-interest conflict remains. Issue
+   closure still requires explicit approval under the rules above.
 
 ## PR requirements
 
