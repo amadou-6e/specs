@@ -132,6 +132,10 @@ preflight cannot promise to infer every repository secret, toolchain or CI need.
 This shape follows the [#175 setup clarification](https://github.com/amadou-6e/specs/issues/175#issuecomment-5950727562);
 its actual checks require R/E evidence.
 
+### Q01/Q02 evidence addendum: EXP-104 S11
+
+The [S11 result](https://github.com/amadou-6e/laomedo/blob/b5b7430/experiments/exp104/S11-RESULTS.md) and [pinned validation row](../validation.md) add a distinct Windows, no-model mediated-GitHub check: A's exact grant was revoked 4.906 seconds after runner-tree loss, a post-revocation PR update was denied without a provider attempt, B created its PR afterward, and exact A/B container cleanup was verified. Four provider writes were recorded; S9 and S10 failed before any write and were not retried. The [independent post-run review](https://github.com/amadou-6e/laomedo/pull/105#pullrequestreview-5460836418) approves this bounded evidence, not merging the draft implementation. It narrows the Q02 experimental gap but does not change Q01's selected architecture or close Q02: the probe started the service, so production service-manager installation, service double failure, real-agent behavior and literal `git`/`gh` parity remain unproven. The approximately 4.9-second pre-revocation exposure window was not exercised by a write attempt.
+
 ## Choices to take to the user, in dependency order
 
 | B | Options and trade-off | Prerequisite |
