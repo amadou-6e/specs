@@ -25,6 +25,11 @@ change global Claude settings or the user's interactive sessions. Existing
 reviewer context above 60% may compact on a later review turn; this does not
 create a new reviewer session.
 
+The launcher also passes `--effort low` on every review call, including resumed
+sessions, to reduce quota use. This changes only the review call's effort, not
+its model, read-only permissions, or requirement to state uncertainty and an
+explicit verdict.
+
 Claude needs provider network access for the review turn. If the calling tool context blocks that connection, run the same script in an authorized network-enabled context with the same OS profile and state directory. Do not respond by copying the login or starting a different reviewer session.
 
 Write a prompt file in the trusted workspace, then run:
