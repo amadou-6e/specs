@@ -11,6 +11,8 @@ when actual replication occurs.
   fresh/resume and explicit native-cancellation observations, retaining prior failures.
 - [Native Codex node](native-codex-node/README.md): installed-flow fresh/resume evidence
   and retained negative results; an authorized retry verified explicit cancellation.
+- [Early-run cancellation](early-run-cancellation/README.md): later pinned Langflow graph
+  cancellation of a real Codex turn, with the visible Playground and trace-join limits retained.
 - [Copyable example](template/README.md): unexecuted snapshot-rejection trial.
 - [Agent handoffs](agent-handoffs/README.md): successful two-turn real chain and
   credential-free bounded-loop/artifact/provenance checks; live loop unobserved.

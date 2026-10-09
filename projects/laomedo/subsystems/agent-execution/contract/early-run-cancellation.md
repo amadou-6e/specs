@@ -83,3 +83,5 @@ both pre-thread and active-tool points, linked to IF-06/07 partial trace.
 until those observations exist.
 
 The [2026-10-08 Phase C observation](../../../experiments/orphan-lease/iterations/2026-10-08/results.md) provides direct-runner native active-tool interrupt and exact-container stop evidence. It does not verify Langflow UI Stop propagation or the complete cross-store trace join, so this target contract is not marked fully accepted.
+
+The later [2026-10-09 installed-graph result](../../../experiments/early-run-cancellation/iterations/2026-10-09/results.md) adds one real Codex turn cancelled by the pinned Langflow graph, with an exact request lookup/cancel audit, native `interrupted`, terminal confirmed runner cancellation and exact-container absence. It did not click the visible Playground Stop or establish the durable Langflow invocation-to-runner trace join. The target contract remains only partially observed.

@@ -1,0 +1,18 @@
+---
+title: Early-run cancellation sources
+status: draft
+kind: experiment-sources
+owners: [laomedo-maintainers]
+last_reviewed: 2026-10-09
+applies_to: [laomedo]
+supersedes: null
+related: []
+---
+
+# Sources
+
+- [Laomedo #22](https://github.com/amadou-6e/laomedo/issues/22): early identity, cancellation races and partial evidence.
+- [Early-run cancellation contract](../../subsystems/agent-execution/contract/early-run-cancellation.md): target behavior and limits.
+- [Phase B direct-runner result](https://github.com/amadou-6e/laomedo/blob/dc803a967b630bf8489a46c849e5af8f7f89eb43/experiments/exp22/PHASE-B-RESULTS.md): native interruption before this graph test.
+- [EXP-94 synthetic visible Stop result](https://github.com/amadou-6e/laomedo/blob/7d37ff6/experiments/exp94/RESULTS.md): UI propagation to a fake runner, not a real Codex turn.
+- [Phase D input freeze](https://github.com/amadou-6e/laomedo/blob/bda5a6b9f4ac27a4f5be99fb4901496355d9907e/experiments/exp22/PHASE-D-LANGFLOW-PROTOCOL.md) and [published result](https://github.com/amadou-6e/laomedo/blob/a0a25d304a18466e3f1446cbd10e317a303e3525/experiments/exp22/PHASE-D-RESULTS.md).
