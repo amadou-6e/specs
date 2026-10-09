@@ -163,8 +163,9 @@ add a new approval requirement.
 
 ## Review questions
 
-- Is a bounded bundle plus exact staged-object check sufficient for repeated
-  run-branch pushes, or is a remote helper required for acceptable Git behavior?
+- The native remote-helper surface is selected above. Which trusted
+  predecessor/fast-forward checks support repeated run-branch pushes while
+  retaining the exact staged-object guarantee?
 - Which literal `gh` commands/flags make the first usable slice, and which
   return an explicit unsupported exit before any provider call?
 - How does the host store the trusted run-workspace mapping across runner loss
