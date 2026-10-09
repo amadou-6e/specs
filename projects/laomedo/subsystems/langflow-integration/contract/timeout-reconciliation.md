@@ -77,3 +77,26 @@ provide early real-runner identity and a supported cancellation result;
 separate bounded real-agent tests must show whether cancellation stops or
 outlives native work, with IF-06/07 partial evidence preserved. Until those
 tests exist, validation remains unaccepted.
+
+## Explicit native reconciliation after a wait or crash
+
+An authenticated exact-run status read can append runner_terminal evidence to
+the existing invocation after a server 408, host adapter wait deadline or crash.
+Keep native status and boolean cancel_confirmed separate from workflow status.
+Do not start, resume or retry a request. Reject wrong native identity and
+conflicting terminal evidence. Identical observations are idempotent; explicit
+confirmation can strengthen an earlier unconfirmed cancellation without erasing it.
+
+Host adapter expiry has distinct provenance: workflow incomplete, reason
+runner_result_pending, invocation timeout, evidence false. It is not a Langflow
+408. Preserve that host wait, server timed_out outcome or crash, and any effect
+receipts when native termination is later observed. Native completion is not
+semantic graph success. Absent effect observations remain unknown. Only native
+cancelled with cancel_confirmed=true is confirmed remote cancellation; present
+unconfirmed cancelled as incomplete with its separate native_status and false flag.
+
+The local RunnerTraceBridge.observe_terminal uses RunnerAdapter's authenticated
+exact UUID GET with whitelisted fields. A trusted host can attach a hashed named-file
+observation to that dispatched invocation via record_effect. This is explicit
+reconciliation, not an automatically deployed Langflow 408 ingress, generic effect
+detector, background retry service or whole-graph restart mechanism.
