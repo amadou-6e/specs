@@ -3,7 +3,7 @@ title: Early runner identity and cancellation handoff
 status: draft
 kind: target-contract
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-05
+last_reviewed: 2026-10-09
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -65,9 +65,60 @@ The bounded controller must save the acknowledged ID before it resumes its
 completion wait. If Stop was requested before acknowledgement, it forwards
 that request as soon as the ID becomes available; it does not discard Stop or
 claim a remote stop without the runner's terminal evidence.
-Whether Langflow UI Stop reliably invokes node cleanup is a **separate
-unverified capability**; do not promise automatic Stop propagation before a
-bounded installed-runtime test demonstrates it.
+Langflow UI Stop propagation has bounded installed-runtime observations below.
+Do not generalize them to other components or outage points without evidence.
+
+## Playground invocation join
+
+For a visible Playground Send, Langflow starts the graph before the Codex
+component contacts Laomedo. The first component-to-host bridge call is the
+earliest available reservation point on this route. The component sends one
+canonical client UUID, resolved runner inputs, saved-flow ID, observed graph
+run ID, and stage ID. The host independently reads the saved-flow export,
+reserves a Laomedo run, trace, invocation and frozen runner request, then
+mints a distinct runner request UUID before its first native POST. A same-UUID,
+same-body retry returns the original record without another POST. A changed
+body conflicts. A failed or uncertain native POST is never replayed
+automatically.
+
+The saved-flow revision and the component-reported graph run ID are separate
+fields. A saved export does not attest the graph currently executing in the
+Playground editor. Record `executing_graph_verified=false` until a trusted
+Langflow build boundary proves that identity. The component and its outputs
+cannot declare completion or evidence completeness for the host. The host
+accepts the native run ID and event reference only under the exact frozen
+request binding. Native terminal status may be projected into the Laomedo
+record with `completion_basis=native_runner_status` and
+`evidence_complete=false`; semantic output verification is separate.
+
+Stop addresses the client UUID. If Stop arrives before the host has seen that
+UUID, the host persists an intent. A later first call with the same UUID is
+reserved and immediately cancelled without any native POST. The intent
+survives a host restart. If no POST has begun, the host cancels the reservation
+without creating a native run. Once a POST may have reached the runner, the
+host resolves only the frozen native request UUID through read-only lookup,
+then cancels the exact bound run. A lookup returning `not found` is not proof
+that an in-flight POST never arrived and must not be recorded as a successful
+cancel. A lost acknowledgement remains `unknown` until the native request is
+positively found and reconciled, or its non-execution is independently proven;
+timeouts and repeated `not found` responses alone cannot prove that. The
+host keeps the Stop intent and uses later read-only status or lookup calls to
+reconcile; if the native run appears, it cancels that exact run. The frozen
+turn still counts against its cap and is never redispatched. A restart
+reopens the host ledger and Stop intent but does not trigger redispatch. The
+client UUID, Laomedo run and trace IDs, invocation ID, native request/run IDs
+and raw-event reference must remain queryable together when issued.
+
+This bridge is an opt-in local route using the selected provider login and
+existing runner turn limit. Its bearer token is local access control, not a
+second operator sign-in or a same-user approval boundary. Activating it or
+changing a saved flow's endpoint is a separate configuration action. A
+credential-free fake runner proves routing and persistence; completing #22's
+join claim requires a pinned installed Langflow run, process restart, exact
+cross-store evidence and a bounded real-agent observation. Tests must include
+Stop arriving before the first bridge call, after reservation, and during an
+uncertain native POST, including a `not found` lookup while that POST is still
+in flight.
 
 ## Acceptance boundary
 
