@@ -14,7 +14,7 @@ related: []
 | Artifact | Pin / location |
 | --- | --- |
 | Frozen protocol and implementation | [Laomedo source 7b5d009](https://github.com/amadou-6e/laomedo/tree/7b5d009b6a3fe8ffc84c167e901f64587bfe1a91/experiments/exp117); initial protocol 8923e1f, reviewed guards aa850f2 |
-| Machine findings | Published with Laomedo #117 at experiments/exp117/observations.json; retains original summaries, pins, teardown, private artifact hashes and retrospective amendment |
+| Machine findings | [Observations at 683c980](https://github.com/amadou-6e/laomedo/blob/683c9809e65e0e8823fcc3b1cbec3518820e084f/experiments/exp117/observations.json) retain original summaries, pins, teardown, private artifact hashes and retrospective amendment; [review-qualified report at 019acb6](https://github.com/amadou-6e/laomedo/blob/019acb61d3fda777a69ea760d1f3018333ca99dd/experiments/exp117/RESULTS.md) |
 | Native CLI | Codex 0.159.2 image ID sha256:7b79ce12be47d6c8262dd4043895112d204416bda5cd891d124775df55587239 |
 | Langflow | 1.12.3 image langflowai/langflow@sha256:34055a07d446de51760e28dab6332e22624e5f48dca611567779992fc32c5ec0 |
 | Pre-thread native event file | Empty; SHA-256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 |

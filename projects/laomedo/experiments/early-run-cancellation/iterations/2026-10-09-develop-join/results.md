@@ -20,7 +20,7 @@ related: []
 | Durable join | Same binding reopened in fresh child; one Langflow trace after restart | Same |
 | Redispatch | Zero after restart | Zero after restart |
 | Original category | prethread_join_visible_stop_passed | real_join_inconclusive |
-| Credential read | No tool/model call, inapplicable | Original unverified classifier; retrospective denied-read evidence below |
+| Credential read | No tool/model call, inapplicable | Original unverified classifier; retrospective failed-read evidence below |
 | Teardown | Exact cleanup verified, disposable Langflow absent, both servers stopped | Same |
 | Conservative ledger | 9/12, zero model calls | 10/12, one model call |
 
@@ -35,8 +35,9 @@ only a single marker line; the fixture sentence therefore made its result
 unverified. Separate equality checks and the output digest are published in
 the machine observation, while the raw event stays private. This explains the
 classifier limitation, without changing the original inconclusive outcome,
-retrospectively changing the frozen protocol, or rerunning the case. Independent
-review is required before treating that amendment as accepted evidence.
+retrospectively changing the frozen protocol, or rerunning the case. The same Claude reviewer independently accepted this retrospective explanation
+at bounded scope before merge. Exit 1 proves a failed read, not whether its
+cause was a permission denial or an absent file.
 
 Host tests passed 281 with six skips; installed Langflow component checks
 passed 20/20. The first installed run exposed an outdated expected count in

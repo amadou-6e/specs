@@ -61,7 +61,7 @@ composes the durable host/native/Langflow join across restart with visible Stop
 at both prepared and active-command points. The pre-thread case submitted no
 native model call; the active case submitted one. Both retained exact cancel
 attribution, clean host terminal receipts and no redispatch. The original active
-classifier result remains inconclusive, with a separate retrospective denied-read
+classifier result remains inconclusive, with a separate retrospective failed-read
 explanation. The conservative ledger is 10/12. Earlier paragraphs retain their
 dated scope. This does not accept the broader target, attest the executing graph,
 close #22/#93 or establish outage, timeout or production-login guarantees.
