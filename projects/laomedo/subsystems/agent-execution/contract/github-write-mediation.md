@@ -79,8 +79,8 @@ refused even if staged bytes remain on disk. If a push/PR result is unknown,
 the agent sees uncertainty and may reconcile read-only; it must not create a
 new effect identity merely to resend the write. A PR-body correction is a
 separate journaled, version-checked effect, not a replay of PR creation.
-The run grant needs a bound PR readback operation for the created or explicitly
-approved target PR. It returns the current title, body, base, head repository
+The run grant needs a `pr_read` operation limited to the created or explicitly
+approved target PR number; it accepts no arbitrary API path. It returns the current title, body, base, head repository
 and exact head SHA; a create/update response alone is not proof that the body
 now displayed by GitHub is sane. The agent assesses that readback while alive
 and may request a separately authorized correction. An unbound PR number is
