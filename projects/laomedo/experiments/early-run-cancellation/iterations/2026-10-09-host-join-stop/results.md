@@ -33,3 +33,7 @@ real-agent timeout effects, runner/lease joint-outage behavior or real push
 credential revocation under #93. The copied-login lifecycle stays unresolved
 under specs #129. The broader target contract is not marked fully accepted;
 no issue state or decision maturity is changed by this evidence update.
+
+The pre-thread Stop point was not composed with this durable join. Its earlier
+Phase F observation remains a separate result; this continuation covers the
+active-command point only.

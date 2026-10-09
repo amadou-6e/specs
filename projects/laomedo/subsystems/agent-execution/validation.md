@@ -92,3 +92,7 @@ events, exact-container absence and binding reopening after restart. The shared
 ledger is 8/12 with one native start and zero redispatch after restart. Earlier
 failed-turn evidence remains unchanged. Executing-graph attestation, timeout
 effects and #93's outage/real push-credential guarantees remain unverified.
+
+Earlier dated rows retain their historical limits. This continuation addresses
+their missing combined Stop-plus-join observation at active-command scope only;
+the pre-thread point has not been composed with the durable join.

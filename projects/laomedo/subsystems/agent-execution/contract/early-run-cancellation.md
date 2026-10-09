@@ -157,3 +157,7 @@ passed at 8/12. The saved-flow UUID and reported graph ID remain corroboration,
 not executing-editor-graph attestation. This evidence does not mark the broader
 contract fully accepted or change #22/#93 state, outage guarantees, timeout
 effects or production credential lifecycle.
+
+Earlier paragraphs describe their dated observations. The continuation
+supersedes the missing combined Stop-plus-join observation at active-command
+scope only; the pre-thread point has not been composed with the durable join.

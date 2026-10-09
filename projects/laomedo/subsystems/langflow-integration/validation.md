@@ -49,3 +49,7 @@ one Langflow trace after restart. Shared ledger 8/12, 87 private partial events,
 zero redispatch. The earlier failed-turn row remains historical evidence. This
 does not attest the executing editor graph or establish #93's outage/real
 push-credential guarantees; no issue state or maturity changed.
+
+The earlier rows are historical. The missing combined Stop-plus-join observation
+is now addressed at active-command scope only; pre-thread Stop has not been
+composed with this durable join.
