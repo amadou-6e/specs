@@ -140,3 +140,10 @@ The later [2026-10-09 installed-graph result](../../../experiments/early-run-can
 The separate [visible Playground Stop result](../../../experiments/early-run-cancellation/iterations/2026-10-09-visible-stop/results.md) composes the browser click with one real Codex active-tool cancellation. Exact runner route identity, click-to-cancel-to-terminal ordering before browser disconnect, native `interrupted`, terminal confirmed cancellation, partial events and exact-container absence passed in that bounded local case. It still does not supply the durable Langflow invocation-to-runner cross-store trace join or the separate pre-thread real-agent point; the target contract remains partially observed.
 
 The later [prepared-state visible Stop result](../../../experiments/early-run-cancellation/iterations/2026-10-09-prethread-stop/results.md) exercises the pre-thread point with a real runner record and a held acknowledgement. One visible click led to exact lookup and cancel before the native worker gate opened; no native model call or container launch followed. The active-tool and pre-thread points now have separate bounded positive observations. A durable Langflow invocation-to-runner cross-store trace join, and the broader #93 outage/credential checks, remain unverified; the target contract is still not fully accepted.
+
+The later [host-join result](../../../experiments/early-run-cancellation/iterations/2026-10-09-host-join/results.md)
+observed a durable Langflow/Laomedo/real-Codex identity binding across a
+disposable server restart. The native turn failed before the task's first tool
+call and the browser did not click Stop, so it does not compose that join with
+the earlier positive Stop cases. The executing editor graph is not attested;
+the target contract and #22/Q11 remain open.
