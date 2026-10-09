@@ -79,6 +79,16 @@ refused even if staged bytes remain on disk. If a push/PR result is unknown,
 the agent sees uncertainty and may reconcile read-only; it must not create a
 new effect identity merely to resend the write. A PR-body correction is a
 separate journaled, version-checked effect, not a replay of PR creation.
+For automatic correction, the request carries the expected title, body and
+exact head SHA from the preceding readback. The mediator reads again and
+compares these with the authorized repository, branch, base and PR number
+before writing. A mismatch is a definite pre-write refusal. A fresh read after
+the update must verify the requested contents and target; failed or mismatching
+readback leaves the write unknown, even if the lookup itself was rejected.
+This is compare-before-write, not atomic compare-and-swap. A simultaneous edit
+can still be overwritten, as accepted in
+[decision 0005](../../../decisions/0005-active-run-pr-feedback.md#managed-startup-and-pr-correction-choice-2026-10-09).
+The implementation must not claim an exactly-once or concurrent-edit guarantee.
 The run grant needs a `pr_read` operation limited to the created or explicitly
 approved target PR number; it accepts no arbitrary API path. It returns the current title, body, base, head repository
 and exact head SHA; a create/update response alone is not proof that the body
