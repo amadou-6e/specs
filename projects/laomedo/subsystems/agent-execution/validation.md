@@ -99,3 +99,15 @@ effects and #93's outage/real push-credential guarantees remain unverified.
 Earlier dated rows retain their historical limits. This continuation addresses
 their missing combined Stop-plus-join observation at active-command scope only;
 the pre-thread point has not been composed with the durable join.
+
+## Develop-based combined observations, 2026-10-09
+
+The [fresh develop-based integration](../../experiments/early-run-cancellation/iterations/2026-10-09-develop-join/results.md)
+composes the durable host/native/Langflow join across restart with visible Stop
+at both prepared and active-command points. The pre-thread case submitted no
+native model call; the active case submitted one. Both retained exact cancel
+attribution, clean host terminal receipts and no redispatch. The original active
+classifier result remains inconclusive, with a separate retrospective failed-read
+explanation. The conservative ledger is 10/12. Earlier paragraphs retain their
+dated scope. This does not accept the broader target, attest the executing graph,
+close #22/#93 or establish outage, timeout or production-login guarantees.
