@@ -24,3 +24,12 @@ The [Phase F protocol](https://github.com/amadou-6e/laomedo/blob/0b3053f2029fd75
 The [Phase G identity protocol](https://github.com/amadou-6e/laomedo/blob/e52194a/experiments/exp22/PHASE-G-CORRELATION-PROTOCOL.md) was frozen before its zero-model installed-server probe. Gate 1 used a disposable fake runner and read-only SQLite inspection. It observed two graph run IDs but did not bind either to a Laomedo invocation or test restart. See the [server identity iteration](iterations/2026-10-09-server-identity/README.md). This specs index is retrospective, not the protocol freeze.
 
 The later [Playground seam probe](iterations/2026-10-09-playground-seam/README.md) explored a lazy reservation on the component's first call to a fake host bridge. Its design draft was reviewed and revised before the probe, but the executable probe was not a separately frozen protocol. The final no-model run added click-to-lookup-to-cancel ordering after an initial review. It tests the installed UI routing seam, not the real POST/acknowledgement crash windows or restart acceptance.
+
+The [Phase G one-turn protocol](https://github.com/amadou-6e/laomedo/blob/aa12af6cd6389dc4fdf81528772fdc6e58d4ef1d/experiments/exp22/PHASE-G-LIVE-PROTOCOL.md)
+was committed before its real submission. It required a private SQLite-backed
+Langflow restart, an opt-in host reservation before one native POST, exact
+browser-click-to-bridge-to-runner Stop attribution, and a real Codex turn under
+the shared 12-turn cap. Credential-free restart and fake-runner gates passed;
+the [separate host-join iteration](iterations/2026-10-09-host-join/README.md)
+records the real turn's early failure. This retrospective index does not
+retroactively turn that failure into a Stop pass.
