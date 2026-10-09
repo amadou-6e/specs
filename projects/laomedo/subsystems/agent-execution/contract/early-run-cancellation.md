@@ -102,7 +102,9 @@ that an in-flight POST never arrived and must not be recorded as a successful
 cancel. A lost acknowledgement remains `unknown` until the native request is
 positively found and reconciled, or its non-execution is independently proven;
 timeouts and repeated `not found` responses alone cannot prove that. The
-frozen turn still counts against its cap and is never redispatched. A restart
+host keeps the Stop intent and uses later read-only status or lookup calls to
+reconcile; if the native run appears, it cancels that exact run. The frozen
+turn still counts against its cap and is never redispatched. A restart
 reopens the host ledger and Stop intent but does not trigger redispatch. The
 client UUID, Laomedo run and trace IDs, invocation ID, native request/run IDs
 and raw-event reference must remain queryable together when issued.
