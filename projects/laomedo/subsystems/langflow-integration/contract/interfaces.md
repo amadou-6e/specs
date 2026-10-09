@@ -3,7 +3,7 @@ title: Langflow integration interfaces
 status: draft
 kind: target-contract
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-02
+last_reviewed: 2026-10-09
 applies_to: [laomedo]
 supersedes: null
 related: []
