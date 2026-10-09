@@ -61,6 +61,30 @@ correlate and route that event is unverified; a tested adapter may be needed.
   event-gate protocol before any claim of in-graph feedback. Provider writes
   remain subject to the separate #104 live protocol and review boundary.
 
+## Managed startup and PR correction choice (2026-10-09)
+
+In the continued interview the user selected a Windows per-user scheduled task
+on this machine for managed host-service startup. Tasks run independently of
+the agent runner, under the selected user's interactive login, without elevated
+privileges or credentials in their action arguments. This does not establish
+unattended operation after logout, service survival or production readiness;
+those require separate checks. The host credential owner/lease service and
+credential-free verifier have separate tasks. Replacing an existing task requires
+checking its ownership and configuration, not overwriting a matching name.
+
+The user also accepted automatic PR-body correction by reading the latest PR,
+comparing the expected title, body, exact head SHA and authorized target before
+one journaled update, then performing a fresh authoritative readback. GitHub's
+update endpoint has no documented atomic conditional PATCH support: an edit
+between the read and update may still be overwritten. This residual concurrent
+edit race is accepted, not hidden by a claim of atomic compare-and-swap. A stale
+snapshot is refused before writing; failed or mismatching post-write readback
+leaves the effect unknown and never triggers an automatic repeat write.
+
+[Specs #301](https://github.com/amadou-6e/specs/issues/301) records this selected
+scope. Neither choice proves runtime behavior or authorizes a new live provider
+write or model turn.
+
 ## Open questions
 
 The GitHub ingress owner, check selection and timeout policy, Langflow's
