@@ -14,6 +14,9 @@ when actual replication occurs.
 - [Early-run cancellation](early-run-cancellation/README.md): later pinned Langflow graph
   cancellation of a real Codex turn, with the visible Playground and trace-join limits retained.
 - [Copyable example](template/README.md): unexecuted snapshot-rejection trial.
+- [PR-check feedback](pr-check-feedback/README.md): EXP-123 same-graph custom
+  wait/router evidence with synthetic exact-head checks, bounded correction,
+  Stop and backend-death controls; production delivery remains unverified.
 - [Agent handoffs](agent-handoffs/README.md): successful two-turn real chain and
   credential-free bounded-loop/artifact/provenance checks; live loop unobserved.
 - [Langflow graph freeze](langflow-graph-freeze/README.md): EXP-03 synthetic
