@@ -88,6 +88,55 @@ this interface until Langflow feasibility is verified. Existing-session mode
 also remains deferred until the prior workspace basis, current PR head and
 provider compatibility can be checked; first-slice follow-ups are fresh.
 
+## PR-head check gate (target)
+
+The [active-run PR decision](../../../decisions/0005-active-run-pr-feedback.md)
+allows a graph to put a GitHub check gate after an agent invocation. Agent
+execution first delivers the PR while its grant is live, reads it back, and
+returns the exact repository, PR number and head SHA. The gate subscribes to
+that **head**, not merely to a PR number or branch name. It waits for the
+configured check set and either routes success forward or passes a bounded
+failure result to a **new** agent invocation. The graph must show the wait,
+failure and each invocation separately. An unresolved check, missing delivery
+or exhausted loop budget yields an explicit incomplete/failed outcome under
+a configured policy, never an inferred success.
+
+The approximate handoff is:
+
+```text
+PRHeadCheckRequest {
+  run_id: string, graph_revision_ref: Ref, gate_id: string,
+  prior_invocation_id: string, repository: Ref,
+  pr: { number: integer, head_sha: string },
+  required_checks_ref: Ref, loop_iteration: integer,
+  max_iterations: integer, wait_deadline: timestamp
+}
+PRHeadCheckObservation {
+  run_id: string, gate_id: string, repository: Ref,
+  pr_number: integer, head_sha: string,
+  source_delivery_id: string, source_check_id: string,
+  observed_status: "pending" | "passed" | "failed" | "unknown",
+  failure_artifact_ref?: Ref, observed_at: timestamp
+}
+```
+
+The ingress boundary must authenticate and durably identify the external
+delivery before it reaches Langflow. A redelivery for the same check identity
+must not create another agent invocation; contradictory observations remain
+visible rather than silently overwriting one another. A result for an old
+head SHA cannot decide the current head. A corrective commit creates a new
+head/check wait and consumes another configured loop iteration. Agent-caused
+events must not trigger unbounded new runs. The ingress/process owner,
+check-set semantics and stable-delivery source are still open decisions.
+
+This is an **in-run** external-event gate, distinct from `RunLaunchContext`'s
+future PR-opened or failed-workflow launch variants. A fate-shared backend
+crash still ends the graph run; an event received afterwards cannot resume it.
+Whether pinned Langflow can wait, correlate and route these events within one
+live graph is unverified and belongs to the bounded [#123 experiment](https://github.com/amadou-6e/laomedo/issues/123).
+Until that evidence exists, this is a target interface, not a supported
+Langflow component or a promise of CI-driven automatic repair.
+
 ## Run-state ownership and open gates
 
 Langflow owns live graph sequencing. Laomedo's Langflow integration owns the

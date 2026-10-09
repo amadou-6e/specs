@@ -29,6 +29,9 @@ until review confirms the record; acceptance is not implied by saving it.
 - [0004 — Mediated git/gh](0004-mediated-git-gh.md): the user-selected
   capability-parity target for mediated agent GitHub writes; transport and
   effect identity remain open.
+- [0005 — Active-run PR feedback](0005-active-run-pr-feedback.md): the agent
+  delivers and checks its PR while alive; a bounded graph gate may route a
+  matching failed check to a new invocation, pending Langflow evidence.
 
 The [journey graph](../architecture/user-traversal.md) and
 [handoff graph](../architecture/subsystem-handoffs.md) remain the editable visual

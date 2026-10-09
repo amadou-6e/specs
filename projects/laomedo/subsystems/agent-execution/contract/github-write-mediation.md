@@ -61,6 +61,29 @@ the owned stage is orphaned; the selected orphan bound is 60 seconds. A
 stopped container alone is not revocation evidence. Another run's grant must
 remain unaffected.
 
+## Active-run commit and PR handoff (target)
+
+The [user-selected lifecycle](../../../decisions/0005-active-run-pr-feedback.md)
+keeps the stage alive through commit, mediated push, PR create/update, and a
+readback in which the agent can inspect and correct the PR body. A trusted
+host-side operation may freeze and verify the staged bundle **during** the
+running invocation. The agent can request that operation using its run
+capability, but cannot supply arbitrary host paths, attest its own bundle,
+or obtain the credential. A mutable `running` run record is not a final
+attestation: the verifier must bind the immutable launch identity, authorized
+repository/branch and grant generation to the staged bytes and exact commit,
+and recheck the still-live lease and grant before each remote effect.
+
+Completion or grant revocation closes this path. A late request must be
+refused even if staged bytes remain on disk. If a push/PR result is unknown,
+the agent sees uncertainty and may reconcile read-only; it must not create a
+new effect identity merely to resend the write. A PR-body correction is a
+separate journaled, version-checked effect, not a replay of PR creation.
+The agent reports the actual PR and head SHA to the graph only after an
+authoritative readback. The graph's later check gate is owned by
+[Langflow integration](../../langflow-integration/contract/interfaces.md#pr-head-check-gate-target),
+not by this stage's local process.
+
 ## Failure and verification
 
 - A repeated or lost response does not by itself authorize reissuing a
