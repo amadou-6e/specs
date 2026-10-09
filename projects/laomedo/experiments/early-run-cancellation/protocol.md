@@ -25,7 +25,7 @@ The [Phase G identity protocol](https://github.com/amadou-6e/laomedo/blob/e52194
 
 The later [Playground seam probe](iterations/2026-10-09-playground-seam/README.md) explored a lazy reservation on the component's first call to a fake host bridge. Its design draft was reviewed and revised before the probe, but the executable probe was not a separately frozen protocol. The final no-model run added click-to-lookup-to-cancel ordering after an initial review. It tests the installed UI routing seam, not the real POST/acknowledgement crash windows or restart acceptance.
 
-The [Phase G one-turn protocol](https://github.com/amadou-6e/laomedo/blob/74a2c13f37d8bb3463aff990aca76c06e7504d33/experiments/exp22/PHASE-G-LIVE-PROTOCOL.md)
+The [Phase G one-turn protocol](https://github.com/amadou-6e/laomedo/blob/aa12af6cd6389dc4fdf81528772fdc6e58d4ef1d/experiments/exp22/PHASE-G-LIVE-PROTOCOL.md)
 was committed before its real submission. It required a private SQLite-backed
 Langflow restart, an opt-in host reservation before one native POST, exact
 browser-click-to-bridge-to-runner Stop attribution, and a real Codex turn under

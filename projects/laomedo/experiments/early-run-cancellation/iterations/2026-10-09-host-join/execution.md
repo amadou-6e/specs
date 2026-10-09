@@ -11,9 +11,9 @@ related: []
 
 # Execution record
 
-The [Phase G correlation protocol](https://github.com/amadou-6e/laomedo/blob/74a2c13f37d8bb3463aff990aca76c06e7504d33/experiments/exp22/PHASE-G-CORRELATION-PROTOCOL.md)
+The [Phase G correlation protocol](https://github.com/amadou-6e/laomedo/blob/e52194a53f8cf7278b9931f993fe0fed8c96d4ac/experiments/exp22/PHASE-G-CORRELATION-PROTOCOL.md)
 preceded the installed identity work. The later
-[one-turn protocol](https://github.com/amadou-6e/laomedo/blob/74a2c13f37d8bb3463aff990aca76c06e7504d33/experiments/exp22/PHASE-G-LIVE-PROTOCOL.md)
+[one-turn protocol](https://github.com/amadou-6e/laomedo/blob/aa12af6cd6389dc4fdf81528772fdc6e58d4ef1d/experiments/exp22/PHASE-G-LIVE-PROTOCOL.md)
 and probe were committed at `aa12af6` before the real submission. A
 credential-free disposable SQLite restart check and a no-model real-route
 preflight passed first. The same Claude reviewer session gave a go for one
