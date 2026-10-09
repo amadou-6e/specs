@@ -101,6 +101,14 @@ failure and each invocation separately. An unresolved check, missing delivery
 or exhausted loop budget yields an explicit incomplete/failed outcome under
 a configured policy, never an inferred success.
 
+An unresolved `unknown` push or PR effect from the prior invocation fences
+automatic corrective dispatch. The gate records incomplete delivery until
+read-only reconciliation and the existing Q16 resolution/approval rules
+resolve that uncertainty; a new invocation or effect ID cannot bypass the
+fence. A corrective invocation receives a newly authorized run grant bound
+to the approved repository, branch and target PR. It cannot substitute a
+new branch or PR merely to avoid the previous effect's state.
+
 The approximate handoff is:
 
 ```text
@@ -122,12 +130,22 @@ PRHeadCheckObservation {
 
 The ingress boundary must authenticate and durably identify the external
 delivery before it reaches Langflow. A redelivery for the same check identity
-must not create another agent invocation; contradictory observations remain
-visible rather than silently overwriting one another. A result for an old
+must not create another agent invocation. For one check identity, `pending`
+may advance to its first final `passed` or `failed` result. A later matching
+final delivery is a duplicate; a contradictory final result remains visible
+as a conflict and cannot dispatch another invocation or replace the decision.
+A genuine check rerun has a new source check identity; which rerun belongs
+to the configured required check set remains part of check-selection design.
+An `unknown` observation does not decide or dispatch; the gate waits until
+a known final observation or its configured deadline. A matching observation
+recorded before the gate began waiting must be considered when the gate
+starts, subject to these same identity and conflict rules. A result for an old
 head SHA cannot decide the current head. A corrective commit creates a new
 head/check wait and consumes another configured loop iteration. Agent-caused
 events must not trigger unbounded new runs. The ingress/process owner,
 check-set semantics and stable-delivery source are still open decisions.
+Stop while a gate waits ends that wait and prevents a later observation from
+dispatching another agent invocation in the stopped run.
 
 This is an **in-run** external-event gate, distinct from `RunLaunchContext`'s
 future PR-opened or failed-workflow launch variants. A fate-shared backend
