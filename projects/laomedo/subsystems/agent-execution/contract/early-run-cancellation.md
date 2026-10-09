@@ -147,3 +147,13 @@ disposable server restart. The native turn failed before the task's first tool
 call and the browser did not click Stop, so it does not compose that join with
 the earlier positive Stop cases. The executing editor graph is not attested;
 the target contract and #22/Q11 remain open.
+
+The fresh [host-join and Stop continuation](../../../experiments/early-run-cancellation/iterations/2026-10-09-host-join-stop/results.md)
+after repairing the private login copy composes the real active-command visible
+Stop and durable cross-store identity join in one bounded local run. Exact
+bridge/native cancel attribution, native interruption, confirmed cancellation,
+partial events, exact-container absence and identity reopening across restart
+passed at 8/12. The saved-flow UUID and reported graph ID remain corroboration,
+not executing-editor-graph attestation. This evidence does not mark the broader
+contract fully accepted or change #22/#93 state, outage guarantees, timeout
+effects or production credential lifecycle.

@@ -38,3 +38,14 @@ synthetic experiments exist; they do not establish full first-slice behavior.
 Related observations in [shared contracts](../../architecture/shared-contracts.md)
 do not establish these new target guarantees. Pin the Langflow version and
 test environment when recording actual evidence.
+
+## Bounded host-join continuation, 2026-10-09
+
+The [fresh continuation](../../experiments/early-run-cancellation/iterations/2026-10-09-host-join-stop/results.md)
+passed visible active-command Stop and the durable identity join together:
+one bridge start/cancel, one native start/cancel, native `interrupted`, confirmed
+runner cancellation, exact-container absence, and the same host binding and
+one Langflow trace after restart. Shared ledger 8/12, 87 private partial events,
+zero redispatch. The earlier failed-turn row remains historical evidence. This
+does not attest the executing editor graph or establish #93's outage/real
+push-credential guarantees; no issue state or maturity changed.

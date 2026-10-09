@@ -81,3 +81,14 @@ Canonical evidence: [pilot result](../../experiments/local-skill-agent-pilot/ite
 and [feasibility ledger](../../research/runner-feasibility/sources/README.md).
 Follow reports for exact revisions and private-artifact limits. A bounded observation
 does not accept every target guarantee.
+
+## Bounded host-join continuation, 2026-10-09
+
+The [fresh real-agent continuation](../../experiments/early-run-cancellation/iterations/2026-10-09-host-join-stop/results.md)
+composes active-command visible Stop and the durable Langflow/host/native join
+in one run: exact bridge and runner cancellation, native `interrupted`, confirmed
+terminal cancellation, denied content-free login read, preserved 87 partial
+events, exact-container absence and binding reopening after restart. The shared
+ledger is 8/12 with one native start and zero redispatch after restart. Earlier
+failed-turn evidence remains unchanged. Executing-graph attestation, timeout
+effects and #93's outage/real push-credential guarantees remain unverified.

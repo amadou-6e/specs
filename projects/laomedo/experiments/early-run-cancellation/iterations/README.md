@@ -6,3 +6,4 @@
 - [2026-10-09 server identity](2026-10-09-server-identity/README.md): two no-model invocations of one saved flow exposed distinct graph run IDs and matching flow/stage IDs; durable cross-store binding remains untested.
 - [2026-10-09 Playground seam](2026-10-09-playground-seam/README.md): a no-model visible Send and Stop reached a fake host bridge with one persistent synthetic binding. Real runner dispatch and restart remain untested.
 - [2026-10-09 host join](2026-10-09-host-join/README.md): zero-model restart and bridge-attribution gates passed; one later real Codex request joined across the stores but failed before a visible Stop. The shared ledger is 7/12.
+- [2026-10-09 host join and Stop](2026-10-09-host-join-stop/README.md): after private-login repair, one fresh real turn composed visible active-command Stop and durable cross-store identity across restart. The shared ledger is 8/12; executing-graph attestation and broader #93 guarantees remain unverified.
