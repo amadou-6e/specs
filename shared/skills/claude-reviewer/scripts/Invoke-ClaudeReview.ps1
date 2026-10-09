@@ -103,6 +103,7 @@ try {
 
     $arguments = @(
         '--print', '--output-format', 'json', '--safe-mode', '--restricted',
+        '--effort', 'low',
         '--tools', 'Read,Glob,Grep', '--permission-mode', 'dontAsk',
         '--permission-prompts', 'none', '--strict-mcp-config'
     )
