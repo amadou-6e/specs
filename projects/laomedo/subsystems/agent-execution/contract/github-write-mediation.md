@@ -79,6 +79,13 @@ refused even if staged bytes remain on disk. If a push/PR result is unknown,
 the agent sees uncertainty and may reconcile read-only; it must not create a
 new effect identity merely to resend the write. A PR-body correction is a
 separate journaled, version-checked effect, not a replay of PR creation.
+The run grant needs a bound PR readback operation for the created or explicitly
+approved target PR. It returns the current title, body, base, head repository
+and exact head SHA; a create/update response alone is not proof that the body
+now displayed by GitHub is sane. The agent assesses that readback while alive
+and may request a separately authorized correction. An unbound PR number is
+not readable through this delivery-specific lane, and a missing readback is
+reported as incomplete delivery rather than silently successful.
 The agent reports the actual PR and head SHA to the graph only after an
 authoritative readback. The graph's later check gate is owned by
 [Langflow integration](../../langflow-integration/contract/interfaces.md#pr-head-check-gate-target),
