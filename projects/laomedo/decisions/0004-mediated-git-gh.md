@@ -86,6 +86,20 @@ Existing run grants, workflow-file approval and uncertain-write fencing remain
 unchanged. The helper and installed CLI require tests and frozen comparison
 evidence before command compatibility can be claimed.
 
+## Scoped native Git reads selected (2026-10-10)
+
+The user answered "Yes, allow those scoped Git reads" to allowing first-slice
+run grants to fetch the run branch and its configured base branch. This is
+an explicit read-scope extension tracked by
+[specs #314](https://github.com/amadou-6e/specs/issues/314), not implicit
+authority from choosing normal CLI commands or connecting an account.
+The trusted approval fixes the base branch; an agent cannot add arbitrary
+refs or choose a different repository. Existing run approvals are not
+retroactively expanded. Provider credentials remain host-only, and current
+grant/connection checks precede returning acquired objects. No write permission,
+workflow-file approval or uncertain-write rule changes. Runtime acceptance
+still requires reviewed evidence under Laomedo #100/#104.
+
 ## Open questions
 
 - Q16 owns operation/effect identity, retry and duplicate-write semantics,
