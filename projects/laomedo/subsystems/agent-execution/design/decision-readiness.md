@@ -136,6 +136,23 @@ its actual checks require R/E evidence.
 
 The [S11 result](https://github.com/amadou-6e/laomedo/blob/b5b7430/experiments/exp104/S11-RESULTS.md) and [pinned validation row](../validation.md) add a distinct Windows, no-model mediated-GitHub check: A's exact grant was revoked 4.906 seconds after runner-tree loss, a post-revocation PR update was denied without a provider attempt, B created its PR afterward, and exact A/B container cleanup was verified. Four provider writes were recorded; S9 and S10 failed before any write and were not retried. The [independent post-run review](https://github.com/amadou-6e/laomedo/pull/105#pullrequestreview-5460836418) approves this bounded evidence, not merging the draft implementation. It narrows the Q02 experimental gap but does not change Q01's selected architecture or close Q02: the probe started the service, so production service-manager installation, service double failure, real-agent behavior and literal `git`/`gh` parity remain unproven. The approximately 4.9-second pre-revocation exposure window was not exercised by a write attempt.
 
+### Native-command evidence addendum: EXP-100 S10 A/B
+
+The [pinned validation row](../validation.md) distinguishes failed A from the
+fresh B local capture. B exercises literal native fetch with a missing provider
+base object, two same-run pushes and confirmed replay, then supported gh PR
+creation/correction/readback while alive. A's consumed failure is retained:
+the original gate blocked a second frozen stage despite a confirmed push, and
+its fetch only listed an already-present object. B's corrected gate requires
+existing immutable verification/cleanup and a confirmed push stage digest for
+this same run and grant; unknown branch effects block before a new freeze.
+These are scripted local-provider checks, not real GitHub/model, managed
+lease/task lifetime or complete native capability parity. Existing remote
+branch adoption by a new run and corrective capture after an unpushed/rejected
+frozen stage remain unavailable. They do not close Q02, #100/#104 or Q11.
+[Independent post-run evidence review](https://github.com/amadou-6e/laomedo/pull/105#pullrequestreview-5478075079)
+approved this bounded evidence, not full draft promotion or the open gates.
+
 ## Choices to take to the user, in dependency order
 
 | B | Options and trade-off | Prerequisite |
