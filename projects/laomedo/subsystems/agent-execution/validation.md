@@ -11,6 +11,16 @@ related: []
 
 # Agent execution validation
 
+## Release-interview target coverage
+
+[Output Contract](contract/output-contract.md) adds the downstream validator,
+agent-side precheck and one configurable continuation default selected in
+[decision 0006](../../decisions/0006-release-packages.md). No implementation or
+runtime acceptance for that new component is established here. Existing Agent
+and Skill tests do not verify its feedback or failure routing. Automatic
+infrastructure recovery remains desired but deferred pending bounds and effect
+reconciliation; prior crash findings are unchanged.
+
 The initial authoring migration executed no new implementation test. Later
 experiment evidence is added below with its own pinned version, task and date.
 

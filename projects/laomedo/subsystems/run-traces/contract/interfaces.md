@@ -70,6 +70,16 @@ recovery, the native-session restart experiment and event identity rules must
 be reconciled. No raw telemetry content/retention policy was settled by the
 interface discussion.
 
+## Interrupted-trace retention
+
+[Owner interview A14](../../../decisions/0006-release-packages.md) selects keeping
+partial traces from failed/stopped runs until explicit user deletion, with no
+automatic expiry. Keep run/invocation identity, source provenance and partial/
+unknown completeness when the execution container is removed. Storage and
+deletion mechanics, disk-pressure handling, redaction/export and retention for
+other trace classes still need design. A retained partial trace is not resumable
+workflow state or evidence that no external effect occurred.
+
 ## Approximate payload
 
 IF-07 and IF-08 use the producer sketches in

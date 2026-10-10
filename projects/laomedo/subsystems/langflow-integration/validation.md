@@ -11,6 +11,18 @@ related: []
 
 # Langflow integration validation
 
+## Release-interview target coverage
+
+[Community distribution](contract/community-distribution.md) requires
+Codex/Windows-first automatic setup with Docker available and provider login.
+No installer or supported clean-environment acceptance was run in this
+interview repair. The
+[complete Langflow demonstration](../work-graph/contract/application-execution.md#next-requested-demonstration-the-complete-langflow-graph)
+needs an actual imported graph showing Skill/Agent/Output Contract, conditional
+routes and real draft publication. The new component and grant-safe downstream
+publication seam are unimplemented/unverified. Separate historical node and
+publication checks below do not constitute that composed acceptance.
+
 The target boundary is not product-validated. Bounded Langflow 1.12.3
 synthetic experiments exist; they do not establish full first-slice behavior.
 

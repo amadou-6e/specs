@@ -52,6 +52,21 @@ source/run links. This is optional and does not imply GitHub publication.
 Artifact placement, ownership, retention and unsaved-output behavior await the
 [later experiment](../../../architecture/user-traversal.md#boundaries-and-open-choices).
 
+### Interrupted-work retention selected in the release interview
+
+[Owner interview A14](../../../decisions/0006-release-packages.md) selects
+preservation of failed/stopped runs' uncommitted changes until the user explicitly
+deletes them; no automatic expiry was selected. Proposed derived requirement:
+agent execution makes a durable recoverable reference before removing the execution container, and
+results must retain the original run/invocation attribution and honest saved/
+published state. Keeping a live container is not a retention mechanism.
+Partial raw-trace retention belongs to
+[run traces](../../run-traces/contract/interfaces.md#interrupted-trace-retention).
+Storage/snapshot format, disk-pressure behavior and deletion scope remain open.
+Preservation does not authorize launching/resuming a run or publishing changes.
+This narrows the earlier open retention question; broader artifact destination
+and normal-success retention questions remain open.
+
 ## Approximate payloads
 
 IF-09 and IF-11 use the producer sketches in

@@ -11,6 +11,9 @@ related: []
 
 # Langflow integration design
 
+[Community components](community-components.md) records the release investigation
+and proposed maintainer approach; no upstream contact or compatibility claim is made.
+
 The target editor embeds a heavily modified Langflow surface while retaining
 all Langflow components. The single-agent form supplies a one-agent graph;
 multi-agent authoring uses the graph editor. Stage defaults are copied at

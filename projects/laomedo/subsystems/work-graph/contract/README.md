@@ -15,3 +15,8 @@ The [Work Graph contract](work-graph.md) owns snapshot identity, dependency
 evidence, readiness, selection, and the proposed run binding. The initial
 implementation covers read-only import and inspection; launch and UI behavior
 remain target requirements. [Validation](../validation.md) separates them.
+
+[Application execution](application-execution.md) owns the release interview's
+assignment/selectors, output-route composition and Langflow-first demonstration.
+It requires reviewed Draw.io before UI implementation and links agent execution
+for the Output Contract's canonical rules.

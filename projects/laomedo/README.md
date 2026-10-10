@@ -6,6 +6,9 @@ This repository records target behavior and observed limitations separately.
 
 ## Reading paths
 
+- Release planning: [two packages](architecture/release-packages.md), with focused
+  community distribution and local application experience briefs.
+
 - Authors: [structure and workflow](SPECS.md), then a category template.
 - Implementers: [architecture](architecture/README.md), [shared records](architecture/shared-contracts.md), then [owned subsystems](subsystems/README.md).
 - Product reviewers: [decision records](decisions/README.md) for the discussions behind both graphs.

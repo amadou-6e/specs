@@ -11,6 +11,9 @@ related: []
 
 # Work Graph design
 
+[Application experience](application-experience.md) captures the new issue-board,
+explicit-editing and monitoring brief; reviewed Draw.io must own the actual UI.
+
 The read-only slice imports paginated GitHub issues and native blocker edges,
 saves immutable digested snapshots, and computes filtered projections from the
 complete snapshot. The implementation is in [Laomedo PR #17](https://github.com/amadou-6e/laomedo/pull/17).
