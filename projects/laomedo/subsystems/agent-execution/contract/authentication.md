@@ -222,9 +222,9 @@ This is the **first-slice grant**. The later
 [scoped native Git-read decision](../../../decisions/0004-mediated-git-gh.md#scoped-native-git-reads-selected-2026-10-10)
 adds explicit read-only fetch access for the run branch and configured base
 branch to new selected approvals; old grants are not retroactively enlarged.
-The wider capability target in
+The wider capability target is recorded in
 [decision 0004](../../../decisions/0004-mediated-git-gh.md) and the
-[mediation contract](github-write-mediation.md): parity with authorized
+[mediation contract](github-write-mediation.md). Parity with authorized
 `git`/`gh` operations never widens a run's selected grant. General `gh api`
 or GraphQL access must enforce the same repository, operation and separate
 workflow-file approval rules. Agent-created follow-up issues remain subject
