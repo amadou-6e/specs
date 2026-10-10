@@ -11,6 +11,29 @@ related: []
 
 # Langflow integration validation
 
+## Imported skill-agent-contract demonstration, 2026-10-10
+
+The credential-free [Laomedo #137 implementation](https://github.com/amadou-6e/laomedo/pull/142) composes the production Skill Reference, Codex Agent and Output Contract nodes with fixture issue ingestion and explicit conditional routes. It deserializes the committed export with pinned `Graph.from_payload(...).arun()`, not a manually reproduced router. This is Graph-engine import/execution, not a live REST/UI server-import claim.
+
+The final [protocol amendment](https://github.com/amadou-6e/laomedo/commit/33ffa62) froze handwritten expectations before source/export [c594e47b8dff75707ac845d2e28e6851465dd114](https://github.com/amadou-6e/laomedo/commit/c594e47b8dff75707ac845d2e28e6851465dd114), then [machine-written evidence](https://github.com/amadou-6e/laomedo/blob/084e934/examples/langflow-workgraph-demo/evidence.json) recorded all six cases. The coordinator independently verified ten artifact hashes against those committed bytes and the evidence SHA-256 `c9abe4976e661ca4e3c20df051433f66d84a0db3768e305ea011f98d08ad2056`. Earlier captures remain in Git history, not silently relabelled.
+
+| Fixture | Observed contract / destination | Publication |
+| --- | --- | --- |
+| Valid success | Accepted / success | Explicitly simulated |
+| Valid task failure | Accepted / failure | None |
+| Invalid form | Rejected / rejection | None |
+| Same-request scripted precheck correction | Accepted / success | Explicitly simulated |
+| Exhausted scripted continuation | Rejected / rejection | None |
+| Valid form on interrupted executor | Accepted / recovery, apparent task success clamped to unknown | None |
+
+At [084e934](https://github.com/amadou-6e/laomedo/commit/084e934), 57 combined pinned Langflow tests pass: 41 Codex, 6 Output Contract and 10 demo tests. Controls show changed downstream requirements reject and false/unknown evidence routes recovery. Every case has one fake-runner HTTP dispatch and retained run/invocation/trace metadata. The image is Langflow/LFX 1.12.3, `sha256:34055a07d446de51760e28dab6332e22624e5f48dca611567779992fc32c5ec0`.
+
+Correction counts are labelled `scripted_continuations`; they do not prove native turn scheduling or enforce a model ledger. Real precheck verdicts use the shared evaluator; synthetic native transport/ledger checks belong to the [agent-execution validation](../agent-execution/validation.md#output-contract-and-routable-codex-outcomes-2026-10-10). Issue ingestion uses an injected fixture transport and never reads ambient host `gh` credentials. No real account, model turn, physical interruption-preservation proof or GitHub write is supplied by this fixture.
+
+Live [#139](https://github.com/amadou-6e/laomedo/issues/139) remains blocked by unreported real-run evidence completeness, native provider acceptance, [#138](https://github.com/amadou-6e/laomedo/issues/138) trusted publication handoff, [#100](https://github.com/amadou-6e/laomedo/issues/100) and its separate cap/disposable identity. The fixture does not lift those gates or activate a live flow.
+
+
+
 ## Release-interview target coverage
 
 [Community distribution](contract/community-distribution.md) requires
