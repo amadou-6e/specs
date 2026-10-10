@@ -153,8 +153,9 @@ roadmap, not in the immediate Langflow-only demonstration's acceptance gate.
 ### Compatibility questions, not silently superseded
 
 - 0005 delivers while the stage is alive; the desired demo publishes after
-  validation. Define a trusted active handoff or a separately scoped publisher
-  capability before implementing that route. Do not extend a completed agent's
+  validation. The later [decision 0007](0007-trusted-output-publication-handoff.md)
+  selects a trusted active handoff; implement and test it before launching
+  that route. Do not extend a completed agent's
   revoked grant or change Results into a PR publisher by implication.
 - D17 automatic recovery remains deferred/unverified. A07 renews the desired
   automatic infrastructure-retry direction without selecting three attempts,

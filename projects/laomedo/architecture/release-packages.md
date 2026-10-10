@@ -112,8 +112,9 @@ The agreed [question map](../decisions/0006-release-packages.md#open-questions-a
 is the source of truth for progress. It records what each answer unblocks,
 prefilled choices, redirections and remaining engineering/product questions.
 No numeric execution budget or safe infrastructure-recovery protocol was
-selected. Publication after downstream validation still needs reconciliation
-with the older active-stage grant lifetime. Reuse existing issue ingestion;
+selected. [Decision 0007](../decisions/0007-trusted-output-publication-handoff.md)
+selects a trusted active handoff through validation; its mediator lifecycle and
+existing live gates still need acceptance. Reuse existing issue ingestion;
 do not create a parallel importer for the demonstration.
 
 ## Proposed release acceptance

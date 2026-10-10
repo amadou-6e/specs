@@ -59,11 +59,7 @@ Graph loops/new invocations and output correction retain distinct identities.
 
 ## Unresolved interfaces and required evidence
 
-The form/schema representation, supported check kinds, requirement version
-binding, precheck transport, rejection payload and conditional-port types need
-design. No particular JSON schema, submission tool or validator dependency was
-selected by the owner. Both evaluators must demonstrably apply the same pinned
-requirements before claiming consistent precheck/final evaluation.
+The proposed v1 interfaces are specified in the [form and evaluation design](../design/output-contract-v1.md). They are engineering choices subject to review, not additional owner interview answers. Both evaluators must demonstrably apply the same pinned requirements before claiming consistent precheck/final evaluation. Infrastructure recovery, artifact execution checks and live provider acceptance remain outside this implementation slice.
 
 The [Langflow demonstration](../../work-graph/contract/application-execution.md#next-requested-demonstration-the-complete-langflow-graph)
 must show valid success, valid task failure, rejected submission and precheck
