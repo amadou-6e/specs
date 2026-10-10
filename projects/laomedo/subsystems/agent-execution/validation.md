@@ -298,8 +298,10 @@ Baseline payloads are not independently archived beyond output hashes and
 call records; actual runtime comparisons fail closed. The five-second pause
 does not promise listing consistency; GraphQL is limited to 30 nodes and one
 page. No uncertain result was retried. S12 fills the real-provider gap in the
-S11 assessment; together with separately accepted S10 B acquisition, earlier
-live Git/PR evidence and closed #104 grant-loss evidence it satisfies the
+S11 assessment; together with separately accepted S10 B acquisition,
+[EXP-104 S12 B live Git/PR evidence](https://github.com/amadou-6e/laomedo/blob/4414a5e107987e1a37d2e2fb939ee9857a67aff2/experiments/exp104/NATIVE-MANAGED-S12-B-RESULTS.md),
+[EXP-104 S13 production-launch evidence](https://github.com/amadou-6e/laomedo/blob/9525d388b324147f7583a267c5ad75b8bea79b0f/experiments/exp104/NATIVE-LOCALRUNNER-S13-A-RESULTS.md)
+and closed #104 grant-loss evidence it satisfies the
 original selected #100 matrix, not unrestricted Git/gh compatibility. Q11,
 #22, #93 and #97 remain separate open gates; no broader first-slice acceptance,
 permission/default expansion or specification maturity change is asserted.
