@@ -21,3 +21,9 @@ Read the [prospective protocol and amendment](protocol.md), [source pins](source
 and [2026-10-05 attempt](iterations/2026-10-05/README.md). The amended
 replication is a bounded synthetic integration, not a real-agent cancellation
 result or acceptance of the first-slice timeout gate.
+
+The [native continuation](iterations/2026-10-09-native/README.md), executed on
+2026-10-10, adds real Codex cancellation before and during a named file effect
+after a host adapter wait timeout. Both cases passed with durable partial identity
+and exact cleanup. This does not replace the dated synthetic server 408 evidence
+or accept the broader Q11 outage and effect-accounting gate.

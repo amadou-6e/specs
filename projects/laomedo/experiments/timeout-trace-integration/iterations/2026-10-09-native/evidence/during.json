@@ -1,0 +1,275 @@
+{
+  "producer": "Laomedo frozen native probe and host evidence projection",
+  "pins": {
+    "implementation": "bec25c0cfcd3b148acfb3caac9cd7e0c1866182d",
+    "protocol_sha256": "sha256:e21fea8c5df0d3f2537eeba579ec38bddc9fdafd303f060cf2658839574b1672",
+    "task_sha256": "sha256:b96d37ed0ee1c39ff4fe063cd57f205eb7511d9b007f63959bc043cc696e6c49",
+    "image_id": "sha256:7b79ce12be47d6c8262dd4043895112d204416bda5cd891d124775df55587239",
+    "model": "gpt-6-luna",
+    "effort": "low",
+    "host_wait_seconds": 5,
+    "native_effect_delay_seconds": 30,
+    "effect_observation_seconds": 31,
+    "clock_resolution": 0.015625,
+    "cross_machine_timing_used": false
+  },
+  "summary": {
+    "category": "native_during_effect_passed",
+    "case": "during",
+    "shared_turn_count": 12,
+    "timeout_layer": "host_adapter_wait",
+    "langflow_server_408_retested": false,
+    "host_start_utc": "2026-10-10T06:22:32.952932+00:00",
+    "timeout_elapsed_seconds": 5.01600000000326,
+    "command_boundary_after_timeout_seconds": 6.375,
+    "cancel_elapsed_seconds": 11.39100000000326,
+    "run_status": "incomplete",
+    "native_status": "cancelled",
+    "cancel_confirmed": true,
+    "native_completion_statuses": [
+      "interrupted"
+    ],
+    "container_absent": true,
+    "effect_file_matches_expected": true,
+    "effect_state": "observed",
+    "effect_sha256": "769de7aa90420fc20b613b9dba39e234821b286f19d63b9298583750d6359335",
+    "same_identity_after_reopen": true,
+    "evidence_complete": false,
+    "stream_state": "partial",
+    "receipt_kinds": [
+      "invocation_reserved",
+      "runner_request_frozen",
+      "dispatch_started",
+      "runner_acknowledged",
+      "runner_result_pending",
+      "external_effect_observed",
+      "runner_cancel",
+      "runner_terminal"
+    ],
+    "raw_event_count": 108,
+    "raw_event_sha256": "sha256:74186f9bde5714118b7befadf3831d0fd36894c22ed4112a9fbaf8fb671d5ab5",
+    "dispatches": 1,
+    "cancels": 1
+  },
+  "teardown": {
+    "runs": [
+      {
+        "run_id": "68b15fc2-6368-4500-9b14-aa264afbeabb",
+        "terminal_status": "cancelled",
+        "exact_cleanup_verified": true,
+        "exact_cleanup_detail": "already_absent"
+      }
+    ],
+    "exact_cleanup_verified": true,
+    "runner_server_stopped": true
+  },
+  "trace_at_timeout": {
+    "run_id": "d8bc9435-9589-4b04-ae59-c4a39082b467",
+    "trace_id": "558f79b2-dcc8-47c3-ba5c-ca66e1d7b064",
+    "run_status": "incomplete",
+    "dispatch_attempts": 1,
+    "evidence_complete": false,
+    "invocation": {
+      "invocation_id": "f5995a1b-2c8c-46c3-a974-c4d761a8c014",
+      "run_id": "d8bc9435-9589-4b04-ae59-c4a39082b467",
+      "stage_id": "LaomedoCodexAgent-native",
+      "status": "failed",
+      "evidence_state": "unknown",
+      "effect_state": "unknown",
+      "error_class": "timeout",
+      "native_job_id": null,
+      "native_job_state": "unknown",
+      "runner_request_id": "f5995a1b-2c8c-46c3-a974-c4d761a8c014",
+      "runner_request_hash": "sha256:700808e8e7e1e05e3c57eabe04347001f0fd7ccdb0e56a6a94ef515c3fdbdf01",
+      "runner_provider": "codex",
+      "runner_run_id": "68b15fc2-6368-4500-9b14-aa264afbeabb",
+      "runner_raw_event_ref": "laomedo:run:68b15fc2-6368-4500-9b14-aa264afbeabb:events",
+      "created_at": "2026-10-10T06:22:32.954Z"
+    },
+    "receipts": [
+      {
+        "sequence": 1,
+        "kind": "invocation_reserved",
+        "source_time": null,
+        "received_at": "2026-10-10T06:22:32.955Z",
+        "payload": {
+          "runner_request_id": "f5995a1b-2c8c-46c3-a974-c4d761a8c014",
+          "stage_id": "LaomedoCodexAgent-native"
+        }
+      },
+      {
+        "sequence": 2,
+        "kind": "runner_request_frozen",
+        "source_time": null,
+        "received_at": "2026-10-10T06:22:32.959Z",
+        "payload": {
+          "request_hash": "sha256:700808e8e7e1e05e3c57eabe04347001f0fd7ccdb0e56a6a94ef515c3fdbdf01"
+        }
+      },
+      {
+        "sequence": 3,
+        "kind": "dispatch_started",
+        "source_time": null,
+        "received_at": "2026-10-10T06:22:32.964Z",
+        "payload": {}
+      },
+      {
+        "sequence": 4,
+        "kind": "runner_acknowledged",
+        "source_time": null,
+        "received_at": "2026-10-10T06:22:33.035Z",
+        "payload": {
+          "raw_event_ref": "laomedo:run:68b15fc2-6368-4500-9b14-aa264afbeabb:events",
+          "runner_provider": "codex",
+          "runner_request_id": "f5995a1b-2c8c-46c3-a974-c4d761a8c014",
+          "runner_run_id": "68b15fc2-6368-4500-9b14-aa264afbeabb"
+        }
+      },
+      {
+        "sequence": 5,
+        "kind": "runner_result_pending",
+        "source_time": null,
+        "received_at": "2026-10-10T06:22:37.960Z",
+        "payload": {
+          "native_execution_may_continue": true
+        }
+      }
+    ],
+    "event_count": 5,
+    "last_received_sequence": 5,
+    "stream_state": "partial",
+    "action_uniqueness": "uncertain"
+  },
+  "trace_after_reopen": {
+    "run_id": "d8bc9435-9589-4b04-ae59-c4a39082b467",
+    "trace_id": "558f79b2-dcc8-47c3-ba5c-ca66e1d7b064",
+    "run_status": "incomplete",
+    "dispatch_attempts": 1,
+    "evidence_complete": false,
+    "invocation": {
+      "invocation_id": "f5995a1b-2c8c-46c3-a974-c4d761a8c014",
+      "run_id": "d8bc9435-9589-4b04-ae59-c4a39082b467",
+      "stage_id": "LaomedoCodexAgent-native",
+      "status": "failed",
+      "evidence_state": "partial",
+      "effect_state": "observed",
+      "error_class": "timeout",
+      "native_job_id": null,
+      "native_job_state": "unknown",
+      "runner_request_id": "f5995a1b-2c8c-46c3-a974-c4d761a8c014",
+      "runner_request_hash": "sha256:700808e8e7e1e05e3c57eabe04347001f0fd7ccdb0e56a6a94ef515c3fdbdf01",
+      "runner_provider": "codex",
+      "runner_run_id": "68b15fc2-6368-4500-9b14-aa264afbeabb",
+      "runner_raw_event_ref": "laomedo:run:68b15fc2-6368-4500-9b14-aa264afbeabb:events",
+      "created_at": "2026-10-10T06:22:32.954Z"
+    },
+    "receipts": [
+      {
+        "sequence": 1,
+        "kind": "invocation_reserved",
+        "source_time": null,
+        "received_at": "2026-10-10T06:22:32.955Z",
+        "payload": {
+          "runner_request_id": "f5995a1b-2c8c-46c3-a974-c4d761a8c014",
+          "stage_id": "LaomedoCodexAgent-native"
+        }
+      },
+      {
+        "sequence": 2,
+        "kind": "runner_request_frozen",
+        "source_time": null,
+        "received_at": "2026-10-10T06:22:32.959Z",
+        "payload": {
+          "request_hash": "sha256:700808e8e7e1e05e3c57eabe04347001f0fd7ccdb0e56a6a94ef515c3fdbdf01"
+        }
+      },
+      {
+        "sequence": 3,
+        "kind": "dispatch_started",
+        "source_time": null,
+        "received_at": "2026-10-10T06:22:32.964Z",
+        "payload": {}
+      },
+      {
+        "sequence": 4,
+        "kind": "runner_acknowledged",
+        "source_time": null,
+        "received_at": "2026-10-10T06:22:33.035Z",
+        "payload": {
+          "raw_event_ref": "laomedo:run:68b15fc2-6368-4500-9b14-aa264afbeabb:events",
+          "runner_provider": "codex",
+          "runner_request_id": "f5995a1b-2c8c-46c3-a974-c4d761a8c014",
+          "runner_run_id": "68b15fc2-6368-4500-9b14-aa264afbeabb"
+        }
+      },
+      {
+        "sequence": 5,
+        "kind": "runner_result_pending",
+        "source_time": null,
+        "received_at": "2026-10-10T06:22:37.960Z",
+        "payload": {
+          "native_execution_may_continue": true
+        }
+      },
+      {
+        "sequence": 6,
+        "kind": "external_effect_observed",
+        "source_time": "2026-10-10T06:22:44.340315+00:00",
+        "received_at": "2026-10-10T06:22:44.342Z",
+        "payload": {
+          "source": "exp66-host-file-observation",
+          "source_ref": "sha256:769de7aa90420fc20b613b9dba39e234821b286f19d63b9298583750d6359335"
+        }
+      },
+      {
+        "sequence": 7,
+        "kind": "runner_cancel",
+        "source_time": null,
+        "received_at": "2026-10-10T06:22:44.346Z",
+        "payload": {
+          "observation": {
+            "cancel_confirmed": false,
+            "cancel_requested": true
+          },
+          "runner_provider": "codex",
+          "runner_run_id": "68b15fc2-6368-4500-9b14-aa264afbeabb"
+        }
+      },
+      {
+        "sequence": 8,
+        "kind": "runner_terminal",
+        "source_time": null,
+        "received_at": "2026-10-10T06:22:45.220Z",
+        "payload": {
+          "cancel_confirmed": true,
+          "native_status": "cancelled",
+          "runner_provider": "codex",
+          "runner_run_id": "68b15fc2-6368-4500-9b14-aa264afbeabb",
+          "semantic_output_verified": false,
+          "workflow_outcome_preserved": true
+        }
+      }
+    ],
+    "event_count": 8,
+    "last_received_sequence": 8,
+    "stream_state": "partial",
+    "action_uniqueness": "uncertain"
+  },
+  "native_boundary_events": [
+    {
+      "raw_event_index": 102,
+      "method": "item/started",
+      "item_id": "exec-f42dc342-0e50-4403-b8d5-71b368fbef5b",
+      "type": "commandExecution",
+      "command": "/usr/bin/bash -lc \"printf 'FIRST\\\\n' > native-effect.txt; sleep 30; printf 'SECOND\\\\n' >> native-effect.txt\"",
+      "exit_code": null
+    },
+    {
+      "raw_event_index": 107,
+      "method": "turn/completed",
+      "turn_id": "01a1247a-4134-7f43-bedf-0a77f672cb28",
+      "status": "interrupted"
+    }
+  ],
+  "omitted": "Model text, tool output and private raw events are not exported."
+}

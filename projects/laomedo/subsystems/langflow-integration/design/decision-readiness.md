@@ -138,3 +138,13 @@ The proposal rejects a second Laomedo workflow scheduler as a way to “recover�
 | #168 user files and retry contradiction | Multi-stage files Q23 and [IF-05](../../agent-execution/contract/interfaces.md#if-05--invoke-a-configured-agent-stage); same-invocation D17 is deferred Q27. |
 
 No future B choice, untested vendor capability or broader experimental result is implied by this draft. The first-slice column makes the boundary explicit. The one-node path needs Q08/R01→Q10/E02 for freeze, Q09/R02 for the agent-node binding, Q11/E03 for long synchronous calls, Q05/E01 for D16 UI closure, Q16/R03 and #179's Q17 policy for trace lifecycle, Q29/E06 for durable pre-dispatch refs, and #175's orphan-control choice for Q03. Q20/B20 is additionally needed when linked relaunch is included. Q04 Stop, Q15 arbitrary editor components, Q21 aggregate multi-invocation budget and Q22 multi-stage PR ownership are **not** first-slice gates. The selected one-invocation limit remains necessary, but an aggregate graph budget adds no separate first-slice control.
+
+## Q11 bounded timeout evidence, 2026-10-10
+
+The [native #66 continuation](../../../experiments/timeout-trace-integration/iterations/2026-10-09-native/results.md)
+adds confirmed real-runner cancellation before and during a named file effect,
+durable partial trace reopening and no redispatch after the host wait expires.
+This complements EXP-10/65/66 synthetic 408 evidence and #117 visible Stop plus
+join evidence. It supplies the bounded real-runner before/during observations, while Q11
+remains open for #93 outage/real push-revocation and broader effect completeness.
+It is not a new server 408 ingress or automatic graph recovery test.
