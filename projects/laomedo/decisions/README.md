@@ -33,6 +33,10 @@ until review confirms the record; acceptance is not implied by saving it.
   delivers and checks its PR while alive; a bounded graph gate may route a
   matching failed check to a new invocation, pending Langflow evidence.
 
+- [0006 - Release packages and Langflow-first workflow](0006-release-packages.md):
+  owner interview answers, corrections, question map, scope redirect and
+  remaining publication/recovery boundaries.
+
 The [journey graph](../architecture/user-traversal.md) and
 [handoff graph](../architecture/subsystem-handoffs.md) remain the editable visual
 authorities. Subsystem contract pages own proposed interface behavior; this

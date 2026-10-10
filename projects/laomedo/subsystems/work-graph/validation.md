@@ -11,6 +11,15 @@ related: []
 
 # Work Graph validation
 
+## Release-interview target coverage
+
+[Application execution](contract/application-execution.md) defines the next
+Langflow-only demonstration and later application scope. Reuse existing issue
+ingestion and frozen snapshots. No new end-to-end run was performed by the
+interview repair; Output Contract/failure routing and downstream draft PR
+publication require new composed acceptance. Standalone board/chat UI remains
+parked by the owner, and existing bounded readiness evidence is unchanged.
+
 | Requirement | Current evidence | Status |
 | --- | --- | --- |
 | Import and preserve GitHub issue and native dependency evidence | [Laomedo PR #17](https://github.com/amadou-6e/laomedo/pull/17) connector tests and paginated live read | Observed for initial connector |

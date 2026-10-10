@@ -11,6 +11,10 @@ related: []
 
 # Langflow integration contract index
 
+[Community distribution](community-distribution.md) owns independent release,
+Windows/Codex-first scope and automatic setup, with unimplemented installer and
+compatibility boundaries marked explicitly.
+
 [Interfaces](interfaces.md) own run entry/correlation, lifecycle events, run
 context and follow-up requests. Agent invocation and outcome are jointly
 described there but their agent-side behavior belongs to

@@ -1,5 +1,8 @@
 # Architecture
 
+- [Release packages](release-packages.md): confirmed community-component and
+  single-user application direction, proposed release gates and open choices.
+
 Fixed category: README.md, shared-contracts.md, component-proposal.md (1 each), focused
 cross-subsystem documents (0..*). No independent entry folders or copyable folder template.
 

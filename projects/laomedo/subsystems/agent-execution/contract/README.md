@@ -24,6 +24,9 @@ endpoint behavior, and named-container teardown for the single-user prototype.
 The proposed [early-run cancellation handoff](early-run-cancellation.md) owns
 idempotent asynchronous identity, pre-dispatch cancel and positive stop evidence.
 Shared serialized records belong to [architecture](../../../architecture/shared-contracts.md).
+The proposed [Output Contract](output-contract.md) owns downstream submission
+validation and the separate agent-side precheck/correction boundary from the
+release interview. It is not an implemented provider submission tool.
 The [Langflow node interface](langflow-node.md) owns the proposed reusable custom
 component, fresh/resume operations, typed outputs and client lifecycle limitations.
 [Agent handoffs](handoffs.md) owns explicit transitions, bounded scheduling and the
