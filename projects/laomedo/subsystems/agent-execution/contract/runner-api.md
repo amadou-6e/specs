@@ -152,3 +152,8 @@ redispatch, new start, output attestation or retry follows from this observation
 
 This is a credential-free lifecycle follow-up. It does not establish a live
 Codex result, a new UI Stop guarantee, lease revocation or outage recovery.
+The current effect-ingestion predicate does not accept an invocation newly
+projected to `unknown`; a later trusted effect for that route is refused, not
+silently recorded as success. Existing timeout-preserved effect ingestion is
+unchanged. Legacy records missing `snapshot_ready` are projected conservatively
+as false; this does not itself invalidate a stored snapshot hash.

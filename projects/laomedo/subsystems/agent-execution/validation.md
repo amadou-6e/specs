@@ -166,3 +166,7 @@ This is implementation-author deterministic evidence, not a live Codex result
 or a claim that the broader #20/#22/#93/#104 criteria all pass. Independent review
 and final-head CI remain merge gates. No model turn or GitHub acceptance write
 was used; #79 and #24 were closed separately with explicit user approval.
+Claude approved runtime `e8e1ed1` and specs `2f20a5d` with no blockers. Its
+nonblocking notes are recorded as scope limits: late effect ingestion for a new
+unknown invocation is refused, and older records without readiness metadata are
+projected conservatively. Later wording changes do not alter executable behavior.
