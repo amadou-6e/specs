@@ -33,8 +33,16 @@ a GitHub permission denial or silently replaced with a narrower operation.
 The chosen user/grant still controls repository scope, write access and
 approval. Workflow-file writes require their separately approved permission.
 The first-slice grant identified in [#175](https://github.com/amadou-6e/specs/issues/175)
-covers pushing the run's branch, PR create/update and Actions read; a broader
-CLI capability target does **not** enlarge that particular grant. The
+covers pushing the run's branch, PR create/update and Actions read. The later
+[scoped Git-read decision](../../../decisions/0004-mediated-git-gh.md#scoped-native-git-reads-selected-2026-10-10)
+explicitly permits a `git_fetch` read operation for the run branch and its
+trusted configured base branch in new first-slice approvals. Old approvals
+are not silently upgraded; account connection alone grants no read operation.
+The request cannot nominate another base, repository or arbitrary ref. Ref
+identity and current grant/connection must be checked before acquired objects
+are delivered, including when the grant changes during acquisition. No extra
+write capability is implied by this read permission. A broader
+CLI capability target does **not** otherwise enlarge that grant. The
 [authentication contract merged in #150](https://github.com/amadou-6e/specs/commit/af7e7ea4c4e8d721aecc570c620e3943f607b9f0)
 defines the narrower first-slice grant, but the live broker remains unverified.
 Agent-created follow-up issues still require the user's review under
