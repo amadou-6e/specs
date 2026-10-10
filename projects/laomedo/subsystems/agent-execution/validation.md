@@ -239,7 +239,9 @@ S10 B supplies missing-object acquisition evidence separately. The closed
 [Laomedo #104](https://github.com/amadou-6e/laomedo/issues/104) supplies accepted
 Windows/systemd grant-loss evidence; S11's fixture renewal does not repeat it.
 
-Independent read-only Claude approved the exact source before capture and
+Independent read-only Claude [disapproved the initial pre-run head](https://github.com/amadou-6e/laomedo/pull/134#pullrequestreview-5478895680)
+for conflict/refusal/effect-attribution controls, then
+[approved the corrected exact source before capture](https://github.com/amadou-6e/laomedo/pull/134#pullrequestreview-5479033824) and
 [approved the evidence and scoped implementation afterward](https://github.com/amadou-6e/laomedo/pull/134#pullrequestreview-5479097111),
 conditional on this specs record merging and final implementation CI. It did
 not independently recompute hashes or read every normalized payload body;
