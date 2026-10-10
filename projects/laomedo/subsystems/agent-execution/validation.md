@@ -116,8 +116,8 @@ close #22/#93 or establish outage, timeout or production-login guarantees.
 
 The [native-turn boundary](contract/runner-api.md#native-turn-and-outstanding-commands-24)
 is covered by credential-free production-runner fixtures at implementation
-`5a85b06f285add717491d6eccae795e4ea53df0f`, in
-[test_outstanding_commands.py](https://github.com/amadou-6e/laomedo/blob/5a85b06f285add717491d6eccae795e4ea53df0f/tests/test_outstanding_commands.py).
+`3147ea1aeea0380bfd0c97ddd7c4536f0c9535a2`, in
+[test_outstanding_commands.py](https://github.com/amadou-6e/laomedo/blob/3147ea1aeea0380bfd0c97ddd7c4536f0c9535a2/tests/test_outstanding_commands.py).
 They cover both native transports returning a completed turn with a dangling
 command; explicit command completion, failure and cancellation; partial-output
 references and other-turn isolation; unidentified commands; multiple commands;
@@ -126,3 +126,10 @@ the previous snapshot identity. These are implementation-author regressions, not
 an independently frozen live-provider experiment. No model turns, credentials,
 permission changes, issue edits or GitHub acceptance writes are used. Runtime
 container teardown remains mocked here; earlier cleanup evidence is unchanged.
+The initial full suite at `5a85b06` passed 313 tests with six skipped. Claude's
+first review approved the bounded runner behavior, requested explicit client
+integration limits, and identified the missing-status case. The later projection
+refuses missing status without an integer exit code, with a regression for
+missing/boolean/nonzero exit fields and malformed status. Eleven focused tests
+pass. The known Langflow unknown-state polling limitation is recorded under #20;
+no client end-to-end completion is claimed.

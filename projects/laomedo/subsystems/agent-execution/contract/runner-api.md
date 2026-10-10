@@ -83,6 +83,9 @@ Output bytes remain in private raw evidence rather than being copied into the
 command summary. Ignore events explicitly belonging to another turn. An absent
 completion, unidentified command, or unrecognized status stays unknown. Do not
 infer command cancellation, denial or success from controller/container teardown.
+A completion item missing status establishes terminality only if it reports an
+integer exit code; boolean values are not exit codes. Events without a turn ID
+are conservatively attributed to the current observed turn.
 
 When the native turn completes with an outstanding command, record the native
 status as `native_turn_status: completed`, keep `native_answer` and the command
@@ -111,3 +114,12 @@ not fail the whole agent run. Neither native completion nor `snapshot_ready`
 attests semantic correctness, missing/unobserved commands, detached descendants,
 or a stable workspace against processes outside the owned runtime. This change
 does not alter permissions, authentication, model budgets or OpenCode semantics.
+
+Client integration limit: existing Langflow component polling, durable join and
+trace reconciliation do not classify `unknown` as terminal. They can continue
+waiting until their deadline even after `controller_cleanup: confirmed`; they
+must not claim artifact readiness or semantic success. Accurate end-of-attempt
+liveness for this route is follow-up under the existing
+[node lifecycle issue #20](https://github.com/amadou-6e/laomedo/issues/20).
+This result is runner-level coverage, not end-to-end Langflow unknown-state
+presentation. No issue text or scope was changed to claim that work implemented.
