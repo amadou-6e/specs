@@ -248,9 +248,58 @@ not independently recompute hashes or read every normalized payload body;
 the coordinator performed byte/hash checks. Five focused tests and all four
 configured CI jobs passed at evidence head `c7dbed4`.
 
-This is not closure of [Laomedo #100](https://github.com/amadou-6e/laomedo/issues/100).
-The original EXP-100 protocol requires separate real-GitHub integration:
-new listings, issue reads, fixed GraphQL, Actions reads, REST GET and reviewed
-issue creation remain synthetic-only. Earlier live push/fetch/PR and #104
+At this S11 assessment, [Laomedo #100](https://github.com/amadou-6e/laomedo/issues/100)
+could not close. The original EXP-100 protocol required separate real-GitHub
+integration: new listings, issue reads, fixed GraphQL, Actions reads, REST GET
+and reviewed issue creation remained synthetic-only. Earlier live push/fetch/PR and #104
 evidence do not prove these additional lanes. Q11, #22, #93 and #97 remain
 separate open gates; no first-slice acceptance or maturity change is asserted.
+
+## EXP-100 S12 real-provider integration, 2026-10-10
+
+The single consumed identity `exp100-live-s12-20261010-a` passed 17 recorded
+checks at executed source `76902618cb6e0319b3f9752672911786aa46d7e4`.
+The [original machine observation](https://github.com/amadou-6e/laomedo/blob/bc15153783be8b7dc328a7d7ea9f572510000924/experiments/exp100/LIVE-OBSERVATION.json)
+has SHA-256 `54f45affa640cebfe995942152f9923300e8ecd16d3cfdf4fda70a01647a3b13`,
+verified against the original probe output. The
+[report](https://github.com/amadou-6e/laomedo/blob/bc15153783be8b7dc328a7d7ea9f572510000924/experiments/exp100/LIVE-RESULTS.md)
+and [non-writing regression controls](https://github.com/amadou-6e/laomedo/blob/bc15153783be8b7dc328a7d7ea9f572510000924/tests/test_live_command_probe.py)
+preserve the original; no discarded live attempt, write retry or model turn.
+
+The [protocol](https://github.com/amadou-6e/laomedo/blob/0aeacce17e469f29fd8436de74d283eee3eff4a2/experiments/exp100/LIVE-PROTOCOL.md)
+and [prospective visibility amendment](https://github.com/amadou-6e/laomedo/blob/c5f5997017c5922234978d16df0f91e2366ae1e1/experiments/exp100/LIVE-AMENDMENT-01.md)
+preceded executable source and capture. The
+[executed manifest](https://github.com/amadou-6e/laomedo/blob/76902618cb6e0319b3f9752672911786aa46d7e4/experiments/exp100/LIVE-MANIFEST.json)
+has SHA-256 `ee22192232b88375724d5ef7559ed2fa7ca09c08979ec0594a16d2876a1cd1fd`;
+14 local checkout-byte source hashes matched before execution. It pins
+governing specs `04fade6d88cc4c6d5c494c7e566c5cacbad93b09` and image
+`sha256:eceda79a349c46a8afd6fb271e92b979f872ca67cbdf228fde6dee0856481e78`.
+
+| Observable check | Real-provider result | Boundary |
+| --- | --- | --- |
+| Native mediated PR/issue reads and fixed GraphQL | Six PRs, zero issues before creation; positive exact issue view/list/GraphQL afterward; selected-field HTTP baselines matched | Real production adapter/store/transport over HTTPS; not full upstream high-level gh formatting, paging or all permissions |
+| REST and Actions reads | Repository branch GET; overlapping current run lists; exact job `114224703478` / run `38056050461` completed/success | Public `amadou-6e/laomedo` grant and provider allowlist were read-only |
+| Reviewed issue publication | Exactly one POST/HTTP201: [disposable issue7](https://github.com/ga84jog/laomedo-exp104-disposable-20261007/issues/7); exact reviewed bytes and durable run/grant/request-hash attribution | Owner approved this one bounded write; no issue edit/delete/close, branch or workflow change |
+| Denials and saved replay | Exact unsupported/export/adapter cross-repo/host connection-binding/altered-request/revoked codes; zero provider calls; replay returns issue7 without dispatch | Host replay, not literal CLI retry; repository-only refusal was not independently isolated |
+| Budget, credentials and cleanup | 18 attempts: 17 reads and one write; zero model turns; inspected only allowed environment keys/mount destinations; both exact containers and grants verified cleaned in1.625s | Selected credential stayed host-side with no ambient login fallback; no hostile-code/egress or production service-install claim |
+
+Independent read-only Claude
+[disapproved the initial source](https://github.com/amadou-6e/laomedo/pull/143#pullrequestreview-5479275992),
+then [approved the corrected exact source before capture](https://github.com/amadou-6e/laomedo/pull/143#pullrequestreview-5479294097).
+Its [post-run assessment](https://github.com/amadou-6e/laomedo/pull/143#pullrequestreview-5479313106)
+approved the complete observation/report and selected #100 closure after
+specs evidence and implementation integration. It did not independently hash
+files, diff the executed source or fetch issue7; the coordinator performed
+byte/hash/diff and CI checks. Eight focused synthetic/regression tests and
+all four configured CI jobs passed at evidence head `bc15153`. Existing LF
+attributes preserve the original observation bytes on Windows checkout.
+
+Baseline payloads are not independently archived beyond output hashes and
+call records; actual runtime comparisons fail closed. The five-second pause
+does not promise listing consistency; GraphQL is limited to 30 nodes and one
+page. No uncertain result was retried. S12 fills the real-provider gap in the
+S11 assessment; together with separately accepted S10 B acquisition, earlier
+live Git/PR evidence and closed #104 grant-loss evidence it satisfies the
+original selected #100 matrix, not unrestricted Git/gh compatibility. Q11,
+#22, #93 and #97 remain separate open gates; no broader first-slice acceptance,
+permission/default expansion or specification maturity change is asserted.
