@@ -73,3 +73,41 @@ request to return 401, an authorized request to succeed, a private token file
 absent from the agent mounts, and a no-model cancel/timeout probe to observe
 owned-container removal. These checks do not establish hosted or multi-user
 tenancy, complete network isolation, or production credential lifecycle.
+
+## Native turn and outstanding commands (#24)
+
+Codex `turn/completed` ends the observed native turn, not necessarily its shell
+commands. Project each observed command identity separately: completion observed,
+allowlisted terminal status, integer exit code, and raw event/output-event indices.
+Output bytes remain in private raw evidence rather than being copied into the
+command summary. Ignore events explicitly belonging to another turn. An absent
+completion, unidentified command, or unrecognized status stays unknown. Do not
+infer command cancellation, denial or success from controller/container teardown.
+
+When the native turn completes with an outstanding command, record the native
+status as `native_turn_status: completed`, keep `native_answer` and the command
+summary, but record run `status: unknown` and
+`error_category: outstanding_command_completion_unknown`. Do not advertise the
+answer as completed output: `answer` is null, `snapshot_ready` is false, and
+`post_run_hash`/`output_ref` are null. Do not create a new post-run snapshot, permit
+artifact selection, or permit resume from that incomplete attempt. On resume,
+invalidate the prior artifact identity before dispatch; an older retained snapshot
+must not be relabelled as this attempt's output. Persist summaries per turn and in
+the run record so evidence remains queryable after runner restart.
+
+This route exposes outstanding commands rather than adding an unbounded drain.
+Existing controller shutdown and owned-container cleanup remain unchanged.
+Successful cleanup establishes removal only. A cleanup failure retains the
+existing unverified-termination failure, with no snapshot readiness.
+The run's `controller_cleanup` is `not_started`, `pending`, `confirmed`, or
+`unverified`; `confirmed` does not change an outstanding command's unknown status.
+Late native notifications after the observed boundary are not awaited or claimed
+reconciled.
+
+If every observed command has an explicit terminal notification, normal snapshot
+validation may proceed. Preserve failed/declined/cancelled command outcomes and
+nonzero exits; terminality is not task success. A recovered command failure need
+not fail the whole agent run. Neither native completion nor `snapshot_ready`
+attests semantic correctness, missing/unobserved commands, detached descendants,
+or a stable workspace against processes outside the owned runtime. This change
+does not alter permissions, authentication, model budgets or OpenCode semantics.
