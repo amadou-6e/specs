@@ -11,13 +11,25 @@ related: []
 
 # Agent execution validation
 
+## Output Contract and routable Codex outcomes, 2026-10-10
+
+Governing [v1 design](design/output-contract-v1.md), merged under [specs #339](https://github.com/amadou-6e/specs/pull/339). [Laomedo #140](https://github.com/amadou-6e/laomedo/pull/140) adds the submission port; [#141](https://github.com/amadou-6e/laomedo/pull/141) adds the shared evaluator, downstream node and synthetic native precheck/continuation transport. Both were independently reviewed through the same bound Claude reviewer session and merged only after their Python 3.10/3.13 CI checks passed. Issue state is not implied by merge.
+
+- At [119ed23](https://github.com/amadou-6e/laomedo/commit/119ed23a8a41dbf855d551df4797806cb6303bf5), 41 pinned Langflow Codex component tests and two saved-flow checks pass. Full host suite at the substantive parent passed 561 tests with 12 skips.
+- At [35add42](https://github.com/amadou-6e/laomedo/commit/35add42), full host suite passes 579 tests with 12 skips; pinned Langflow passes 41 Codex and 6 Output Contract tests. At reviewed [b55f5d2](https://github.com/amadou-6e/laomedo/commit/b55f5d2), four affected amendment tests pass, covering realistic benign native items, continued correction, retained failed-call count and legacy-record defaults. The final clean parent merge preserved the own diff exactly; final-head CI passed.
+- The image is Langflow/LFX 1.12.3, `sha256:34055a07d446de51760e28dab6332e22624e5f48dca611567779992fc32c5ec0`. Native dynamic-tool structures were checked against Codex 0.159.2 source and tested with credential-free RPC fixtures. This does not show that a live model invoked the precheck.
+
+The tests distinguish task failure, form rejection, runtime status and evidence completeness; precheck/final evaluation use the same requirements revision. Output correction is bounded and refuses observed command/file/unknown effects or external-write capability. Typical coding output can therefore require downstream review instead of an automatic continuation. Infrastructure/crash retry remains outside this implementation.
+
+**Live blocker under [#139](https://github.com/amadou-6e/laomedo/issues/139):** LocalRunner does not yet report verified `evidence_complete`; the submission port honestly returns `unknown`. The success route requires true and therefore refuses live publication until evidence closure is independently established. No task success is inferred from an executor exiting zero. No credentials, model turns or live GitHub writes were used by these checks.
+
 ## Release-interview target coverage
 
 [Output Contract](contract/output-contract.md) adds the downstream validator,
 agent-side precheck and one configurable continuation default selected in
-[decision 0006](../../decisions/0006-release-packages.md). No implementation or
-runtime acceptance for that new component is established here. Existing Agent
-and Skill tests do not verify its feedback or failure routing. Automatic
+[decision 0006](../../decisions/0006-release-packages.md). The credential-free node implementation is now merged under Laomedo #140
+and #141; its bounded checks are recorded below. This does not establish
+live provider usage or complete workflow acceptance. Automatic
 infrastructure recovery remains desired but deferred pending bounds and effect
 reconciliation; prior crash findings are unchanged.
 
