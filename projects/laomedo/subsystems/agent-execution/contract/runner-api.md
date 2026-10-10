@@ -115,7 +115,7 @@ attests semantic correctness, missing/unobserved commands, detached descendants,
 or a stable workspace against processes outside the owned runtime. This change
 does not alter permissions, authentication, model budgets or OpenCode semantics.
 
-Client integration limit: existing Langflow component polling, durable join and
+Historical #24 integration limit: at that revision, Langflow component polling, durable join and
 trace reconciliation do not classify `unknown` as terminal. They can continue
 waiting until their deadline even after `controller_cleanup: confirmed`; they
 must not claim artifact readiness or semantic success. Accurate end-of-attempt
@@ -123,3 +123,37 @@ liveness for this route is follow-up under the existing
 [node lifecycle issue #20](https://github.com/amadou-6e/laomedo/issues/20).
 This result is runner-level coverage, not end-to-end Langflow unknown-state
 presentation. No issue text or scope was changed to claim that work implemented.
+
+## Ended attempts with unknown outcome (#20 follow-up)
+
+The runner persists `attempt_finished: false` when an attempt starts, and writes
+`true` only in its final record after cleanup has returned or failed. Prepared
+records and older records without the field are not evidence of an ended unknown
+attempt. This marker describes runner attempt liveness, not command outcome,
+semantic success, cancellation confirmation or verified container removal.
+`controller_cleanup` separately distinguishes confirmed and unverified cleanup.
+
+The updated component, join controller and trace bridge stop waiting for
+`status: unknown` only when `attempt_finished` is exactly boolean true. Missing,
+false, string and integer values do not authorize that transition. They retain
+unknown outcome and false artifact readiness, rather than converting the run to
+completed or cancelled. Existing terminal-status semantics are unchanged. A
+fresh node surfaces the existing error category immediately and keeps its run
+identity; status output retains trace references and the ended-attempt marker.
+Stop sends no additional cancel to an already-ended correlated attempt.
+
+The authenticated status adapter and join HTTP projection retain the marker.
+The durable store accepts an unknown terminal receipt only with the explicit
+finished marker, preserves the exact native binding, and stores unknown run and
+invocation outcomes with `evidence_complete: false`. Exact receipt replay is
+idempotent, conflicting terminal outcomes remain refused, and existing workflow
+timeout/crash records stay preserved alongside the later native receipt. No
+redispatch, new start, output attestation or retry follows from this observation.
+
+This is a credential-free lifecycle follow-up. It does not establish a live
+Codex result, a new UI Stop guarantee, lease revocation or outage recovery.
+The current effect-ingestion predicate does not accept an invocation newly
+projected to `unknown`; a later trusted effect for that route is refused, not
+silently recorded as success. Existing timeout-preserved effect ingestion is
+unchanged. Legacy records missing `snapshot_ready` are projected conservatively
+as false; this does not itself invalidate a stored snapshot hash.
