@@ -68,6 +68,24 @@ claiming equivalence. No real personal credential is used in a disposable
 probe. A post-kill write attempt with the same run grant must be denied within
 the selected 60-second orphan bound, while another run's grant remains valid.
 
+## Native command surface selected (2026-10-09)
+
+After reviewing the partial literal CLI prototype, the user answered
+"Preserve normal git/gh commands (recommended)" to preserving normal
+`git push`/`git fetch` through a mediated remote helper and installing the
+supported adapter as `gh` on the agent container PATH. The alternative was
+a separately named mediation command. [Specs #311](https://github.com/amadou-6e/specs/issues/311)
+records this confirmation; JSON-only push remains an intermediate compatibility
+gap, not the selected final command surface.
+
+This selects the interface and helper direction, not a Git wire protocol,
+unlimited command coverage or runtime acceptance. Unsupported commands and
+flags fail explicitly before forwarding. Agent containers retain only a
+revocable run capability; no GitHub token, host login or credential fallback.
+Existing run grants, workflow-file approval and uncertain-write fencing remain
+unchanged. The helper and installed CLI require tests and frozen comparison
+evidence before command compatibility can be claimed.
+
 ## Open questions
 
 - Q16 owns operation/effect identity, retry and duplicate-write semantics,

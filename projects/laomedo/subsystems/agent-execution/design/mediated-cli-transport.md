@@ -35,6 +35,17 @@ The first-slice grant remains limited to its approved branch push, PR
 create/update and Actions read. Follow-up issue creation still requires the
 reviewed IF-12 request. Workflow-file writes need a separate trusted approval.
 
+## Selected command surface (2026-10-09)
+
+The [confirmed choice](../../../decisions/0004-mediated-git-gh.md#native-command-surface-selected-2026-10-09)
+keeps normal `git push`/`git fetch` commands through a mediated remote helper
+and puts the supported `gh` adapter on the agent container PATH. A separately
+named JSON command is not the final compatibility surface. This selects a
+direction, not the concrete helper protocol or complete Git/gh coverage.
+Unsupported flags/operations fail explicitly; no host credential or raw
+provider execution fallback is permitted. Existing narrower grants and
+separate workflow/issue-publication approvals are not expanded by installation.
+
 ## Candidate transport for the next bounded experiment
 
 1. The trusted controller prepares an isolated per-run Git repository from a
@@ -152,8 +163,9 @@ add a new approval requirement.
 
 ## Review questions
 
-- Is a bounded bundle plus exact staged-object check sufficient for repeated
-  run-branch pushes, or is a remote helper required for acceptable Git behavior?
+- The native remote-helper surface is selected above. Which trusted
+  predecessor/fast-forward checks support repeated run-branch pushes while
+  retaining the exact staged-object guarantee?
 - Which literal `gh` commands/flags make the first usable slice, and which
   return an explicit unsupported exit before any provider call?
 - How does the host store the trusted run-workspace mapping across runner loss
