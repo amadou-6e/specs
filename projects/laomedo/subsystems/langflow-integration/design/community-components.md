@@ -36,6 +36,12 @@ or Output Contract implementation is claimed.
 
 ## Research questions and deliverables
 
+The table below is a proposed research handoff, pending an owned entry in
+Laomedo's `research/` collection. Before executing the investigation, create
+that entry from the [research template](../../../research/template/README.md).
+It will own the method, sources, findings and synthesis. This original review
+page remains an index/outreach proposal and must not become the source ledger.
+
 Use the shared [research skill](../../../../../shared/skills/research/SKILL.md)
 for the source investigation and independent writing handoff. Inspect current
 primary Langflow contribution documentation, custom-component loading APIs,
