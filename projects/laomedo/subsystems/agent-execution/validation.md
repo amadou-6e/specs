@@ -138,3 +138,31 @@ The final full suite at `3147ea1` passed 314 tests with six skipped. Claude's
 focused follow-up approved runtime `3147ea1` and specs `9adf541` with no blockers
 for runner-only credential-free scope. This later evidence-count entry changes
 no executable behavior; final-head CI remains required before merge.
+
+## Ended unknown attempt lifecycle, 2026-10-10 (#20 follow-up)
+
+Implementation `e8e1ed1d188dc2d647fffdf338e876a96934f648` adds the
+[ended-attempt marker](contract/runner-api.md#ended-attempts-with-unknown-outcome-20-follow-up)
+and preserves it through authenticated status, the join HTTP projection and
+durable terminal receipts. The host suite passed 319 tests with six skipped.
+New controls cover a finished unknown outcome, legacy/malformed marker refusal,
+restart/idempotency, Stop sending no redundant cancel, adapter allowlisting and
+retained unknown HTTP status without answer/artifact readiness.
+
+The pinned Langflow image
+`sha256:34055a07d446de51760e28dab6332e22624e5f48dca611567779992fc32c5ec0`
+passed all 24 Codex component tests using synthetic runner HTTP responses,
+network disabled, a read-only source mount and no credentials. New controls
+exercise fresh polling stopping on the exact finished marker, unknown without
+the marker continuing to poll, Stop suppressing redundant cancellation, and
+status retaining run/trace references without artifact readiness. An existing
+unclosed-SQLite ResourceWarning was emitted after the passing suite; it is not
+a model or runner error. The checked-in example updates embedded component code
+only. No saved flow, service, permission, credential or repository setting was
+activated or changed. A stale example-code equality test initially failed and
+passed after this exact code refresh; historical model evidence is unchanged.
+
+This is implementation-author deterministic evidence, not a live Codex result
+or a claim that the broader #20/#22/#93/#104 criteria all pass. Independent review
+and final-head CI remain merge gates. No model turn or GitHub acceptance write
+was used; #79 and #24 were closed separately with explicit user approval.

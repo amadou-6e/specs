@@ -106,3 +106,15 @@ acceptance check remains a gap. A follow-up issue does not waive an unmet guaran
 Reference: [Langflow custom components](https://docs.langflow.org/components-custom-components),
 inspected 2026-10-01 alongside installed 1.12.3; newer docs do not establish support
 in the pinned runtime.
+
+### Ended unknown attempts
+
+The [runner attempt marker](runner-api.md#ended-attempts-with-unknown-outcome-20-follow-up)
+lets the updated node distinguish an ended attempt with unknown command outcome
+from a still-uncertain remote attempt. Fresh polling ends and surfaces the error
+without artifact/answer success; status retains identity and trace references.
+An exact finished marker suppresses redundant Stop cancellation. Legacy unknown
+records retain conservative polling. Installed flows embedding older component
+code must be regenerated/reimported before this behavior is available; updating
+the source alone does not rewrite an operator's saved flow. Deployment and saved
+flow activation are outside this credential-free change.
