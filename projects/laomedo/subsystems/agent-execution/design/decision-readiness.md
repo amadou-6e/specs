@@ -132,6 +132,21 @@ preflight cannot promise to infer every repository secret, toolchain or CI need.
 This shape follows the [#175 setup clarification](https://github.com/amadou-6e/specs/issues/175#issuecomment-5950727562);
 its actual checks require R/E evidence.
 
+### Q01/Q02 evidence addendum: synthetic Linux systemd S14
+
+The [S14 validation row](../validation.md) adds the user-selected real systemd
+unit/cgroup ownership test inside a disposable privileged Docker VM, using
+production lease/grant/mediation code and a synthetic provider. A revoked in
+4.914914seconds, retained-capability writes were denied without provider growth,
+and B and the service continued before broker restart. Original observation
+remains incomplete due replay-response metadata equality; a frozen retrospective
+amendment and corrected semantic checker assess the captured facts separately.
+No second run or rewriting of the original outcome. This narrows the intended
+Linux service-manager gap, not full production Linux routing, inner stage cleanup,
+real-agent behavior, logout/double-manager, CLI parity or Q11. Preserve earlier
+historical limitations; post-run review/merge and actual issue acceptance remain
+separate gates.
+
 ### Q01/Q02 evidence addendum: production LocalRunner S13 A
 
 Later [S13 production-launch validation](../validation.md) uses real LocalRunner
