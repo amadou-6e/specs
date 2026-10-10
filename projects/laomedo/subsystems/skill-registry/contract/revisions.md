@@ -114,7 +114,8 @@ the unchanged source hash. Preserve CRLF skill bytes without text normalization.
 Before dispatch and before accepting completed output, verify pinned skill tree
 hashes, the exact selected skill-directory set, safe parent paths and the exclusion
 file hash. Changed/escaped skill bytes or changed exclusions fail validation;
-ordinary edits outside runner-owned paths remain visible to Git. Exclusion is a
+sources containing other `.agents/skills/` entries are refused before dispatch.
+Ordinary edits outside runner-owned paths remain visible to Git. Exclusion is a
 cleanliness mechanism, not a sandbox: forced staging/cleaning and malicious Git
 configuration are not prevented by ignore rules. Pinned-byte checks must not
 claim those operations cannot occur.
@@ -125,6 +126,10 @@ explicitly. Tests must cover fresh checkouts, CRLF bytes, unrelated changes,
 ordinary staging, skill/exclusion edits and negative cleanup controls. Shared
 OpenCode preparation uses the same exclusions and must retain its existing
 provider-specific pinned-skill checks. No live provider or credential claim
-follows from these credential-free controls. Legacy records without this baseline
+follows from these credential-free controls. Exclusions are verified for host-side
+Git operations; in-container Git availability and ownership handling are untested.
+Very large sources can exceed the bounded baseline setup timeout and are refused.
+Legacy records without this baseline
 are not silently upgraded; Git-present records without matching exclusion
-metadata fail closed. This is draft behavior pending independent review.
+metadata fail closed. Independent review accepted this bounded behavior; it does
+not establish integration with the separate native git/gh publication route.
