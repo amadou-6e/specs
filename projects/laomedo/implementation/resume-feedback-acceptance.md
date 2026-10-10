@@ -13,7 +13,7 @@ related: []
 
 Inspected base: Laomedo develop at
 `8204056c21e388b975909377cf552fcf6d81e822`. Implementation/test revision:
-[c76ee650dbddbf72cc8a2b7544798443ace56821](https://github.com/amadou-6e/laomedo/tree/c76ee650dbddbf72cc8a2b7544798443ace56821).
+[99da4d4f8493ef410b5a4dad75b5c1ef323dd87c](https://github.com/amadou-6e/laomedo/tree/99da4d4f8493ef410b5a4dad75b5c1ef323dd87c).
 The changes are review candidates until merged; this record does not change
 issue state, maturity, permissions, deployment or model-turn authorization.
 
@@ -48,6 +48,13 @@ image with this checkout at `/workspace`, `PYTHONPATH=/workspace`, network off
 and read-only source. The initial default host Python lacked PyJWT and failed
 test imports; the isolated uv run with declared dependencies resolved that
 environment failure. It is not a product failure or a model attempt.
+
+Independent review found a pre-dispatch error-path bug: a refusal body with
+`status: failed` and no run ID was attached to the prior run as failed. The
+correction overrides that request-only outcome to unknown; its regression uses
+the actual runner error shape. The structured exception reference is available
+to code callers. A failed UI node emits no Data output; use its known run ID
+with status/cancel for recovery.
 
 The older file-backed runner has a synthetic restart/resume check. App-owned
 ChatGPT connections intentionally refuse resume across runner-instance restart
