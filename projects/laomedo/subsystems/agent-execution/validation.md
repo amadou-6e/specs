@@ -133,3 +133,7 @@ refuses missing status without an integer exit code, with a regression for
 missing/boolean/nonzero exit fields and malformed status. Eleven focused tests
 pass. The known Langflow unknown-state polling limitation is recorded under #20;
 no client end-to-end completion is claimed.
+The final full suite at `3147ea1` passed 314 tests with six skipped. Claude's
+focused follow-up approved runtime `3147ea1` and specs `9adf541` with no blockers
+for runner-only credential-free scope. This later evidence-count entry changes
+no executable behavior; final-head CI remains required before merge.
