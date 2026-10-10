@@ -100,3 +100,10 @@ exact UUID GET with whitelisted fields. A trusted host can attach a hashed named
 observation to that dispatched invocation via record_effect. This is explicit
 reconciliation, not an automatically deployed Langflow 408 ingress, generic effect
 detector, background retry service or whole-graph restart mechanism.
+
+The [2026-10-10 native results](../../../experiments/timeout-trace-integration/iterations/2026-10-09-native/results.md)
+exercise this explicit local route with separate before/during-effect cancellation
+cases after a host wait deadline. Both preserve timeout provenance, partial raw
+references and the same identities after reopen. This is bounded IF-06/07 evidence;
+it does not accept the wider Q11 outage or generic effect-accounting contract.
+Earlier statements of untested real cancellation retain their historical scope.

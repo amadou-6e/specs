@@ -3,7 +3,7 @@ title: Native wait timeout and effect cancellation
 status: draft
 kind: experiment-iteration
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-09
+last_reviewed: 2026-10-10
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -11,6 +11,11 @@ related: []
 
 # Native timeout continuation
 
-Read [execution](execution.md), [results](results.md) and [manifest](evidence/manifest.md).
-Two prospective real host-wait/cancel cases preserve older synthetic 408 evidence.
-Neither live case has run. The shared ledger remains 10/12; review is pending.
+Two real Codex host-wait cancellation cases passed on 2026-10-10, one before
+and one during the named file effect. Read [execution](execution.md),
+[results](results.md) and the [manifest](evidence/manifest.md).
+
+The directory date identifies the prospective iteration, frozen on 2026-10-09;
+the live runs took place on 2026-10-10. Older synthetic server 408 results remain
+unchanged. This is host adapter timeout evidence, not a new Langflow server 408.
+The conservative shared ledger is exhausted at 12/12, with no retry of either case.

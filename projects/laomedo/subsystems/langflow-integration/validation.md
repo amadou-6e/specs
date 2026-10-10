@@ -65,3 +65,17 @@ classifier result remains inconclusive, with a separate retrospective failed-rea
 explanation. The conservative ledger is 10/12. Earlier paragraphs retain their
 dated scope. This does not accept the broader target, attest the executing graph,
 close #22/#93 or establish outage, timeout or production-login guarantees.
+
+## Native host wait reconciliation, 2026-10-10
+
+The [two one-shot #66 cases](../../experiments/timeout-trace-integration/iterations/2026-10-09-native/results.md)
+passed real Codex cancellation before and during the named file effect after a
+five-second host adapter wait timeout. IF-06 retains the timeout projection;
+IF-07 retains partial receipts, the same durable invocation/native identity and
+known FIRST effect after fresh-process reopen. Native interrupted and explicit
+runner confirmation establish cancellation for that exact run, with verified
+container absence and one start/cancel per case. Neither timeout nor cancellation
+is interpreted as no effects. Shared ledger 12/12, no retries. This is bounded
+host-wait evidence, not a new Langflow server 408, automated ingress, graph resume,
+semantic success or full Q11/#93 outage and push-revocation acceptance. Historical
+rows above keep their dates and limits.
