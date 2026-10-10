@@ -49,7 +49,7 @@ HTTP test. Its focused four-test rerun and the full 292-test rerun passed withou
 source changes. The intermittent connection abort's cause is not established.
 
 Claude approved implementation at `b2e98a0` and the B1 pre-run amendment at
-`bec25c0` in the same session `5442f699-0e3b-4468-9bd7-0452357b66c4`.
+`bec25c0` in the same independent reviewer session.
 Post-run evidence review and final-head CI are merge gates, not implied by the
 probe summaries. No issue state or specification maturity was changed.
 
@@ -67,3 +67,9 @@ no secret value or raw login was printed or committed. This bounded scan does no
 prove that every possible transformed secret representation is absent. The login
 remains mounted in the native container under the existing sandbox deny, not a
 newly verified production credential boundary.
+
+The post-run independent review approved specs head `8e3e870` and implementation
+head `d43e5ca` for spec-first merging, with no blockers. Optional index/wording
+corrections were applied without changing evidence or runtime behavior; hashes,
+diff checks and final-head CI verify these non-substantive edits. Issue closure
+still requires explicit human approval.

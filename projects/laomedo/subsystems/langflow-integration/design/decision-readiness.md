@@ -145,6 +145,6 @@ The [native #66 continuation](../../../experiments/timeout-trace-integration/ite
 adds confirmed real-runner cancellation before and during a named file effect,
 durable partial trace reopening and no redispatch after the host wait expires.
 This complements EXP-10/65/66 synthetic 408 evidence and #117 visible Stop plus
-join evidence. It resolves those bounded cancellation observations, while Q11
+join evidence. It supplies the bounded real-runner before/during observations, while Q11
 remains open for #93 outage/real push-revocation and broader effect completeness.
 It is not a new server 408 ingress or automatic graph recovery test.
