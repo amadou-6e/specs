@@ -132,6 +132,22 @@ preflight cannot promise to infer every repository secret, toolchain or CI need.
 This shape follows the [#175 setup clarification](https://github.com/amadou-6e/specs/issues/175#issuecomment-5950727562);
 its actual checks require R/E evidence.
 
+### Q01/Q02 evidence addendum: production LocalRunner S13 A
+
+Later [S13 production-launch validation](../validation.md) uses real LocalRunner
+preparation/execution and Docker/AppServer launch, held after actual initialize
+before any thread/turn request. It adds the production-path check missing from
+S12's scripted workers: native commands use the production exact `/draft` Git
+trust, real durable authority/lease/grant ownership, and independent managed
+tasks. A grant was revoked 4.954 s after tree loss; the retained capability was
+denied without provider growth or A PR-body change, while B continued. Four
+mutations, eight journal entries, exact cleanup and unchanged shared ledger;
+zero model turns. Post-run assessment is pending. The model profile volume may
+be mounted and is outside secret scans; this does not accept model delivery,
+Q11, full parity, Linux/logout/double-manager or whole-draft promotion. Keep
+the historical failed and bounded results below intact; Q02 and broader gates
+remain open until their actual scope is accepted.
+
 ### Q01/Q02 evidence addendum: EXP-104 S12 A/B
 
 Later bounded [S12 A/B validation](../validation.md) joins independently
