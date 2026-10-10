@@ -80,7 +80,7 @@ Canonical owners remain [Work Graph](../subsystems/work-graph/contract/work-grap
 - Existing [resume/feedback acceptance audit](../implementation/resume-feedback-acceptance.md): a dated execution foundation, not evidence for the proposed UI.
 
 The next owner-requested deliverable is the
-[complete Langflow workflow demonstration](../subsystems/work-graph/design/application-experience.md#next-requested-demonstration-the-complete-langflow-graph):
+[complete Langflow workflow demonstration](../subsystems/work-graph/contract/application-execution.md#next-requested-demonstration-the-complete-langflow-graph):
 issue ingestion, Skill and Agent nodes, Output Contract, conditional success/
 failure/rejection routing and actual draft PR creation. Separate node tests
 do not meet this expectation. It can precede the standalone Laomedo UI.
