@@ -150,7 +150,8 @@ These are scripted local-provider checks, not real GitHub/model, managed
 lease/task lifetime or complete native capability parity. Existing remote
 branch adoption by a new run and corrective capture after an unpushed/rejected
 frozen stage remain unavailable. They do not close Q02, #100/#104 or Q11.
-Independent post-run evidence review remains pending.
+[Independent post-run evidence review](https://github.com/amadou-6e/laomedo/pull/105#pullrequestreview-5478075079)
+approved this bounded evidence, not full draft promotion or the open gates.
 
 ## Choices to take to the user, in dependency order
 
