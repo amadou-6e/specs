@@ -11,10 +11,11 @@ that make intent, behavior, constraints, and verification clearer.
 - [Typed folder convention](shared/conventions/typed_folder_system/README.md): structural
   types and template expansion; each project's `SPECS.md` chooses its taxonomy.
 - [Spec authoring system](shared/skills/spec-authoring-system/SKILL.md): establish,
-  migrate, or maintain project structure, ownership, READMEs, templates, and evidence,
-  and interview a project owner to capture intent as decisions and owned specs
-  ([owner-interview](shared/skills/spec-authoring-system/references/owner-interview.md)).
-  Use for system-level authoring work and owner interviews, not every single-file correction.
+  migrate, or maintain project structure, ownership, READMEs, templates, and evidence.
+  Use for system-level authoring work, not every single-file correction.
+- [Owner interview](shared/skills/owner-interview/SKILL.md): interview a project owner
+  to capture product intent as recorded decisions and owned specifications, with a
+  goal-anchored question map and answers persisted as they arrive.
 - [Research](shared/skills/research/SKILL.md): separate research and writing with an
   inspectable evidence handoff when that workflow is selected. Read applicable
   project/category guidance too; this skill does not own every project's research schema.
