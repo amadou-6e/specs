@@ -333,3 +333,19 @@ The first slice cannot be declared decision-ready while the chosen Q01/Q25 mecha
 Q13, the network-toggle boundary and the post-E05 Docker policy are unresolved.
 Other B items may be scoped out only by explicit first-slice exclusions and
 matching preflight behavior; no experimental outcome is asserted here.
+
+## EXP-100 S11 evidence addendum, 2026-10-10
+
+The [canonical S11 validation record](../validation.md#exp-100-paired-s11-command-comparison-2026-10-10)
+records one independently pre-reviewed synthetic comparison: 44 cases passed,
+seven measured writes per side, exact denial reasons, durable effect
+attribution, unknown response preservation and verified cleanup. It retains
+the original observation and its hash, frozen source/manifest, limits and
+post-run review. No earlier negative or incomplete evidence is replaced.
+
+S11 supports the selected mediated-command implementation, not general native
+Git/gh parity or #100 closure. Newly covered issue/PR lists, issue reads,
+fixed GraphQL, Actions reads, REST GET and reviewed issue creation still need
+the original protocol's real-provider integration check. Accepted S10 B
+acquisition and closed #104 grant-loss evidence remain separate. Q11 and the
+real-agent, Stop/container and #93/#97 gates are not accepted by this capture.

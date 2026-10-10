@@ -202,3 +202,53 @@ Claude approved runtime `e8e1ed1` and specs `2f20a5d` with no blockers. Its
 nonblocking notes are recorded as scope limits: late effect ingestion for a new
 unknown invocation is refused, and older records without readiness metadata are
 projected conservatively. Later wording changes do not alter executable behavior.
+
+## EXP-100 paired S11 command comparison, 2026-10-10
+
+The single consumed identity `exp100-paired-s11-20261010-a` passed the frozen
+44-case comparison at implementation source
+`2b931242fc34c65746cfb3a98deb118ed821b2a1`. The
+[original observation](https://github.com/amadou-6e/laomedo/blob/c7dbed41bb5f034c6578bf3144160adc64d4ada3/experiments/exp100/PAIRED-OBSERVATION.json)
+has SHA-256 `4165c588ccf3e5251322a4baaa3e8e0d8bb2d30d8753850f8d782acaa715b1af`.
+Its bytes were compared with the probe output before committing. The
+[results and limits](https://github.com/amadou-6e/laomedo/blob/c7dbed41bb5f034c6578bf3144160adc64d4ada3/experiments/exp100/PAIRED-RESULTS.md)
+and [non-writing regression checks](https://github.com/amadou-6e/laomedo/blob/c7dbed41bb5f034c6578bf3144160adc64d4ada3/tests/test_paired_probe.py)
+preserve that original; tests do not rerun the consumed identity.
+
+The [protocol](https://github.com/amadou-6e/laomedo/blob/8e219b7f3ae5381324af969d9b0fe2c7810f63eb/experiments/exp100/PAIRED-PROTOCOL.md)
+and [Amendment 01](https://github.com/amadou-6e/laomedo/blob/d4a2f14d2eecdce7ef1781c978b3765cdec4c325/experiments/exp100/PAIRED-AMENDMENT-01.md)
+preceded the implementation and capture. The exact
+[manifest](https://github.com/amadou-6e/laomedo/blob/2b931242fc34c65746cfb3a98deb118ed821b2a1/experiments/exp100/PAIRED-MANIFEST.json)
+has SHA-256 `c15b68968444cfe8ec1cfd60aa61f0ef5c16c8f7f10bb40abe900bb78d82126c`;
+its source hashes describe local checkout bytes, not a cross-platform claim
+about committed source bytes. It pins governing specs
+`193fdfb2c31e71745943039c05e14d5d72e8309e` and the Git-capable image
+`sha256:eceda79a349c46a8afd6fb271e92b979f872ca67cbdf228fde6dee0856481e78`.
+
+| Observable check | Recorded result | Boundary |
+| --- | --- | --- |
+| Representative commands and explicit refusals | 18 equivalent, 11 denied, 11 unsupported, two different-but-authorized and two unknown cases; exact refusal reasons/exits checked | Selected normalized fields against an actual `gh api` loopback baseline, not all high-level native CLI behavior |
+| Writes and durable attribution | Seven measured writes per side (two Git pushes and five REST writes); eight effects with actual run/grant/state/operation attribution | Synthetic provider and explicit fixture grants; production defaults are not widened |
+| Conflict, confirmed replay and lost response | No extra writes from conflicts/replays; one suppressed PATCH response remains unknown after host saved-request replay | Host replay is not a claim of literal native `gh` retry equivalence; no automatic retry |
+| Credentials and cleanup | Container inventory contains no GitHub token or ambient login; both containers, verification stages and grants cleaned up in 1.906 seconds | Zero real GitHub acceptance calls, model turns or persistent configuration changes; no egress-confinement claim |
+
+S11 fetch exercised listings and `FETCH_HEAD` with objects already present,
+not acquisition. The helper journal records its last argument, so both listing
+rows name the run ref; it is not an independent requested-ref record. Accepted
+S10 B supplies missing-object acquisition evidence separately. The closed
+[Laomedo #104](https://github.com/amadou-6e/laomedo/issues/104) supplies accepted
+Windows/systemd grant-loss evidence; S11's fixture renewal does not repeat it.
+
+Independent read-only Claude approved the exact source before capture and
+[approved the evidence and scoped implementation afterward](https://github.com/amadou-6e/laomedo/pull/134#pullrequestreview-5479097111),
+conditional on this specs record merging and final implementation CI. It did
+not independently recompute hashes or read every normalized payload body;
+the coordinator performed byte/hash checks. Five focused tests and all four
+configured CI jobs passed at evidence head `c7dbed4`.
+
+This is not closure of [Laomedo #100](https://github.com/amadou-6e/laomedo/issues/100).
+The original EXP-100 protocol requires separate real-GitHub integration:
+new listings, issue reads, fixed GraphQL, Actions reads, REST GET and reviewed
+issue creation remain synthetic-only. Earlier live push/fetch/PR and #104
+evidence do not prove these additional lanes. Q11, #22, #93 and #97 remain
+separate open gates; no first-slice acceptance or maturity change is asserted.
