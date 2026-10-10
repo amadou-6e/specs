@@ -54,8 +54,9 @@ paths when needed rather than two active copies of the same contract.
 When specifications are drafted from conversation with the person who owns the
 product intent, read [owner-interview.md](references/owner-interview.md) before
 asking the first question. In short: read existing decisions and contracts first
-and never re-ask a recorded choice; agree the goal and show a question map in
-which every question names what it unblocks; write the map and each answer to
+and never re-ask a recorded choice; work on the issue branch; agree the goal,
+seed new capabilities from one start-to-finish scenario, and show a question map
+in which every question names what it unblocks; write the map and each answer to
 the owning decision record as they arrive; ask breadth-first, one marked question
 at a time, parking anything that does not serve the goal; checkpoint regularly;
 then route confirmed choices to decisions, behavior to contracts and open
