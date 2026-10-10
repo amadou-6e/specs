@@ -344,8 +344,26 @@ the original observation and its hash, frozen source/manifest, limits and
 post-run review. No earlier negative or incomplete evidence is replaced.
 
 S11 supports the selected mediated-command implementation, not general native
-Git/gh parity or #100 closure. Newly covered issue/PR lists, issue reads,
-fixed GraphQL, Actions reads, REST GET and reviewed issue creation still need
-the original protocol's real-provider integration check. Accepted S10 B
+Git/gh parity or #100 closure. At the S11 assessment, newly covered issue/PR
+lists, issue reads, fixed GraphQL, Actions reads, REST GET and reviewed issue
+creation still needed the original protocol's real-provider integration check. Accepted S10 B
 acquisition and closed #104 grant-loss evidence remain separate. Q11 and the
 real-agent, Stop/container and #93/#97 gates are not accepted by this capture.
+
+## EXP-100 S12 acceptance addendum, 2026-10-10
+
+The [canonical S12 validation record](../validation.md#exp-100-s12-real-provider-integration-2026-10-10)
+records one independently pre/post-reviewed real-provider capture: 17 checks,
+17 reads and exactly one owner-approved reviewed issue POST, positive issue
+view/list/fixed GraphQL, real Actions job/REST reads, durable effect identity,
+zero dispatch on refusals/replay and verified cleanup. Original observation,
+source/manifest/protocol, hash and limits remain inspectable; no older evidence
+is rewritten or relabelled.
+
+Independent post-run review accepts the original selected #100 criteria once
+this evidence and implementation integrate, in conjunction with separately
+accepted S10 B, S11, earlier live Git/PR and closed #104 evidence. The prior
+S11 real-provider gap is covered, not silently waived. This is selected-command
+acceptance, not general Git/gh feature parity, production browser-login/service
+proof or Q11/#22/#93/#97 acceptance. Those gates remain separate; no broader
+first-slice decision-readiness or maturity change follows from #100 closure.
