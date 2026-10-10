@@ -37,3 +37,7 @@ Canonical evidence: [pilot result](../../experiments/local-skill-agent-pilot/ite
 and [feasibility ledger](../../research/runner-feasibility/sources/README.md).
 Follow reports for exact revisions and private-artifact limits. A bounded observation
 does not accept every target guarantee.
+
+## Runner-owned Git exclusion proposal, 2026-10-10
+
+The [#79 regression continuation](../../experiments/pinned-skill-materialization/iterations/2026-10-10-runner-git/results.md) tests exact pinned-skill exclusions in independent private Git baselines, CRLF bytes, visible unrelated edits, tamper refusal and cleanup failures. Independent review and final CI remain merge gates. This does not relabel the older EXP-08 manual-exclude result as production coverage or prove OS confinement or native skill consumption.
