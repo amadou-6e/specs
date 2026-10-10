@@ -132,6 +132,55 @@ preflight cannot promise to infer every repository secret, toolchain or CI need.
 This shape follows the [#175 setup clarification](https://github.com/amadou-6e/specs/issues/175#issuecomment-5950727562);
 its actual checks require R/E evidence.
 
+### Q01/Q02 evidence addendum: synthetic Linux systemd S14
+
+The [S14 validation row](../validation.md) adds the user-selected real systemd
+unit/cgroup ownership test inside a disposable privileged Docker VM, using
+production lease/grant/mediation code and a synthetic provider. A revoked in
+4.914914seconds, retained-capability writes were denied without provider growth,
+and B and the service continued before broker restart. Original observation
+remains incomplete due replay-response metadata equality; a frozen retrospective
+amendment and corrected semantic checker assess the captured facts separately.
+No second run or rewriting of the original outcome. This narrows the intended
+Linux service-manager gap, not full production Linux routing, inner stage cleanup,
+real-agent behavior, logout/double-manager, CLI parity or Q11. Preserve earlier
+historical limitations; post-run review/merge and actual issue acceptance remain
+separate gates.
+
+### Q01/Q02 evidence addendum: production LocalRunner S13 A
+
+Later [S13 production-launch validation](../validation.md) uses real LocalRunner
+preparation/execution and Docker/AppServer launch, held after actual initialize
+before any thread/turn request. It adds the production-path check missing from
+S12's scripted workers: native commands use the production exact `/draft` Git
+trust, real durable authority/lease/grant ownership, and independent managed
+tasks. A grant was revoked 4.954 s after tree loss; the retained capability was
+denied without provider growth or A PR-body change, while B continued. Four
+mutations, eight journal entries, exact cleanup and unchanged shared ledger;
+zero model turns. [Independent post-run review](https://github.com/amadou-6e/specs/pull/325#pullrequestreview-5478364450)
+approved this bounded evidence; reviewer did not hash files or run probes.
+The model profile volume may
+be mounted and is outside secret scans; this does not accept model delivery,
+Q11, full parity, Linux/logout/double-manager or whole-draft promotion. Keep
+the historical failed and bounded results below intact; Q02 and broader gates
+remain open until their actual scope is accepted.
+
+### Q01/Q02 evidence addendum: EXP-104 S12 A/B
+
+Later bounded [S12 A/B validation](../validation.md) joins independently
+managed Windows tasks, real authority/lease and supported native Git/partial
+gh with the real disposable-provider runner-loss check. In fresh B, A's grant
+was revoked 4.985 s after runner-tree loss. The retained capability was denied
+without a provider attempt, B kept working and local cleanup was verified;
+consumed A's setup failure is preserved.
+This narrows the Windows managed-startup/native integration gap at one pinned
+source, not service-outage recovery, actual LocalRunner/model or full command
+parity. [Independent post-run review](https://github.com/amadou-6e/laomedo/pull/105#pullrequestreview-5478256248)
+approved this bounded evidence, not full draft promotion; Q02/#104/#100/Q11 remain open. Historical
+rows below retain the limits of their original captures; they must not be
+read as denying newer bounded evidence. The user's repository-only token
+scope confirmation governs this capture; no second exclusivity claim is made.
+
 ### Q01/Q02 evidence addendum: EXP-104 S11
 
 The [S11 result](https://github.com/amadou-6e/laomedo/blob/b5b7430/experiments/exp104/S11-RESULTS.md) and [pinned validation row](../validation.md) add a distinct Windows, no-model mediated-GitHub check: A's exact grant was revoked 4.906 seconds after runner-tree loss, a post-revocation PR update was denied without a provider attempt, B created its PR afterward, and exact A/B container cleanup was verified. Four provider writes were recorded; S9 and S10 failed before any write and were not retried. The [independent post-run review](https://github.com/amadou-6e/laomedo/pull/105#pullrequestreview-5460836418) approves this bounded evidence, not merging the draft implementation. It narrows the Q02 experimental gap but does not change Q01's selected architecture or close Q02: the probe started the service, so production service-manager installation, service double failure, real-agent behavior and literal `git`/`gh` parity remain unproven. The approximately 4.9-second pre-revocation exposure window was not exercised by a write attempt.

@@ -112,6 +112,7 @@ clutter, not a change to runner isolation or trace behavior.
 
 [PR #154](https://github.com/amadou-6e/specs/pull/154) was closed as superseded
 by the merged authoring system. Its distinct focused owner-interview method
-remains a potential follow-up, not a second active skill. [PR #152](https://github.com/amadou-6e/specs/pull/152)
+was later revised and merged as the shared
+[owner-interview skill](../../../shared/skills/owner-interview/SKILL.md) (specs #326, #330). [PR #152](https://github.com/amadou-6e/specs/pull/152)
 merged the Work Graph contract into its owned subsystem; this migration record
 preserves the `capabilities/` pointer and does not change Work Graph behavior.

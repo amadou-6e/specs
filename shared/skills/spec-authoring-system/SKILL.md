@@ -1,6 +1,6 @@
 ---
 name: spec-authoring-system
-description: Establish, migrate, or maintain a project's repeatable specification authoring system with typed categories, ownership, container READMEs, populated templates, evidence lifecycles, and PR spec-impact assessment. Use for project-wide specification organization or authoring workflows, rather than ordinary edits to a single existing spec.
+description: Establish, migrate, or maintain a project's repeatable specification authoring system with typed categories, ownership, container READMEs, populated templates, evidence lifecycles, and PR spec-impact assessment. Use for project-wide specification organization or authoring workflows, rather than ordinary edits to a single existing spec. To gather intent from a project owner, use the owner-interview skill.
 ---
 
 # Build and maintain a specification authoring system
@@ -48,6 +48,15 @@ claims before moving files, preserve evidence identities and chronology, and
 repair links. Split mixed documents by authority where useful. Keep a mapping
 of old locations to new owners; use concise redirects for externally referenced
 paths when needed rather than two active copies of the same contract.
+
+## Interview the owner when intent is still forming
+
+When specifications are drafted from conversation with the person who owns the
+product intent, use the [owner-interview](../owner-interview/SKILL.md) skill
+before asking the first question. It owns the interview procedure: inventory of
+recorded decisions, a goal-anchored question map, answers persisted as they
+arrive, breadth-first questioning and routing of results. This skill continues
+to own the categories, templates and metadata those results are written into.
 
 ## Specification impact on each PR
 
