@@ -127,6 +127,47 @@ references for the comparison, not evidence that either route works here.
 
 ## Frozen comparison required before a parity claim
 
+### Selected representative REST write (2026-10-10)
+
+The user selected "Use the existing PR-create boundary" for #100's REST-write
+case. `gh api repos/OWNER/REPO/pulls --method POST --input FILE` (including `-`
+for stdin) is an exact classified alias of the existing `pr_create` typed
+operation, not a general REST-write permission. The input JSON contains only
+string `title`, `body`, `head` and `base` fields. The body carries the configured
+reconciliation marker; a durable effect identity is required. The classifier
+rejects extra fields, other endpoints/methods and invalid input before mediation.
+The host applies the same repository, run branch/base, explicit grant, Q16
+intent/replay and target checks as ordinary PR creation. Old approvals and
+first-slice operation sets do not grow. Arbitrary REST/GraphQL mutations remain
+unsupported; the paired comparison must record that honestly rather than count
+every unsupported case as a successful positive. This selects the mechanism;
+the fresh frozen paired comparison is still required before a parity claim.
+
+### Selected Linux service-manager test boundary (2026-10-10)
+
+For #104, the user approved a disposable privileged systemd Docker test with
+synthetic credentials and no persistent WSL changes. Its intended boundary is
+real systemd unit/cgroup ownership: lease/mediator service and runners A/B have
+separate cgroups; killing all of A's unit must leave the service and B alive,
+revoke A's exact capability within60seconds, and deny a retained-capability
+request without provider dispatch while B remains usable. Service restart and
+expired/revoked renewal controls use production grant/lease code, a synthetic
+provider and no model. No inner stage container exists; synthetic cleanup
+must not claim actual Docker stage teardown. Existing Windows evidence owns
+that separate claim.
+
+Freeze and independently review the protocol and exact source/image before
+execution. Use only trusted fixture code, network-none, a private cgroup
+namespace, bounded runtime/resources, no host filesystem binds or Docker socket,
+and exact identity/label/image checks for cleanup. Privileged mode still adds
+access to the Docker VM; do not call this a hostile-code isolation proof.
+The initial protocol is [S14 SYSTEMD-PROTOCOL.md](https://github.com/amadou-6e/laomedo/blob/9bcf8be/experiments/exp104/SYSTEMD-PROTOCOL.md).
+No result is asserted here. This boundary does not prove production Linux
+LocalRunner container routing, real GitHub writes on Linux, logout, power loss,
+double-manager survival or Q11. The existing non-Windows route refusal stays
+in place. A failed setup consumes its capture identity; do not add broader
+host/cgroup mounts or replay the capture silently.
+
 Use one disposable permission scope and equivalent **paired** repository
 states, with fresh branch/PR/marker identities for direct and mediated sides
 so the first side's writes cannot change the second side's preconditions.
