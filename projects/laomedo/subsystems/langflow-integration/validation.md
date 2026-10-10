@@ -11,6 +11,38 @@ related: []
 
 # Langflow integration validation
 
+## Trusted publication handoff checkpoint, 2026-10-10
+
+[Laomedo #138](https://github.com/amadou-6e/laomedo/issues/138) implements the
+[trusted handoff design](design/trusted-publication-handoff.md) as opt-in host
+composition. At [3742913](https://github.com/amadou-6e/laomedo/commit/3742913),
+609 host tests pass with 11 skips under cached pinned project dependencies,
+and five publisher-node tests pass inside pinned Langflow/LFX 1.12.3 with
+network disabled and source mounted read-only. The final guard amendment at
+[2ba18f2](https://github.com/amadou-6e/laomedo/commit/2ba18f2) passes 38 focused
+handoff/lease tests; the node source is unchanged. The initial raw Python run
+lacked PyJWT and could not load the full suite; `uv` with the project's pinned
+dependencies resolved that environment failure.
+
+The tests establish draft-only fake-provider publication after host contract
+acceptance; exact readback; refusal of task failure, contract rejection,
+interruption, unknown completeness and requirements mismatch; old agent-bearer
+denial during validation; unconfirmed/foreign artifact refusal; no automatic
+resend; durable intent before dispatch; bounded renewals; cancellation and
+expiry races; provider-connection removal; explicit startup recovery; and
+authenticated empty-body host API admission. The lease-service test uses a
+real service object with synthetic heartbeat loss and a fake Docker cleanup:
+it revokes the same handoff grant before cleanup while another run remains
+usable. It is not a whole-process-tree kill or real GitHub revocation probe.
+
+Independent Claude review is **pending**: the bound session returned a
+subscription rate-limit error and no verdict. Its request is retained without
+duplicate submission. No configuration, real credential, model turn or GitHub
+acceptance write was used. This checkpoint is not merged implementation or
+live #139 acceptance. The real runner's unknown completeness, native provider
+acceptance, host deployment wiring, #100 gate and #139 cap/scoped identity
+remain required before live publication.
+
 ## Imported skill-agent-contract demonstration, 2026-10-10
 
 The credential-free [Laomedo #137 implementation](https://github.com/amadou-6e/laomedo/pull/142) composes the production Skill Reference, Codex Agent and Output Contract nodes with fixture issue ingestion and explicit conditional routes. It deserializes the committed export with pinned `Graph.from_payload(...).arun()`, not a manually reproduced router. This is Graph-engine import/execution, not a live REST/UI server-import claim.
