@@ -112,3 +112,29 @@ classifier result remains inconclusive, with a separate retrospective failed-rea
 explanation. The conservative ledger is 10/12. Earlier paragraphs retain their
 dated scope. This does not accept the broader target, attest the executing graph,
 close #22/#93 or establish outage, timeout or production-login guarantees.
+
+## Outstanding command regressions, 2026-10-10 (#24)
+
+The [native-turn boundary](contract/runner-api.md#native-turn-and-outstanding-commands-24)
+is covered by credential-free production-runner fixtures at implementation
+`3147ea1aeea0380bfd0c97ddd7c4536f0c9535a2`, in
+[test_outstanding_commands.py](https://github.com/amadou-6e/laomedo/blob/3147ea1aeea0380bfd0c97ddd7c4536f0c9535a2/tests/test_outstanding_commands.py).
+They cover both native transports returning a completed turn with a dangling
+command; explicit command completion, failure and cancellation; partial-output
+references and other-turn isolation; unidentified commands; multiple commands;
+persisted evidence after restart; cleanup failure; and a resumed attempt withholding
+the previous snapshot identity. These are implementation-author regressions, not
+an independently frozen live-provider experiment. No model turns, credentials,
+permission changes, issue edits or GitHub acceptance writes are used. Runtime
+container teardown remains mocked here; earlier cleanup evidence is unchanged.
+The initial full suite at `5a85b06` passed 313 tests with six skipped. Claude's
+first review approved the bounded runner behavior, requested explicit client
+integration limits, and identified the missing-status case. The later projection
+refuses missing status without an integer exit code, with a regression for
+missing/boolean/nonzero exit fields and malformed status. Eleven focused tests
+pass. The known Langflow unknown-state polling limitation is recorded under #20;
+no client end-to-end completion is claimed.
+The final full suite at `3147ea1` passed 314 tests with six skipped. Claude's
+focused follow-up approved runtime `3147ea1` and specs `9adf541` with no blockers
+for runner-only credential-free scope. This later evidence-count entry changes
+no executable behavior; final-head CI remains required before merge.
