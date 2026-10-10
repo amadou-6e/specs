@@ -3,10 +3,19 @@
 Use this procedure when a specification is drafted from conversation with the
 person who owns the product intent: defining a new project, a new capability,
 a release scope, or a user experience. Its output is recorded decisions and
-owned specification text, not a chat transcript. It replaces the unmerged
-`define-project-spec` skill (#153) and addresses its observed failures (#326):
+owned specification text, not a chat transcript. It guards against the failures seen in earlier interviews:
 depth-first drift, repeated questions, answers kept only in chat, and
 unexplained references.
+
+Scale it to the request. A clarification needing three or fewer questions still
+starts from the inventory, but its goal and map can be one line.
+
+## 0. Work where the owner can see it
+
+Before persisting anything, have the tracking issue and its typed issue branch
+in the repository's visible top-level checkout, as the repository guidance
+requires. Answers recorded on `main`, in an auxiliary worktree or only in chat
+are not yet a reviewable record.
 
 ## 1. Inventory before asking
 
@@ -19,21 +28,28 @@ Before the first question, read what the owner has already decided:
 - open specification issues and PRs on the same topic.
 
 Prefill the session from these sources. Never ask the owner to repeat a recorded
-choice: cite it (for example "D09 already says `latest` by default, pinned
-optional") and ask only whether it still holds when the new topic genuinely
+choice: cite it (for example "D3 already records that imports fail closed")
+and ask only whether it still holds when the new topic genuinely
 challenges it. Distinguish user-confirmed intent, documented proposals,
 implemented behavior and open questions. A merged feasibility report or a
 reviewer's recommendation is not the owner's decision.
 
-Repeat this check immediately before each question, not only at the start:
-long sessions are summarized, and a choice read hours earlier may no longer be
-in context. If the answer is already recorded, do not ask.
+Before each question, check the persisted record and map from step 3, and
+re-read the sources that question touches. Long sessions are summarized, and a
+choice read hours earlier may no longer be in context. If the answer is already
+recorded, do not ask.
 
 ## 2. Agree the goal, then compile a question map
 
 State in one or two sentences what this interview must produce: for example,
 "the interfaces between subsystems" or "release scope for the two packages".
-Name the deliverable files. Then compile a question map before asking anything:
+Name the deliverable files.
+
+For a new project or capability, first establish the intended users, the
+outcome they want and one concrete start-to-finish scenario. Walk that scenario
+for its inputs, output, state owner, failure and recovery, and the evidence
+that would show success; each gap seeds a question. Then compile a question map
+before asking anything:
 
 - Group questions by area (subsystem, user scenario step, package).
 - For each question record what it unblocks: the document, interface, decision
@@ -48,7 +64,9 @@ areas before the first question. Their edits to the map are themselves intent.
 
 Write the goal, the map and each answer to a file as they happen, not at the end.
 When the project declares `decisions/`, create or update the topic's decision
-record (status `draft`) and keep the map in its open-questions section; otherwise
+record with the project's unaccepted status (for example `draft`) and keep the
+map in its open-questions section, or the equivalent section its template
+allows; otherwise
 use the location the project's `SPECS.md` assigns to unresolved decisions. For
 each answer record the question, the owner's words or a faithful paraphrase,
 the date, and what it unblocks. Tick the map entry.
@@ -67,7 +85,7 @@ belong to a later session.
   Allow at most three consecutive follow-ups on one thread, then return to the
   map. Note deeper questions there rather than chasing them.
 - **Position marker.** Prefix each question with its place in the map, for
-  example `Issue integration · 2/5 · unblocks IF-01`. Drift becomes visible to
+  example `Imports · 2/5 · unblocks the import interface`. Drift becomes visible to
   both sides immediately.
 - **One decision per question,** or a small group of tightly related choices.
   Offer the realistic options, the product consequence of each, and a
@@ -113,7 +131,6 @@ a page `design` because it is a "brief"; choose the owner by what the text asser
 
 Report the decisions recorded (with file links), the documents updated, the
 remaining map and the parked list, and the next question. Validate as the
-repository requires. Follow the repository's issue/branch/PR workflow; drafting
-on `main` or in an auxiliary checkout is not a substitute. Using this procedure
+repository requires and open the PR from the issue branch (step 0). Using this procedure
 does not authorize implementing the recorded behavior, contacting third parties
 or changing issue state.
