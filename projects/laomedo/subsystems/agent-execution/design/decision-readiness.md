@@ -142,7 +142,9 @@ trust, real durable authority/lease/grant ownership, and independent managed
 tasks. A grant was revoked 4.954 s after tree loss; the retained capability was
 denied without provider growth or A PR-body change, while B continued. Four
 mutations, eight journal entries, exact cleanup and unchanged shared ledger;
-zero model turns. Post-run assessment is pending. The model profile volume may
+zero model turns. [Independent post-run review](https://github.com/amadou-6e/specs/pull/325#pullrequestreview-5478364450)
+approved this bounded evidence; reviewer did not hash files or run probes.
+The model profile volume may
 be mounted and is outside secret scans; this does not accept model delivery,
 Q11, full parity, Linux/logout/double-manager or whole-draft promotion. Keep
 the historical failed and bounded results below intact; Q02 and broader gates
