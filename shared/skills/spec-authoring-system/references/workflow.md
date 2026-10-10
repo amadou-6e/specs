@@ -21,6 +21,7 @@ Neither automatically authorizes implementation.
 | One owned capability's behavior, interfaces and failure semantics | subsystems | Research conclusions presented as requirements |
 | A test question, protocol, separate executions and outcomes | experiments | Unbounded source exploration |
 | Sources, inspection method, findings and uncertainty | research | An accepted product decision |
+| A user-confirmed product choice, its rationale, alternatives and open questions | decisions (when the project declares it) | The behavior it requires, which belongs to the owning contract |
 | Contributor procedures and implementation conventions | implementation | The public behavior those procedures realize |
 | Historical material no longer governing current behavior | Project's declared archive/deprecated category | A second active contract |
 
@@ -30,7 +31,9 @@ belongs to experiments; an interpretation of earlier feasibility reports belongs
 to research. The validation page links those observations back to the guarantee.
 
 Optional decision, bug, or UI collections are created only when the project
-declares them. UI geometry, states and transitions are owned by the relevant
+declares them. Where `decisions` exists, it is the first place to read before
+asking an owner a product question and the place to record the answer; a
+"brief" is not a separate owner. See [owner-interview.md](owner-interview.md). UI geometry, states and transitions are owned by the relevant
 Draw.io, not invented in Markdown. Compatibility folders contain pointers only.
 
 ## 2. Understand the structure and manifest
@@ -180,6 +183,9 @@ if no attempt is intended. Never fill a results table with fabricated success.
 
 Work proceeds as: tracking issue -> typed issue branch -> owned contract/research
 or protocol -> validation/evidence -> specification PR -> review -> merge.
+When the intent itself is still being gathered from the owner, interview them
+with [owner-interview.md](owner-interview.md) on that issue branch and record
+answers in the owning decision record as they arrive, before drafting contracts.
 Only execute experiments within their separate authorization and budget.
 Freeze prospective protocols and source identities before execution. Label any
 post-result reconstruction retrospective; changed protocols need recorded
