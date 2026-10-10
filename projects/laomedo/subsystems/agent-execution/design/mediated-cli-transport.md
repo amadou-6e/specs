@@ -230,6 +230,29 @@ formatting. GraphQL and unsupported paging/general writes are classified as
 unsupported, never equivalent. A prospective protocol is not executed evidence;
 development tests and library-level exact-review controls do not close #100.
 
+### Fixed GraphQL read positive, prospective amendment
+
+The original EXP-100 matrix includes a GraphQL-read positive; marking every
+GraphQL call unsupported would leave that criterion unmet. The
+[prospective amendment](https://github.com/amadou-6e/laomedo/blob/d4a2f14d2eecdce7ef1781c978b3765cdec4c325/experiments/exp100/PAIRED-AMENDMENT-01.md)
+therefore adds exactly one query, before implementation or capture:
+
+`query($owner:String!,$name:String!){repository(owner:$owner,name:$name){issues(first:30,states:OPEN){nodes{number title body}}}}`
+
+`gh api graphql --method POST --input FILE` (or stdin) must receive JSON with
+only that exact query and variables owner/name matching the selected repository.
+It maps to the existing explicitly granted issue_list operation with a fixed
+format selector. The credential-owning host constructs the identical fixed
+provider query and repository variables; it never forwards arbitrary agent
+GraphQL bytes or substitutes REST pagination/filtering semantics. Project only
+number/title/body nodes; provider errors, malformed fields or more than30nodes
+are not success. Alternate selections, fragments, aliases, mutations, extra or
+cross-repository variables and paging fail before provider dispatch. No new
+operation/authority/default grant lane. General GraphQL remains unsupported.
+The earlier prospective protocol's blanket GraphQL refusal is superseded only
+by this recorded amendment; no historical capture is rewritten. Exact paired
+manifest, executable harness and independent pre/post-run review remain required.
+
 ## Review questions
 
 - The native remote-helper surface is selected above. Which trusted
