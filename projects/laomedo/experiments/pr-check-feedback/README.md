@@ -23,3 +23,7 @@ manifest: 1 each. Replication: 0..1 per attempt only when actually performed.
 Read [protocol](protocol.md), [sources](sources.md) and [S1](iterations/s1/README.md).
 The [target gate contract](../../subsystems/langflow-integration/contract/interfaces.md#pr-head-check-gate-target)
 owns behavior; this entry owns evidence and its limits.
+
+The [retrospective acceptance audit](../../implementation/resume-feedback-acceptance.md#123-synthetic-experiment-acceptance)
+maps #123's synthetic criteria to S1 and identifies the remaining live integration
+work. It replays captured bytes without dispatching a new graph or changing S1.
