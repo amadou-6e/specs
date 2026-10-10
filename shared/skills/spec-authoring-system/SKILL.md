@@ -1,6 +1,6 @@
 ---
 name: spec-authoring-system
-description: Establish, migrate, or maintain a project's repeatable specification authoring system with typed categories, ownership, container READMEs, populated templates, evidence lifecycles, and PR spec-impact assessment. Use for project-wide specification organization or authoring workflows, rather than ordinary edits to a single existing spec.
+description: Establish, migrate, or maintain a project's repeatable specification authoring system with typed categories, ownership, container READMEs, populated templates, evidence lifecycles, and PR spec-impact assessment; and interview a project owner to capture product intent as recorded decisions and owned specifications. Use for project-wide specification organization or authoring workflows, and whenever specs are drafted from conversation with the owner (new project, capability, release scope or user experience), rather than ordinary edits to a single existing spec.
 ---
 
 # Build and maintain a specification authoring system
@@ -48,6 +48,19 @@ claims before moving files, preserve evidence identities and chronology, and
 repair links. Split mixed documents by authority where useful. Keep a mapping
 of old locations to new owners; use concise redirects for externally referenced
 paths when needed rather than two active copies of the same contract.
+
+## Interview the owner when intent is still forming
+
+When specifications are drafted from conversation with the person who owns the
+product intent, read [owner-interview.md](references/owner-interview.md) before
+asking the first question. In short: read existing decisions and contracts first
+and never re-ask a recorded choice; agree the goal and show a question map in
+which every question names what it unblocks; write the map and each answer to
+the owning decision record as they arrive; ask breadth-first, one marked question
+at a time, parking anything that does not serve the goal; checkpoint regularly;
+then route confirmed choices to decisions, behavior to contracts and open
+investigation to research. Do not let the next question follow only from the
+last answer.
 
 ## Specification impact on each PR
 
