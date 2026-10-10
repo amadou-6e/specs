@@ -19,7 +19,7 @@ composition. At [3742913](https://github.com/amadou-6e/laomedo/commit/3742913),
 609 host tests pass with 11 skips under cached pinned project dependencies,
 and five publisher-node tests pass inside pinned Langflow/LFX 1.12.3 with
 network disabled and source mounted read-only. The final guard amendment at
-[2ba18f2](https://github.com/amadou-6e/laomedo/commit/2ba18f2) passes 38 focused
+[840dfac](https://github.com/amadou-6e/laomedo/commit/840dfac) passes 39 focused
 handoff/lease tests; the node source is unchanged. The initial raw Python run
 lacked PyJWT and could not load the full suite; `uv` with the project's pinned
 dependencies resolved that environment failure.
