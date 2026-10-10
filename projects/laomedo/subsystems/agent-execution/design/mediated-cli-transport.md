@@ -202,6 +202,57 @@ protocol must record the disposable repository's Actions/secrets exposure and
 the user's selected policy before any live push. This page does not silently
 add a new approval requirement.
 
+## Native issue command classifier, #100 continuation
+
+`gh issue view NUMBER` uses the existing selected-repository `api_rest_read`
+GET for `/repos/OWNER/REPO/issues/NUMBER`, then checks exact issue identity and
+refuses a PR returned by the issues endpoint. `gh issue create --title TITLE
+--body BODY` (or bounded UTF-8 body file/stdin) emits existing `issue_create`
+only with durable effect, marker and reviewed proposal identity. That identity
+is an agent-supplied selector, not approval: the host's exact reviewed-request
+hash must match every field, including title/body, before dispatch. Edited or
+unreviewed drafts remain refused; unknown writes never automatically retry.
+
+The trusted prototype controller can explicitly issue a scope and exact
+reviewed_issue_requests through MediationStore. Existing RunGrantAuthority and
+LocalRunner first-slice sets remain unchanged; these do not become default
+runner issue-publication permissions. Command recognition is not agent-stage
+acceptance or a new authorization endpoint. Do not present manually issued
+prototype grants as production authority/runner integration evidence.
+
+The frozen [paired comparison protocol](https://github.com/amadou-6e/laomedo/blob/8e219b7f3ae5381324af969d9b0fe2c7810f63eb/experiments/exp100/PAIRED-PROTOCOL.md)
+precedes new adapter/harness code. It proposes independent equivalent synthetic
+provider states and actual direct Git/gh commands versus mediated commands in
+the pinned agent container, with exact source/input/attempt caps independently
+reviewed before capture. A direct `gh api` baseline is an effect/normalized-field
+comparison, not proof of identical high-level `gh pr`/`gh issue` internals or
+formatting. GraphQL and unsupported paging/general writes are classified as
+unsupported, never equivalent. A prospective protocol is not executed evidence;
+development tests and library-level exact-review controls do not close #100.
+
+### Fixed GraphQL read positive, prospective amendment
+
+The original EXP-100 matrix includes a GraphQL-read positive; marking every
+GraphQL call unsupported would leave that criterion unmet. The
+[prospective amendment](https://github.com/amadou-6e/laomedo/blob/d4a2f14d2eecdce7ef1781c978b3765cdec4c325/experiments/exp100/PAIRED-AMENDMENT-01.md)
+therefore adds exactly one query, before implementation or capture:
+
+`query($owner:String!,$name:String!){repository(owner:$owner,name:$name){issues(first:30,states:OPEN){nodes{number title body}}}}`
+
+`gh api graphql --method POST --input FILE` (or stdin) must receive JSON with
+only that exact query and variables owner/name matching the selected repository.
+It maps to the existing explicitly granted issue_list operation with a fixed
+format selector. The credential-owning host constructs the identical fixed
+provider query and repository variables; it never forwards arbitrary agent
+GraphQL bytes or substitutes REST pagination/filtering semantics. Project only
+number/title/body nodes; provider errors, malformed fields or more than30nodes
+are not success. Alternate selections, fragments, aliases, mutations, extra or
+cross-repository variables and paging fail before provider dispatch. No new
+operation/authority/default grant lane. General GraphQL remains unsupported.
+The earlier prospective protocol's blanket GraphQL refusal is superseded only
+by this recorded amendment; no historical capture is rewritten. Exact paired
+manifest, executable harness and independent pre/post-run review remain required.
+
 ## Review questions
 
 - The native remote-helper surface is selected above. Which trusted
