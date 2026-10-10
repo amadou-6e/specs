@@ -56,8 +56,8 @@ Artifact placement, ownership, retention and unsaved-output behavior await the
 
 [Owner interview A14](../../../decisions/0006-release-packages.md) selects
 preservation of failed/stopped runs' uncommitted changes until the user explicitly
-deletes them; no automatic expiry was selected. Agent execution must make a
-durable recoverable reference before removing the execution container, and
+deletes them; no automatic expiry was selected. Proposed derived requirement:
+agent execution makes a durable recoverable reference before removing the execution container, and
 results must retain the original run/invocation attribution and honest saved/
 published state. Keeping a live container is not a retention mechanism.
 Partial raw-trace retention belongs to

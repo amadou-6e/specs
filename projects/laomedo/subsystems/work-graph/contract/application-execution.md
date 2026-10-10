@@ -113,8 +113,9 @@ not blindly submit another run with a new identity. A client stopping its wait i
 confirmed remote cancellation. No source issue is closed just because an
 executor exits successfully. Existing #22/#93/#104 limits remain applicable.
 
-The selected workflow creates its draft PR automatically through configured
-scoped GitHub access. There is no separate click-to-publish requirement for that
+The selected workflow must create its draft PR automatically through configured
+scoped GitHub access, subject to the publication integration gate below. There
+is no separate click-to-publish requirement for that
 successful path. This does not select automatic PR merging or issue closure.
 An agent-reported task failure is handed to the graph, where configured routing
 can send it to a reviewer or human-in-the-loop step instead of publication.
