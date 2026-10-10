@@ -9,6 +9,8 @@ technology partitions or folder-copy mechanism.
 - [Canonical pilot](../experiments/local-skill-agent-pilot/README.md): evidence and pinned reproduction guide.
 - [Native Langflow node](native-langflow-node.md): current implementation checks,
   recovered failures, lifecycle limitation and pending model-backed acceptance.
+- [Resume and feedback acceptance audit](resume-feedback-acceptance.md): #20
+  response/partial-evidence coverage and #123 synthetic scope versus live gaps.
 
 Procedures link contracts rather than redefine them. Reproducing model-backed trials
 requires separate authorization and bounded budget. Writing specs or copying templates

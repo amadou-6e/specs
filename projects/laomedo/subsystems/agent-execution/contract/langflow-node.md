@@ -118,3 +118,26 @@ records retain conservative polling. Installed flows embedding older component
 code must be regenerated/reimported before this behavior is available; updating
 the source alone does not rewrite an operator's saved flow. Deployment and saved
 flow activation are outside this credential-free change.
+
+### Resume response and failure-reference checks (#20)
+
+The node refuses a resume/status/cancel response naming a different run. A
+completed resume must name the requested native thread. These checks do not
+replace runner-side profile, configuration, canonical source, workspace and
+exact post-run snapshot verification. A mismatch never falls back to fresh.
+
+Known runner failures remain errors rather than successful Answers. The
+component's `RunnerResultError.run_reference` retains the public projection:
+run/thread identity, state, error category and partial trace reference when
+available, without private profile/workspace paths or raw events. A refused
+resume without a full result retains the known prior run/trace and an unknown
+current outcome, not the prior turn's completed status. A resume transport
+timeout similarly retains the known identity and does not retry or claim remote
+cancellation. Status/cancel can query the same run afterwards.
+
+Pinned-runtime tests wire a fresh Run Reference Data port directly into a later
+resume node. Serialized Prior Run JSON remains the manual alternative. The
+checked-in flow embeds the new source; no installed flow or server is changed.
+The [acceptance audit](../../../implementation/resume-feedback-acceptance.md)
+records tests and the precise cancellation boundary. Continuous streaming,
+automatic retries and broader #22/#93 acceptance remain outside this check.
