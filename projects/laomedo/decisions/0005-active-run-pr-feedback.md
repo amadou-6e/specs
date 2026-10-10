@@ -91,3 +91,7 @@ The GitHub ingress owner, check selection and timeout policy, Langflow's
 waiting-node mechanism, graph snapshot behavior during a wait, and exact
 failure payload need experiments/design. No choice here authorizes a new live
 provider write or consumes a real-agent model turn.
+
+## Output validation handoff refinement (2026-10-10)
+
+[Decision 0007](0007-trusted-output-publication-handoff.md) records the owner-selected trusted active handoff for downstream Output Contract validation before publication. Agent completion must not be confused with the trusted stage handoff ending. The earlier evidence remains unchanged; the new handoff still requires implementation and its existing live gates.

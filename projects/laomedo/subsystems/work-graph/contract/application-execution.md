@@ -200,9 +200,10 @@ run. Start with synthetic fixtures; live acceptance needs its own scope/budget.
 
 Publication integration gate: [decision 0005](../../../decisions/0005-active-run-pr-feedback.md)
 uses an active agent stage's revocable write grant. This demonstration instead
-places publication after downstream validation. A trusted active handoff or
-separately scoped publisher capability must be specified/tested before that
-route can launch; neither is selected here. Do not reuse a revoked agent grant,
+places publication after downstream validation. The owner selected a
+[trusted active handoff](../../../decisions/0007-trusted-output-publication-handoff.md)
+through validation. Its mediator lifecycle must be implemented and tested before
+that route can launch. Do not reuse a revoked agent grant,
 extend its lifetime implicitly, or assign publishing to Results by implication.
 
 

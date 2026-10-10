@@ -41,3 +41,5 @@ The [journey graph](../architecture/user-traversal.md) and
 [handoff graph](../architecture/subsystem-handoffs.md) remain the editable visual
 authorities. Subsystem contract pages own proposed interface behavior; this
 category owns the decision history, alternatives and unresolved choices.
+
+- [0007 - Trusted output publication handoff](0007-trusted-output-publication-handoff.md): owner-selected active handoff through validation; implementation and live gates remain open.
