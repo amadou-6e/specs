@@ -341,6 +341,34 @@ or run it concurrently during migration. Keep a non-secret audit of which
 profile was retired and when. This document does not authorize deleting the
 existing private profile.
 
+## Prospective orphan absence and revocation acceptance
+
+The owner selected [decision0008](../../../decisions/0008-orphan-absence-and-revocation.md)
+on2026-10-11 for future bounded real-stage checks. Independently verified exact
+container absence can satisfy the stopped-container criterion; the supervisor
+need not be falsely credited with removing a container Docker already removed.
+This does not change the independent supervisor/startup-sweep architecture.
+
+- Before runner loss, a trusted independent observer must witness the live
+  container's exact ID, reserved name and run/launch labels, and persist them.
+- After verified loss, query both the original ID and reserved name. Explicit
+  Docker absence of both within60seconds is required. Missing names alone,
+  unknown daemon responses, wrong labels, replacement IDs or missing pre-loss
+  identity are not proof. Repeat the observation at the delayed sentinel check.
+- Separately capture the exact grant's revocation within60seconds and verify a
+  retained-capability request is refused as grant_unavailable before provider
+  dispatch. A control run's distinct grant and exact running container must
+  remain usable. Container absence never substitutes for credential revocation.
+- Persist kill timing and each independent result when it occurs, including
+  failure paths. Record service cleanup state separately: never_observed remains
+  unverified service cleanup, not removed. Do not rewrite terminal native status
+  or replay a turn; preserve partial events and unknown IDs.
+
+S1/S2 remain incomplete. A read-only-grant real-stage test proves lifetime and
+revocation of that capability only; earlier accepted write-grant evidence stays
+separate. Freeze a fresh protocol/identity/source and independently review it
+before any remaining model turn. #93/#22/Q11 are not accepted by this draft.
+
 ## Errors, traces, and validation
 
 Authentication failures are their own terminal or recoverable category:

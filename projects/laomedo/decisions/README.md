@@ -43,3 +43,5 @@ authorities. Subsystem contract pages own proposed interface behavior; this
 category owns the decision history, alternatives and unresolved choices.
 
 - [0007 - Trusted output publication handoff](0007-trusted-output-publication-handoff.md): owner-selected active handoff through validation; implementation and live gates remain open.
+
+- [0008 - Exact-container absence and grant revocation](0008-orphan-absence-and-revocation.md): prospective owner-selected stopped-container proof; earlier incomplete attempts are unchanged.
