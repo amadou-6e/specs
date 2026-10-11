@@ -11,6 +11,42 @@ related: []
 
 # Langflow integration validation
 
+## Prospective file-relay recovery, 2026-10-11
+
+The owner increased EXP-139's cap to ten total submitted turns, retaining four
+used turns. No additional live turn has been submitted. The original one-push
+and one-draft-PR attempt budgets are retained. The previous negative findings
+below remain historical evidence; the real draft-PR path is still unverified.
+
+[AMENDMENT-05](https://github.com/amadou-6e/laomedo/blob/6f6a5c7e7936adfe8534e62cbd6dcdd5a9747e29/experiments/exp139/AMENDMENT-05.md)
+proposes invocation-only helper discovery and a file-mailbox relay to the fixed
+host mediator. Commands retain network-off and the exact auth-file denial.
+The relay holds only the existing run capability, never the GitHub credential,
+and uses the existing host scope, artifact, expiry and write-budget checks.
+This is a local experiment transport proposal, not production isolation.
+
+The [machine-written dummy controls](https://github.com/amadou-6e/laomedo/blob/6f6a5c7e7936adfe8534e62cbd6dcdd5a9747e29/experiments/exp139/MAILBOX-CONTROL.json)
+use a network-none container, dummy capability and loopback fake mediator.
+Login-shell helper discovery and a sandboxed commit/bundle/native push through
+the real helper pass against the fake mediator; direct TCP and dummy
+auth-file reads are denied; symlinks, FIFOs and directory replacement are refused.
+The exact bootstrap also passes with a stub app-server. These controls establish
+neither the actual Windows-host route nor real GitHub publication.
+The invocation uses opt-in regular-file child stdio to avoid the reproduced
+nested Node pipe denial; other runner invocations keep their existing default.
+The relay is outside the command sandbox under the controller UID; process
+attachment has not been tested. This residual must be explicit in local
+configuration approval; direct auth-file denial does not prove that isolation.
+Fifteen focused controls and 646 host tests with eleven skips pass. These checks
+use zero model turns and zero provider writes.
+
+Source and candidate input pins are frozen at `6f6a5c7e7936adfe8534e62cbd6dcdd5a9747e29`,
+manifest `b58a3017664577c3b4177cb055e11d64d0d60c274cf4ffd34b1541425a9a327a`.
+The [startup draft](https://github.com/amadou-6e/laomedo/blob/6f6a5c7e7936adfe8534e62cbd6dcdd5a9747e29/experiments/exp139/STARTUP-DRAFT-05.md)
+still requires exact-source review, final-head CI and explicit configuration
+approval before activation. The cap increase does not itself approve startup.
+All consumed requests, private traces and failed attempts must remain retained.
+
 ## Imported live recovery, 2026-10-11
 
 The owner-approved AMENDMENT-03/04 recovery used the three remaining real Codex
