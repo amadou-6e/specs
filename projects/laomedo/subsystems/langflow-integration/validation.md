@@ -16,9 +16,9 @@ related: []
 The owner-approved AMENDMENT-03/04 recovery used the three remaining real Codex
 turns through imported Langflow graphs. **#139 remains incomplete:** the live
 draft-PR success path is blocked. See the machine-written
-[recovery observation](https://github.com/amadou-6e/laomedo/blob/138566fb73bb607aef098ed55769541533beee5a/experiments/exp139/RECOVERY-OBSERVATION.json),
-[results](https://github.com/amadou-6e/laomedo/blob/138566fb73bb607aef098ed55769541533beee5a/experiments/exp139/RECOVERY-RESULTS.md)
-and [credential-free helper controls](https://github.com/amadou-6e/laomedo/blob/138566fb73bb607aef098ed55769541533beee5a/experiments/exp139/HELPER-CONTROL.json).
+[recovery observation](https://github.com/amadou-6e/laomedo/blob/9d3a297c26f560b344e8affaf5a9bf25e0b77e5b/experiments/exp139/RECOVERY-OBSERVATION.json),
+[results](https://github.com/amadou-6e/laomedo/blob/9d3a297c26f560b344e8affaf5a9bf25e0b77e5b/experiments/exp139/RECOVERY-RESULTS.md)
+and [credential-free helper controls](https://github.com/amadou-6e/laomedo/blob/9d3a297c26f560b344e8affaf5a9bf25e0b77e5b/experiments/exp139/HELPER-CONTROL.json).
 Executed source is `fc44d7edfb77519b4f4c0d8ef589606d424a232f`, manifest SHA-256
 `3554dad38921b21a1c695faa80897baf200adcf5bf4790e959f8cd2813a068d0`.
 The later evidence-writing source is distinct. The original checkpoint below
@@ -40,6 +40,8 @@ before its activation. All three previously consumed digests and the durable
 write budget were retained. The report is fixed-scope evidence, not arbitrary
 implementation of the source issue.
 
+The live run establishes missing-helper discovery, without an exported live-shell
+identity. Login-shell PATH loss is a reproduced mechanism and likely cause.
 Credential-free controls reproduce helper discovery in a plain shell and its
 loss in a login shell; an explicit Git exec path finds a dummy helper. That is
 not a deployed fix or successful mediated push. The temporary host 404 fixture
