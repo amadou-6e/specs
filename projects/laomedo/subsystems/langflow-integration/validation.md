@@ -35,13 +35,27 @@ real service object with synthetic heartbeat loss and a fake Docker cleanup:
 it revokes the same handoff grant before cleanup while another run remains
 usable. It is not a whole-process-tree kill or real GitHub revocation probe.
 
-Independent Claude review is **pending**: the bound session returned a
-subscription rate-limit error and no verdict. Its request is retained without
-duplicate submission. No configuration, real credential, model turn or GitHub
-acceptance write was used. This checkpoint is not merged implementation or
-live #139 acceptance. The real runner's unknown completeness, native provider
-acceptance, host deployment wiring, #100 gate and #139 cap/scoped identity
+On 2026-10-11, independent Claude review approved implementation `840dfac`
+and the design, subject to updating this record. Its two nonblocking publication
+findings were fixed together at [75db8fe](https://github.com/amadou-6e/laomedo/commit/75db8fe):
+mediation exceptions consult the durable effect state before distinguishing
+failed from unknown, and early/concurrent publish requests cannot end the lease
+or interrupt the first provider call. All 41 focused handoff/lease tests pass,
+including four journal-state controls and concurrent authenticated HTTP POSTs.
+Claude approved that incremental logic diff, conditional on the full suite and
+final-head CI. The full host suite at `75db8fe` subsequently passed 613 tests
+with 11 skips and exit zero. It did not independently run tests; the initial review read code
+and specs, and the incremental review read the changed logic and regression tests.
+The earlier quota-only request produced no verdict and was explicitly resolved
+before these reviews in the same bound session.
+
+No configuration, real credential, model turn or GitHub acceptance write was
+used. This checkpoint is credential-free host composition, not live #139
+acceptance. The real runner's unknown completeness, native provider
+acceptance, host deployment wiring and #139 cap/scoped identity
 remain required before live publication.
+The bounded #100/#104 gates are now recorded as completed; #100's live-provider
+evidence is merged through [specs #344](https://github.com/amadou-6e/specs/pull/344).
 
 ## Imported skill-agent-contract demonstration, 2026-10-10
 
