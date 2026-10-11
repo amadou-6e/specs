@@ -37,7 +37,8 @@ container gone, credential unusable, and who removed the container.
 
 Future bounded orphan acceptance may establish stopped-container containment by
 independently verified absence of its pre-loss label-verified exact container ID
-within60seconds, together with an empty reserved name. Verify authorization
+within60seconds of verified kill completion, together with an empty reserved
+name and no container carrying the reserved run/launch labels. Verify authorization
 revocation separately within the same bound; container death is not revocation.
 Keep removal attribution and the service's own cleanup result distinct.
 
@@ -58,6 +59,8 @@ separately; do not forge its cleanup result to satisfy this criterion.
 Unknown Docker responses, wrong labels, replacement IDs, missing pre-loss witness,
 late absence, wrong grant or a refusal that dispatches a provider write fail the
 check. Freeze prospective protocol/source and obtain independent pre-run review.
+Service conflict, unknown, late_* or cleanup_error states also fail the check;
+repeat original-ID, reserved-name and label-set absence at the delayed check.
 
 ## Open questions and supersession
 

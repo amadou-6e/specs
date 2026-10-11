@@ -351,17 +351,19 @@ This does not change the independent supervisor/startup-sweep architecture.
 
 - Before runner loss, a trusted independent observer must witness the live
   container's exact ID, reserved name and run/launch labels, and persist them.
-- After verified loss, query both the original ID and reserved name. Explicit
-  Docker absence of both within60seconds is required. Missing names alone,
+- After verified loss, query the original ID, reserved name and run/launch label
+  set. Explicit Docker absence of the ID/name and an empty label set within60seconds
+  measured from verified kill completion are required. Missing names alone,
   unknown daemon responses, wrong labels, replacement IDs or missing pre-loss
-  identity are not proof. Repeat the observation at the delayed sentinel check.
+  identity are not proof. Repeat all three observations at the delayed sentinel check.
 - Separately capture the exact grant's revocation within60seconds and verify a
   retained-capability request is refused as grant_unavailable before provider
   dispatch. A control run's distinct grant and exact running container must
   remain usable. Container absence never substitutes for credential revocation.
 - Persist kill timing and each independent result when it occurs, including
   failure paths. Record service cleanup state separately: never_observed remains
-  unverified service cleanup, not removed. Do not rewrite terminal native status
+  unverified service cleanup, not removed. Service conflict, unknown, late_* or
+  cleanup_error states fail the check. Do not rewrite terminal native status
   or replay a turn; preserve partial events and unknown IDs.
 
 S1/S2 remain incomplete. A read-only-grant real-stage test proves lifetime and
