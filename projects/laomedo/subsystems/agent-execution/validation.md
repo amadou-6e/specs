@@ -305,6 +305,7 @@ and closed #104 grant-loss evidence it satisfies the
 original selected #100 matrix, not unrestricted Git/gh compatibility. Q11,
 #22, #93 and #97 remain separate open gates; no broader first-slice acceptance,
 permission/default expansion or specification maturity change is asserted.
+
 ## 2026-10-11 S3 real-stage orphan check
 
 The [S3 iteration](../../experiments/orphan-lease/iterations/2026-10-11-s3/README.md)
