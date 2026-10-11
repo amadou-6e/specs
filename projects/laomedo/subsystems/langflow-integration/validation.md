@@ -11,6 +11,28 @@ related: []
 
 # Langflow integration validation
 
+## Native execution closure preparation, 2026-10-11
+
+[Specs #348](https://github.com/amadou-6e/specs/issues/348) and
+[Laomedo #139](https://github.com/amadou-6e/laomedo/issues/139) add host-side
+native trace closure to the trusted publication path. Nine credential-free
+controls cover exact terminals, open command/noncommand tools, malformed or
+truncated raw data, wrong thread/answer, duplicate or late identities, reader,
+snapshot and cleanup uncertainty, old resume bytes and a persisted runner record.
+The runner test substitutes the native transport and independent lease/cleanup;
+it does not establish live native schema compatibility or Docker removal.
+The full development suite passed 630 tests with 11 skips. Exact source pins
+and independent review remain pending until the implementation is committed.
+
+No model turn, real credential, live GitHub request or running configuration
+change was used for this preparation. The prospective EXP-139 protocol is
+committed before any live call, with authorization and manifest gates. The
+owner subsequently approved four submitted turns and one draft PR in the
+named disposable repository using the existing host-side credential reference;
+none has been consumed. Deployed wiring, protocol/source review and explicit
+configuration approval precede the live run. Earlier negative findings remain
+historical and are not relabelled by these fixture controls.
+
 ## Trusted publication handoff checkpoint, 2026-10-10
 
 [Laomedo #138](https://github.com/amadou-6e/laomedo/issues/138) implements the
