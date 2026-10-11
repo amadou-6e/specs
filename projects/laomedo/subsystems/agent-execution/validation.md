@@ -320,3 +320,26 @@ are explicit limits. Prior write-grant evidence is separate. See the iteration's
 manifest for original byte hash and private-stream retention. #22 cancellation
 and early-run identity checks are separate from this crash case; no broad Q11
 acceptance or issue closure is asserted by this validation entry.
+
+## Selected early-run and Q11 evidence assessment, 2026-10-11
+
+This checklist records the selected #22 and Q11 evidence at bounded Windows
+one-invocation scope, without changing specification maturity or issue state.
+Earlier dated findings remain historical; native turn-ID persistence and executing
+editor-graph attestation are not added to #22's early queryable **run ID** criterion.
+
+| Selected criterion | Accepted evidence and limit |
+| --- | --- |
+| Early queryable run ID, exact duplicate identity, changed request409, polling deadline and cancel/terminal races | [EXP22 Phase A](https://github.com/amadou-6e/laomedo/blob/72502b7c0ee62620ec4da64bd90db8c6198f318c/experiments/exp22/RESULTS.md): synthetic HTTP/transport tests, not a real-model result |
+| Pre-thread and active-tool confirmed native cancellation, partial trace and exact absence | [Phase B originals and report](https://github.com/amadou-6e/laomedo/blob/168ff11353e67bb1593638d3071e21dfd8c13b73/experiments/exp22/PHASE-B-RESULTS.md): native interrupted and local confirmation are distinct; immediate sentinel check was too early, delayed check/container absence qualify the claim |
+| Visible Stop, durable Langflow/host/native binding, fresh-process reopening and zero redispatch at prepared and active points | [Develop-based combined observation](../../experiments/early-run-cancellation/iterations/2026-10-09-develop-join/results.md): original active classifier stays inconclusive; separate retrospective explanation accepted at scope, no graph attestation |
+| Timeout preserves identity, partial trace and before/during observed effects; cancellation does not undo FIRST | [Native timeout reconciliation](../../experiments/timeout-trace-integration/iterations/2026-10-09-native/results.md): real host-adapter wait, not a new server408; synthetic408/JOB_FAILED records remain separate |
+| Exact ownership, startup sweep and unrelated-lookalike protection | [EXP93 historical original checks](https://github.com/amadou-6e/laomedo/blob/14764d67199556139f4964306975f5fdd7312067/experiments/exp93/RESULTS.md): synthetic Docker/service evidence, not itself real-model acceptance |
+| Runner loss revokes actual mediated write grant within60s while B works | [Accepted S13](https://github.com/amadou-6e/laomedo/blob/9525d388b324147f7583a267c5ad75b8bea79b0f/experiments/exp104/NATIVE-LOCALRUNNER-S13-A-RESULTS.md): production native initialize, controller-driven Git/PR writes, zero model turns |
+| Real active-tool crash, original exact absence, separate revocation, delayed absence/restart/no replay | [S3 original record](../../experiments/orphan-lease/iterations/2026-10-11-s3/results.md): read-only grants; never_observed remains unverified removal attribution under prospective decision0008; S2 incomplete |
+
+The selected criteria above are evidenced; [Q11 readiness](../langflow-integration/design/decision-readiness.md#q11-selected-first-slice-assessment-2026-10-11)
+owns the aggregate first-slice assessment. This does not claim arbitrary effect
+completeness, power-loss/double-failure safety, Linux real-agent support, hostile
+isolation, semantic success, deployed server408 ingress or publication-feature
+acceptance. No new model run is needed solely to restate accepted records.
