@@ -305,3 +305,17 @@ and closed #104 grant-loss evidence it satisfies the
 original selected #100 matrix, not unrestricted Git/gh compatibility. Q11,
 #22, #93 and #97 remain separate open gates; no broader first-slice acceptance,
 permission/default expansion or specification maturity change is asserted.
+## 2026-10-11 S3 real-stage orphan check
+
+The [S3 iteration](../../experiments/orphan-lease/iterations/2026-10-11-s3/README.md)
+records a bounded pass under prospective decision0008, not retroactive S2 success.
+Executed source93009f4, governing merged specsbe233d7, preserved evidence1024ce3:
+revocation4.250s after kill completion; original-ID/name/label absence observed
+at4.484s; retained-capability refusal403 before provider; running B with one
+authorized read200; delayed repeat, interrupted restart accounting and exact
+cleanup passed. One real turn, shared15/16, zero provider writes. Service removal
+remains unverified (never_observed); read-only grant scope and null native turn ID
+are explicit limits. Prior write-grant evidence is separate. See the iteration's
+manifest for original byte hash and private-stream retention. #22 cancellation
+and early-run identity checks are separate from this crash case; no broad Q11
+acceptance or issue closure is asserted by this validation entry.
