@@ -11,6 +11,35 @@ related: []
 
 # Langflow integration validation
 
+## Prospective file-relay recovery, 2026-10-11
+
+The owner increased EXP-139's cap to ten total submitted turns, retaining four
+used turns. No additional live turn has been submitted. The original one-push
+and one-draft-PR attempt budgets are retained. The previous negative findings
+below remain historical evidence; the real draft-PR path is still unverified.
+
+[AMENDMENT-05](https://github.com/amadou-6e/laomedo/blob/49f419a9412b038ba20356dfc13e6cab3cff1908/experiments/exp139/AMENDMENT-05.md)
+proposes invocation-only helper discovery and a file-mailbox relay to the fixed
+host mediator. Commands retain network-off and the exact auth-file denial.
+The relay holds only the existing run capability, never the GitHub credential,
+and uses the existing host scope, artifact, expiry and write-budget checks.
+This is a local experiment transport proposal, not production isolation.
+
+The [machine-written dummy controls](https://github.com/amadou-6e/laomedo/blob/49f419a9412b038ba20356dfc13e6cab3cff1908/experiments/exp139/MAILBOX-CONTROL.json)
+use a network-none container, dummy capability and loopback fake mediator.
+Login-shell helper discovery and one mailbox request pass; direct TCP and dummy
+auth-file reads are denied; symlinks, FIFOs and directory replacement are refused.
+They establish neither the actual Windows-host route nor real GitHub publication.
+Fifteen focused controls and 646 host tests with eleven skips pass. These checks
+use zero model turns and zero provider writes.
+
+Source and candidate input pins are frozen at `49f419a9412b038ba20356dfc13e6cab3cff1908`,
+manifest `fc06d62360c43d5cb13f4b20b20779027db5d65cb579d620e287059fbaabd154`.
+The [startup draft](https://github.com/amadou-6e/laomedo/blob/49f419a9412b038ba20356dfc13e6cab3cff1908/experiments/exp139/STARTUP-DRAFT-05.md)
+still requires exact-source review, final-head CI and explicit configuration
+approval before activation. The cap increase does not itself approve startup.
+All consumed requests, private traces and failed attempts must remain retained.
+
 ## Imported live recovery, 2026-10-11
 
 The owner-approved AMENDMENT-03/04 recovery used the three remaining real Codex
