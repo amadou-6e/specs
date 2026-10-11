@@ -11,7 +11,7 @@ related: []
 
 # S2 bounded result
 
-**Incomplete**, failure_code service_cleanup_unverified_or_late after an active commandExecution boundary and verified runner-tree kill. Independent service diagnostic says heartbeat_lost and never_observed: no verified service cleanup. Final harness cleanup is not service-attributed cleanup. Refusal, B continuity, delayed sentinel and restart checks were not reached.
+**Incomplete**, failure_code service_cleanup_unverified_or_late after an active commandExecution boundary and completed runner-tree kill (inferred from failure stage; timing not captured). Independent service diagnostic says heartbeat_lost and never_observed: no verified service cleanup. Final harness cleanup is not service-attributed cleanup. Refusal, B continuity, delayed sentinel and restart checks were not reached.
 
 The original capture lacks kill-completion/command-start timing because those fields were only populated after successful cleanup. Revocation within60seconds of the kill cannot be assessed from this public observation. native_identity.turn_id is null; do not invent a turn ID. Retrospective whitelisted lease diagnostics are separate from the machine capture. B's grant-expired cleanup is not a continuity pass.
 
