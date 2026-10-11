@@ -11,6 +11,60 @@ related: []
 
 # Langflow integration validation
 
+## Imported live recovery, 2026-10-11
+
+The owner-approved AMENDMENT-03/04 recovery used the three remaining real Codex
+turns through imported Langflow graphs. **#139 remains incomplete:** the live
+draft-PR success path is blocked. See the machine-written
+[recovery observation](https://github.com/amadou-6e/laomedo/blob/9d3a297c26f560b344e8affaf5a9bf25e0b77e5b/experiments/exp139/RECOVERY-OBSERVATION.json),
+[results](https://github.com/amadou-6e/laomedo/blob/9d3a297c26f560b344e8affaf5a9bf25e0b77e5b/experiments/exp139/RECOVERY-RESULTS.md)
+and [credential-free helper controls](https://github.com/amadou-6e/laomedo/blob/9d3a297c26f560b344e8affaf5a9bf25e0b77e5b/experiments/exp139/HELPER-CONTROL.json).
+Executed source is `fc44d7edfb77519b4f4c0d8ef589606d424a232f`, manifest SHA-256
+`3554dad38921b21a1c695faa80897baf200adcf5bf4790e959f8cd2813a068d0`.
+The later evidence-writing source is distinct. The original checkpoint below
+and its negative observation remain historical evidence, not reset results.
+
+| Observable gate | Actual recovery result | Limit |
+| --- | --- | --- |
+| Git metadata and native setup | Exact full inline permission table starts; dummy-auth control denies auth reads and permits Git metadata writes | Preserves original rules plus only owner-approved `.git` write; not an audit of every real login access route |
+| Agent precheck correction | Fresh success task rejects missing report, accepts correction within the same request, then accepts its honest final failure form | Three precheck calls, one model turn; no continuation retry |
+| Intended success task | Exact report, 13 closed native items and verified cleanup; Git push exits 128 because `remote-laomedo` is not discovered | Contract accepts failure form and routes to failure; no provider write or draft PR |
+| Deliberate agent failure | One real turn, four closed items, ordinary non-mediated supervisor, accepted failure form | Failure route, no GitHub grant or publication |
+| Downstream pin rejection | One real turn, four closed items; agent-side precheck accepts original requirements but downstream contract rejects its changed pin | Rejection route, no GitHub grant or publication |
+| Budgets and cleanup | Ledger 4/4; zero push/PR provider attempts, all issued GitHub grants revoked; both owned process trees stopped and port 8779 released | Private workspaces, raw traces, consumed identities and histories retained; no extra turn authorized |
+
+A no-turn setup refusal between the original and final activation is preserved
+as run `7391913c-318f-4317-8c68-fda10b84769d`: the nested CLI override did not
+form a valid profile. Owner and Claude approved the later inline-table correction
+before its activation. All three previously consumed digests and the durable
+write budget were retained. The report is fixed-scope evidence, not arbitrary
+implementation of the source issue.
+
+The live run establishes missing-helper discovery, without an exported live-shell
+identity. Login-shell PATH loss is a reproduced mechanism and likely cause.
+Credential-free controls reproduce helper discovery in a plain shell and its
+loss in a login shell; an explicit Git exec path finds a dummy helper. That is
+not a deployed fix or successful mediated push. The temporary host 404 fixture
+is reachable outside the sandbox, while the selected network-off sandbox's
+`host.docker.internal` request returns `EAI_AGAIN`. This establishes a DNS/hostname
+barrier on that route, not denial of every numeric-address route. The live push
+stopped at helper discovery before reaching that barrier. Both problems remain
+owned by [#139](https://github.com/amadou-6e/laomedo/issues/139); a reviewed
+discovery/reachability fix, required configuration approval and a new numeric
+model cap must precede another success campaign.
+
+Before final activation, 643 host tests with 11 skips, 12 focused controls and
+all three actual frozen-request digest checks passed. Executed-head CI passed
+after one rerun of the existing Git maintenance-lock race; the initial failures
+are retained. Thirteen focused controls now include a private-content export
+regression. An in-memory scan of proposed EXP-139 source/evidence and every
+campaign report found no current known selected GitHub, runner or Codex token
+values. No credential values or credential hashes were exported. Historical
+rotated values and private raw transcripts were not scanned; there is no
+published PR to scan. GitHub credentials stayed host-side; accepted local Codex
+login custody remains the container profile and sandbox auth denial. No hosted,
+multi-user or private-client subscription-eligibility claim is made.
+
 ## Imported live workgraph checkpoint, 2026-10-11
 
 [Laomedo #139](https://github.com/amadou-6e/laomedo/issues/139) remains incomplete.
