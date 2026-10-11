@@ -1,5 +1,7 @@
 # Iterations
 
+- [2026-10-11 S3](2026-10-11-s3/README.md): bounded real-stage exact-absence plus separate revocation pass under prospective decision0008; one turn remains.
+
 - [2026-10-11 S1](2026-10-11-s1/README.md): incomplete, no command boundary; one additional turn consumed.
 - [2026-10-11 S2](2026-10-11-s2/README.md): incomplete after active command and runner kill; service cleanup unverified, two additional turns remain.
 
