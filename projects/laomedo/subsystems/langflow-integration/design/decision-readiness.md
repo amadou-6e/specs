@@ -3,7 +3,7 @@ title: Langflow integration decision readiness
 status: draft
 kind: specification
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-05
+last_reviewed: 2026-10-11
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -42,7 +42,7 @@ The review comments on [#166](https://github.com/amadou-6e/specs/pull/166), [#16
 | Q08 | Can a runnable graph revision and component-code identity be frozen? | R [U] | R01 inspect pinned Langflow source/docs for export/snapshot and component resolution; E02 then tests actual mutation behavior. | Yes |
 | Q09 | Is there a stable agent-node API for binding per-stage input and selectors? | R [U] | R02 inspect pinned component/runtime APIs; no commitment to parse an internal flow JSON shape. | Yes |
 | Q10 | Does mutation of a saved flow after launch leave the active run unchanged? | E [U] | E02; required by D09 but not proved by the one-node pilot. | Yes |
-| Q11 | What does a timeout or UI Stop do to an active agent call? | E [O] pinned synthetic [EXP-10](../../../experiments/long-call-timeout/iterations/2026-10-05/results.md) and [EXP-89 with machine-written evidence](https://github.com/amadou-6e/laomedo/blob/a97ad507fcd41af332e3d9ff77d2b0ef0b907487/experiments/exp89/RESULTS.md); [U] backend-to-component Stop signal and real-agent effect/trace | Outer-client and v2 server timeouts left late synthetic effects. EXP-89's visible Playground Stop did not cancel the bound synthetic runner on the tested `start` path; it did not record whether Langflow signalled the component, so the missing link's cause is unknown. Its blocking `fresh` case is inconclusive. Specify and test an explicit Stop-to-runner path, post-timeout IF-06/07 evidence, real-agent cancellation and crash cleanup before first-slice acceptance. | Yes |
+| Q11 | What does a timeout or UI Stop do to an active agent call? | E [O] bounded evidence complete: [combined Stop and join](../../../experiments/early-run-cancellation/iterations/2026-10-09-develop-join/results.md), [native timeout/effect trace](../../../experiments/timeout-trace-integration/iterations/2026-10-09-native/results.md), and [S3 crash absence/revocation](../../../experiments/orphan-lease/iterations/2026-10-11-s3/results.md), with separate accepted S13 write-grant proof below | Selected one-invocation first-slice evidence is satisfied, not a universal cancellation or effect-completeness guarantee. Historical EXP-10/65/66/89 findings remain unchanged. A timeout does not prove cancellation; confirmed native stop, partial trace, exact absence and separate grant revocation remain distinct. See the dated acceptance assessment below. | Satisfied at bounded scope; target limits remain |
 | Q12 | Can Stop prevent a waiting stage from dispatching after Stop was accepted? | E [U] | E04; test concurrent Stop and scheduler release. Q04 defines desired state semantics first. | No |
 | Q13 | Does an independent branch continue when another agent node raises? | E [U] | E05; current pilot node raises on error but has no independent branch. Until proven, do not promise D15 behavior. | No |
 | Q14 | Are conditional loops, invocation limits and rerun handoffs supported for the target graphs? | D [U] | After first slice, research component/graph constraints then design a bounded experiment; do not infer this from one-node execution. | No |
@@ -145,6 +145,31 @@ The [native #66 continuation](../../../experiments/timeout-trace-integration/ite
 adds confirmed real-runner cancellation before and during a named file effect,
 durable partial trace reopening and no redispatch after the host wait expires.
 This complements EXP-10/65/66 synthetic 408 evidence and #117 visible Stop plus
-join evidence. It supplies the bounded real-runner before/during observations, while Q11
-remains open for #93 outage/real push-revocation and broader effect completeness.
+join evidence. At that date Q11 remained open for #93 outage/real push-revocation;
+the dated assessment below records the later evidence without changing that history.
 It is not a new server 408 ingress or automatic graph recovery test.
+
+## Q11 selected first-slice assessment, 2026-10-11
+
+The selected Q11 checks are now evidenced: visible Stop-to-runner propagation at
+prepared and active-command boundaries, post-timeout IF-06/07 identity and partial
+trace, real-agent cancellation before/during a named effect, and runner-loss
+cleanup/revocation. The [agent-execution acceptance checklist](../../agent-execution/validation.md#selected-early-run-and-q11-evidence-assessment-2026-10-11)
+maps each criterion to its accepted evidence.
+
+The earlier outage and actual write-grant items are satisfied by accepted
+[S13 production launch and revocation](https://github.com/amadou-6e/laomedo/blob/9525d388b324147f7583a267c5ad75b8bea79b0f/experiments/exp104/NATIVE-LOCALRUNNER-S13-A-RESULTS.md)
+and [S3 real-stage crash](../../../experiments/orphan-lease/iterations/2026-10-11-s3/results.md).
+S3 follows prospective decision0008: independently verified exact absence plus
+separate revocation, not service-attributed removal. Its grants are read-only;
+the actual write-grant proof is S13. S2 remains incomplete. PR97 integrated this
+experimental evidence at `14764d67199556139f4964306975f5fdd7312067` after final review
+and CI; no live capture is attributed to that later parent-merge revision.
+
+This records bounded gate satisfaction, not document maturity promotion or issue
+closure. Arbitrary-effect completeness, a deployed server-408 ingress, power loss,
+double failure, hostile-code isolation, Linux real stages, graph attestation,
+semantic task success and publication-handoff acceptance remain target limitations
+or separately owned work, not newly added Q11 first-slice requirements. A missing
+effect stays unknown; native cancellation cannot undo an already observed effect.
+Shared model budget is15/16; one authorized attempted turn remains unused.
