@@ -11,6 +11,48 @@ related: []
 
 # Langflow integration validation
 
+## Imported live workgraph checkpoint, 2026-10-11
+
+[Laomedo #139](https://github.com/amadou-6e/laomedo/issues/139) remains incomplete.
+The owner approved the exact bounded deployment, four submitted turns and at
+most one push plus one draft PR in the disposable repository. Claude approved
+the source before activation. The campaign used pinned Langflow 1.12.3 and
+Codex 0.159.2, the existing subscription profile and unchanged permissions.
+See the [machine observation](https://github.com/amadou-6e/laomedo/blob/eb42a46d6ccda002d49b18722f008517857d693f/experiments/exp139/OBSERVATION.json)
+and [result](https://github.com/amadou-6e/laomedo/blob/eb42a46d6ccda002d49b18722f008517857d693f/experiments/exp139/RESULTS.md).
+
+| Observable gate | Actual result | Limit |
+| --- | --- | --- |
+| Frozen issue, skill and requirements enter imported graph | Actual three request digests matched host bindings; real issue/task multiline escapes required a prospective base64 transport correction | Credential-free transport check; encoding is not encryption |
+| Agent precheck and retained execution evidence | One live turn, two bound precheck calls (reject then accept), nine closed native items, exact report bytes and verified snapshot/controller/container cleanup | Evidence closure does not establish task success |
+| Failure behavior and conditional route | Git config/index-lock writes were denied; agent honestly returned failure; contract accepted the failure form and graph selected failure | Success publication did not run |
+| No-grant deliberate failure case | Mediated supervisor refused before a turn with `mediated_lease_request_invalid`; runner reports `lease_service_unavailable`, graph selects rejection | Intended real-agent failure case remains unexecuted |
+| Publication budget and cleanup | Ledger 1/4; zero push/PR attempts; first run grant revoked; both new process trees stopped and port released | Refused launch lease cleanup was unverified, although runner cleanup is recorded verified; retain that distinction |
+
+The preceding host head passed 638 tests with 11 skips. The transport correction
+passed three pinned imported-graph tests with multiline/non-ASCII round-trip and
+four negative outcome variants. Seven host binding/budget controls passed.
+The actual source checkout was checked clean at its baseline before activation.
+The exact report digest matched; no commit, push or draft PR was created.
+
+Recovery is a proposal, not an applied configuration: explicit Git-metadata
+write permission and an ordinary non-mediated supervisor for no-GitHub-grant
+cases. A credential-free sandbox control reproduced the original denial and
+showed the exact proposed Git rule permits config/index-lock writes while still
+denying a dummy auth-file canary. No production isolation or authorization claim
+is made. Live success publication and downstream pin rejection remain unverified;
+the original negative outcomes and ledger must be preserved. Raw traces stay
+private. The GitHub credential remained host-side; the accepted local Codex
+profile still relies on the sandbox auth-file denial. The historical preparation
+record below predates this live campaign and does not describe current usage.
+The proposed evidence/report scan found no known selected GitHub, runner or
+current stored Codex credential values; historical rotated values and private
+raw traces were not covered. Claude approved this negative evidence checkpoint,
+not live completion. Before any recovery activation it requires a host-side
+Git-config execution audit and hostile-config control, host-only supervisor
+selection, and preserved consumed identities. The observed rejection-before-
+recovery routing priority also remains a #139 design gap.
+
 ## Native execution closure preparation, 2026-10-11
 
 [Specs #348](https://github.com/amadou-6e/specs/issues/348) and
