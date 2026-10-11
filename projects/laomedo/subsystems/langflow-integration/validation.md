@@ -21,8 +21,10 @@ truncated raw data, wrong thread/answer, duplicate or late identities, reader,
 snapshot and cleanup uncertainty, old resume bytes and a persisted runner record.
 The runner test substitutes the native transport and independent lease/cleanup;
 it does not establish live native schema compatibility or Docker removal.
-The full development suite passed 630 tests with 11 skips. Exact source pins
-and independent review remain pending until the implementation is committed.
+The full development suite passed 630 tests with 11 skips at implementation
+[`95cc09c`](https://github.com/amadou-6e/laomedo/commit/95cc09cf2a92ba9604bce8b4a2b2168369d01627).
+Independent review remains pending. The prospective protocol was frozen at
+[`9fd1a69`](https://github.com/amadou-6e/laomedo/commit/9fd1a69).
 
 No model turn, real credential, live GitHub request or running configuration
 change was used for this preparation. The prospective EXP-139 protocol is
