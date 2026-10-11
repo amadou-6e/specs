@@ -11,6 +11,52 @@ related: []
 
 # Langflow integration validation
 
+## Trusted publication handoff checkpoint, 2026-10-10
+
+[Laomedo #138](https://github.com/amadou-6e/laomedo/issues/138) implements the
+[trusted handoff design](design/trusted-publication-handoff.md) as opt-in host
+composition. At [3742913](https://github.com/amadou-6e/laomedo/commit/3742913),
+609 host tests pass with 11 skips under cached pinned project dependencies,
+and five publisher-node tests pass inside pinned Langflow/LFX 1.12.3 with
+network disabled and source mounted read-only. The final guard amendment at
+[840dfac](https://github.com/amadou-6e/laomedo/commit/840dfac) passes 39 focused
+handoff/lease tests; the node source is unchanged. The initial raw Python run
+lacked PyJWT and could not load the full suite; `uv` with the project's pinned
+dependencies resolved that environment failure.
+
+The tests establish draft-only fake-provider publication after host contract
+acceptance; exact readback; refusal of task failure, contract rejection,
+interruption, unknown completeness and requirements mismatch; old agent-bearer
+denial during validation; unconfirmed/foreign artifact refusal; no automatic
+resend; durable intent before dispatch; bounded renewals; cancellation and
+expiry races; provider-connection removal; explicit startup recovery; and
+authenticated empty-body host API admission. The lease-service test uses a
+real service object with synthetic heartbeat loss and a fake Docker cleanup:
+it revokes the same handoff grant before cleanup while another run remains
+usable. It is not a whole-process-tree kill or real GitHub revocation probe.
+
+On 2026-10-11, independent Claude review approved implementation `840dfac`
+and the design, subject to updating this record. Its two nonblocking publication
+findings were fixed together at [75db8fe](https://github.com/amadou-6e/laomedo/commit/75db8fe):
+mediation exceptions consult the durable effect state before distinguishing
+failed from unknown, and early/concurrent publish requests cannot end the lease
+or interrupt the first provider call. All 41 focused handoff/lease tests pass,
+including four journal-state controls and concurrent authenticated HTTP POSTs.
+Claude approved that incremental logic diff, conditional on the full suite and
+final-head CI. The full host suite at `75db8fe` subsequently passed 613 tests
+with 11 skips and exit zero. It did not independently run tests; the initial review read code
+and specs, and the incremental review read the changed logic and regression tests.
+The earlier quota-only request produced no verdict and was explicitly resolved
+before these reviews in the same bound session.
+
+No configuration, real credential, model turn or GitHub acceptance write was
+used. This checkpoint is credential-free host composition, not live #139
+acceptance. The real runner's unknown completeness, native provider
+acceptance, host deployment wiring and #139 cap/scoped identity
+remain required before live publication.
+The bounded #100/#104 gates are now recorded as completed; #100's live-provider
+evidence is merged through [specs #344](https://github.com/amadou-6e/specs/pull/344).
+
 ## Imported skill-agent-contract demonstration, 2026-10-10
 
 The credential-free [Laomedo #137 implementation](https://github.com/amadou-6e/laomedo/pull/142) composes the production Skill Reference, Codex Agent and Output Contract nodes with fixture issue ingestion and explicit conditional routes. It deserializes the committed export with pinned `Graph.from_payload(...).arun()`, not a manually reproduced router. This is Graph-engine import/execution, not a live REST/UI server-import claim.
