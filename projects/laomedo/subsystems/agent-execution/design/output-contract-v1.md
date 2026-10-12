@@ -80,8 +80,9 @@ model output. A fabricated Data envelope is not accepted as execution evidence.
 There is no new cryptographic attestation or custom-code security boundary.
 
 Use native grouped outputs and stop inactive branches. Preserve the existing
-{route, validation} envelope so existing destinations and Accepted Validation
-continue to work. Legacy requirements/validation outputs remain available on the separate
+{route, validation} envelope so existing destinations and legacy adapters
+continue to work. The Draft PR Publisher accepts the Success envelope directly;
+new graphs do not require Accepted Validation. Legacy requirements/validation outputs remain available on the separate
 LaomedoOutputContractLegacy component, but
 are not themselves conditional routes; connecting those is explicit fan-out.
 The caller must not interpret such a diagnostic output as another authorization.

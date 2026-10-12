@@ -11,6 +11,21 @@ related: []
 
 # Langflow integration validation
 
+## Direct Contract Success to publisher, 2026-10-12
+
+At [abb350a](https://github.com/amadou-6e/laomedo/commit/abb350a), the current
+live builder connects the integrated Contract Success output straight to the
+publisher and omits the Accepted Validation adapter. The publisher accepts the
+routed envelope as well as legacy raw validation. Non-success routes, malformed
+wrappers and incomplete evidence refuse without publication HTTP dispatch.
+The host's independent frozen-run checks and authority remain unchanged.
+
+All 94 pinned Langflow tests pass with network disabled and synthetic responses.
+Imported graph controls verify one agent request and one empty-body publisher
+request on success, no publisher request for failure/rejection/recovery, and no
+extra adapter, requirements or router nodes. These checks use no model turns or
+live GitHub writes; historical EXP-139 exports/evidence remain unchanged.
+
 ## Integrated and legacy editor compatibility, 2026-10-12
 
 The native editor rebuilds outputs from component code: export-only filtering
