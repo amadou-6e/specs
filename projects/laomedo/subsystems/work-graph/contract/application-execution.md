@@ -247,7 +247,8 @@ real Codex success path and bounded failure/correction probes. Simulated PR
 publication must be labelled simulated; it cannot establish the draft-PR gate.
 Publish only through an explicitly scoped test repository/branch and write
 capability, with an agreed model-turn cap. No new live cap or external-write
-grant was supplied by the owner's request to see this demonstration.
+grant was supplied by that initial request; subsequent EXP-139 approvals and
+consumption are recorded in the current acceptance evidence below.
 
 Current bounded demonstration evidence, 2026-10-12: EXP-139's imported graph
 completed a fixed-report task with a real Codex turn and verified draft PR.
