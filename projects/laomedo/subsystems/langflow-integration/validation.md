@@ -11,6 +11,48 @@ related: []
 
 # Langflow integration validation
 
+## Confirmed live push, downstream rejection, 2026-10-12
+
+The owner-approved AMENDMENT-07 ran at source
+`e1eaaa4272bb22e3b95da771a815166c09befedc`, manifest
+`3a0675e1c84886fa7906ed39115f099f51bafdc8f274f38f937408556ac63dc0`,
+after Claude review and all four passing CI checks. The fresh imported graph
+used one turn, bringing the ledger to **7/10**. The mediated Git push is
+confirmed and consumes the single experimental push allowance. The agent's
+command exited zero; native evidence closed twelve items and one turn.
+
+See the [closed-schema observation](https://github.com/amadou-6e/laomedo/blob/aca2a650a1218c64d49803263f05a8c351d5cb53/experiments/exp139/AMEND07-OBSERVATION.json)
+and [result](https://github.com/amadou-6e/laomedo/blob/aca2a650a1218c64d49803263f05a8c351d5cb53/experiments/exp139/AMEND07-RESULTS.md).
+These are evidence-recording pins, not the executed source. Host-only readback
+confirms branch `exp139-20261011-a`, commit
+`835cbfa3375b6b880fadf9b40b47e1c9541e7ec1`, and exact report SHA-256
+`3de179af048ab7823ab1a088459309e802b5a0253263718a8ce33f911eb3a49b`.
+No matching PR exists and no PR attempt was made.
+
+The graph selected rejection before the runner saved its terminal result.
+The retained result passes both frozen output forms and the host had accepted
+it into `validation_pending`. The original graph summary omitted diagnostic
+codes, so an interrupted status read is a hypothesis, not an established cause.
+This is still a **no-go for the full live issue-to-draft-PR claim**.
+
+The unchanged 600-second handoff expired, grants are revoked and cleanup
+verified. Both owned host process trees were stopped. No renewal, additional
+push, direct publisher bypass or new model turn was attempted. Three remaining
+turns do not waive the consumed write allowance. #139 owns the remaining live
+publication blocker.
+
+Post-run source adds bounded retries only for transient GET failures on the
+same run, keeping the existing wait deadline and immediate refusal for HTTP
+errors, malformed responses and identity mismatch. The evidence summary exports
+only closed validation/error codes and status. Credential-free pinned Langflow
+checks pass: 42 component tests and five live-graph tests, including one failed
+GET followed by success without redispatch and redaction of malicious diagnostic
+text. Synthetic publisher responses do not establish live publication. These
+changes were not activated in AMENDMENT-07.
+
+The accepted local credential custody and same-UID relay residual are unchanged;
+no hosted, multi-user or process-attachment isolation is established.
+
 ## Frozen-bundle verifier recovery, 2026-10-12
 
 AMENDMENT-06's branch prerequisite worked and its real imported graph reached
