@@ -25,6 +25,10 @@ Imported graph controls verify one agent request and one empty-body publisher
 request on success, no publisher request for failure/rejection/recovery, and no
 extra adapter, requirements or router nodes. These checks use no model turns or
 live GitHub writes; historical EXP-139 exports/evidence remain unchanged.
+The local inspection graph also passed browser open/edit/save: eight nodes,
+ten preserved connections, a direct Contract Success to publisher edge, no
+Accepted Validation node and zero page errors. This is editor verification,
+not a new live publication run.
 
 ## Integrated and legacy editor compatibility, 2026-10-12
 
