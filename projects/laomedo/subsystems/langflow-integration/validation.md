@@ -532,3 +532,12 @@ is interpreted as no effects. Shared ledger 12/12, no retries. This is bounded
 host-wait evidence, not a new Langflow server 408, automated ingress, graph resume,
 semantic success or full Q11/#93 outage and push-revocation acceptance. Historical
 rows above keep their dates and limits.
+
+The generated-ID amendment at
+[f1df8a2](https://github.com/amadou-6e/laomedo/commit/f1df8a2) fixes a migration
+review finding: blanket replacement also rewrote IDs containing the old class
+name. Handles are now decoded, checked against structured metadata and the
+source node ID, and re-encoded with only the dataType changed. Tests cover
+normal JSON and the editor's quote-encoded form, plus inconsistent metadata
+refusal. All 91 pinned native tests pass. Earlier 89-test evidence remains a
+record of the prior revision, not the final generated-ID gate.
