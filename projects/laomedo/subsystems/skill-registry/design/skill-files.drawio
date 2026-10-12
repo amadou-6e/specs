@@ -1,0 +1,34 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Skill files panel" id="skill-files">
+    <mxGraphModel dx="1500" dy="1050" grid="1" gridSize="10" page="1" pageWidth="1500" pageHeight="1050">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="SF01" value="SF01: Laomedo Skill node&#10;Skill ID + exact revision&#10;[Skill files] replaces primary &lt;&gt; Code" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#64748b;fontColor=#172033;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=14;">
+          <mxGeometry x="30" y="30" width="280" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="SF03" value="SF03: Skill files  |  Read only                          [Close]&#10;live-report  |  sha256:&lt;full selected immutable revision&gt;" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#64748b;fontColor=#172033;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=14;">
+          <mxGeometry x="350" y="30" width="1090" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="SF04" value="SF04: Explorer&#10;Folder: live-report&#10;  SKILL.md&#10;  to references&#10;    examples.md&#10;  to scripts&#10;&#10;Expand/collapse folders.&#10;Select file to open tab." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=14;">
+          <mxGeometry x="350" y="120" width="245" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="tabs" value="SF04: [SKILL.md close] [examples.md close]&#10;Close tab to another open tab; last tab to choose a file." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=14;">
+          <mxGeometry x="600" y="120" width="840" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="SF05" value="SF05: [Source] [Preview if Markdown]&#10;Locally bundled Monaco, read-only syntax highlighting, search.&#10;No save, edit, terminal or execute action.&#10;&#10;SF06: Markdown Preview: raw HTML skipped, remote images suppressed.&#10;Links shown as text. No scripts/commands run.&#10;Escape closes search first; otherwise closes the panel." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#64748b;fontColor=#172033;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=14;">
+          <mxGeometry x="600" y="190" width="840" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="SF08" value="SF08: Binary selection&#10;relative path | bytes | file hash&#10;Preview unavailable for binary files. No download/run action." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=14;">
+          <mxGeometry x="600" y="475" width="840" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="SF02" value="SF02: Open to capture node Skill ID/revision to authenticated GET.&#10;No graph execution/model turn. Verify exact registry bytes first." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#64748b;fontColor=#172033;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=14;">
+          <mxGeometry x="350" y="580" width="1090" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="SF07" value="SF07 Loading: Loading selected skill revision...&#10;Error: fixed category + [Retry]. No stale contents after selection change.&#10;Missing/invalid/corrupt/unsafe/oversized all refuse.&#10;Empty viewer: Select a file. Retry uses same pinned selection." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#fff7ed;strokeColor=#64748b;fontColor=#172033;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=14;">
+          <mxGeometry x="350" y="680" width="1090" height="120" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
