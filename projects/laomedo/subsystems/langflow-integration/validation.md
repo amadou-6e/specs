@@ -24,8 +24,15 @@ a successful save request for each, and compared the saved source/target handles
 and edge multiplicities. The simplified inspection retained nine nodes and
 eleven edges, displayed only Success/Failure/Rejection/Recovery, and produced
 no browser errors. Original and refreshed legacy fixtures each retained ten
-nodes and thirteen edges. This demonstrates editor/save compatibility only;
-execution checks on those saved exports are still pending. No model turns or
+nodes and thirteen edges. Original nodes still display an update banner and two incorrectly relabelled
+outputs (Success/Failure), although their internal port names and wiring remain
+Requirements/Validation. Plain-save preservation is not a clean legacy editor
+migration. Both saved legacy exports executed with one synthetic dispatch and
+the expected Success destination in the pinned runtime. The 87 native tests
+passed at 68bec76. Explicit migration at
+[b38c94e](https://github.com/amadou-6e/laomedo/commit/b38c94e) adds two refusal/
+round-trip controls; all 89 native tests pass. Browser migration confirmation
+remains pending. No model turns or
 GitHub experiment writes were used.
 
 ## Single downstream contract, credential-free native integration, 2026-10-12

@@ -104,3 +104,14 @@ Do not automatically replace those legacy instances with the new class.
 The native editor reconstructs output metadata from code and does not honor
 the hidden-output approach tested locally. Separate classes avoid silent
 edge loss and keep the integrated node free of compatibility ports.
+
+Original exports still execute their embedded code, but the native editor matches
+the original class name to the public catalog: it shows an update prompt and
+relabels the two original outputs Success/Failure. A plain save preserves those
+original port names/edges; this is not a clean editing experience. Do not accept
+the public-class update on original two-port nodes. Provide an explicit offline
+migration of the known original source to LaomedoOutputContractLegacy. Preserve
+input bytes, IDs, positions, configured values and edge port names; update only
+the class/template and matching outgoing handle type. Refuse unknown modified
+sources and existing output files. Import the migrated export as a separate flow.
+This does not mutate historical evidence or automatically migrate saved flows.
