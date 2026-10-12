@@ -116,3 +116,41 @@ from base64, verifies its SHA-256 before committing, and waits for command
 completion without repeating an uncertain push. It does not weaken report
 validation, renew the failed grant, alter permissions or reset any budget. The
 new source and input manifest require independent review before activation.
+
+### Observed interactive recovery, 2026-10-12
+
+The recovery ran through the saved Langflow flow API for graph
+`68a890ed-9022-4ad1-a587-61d61124e23c`, not a direct runner-only call. The graph
+retained eight nodes and ten edges. Its frozen issue, Skill, Codex Agent,
+integrated Contract and direct Publisher produced a confirmed draft PR.
+
+| Check | Observed |
+| --- | --- |
+| Source and merge | `4281d93`, delivered by [Laomedo PR #152](https://github.com/amadou-6e/laomedo/pull/152) (`73317b0`) |
+| Frozen manifest SHA-256 | `0404c689d3355dcc61ff0cafb4b9b42b540a42f7e49a514ab7f7dab85b478941` |
+| New run | `7e227205-f6d6-4cc7-87da-f95d3a78c7ff` |
+| Execution evidence | `completed`, `native_trace_closure`, `evidence_complete: true`; all four shell commands completed with exit zero |
+| Agent precheck | Installed, three calls; required-field rejection followed by valid submission |
+| Publication | [Disposable draft PR #9](https://github.com/ga84jog/laomedo-exp104-disposable-20261007/pull/9), independently read back as draft on `langflow-demo-20261012-c` |
+| Published commit | `ddaed14f8d49347455d7cce8951bb0663e319045` |
+| Exact published report | 244 bytes; SHA-256 `240f33ca585cce2b89b9e77d7cc4772f65ccd4ea3031226452b9979967363934`, matching the frozen credential-free fixture |
+| Cumulative campaign limits | 2/4 submitted turns, one confirmed push and one confirmed draft PR; both write allowances now consumed |
+| Final authority | All campaign grants revoked, no unknown effect or remaining owned executor container |
+| Regression checks | 659 host tests, 11 skips; 43 pinned Langflow component tests; final Python 3.10/3.13 CI passed |
+
+The initial failed run and its extra-newline artifact remain preserved as unknown
+with outstanding-command evidence. It is not relabeled as successful. The
+recovery used the same ledger and write-budget databases, unchanged permissions,
+existing login custody and 600-second handoff. Repeating this graph cannot
+implicitly rearm a consumed request or replenish its publication budget.
+
+The local viewer uses automatic login on loopback only and a persistent SQLite
+volume. Langflow's API separately required a local API key; it was provisioned
+automatically and retained only in ignored local state. It is not a provider
+login or an additional human sign-in. No credential values or raw transcripts
+appear in this record or the published report. Exact fixture equality establishes
+report contents, not a general credential-exfiltration audit.
+
+This demonstrates the bounded single-user local path for this fixed sample
+report. It does not prove arbitrary issue implementation, hosted isolation,
+semantic code correctness, or all failure/rejection routes in this campaign.
