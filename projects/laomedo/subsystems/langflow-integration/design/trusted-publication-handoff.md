@@ -94,3 +94,25 @@ credential-free or no-model authenticated checks, not live execution evidence.
 The user starts the graph through Run component on Draft PR Publisher, which
 builds its upstream dependencies. A green component still means returned Data,
 not proof of semantic success or publication.
+
+### Interactive recovery within the same campaign
+
+A completed pre-dispatch task-binding refusal exposes the fixed public code
+`experiment_request_binding_denied`, without inventing a run or exposing raw
+server text. Other complete client refusals expose `runner_dispatch_refused`;
+server or transport uncertainty remains unknown. Neither automatically resends.
+
+The first interactive turn produced a report with one extra final newline. Its
+exact-byte policy check correctly refused publication, but the helper treated
+that completed rejection as pending and the agent ended while its push command
+was outstanding. No provider write was attempted. A completed stage-policy
+rejection now stops the helper promptly with a sanitized refusal; missing or
+ambiguous verification remains unknown.
+
+The recovery archives the old frozen inputs and activation, preserves the same
+1/4 turn ledger and durable unused one-push/one-draft-PR budget, and prepares a
+new exact task and invocation identity. The task decodes the approved report
+from base64, verifies its SHA-256 before committing, and waits for command
+completion without repeating an uncertain push. It does not weaken report
+validation, renew the failed grant, alter permissions or reset any budget. The
+new source and input manifest require independent review before activation.
