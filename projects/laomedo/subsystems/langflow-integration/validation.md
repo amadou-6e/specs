@@ -11,6 +11,66 @@ related: []
 
 # Langflow integration validation
 
+## Frozen-bundle verifier recovery, 2026-10-12
+
+AMENDMENT-06's branch prerequisite worked and its real imported graph reached
+the host through the mailbox, freezing one bundle. The composition incorrectly
+expected `advertised_commit` in the freezer receipt. The field is derived by
+the validated private bundle reader, not supplied by that receipt. Verification
+never started; the helper stopped with `stage_pending_no_retry`, and the graph
+routed the invalid final submission to rejection. No provider write occurred.
+Ledger 6/10, grants revoked and cleanup verified. See the
+[machine observation](https://github.com/amadou-6e/laomedo/blob/e1eaaa4272bb22e3b95da771a815166c09befedc/experiments/exp139/AMEND06-OBSERVATION.json)
+and [result](https://github.com/amadou-6e/laomedo/blob/e1eaaa4272bb22e3b95da771a815166c09befedc/experiments/exp139/AMEND06-RESULTS.md).
+Executed source and manifest remain the AMENDMENT-06 pins in the next section.
+
+[AMENDMENT-07](https://github.com/amadou-6e/laomedo/blob/e1eaaa4272bb22e3b95da771a815166c09befedc/experiments/exp139/AMENDMENT-07.md)
+corrects both verification dispatch and downstream artifact resolution to use
+the existing checksum-validated private reader. It does not execute host Git
+against agent-owned configuration. The regression feeds a real freeze receipt
+and captured bundle into the composition boundary and refuses tampering before
+the verifier is called. The
+[Docker control](https://github.com/amadou-6e/laomedo/blob/e1eaaa4272bb22e3b95da771a815166c09befedc/experiments/exp139/VERIFY-CONTROL.json)
+verifies a copy of the actual retained capture under a synthetic active binding,
+with limits and cleanup passing, zero model turns, no login and no provider
+writes. This is integration evidence, not live publication acceptance.
+
+Candidate source `e1eaaa4272bb22e3b95da771a815166c09befedc`, manifest
+`3a0675e1c84886fa7906ed39115f099f51bafdc8f274f38f937408556ac63dc0`.
+Eight consumed requests and six used turns are retained. Permission, credential
+custody, relay and write budgets remain unchanged. Exact-source review, checks
+and explicit recovery activation approval precede the fresh success request.
+Published-byte readback remains unverified.
+
+## File-relay live result and task correction, 2026-10-12
+
+The owner approved AMENDMENT-05 after Claude review and passing final CI.
+Its fresh imported graph used one real Codex turn, bringing the ledger to
+5/10. It retained exact report bytes and closed twelve native items, but the
+agent reported task failure. The contract accepted that form and routed to
+failure. No provider push or draft-PR attempt occurred; the run grant was
+revoked and container cleanup verified. Both campaign host trees were stopped.
+
+See the [machine-written observation](https://github.com/amadou-6e/laomedo/blob/190de01a6e2157ca521ba91a1aaea2b72fe2e742/experiments/exp139/AMEND05-OBSERVATION.json)
+and [result](https://github.com/amadou-6e/laomedo/blob/190de01a6e2157ca521ba91a1aaea2b72fe2e742/experiments/exp139/AMEND05-RESULTS.md).
+Executed source was `6f6a5c7e7936adfe8534e62cbd6dcdd5a9747e29`, manifest
+`b58a3017664577c3b4177cb055e11d64d0d60c274cf4ffd34b1541425a9a327a`.
+The preserved checkout had detached HEAD and no configured local run branch.
+The helper refused before writing a journal or sending a mailbox request.
+The [network-none dummy control](https://github.com/amadou-6e/laomedo/blob/190de01a6e2157ca521ba91a1aaea2b72fe2e742/experiments/exp139/BRANCH-CONTROL.json)
+reproduces that failure and succeeds after explicit branch creation. This is
+not a live provider success claim.
+
+The owner approved task-only
+[AMENDMENT-06](https://github.com/amadou-6e/laomedo/blob/190de01a6e2157ca521ba91a1aaea2b72fe2e742/experiments/exp139/AMENDMENT-06.md):
+require creation of the named run branch before committing and use a fresh
+request/grant identity. Seven consumed requests and five used turns remain
+retained. Permissions, relay, credential custody, scope and the unused
+one-push/one-draft-PR budgets do not change. Source and input manifest is
+`6e7b5b4bbdc8debd2375685cd66a15f43db5fd5315d95a1d1e548a6961cc560c`.
+Claude approved the candidate; passing host tests and final CI remain activation
+gates. Live publication and published-byte readback are still unverified.
+
 ## Prospective file-relay recovery, 2026-10-11
 
 The owner increased EXP-139's cap to ten total submitted turns, retaining four
