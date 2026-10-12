@@ -58,3 +58,31 @@ The final downstream evaluation remains authoritative even when precheck accepte
 Credential-free tests must establish shared evaluator/revision parity, accepted success and accepted task failure, bounded rejection, no value echo, in-request feedback, one same-thread continuation, exhausted correction and runtime interruption with partial evidence. Legacy saved flow ports must remain buildable.
 
 The committed demo flow must be imported into pinned Langflow 1.12.3 and all six fixture paths executed through its graph engine. Issue ingestion uses a frozen fixture identity/body, no ambient host `gh` login. Record machine-written sanitized outcomes and hashes over committed fixture/evidence bytes; distinguish simulated publication from a real PR. Standalone Laomedo UI, live Codex calls and real GitHub publication are outside this gate.
+
+## Downstream form discovery and integrated routes
+
+For pinned Langflow 1.12.3, the Codex component uses its native vertex/graph
+metadata during request preparation to locate one direct Submission-to-Agent
+Submission connection to LaomedoOutputContract. It reads and validates the
+static Output Form without building the downstream component. Freeze a deep
+copy on the agent invocation before any HTTP dispatch. Final validation compares
+the frozen pin with the downstream form. A later edit rejects, never changes the
+agent's expectations. Dynamic form-input connections, multiple downstream
+contracts, multiple agent sources and conflicting explicit requirements refuse.
+No contract leaves existing no-precheck operation unchanged. Legacy graphs with
+an explicit requirements connection retain their original final drift rejection;
+integrated routes additionally require discovery and equality of both pins.
+
+Integrated routing reads a retained copy of the connected agent adapter's
+submission envelope and verifies equality with the delivered Data. The adapter
+builds its executor metadata from the runner response, separately from parsed
+model output. A fabricated Data envelope is not accepted as execution evidence.
+There is no new cryptographic attestation or custom-code security boundary.
+
+Use native grouped outputs and stop inactive branches. Preserve the existing
+{route, validation} envelope so existing destinations and Accepted Validation
+continue to work. Legacy requirements/validation outputs remain available but
+are not themselves conditional routes; connecting those is explicit fan-out.
+The caller must not interpret such a diagnostic output as another authorization.
+Keep the historical EXP-139 export intact. A separately named simplified export
+and credential-free native/imported tests own evidence for the new behavior.

@@ -11,6 +11,34 @@ related: []
 
 # Langflow integration validation
 
+## Single downstream contract, credential-free native integration, 2026-10-12
+
+Under specs #362 / Laomedo #147, implementation
+`32dc27505026df212f6a0838acbb1c7e31803745` supplies downstream static form
+requirements to the Codex precheck through native graph metadata and combines
+validation/routing in one contract. The new separately named export displays
+four route ports with no backward edge or duplicate requirements node.
+[Imported-graph checks](https://github.com/amadou-6e/laomedo/blob/32dc27505026df212f6a0838acbb1c7e31803745/tests/langflow/test_integrated_contract.py)
+cover success/failure/rejection/recovery, missing output and pre-turn refusal,
+requirements mismatch, a contract edit after freezing, model claims of executor
+success, one dispatch and inactive destinations. Twelve checks pass in the
+pinned network-disabled Langflow image, using only synthetic runner responses.
+[Binding controls](https://github.com/amadou-6e/laomedo/blob/32dc27505026df212f6a0838acbb1c7e31803745/tests/test_contract_graph.py)
+cover dynamic/ambiguous/conflicting bindings, frozen pin copies, altered
+submission metadata and stale-record clearing. Seven checks pass.
+
+The complete host suite passed 655 tests with eleven skips. These are local
+credential-free checks, not another live acceptance turn or publisher test.
+Current legacy exports refresh embedded code while preserving explicit wiring;
+prior EXP-139 source/input/evidence pins below retain their historical identity.
+The selected integrated rule routes incomplete execution to Recovery before
+form rejection. Legacy separate-router graphs retain rejection-first behavior.
+Missing/changed adapter-retained evidence refuses integrated routing. Local
+runtime provenance is not attestation against arbitrary Python custom code.
+Automatic downstream discovery is Codex-only; no installer or OpenCode discovery
+claim. Current-token scans and prior live results are not rerun by these tests.
+
+
 ## Live imported graph to verified draft PR, 2026-10-12
 
 **Passed for a bounded single-user local fixed-report task.** AMENDMENT-08

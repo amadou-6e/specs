@@ -307,3 +307,13 @@ versus editable definition. Windows/Codex first, automatic installation,
 selector behavior and interrupted-work retention are settled product choices.
 Multi-user hosting and arbitrary workflow-cycle support
 are not part of the confirmed first release.
+
+## Simplified Langflow demonstration
+
+The owner selected one downstream Output Contract with integrated outcome
+ports, per [the owning contract](../../agent-execution/contract/output-contract.md#single-downstream-node-selected-integration).
+Use a separately named export: Issue + Skill ? Agent ? Output Contract ?
+destination. Expected output is supplied through preparation metadata, not an
+extra visible requirements node. Keep EXP-139's historical frozen export and
+publication evidence. The new export requires credential-free imported-graph
+checks and is not covered by that earlier live result.

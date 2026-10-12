@@ -65,3 +65,24 @@ The [Langflow demonstration](../../work-graph/contract/application-execution.md#
 must show valid success, valid task failure, rejected submission and precheck
 correction through the actual imported graph. Existing Agent and Skill tests
 alone are not evidence for this new component.
+
+## Single downstream node, selected integration
+
+Owner-selected follow-up: [specs #362](https://github.com/amadou-6e/specs/issues/362)
+and [implementation #147](https://github.com/amadou-6e/laomedo/issues/147).
+One downstream Output Contract supplies its static form to the directly connected
+Codex Agent before dispatch and exposes Success, Failure, Rejection and Recovery
+ports itself. No backward execution edge or second requirements node is needed.
+Legacy explicit requirements and Validation Outcome ports remain compatible.
+
+For integrated routing, incomplete or unknown executor state/evidence takes
+Recovery precedence even when output is malformed or absent. With completed,
+evidence-complete execution, invalid output or mismatched requirements takes
+Rejection; accepted known task outcomes select Success or Failure; otherwise
+Recovery. Exactly one connected outcome branch executes. No output grants
+publication authority. Host publication still independently verifies the run.
+
+Executor state/evidence come from the directly connected audited agent adapter's
+retained authenticated runner result, never the model's JSON or editable route
+fields. A missing or altered adapter record refuses integrated routing. This is
+local runtime provenance, not isolation against arbitrary custom Python code.
