@@ -11,6 +11,55 @@ related: []
 
 # Langflow integration validation
 
+## Live imported graph to verified draft PR, 2026-10-12
+
+**Passed for a bounded single-user local fixed-report task.** AMENDMENT-08
+ran the imported Langflow graph through frozen issue ingestion, pinned Skill,
+real Codex, agent-side precheck, downstream Output Contract, conditional routing
+and trusted host publication. [Draft PR #8](https://github.com/ga84jog/laomedo-exp104-disposable-20261007/pull/8)
+is confirmed. This is not arbitrary issue implementation or hosted acceptance.
+
+Executed source `598cf7e0f99e98c45accde6cf78e5f3f986b3799`, manifest
+`a99a8d852d37c34784502b2acd16865deb7a29aaa175436ac5be75ea62d9fb8f`.
+The owner approved the fresh campaign and additional push; Claude reviewed the
+exact configuration and all four execution-head CI checks passed before launch.
+Evidence recording is separately pinned at `56884b21f7d8500a2fa98702f16aa7c317f53c25`:
+[results](https://github.com/amadou-6e/laomedo/blob/56884b21f7d8500a2fa98702f16aa7c317f53c25/experiments/exp139/AMEND08-RESULTS.md)
+and [observation](https://github.com/amadou-6e/laomedo/blob/56884b21f7d8500a2fa98702f16aa7c317f53c25/experiments/exp139/AMEND08-OBSERVATION.json).
+The observation's committed LF bytes have SHA-256
+`4e2cf33380ec7fe64385b76ffa2116b0a4554462fc0bde9e0e82a96a23cab51e`.
+
+| Acceptance | Recorded live result |
+| --- | --- |
+| Frozen issue and skill | Published report includes issue URL, body digest and snapshot; pinned Skill feeds Codex; automatic discovery is not established |
+| Precheck correction | Three bound native calls: missing-report rejection, accepted, accepted, all in one submitted turn |
+| Contract and routing | Accepted success followed the imported graph's validation and publication route |
+| Draft PR and bytes | Draft #8, branch `exp139-20261012-b`, head `973b826fc5a25f1789578b2841c8e9cbfc5e3e67`; actual PR files GET shows only added `experiments/exp139/issue-report.md` |
+| Exact report | Published, frozen and retained SHA-256 all equal `3de179af048ab7823ab1a088459309e802b5a0253263718a8ce33f911eb3a49b` |
+| Native closure | Twelve items, one turn, `evidence_complete=true`, `completion_basis=native_trace_closure`; four command exits zero |
+| Cleanup | Zero active grants; publication completed; controller/executor cleanup confirmed, owned host trees stopped, port 8779 released |
+
+Run `4f05d15f-6880-4266-ac7d-b7707fc9d6c6`, native thread
+`01a12f4e-76e2-71e2-8030-77f209a55872`. Ledger **8/10 cumulative** across
+both retained roots, with **two push attempts and one draft-PR attempt** consumed.
+Remaining turns authorize no additional experimental write. The two pushes used
+separately approved fresh branches; no unknown provider write was retried. The
+original root is permanently retired, with both ledgers and write budgets kept.
+
+Earlier live task-failure and downstream pin-rejection routes published nothing
+and remain preserved in the recovery evidence. Earlier no-go findings below
+are historical outcomes, not the current acceptance verdict. AM07's immediate
+cause remains unproven; this success does not prove that GET recovery fixed it.
+
+Host readback scanned published metadata, actual file list and report for the
+current GitHub token, runner token and stored Codex login values, with no matches.
+Historical rotated values and private raw traces are outside that scan. GitHub
+credentials stayed host-side; Codex used the explicitly accepted container login
+profile and sandbox auth-file deny. Same-UID relay/process attachment isolation
+remains unverified. No production credential-isolation or multi-user claim.
+The test PR and branches remain evidence; no merge, deletion or issue closure
+is authorized by this result.
+
 ## Confirmed live push, downstream rejection, 2026-10-12
 
 The owner-approved AMENDMENT-07 ran at source
