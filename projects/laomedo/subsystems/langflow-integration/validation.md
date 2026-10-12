@@ -31,8 +31,11 @@ migration. Both saved legacy exports executed with one synthetic dispatch and
 the expected Success destination in the pinned runtime. The 87 native tests
 passed at 68bec76. Explicit migration at
 [b38c94e](https://github.com/amadou-6e/laomedo/commit/b38c94e) adds two refusal/
-round-trip controls; all 89 native tests pass. Browser migration confirmation
-remains pending. No model turns or
+round-trip controls; all 89 native tests pass. The migrated original export also passes browser open/edit/save: ten nodes,
+thirteen unchanged edge-handle identities, correct Requirements/Validation
+labels, no update banner and zero page errors. The migration fixture executes
+Success with one synthetic dispatch. No real provider/publisher acceptance is
+claimed by this compatibility check. No model turns or
 GitHub experiment writes were used.
 
 ## Single downstream contract, credential-free native integration, 2026-10-12
