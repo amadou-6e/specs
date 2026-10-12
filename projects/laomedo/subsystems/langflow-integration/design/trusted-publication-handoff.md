@@ -66,3 +66,31 @@ and their adapter stay intact. Publisher access, expiry, frozen-run
 validation and effect reconciliation remain host-owned and unchanged. No
 failure/rejection/recovery branch may invoke publication. Combining visible
 nodes does not create an authorization boundary within custom Langflow code.
+
+
+## Fresh interactive demo configuration (2026-10-12)
+
+The owner authorized a new campaign with four submitted Codex turns, counting
+attempts that time out, and one push plus one draft PR in the existing disposable
+repository `ga84jog/laomedo-exp104-disposable-20261007`. This is separate from the
+completed EXP139 ledger (8/10); its grants, consumed write budget and evidence
+remain unchanged. This authorization does not cover another repository or an
+unlimited service.
+
+The simplified imported graph uses the selected frozen issue and pinned Skill,
+Codex Agent, integrated Output Contract and direct Draft PR Publisher. The host
+binds the exact request before dispatch and limits the report to one file on the
+fresh `langflow-demo-20261012-c` branch. The finite handoff remains 600 seconds;
+agent commands keep network-off and authentication-file denial. A durable
+one-attempt write budget includes unknown provider outcomes. Repeated graph
+clicks cannot renew a consumed task or grant.
+
+The runner and independent services use fresh private state outside Git and
+existing provider login custody. Langflow receives only the runner API token as
+a read-only mount; the GitHub credential stays in the host connection and does
+not enter graph data. The prepared configuration must have an exact reviewed
+source and frozen input manifest before activation. Readiness checks are
+credential-free or no-model authenticated checks, not live execution evidence.
+The user starts the graph through Run component on Draft PR Publisher, which
+builds its upstream dependencies. A green component still means returned Data,
+not proof of semantic success or publication.
