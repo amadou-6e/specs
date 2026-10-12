@@ -11,6 +11,110 @@ related: []
 
 # Langflow integration validation
 
+## Confirmed live push, downstream rejection, 2026-10-12
+
+The owner-approved AMENDMENT-07 ran at source
+`e1eaaa4272bb22e3b95da771a815166c09befedc`, manifest
+`3a0675e1c84886fa7906ed39115f099f51bafdc8f274f38f937408556ac63dc0`,
+after Claude review and all four passing CI checks. The fresh imported graph
+used one turn, bringing the ledger to **7/10**. The mediated Git push is
+confirmed and consumes the single experimental push allowance. The agent's
+command exited zero; native evidence closed twelve items and one turn.
+
+See the [closed-schema observation](https://github.com/amadou-6e/laomedo/blob/e0c760c28af11a70352387e146359d7669b6692c/experiments/exp139/AMEND07-OBSERVATION.json)
+and [result](https://github.com/amadou-6e/laomedo/blob/e0c760c28af11a70352387e146359d7669b6692c/experiments/exp139/AMEND07-RESULTS.md).
+These are evidence-recording pins, not the executed source. Host-only readback
+confirms branch `exp139-20261011-a`, commit
+`835cbfa3375b6b880fadf9b40b47e1c9541e7ec1`, and exact report SHA-256
+`3de179af048ab7823ab1a088459309e802b5a0253263718a8ce33f911eb3a49b`.
+No matching PR exists and no PR attempt was made.
+
+The graph selected rejection. File timestamps are consistent with it finishing
+before the runner saved its terminal result; a later record rewrite would also
+produce that ordering. The retained final answer and final executor status
+pass both frozen output forms and the host had accepted
+it into `validation_pending`. The original graph summary omitted diagnostic
+codes, so an interrupted status read is a hypothesis, not an established cause.
+This is still a **no-go for the full live issue-to-draft-PR claim**.
+
+The unchanged 600-second handoff expired, grants are revoked and cleanup
+verified. Both owned host process trees were stopped. No renewal, additional
+push, direct publisher bypass or new model turn was attempted. Three remaining
+turns do not waive the consumed write allowance. #139 owns the remaining live
+publication blocker.
+
+Post-run source adds bounded retries only for transient GET failures on the
+same run, keeping the existing wait deadline and immediate refusal for HTTP
+errors, malformed responses and identity mismatch. The evidence summary exports
+only closed validation/error codes and status. Credential-free pinned Langflow
+checks pass: 42 component tests and five live-graph tests, including one failed
+GET followed by success without redispatch and redaction of malicious diagnostic
+text. Synthetic publisher responses do not establish live publication. These
+changes were not activated in AMENDMENT-07.
+
+The accepted local credential custody and same-UID relay residual are unchanged;
+no hosted, multi-user or process-attachment isolation is established.
+
+## Frozen-bundle verifier recovery, 2026-10-12
+
+AMENDMENT-06's branch prerequisite worked and its real imported graph reached
+the host through the mailbox, freezing one bundle. The composition incorrectly
+expected `advertised_commit` in the freezer receipt. The field is derived by
+the validated private bundle reader, not supplied by that receipt. Verification
+never started; the helper stopped with `stage_pending_no_retry`, and the graph
+routed the invalid final submission to rejection. No provider write occurred.
+Ledger 6/10, grants revoked and cleanup verified. See the
+[machine observation](https://github.com/amadou-6e/laomedo/blob/e1eaaa4272bb22e3b95da771a815166c09befedc/experiments/exp139/AMEND06-OBSERVATION.json)
+and [result](https://github.com/amadou-6e/laomedo/blob/e1eaaa4272bb22e3b95da771a815166c09befedc/experiments/exp139/AMEND06-RESULTS.md).
+Executed source and manifest remain the AMENDMENT-06 pins in the next section.
+
+[AMENDMENT-07](https://github.com/amadou-6e/laomedo/blob/e1eaaa4272bb22e3b95da771a815166c09befedc/experiments/exp139/AMENDMENT-07.md)
+corrects both verification dispatch and downstream artifact resolution to use
+the existing checksum-validated private reader. It does not execute host Git
+against agent-owned configuration. The regression feeds a real freeze receipt
+and captured bundle into the composition boundary and refuses tampering before
+the verifier is called. The
+[Docker control](https://github.com/amadou-6e/laomedo/blob/e1eaaa4272bb22e3b95da771a815166c09befedc/experiments/exp139/VERIFY-CONTROL.json)
+verifies a copy of the actual retained capture under a synthetic active binding,
+with limits and cleanup passing, zero model turns, no login and no provider
+writes. This is integration evidence, not live publication acceptance.
+
+Candidate source `e1eaaa4272bb22e3b95da771a815166c09befedc`, manifest
+`3a0675e1c84886fa7906ed39115f099f51bafdc8f274f38f937408556ac63dc0`.
+Eight consumed requests and six used turns are retained. Permission, credential
+custody, relay and write budgets remain unchanged. Exact-source review, checks
+and explicit recovery activation approval precede the fresh success request.
+Published-byte readback remains unverified.
+
+## File-relay live result and task correction, 2026-10-12
+
+The owner approved AMENDMENT-05 after Claude review and passing final CI.
+Its fresh imported graph used one real Codex turn, bringing the ledger to
+5/10. It retained exact report bytes and closed twelve native items, but the
+agent reported task failure. The contract accepted that form and routed to
+failure. No provider push or draft-PR attempt occurred; the run grant was
+revoked and container cleanup verified. Both campaign host trees were stopped.
+
+See the [machine-written observation](https://github.com/amadou-6e/laomedo/blob/190de01a6e2157ca521ba91a1aaea2b72fe2e742/experiments/exp139/AMEND05-OBSERVATION.json)
+and [result](https://github.com/amadou-6e/laomedo/blob/190de01a6e2157ca521ba91a1aaea2b72fe2e742/experiments/exp139/AMEND05-RESULTS.md).
+Executed source was `6f6a5c7e7936adfe8534e62cbd6dcdd5a9747e29`, manifest
+`b58a3017664577c3b4177cb055e11d64d0d60c274cf4ffd34b1541425a9a327a`.
+The preserved checkout had detached HEAD and no configured local run branch.
+The helper refused before writing a journal or sending a mailbox request.
+The [network-none dummy control](https://github.com/amadou-6e/laomedo/blob/190de01a6e2157ca521ba91a1aaea2b72fe2e742/experiments/exp139/BRANCH-CONTROL.json)
+reproduces that failure and succeeds after explicit branch creation. This is
+not a live provider success claim.
+
+The owner approved task-only
+[AMENDMENT-06](https://github.com/amadou-6e/laomedo/blob/190de01a6e2157ca521ba91a1aaea2b72fe2e742/experiments/exp139/AMENDMENT-06.md):
+require creation of the named run branch before committing and use a fresh
+request/grant identity. Seven consumed requests and five used turns remain
+retained. Permissions, relay, credential custody, scope and the unused
+one-push/one-draft-PR budgets do not change. Source and input manifest is
+`6e7b5b4bbdc8debd2375685cd66a15f43db5fd5315d95a1d1e548a6961cc560c`.
+Claude approved the candidate; passing host tests and final CI remain activation
+gates. Live publication and published-byte readback are still unverified.
+
 ## Prospective file-relay recovery, 2026-10-11
 
 The owner increased EXP-139's cap to ten total submitted turns, retaining four
