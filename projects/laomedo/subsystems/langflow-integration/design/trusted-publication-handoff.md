@@ -52,3 +52,11 @@ The controller keeps the lease heartbeat through validation. Runner/controller d
 Credential-free checks must cover accepted draft publication and exact readback, non-success refusal, forged graph operations, foreign or unconfirmed artifacts, changed requirements, in-flight effects, deadline-preserving renewal, clock rollback, cancellation/expiry during publication, no resend after uncertainty, explicit startup recovery and lease loss while another run remains usable. Pinned Langflow checks cover the real custom node against a fake local response, without a live provider.
 
 The bounded [#100](https://github.com/amadou-6e/laomedo/issues/100) and [#104](https://github.com/amadou-6e/laomedo/issues/104) prerequisite acceptance is recorded; #100's live-provider result is in [specs #344](https://github.com/amadou-6e/specs/pull/344). Live publication still requires [#139](https://github.com/amadou-6e/laomedo/issues/139)'s separate model-turn cap and scoped identity. Native precheck acceptance, independently verified real-run completeness and a deployed graph-to-publisher demonstration are not established by fake transports.
+
+## Integrated contract-route compatibility
+
+The integrated Output Contract's Success port retains the routed validation
+envelope consumed by Accepted Validation. Publisher access, expiry, frozen-run
+validation and effect reconciliation remain host-owned and unchanged. No
+failure/rejection/recovery branch may invoke publication. Combining visible
+nodes does not create an authorization boundary within custom Langflow code.

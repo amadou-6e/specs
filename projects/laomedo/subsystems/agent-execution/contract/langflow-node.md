@@ -141,3 +141,12 @@ checked-in flow embeds the new source; no installed flow or server is changed.
 The [acceptance audit](../../../implementation/resume-feedback-acceptance.md)
 records tests and the precise cancellation boundary. Continuous streaming,
 automatic retries and broader #22/#93 acceptance remain outside this check.
+
+## Downstream Output Contract preparation
+
+The single-node integration is owned by [Output Contract](output-contract.md#single-downstream-node-selected-integration).
+Before dispatch, the Codex component discovers directly downstream static form
+requirements from native graph metadata, freezes them and supplies the existing
+native precheck. Ambiguous/dynamic/conflicting bindings refuse before a model
+request. Preserve the authenticated runner-derived envelope for final routing.
+This does not authorize another invocation or external effect.
