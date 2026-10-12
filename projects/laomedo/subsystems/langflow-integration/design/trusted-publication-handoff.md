@@ -154,3 +154,34 @@ report contents, not a general credential-exfiltration audit.
 This demonstrates the bounded single-user local path for this fixed sample
 report. It does not prove arbitrary issue implementation, hosted isolation,
 semantic code correctness, or all failure/rejection routes in this campaign.
+
+
+### Standing local development allowance, owner decision 2026-10-12
+
+The owner selected four submitted model turns per manual Run, including
+timeouts, with a fresh branch and at most one push and one draft PR per run in
+`ga84jog/laomedo-exp104-disposable-20261007`. This allowance persists until
+explicitly disabled. It does not reset the preceding campaign's ledger or
+consumed write budgets. Unknown writes remain consumed and cannot be repeated.
+
+The prepared configuration uses an independent local runner on port 8780,
+separate private state outside Git, the existing provider login and host-only
+GitHub connection, unchanged permissions and a finite 600-second handoff.
+It continues to accept only the registered frozen issue, pinned skill and
+contract, and publishes only the exact bounded report after accepted-success
+validation. Each new request gets a host-generated branch; replaying its
+request identity returns the existing run. No fresh dispatch is accepted while
+a run is prepared or running. Resume is excluded on this demo route.
+
+The issue node exposes a readable selected URL and Task form, plus advanced
+structured frozen context. Base64 survives only as hidden compatibility fields.
+Changing the URL does not fetch another issue; a mismatch refuses. This is not
+a live GitHub issue selector or evidence of arbitrary issue implementation.
+
+Activation requires independent review of the source and concrete policy,
+clean source pinning and recorded fixture hashes. The first live Run is reserved
+for the owner; automated verification must use fixtures. Disabling the policy
+prevents new starts but does not cancel an active run. The existing Stop and
+lease controls still govern it. The allowance is local scope control, not a
+same-user Windows authorization boundary. No live standing-policy run has
+been observed yet.
