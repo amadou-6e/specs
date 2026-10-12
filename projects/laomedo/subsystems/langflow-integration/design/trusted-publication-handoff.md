@@ -55,8 +55,14 @@ The bounded [#100](https://github.com/amadou-6e/laomedo/issues/100) and [#104](h
 
 ## Integrated contract-route compatibility
 
-The integrated Output Contract's Success port retains the routed validation
-envelope consumed by Accepted Validation. Publisher access, expiry, frozen-run
+The integrated Output Contract's Success port connects directly to the Draft
+PR Publisher's existing validation input with its `{route, validation}` envelope.
+The publisher unwraps only `route: success` with an object validation. Any
+other route or malformed wrapper refuses without a publication HTTP request;
+it must not fall back to raw-validation handling. Raw legacy validation remains
+compatible and uses the same accepted/success/completed/complete-evidence checks.
+Current graphs need no Accepted Validation adapter; historical embedded exports
+and their adapter stay intact. Publisher access, expiry, frozen-run
 validation and effect reconciliation remain host-owned and unchanged. No
 failure/rejection/recovery branch may invoke publication. Combining visible
 nodes does not create an authorization boundary within custom Langflow code.
