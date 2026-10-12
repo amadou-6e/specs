@@ -86,3 +86,18 @@ are not themselves conditional routes; connecting those is explicit fan-out.
 The caller must not interpret such a diagnostic output as another authorization.
 Keep the historical EXP-139 export intact. A separately named simplified export
 and credential-free native/imported tests own evidence for the new behavior.
+
+Compatibility details: an older graph with no explicit requirements wire but
+with a directly downstream contract now receives automatic precheck requirements,
+even when it uses only Validation Outcome. This intentionally changes that
+request: the existing configured continuation policy applies within its turn
+ledger. Legacy flows with an explicit requirements wire retain their pin.
+
+Integrated discovery requires exact native types LaomedoCodexAgent and
+LaomedoOutputContract. Renamed/copied custom components and OpenCode are not
+supported for automatic binding; missing integrated provenance fails closed.
+Do not wire the legacy Validation Outcome as an additional execution branch
+alongside integrated route ports. It is an independently evaluated diagnostic
+output, not an inactive conditional branch; four-port route exclusivity does
+not cover this explicit legacy fan-out. The simplified export omits those
+compatibility outputs from its visible node.
