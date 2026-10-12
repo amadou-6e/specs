@@ -537,7 +537,15 @@ The generated-ID amendment at
 [f1df8a2](https://github.com/amadou-6e/laomedo/commit/f1df8a2) fixes a migration
 review finding: blanket replacement also rewrote IDs containing the old class
 name. Handles are now decoded, checked against structured metadata and the
-source node ID, and re-encoded with only the dataType changed. Tests cover
-normal JSON and the editor's quote-encoded form, plus inconsistent metadata
+source node ID, and re-encoded with only the dataType changed. The final amendment at
+[307081f](https://github.com/amadou-6e/laomedo/commit/307081f) uses an explicit
+Unicode escape for the editor's quote encoding; the earlier local fixture had
+been damaged by a shell encoding conversion. At that final source, tests cover
+normal JSON and actual editor quote encoding, plus inconsistent metadata
 refusal. All 91 pinned native tests pass. Earlier 89-test evidence remains a
 record of the prior revision, not the final generated-ID gate.
+
+The generated-ID migrated flow also passes browser open/edit/save: ten nodes,
+thirteen preserved source/target handle identities, correct legacy labels,
+no update banner and zero page errors. This closes the generated-ID migration
+gate at the final implementation revision, without adding live acceptance.
