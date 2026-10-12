@@ -11,6 +11,33 @@ related: []
 
 # Langflow integration validation
 
+## Integrated and legacy editor compatibility, 2026-10-12
+
+The native editor rebuilds outputs from component code: export-only filtering
+and `Output.hidden` did not hide compatibility ports in the actual browser.
+The correction at [68bec76](https://github.com/amadou-6e/laomedo/commit/68bec76)
+uses a four-route `LaomedoOutputContract` plus a separate two-port
+`LaomedoOutputContractLegacy`. Existing saved exports are not migrated automatically.
+
+A credential-free browser check opened and edited three imported flows, observed
+a successful save request for each, and compared the saved source/target handles
+and edge multiplicities. The simplified inspection retained nine nodes and
+eleven edges, displayed only Success/Failure/Rejection/Recovery, and produced
+no browser errors. Original and refreshed legacy fixtures each retained ten
+nodes and thirteen edges. Original nodes still display an update banner and two incorrectly relabelled
+outputs (Success/Failure), although their internal port names and wiring remain
+Requirements/Validation. Plain-save preservation is not a clean legacy editor
+migration. Both saved legacy exports executed with one synthetic dispatch and
+the expected Success destination in the pinned runtime. The 87 native tests
+passed at 68bec76. Explicit migration at
+[b38c94e](https://github.com/amadou-6e/laomedo/commit/b38c94e) adds two refusal/
+round-trip controls; all 89 native tests pass. The migrated original export also passes browser open/edit/save: ten nodes,
+thirteen unchanged edge-handle identities, correct Requirements/Validation
+labels, no update banner and zero page errors. The migration fixture executes
+Success with one synthetic dispatch. No real provider/publisher acceptance is
+claimed by this compatibility check. No model turns or
+GitHub experiment writes were used.
+
 ## Single downstream contract, credential-free native integration, 2026-10-12
 
 Under specs #362 / Laomedo #147, implementation
@@ -505,3 +532,20 @@ is interpreted as no effects. Shared ledger 12/12, no retries. This is bounded
 host-wait evidence, not a new Langflow server 408, automated ingress, graph resume,
 semantic success or full Q11/#93 outage and push-revocation acceptance. Historical
 rows above keep their dates and limits.
+
+The generated-ID amendment at
+[f1df8a2](https://github.com/amadou-6e/laomedo/commit/f1df8a2) fixes a migration
+review finding: blanket replacement also rewrote IDs containing the old class
+name. Handles are now decoded, checked against structured metadata and the
+source node ID, and re-encoded with only the dataType changed. The final amendment at
+[307081f](https://github.com/amadou-6e/laomedo/commit/307081f) uses an explicit
+Unicode escape for the editor's quote encoding; the earlier local fixture had
+been damaged by a shell encoding conversion. At that final source, tests cover
+normal JSON and actual editor quote encoding, plus inconsistent metadata
+refusal. All 91 pinned native tests pass. Earlier 89-test evidence remains a
+record of the prior revision, not the final generated-ID gate.
+
+The generated-ID migrated flow also passes browser open/edit/save: ten nodes,
+thirteen preserved source/target handle identities, correct legacy labels,
+no update banner and zero page errors. This closes the generated-ID migration
+gate at the final implementation revision, without adding live acceptance.

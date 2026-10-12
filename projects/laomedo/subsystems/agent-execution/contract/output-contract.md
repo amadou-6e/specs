@@ -73,7 +73,9 @@ and [implementation #147](https://github.com/amadou-6e/laomedo/issues/147).
 One downstream Output Contract supplies its static form to the directly connected
 Codex Agent before dispatch and exposes Success, Failure, Rejection and Recovery
 ports itself. No backward execution edge or second requirements node is needed.
-Legacy explicit requirements and Validation Outcome ports remain compatible.
+Legacy explicit requirements and Validation Outcome ports remain compatible
+through the separate LaomedoOutputContractLegacy component and preserved
+embedded code in existing saved flows. The new component exposes only routes.
 
 For integrated routing, incomplete or unknown executor state/evidence takes
 Recovery precedence even when output is malformed or absent. With completed,
