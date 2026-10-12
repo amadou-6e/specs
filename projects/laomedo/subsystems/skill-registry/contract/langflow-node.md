@@ -55,3 +55,7 @@ five-node graph with one dispatch; verify installed catalog and imported flow;
 verify a bounded model-backed run carries the selected revision and observed
 native file result. Link evidence from registry validation; distinguish this
 follow-up from the historical six-turn agent-node evidence.
+
+## Read-only inspection
+
+The selected node can open the exact registered bundle in the [Skill files panel](../design/skill-files.md), following its [interaction model](../design/skill-files.drawio). This reads authenticated hash-verified registry bytes, never component Python code or arbitrary host paths. It does not alter the reference output or establish actual agent use.

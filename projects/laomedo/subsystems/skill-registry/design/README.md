@@ -22,3 +22,5 @@ are needed for currently inspected material.
 The [decision-readiness ledger](decision-readiness.md) identifies remaining
 materialization, revision-publication and GitHub-backed identity choices.
 It is draft triage, not a second skill registry contract.
+
+[Skill files inspection](skill-files.md) describes the owner-selected read-only node panel and its [editable interaction model](skill-files.drawio).
