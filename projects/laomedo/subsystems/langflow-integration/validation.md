@@ -21,16 +21,18 @@ used one turn, bringing the ledger to **7/10**. The mediated Git push is
 confirmed and consumes the single experimental push allowance. The agent's
 command exited zero; native evidence closed twelve items and one turn.
 
-See the [closed-schema observation](https://github.com/amadou-6e/laomedo/blob/aca2a650a1218c64d49803263f05a8c351d5cb53/experiments/exp139/AMEND07-OBSERVATION.json)
-and [result](https://github.com/amadou-6e/laomedo/blob/aca2a650a1218c64d49803263f05a8c351d5cb53/experiments/exp139/AMEND07-RESULTS.md).
+See the [closed-schema observation](https://github.com/amadou-6e/laomedo/blob/e0c760c28af11a70352387e146359d7669b6692c/experiments/exp139/AMEND07-OBSERVATION.json)
+and [result](https://github.com/amadou-6e/laomedo/blob/e0c760c28af11a70352387e146359d7669b6692c/experiments/exp139/AMEND07-RESULTS.md).
 These are evidence-recording pins, not the executed source. Host-only readback
 confirms branch `exp139-20261011-a`, commit
 `835cbfa3375b6b880fadf9b40b47e1c9541e7ec1`, and exact report SHA-256
 `3de179af048ab7823ab1a088459309e802b5a0253263718a8ce33f911eb3a49b`.
 No matching PR exists and no PR attempt was made.
 
-The graph selected rejection before the runner saved its terminal result.
-The retained result passes both frozen output forms and the host had accepted
+The graph selected rejection. File timestamps are consistent with it finishing
+before the runner saved its terminal result; a later record rewrite would also
+produce that ordering. The retained final answer and final executor status
+pass both frozen output forms and the host had accepted
 it into `validation_pending`. The original graph summary omitted diagnostic
 codes, so an interrupted status read is a hypothesis, not an established cause.
 This is still a **no-go for the full live issue-to-draft-PR claim**.
