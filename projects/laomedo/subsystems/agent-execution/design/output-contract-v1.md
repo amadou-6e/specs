@@ -81,7 +81,8 @@ There is no new cryptographic attestation or custom-code security boundary.
 
 Use native grouped outputs and stop inactive branches. Preserve the existing
 {route, validation} envelope so existing destinations and Accepted Validation
-continue to work. Legacy requirements/validation outputs remain available but
+continue to work. Legacy requirements/validation outputs remain available on the separate
+LaomedoOutputContractLegacy component, but
 are not themselves conditional routes; connecting those is explicit fan-out.
 The caller must not interpret such a diagnostic output as another authorization.
 Keep the historical EXP-139 export intact. A separately named simplified export
@@ -96,8 +97,10 @@ ledger. Legacy flows with an explicit requirements wire retain their pin.
 Integrated discovery requires exact native types LaomedoCodexAgent and
 LaomedoOutputContract. Renamed/copied custom components and OpenCode are not
 supported for automatic binding; missing integrated provenance fails closed.
-Do not wire the legacy Validation Outcome as an additional execution branch
-alongside integrated route ports. It is an independently evaluated diagnostic
-output, not an inactive conditional branch; four-port route exclusivity does
-not cover this explicit legacy fan-out. The simplified export omits those
-compatibility outputs from its visible node.
+The new LaomedoOutputContract exposes only the four route ports. Current
+legacy examples use LaomedoOutputContractLegacy for Requirements/Validation;
+existing saved flows retain their embedded original class code and edges.
+Do not automatically replace those legacy instances with the new class.
+The native editor reconstructs output metadata from code and does not honor
+the hidden-output approach tested locally. Separate classes avoid silent
+edge loss and keep the integrated node free of compatibility ports.

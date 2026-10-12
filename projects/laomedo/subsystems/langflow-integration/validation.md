@@ -11,6 +11,23 @@ related: []
 
 # Langflow integration validation
 
+## Integrated and legacy editor compatibility, 2026-10-12
+
+The native editor rebuilds outputs from component code: export-only filtering
+and `Output.hidden` did not hide compatibility ports in the actual browser.
+The correction at [68bec76](https://github.com/amadou-6e/laomedo/commit/68bec76)
+uses a four-route `LaomedoOutputContract` plus a separate two-port
+`LaomedoOutputContractLegacy`. Existing saved exports are not migrated automatically.
+
+A credential-free browser check opened and edited three imported flows, observed
+a successful save request for each, and compared the saved source/target handles
+and edge multiplicities. The simplified inspection retained nine nodes and
+eleven edges, displayed only Success/Failure/Rejection/Recovery, and produced
+no browser errors. Original and refreshed legacy fixtures each retained ten
+nodes and thirteen edges. This demonstrates editor/save compatibility only;
+execution checks on those saved exports are still pending. No model turns or
+GitHub experiment writes were used.
+
 ## Single downstream contract, credential-free native integration, 2026-10-12
 
 Under specs #362 / Laomedo #147, implementation
