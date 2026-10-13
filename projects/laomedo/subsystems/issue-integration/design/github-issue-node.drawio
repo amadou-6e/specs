@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram id="github-issue-node" name="GitHub Issue">
+    <mxGraphModel page="1" pageWidth="1300" pageHeight="1000">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="GI01" value="GitHub Issue&#10;Repository URL [ https://github.com/owner/repo ]&#10;Labels [ type to find labels v ] (multi-select)&#10;ALL labels match | [research] [backend]&#10;Issue [ #12 Implement endpoint                 v ]&#10;[Refresh list] | Discovery: 1 matching issue&#10;Advanced: State (open / closed / all)&#10;Inputs: Operation, optional Issue Reference&#10;Outputs: Issue | Task | Operation Result" parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;">
+          <mxGeometry as="geometry" x="40" y="40" width="550" height="290" />
+        </mxCell>
+        <mxCell id="GI02" value="Loading and dependency changes&#10;Repository change: clear labels and issue&#10;Labels/State change: clear issue&#10;Discovery: Discovering GitHub issues...&#10;Ignore late responses for previous selectors&#10;No implicit first-issue selection" parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;">
+          <mxGeometry as="geometry" x="630" y="40" width="600" height="200" />
+        </mxCell>
+        <mxCell id="GI03" value="All-label filtering&#10;No labels: all issues in selected State&#10;research + backend: only issues with both&#10;Search narrows discovered labels/issues&#10;Exclude pull requests; bounded pagination&#10;Refresh keeps a valid exact issue identity" parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;">
+          <mxGeometry as="geometry" x="630" y="270" width="600" height="180" />
+        </mxCell>
+        <mxCell id="GI04" value="Incoming operation&#10;Upstream -&gt; Operation (close or modify)&#10;Modify: title / body / labels (replace full set)&#10;Issue Reference from an earlier node can bind target&#10;Explicit picker and reference must agree&#10;Host resolves scoped expiring grant; no token field" parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;">
+          <mxGeometry as="geometry" x="40" y="370" width="550" height="210" />
+        </mxCell>
+        <mxCell id="GI05" value="Failures and uncertain delivery&#10;No matching issues / connection failure are distinct&#10;A changed issue must still match current filters&#10;Result: failed / unknown with fixed error category&#10;No blind replay after timeout or lost response&#10;A task message cannot imply successful mutation" parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;">
+          <mxGeometry as="geometry" x="630" y="490" width="600" height="210" />
+        </mxCell>
+        <mxCell id="GI06" value="Live execution and outcomes&#10;Read current selected issue at invocation&#10;One invocation: all outputs share one execution&#10;Close/modify read back confirmed current issue&#10;Result: not_requested / succeeded / failed / unknown&#10;After a filter-changing write, report the actual target&#10;New reads revalidate; evidence kept internally" parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;">
+          <mxGeometry as="geometry" x="40" y="640" width="550" height="220" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

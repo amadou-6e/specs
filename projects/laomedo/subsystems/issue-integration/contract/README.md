@@ -18,3 +18,5 @@ not define an independent serialization.
 
 Contract container: README.md (1), focused interface/configuration pages
 (0..*). [Validation](../validation.md) records evidence and gaps.
+
+- [GitHub Issue node](langflow-node.md): live repository/label/issue selection and narrow graph-triggered operations.
