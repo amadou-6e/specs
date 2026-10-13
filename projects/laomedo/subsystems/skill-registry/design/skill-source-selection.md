@@ -94,8 +94,9 @@ same-user filesystem tampering.
 
 Local revisions are observed UTC timestamp plus bundle hash. Prior imported choices
 persist across refresh/restart; old exact references resolve even after source bytes
-change. Git choices retain imported snapshots as refs move/disappear. Existing
-registry revisions use exact SHA-256 choices. Importing another revision of an
+change. Git choices retain imported snapshots as refs move/disappear. Registry revision labels include recorded source/path/ref/commit provenance plus
+the exact SHA-256; old revisions are explicitly marked origin unrecorded. Origin
+metadata is kept outside hashed bundles, so same-named imports are distinguishable. Importing another revision of an
 existing skill does not advance its latest pointer. A new skill gets the store's
 initial pointer. Each accepted output is the existing three-key descriptor.
 
@@ -104,7 +105,14 @@ file and 4 MiB per bundle, maximum path depth 17; 64 cached choices per skill/so
 Git operations monitor state/cache against 128 MiB and use a 60-second operation deadline, with 45 seconds per Git
 command. Timeout kills the Git process tree. Portable path checks reject traversal,
 credential filenames, case collisions and Windows reserved names before staging.
-Exceeding a bound refuses rather than dropping entries or evicting old pins.
+Exceeding a choice bound refuses before importing bundles or committing the new
+choice map. Imported history is not automatically evicted. The cache has no
+automatic cleanup; after stopping the service an operator can clear only its
+state/index while preserving registry bundles and source-origins.json. Saved
+display choices must then be rediscovered; exact exported references remain valid.
+Refresh prunes deleted remote branches. Proxy environment configuration is not
+inherited or supported. Holding the shared runner transport token also permits
+source discovery/import in this local service.
 
 POST /v1/skill-sources/discover takes source; revisions takes source and skill;
 resolve takes source, skill and revision. Authentication precedes parsing, bodies
@@ -127,7 +135,7 @@ and active-demo deployment require their concrete connection/configuration scope
 ## Recorded credential-free checks (2026-10-13)
 
 The implementation's host suite passed 684 tests with 15 skips before the final
-portable-path testcase. The pinned Langflow image passed eight source tests
+portable-path testcase. The pinned Langflow image passed eleven source tests
 (including Linux links) and five native component tests (including refresh keeping
 a selected revision). The imported source-only flow passed an Edge browser check
 of both searchable selectors, old exact bundle inspection, clearing on skill/source
