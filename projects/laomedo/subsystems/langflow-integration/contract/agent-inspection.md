@@ -31,7 +31,7 @@ Show stored Contract acceptance/rejection, closed validation codes and field pat
 
 Return only source-line sequence, event kind, item kind/identifier, turn identifier, dynamic tool name, reported command exit code and duration. Do not return messages, reasoning, commands, arguments, environment values, tool output or raw JSON. This is metadata inspection, not full transcript viewing or universal secret detection. Record identifier/name fields remain bounded metadata; users must not store credentials in identifiers.
 
-Read at most 32 MiB of trace per request, 256 KiB per line, and return at most 200 projected events per page. Preserve source sequence across pages. Missing, malformed, limited and paged traces are explicit states, not complete evidence. Record JSON is bounded to 1 MiB; proxy replies to 2 MiB. History returns at most 100 records and never auto-selects one. Refresh is a read only operation. Tabs support keyboard arrows/Home/End, selection labels and accessible loading/error states.
+Read at most 32 MiB of trace per request, 256 KiB per line, and return at most 200 projected events per page. Preserve source sequence across pages. Missing, incomplete, malformed, limited and paged traces are explicit states, not complete evidence. Record JSON is bounded to 1 MiB; proxy replies to 2 MiB. History returns at most 100 records in filesystem order and reports truncation and never auto-selects one. Refresh is a read only operation. Tabs support keyboard arrows/Home/End, selection labels and accessible loading/error states.
 
 ## Validation requirements
 
