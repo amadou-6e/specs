@@ -23,3 +23,5 @@ Design container: README.md (1), focused mechanism pages (0..*).
 The [decision-readiness ledger](decision-readiness.md) records the open
 GitHub-read, publication and event-policy choices separately from the draft
 interface shapes.
+
+- [GitHub Issue interaction model](github-issue-node.drawio): live selectors, all-label matching, incoming operations and outcomes.

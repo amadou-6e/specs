@@ -158,3 +158,14 @@ These answers reconcile the proposed fate-shared crash policy with IF-12's exter
 | [#166 review](https://github.com/amadou-6e/specs/pull/166) | Its disapproving verdict stands. Retain its issue-publication/event scenarios as hypotheses, not observed runtime failures; a separate earlier #168 review was retracted. |
 
 No proposed owner here is a new accepted subsystem. Cross-owner decisions required before acceptance: GitHub identity custody and scope with [agent execution](../../agent-execution/contract/interfaces.md) and [#129](https://github.com/amadou-6e/specs/issues/129); event-ingress versus scheduler owner with [Langflow integration](../../langflow-integration/contract/interfaces.md); draft and publication-intent split with [results](../../results-artifacts/contract/interfaces.md); and PR review fetch ownership for later follow-ups. The document deliberately leaves these as decisions, not a duplicated contract.
+
+## Live node scope update (2026-10-13)
+
+[Decision 0009](../../../decisions/0009-live-github-issue-node.md) settles the
+user-facing connection, all-label selection and close/modify fields. The node
+retrieves current content on invocation; this does not settle Q04's separate
+agent-dispatch revalidation across a delayed graph. Q05 uses the configured host
+GitHub connection for this slice; browser-account lifecycle remains with its
+authentication owner. Q07's outputs carry fetched content, marker and digest;
+long-term trace/retention ownership is not decided by that output alone. Earlier
+frozen-context and publication experiments retain their original scope.
