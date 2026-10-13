@@ -3,7 +3,7 @@ title: Issue integration validation
 status: draft
 kind: validation
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-02
+last_reviewed: 2026-10-13
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -27,3 +27,41 @@ publication mechanisms, not a deployed publisher. Proposed acceptance checks:
 
 The [handoff graph](../../architecture/subsystem-handoffs.md) is design evidence,
 not a runtime result. Pin implementation and API versions when these checks run.
+
+## GitHub PR node local verification, 2026-10-13
+
+The [PR contract](contract/pr-node.md) and [editable interaction model](design/github-pr-node.drawio)
+were authored for the user-selected PR alignment. Implementation base is Laomedo
+develop `c29c93f2af93dde0a57dcbb3d38f23336407f56c`; the visible implementation
+checkout's `examples/github-pr/evidence.json` pins the changed source hashes.
+These checks describe the local candidate, not a merged or activated release.
+
+- Twelve credential-free host tests passed for PR discovery, filters, close/
+  title/body/labels operations, target/head/merged/grant refusals, expiry,
+  durable replay and partial/uncertain effects.
+- Four native lfx 1.12.3 node tests and three authenticated inspection tests
+  passed. Eight existing publisher, 23 mediator, 14 REST transport and 17 live
+  Issue fixture regression tests passed.
+- The [four-node operation graph](design/pr-operation.drawio) executed twice
+  through Graph.arun: one confirmed fixture metadata update, no repeated effect,
+  zero model turns and zero live provider writes.
+- Five React viewer tests passed with real Markdown rendering, covering exact
+  link identity, read-only payload, refresh, unsafe markup, stale responses,
+  missing selection and abort/error behavior. A temporary Node resolver and
+  visible-path harness avoided a missing Windows native DLL and hidden-directory
+  test discovery; the production overlay did not adopt either workaround.
+- The overlay applied to upstream Langflow `fec71dca901949c09ed4d63315804337cd2eb13d`.
+  Node 22.16.0 production build passed. TypeScript baseline and candidate each
+  reported 253 diagnostics; comparison normalized line/column offsets and found
+  zero added or removed diagnostic messages. Full typechecking remains red.
+- The actual PR viewer was rendered and visually inspected in Edge using an
+  isolated fixture entry and mocked read response. The [reference screenshot](design/references/github-pr-viewer.png)
+  is bounded UI evidence, not live GitHub acceptance. Both editable diagrams were
+  inspected through temporary raster previews; the previews are not tracked.
+
+No active application connection or write grants were changed. Complete installed
+application selection/browser regression, live PR operations, independent review,
+merge and deployment remain unverified. The creation mode/run-result viewer is a
+proposal. GitHub connector tracking creation returned 403; automatic approval
+review rejected a credential-helper retry, so tracking/publication remain pending
+human authorization. No issue, PR or remote branch was created by this task.
