@@ -42,7 +42,8 @@ These checks describe the local candidate, not a merged or activated release.
 - Four native lfx 1.12.3 node tests and three authenticated inspection tests
   passed. Eight existing publisher, 23 mediator, 14 REST transport and 17 live
   Issue fixture regression tests passed.
-- The [four-node operation graph](design/pr-operation.drawio) executed twice
+- The historical four-node operation graph (implementation commit `fdd17a0`,
+  now preserved as `examples/github-pr/four-node-flow.json`) executed twice
   through Graph.arun: one confirmed fixture metadata update, no repeated effect,
   zero model turns and zero live provider writes.
 - Five React viewer tests passed with real Markdown rendering, covering exact
@@ -65,3 +66,28 @@ merge and deployment remain unverified. The creation mode/run-result viewer is a
 proposal. GitHub connector tracking creation returned 403; automatic approval
 review rejected a credential-helper retry, so tracking/publication remain pending
 human authorization. No issue, PR or remote branch was created by this task.
+
+## Two-node PR and Agent verification, 2026-10-14
+
+The user selected PR → Agent → the same PR. The revised
+[operation diagram](design/pr-operation.drawio) and contract describe this bounded
+one-shot loop. The implementation example now contains two nodes and two native
+connections, with PR #1 selected. Its Agent is a deterministic fixture.
+
+- Eleven actual Graph.arun tests passed: modify/close and exact feedback output,
+  one Agent invocation, durable replay, absent selection, invalid response,
+  Agent failure/cancellation, concurrent edit refusal, uncertain write and
+  conflicting ordinary Operation input.
+- Four native PR node, twelve host PR and three authenticated inspection tests
+  passed after the change.
+- The saved two-node flow executed successfully through the running Langflow
+  build/events API. Its PR completed with no next runnable vertices. Edge checks
+  confirmed exactly two visible nodes, selected PR viewing and its GitHub link.
+  The [editor screenshot](design/references/github-pr-two-node.png) records this
+  disposable local app; fake provider, zero real GitHub writes and no model turns.
+
+The component scopes its parameter adapter to its own vertex: return feedback
+is resolved by the isolated body after the read, rather than as an eager input.
+Outer conditional exclusion prevents a second Agent execution. Existing PR
+creation remains the separate proposal in the contract. Live model/provider
+integration and remote publication remain unverified.

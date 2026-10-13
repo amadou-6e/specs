@@ -100,12 +100,36 @@ an active GitHub connection.
 
 ## Operation example and acceptance
 
-An importable Langflow graph wires a read node's PR output and a fixture
-modify-operation output to a second PR node, then sends Operation Result to an
-inspection node. It must execute through real node ports, gateway, mediation,
-REST request shaping and durable journal against an injected fake provider.
-Re-running the same request must not repeat the write. No model/provider turn
-or real PR mutation is needed for this evidence.
+The user selected a two-node round trip: one GitHub PR node and one Agent.
+PR Task feeds the Agent, whose selected Operation/answer output feeds the native
+loop socket on that same Task port. The ordinary Operation input remains for
+existing acyclic flows; it must not also be populated in round-trip mode.
+The PR node is the loop controller, with one initial read, exactly one Agent
+body execution, one returned operation, and a terminal result. No third Loop
+node or second PR node is required. The Task branch is stopped in the outer
+graph; the native isolated subgraph runs the Agent once, rather than letting
+the outer scheduler invoke it again. Multiple body nodes, fan-out or multiple
+feedback sources are refused in this bounded first slice.
+
+Freeze the selected repository/number and fetched content digest before calling
+the Agent. Read refusal stops before the Agent. The feedback must be Data with
+the existing operation envelope, or a Message containing that JSON object.
+Read the exact connected return output, not an arbitrary first Agent output.
+Missing/malformed feedback and Agent failure/cancellation refuse publication.
+Revalidate the original PR digest before an initial mutation, so edits made
+while the Agent runs cause refusal rather than overwrite. Existing host grants,
+target/head/base checks and durable replay semantics still apply. No feedback
+content may retarget the PR, mint a grant, or trigger another Agent invocation.
+Unknown mutation stops the round trip without retry. Duplicate evaluation of
+node outputs shares the same round trip and terminal operation result.
+
+The importable example uses an explicitly labelled deterministic Agent fixture
+and fake GitHub; it must run through actual Langflow loop handles, subgraph
+execution, gateway and durable effects. It does not claim a real model turn.
+Two graph runs with the same operation request identity must send one mutation.
+Verify close/modify, exact feedback-port selection, failed reads, malformed or
+missing feedback, Agent failure, concurrent edits and uncertain writes. Preserve
+the older four-node evidence as history rather than relabel it as loop evidence.
 
 Acceptance covers all-label discovery, bounded pagination, selection clearing,
 refresh, stale-response guards, exact read-only viewer identity, reference
