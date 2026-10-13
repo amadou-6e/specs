@@ -114,3 +114,22 @@ Primary API references checked 2026-10-13: [repository labels](https://docs.gith
 and [issue reads/updates](https://docs.github.com/en/rest/issues/issues).
 GitHub's issues API also contains PRs, so the transport explicitly excludes them.
 The node uses the existing pinned Langflow 1.12.3 MultiselectInput and Data ports.
+
+
+## Issue viewer tabs
+
+Owner-selected update 2026-10-13, specs #376 / Laomedo #162: the node toolbar
+replaces Code with Issue viewer and Open in GitHub. Other nodes retain their
+existing controls. Issue viewer opens a read-only panel with current title,
+body, labels, state, number and update/fetch markers. It uses the exact configured
+repository and issue number, revalidates current filters, and never performs an
+operation or model call. Closing or changing selection aborts/ignores old reads.
+Empty selection, loading and read refusal have explicit states. Retry repeats
+only the read. Issue text is data: raw HTML, scripts and remote images never run
+or load. Markdown links require an explicit user click and safe HTTP(S) URLs.
+
+Open in GitHub opens the exact selected issue URL in a separate browser tab with
+noopener/noreferrer. It is disabled when the selected identity is absent or
+invalid; it never opens an arbitrary URL supplied in issue text. An instance
+fed only by a runtime Issue Reference without a configured picker reports that
+no inspectable UI selection is available rather than guessing an issue.
