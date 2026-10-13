@@ -36,3 +36,5 @@ focused mechanism pages (0..*).
 The [decision-readiness ledger](decision-readiness.md) separates first-slice
 intent from unresolved Langflow capabilities, owner choices and bounded
 experiments; it is not a second runtime contract.
+
+- [Recorded agent inspection](../contract/agent-inspection.md): read-only Codex overview, validation and event metadata.
