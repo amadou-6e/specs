@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram id="skill-source-selection" name="Skill source selection">
+    <mxGraphModel dx="1200" dy="1000" grid="1" page="1" pageWidth="1200" pageHeight="1000">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="SS01" value="SS01: Skill source&#10;Repository URL or local folder link/path&#10;[ Source location (refresh on change)     ]&#10;Source path/URL | loading | fixed access error" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="40" width="520" height="150" />
+        </mxCell>
+        <mxCell id="SS02" value="SS02: Skill&#10;[ Type to filter discovered skills        v ]&#10;Matching skill name | relative folder&#10;Choose an existing result | Refresh list&#10;Empty source and no matches are separate states" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="210" width="520" height="180" />
+        </mxCell>
+        <mxCell id="SS03" value="SS03: Revision&#10;[ Type to filter discovered revisions     v ]&#10;Source label if available | immutable bundle revision&#10;Choose a verified discovered revision&#10;No arbitrary typed value becomes an accepted reference" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="410" width="520" height="180" />
+        </mxCell>
+        <mxCell id="SS04" value="SS04: Selection dependencies&#10;Source changed: clear Skill and Revision&#10;Skill changed: clear Revision&#10;Ignore obsolete discovery responses&#10;Do not silently substitute a newer revision" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="610" y="40" width="530" height="180" />
+        </mxCell>
+        <mxCell id="SS05" value="SS05: Discovery states&#10;Loading / source empty / no filter matches&#10;Access failed / revision unavailable&#10;Visible fixed error + refresh/retry&#10;No model turn, script execution or hidden fallback" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="610" y="240" width="530" height="170" />
+        </mxCell>
+        <mxCell id="SS06" value="SS06: Resolved selection&#10;Skill Reference retains exact skill_id, revision_id and tree_hash&#10;[Skill files] opens the selected immutable bundle&#10;Runner verifies/materializes its bytes before dispatch&#10;Repository commit and skill-bundle hash are distinct identities" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="620" width="1100" height="140" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

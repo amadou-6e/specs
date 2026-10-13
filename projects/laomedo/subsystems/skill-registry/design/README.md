@@ -24,3 +24,7 @@ materialization, revision-publication and GitHub-backed identity choices.
 It is draft triage, not a second skill registry contract.
 
 [Skill files inspection](skill-files.md) describes the owner-selected read-only node panel and its [editable interaction model](skill-files.drawio).
+
+[Source and searchable skill/revision selection](skill-source-selection.md) records
+the next owner-requested node controls and their [interaction model](skill-source-selection.drawio).
+It is a local design draft; discovery/source acquisition is not implemented yet.
