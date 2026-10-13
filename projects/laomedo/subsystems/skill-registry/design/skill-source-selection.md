@@ -134,12 +134,16 @@ and active-demo deployment require their concrete connection/configuration scope
 
 ## Recorded credential-free checks (2026-10-13)
 
-The implementation's host suite passed 684 tests with 15 skips before the final
-portable-path testcase. The pinned Langflow image passed eleven source tests
-(including Linux links) and five native component tests (including refresh keeping
-a selected revision). The imported source-only flow passed an Edge browser check
-of both searchable selectors, old exact bundle inspection, clearing on skill/source
-change, delayed obsolete response refusal and fixed access failure. Its repository
-route used a trusted local Git fixture adapter, not live GitHub authentication.
+The final host suite passed 687 tests with 15 skips. The pinned Langflow image
+passed eleven source tests (including Linux links, provenance and overflow refusal)
+and six native component tests (including refresh keeping a selected revision and
+resetting an empty source's progress message). The imported source-only flow passed
+an Edge browser check of both searchable selectors, exact bundle inspection,
+clearing on skill/source change, delayed obsolete response refusal and fixed access
+failure. Its repository route used a trusted local Git fixture adapter, not live
+GitHub authentication. The separate frontend build and clean pinned-checkout
+installer passed. TypeScript comparison: baseline 253 diagnostics, current 253,
+no added or removed diagnostics after normalizing line offsets.
+
 No model turns, provider credentials or publication writes were involved. These
 observations are bounded fixture evidence, not an active-demo deployment claim.
