@@ -5,7 +5,7 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="GI01" value="GitHub Issue&#10;Repository URL [ https://github.com/owner/repo ]&#10;Labels [ type to find labels v ] (multi-select)&#10;ALL labels match | [research] [backend]&#10;Issue [ #12 Implement endpoint                 v ]&#10;[Refresh list] | Discovery: 1 matching issue&#10;Advanced: State (open / closed / all)&#10;Inputs: Operation, optional Issue Reference&#10;Outputs: Issue | Task | Operation Result" parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;">
+        <mxCell id="GI01" value="GitHub Issue&#10;Repository URL [ https://github.com/owner/repo ]&#10;Labels [ type to find labels v ] (multi-select)&#10;ALL labels match | [research] [backend]&#10;Issue [ #12 Implement endpoint                 v ]&#10;[Refresh list] | Discovery: 1 matching issue&#10;Advanced: State (open / closed / all)&#10;Inputs: Operation, optional Issue Reference&#10;Outputs: Issue | Task | Operation Result&#10;Tabs: Issue viewer | Open in GitHub (replace Code)" parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;">
           <mxGeometry as="geometry" x="40" y="40" width="550" height="290" />
         </mxCell>
         <mxCell id="GI02" value="Loading and dependency changes&#10;Repository change: clear labels and issue&#10;Labels/State change: clear issue&#10;Discovery: Discovering GitHub issues...&#10;Ignore late responses for previous selectors&#10;No implicit first-issue selection" parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;">
@@ -23,7 +23,7 @@
         <mxCell id="GI06" value="Live execution and outcomes&#10;Read current selected issue at invocation&#10;One invocation: all outputs share one execution&#10;Close/modify read back confirmed current issue&#10;Result: not_requested / succeeded / failed / unknown&#10;After a filter-changing write, report the actual target&#10;New reads revalidate; evidence kept internally" parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;">
           <mxGeometry as="geometry" x="40" y="640" width="550" height="220" />
         </mxCell>
-      </root>
+      <mxCell id="GI07" value="Read-only issue viewer&#10;Selected repository and issue identity only&#10;Current title / body / labels / state&#10;Loading, unavailable, no selection and Retry&#10;Selection change aborts/ignores old reads&#10;No raw HTML, scripts or remote images&#10;Open in GitHub: exact URL, new tab, safe opener" parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;"><mxGeometry as="geometry" x="40" y="970" width="1190" height="220" /></mxCell></root>
     </mxGraphModel>
   </diagram>
 </mxfile>

@@ -47,3 +47,5 @@ category owns the decision history, alternatives and unresolved choices.
 - [0008 - Exact-container absence and grant revocation](0008-orphan-absence-and-revocation.md): prospective owner-selected stopped-container proof; earlier incomplete attempts are unchanged.
 
 - [0009 - Live GitHub Issue node](0009-live-github-issue-node.md): live selection, all-label matching and incoming close/modify operations.
+
+- [0010: Issue inspection and agent operations](0010-issue-inspection-and-agent-operations.md).
