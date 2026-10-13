@@ -3,7 +3,7 @@ title: Langflow Skill reference node
 status: draft
 kind: interface-contract
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-01
+last_reviewed: 2026-10-13
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -59,3 +59,12 @@ follow-up from the historical six-turn agent-node evidence.
 ## Read-only inspection
 
 The selected node can open the exact registered bundle in the [Skill files panel](../design/skill-files.md), following its [interaction model](../design/skill-files.drawio). This reads authenticated hash-verified registry bytes, never component Python code or arbitrary host paths. It does not alter the reference output or establish actual agent use.
+
+## Linked-source selection
+
+An optional Source adds [bounded discovery and searchable selection](../design/skill-source-selection.md).
+Skill and Revision choices resolve through the host source service to the same
+three-key immutable descriptor. Source-empty saved nodes retain their exact manual
+references. Discovery imports and verifies bytes but never invokes an agent or
+proves native skill use. The runner still verifies the exact bundle before dispatch.
+Skill files uses the resolved ID/hash only while the source selection tuple matches.
