@@ -54,6 +54,31 @@ single-invocation telemetry. Its exact waterfall/card layout is undecided and
 belongs to a view-owned Draw.io design. It is separate from the embedded
 Langflow authoring/execution graph.
 
+## Selected first inspection slice, 2026-10-14
+
+The user selected an Agent activity viewer in the app. For the native Codex PR
+agent, its toolbar opens retained invocation history without dispatching an
+agent or contacting GitHub. Show status, capture completeness, start/end times,
+native session identity, received-event count, observed usage and ordered native
+event receipts. Missing usage/session identity is unknown; event count is not
+a unique-action count. Display native text as text, never executable markup.
+Refresh reads the selected invocation; it does not change or restart it.
+
+Host-enabled capture reserves a durable invocation identity before the native
+process starts. Retain committed receipts from failed/cancelled/timed-out turns.
+Each invocation has a new identity, even for the same flow node. Reads require
+the signed-in owner and exact flow/node/invocation scope. Graph data cannot
+choose the database path or read another owner's events. History is bounded to
+the latest 50 invocations; events are paged in receipt order. No automatic expiry
+or raw export is introduced.
+
+This bounded slice captures the native CLI stream for the PR agent. It does not
+complete the Docker runner bridge, Claude projection, crash-prefix experiments,
+or the multi-agent overview. `complete` means clean local stream capture with a
+native terminal event, not successful PR mutation or verified goal completion.
+An unfinished stored invocation stays partial; a backend crash cannot be inferred
+from an inspection request and must not cause redispatch.
+
 ## IF-11 — trace and digest reference for results
 
 Provide [results and artifacts](../../results-artifacts/contract/interfaces.md)
