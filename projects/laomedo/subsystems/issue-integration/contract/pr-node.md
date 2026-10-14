@@ -126,6 +126,9 @@ node outputs shares the same round trip and terminal operation result.
 The importable example uses an explicitly labelled deterministic Agent fixture
 and fake GitHub; it must run through actual Langflow loop handles, subgraph
 execution, gateway and durable effects. It does not claim a real model turn.
+Fixture examples are internal test material and require explicit user approval
+before presentation. User-requested demonstrations use real agents and live
+integrations; missing connections are reported as blockers.
 Two graph runs with the same operation request identity must send one mutation.
 Verify close/modify, exact feedback-port selection, failed reads, malformed or
 missing feedback, Agent failure, concurrent edits and uncertain writes. Preserve
@@ -137,6 +140,21 @@ conflicts, current reads, close/modify, target/branch/base/grant refusals, expir
 before PATCH/PUT, restart replay, partial effects and uncertainty. Live deployment
 and a real PR operation require their separately scoped configuration and target.
 Browser/build evidence must be reported honestly rather than inferred from tests.
+
+For a real local demonstration when the Docker runner is unavailable, a separate
+Codex PR Agent may invoke the installed CLI using its existing host login and
+configured model. It makes one ephemeral, read-only, schema-constrained turn,
+receives current PR Task context and the requested change, and proposes an
+operation. The host supplies request identity and opaque grant reference after
+the model response. Native completion and thread identity must be observed;
+missing PR context refuses dispatch. Host provider credentials are not passed in
+child arguments or environment. This adapter is local demonstration coverage,
+not proof of the production Docker isolation boundary.
+
+The closed two-node cycle must start at the PR in full editor builds and when
+the Agent's play action is used, irrespective of node ordering or process hash
+seed. Component initialization must bind the controlled feedback handling for
+both payload-loaded and programmatically connected graphs.
 
 Primary API references: [pull requests](https://docs.github.com/en/rest/pulls/pulls)
 and [issue labels](https://docs.github.com/en/rest/issues/labels).

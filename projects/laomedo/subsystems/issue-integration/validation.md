@@ -91,3 +91,34 @@ is resolved by the isolated body after the read, rather than as an eager input.
 Outer conditional exclusion prevents a second Agent execution. Existing PR
 creation remains the separate proposal in the contract. Live model/provider
 integration and remote publication remain unverified.
+
+## Real-agent and live PR verification, 2026-10-14
+
+The user required real-agent demonstrations and explicitly authorized creating
+PRs/issues in `ga84jog/laomedo-exp104-disposable-20261007`. The trusted host created
+[draft PR #20](https://github.com/ga84jog/laomedo-exp104-disposable-20261007/pull/20),
+then the saved two-node graph read it, ran the installed Codex CLI once and
+applied the returned body update through the same PR node and scoped gateway.
+The graph stopped with no next runnable vertices. Native thread
+`01a1382b-a05e-72e3-b18f-18af29d3d9dc` reported turn completion.
+
+The host confirmed the write; independent GitHub connector readback confirmed
+the appended description section. The live browser check confirmed exactly two
+nodes, PR #20 selection, its updated body and exact external link. The
+[editor screenshot](design/references/github-pr-real-agent.png) records the real
+Agent and selected live PR. Implementation `examples/github-pr/real-flow.json`
+and `real-evidence.json` preserve the importable graph and source hashes.
+
+An initial live read-only attempt exposed arbitrary cycle entry: Codex ran
+twice, with missing context on the first turn. No write occurred. The fix binds
+feedback handling during payload component construction and scopes cycle entry
+to the owning PR. A subsequent read-only run completed one real turn and refused
+the absent grant. The final authorized PR #20 run completed one real turn and
+one confirmed operation. Internal regression checks passed for the revised
+scheduler and native node; they are not substitutes for this live evidence.
+
+The connected GitHub app refused branch creation with 403. The user then
+supplied a host token in `.env`; it was excluded from Git and child environment.
+The grant targeted only PR #20's head/base and short-lived description update.
+No issue was needed. No production Docker isolation, live close/labels operation,
+merge, or implemented PR-node creation mode is claimed.
