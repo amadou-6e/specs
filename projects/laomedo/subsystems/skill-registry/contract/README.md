@@ -17,6 +17,8 @@ consumes exact skill revisions; it does not replace registry ownership.
 The [Langflow Skill node](langflow-node.md) owns the immutable reference component
 and its connection to the Codex Agent; it does not redefine store/draft behavior.
 Shared serialized records belong to [architecture](../../../architecture/shared-contracts.md).
+[Skill operations](skill-operations.md) adds atomic multi-file proposals and
+commit-style history while retaining separate canonical promotion.
 [Validation](../validation.md) qualifies maturity; pilot observations do not silently
 replace proposed read-only, identity or provider parity guarantees.
 
