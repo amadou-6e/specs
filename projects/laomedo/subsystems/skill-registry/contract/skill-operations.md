@@ -56,6 +56,9 @@ multi-commit candidate promotion must compare with canonical latest explicitly.
 No source write, Git commit or GitHub publication occurs.
 Operation Result exposes failed before apply and conservative unknown after an
 apply transport failure. Never infer canonical publication from either status.
+Failed/unknown operations stop Skill Reference and Task branches, so downstream
+consumers cannot silently use the unchanged base. Operation Result retains the
+diagnostic status. Invalid reference-only selections fail visibly at the Skill node.
 
 Empty Base Commit is permitted only at the imported root. Later edits require
 the exact commit and revision; a stale initial node remains stale after a revert.
