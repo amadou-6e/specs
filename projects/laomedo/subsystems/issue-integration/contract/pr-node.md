@@ -152,9 +152,10 @@ CLI agent from the product. Historical checks of that adapter do not prove the
 original runner's PR round trip. Docker unavailability is a blocker, not permission
 to substitute another agent. Native provider/runner integration remains unverified.
 
-Operation request identity and opaque grant reference come from trusted host
-configuration and the submitted operation envelope; they are not evidence of
-model authority. The removed adapter took them from graph configuration, not
+The submitted operation envelope supplies request identity and opaque grant
+reference; in feedback mode these may be model-authored. The gateway validates
+them but does not stamp them. Host-side stamping remains an original-agent gate.
+They are not evidence of model authority. The removed adapter took them from graph configuration, not
 from a host-generated post-response identity. Grant references must be protected
 as capabilities on this trusted single-user host; owner/flow binding is a gap.
 Exact-payload durable replay prevents a duplicate effect, but a new graph run

@@ -39,7 +39,8 @@ The user selected removal of that adapter from the product on 2026-10-15.
 
 The user selected the in-app Agent activity viewer. The implemented slice is
 bounded by the [inspection contract](contract/interfaces.md#selected-first-inspection-slice-2026-10-14)
-and [editable modal design](design/agent-activity.drawio).
+and the [modal design at its historical revision](https://github.com/amadou-6e/specs/blob/70ca134/projects/laomedo/subsystems/run-traces/design/agent-activity.drawio).
+The current [Agents tab target](design/agent-activity.drawio) supersedes that modal.
 
 A real native Codex CLI turn ran through the local Langflow build/events API,
 using actual PR context read through the connected GitHub integration. The
@@ -71,7 +72,8 @@ this feature cannot recreate previously deleted temporary events.
 The [assessment](design/graph-agent-observability.md) records a real three-turn
 host App Server probe: two completed turns, one interrupted turn, native
 messages and one command result, three usage updates and 14 OTLP batches.
-One native tool item ID matched an OTLP call ID. No cost attribute was observed.
+One native tool item ID matched an OTLP call ID. No cost attribute was observed
+in log attributes; the probe did not search span attributes for monetary cost.
 The ephemeral-thread history refusal is retained as a negative result, not hidden
 or retried. Source and analyzer hashes pin the content-free implementation
 observations; no raw private telemetry or message content is committed.

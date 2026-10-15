@@ -35,13 +35,19 @@ must distinguish source attributes, span clocks and receipt clocks.
 The ephemeral thread refused `thread/read(includeTurns=true)`. The native stream
 had already captured the messages; no further model turn or retry was made.
 Persist events as they arrive rather than assuming post-run history is available.
-No monetary cost attribute was observed. Missing amounts stay unknown.
+No monetary cost attribute was observed in log attributes; span attributes were
+not searched for cost. Missing amounts stay unknown.
 
 Implementation-owned reproducible protocol, source hashes and content-free JSON
 observations are in `experiments/feasibility/agent-observability/`. Raw events,
 OTLP payloads, messages, tool outputs and login state remain private and outside
 Git. The live test used the installed default model without a model override;
 the observed model was `gpt-6.1-sol`. It is not a Docker parity test.
+
+Observed OTLP attribute names include user email/account identity and tool
+arguments/output despite prompt logging being disabled. A product collector
+needs explicit content/identity filtering and access/retention policy before any
+external export. Only attribute names and structural counters are published here.
 
 ## Required integration
 
