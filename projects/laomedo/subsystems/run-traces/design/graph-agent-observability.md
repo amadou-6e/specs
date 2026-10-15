@@ -29,7 +29,8 @@ The probe observed user/assistant items, message deltas, three token updates,
 14 OTLP batches and one tool-call identity shared by the native and OTLP feeds.
 Analysis found 1,529 timed spans and 1,478 parent IDs. These are mostly internal
 runtime spans, not 1,529 agent actions. OTel logs used the `event.timestamp`
-attribute (26 observed) while the protobuf log timestamp was absent; ingestion
+attribute (26 manually observed in private receipts; not counted in the published
+summary) while the protobuf log timestamp was absent; ingestion
 must distinguish source attributes, span clocks and receipt clocks.
 
 The ephemeral thread refused `thread/read(includeTurns=true)`. The native stream
@@ -42,7 +43,8 @@ Implementation-owned reproducible protocol, source hashes and content-free JSON
 observations are in `experiments/feasibility/agent-observability/`. Raw events,
 OTLP payloads, messages, tool outputs and login state remain private and outside
 Git. The live test used the installed default model without a model override;
-the observed model was `gpt-6.1-sol`. It is not a Docker parity test.
+the manually observed model in private receipts was `gpt-6.1-sol` (the published
+summary does not record its value). It is not a Docker parity test.
 
 Observed OTLP attribute names include user email/account identity and tool
 arguments/output despite prompt logging being disabled. A product collector
