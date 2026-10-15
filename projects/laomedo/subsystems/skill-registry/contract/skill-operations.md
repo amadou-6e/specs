@@ -36,7 +36,10 @@ Apply rechecks policy and head. Identical replay returns the existing result whi
 the capability is valid; changed proposals conflict. A fresh explicit run is a new
 operation. No automatic redispatch after cancellation or uncertain transport.
 Record adapter-retained completed-run provenance; missing native turn IDs remain
-unknown. Ordinary operations identify the trusted operator backend, not a verified
+unknown. These references are asserted by trusted Langflow component code, not
+independently verified against runner records by the service. Edited graph code
+can forge assertions; the viewer labels this provenance basis. Real acceptance
+compares references independently with actual runner receipts. Ordinary operations identify the trusted operator backend, not a verified
 human. Per-user ownership remains outside this trusted single-user service.
 
 ## Commit history and promotion
@@ -51,9 +54,14 @@ Skill Reference and an Operation Result with commit/diff. Old pinned flows retai
 their bytes. Promotion is separately reviewed under the existing draft contract;
 multi-commit candidate promotion must compare with canonical latest explicitly.
 No source write, Git commit or GitHub publication occurs.
+Operation Result exposes failed before apply and conservative unknown after an
+apply transport failure. Never infer canonical publication from either status.
 
 Empty Base Commit is permitted only at the imported root. Later edits require
 the exact commit and revision; a stale initial node remains stale after a revert.
+With Source empty, Skill and Revision accept typed exact registry IDs/hashes, so
+the operator can select a candidate from history. Linked-source discovery remains
+restricted to its discovered choices and never writes candidates back to source.
 Authenticated history returns 100 commits per page with older-page navigation.
 Per-commit diff retrieval verifies commit identity and recomputes differences from
 exact parent/current bundles. The Skill files panel follows the operations/history

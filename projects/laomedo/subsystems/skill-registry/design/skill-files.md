@@ -29,6 +29,13 @@ owns panel geometry, visible states and transitions; this page indexes it.
 | SF07 | Loading has status text. Missing/invalid/corrupt or oversized revision has a fixed error and Retry. No stale file survives a changed selection. |
 | SF08 | Binary files show metadata and an unsupported-preview message. No download/write/run action. |
 
+The operations/history page of the same Draw.io adds SO01–SO03 (ordinary or
+two-node feedback proposals), SH01 (Files/History tabs), SH02 (paginated commit
+list), SH03 (read-only per-commit diff and explicitly backend-asserted Agent
+provenance), and SH04 (loading, empty and fixed error/retry states). Its public
+contract is [Skill operations](../contract/skill-operations.md). File browsing
+stays read-only; the graph's Operation input creates candidates separately.
+
 ## API and boundary
 
 Serve GET `/api/v1/laomedo/skills/{skill_id}/{revision_id}` under the existing
