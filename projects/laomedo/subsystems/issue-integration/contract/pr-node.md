@@ -168,6 +168,10 @@ seed. Component initialization must bind the controlled feedback handling for
 both payload-loaded and programmatically connected graphs.
 Attaching a downstream Operation Result inspector must preserve that entry rule
 and exactly one Agent invocation. This does not authorize arbitrary graph cycles.
+The isolated feedback body currently contains only the returning Agent. An
+additional upstream input to that Agent from another node is refused before
+dispatch, rather than silently omitted. Configure its pinned skill and runner
+directly on the existing Agent for this bounded topology.
 
 Primary API references: [pull requests](https://docs.github.com/en/rest/pulls/pulls)
 and [issue labels](https://docs.github.com/en/rest/issues/labels).
