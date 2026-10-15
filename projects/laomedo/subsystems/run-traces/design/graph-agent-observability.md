@@ -94,3 +94,14 @@ Diagram content is a design target, not fabricated runtime acceptance.
 Current documentation supports investigation, not compatibility guarantees for
 the older pinned Docker runtime. Claude's cost and subagent telemetry have not
 been empirically accepted here.
+
+## Later original-runner graph evidence
+
+The [2026-10-15 graph validation](../validation.md#original-docker-agents-graph-inspection-2026-10-15)
+records the subsequent real Docker 0.159.2 graph execution, concurrent original
+agents, a resumed thread, one explicit native child and local OTLP receipt.
+The [bounded inspection slice](../contract/interfaces.md#original-agent-graph-inspection-slice-2026-10-15)
+states the implemented identity, read-only, usage and estimation guarantees.
+The host-only observations above remain historical evidence. Other providers,
+metrics, full exporter completeness, crash reconciliation and the remaining
+Draw.io interactions are still open; this update does not promote maturity.
