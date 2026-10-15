@@ -3,7 +3,7 @@ title: GitHub PR selection, inspection and incoming operations
 status: draft
 kind: interface-contract
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-13
+last_reviewed: 2026-10-15
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -146,20 +146,27 @@ before PATCH/PUT, restart replay, partial effects and uncertainty. Live deployme
 and a real PR operation require their separately scoped configuration and target.
 Browser/build evidence must be reported honestly rather than inferred from tests.
 
-For a real local demonstration when the Docker runner is unavailable, a separate
-Codex PR Agent may invoke the installed CLI using its existing host login and
-configured model. It makes one ephemeral, read-only, schema-constrained turn,
-receives current PR Task context and the requested change, and proposes an
-operation. The host supplies request identity and opaque grant reference after
-the model response. Native completion and thread identity must be observed;
-missing PR context refuses dispatch. Host provider credentials are not passed in
-child arguments or environment. This adapter is local demonstration coverage,
-not proof of the production Docker isolation boundary.
+The intended Agent is the existing Laomedo Codex Agent and its trusted runner.
+On 2026-10-15 the user explicitly selected removal of the separate PR-specific
+CLI agent from the product. Historical checks of that adapter do not prove the
+original runner's PR round trip. Docker unavailability is a blocker, not permission
+to substitute another agent. Native provider/runner integration remains unverified.
 
-The closed two-node cycle must start at the PR in full editor builds and when
+Operation request identity and opaque grant reference come from trusted host
+configuration and the submitted operation envelope; they are not evidence of
+model authority. The removed adapter took them from graph configuration, not
+from a host-generated post-response identity. Grant references must be protected
+as capabilities on this trusted single-user host; owner/flow binding is a gap.
+Exact-payload durable replay prevents a duplicate effect, but a new graph run
+still invokes the Agent and a different response with the same identity conflicts.
+The deterministic replay test is not proof of model-free reuse across runs.
+
+The controlled cycle must start at the PR in full editor builds and when
 the Agent's play action is used, irrespective of node ordering or process hash
 seed. Component initialization must bind the controlled feedback handling for
 both payload-loaded and programmatically connected graphs.
+Attaching a downstream Operation Result inspector must preserve that entry rule
+and exactly one Agent invocation. This does not authorize arbitrary graph cycles.
 
 Primary API references: [pull requests](https://docs.github.com/en/rest/pulls/pulls)
 and [issue labels](https://docs.github.com/en/rest/issues/labels).

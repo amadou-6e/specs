@@ -56,6 +56,9 @@ Langflow authoring/execution graph.
 
 ## Selected first inspection slice, 2026-10-14
 
+Historical first prototype, superseded by the user's 2026-10-15 direction below.
+The PR-specific agent and its viewer toolbar coupling are removed from the product.
+
 The user selected an Agent activity viewer in the app. For the native Codex PR
 agent, its toolbar opens retained invocation history without dispatching an
 agent or contacting GitHub. Show status, capture completeness, start/end times,
@@ -78,6 +81,28 @@ or the multi-agent overview. `complete` means clean local stream capture with a
 native terminal event, not successful PR mutation or verified goal completion.
 An unfinished stored invocation stays partial; a backend crash cannot be inferred
 from an inspection request and must not cause redispatch.
+
+## Selected graph-wide inspection direction, 2026-10-15
+
+The Agents tab inspects all original-agent activity for one selected graph
+execution on a shared Gantt timeline. Preserve node invocation, session and turn
+identities, including repeated turns and observed subagents. Expand lanes for
+messages, tools, errors and waiting intervals; selecting a segment opens readable
+details. Render message text normally and JSON/code with highlighting and folding.
+Use local time and relative durations, retaining exact timestamps for inspection.
+
+Bind OpenTelemetry logs/spans/metrics to native execution events using verified
+identifiers. Show input/output/cache token counts and monetary cost over time
+when available, distinguishing provider vs calculated estimates from billing.
+Unknown or redacted values remain explicit. Do not double-count cumulative token
+snapshots or duplicate native/OTel representations. Parent relationships require
+observed source identity; parallel execution alone does not establish parentage.
+
+The [feasibility assessment](../design/graph-agent-observability.md) records real
+host protocol observations and the original Docker-runner blocker. The editable
+[Agents tab design](../design/agent-activity.drawio) replaces the one-node modal
+as the target. Neither the design nor the earlier CLI adapter proves a working
+graph-wide original-agent integration. That product acceptance remains open.
 
 ## IF-11 — trace and digest reference for results
 

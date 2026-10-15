@@ -34,6 +34,9 @@ does not accept every target guarantee.
 
 ## Native Codex activity viewer, 2026-10-14
 
+Historical observation of a PR-specific prototype, not original-agent acceptance.
+The user selected removal of that adapter from the product on 2026-10-15.
+
 The user selected the in-app Agent activity viewer. The implemented slice is
 bounded by the [inspection contract](contract/interfaces.md#selected-first-inspection-slice-2026-10-14)
 and [editable modal design](design/agent-activity.drawio).
@@ -62,3 +65,18 @@ changed. Claude, Docker-runner capture, native cancellation/crash acceptance,
 multi-agent overview, deletion UI and remote publication remain unfinished.
 Old embedded node source must be updated before future turns use this capture;
 this feature cannot recreate previously deleted temporary events.
+
+## Graph-wide telemetry feasibility, 2026-10-15
+
+The [assessment](design/graph-agent-observability.md) records a real three-turn
+host App Server probe: two completed turns, one interrupted turn, native
+messages and one command result, three usage updates and 14 OTLP batches.
+One native tool item ID matched an OTLP call ID. No cost attribute was observed.
+The ephemeral-thread history refusal is retained as a negative result, not hidden
+or retried. Source and analyzer hashes pin the content-free implementation
+observations; no raw private telemetry or message content is committed.
+
+Docker was unavailable, and the host CLI version differs from the pinned runner.
+Original-agent graph integration, parallel agents, subagents, Claude, reconnect
+and the graph-wide UI remain unverified. An independent Claude review is required
+before publication/merge; its findings and final revisions are recorded separately.

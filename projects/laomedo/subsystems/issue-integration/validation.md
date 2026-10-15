@@ -30,6 +30,11 @@ not a runtime result. Pin implementation and API versions when these checks run.
 
 ## GitHub PR node local verification, 2026-10-13
 
+Historical checks below include a PR-specific CLI adapter subsequently removed
+at the user's request on 2026-10-15. They are not acceptance of the original
+Laomedo Codex Agent or of the current merge candidate. The corrected contract
+requires the existing agent and reports Docker unavailability as a blocker.
+
 The [PR contract](contract/pr-node.md) and [editable interaction model](design/github-pr-node.drawio)
 were authored for the user-selected PR alignment. Implementation base is Laomedo
 develop `c29c93f2af93dde0a57dcbb3d38f23336407f56c`; the visible implementation
