@@ -176,6 +176,11 @@ not retried automatically. A new explicit graph invocation reserves fresh host
 identity and may run another paid turn and effect; there is no model-free result
 reuse across invocations. Grant references and tickets are capabilities on this
 trusted single-user host; owner/flow binding remains a separate gap.
+Replay requires the ticket and grant to remain valid. An expired-ticket refusal
+does not describe or undo an earlier confirmed effect; late reconciliation uses
+the existing private host intent, never an automatic new model/write attempt.
+The local host database retains plaintext tickets and PR snapshots without
+automatic pruning; treat it as sensitive state, not sanitized public evidence.
 
 The controlled cycle must start at the PR in full editor builds and when
 the Agent's play action is used, irrespective of node ordering or process hash
