@@ -101,9 +101,14 @@ an active GitHub connection.
 ## Operation example and acceptance
 
 The user selected a two-node round trip: one GitHub PR node and one Agent.
-PR Task feeds the Agent, whose selected Operation/answer output feeds the native
-loop socket on that same Task port. The ordinary Operation input remains for
-existing acyclic flows; it must not also be populated in round-trip mode.
+PR Task feeds the Agent, whose selected Operation/answer output returns to the
+same PR's Operation input. Operation supports both ordinary upstream input and
+controlled feedback. A direct Task connection to the source of the incoming
+Operation identifies the bounded round trip. An acyclic upstream Operation is
+evaluated normally. Multiple Operation sources, feedback plus a literal
+Operation value, or combined legacy infinity feedback and Operation are refused.
+The Task output does not expose an infinity socket in newly generated nodes;
+older saved infinity-feedback graphs remain readable for compatibility.
 The PR node is the loop controller, with one initial read, exactly one Agent
 body execution, one returned operation, and a terminal result. No third Loop
 node or second PR node is required. The Task branch is stopped in the outer

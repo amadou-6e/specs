@@ -122,3 +122,27 @@ supplied a host token in `.env`; it was excluded from Git and child environment.
 The grant targeted only PR #20's head/base and short-lived description update.
 No issue was needed. No production Docker isolation, live close/labels operation,
 merge, or implemented PR-node creation mode is claimed.
+
+## Operation input with ordinary and feedback connections
+
+The user selected a single Operation port for both modes. The current example
+connects PR Task → real Codex Agent → the same PR Operation. The Task infinity
+socket is absent from newly generated nodes. Normal acyclic inputs retain their
+direct execution path; Data and JSON Message payloads are accepted. Conflicting
+Operation sources, literal-plus-feedback values and unsupported longer feedback
+chains are refused. Historical infinity graphs retain compatibility.
+
+The real saved graph ran one completed Codex turn, native thread
+`01a1398c-80bb-7861-9c45-59b8f3b10c2b`, and confirmed one description update on
+[PR #20](https://github.com/ga84jog/laomedo-exp104-disposable-20261007/pull/20).
+Independent GitHub readback and the live viewer confirmed the new description.
+The browser check removed the feedback edge through the editor context menu
+and manually dragged the Agent output to the PR Operation input successfully.
+It confirmed two nodes and two PR input handles, with no infinity return socket.
+The [editor reference](design/references/github-pr-operation-feedback.png) shows
+the final wiring. The production frontend build emitted successfully.
+
+Internal regression coverage passed for feedback execution, ordinary upstream
+operations, Message JSON, ambiguous sources, failed reads, concurrent edits,
+cancelled/failed Agents, unknown writes and durable replay. These tests supplement
+the real integration evidence in `examples/github-pr/operation-feedback-evidence.json`.
