@@ -158,3 +158,43 @@ neither omission nor uncertainty means zero actions. `usage` is absent when
 unknown, not zero. `complete` describes evidence
 receipt, not whether the agent achieved the user's goal. Content-retention
 and native-to-normalized event projection remain open.
+
+## Original-agent graph inspection slice, 2026-10-15
+
+This bounded slice implements the existing [Agents target](../design/agent-activity.drawio)
+for the original Codex Docker runner. The wider target remains draft; this does
+not accept every provider, timeline filter, export, or recovery interaction.
+
+- Reserve authenticated owner, persisted flow, graph execution and node invocation
+  before dispatch. Bind the validated runner ID to native thread/turn/item IDs.
+  A session can span invocations; neither node labels nor temporal overlap joins them.
+- Capture native notifications durably before projecting messages and tools.
+  Host source cursors deduplicate polling retries, not distinct provider deliveries.
+  Preserve conflicting native item receipts and mark uncertainty.
+- Close each runner attempt with native/OTLP source boundaries. A later resume
+  must not enter an earlier invocation, including when the observer lags.
+- Before resume, retain the cumulative per-thread usage baseline. Difference
+  subsequent totals rather than summing snapshots. Regressions and missing values
+  remain unknown. Add child usage only for explicit observed parent links.
+- Keep original Codex nodes and their visible Prior Run connection. Viewing the
+  execution selector, shared invocation/turn/child timeline and message/tool details
+  performs authenticated owner-scoped reads only. Read APIs must not create a DB.
+- Keep native receipt times, source span times and exporter coverage distinct.
+  Native stream completeness requires a retained terminal event; it is not task
+  success. OTLP flush completeness is separately unknown.
+- Local OTLP ingestion requires launch-specific authentication, bounded requests
+  and an explicit attribute allowlist. Do not copy account/email identity, prompts
+  or arbitrary log bodies into the runtime projection. Native task contents remain
+  private to the signed-in owner; there is no external export in this slice.
+- Calculated Standard USD API equivalents identify model, catalog date, source
+  and assumptions; exclude tool fees and do not claim subscription billing.
+  Cached input is part of input and reasoning part of output. Do not add native
+  and OTLP counters together. Child models need independent observed metadata.
+  Unknown rates, cache-write overlap and unsupported context pricing remain unknown.
+
+Acceptance requires real original-agent graph runs with concurrent invocations,
+a resumed thread, explicit child activity, native messages/tool results and local
+OTLP receipt. Internal fixtures cover negative cases only. See the dated
+[validation](../validation.md#original-docker-agents-graph-inspection-2026-10-15).
+Other providers, OTLP metrics, hard-crash reconciliation, deletion UI, external
+collectors and the remaining Draw.io interactions remain open targets.
