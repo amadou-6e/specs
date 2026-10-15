@@ -25,3 +25,5 @@ GitHub-read, publication and event-policy choices separately from the draft
 interface shapes.
 
 - [GitHub Issue interaction model](github-issue-node.drawio): live selectors, all-label matching, incoming operations and outcomes.
+- [GitHub PR interaction model](github-pr-node.drawio): corresponding PR selectors, viewer and operation states.
+- [PR operation graph](pr-operation.drawio): one PR reads, one Agent returns an operation to the same PR, which applies it once and stops.

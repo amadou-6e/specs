@@ -22,3 +22,8 @@ are needed for currently inspected material.
 The [decision-readiness ledger](decision-readiness.md) tracks raw-writer,
 deduplication, crash-prefix and retention choices without claiming the
 synthetic projection tests prove provider replay or hard-crash durability.
+
+The user-selected [Agents tab](agent-activity.drawio) now targets a graph-wide
+Gantt timeline and readable multi-turn detail, superseding the earlier one-node
+prototype. The [feasibility assessment](graph-agent-observability.md) records
+native/OTLP observations, source provenance and the unverified integration gates.
