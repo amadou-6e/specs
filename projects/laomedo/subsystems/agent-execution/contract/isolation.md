@@ -114,3 +114,21 @@ product decision.
   remains unchanged.
 - In remote mode, verify no native runner profile or session transcript is
   created on the client machine.
+
+## Bounded local Docker recovery, 2026-10-15
+
+The original single-user LocalRunner may use the packaged, checksum-checked Moby
+seccomp baseline with documented Bubblewrap user-namespace/mount additions. This
+is an explicit expansion of the outer syscall policy, not unchanged Docker
+defaults. Preserve non-root UID, dropped capabilities, no-new-privileges and the
+inner filesystem boundary. Kernel/user-namespace attack surface remains a limit;
+these controls do not prove hostile multi-tenant isolation. Split-controller
+policy is unchanged. Package the policy, provenance and upstream license together.
+
+A trusted operator may select an inspected rebuilt non-Git image by full SHA256
+identity. Its fixed version tag must match, native Codex version must be checked
+without credentials/network before dispatch, and execution uses that immutable
+identity. Graph/run payloads cannot select an image or sandbox policy. Verify
+positive workspace writes and negative canonical/store/auth reads; universal
+command failure is a broken sandbox, not evidence of isolation. The original
+runner PR campaign separately records real execution after this zero-turn check.
