@@ -120,3 +120,20 @@ Open gates: Claude/other providers, OTLP metrics and flush completeness, crash
 reconciliation, deletion UI, external collectors and the rest of the target's
 filters, linked navigation and rich time-series controls. This validation does
 not promote draft lifecycle maturity or claim those interactions are delivered.
+
+### Competing-resume negative check
+
+The independent review found that cursor-only boundaries could associate one
+accepted resume with another node that was refused. This was repaired with unique
+runner-accepted attempt IDs, authoritative acceptance-time baselines and per-attempt
+stream bounds. Inspection never adopts a neighbouring attempt merely because its
+source cursor matches. A repeated reference to a captured attempt is not new usage.
+
+The [real contention evidence](https://github.com/amadou-6e/laomedo/blob/8811091/examples/agent-activity/resume-contention-evidence.json)
+records execution `98e65dae-11b8-4c99-a915-f779fad659c9`: one fresh original
+Docker turn followed by two competing resume nodes. One resume completed, the
+other was refused with zero retained receipts and turns. Usage and monetary cost
+are unassigned for the refusal, not measured zero. The accepted invocation's
+messages, usage and terminal evidence remained separate. Normalized source hashes
+pin the tested mechanism. This is real provider evidence, separate from the HTTP,
+projection, schema concurrency, truncation and live-polling regression tests.

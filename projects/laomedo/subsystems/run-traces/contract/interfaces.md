@@ -171,7 +171,10 @@ not accept every provider, timeline filter, export, or recovery interaction.
 - Capture native notifications durably before projecting messages and tools.
   Host source cursors deduplicate polling retries, not distinct provider deliveries.
   Preserve conflicting native item receipts and mark uncertainty.
-- Close each runner attempt with native/OTLP source boundaries. A later resume
+- Identify each accepted runner attempt independently of source cursors; a refused
+  or busy dispatch captures no native receipts or attributed usage. Take the
+  cumulative token baseline at runner acceptance, not an earlier caller snapshot.
+  Close each runner attempt with native/OTLP source boundaries. A later resume
   must not enter an earlier invocation, including when the observer lags.
 - Before resume, retain the cumulative per-thread usage baseline. Difference
   subsequent totals rather than summing snapshots. Regressions and missing values
@@ -191,6 +194,8 @@ not accept every provider, timeline filter, export, or recovery interaction.
   Cached input is part of input and reasoning part of output. Do not add native
   and OTLP counters together. Child models need independent observed metadata.
   Unknown rates, cache-write overlap and unsupported context pricing remain unknown.
+  Truncated detail cannot supply full usage or cost totals. Runtime-reported OTLP
+  model attribution must not be described as independently attested.
 
 Acceptance requires real original-agent graph runs with concurrent invocations,
 a resumed thread, explicit child activity, native messages/tool results and local
