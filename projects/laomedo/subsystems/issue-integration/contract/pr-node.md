@@ -149,18 +149,38 @@ Browser/build evidence must be reported honestly rather than inferred from tests
 The intended Agent is the existing Laomedo Codex Agent and its trusted runner.
 On 2026-10-15 the user explicitly selected removal of the separate PR-specific
 CLI agent from the product. Historical checks of that adapter do not prove the
-original runner's PR round trip. Docker unavailability is a blocker, not permission
-to substitute another agent. Native provider/runner integration remains unverified.
+original runner's PR round trip. Docker unavailability was a blocker, not permission
+to substitute another agent. The separate 2026-10-15 original-runner campaign now
+records a real title update and native cancellation; its selected acceptance and
+limits are recorded in validation, without promoting this specification's maturity.
 
-The submitted operation envelope supplies request identity and opaque grant
-reference; in feedback mode these may be model-authored. The gateway validates
-them but does not stamp them. Host-side stamping remains an original-agent gate.
-They are not evidence of model authority. The removed adapter took them from graph configuration, not
-from a host-generated post-response identity. Grant references must be protected
-as capabilities on this trusted single-user host; owner/flow binding is a gap.
-Exact-payload durable replay prevents a duplicate effect, but a new graph run
-still invokes the Agent and a different response with the same identity conflicts.
-The deterministic replay test is not proof of model-free reuse across runs.
+In feedback mode the trusted host must reserve request identity and an exact
+scoped grant before starting the Agent. The Agent proposes only `action` and,
+for modify, `changes`; it cannot supply identity, grant, target or digest fields.
+Ordinary acyclic Operation payloads retain their explicit request/grant envelope.
+
+The authenticated `prepare-feedback` host endpoint binds a five-minute opaque
+ticket to the selected repository/PR, labels/state, original digest, configured
+grant and its authenticated run/grant identity. Missing, expired, wrong-target or
+wrong-branch grants must fail before a paid model turn. Host configuration maps
+exact `repository#PR` identities to existing scoped grants. The ticket and grant
+reference stay in backend memory/private host storage, never the graph or task.
+The authenticated `apply-feedback` endpoint takes that ticket plus a content-only
+proposal, rechecks the current binding and stamps the host-owned request/grant
+envelope before the existing digest-checked mediation path. Removed/rebound
+configuration, expired tickets and model-authored authority fields fail closed.
+
+An identical proposal with the same ticket replays its durable result without a
+new effect; a different proposal with that ticket conflicts. Unknown effects are
+not retried automatically. A new explicit graph invocation reserves fresh host
+identity and may run another paid turn and effect; there is no model-free result
+reuse across invocations. Grant references and tickets are capabilities on this
+trusted single-user host; owner/flow binding remains a separate gap.
+Replay requires the ticket and grant to remain valid. An expired-ticket refusal
+does not describe or undo an earlier confirmed effect; late reconciliation uses
+the existing private host intent, never an automatic new model/write attempt.
+The local host database retains plaintext tickets and PR snapshots without
+automatic pruning; treat it as sensitive state, not sanitized public evidence.
 
 The controlled cycle must start at the PR in full editor builds and when
 the Agent's play action is used, irrespective of node ordering or process hash
