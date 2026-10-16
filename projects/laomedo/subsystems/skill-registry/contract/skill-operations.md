@@ -67,7 +67,18 @@ the operator can select a candidate from history. Linked-source discovery remain
 restricted to its discovered choices and never writes candidates back to source.
 Authenticated history returns 100 commits per page with older-page navigation.
 Per-commit diff retrieval verifies commit identity and recomputes differences from
-exact parent/current bundles. The Skill files panel follows the operations/history
+exact parent/current bundles. Selecting a commit in the viewer instead compares
+its entire snapshot to the immutable current revision selected on the Skill node
+when the panel opened. This is cumulative across all intervening commits, not
+just the selected commit's patch. The same revision has no differences. Display
+additions, modifications, deletions and binary-change metadata; render textual
+unified diffs as readable lines and mark missing final newlines. Verify both
+snapshots, keep comparison direction explicit, and reject stale/mismatched replies.
+The file tree and parent-linked commit graph share one navigation pane, with the
+commit graph below the files. Clicking a file returns to current file contents.
+No Files/History mode buttons. A draggable, keyboard-operable vertical separator
+controls navigation width within bounds that preserve usable content space.
+The Skill files panel follows the operations/history
 page of its [editable interaction model](../design/skill-files.drawio).
 
 SQLite and registry are private trusted host state, not a signed or tamper-proof
