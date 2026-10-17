@@ -22,10 +22,11 @@ revisions. Output Data containing skill_id, revision_id and tree_hash; tree_hash
 equals the revision identity used by the existing whole-bundle store.
 
 The node selects a reference, not prompt text or credential-bearing filesystem
-content. It makes no model call and does not claim a referenced revision exists.
+content. Read-only reference output makes no model call and does not claim a referenced revision exists.
 The runner remains authoritative for existence, exact bytes, hash checks and
-materialization before a model turn. Discovery, creation/editing, draft promotion,
-rule/example subsets and registry browsing are separate capabilities.
+materialization before a model turn. [Skill operations](skill-operations.md) extends
+this node with multi-file proposals, ordinary and direct Agent feedback inputs,
+and history. Creation, promotion and rule/example subsets remain separate.
 
 The agent's Skill References Data input is a list port: connect one or more Skill
 nodes for fresh runs, up to sixteen distinct skill IDs. Reject duplicate IDs even
