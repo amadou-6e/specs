@@ -57,7 +57,9 @@ The response identifies schema, skill/revision/tree hashes and sorted relative
 file paths, byte lengths, file hashes and UTF-8 text or binary metadata.
 Recognized PNG/JPEG/GIF/WebP bytes may include an optional `image_data_url`
 (base64 data URL) in their file entry, generated only after complete tree/hash
-verification under the same read limits. Other binary contents remain metadata.
+verification under the same read limits. Other binary contents remain metadata. Image embedding is opt-in for viewer
+reads only; operation preparation and Agent snapshots never include inline image
+data and retain binary metadata only.
 SVG remains UTF-8 text and is sanitized in the overview before use as an inert
 image; no inline SVG markup or remote resource loading is allowed.
 Responses use no-store. The response supplies every file for local browsing,
