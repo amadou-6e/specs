@@ -22,6 +22,12 @@ The existing Skill node accepts an ordinary Operation input or direct feedback
 from its Task-consuming original Codex Agent: Skill Task → Agent Task, Agent
 Answer → same Skill Operation. Independent read-only Skill outputs may also connect to Agent Skill References;
 the isolated body includes those dependencies (at most sixteen Skill nodes).
+Those nodes have no incoming edges, no Operation and an empty Edit Request.
+The current bounded executor resolves each dependency in the outer graph and
+again in the isolated body; linked sources may therefore be read twice. Both
+reads must resolve the pinned immutable revision. A run started from one of
+these Skills is normalized to the controller; playing only that Skill remains
+read-only and must not invoke the Agent.
 Other Agent inputs, mutating Skill dependencies, ambiguous returns, indirect
 cycles and multiple feedback controllers refuse before dispatch.
 
