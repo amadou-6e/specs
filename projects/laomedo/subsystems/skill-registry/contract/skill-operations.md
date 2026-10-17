@@ -71,11 +71,16 @@ exact parent/current bundles. Selecting a commit in the viewer instead compares
 its entire snapshot to the immutable current revision selected on the Skill node
 when the panel opened. This is cumulative across all intervening commits, not
 just the selected commit's patch. The same revision has no differences. Display
-additions, modifications, deletions and binary-change metadata; render textual
-unified diffs as readable lines and mark missing final newlines. Verify both
+the currently selected file as a read-only visual editor comparison, with the
+selected revision on the left and pinned-current contents on the right. Show
+full file contents with additions/deletions highlighted, never a combined raw
+patch or patch headers. Added/deleted files have an empty absent side; binary
+files show change metadata only. Unchanged files show their contents. Verify both
 snapshots, keep comparison direction explicit, and reject stale/mismatched replies.
 The file tree and parent-linked commit graph share one navigation pane, with the
-commit graph below the files. Clicking a file returns to current file contents.
+commit graph below the files. Clicking a file changes the compared file while
+retaining the selected commit. Include historical-only files so deletions remain
+inspectable. Current source exits comparison without changing the pinned revision.
 No Files/History mode buttons. A draggable, keyboard-operable vertical separator
 controls navigation width within bounds that preserve usable content space.
 The Skill files panel follows the operations/history

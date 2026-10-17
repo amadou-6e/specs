@@ -32,7 +32,8 @@ owns panel geometry, visible states and transitions; this page indexes it.
 The operations/history page of the same Draw.io adds SO01–SO03 (ordinary or
 two-node feedback proposals), SH01 (one combined files/history workspace), SH02
 (parent-linked commit graph below the file tree), SH03 (cumulative selected-revision
-to pinned-current diff and explicitly backend-asserted Agent provenance), SH04
+to pinned-current visual diff of the selected file, with file switching retaining
+the commit, and explicitly backend-asserted Agent provenance), SH04
 (loading, empty and fixed error/retry states), and SH05 (draggable and keyboard
 resizable navigation/content separator). Its public
 contract is [Skill operations](../contract/skill-operations.md). File browsing
