@@ -22,12 +22,13 @@ owns panel geometry, visible states and transitions; this page indexes it.
 | --- | --- |
 | SF01 | The selected LaomedoSkill node exposes Skill files in place of its primary Code action. Other nodes keep Code. |
 | SF02 | Opening the panel captures Skill ID and exact revision; no model turn or graph execution occurs. |
-| SF03 | Header displays full selected revision and Read only. Close returns to the unchanged graph. |
+| SF03 | Header displays the shortened current revision (full hash on hover) and Read only. Close returns to the unchanged graph. |
 | SF04 | Explorer folders expand/collapse and files open tabs; default SKILL.md; closing a tab chooses another open file. |
 | SF05 | Source uses locally bundled Monaco, read-only, syntax highlighting and editor search. Markdown files also offer Preview. |
 | SF06 | Markdown preview skips raw HTML and remote images, renders links as text, and never executes scripts or commands. |
 | SF07 | Loading has status text. Missing/invalid/corrupt or oversized revision has a fixed error and Retry. No stale file survives a changed selection. |
-| SF08 | Binary files show metadata and an unsupported-preview message. No download/write/run action. |
+| SF08 | Binary source files show metadata and an unsupported-preview message. No download/write/run action. |
+| SH06 | Between skill identity and the file workspace, About this skill shows one sentence by default and can collapse. Read full overview opens a scrollable Markdown description with local images/workflow diagrams. |
 
 The operations/history page of the same Draw.io adds SO01–SO03 (ordinary or
 two-node feedback proposals), SH01 (one combined files/history workspace), SH02
@@ -35,7 +36,8 @@ two-node feedback proposals), SH01 (one combined files/history workspace), SH02
 to pinned-current visual diff of the selected file, with file switching retaining
 the commit, and explicitly backend-asserted Agent provenance), SH04
 (loading, empty and fixed error/retry states), and SH05 (draggable and keyboard
-resizable navigation/content separator). Its public
+resizable navigation/content separator), plus SH06 (collapsible summary and full
+revision-local documentation). Its public
 contract is [Skill operations](../contract/skill-operations.md). File browsing
 stays read-only; the graph's Operation input creates candidates separately.
 
@@ -53,6 +55,11 @@ not filesystem paths or raw exceptions. No write API is added.
 Bound reads to 128 files, 512 KiB per file, 4 MiB per bundle and 64 KiB metadata. Limit traversal to 128 directories and depth 16.
 The response identifies schema, skill/revision/tree hashes and sorted relative
 file paths, byte lengths, file hashes and UTF-8 text or binary metadata.
+Recognized PNG/JPEG/GIF/WebP bytes may include an optional `image_data_url`
+(base64 data URL) in their file entry, generated only after complete tree/hash
+verification under the same read limits. Other binary contents remain metadata.
+SVG remains UTF-8 text and is sanitized in the overview before use as an inert
+image; no inline SVG markup or remote resource loading is allowed.
 Responses use no-store. The response supplies every file for local browsing,
 so tab switches do not silently fetch a newer revision.
 
@@ -77,3 +84,23 @@ Browser checks open the real Skill node action, traverse nested files, switch
 and close tabs, search source, preview Markdown safely, refuse edits, show
 errors and preserve graph identity without executing it. Use credential-free
 fixtures. No live model turns or GitHub publication writes are required.
+
+## Skill overview
+
+The default one-sentence summary comes from the current pinned `SKILL.md`
+frontmatter description (quoted scalars and folded/literal blocks supported),
+or its first prose paragraph. No model call generates or changes it.
+Collapsing About this skill hides the sentence; Read full overview reopens it
+and a bounded-height scrollable article. Closing full overview preserves the
+summary and file/commit selection. The overview always describes the pinned
+current revision, including while comparing a historical commit.
+
+Authors may put human-oriented purpose, usage, limitations and workflow
+illustrations in optional root `OVERVIEW.md`. Otherwise the full view renders
+`SKILL.md` without frontmatter. Both are versioned and diffable bundle files.
+Local Markdown links navigate documents within the same snapshot, with Back to
+overview. Images resolve relative to the displayed document and only to files
+in that snapshot. Bundled raster images and sanitized SVG workflow diagrams
+are supported; remote URLs, host paths, scripts, embedded HTML and external
+SVG resources are not rendered. Unsupported/missing media shows an explicit
+placeholder. The existing source/preview and immutable history remain available.

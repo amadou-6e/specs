@@ -90,6 +90,10 @@ retaining the selected commit. Include historical-only files so deletions remain
 inspectable. Current source exits comparison without changing the pinned revision.
 No Files/History mode buttons. A draggable, keyboard-operable vertical separator
 controls navigation width within bounds that preserve usable content space.
+A collapsible skill overview sits above the file/history workspace, anchored to
+the same pinned current revision. It shows one sentence by default and can open
+full revision-local documentation with bundled images/workflow diagrams; see
+[overview authoring and media boundaries](../design/skill-files.md#skill-overview).
 The Skill files panel follows the operations/history
 page of its [editable interaction model](../design/skill-files.drawio).
 
