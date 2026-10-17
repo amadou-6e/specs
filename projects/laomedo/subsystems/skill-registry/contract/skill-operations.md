@@ -74,9 +74,10 @@ just the selected commit's patch. The same revision has no differences. Display
 the currently selected file as a read-only visual editor comparison, with the
 selected revision compared to pinned-current contents in one inline editor. Show
 full file contents with additions/deletions highlighted, never a combined raw
-patch or patch headers. Unchanged lines show one current line number; only changed
-rows show two explicit old/new index cells, using an em dash for the absent
-side of an addition/deletion. Render + and minus markers in a dedicated 24 px
+patch or patch headers. Use one index when an unchanged line has the same old/current number. Show
+both old/current indexes whenever they differ, including unchanged lines after
+an insertion/deletion. Changed rows also show two explicit index cells; leave
+the absent side of an addition/deletion blank. Render + and minus markers in a dedicated 24 px
 column with bold 18 px high-contrast glyphs. A horizontal header rule and a
 thin divider distinguish the number columns. Number gutters fit the file digit count with a 4 px
 gap and a thin divider between the index columns. The selected revision hash is
