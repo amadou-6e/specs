@@ -28,7 +28,7 @@ owns panel geometry, visible states and transitions; this page indexes it.
 | SF06 | Markdown preview skips raw HTML and remote images, renders links as text, and never executes scripts or commands. |
 | SF07 | Loading has status text. Missing/invalid/corrupt or oversized revision has a fixed error and Retry. No stale file survives a changed selection. |
 | SF08 | Binary source files show metadata and an unsupported-preview message. No download/write/run action. |
-| SH06 | Between skill identity and the file workspace, About this skill shows one sentence by default and can collapse. Read full overview opens a scrollable Markdown description with local images/workflow diagrams. |
+| SH06 | Between skill identity and the file workspace, horizontal dividers surround a complete summary sentence. No card frame or separate heading. The summary remains visible; clicking its disclosure row expands/collapses the full documentation, initially collapsed, including local images/workflow diagrams. |
 
 The operations/history page of the same Draw.io adds SO01–SO03 (ordinary or
 two-node feedback proposals), SH01 (one combined files/history workspace), SH02
@@ -92,9 +92,10 @@ fixtures. No live model turns or GitHub publication writes are required.
 The default one-sentence summary comes from the current pinned `SKILL.md`
 frontmatter description (quoted scalars and folded/literal blocks supported),
 or its first prose paragraph. No model call generates or changes it.
-Collapsing About this skill hides the sentence; Read full overview reopens it
-and a bounded-height scrollable article. Closing full overview preserves the
-summary and file/commit selection. The overview always describes the pinned
+The complete summary is the first visible line, wrapping when needed, between
+top and bottom dividers without a card frame. All detailed documentation starts
+collapsed. Clicking the summary row or activating it with Enter/Space toggles
+the bounded-height article; the sentence and file/commit selection remain visible. The overview always describes the pinned
 current revision, including while comparing a historical commit.
 
 Authors may put human-oriented purpose, usage, limitations and workflow
@@ -106,3 +107,15 @@ in that snapshot. Bundled raster images and sanitized SVG workflow diagrams
 are supported; remote URLs, host paths, scripts, embedded HTML and external
 SVG resources are not rendered. Unsupported/missing media shows an explicit
 placeholder. The existing source/preview and immutable history remain available.
+
+
+### Missing summary authoring
+
+The internal `skills/skill-summary/SKILL.md` in the implementation repository
+guides an authoring Agent to fill a missing or blank `SKILL.md` frontmatter
+`description` with one grounded, self-contained purpose sentence. Preserve
+existing user descriptions unless rewriting is explicitly requested. Unclear
+purpose needs clarification rather than invented capabilities. Registry edits
+use normal host-validated Skill Operations with an exact parent, immutable diff
+and execution provenance. This authoring skill is not invoked by viewing a
+skill; automatic runtime dispatch is not introduced by this UI change.
