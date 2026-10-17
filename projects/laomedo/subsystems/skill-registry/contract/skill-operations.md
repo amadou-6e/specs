@@ -20,7 +20,9 @@ This extends the [reference node](langflow-node.md) and [draft lifecycle](drafts
 
 The existing Skill node accepts an ordinary Operation input or direct feedback
 from its Task-consuming original Codex Agent: Skill Task → Agent Task, Agent
-Answer → same Skill Operation. Other Agent inputs, ambiguous returns, indirect
+Answer → same Skill Operation. Independent read-only Skill outputs may also connect to Agent Skill References;
+the isolated body includes those dependencies (at most sixteen Skill nodes).
+Other Agent inputs, mutating Skill dependencies, ambiguous returns, indirect
 cycles and multiple feedback controllers refuse before dispatch.
 
 A proposal contains exactly `action: modify`, a nonempty `message`, and `files`:

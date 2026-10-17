@@ -39,7 +39,7 @@ AGENTVIZ and subset skill editing are out of scope.
 | Task | Message or text; nonempty for fresh/resume |
 | Operation | Explicit fresh, resume, status or cancel; fresh default |
 | Skill ID/revision | Obsolete hidden fields; ignored at execution. Configure a Skill node instead |
-| Skill Reference | Optional Data from the [Skill node](../../skill-registry/contract/langflow-node.md); immutable references are authoritative; legacy inline values are ignored; resume retains its bound snapshot |
+| Skill Reference | Required for fresh/start; not used for resume/status/cancel. Data from the [Skill node](../../skill-registry/contract/langflow-node.md); immutable references are authoritative; legacy inline values are ignored; resume retains its bound snapshot |
 | Model/effort | Required for fresh/resume; runner validates actual provider support |
 | Prior Run | Structured Data from a previous run; mandatory for resume/status/cancel |
 | Prior Run JSON | Advanced manual/API alternative when no Data input is connected; malformed JSON fails before dispatch |
@@ -179,3 +179,9 @@ node does not expose the section. Existing edit-dialog access is retained.
 The [editable control layout](../design/agent-node-controls.drawio) owns this
 layout. This change does not introduce model discovery, session pickers,
 permissions, new execution modes or activity-view controls.
+
+Feedback operation graphs may supply independent read-only Skill nodes to the
+Agent Skill References input. The isolated body includes those Skill nodes and
+the Agent. Other external Agent inputs, mutating Skill dependencies and nested
+controllers remain refused before dispatch. An uncertain start identifies the
+request to reconcile; it never instructs a new build with a manual request ID.
