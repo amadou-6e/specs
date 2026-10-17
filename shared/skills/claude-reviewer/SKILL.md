@@ -13,6 +13,39 @@ Identify the exact repository, base and head revisions, changed files, applicabl
 
 The reviewer is read-only. It must not edit files, post GitHub comments, change issues, approve or merge PRs, or run model-backed probes. Prepare any diff or PR metadata Claude needs in the authorized workspace before invoking it. Do not treat a Claude review as the user's approval where repository rules require explicit approval.
 
+## Visually validate UI changes
+
+When a change affects a rendered interface or UI design artifact, include visual
+validation in the review, alongside the code or specification review. Before
+implementation, use the review to assess a proposed layout when one is available;
+after implementation, review the actual rendered result. A proposal review does
+not establish implementation fidelity.
+
+Prepare local screenshots or rendered design images for the reviewer to open
+with its file-reading tool. Supply their exact paths, source revision or artifact,
+viewport and captured state, the intended design/reference, and any user-marked
+feedback. Include a full-view image for hierarchy and relevant detail images for
+changed components, expanded content and affected interaction states. Use real
+recorded or live integration data when required by workspace instructions; do not
+substitute fixtures without authorization. Keep sensitive content out of captures.
+
+Explicitly ask Claude to open and inspect the images, rather than infer appearance
+from markup, screenshot filenames or the implementer's description. Check grouping
+of different concerns, heading hierarchy, spacing, typography, contrast, density,
+overflow, and consistency with the established UI. Compare the intended design
+with the rendered result and address marked feedback. Distinguish visible findings
+from interaction or accessibility claims that a static image cannot establish;
+provide separate browser/check evidence for those claims.
+
+Require separate code/specification and visual verdicts. The response must identify
+which images and states were actually inspected, rank visual findings with image
+region references (and source lines where applicable), and state missing coverage.
+If images cannot be opened or required states are missing, report visual validation
+as incomplete and keep UI acceptance blocked; code approval alone is insufficient.
+Do not describe an implementer's screenshot inspection as independent visual review.
+For blocking visual findings, provide fresh renders of the corrected result in the
+focused recheck. Keep the existing read-only restrictions and human approval gates.
+
 ## Keep one reviewer conversation per Codex conversation
 
 Use [Invoke-ClaudeReview.ps1](scripts/Invoke-ClaudeReview.ps1) from the same trusted workspace root for every review in this Codex conversation. The script keys an ignored local state file by `CODEX_SESSION_ID`: its first successful call creates a Claude session and later calls resume that session. A new Codex conversation gets a new Claude reviewer session. Never resume a user's interactive Claude/VS Code session for this workflow, and never run two calls to the reviewer session concurrently.
