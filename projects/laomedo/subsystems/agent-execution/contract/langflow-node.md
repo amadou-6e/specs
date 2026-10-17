@@ -158,7 +158,12 @@ an Advanced controls section directly on the canvas node, collapsed by default.
 Model, reasoning effort and the existing lifecycle Operation control remain in
 the main form. No lifecycle semantics or input connections change in this slice.
 The section contains output correction attempts, HTTP timeout, runner/bridge
-URLs, optional request ID, manual prior-run JSON and manual skill ID/revision.
+URLs and manual prior-run JSON. Request identity is automatically allocated by
+execution and is not a user-editable control. Skill selection and revisions
+belong to Skill nodes, supplied through Skill References; there are no manual
+skill controls on the Agent. Hidden legacy fields remain available internally
+for imported flows/API compatibility and are not exposed by either node form
+or Inspector. The canvas also suppresses those fields in older saved schemas.
 Fields with show=false remain hidden. The Inspector can promote a control to
 the main form by setting advanced=false; that explicit choice is respected.
 Connected fields are excluded from the section and follow upstream canvas
