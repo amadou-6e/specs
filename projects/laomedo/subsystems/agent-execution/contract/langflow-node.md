@@ -38,8 +38,8 @@ AGENTVIZ and subset skill editing are out of scope.
 | --- | --- |
 | Task | Message or text; nonempty for fresh/resume |
 | Operation | Explicit fresh, resume, status or cancel; fresh default |
-| Skill ID/revision | Fresh runs require an immutable whole-skill SHA-256 revision; no latest fallback |
-| Skill Reference | Optional Data from the [Skill node](../../skill-registry/contract/langflow-node.md); matching inline values allowed, conflicts rejected; resume retains its bound snapshot |
+| Skill ID/revision | Obsolete hidden fields; ignored at execution. Configure a Skill node instead |
+| Skill Reference | Optional Data from the [Skill node](../../skill-registry/contract/langflow-node.md); immutable references are authoritative; legacy inline values are ignored; resume retains its bound snapshot |
 | Model/effort | Required for fresh/resume; runner validates actual provider support |
 | Prior Run | Structured Data from a previous run; mandatory for resume/status/cancel |
 | Prior Run JSON | Advanced manual/API alternative when no Data input is connected; malformed JSON fails before dispatch |
@@ -161,9 +161,11 @@ The section contains output correction attempts, HTTP timeout, runner/bridge
 URLs and manual prior-run JSON. Request identity is automatically allocated by
 execution and is not a user-editable control. Skill selection and revisions
 belong to Skill nodes, supplied through Skill References; there are no manual
-skill controls on the Agent. Hidden legacy fields remain available internally
-for imported flows/API compatibility and are not exposed by either node form
-or Inspector. The canvas also suppresses those fields in older saved schemas.
+skill controls on the Agent. Legacy request IDs and inline skill overrides are ignored. Fresh/start without
+Skill References refuses before dispatch with skill_reference_required_use_skill_node.
+Update an old component to refresh its Inspector metadata; older Inspector schemas
+may still list obsolete fields, but changing them has no execution effect.
+The canvas suppresses those fields even in older saved schemas.
 Fields with show=false remain hidden. The Inspector can promote a control to
 the main form by setting advanced=false; that explicit choice is respected.
 Connected fields are excluded from the section and follow upstream canvas
