@@ -185,3 +185,18 @@ Agent Skill References input. The isolated body includes those Skill nodes and
 the Agent. Other external Agent inputs, mutating Skill dependencies and nested
 controllers remain refused before dispatch. An uncertain start identifies the
 request to reconcile; it never instructs a new build with a manual request ID.
+
+## Model and reasoning controls
+
+The Codex Agent exposes Model and Reasoning Effort as non-editable-choice
+dropdowns on the main node form. The configured capability snapshot supplies
+model-specific effort options. It is not live runner discovery or an account
+availability guarantee; the runner validates supported settings before a turn.
+Changing models keeps a compatible effort and clears an incompatible effort;
+it never silently downgrades reasoning. Imported selections are preserved on
+load, including values outside the configured snapshot, for runner validation.
+OpenCode keeps its separate Provider/Model and Variant contract.
+
+Output Requirements remains an input because it describes the expected answer
+format (normally resolved from the downstream consumer). Prior Run accepts the
+Run Reference of an earlier execution for resume/status/cancel, not fresh/start.
