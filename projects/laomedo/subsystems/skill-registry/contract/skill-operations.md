@@ -75,7 +75,10 @@ the currently selected file as a read-only visual editor comparison, with the
 selected revision compared to pinned-current contents in one inline editor. Show
 full file contents with additions/deletions highlighted, never a combined raw
 patch or patch headers. Unchanged lines show one current line number; only changed
-lines retain old numbering. Number gutters fit the file digit count with a 4 px
+rows show two explicit old/new index cells, using an em dash for the absent
+side of an addition/deletion. Render + and minus markers in a dedicated 24 px
+column with bold 18 px high-contrast glyphs. A horizontal header rule and a
+thin divider distinguish the number columns. Number gutters fit the file digit count with a 4 px
 gap and a thin divider between the index columns. The selected revision hash is
 abbreviated, with its full identity on hover. Added/deleted files have an empty absent side; binary
 files show change metadata only. Unchanged files show their contents. Verify both
