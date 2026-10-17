@@ -89,9 +89,10 @@ fixtures. No live model turns or GitHub publication writes are required.
 
 ## Skill overview
 
-The default one-sentence summary comes from the current pinned `SKILL.md`
+The summary shows the complete normalized current pinned `SKILL.md`
 frontmatter description (quoted scalars and folded/literal blocks supported),
-or its first prose paragraph. No model call generates or changes it.
+or its first prose paragraph. Never truncate at punctuation or abbreviations;
+long descriptions wrap fully. No model call generates or changes it.
 The complete summary is the first visible line, wrapping when needed, between
 top and bottom dividers without a card frame. All detailed documentation starts
 collapsed. Clicking the summary row or activating it with Enter/Space toggles
