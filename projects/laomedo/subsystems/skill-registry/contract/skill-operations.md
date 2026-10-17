@@ -72,9 +72,12 @@ its entire snapshot to the immutable current revision selected on the Skill node
 when the panel opened. This is cumulative across all intervening commits, not
 just the selected commit's patch. The same revision has no differences. Display
 the currently selected file as a read-only visual editor comparison, with the
-selected revision on the left and pinned-current contents on the right. Show
+selected revision compared to pinned-current contents in one inline editor. Show
 full file contents with additions/deletions highlighted, never a combined raw
-patch or patch headers. Added/deleted files have an empty absent side; binary
+patch or patch headers. Unchanged lines show one current line number; only changed
+lines retain old numbering. Number gutters fit the file digit count with a 4 px
+gap and a thin divider between the index columns. The selected revision hash is
+abbreviated, with its full identity on hover. Added/deleted files have an empty absent side; binary
 files show change metadata only. Unchanged files show their contents. Verify both
 snapshots, keep comparison direction explicit, and reject stale/mismatched replies.
 The file tree and parent-linked commit graph share one navigation pane, with the
