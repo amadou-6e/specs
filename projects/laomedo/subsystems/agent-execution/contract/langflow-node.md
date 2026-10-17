@@ -159,8 +159,10 @@ Model, reasoning effort and the existing lifecycle Operation control remain in
 the main form. No lifecycle semantics or input connections change in this slice.
 The section contains output correction attempts, HTTP timeout, runner/bridge
 URLs, optional request ID, manual prior-run JSON and manual skill ID/revision.
-Fields with show=false remain hidden; connected fields keep their normal port
-rendering outside the section. Other component types are unchanged.
+Fields with show=false remain hidden. The Inspector can promote a control to
+the main form by setting advanced=false; that explicit choice is respected.
+Connected fields are excluded from the section and follow upstream canvas
+visibility. Other component types are unchanged.
 
 The toggle is keyboard-operable and exposes its expanded state and controlled
 region. Values survive collapse/reopen; toggling never executes the graph or
