@@ -150,3 +150,23 @@ requirements from native graph metadata, freezes them and supplies the existing
 native precheck. Ambiguous/dynamic/conflicting bindings refuse before a model
 request. Preserve the authenticated runner-derived envelope for final routing.
 This does not authorize another invocation or external effect.
+
+## Inline advanced controls
+
+The Codex Agent and inherited OpenCode Agent place scalar technical controls in
+an Advanced controls section directly on the canvas node, collapsed by default.
+Model, reasoning effort and the existing lifecycle Operation control remain in
+the main form. No lifecycle semantics or input connections change in this slice.
+The section contains output correction attempts, HTTP timeout, runner/bridge
+URLs, optional request ID, manual prior-run JSON and manual skill ID/revision.
+Fields with show=false remain hidden; connected fields keep their normal port
+rendering outside the section. Other component types are unchanged.
+
+The toggle is keyboard-operable and exposes its expanded state and controlled
+region. Values survive collapse/reopen; toggling never executes the graph or
+changes saved settings. Resizing refreshes node handle geometry. A minimized
+node does not expose the section. Existing edit-dialog access is retained.
+
+The [editable control layout](../design/agent-node-controls.drawio) owns this
+layout. This change does not introduce model discovery, session pickers,
+permissions, new execution modes or activity-view controls.
