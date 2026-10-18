@@ -188,18 +188,8 @@ request to reconcile; it never instructs a new build with a manual request ID.
 
 ## Model and reasoning controls
 
-The Codex Agent exposes Model and Reasoning Effort as non-editable-choice
-dropdowns on the main node form. The configured capability snapshot supplies
-model-specific effort options. It is not live runner discovery or an account
-availability guarantee; the runner validates supported settings before a turn.
-Changing models keeps a compatible effort and clears an incompatible effort;
-it never silently downgrades reasoning. Opening a saved flow does not rewrite its selections. Updating the component
-preserves the saved values and normalizes their dropdown options, including
-values outside the configured snapshot, for runner validation. An unlisted
-model cannot be newly selected from a new node's configured dropdown; resuming
-such a run needs a node with that saved model selection (live discovery deferred).
-OpenCode keeps its separate Provider/Model and Variant contract.
+The Codex Agent exposes Model and Reasoning Effort as non-editable-choice dropdowns on the main node form. Refresh fetches authenticated GET /v1/models from the configured runner. The runner queries all pages of its configured Codex app-server model/list, without starting a thread or turn. No model names, effort names, or model defaults are embedded in the component. Refresh or a model/Runner URL change queries again; discovery errors are explicit and never fall back to a fixed table. This reflects installed runtime metadata, not a guarantee of account entitlement.
 
-Output Requirements remains an input because it describes the expected answer
-format (normally resolved from the downstream consumer). Prior Run accepts the
-Run Reference of an earlier execution for resume/status/cancel, not fresh/start.
+Changing models preserves compatible effort and clears incompatible effort, without silently choosing a replacement. Saved selections remain visible on load for runner validation. Runtime validation uses the same paginated catalogue. OpenCode retains its separate Provider/Model and default-only Variant contract.
+
+Output Requirements, Prior Run, and Prior Run JSON are hidden from the node controls, retained internally for serialized flow compatibility. Automatic output contract discovery currently applies only to dedicated Output Contract connections. Node-local durable run selection is a separate outstanding requirement; hiding Prior Run does not implement it.
