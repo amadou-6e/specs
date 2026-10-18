@@ -150,3 +150,17 @@ diff and backend provenance. Existing descriptions do not trigger this addition.
 Unknown nonempty YAML values are preserved conservatively. This does not dispatch
 a model from import, discovery or viewer reads, and does not promote canonical
 latest. Runtime generation requires the ordinary authorized authoring graph.
+
+
+Action disclosures close on Escape and outside pointer interaction; Escape
+returns focus to their trigger without closing the Skill files dialog. Leaving
+the actions with keyboard focus also dismisses them. Restoring the hidden
+column returns focus to its persistent separator. Menu text uses foreground
+contrast and sizes to its action labels.
+
+Only the internal skill's Agent instructions are inserted into the authoring
+task, in a clearly delimited trusted block. Omit the skill's YAML metadata and
+host integration documentation. Restate the single-JSON-object operation
+contract after the snapshot. The Agent proposes content and never invokes host
+prepare/apply or supplies provenance. Apply must leave a meaningful description,
+including when an edit would otherwise remove an existing one.
