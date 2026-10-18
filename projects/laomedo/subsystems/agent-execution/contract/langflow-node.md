@@ -41,8 +41,8 @@ AGENTVIZ and subset skill editing are out of scope.
 | Skill ID/revision | Obsolete hidden fields; ignored at execution. Configure a Skill node instead |
 | Skill Reference | Required for fresh/start; not used for resume/status/cancel. Data from the [Skill node](../../skill-registry/contract/langflow-node.md); immutable references are authoritative; legacy inline values are ignored; resume retains its bound snapshot |
 | Model/effort | Required for fresh/resume; runner validates actual provider support |
-| Prior Run | Structured Data from a previous run; mandatory for resume/status/cancel |
-| Prior Run JSON | Advanced manual/API alternative when no Data input is connected; malformed JSON fails before dispatch |
+| Prior Run (hidden compatibility input) | Existing serialized Data reference; required internally for resume/status/cancel until node-local selection exists |
+| Prior Run JSON (hidden compatibility input) | Serialized/API alternative; malformed JSON fails before dispatch; not a visible node control |
 | Runner URL | Advanced setting; plain HTTP local loopback or host.docker.internal only; no embedded credentials |
 | Timeout | Advanced HTTP timeout, 1 to 240 seconds; default 210 |
 
@@ -136,7 +136,7 @@ timeout similarly retains the known identity and does not retry or claim remote
 cancellation. Status/cancel can query the same run afterwards.
 
 Pinned-runtime tests wire a fresh Run Reference Data port directly into a later
-resume node. Serialized Prior Run JSON remains the manual alternative. The
+resume node. Serialized Prior Run JSON remains an API/serialized-flow alternative, hidden from node controls. The
 checked-in flow embeds the new source; no installed flow or server is changed.
 The [acceptance audit](../../../implementation/resume-feedback-acceptance.md)
 records tests and the precise cancellation boundary. Continuous streaming,
@@ -177,7 +177,7 @@ changes saved settings. Resizing refreshes node handle geometry. A minimized
 node does not expose the section. Existing edit-dialog access is retained.
 
 The [editable control layout](../design/agent-node-controls.drawio) owns this
-layout. This change does not introduce model discovery, session pickers,
+layout. The advanced-controls disclosure itself does not implement model discovery, session pickers,
 permissions, new execution modes or activity-view controls.
 
 Feedback operation graphs may supply independent read-only Skill nodes to the
@@ -193,3 +193,5 @@ The Codex Agent exposes Model and Reasoning Effort as non-editable-choice dropdo
 Changing models preserves compatible effort and clears incompatible effort, without silently choosing a replacement. Saved selections remain visible on load for runner validation. Runtime validation uses the same paginated catalogue. OpenCode retains its separate Provider/Model and default-only Variant contract.
 
 Output Requirements, Prior Run, and Prior Run JSON are hidden from the node controls, retained internally for serialized flow compatibility. Automatic output contract discovery currently applies only to dedicated Output Contract connections. Node-local durable run selection is a separate outstanding requirement; hiding Prior Run does not implement it.
+
+Discovery is serialized per runner, cached for 30 seconds, and removes temporary state. Pagination is limited to 50 pages with validated unique IDs. The component bounds catalogue responses to 1 MiB. Runner authentication is used when configured, without a thread or turn. New nodes require a Model refresh; offline component upgrades retain saved selections without asserting availability. Explicit refresh failures remain visible.
