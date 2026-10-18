@@ -112,7 +112,7 @@ placeholder. The existing source/preview and immutable history remain available.
 
 ### Missing summary authoring
 
-The internal `skills/skill-summary/SKILL.md` in the implementation repository
+The internal `laomedo/resources/skills/skill-summary/SKILL.md` in the implementation repository
 guides an authoring Agent to fill a missing or blank `SKILL.md` frontmatter
 `description` with one grounded, self-contained purpose sentence. Preserve
 existing user descriptions unless rewriting is explicitly requested. Unclear
@@ -120,3 +120,33 @@ purpose needs clarification rather than invented capabilities. Registry edits
 use normal host-validated Skill Operations with an exact parent, immutable diff
 and execution provenance. This authoring skill is not invoked by viewing a
 skill; automatic runtime dispatch is not introduced by this UI change.
+
+
+## Collapsible navigation
+
+SH07 in the navigation-states Draw.io page owns two independently collapsible
+sections, Files and Commits, with compact uppercase headers, disclosure chevrons
+and three-dot action disclosures. Both start expanded and share the available
+height. Collapse either to let the other use all remaining height beneath both
+headers. Keep bodies mounted so file, commit, scroll and pagination state survive.
+Section actions expand only that section or expand both. The column header
+three-dot actions hide navigation or reset its width.
+
+SH05 accepts widths 0 or 180-600 px, further bounded to retain editor space.
+Dragging below 90 px snaps closed; dragging right past that threshold restores
+a visible width. Keep a grabbable divider at width 0 and a Show navigation button
+that restores the previous visible width. Double-click toggles; Home collapses,
+End maximizes, and ArrowRight from collapsed restores. ArrowLeft at minimum
+collapses. Restore neither resets selection nor reloads history.
+
+## Automatic missing-summary authoring
+
+Preparing an authorized edit of a pinned skill with no meaningful frontmatter
+description adds the packaged internal summary skill to the trusted authoring
+instructions. The existing Agent performs the requested edit and supplies one
+grounded summary sentence in the same operation. The host rejects a still-empty
+description on apply and records the accepted edit with its existing parent,
+diff and backend provenance. Existing descriptions do not trigger this addition.
+Unknown nonempty YAML values are preserved conservatively. This does not dispatch
+a model from import, discovery or viewer reads, and does not promote canonical
+latest. Runtime generation requires the ordinary authorized authoring graph.
