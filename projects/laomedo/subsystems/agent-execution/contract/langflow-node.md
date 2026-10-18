@@ -193,8 +193,11 @@ dropdowns on the main node form. The configured capability snapshot supplies
 model-specific effort options. It is not live runner discovery or an account
 availability guarantee; the runner validates supported settings before a turn.
 Changing models keeps a compatible effort and clears an incompatible effort;
-it never silently downgrades reasoning. Imported selections are preserved on
-load, including values outside the configured snapshot, for runner validation.
+it never silently downgrades reasoning. Opening a saved flow does not rewrite its selections. Updating the component
+preserves the saved values and normalizes their dropdown options, including
+values outside the configured snapshot, for runner validation. An unlisted
+model cannot be newly selected from a new node's configured dropdown; resuming
+such a run needs a node with that saved model selection (live discovery deferred).
 OpenCode keeps its separate Provider/Model and Variant contract.
 
 Output Requirements remains an input because it describes the expected answer
