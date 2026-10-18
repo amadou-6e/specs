@@ -28,7 +28,7 @@ owns panel geometry, visible states and transitions; this page indexes it.
 | SF06 | Markdown preview skips raw HTML and remote images, renders links as text, and never executes scripts or commands. |
 | SF07 | Loading has status text. Missing/invalid/corrupt or oversized revision has a fixed error and Retry. No stale file survives a changed selection. |
 | SF08 | Binary source files show metadata and an unsupported-preview message. No download/write/run action. |
-| SH06 | Between skill identity and the file workspace, horizontal dividers surround a complete summary sentence. No card frame or separate heading. The summary remains visible; clicking its disclosure row expands/collapses the full documentation, initially collapsed, including local images/workflow diagrams. |
+| SH06 | Between skill identity and the file workspace, horizontal dividers surround the complete summary/description. No card frame or separate heading. The summary remains visible; clicking its disclosure row expands/collapses the full documentation, initially collapsed, including local images/workflow diagrams. |
 
 The operations/history page of the same Draw.io adds SO01–SO03 (ordinary or
 two-node feedback proposals), SH01 (one combined files/history workspace), SH02
