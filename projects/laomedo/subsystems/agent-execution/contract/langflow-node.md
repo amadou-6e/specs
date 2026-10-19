@@ -38,11 +38,11 @@ AGENTVIZ and subset skill editing are out of scope.
 | --- | --- |
 | Task | Message or text; nonempty for fresh/resume |
 | Operation | Explicit fresh, resume, status or cancel; fresh default |
-| Skill ID/revision | Fresh runs require an immutable whole-skill SHA-256 revision; no latest fallback |
-| Skill Reference | Optional Data from the [Skill node](../../skill-registry/contract/langflow-node.md); matching inline values allowed, conflicts rejected; resume retains its bound snapshot |
+| Skill ID/revision | Obsolete hidden fields; ignored at execution. Configure a Skill node instead |
+| Skill Reference | Required for fresh/start; not used for resume/status/cancel. Data from the [Skill node](../../skill-registry/contract/langflow-node.md); immutable references are authoritative; legacy inline values are ignored; resume retains its bound snapshot |
 | Model/effort | Required for fresh/resume; runner validates actual provider support |
-| Prior Run | Structured Data from a previous run; mandatory for resume/status/cancel |
-| Prior Run JSON | Advanced manual/API alternative when no Data input is connected; malformed JSON fails before dispatch |
+| Prior Run (hidden compatibility input) | Existing serialized Data reference; required internally for resume/status/cancel until node-local selection exists |
+| Prior Run JSON (hidden compatibility input) | Serialized/API alternative; malformed JSON fails before dispatch; not a visible node control |
 | Runner URL | Advanced setting; plain HTTP local loopback or host.docker.internal only; no embedded credentials |
 | Timeout | Advanced HTTP timeout, 1 to 240 seconds; default 210 |
 
@@ -136,7 +136,7 @@ timeout similarly retains the known identity and does not retry or claim remote
 cancellation. Status/cancel can query the same run afterwards.
 
 Pinned-runtime tests wire a fresh Run Reference Data port directly into a later
-resume node. Serialized Prior Run JSON remains the manual alternative. The
+resume node. Serialized Prior Run JSON remains an API/serialized-flow alternative, hidden from node controls. The
 checked-in flow embeds the new source; no installed flow or server is changed.
 The [acceptance audit](../../../implementation/resume-feedback-acceptance.md)
 records tests and the precise cancellation boundary. Continuous streaming,
@@ -150,3 +150,55 @@ requirements from native graph metadata, freezes them and supplies the existing
 native precheck. Ambiguous/dynamic/conflicting bindings refuse before a model
 request. Preserve the authenticated runner-derived envelope for final routing.
 This does not authorize another invocation or external effect.
+
+## Inline advanced controls
+
+The Codex Agent and inherited OpenCode Agent place scalar technical controls in
+an Advanced controls section directly on the canvas node, collapsed by default.
+Model, reasoning effort and the existing lifecycle Operation control remain in
+the main form. Skill References follows Reasoning Effort on Codex.
+The section contains output correction attempts, HTTP timeout and Runner URL.
+Output Requirements, its JSON alternative, Prior Run, Prior Run JSON and Join
+Bridge URL are hidden compatibility fields, not visible node controls. Request identity is automatically allocated by
+execution and is not a user-editable control. Skill selection and revisions
+belong to Skill nodes, supplied through Skill References; there are no manual
+skill controls on the Agent. Legacy request IDs and inline skill overrides are ignored. Fresh/start without
+Skill References refuses before dispatch with skill_reference_required_use_skill_node.
+Update an old component to refresh its Inspector metadata; older Inspector schemas
+may still list obsolete fields, but changing them has no execution effect.
+The canvas suppresses those fields even in older saved schemas.
+Fields with show=false remain hidden. The Inspector can promote a control to
+the main form by setting advanced=false; that explicit choice is respected.
+Visible connected fields are excluded from the section and follow upstream
+canvas visibility. Hidden compatibility ports stay suppressed even with legacy
+connections: their backend values survive, but visible-handle and editing/save
+migration remain unverified. Other component types are unchanged.
+
+The toggle is keyboard-operable and exposes its expanded state and controlled
+region. Values survive collapse/reopen; toggling never executes the graph or
+changes saved settings. Resizing refreshes node handle geometry. A minimized
+node does not expose the section. Existing edit-dialog access is retained.
+
+The [editable control layout](../design/agent-node-controls.drawio) owns this
+layout. The advanced-controls disclosure itself does not implement model discovery, session pickers,
+permissions, new execution modes or activity-view controls.
+
+Feedback operation graphs may supply independent read-only Skill nodes to the
+Agent Skill References input. The isolated body includes those Skill nodes and
+the Agent. Other external Agent inputs, mutating Skill dependencies and nested
+controllers remain refused before dispatch. An uncertain start identifies the
+request to reconcile; it never instructs a new build with a manual request ID.
+
+## Model and reasoning controls
+
+The Codex Agent exposes Model and Reasoning Effort as non-editable-choice dropdowns on the main node form. Refresh fetches authenticated GET /v1/models from the configured runner. The runner queries all pages of its configured Codex app-server model/list, without starting a thread or turn. No model names, effort names, or model defaults are embedded in the component. Refresh or a model/Runner URL change queries again; discovery errors are explicit and never fall back to a fixed table. This reflects installed runtime metadata, not a guarantee of account entitlement.
+
+Changing models preserves compatible effort and clears incompatible effort, without silently choosing a replacement. Saved selections remain visible on load for runner validation. Runtime validation uses the same paginated catalogue. OpenCode retains its separate Provider/Model and default-only Variant contract.
+
+Output Requirements, Prior Run, and Prior Run JSON are hidden from the node controls, retained internally for serialized flow compatibility. Automatic output contract discovery currently applies only to dedicated Output Contract connections. Node-local durable run selection is a separate outstanding requirement; hiding Prior Run does not implement it.
+
+Discovery is serialized per runner, cached for 30 seconds, and removes temporary state. Pagination is limited to 50 pages with validated unique IDs. The component bounds catalogue responses to 1 MiB. Runner authentication is used when configured, without a thread or turn. New nodes require a Model refresh; offline component upgrades retain saved selections without asserting availability. Explicit refresh failures remain visible.
+
+Skill References appears directly below Reasoning Effort on the Codex Agent node. Join Bridge URL is hidden from node controls: LAOMEDO_BRIDGE_URL configures the host bridge centrally and overrides legacy serialized node values (including an explicitly empty environment value to disable it). Static output requirements JSON remains a hidden compatibility field for host-built graphs.
+
+The global bridge URL applies only to Codex fresh/start, including stop/reconciliation of those in-flight invocations. Resume/status/cancel use the runner directly. OpenCode ignores the Codex bridge setting. An unset environment value retains an invisible legacy serialized bridge URL for Codex fresh/start only; exported graph data is required to inspect that compatibility value.
