@@ -156,9 +156,10 @@ This does not authorize another invocation or external effect.
 The Codex Agent and inherited OpenCode Agent place scalar technical controls in
 an Advanced controls section directly on the canvas node, collapsed by default.
 Model, reasoning effort and the existing lifecycle Operation control remain in
-the main form. No lifecycle semantics or input connections change in this slice.
-The section contains output correction attempts, HTTP timeout, runner/bridge
-URLs and manual prior-run JSON. Request identity is automatically allocated by
+the main form. Skill References follows Reasoning Effort on Codex.
+The section contains output correction attempts, HTTP timeout and Runner URL.
+Output Requirements, its JSON alternative, Prior Run, Prior Run JSON and Join
+Bridge URL are hidden compatibility fields, not visible node controls. Request identity is automatically allocated by
 execution and is not a user-editable control. Skill selection and revisions
 belong to Skill nodes, supplied through Skill References; there are no manual
 skill controls on the Agent. Legacy request IDs and inline skill overrides are ignored. Fresh/start without
@@ -168,8 +169,10 @@ may still list obsolete fields, but changing them has no execution effect.
 The canvas suppresses those fields even in older saved schemas.
 Fields with show=false remain hidden. The Inspector can promote a control to
 the main form by setting advanced=false; that explicit choice is respected.
-Connected fields are excluded from the section and follow upstream canvas
-visibility. Other component types are unchanged.
+Visible connected fields are excluded from the section and follow upstream
+canvas visibility. Hidden compatibility ports stay suppressed even with legacy
+connections: their backend values survive, but visible-handle and editing/save
+migration remain unverified. Other component types are unchanged.
 
 The toggle is keyboard-operable and exposes its expanded state and controlled
 region. Values survive collapse/reopen; toggling never executes the graph or
@@ -197,3 +200,5 @@ Output Requirements, Prior Run, and Prior Run JSON are hidden from the node cont
 Discovery is serialized per runner, cached for 30 seconds, and removes temporary state. Pagination is limited to 50 pages with validated unique IDs. The component bounds catalogue responses to 1 MiB. Runner authentication is used when configured, without a thread or turn. New nodes require a Model refresh; offline component upgrades retain saved selections without asserting availability. Explicit refresh failures remain visible.
 
 Skill References appears directly below Reasoning Effort on the Codex Agent node. Join Bridge URL is hidden from node controls: LAOMEDO_BRIDGE_URL configures the host bridge centrally and overrides legacy serialized node values (including an explicitly empty environment value to disable it). Static output requirements JSON remains a hidden compatibility field for host-built graphs.
+
+The global bridge URL applies only to Codex fresh/start, including stop/reconciliation of those in-flight invocations. Resume/status/cancel use the runner directly. OpenCode ignores the Codex bridge setting. An unset environment value retains an invisible legacy serialized bridge URL for Codex fresh/start only; exported graph data is required to inspect that compatibility value.
