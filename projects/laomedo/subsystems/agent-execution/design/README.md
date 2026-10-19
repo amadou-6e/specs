@@ -27,3 +27,7 @@ credential-free per-run Git/CLI adapter with a proxy alternative and defines
 the parity evidence still required by Laomedo #100.
 
 The [Output Contract v1 design](output-contract-v1.md) proposes the declarative form, shared precheck evaluator, routable outcomes and bounded continuation for the credential-free Langflow demo.
+
+The [Claude node view](claude-node.drawio) defines the shared Agent controls and
+two-node Skill/PR feedback layout for local proposal mode. Its capability and
+evidence boundary is owned by the [Claude contract](../contract/claude.md).

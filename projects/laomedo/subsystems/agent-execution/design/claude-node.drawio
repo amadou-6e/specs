@@ -1,0 +1,34 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="claude-node" name="Claude proposal node">
+    <mxGraphModel dx="1400" dy="1000" grid="1" page="1" pageWidth="1400" pageHeight="1000">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="scope" value="Claude Code subscription / local proposal mode&#10;Shared Agent layout; only the provider title and defaults change.&#10;Connected operation nodes apply authorized edits; native command/file tools are unavailable." style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="25" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="subject" value="Skill or GitHub PR&#10;Pinned selection + current snapshot&#10;Edit Request&#10;Task output -&gt; Claude Task&#10;Operation &lt;- Claude Answer" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="200" width="330" height="225" />
+        </mxCell>
+        <mxCell id="agent" value="Laomedo Claude Agent&#10;Task&#10;Operation: fresh / start / resume / status / cancel&#10;Skill References&#10;Output Requirements&#10;Model: sonnet&#10;Reasoning Effort: low&#10;Prior Run&#10;Advanced: static requirements JSON, correction retries, request ID, runner URL, timeout&#10;Outputs: Answer / Run Reference / Submission" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="450" y="170" width="500" height="370" />
+        </mxCell>
+        <mxCell id="feedback" value="Feedback returns to the SAME operation input&#10;No duplicate Skill/PR node.&#10;Host strict validation and authorization apply before any edit.&#10;Skills: atomic candidate + parent-linked diff + backend execution provenance." style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#eff6ff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="585" width="920" height="175" />
+        </mxCell>
+        <mxCell id="trace" value="Shared Agents sidebar&#10;Provider: claude-code&#10;Own native Claude session&#10;Host-labelled attempt IDs&#10;Adapter-normalized terminal receipts&#10;Observed model/usage only&#10;Unknown cost stays unknown&#10;Cancel request != confirmed termination" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1010" y="170" width="360" height="370" />
+        </mxCell>
+        <mxCell id="task" edge="1" parent="1" source="subject" target="agent" style="edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="operation" edge="1" parent="1" source="agent" target="subject" style="edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="activity" edge="1" parent="1" source="agent" target="trace" style="edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
