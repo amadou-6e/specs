@@ -68,8 +68,12 @@ explicitly enables it.
 
 Resume requires the same provider/runtime, runner instance, subscription subject
 hash, model/effort, native session and unchanged post-run snapshot/pinned skills.
-Restarted/interrupted/failed runs do not auto-resume. Cancel stops the owned CLI
-process tree; a request acknowledgement is separate from observed process exit.
+Restarted/interrupted/failed runs do not auto-resume. Cancel requests termination of the owned CLI
+process tree; a request acknowledgement is separate from observed parent exit.
+Descendant cleanup is not verified, so complete execution evidence remains unknown.
+The terminal receipt is labelled `claude_terminal_receipt_only`; it must not be
+used to claim complete SDK traces or to pass an integrated success route that
+requires complete evidence.
 A prepared cancellation must prevent later dispatch. Reads/status do not book a
 model turn. Credentials and raw CLI transcripts must stay out of exported graphs.
 
@@ -143,3 +147,10 @@ storage before finalizing this adapter's estimate. See the official
 [Python SDK reference](https://code.claude.com/docs/en/agent-sdk/python),
 [sessions](https://code.claude.com/docs/en/agent-sdk/sessions), and
 [skills](https://code.claude.com/docs/en/agent-sdk/skills).
+
+The proposal CLI inherits only an allowlisted OS/profile discovery environment;
+runner/service tokens and arbitrary host environment secrets are excluded. Its
+normal-profile resumable transcripts persist under the official CLI's retention
+policy outside Laomedo run state. Skipped binary skill files are recorded.
+Malformed output reports `invalid_json` or `trailing_data` before same-session
+correction, without repairing the proposed answer.
