@@ -141,7 +141,8 @@ cancellation keeps partial events and does not relabel the run as completed.
 
 ## Implementation note
 
-The local proof of concept has no Claude adapter yet. A short SDK spike must
+The local proposal adapter above does not implement the isolated writable SDK
+mode. A separate SDK spike must
 verify event coverage, model/effort validation, skill discovery, and session
 storage before finalizing this adapter's estimate. See the official
 [Python SDK reference](https://code.claude.com/docs/en/agent-sdk/python),
