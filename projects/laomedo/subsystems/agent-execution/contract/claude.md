@@ -3,7 +3,7 @@ title: Claude Agent component
 status: draft
 kind: target-contract
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-01
+last_reviewed: 2026-10-19
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -24,6 +24,65 @@ Status: proposed. This component runs Claude Code through the Claude Agent
 SDK in the isolated runner. It shares Laomedo's agent contract with Codex but
 keeps provider-specific session and skill behavior explicit. UI controls and
 states require a view-owned Draw.io spec.
+
+## Local proposal node (2026-10-19)
+
+The first implemented node is a deliberately narrower **proposal mode**, using
+Claude Code CLI 2.1.301 and the operator's existing Claude subscription. It does
+not claim the isolated writable SDK target described below. Native shell/file
+tools, MCP, personal customization sources, hooks, skills and auto memory are
+disabled. The official CLI uses its normal login in place; Laomedo never reads,
+copies or exports its credential files. Host execution is not a Docker sandbox.
+The later isolated writable execution mode remains unimplemented.
+
+The node reuses Task, Operation (fresh/start/resume/status/cancel), Model, Effort,
+Skill References, Output Requirements, Output Requirements JSON, Output
+Continuation Retries and Prior Run. Answer, Run Reference and Submission share
+one dispatch per node build. Use the existing view layout with a Claude title;
+[Claude node view](../design/claude-node.drawio) owns the controls and feedback
+layout. The whole custom component category must be installed together.
+
+Skills are immutable UTF-8 snapshots included in the prompt, explicitly recorded
+as `prompt_snapshot` / `included_in_prompt`, never native discovery or proof of
+instruction compliance. No native shell, file writes or direct GitHub operations
+are available. Skill -> Claude -> the same Skill Operation and PR -> Claude ->
+the same PR Operation carry proposals; only the authorized host operation service
+can apply them. Its strict validation, selection, policy and revision history
+remain authoritative. Multi-file edits remain a single atomic Skill operation.
+
+Each run has provider `claude`, a fresh UUID session, a host run/attempt identity,
+pinned runtime/model/effort and source/workspace hashes. Native JSON terminal
+receipts and answers are retained privately. Adapter-normalized activity records
+are labelled with provider and normalization version; host attempt IDs must not
+be described as native Claude turn IDs. Unknown model resolution, token metrics
+and API-equivalent costs remain unknown. A terminal CLI receipt establishes this
+proposal invocation's completion, not general SDK/tool-trace parity.
+
+Pinned output requirements use the existing host evaluator. A rejected JSON form
+can receive at most the configured correction count, on the same Claude session,
+with each dispatch booked before launch in the durable total-turn ledger. No
+parser repair, blind transport retry or replay of host writes is allowed. A
+native precheck tool is not installed in this mode; post-turn validation is
+recorded separately. The default turn budget is zero until host configuration
+explicitly enables it.
+
+Resume requires the same provider/runtime, runner instance, subscription subject
+hash, model/effort, native session and unchanged post-run snapshot/pinned skills.
+Restarted/interrupted/failed runs do not auto-resume. Cancel requests termination of the owned CLI
+process tree; a request acknowledgement is separate from observed parent exit.
+Descendant cleanup is not verified, so complete execution evidence remains unknown.
+The terminal receipt is labelled `claude_terminal_receipt_only`; it must not be
+used to claim complete SDK traces or to pass an integrated success route that
+requires complete evidence.
+A prepared cancellation must prevent later dispatch. Reads/status do not book a
+model turn. Credentials and raw CLI transcripts must stay out of exported graphs.
+
+Live acceptance must demonstrate a real selected Skill -> Claude -> Skill edit,
+host-created parent/diff/provenance and independent readback. A successful initial
+answer does not demonstrate a correction being exercised. Internal controls do
+not substitute for live acceptance. A separate PR operation uses its existing
+repository authorization; the Skill demonstration alone does not prove live PR
+operation acceptance.
 
 ## Contract
 
@@ -82,9 +141,17 @@ cancellation keeps partial events and does not relabel the run as completed.
 
 ## Implementation note
 
-The local proof of concept has no Claude adapter yet. A short SDK spike must
+The local proposal adapter above does not implement the isolated writable SDK
+mode. A separate SDK spike must
 verify event coverage, model/effort validation, skill discovery, and session
 storage before finalizing this adapter's estimate. See the official
 [Python SDK reference](https://code.claude.com/docs/en/agent-sdk/python),
 [sessions](https://code.claude.com/docs/en/agent-sdk/sessions), and
 [skills](https://code.claude.com/docs/en/agent-sdk/skills).
+
+The proposal CLI inherits only an allowlisted OS/profile discovery environment;
+runner/service tokens and arbitrary host environment secrets are excluded. Its
+normal-profile resumable transcripts persist under the official CLI's retention
+policy outside Laomedo run state. Skipped binary skill files are recorded.
+Malformed output reports `invalid_json` or `trailing_data` before same-session
+correction, without repairing the proposed answer.
