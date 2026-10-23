@@ -45,3 +45,5 @@ has its own index and one file per direct exchange touching this subsystem.
 New pages must have one observable behavior owner.
 
 [Descriptive node errors](node-errors.md) owns user-facing explanations and safe technical diagnostics; original API error codes remain unchanged.
+
+[Local runner API recovery](local-runner-recovery.md) owns app-level connection-error recovery, independent of graph elements.

@@ -29,3 +29,5 @@ the parity evidence still required by Laomedo #100.
 The [Output Contract v1 design](output-contract-v1.md) proposes the declarative form, shared precheck evaluator, routable outcomes and bounded continuation for the credential-free Langflow demo.
 
 The [node error states](node-error-details.drawio) own descriptive error popovers and safe diagnostic interactions for issue #181.
+
+The [local runner recovery states](local-runner-recovery.drawio) own the app connection-error recovery controls and transitions.

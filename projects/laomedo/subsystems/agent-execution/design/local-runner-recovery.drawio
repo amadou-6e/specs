@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="App connection-error recovery">
+    <mxGraphModel page="1" pageWidth="1200" pageHeight="1050">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="offline" value="APP CONNECTION ERROR / offline&#10;The local runner connection failed&#10;The local runner backend is offline. Restart it to restore the connection.&#10;&#10;[ Restart local backend ]&#10;API only: no graph/model dispatch or allowance change.&#10;&gt; Technical details: runner_transport_failed&#10;[Dismiss] / no generic graph Retry" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=16;fontSize=14;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="520" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="starting" value="PENDING / STARTING&#10;Restarting the local runner backend...&#10;[ Restarting local backend... ] disabled&#10;Poll availability; ignore stale pre-click responses.&#10;Dismiss closes the error UI; startup remains API-only." style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=16;fontSize=14;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry x="640" y="40" width="500" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="ready" value="READY&#10;Local runner backend is online.&#10;Inspect the existing run before retrying.&#10;No restart button, no automatic execution.&#10;If allowance is exhausted: status and recorded results remain available." style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=16;fontSize=14;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry x="40" y="370" width="520" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="failure" value="FAILED / UNCONFIGURED / UNVERIFIED&#10;Startup failed: host log guidance + explicit API-only retry.&#10;Not configured: ask operator; no button.&#10;Identity/auth mismatch: do not replace listener.&#10;Checking availability failed: explain; no guessed restart." style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=16;fontSize=14;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry x="640" y="370" width="500" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="rules" value="OWNERSHIP AND TRANSITIONS&#10;Entry: actual runner_transport_failed in app error handling. No node, canvas banner or activity-view control.&#10;Offline -&gt; explicit click -&gt; starting -&gt; ready or failed. No graph dependency or browser URL.&#10;GET/status and POST/start select the trusted host configuration; explicit legacy URLs remain allowlisted.&#10;Ready + exhausted is different from offline; never reset the ledger, ceiling or credentials.&#10;Technical code is expandable; original exception bodies, secrets and startup logs stay private." style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=16;fontSize=14;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry x="40" y="690" width="1100" height="220" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
