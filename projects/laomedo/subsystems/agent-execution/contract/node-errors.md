@@ -27,6 +27,12 @@ when execution metadata identifies it or the graph contains exactly one node;
 never guess a failing node from the requested graph endpoint. The generic Retry
 button is hidden for the descriptive errors.
 
+Every public validation code emitted by the shipped Agent components has an
+explicit explanation. Future safe codes, including numeric segments, retain
+their original value in diagnostics. Native notification history retains the
+safe diagnostic code alongside the explanation; raw exception payloads are
+not copied into that history by this presentation layer.
+
 Preserve stable API codes, error categories and original execution receipts.
 Expandable technical details show the code and only allowlisted identifiers.
 Copying includes only those details; credentials, endpoint URLs, task text,
