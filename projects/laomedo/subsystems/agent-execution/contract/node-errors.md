@@ -21,6 +21,12 @@ must not suggest an unavailable run picker. When a saved reference is visibly
 present but the component reports it missing, distinguish that contradiction
 without claiming an unverified loading cause.
 
+Pre-component validation may only produce a flow-level failure. The flow error
+panel must use the same explanation and diagnostics. A node is attributed only
+when execution metadata identifies it or the graph contains exactly one node;
+never guess a failing node from the requested graph endpoint. The generic Retry
+button is hidden for the descriptive errors.
+
 Preserve stable API codes, error categories and original execution receipts.
 Expandable technical details show the code and only allowlisted identifiers.
 Copying includes only those details; credentials, endpoint URLs, task text,
