@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Node error states">
+    <mxGraphModel dx="1200" dy="900" grid="1" page="1" pageWidth="1200" pageHeight="1100">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="header" value="Laomedo Agent | Error details" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=#ffffff;strokeColor=#64748b;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="380" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="panel" value="No previous run is available&#10;Laomedo Agent / resume&#10;&#10;This operation needs a reference to an earlier run.&#10;&#10;What to do&#10;Use a saved flow or API request with a valid run reference, or choose Fresh. No run selector exists here.&#10;&#10;&gt; Technical details (collapsed)" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=#ffffff;strokeColor=#64748b;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="450" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="details" value="Technical details (expanded)&#10;code: prior_run_required&#10;node_id: agent&#10;operation: resume&#10;Safe execution IDs when available&#10;&#10;[Copy diagnostics]&#10;Success: Copied&#10;Failure: Select details to copy manually" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=#ffffff;strokeColor=#64748b;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="550" y="120" width="450" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="saved" value="Saved reference present + prior_run_required&#10;The saved run reference was not accepted.&#10;Cause not established. Preserve original reference; contact maintainer.&#10;Keep original code and add reference_state." style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=#ffffff;strokeColor=#64748b;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="40" y="510" width="450" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="uncertain" value="Uncertain execution / unknown code&#10;Explain that completion is unconfirmed; do not invent cause.&#10;Check existing run before starting another request.&#10;Never suggest a blind retry." style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=#ffffff;strokeColor=#64748b;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="550" y="510" width="450" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="rules" value="Interaction: click node Error details opens popover; Escape or outside click closes.&#10;Technical details expand independently, initially closed; only code and allowlisted IDs copied.&#10;Native error toast and flow failure panel use the same explanation; flow panel hides Retry for these errors. Structured failed runner outputs also expose details.&#10;Backend API events, stable error_category and original receipts stay unchanged.&#10;No raw traces, credentials, task text or arbitrary payloads in diagnostics.&#10;Notification history retains the safe diagnostic code; no raw exception payloads.&#10;Flow failure panel: explanation, recovery, collapsed Technical details and Dismiss; no Retry or elapsed timer. Neutral body text." style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=#ffffff;strokeColor=#64748b;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="40" y="740" width="960" height="180" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
