@@ -43,3 +43,7 @@ state, with restart actions in a separate footer beneath a divider. These remain
 
 The **Popup placement and dismissal** page defines viewport containment, bottom-right
 anchoring, keyboard dismissal and bounded scrolling for recovery notifications.
+
+The [shared popup card standard](../contract/popup-cards.md) records the selected
+A treatment, viewport and dismissal rules, and the source-backed migration
+inventory with Laomedo follow-ups #186, #187 and #188.
