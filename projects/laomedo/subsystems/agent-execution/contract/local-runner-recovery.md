@@ -32,7 +32,8 @@ listeners or authentication mismatches must not be replaced.
 
 The error panel checks availability before offering recovery. Offline permits
 one explicit restart request; while it is pending or starting, repeated clicks
-are disabled. Polling reports readiness or failure and clears recovered errors.
+are disabled. Polling reports readiness or failure and clears its own recovered alerts; the
+original build error stays visible until dismissed.
 Stale availability responses must not overwrite a newer restart state. A failed
 restart retains an explicit API-only retry with actionable host guidance.
 
@@ -42,7 +43,12 @@ replaces an already-online listener. The error panel hides the generic graph
 Retry action for this connection failure. After recovery, advise inspecting the
 existing run before new work; report exhaustion separately from offline state.
 Recorded results remain available after the approved allowance is exhausted.
-Technical details retain the safe original transport code without raw payloads.
+Technical details retain the safe original transport code and available allowlisted
+run/request UUIDs without raw payloads. Recovery composes with the shared node-error
+presenter in the app error panel only; node popovers keep descriptive errors without
+recovery controls. One combined overlay owns the native error-panel transformation.
+A health timeout is not proof of an offline process: probe the listener, and refuse
+startup while a listener is present or its absence cannot be established.
 
 ## Acceptance and evidence
 
@@ -53,3 +59,14 @@ and subsequent recorded-result inspection with unchanged ledger and allowance.
 Browser acceptance must use real integrations; fixtures are internal controls
 only. Do not spend a model turn or change authorization merely to demonstrate
 recovery. Record live provider coverage and remaining gaps explicitly.
+
+## Dependencies and authority
+
+The shared presenter requires implementation PR #184 and its contract in specs
+PR #392. Claude API startup additionally requires the adapter from implementation
+PR #180; an installation without that adapter must use the supported Codex service.
+The CLI uses the host's ordinary login; custom Claude profile directories are not
+forwarded. Every authenticated app user can start the one configured API, so the
+host operator must authorize those users for this control. Routed output failures
+currently do not open the app build-error panel; this limitation is not live
+acceptance for that path.
