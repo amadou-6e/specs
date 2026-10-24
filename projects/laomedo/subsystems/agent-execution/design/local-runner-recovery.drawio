@@ -5,40 +5,40 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="alt-1" value="&lt;div style=&quot;line-height:22px;&quot;&gt;A Â· Direct stack&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="alt-1" value="&lt;div style=&quot;line-height:22px;&quot;&gt;A · Direct stack&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="32" y="24" width="384" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="alt-2" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Problem â†’ context â†’ explanation â†’ action&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+        <mxCell id="alt-2" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Problem → context → explanation → action&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
           <mxGeometry x="32" y="56" width="384" height="44" as="geometry" />
         </mxCell>
         <mxCell id="alt-3" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#F87171;" vertex="1" parent="1">
           <mxGeometry x="32" y="112" width="384" height="288" as="geometry" />
         </mxCell>
-        <mxCell id="alt-4" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Ã—&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" vertex="1" parent="1" aria-label="Dismiss">
+        <mxCell id="alt-4" value="&lt;div style=&quot;line-height:22px;&quot;&gt;×&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" vertex="1" parent="1" aria-label="Dismiss">
           <mxGeometry x="370.0" y="124.0" width="32" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="alt-5" value="&lt;div style=&quot;line-height:22px;&quot;&gt;B Â· Action first&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="alt-5" value="&lt;div style=&quot;line-height:22px;&quot;&gt;B · Status first&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="456" y="24" width="384" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="alt-6" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Problem â†’ action â†’ reassurance â†’ context&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+        <mxCell id="alt-6" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Problem → reassurance → context → action&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
           <mxGeometry x="456" y="56" width="384" height="44" as="geometry" />
         </mxCell>
         <mxCell id="alt-7" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#F87171;" vertex="1" parent="1">
           <mxGeometry x="456" y="112" width="384" height="288" as="geometry" />
         </mxCell>
-        <mxCell id="alt-8" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Ã—&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" vertex="1" parent="1" aria-label="Dismiss">
+        <mxCell id="alt-8" value="&lt;div style=&quot;line-height:22px;&quot;&gt;×&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" vertex="1" parent="1" aria-label="Dismiss">
           <mxGeometry x="794.0" y="124.0" width="32" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="alt-9" value="&lt;div style=&quot;line-height:22px;&quot;&gt;C Â· Guided recovery&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="alt-9" value="&lt;div style=&quot;line-height:22px;&quot;&gt;C · Guided recovery&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="880" y="24" width="384" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="alt-10" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Context â†’ problem â†’ guidance â†’ action&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+        <mxCell id="alt-10" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Context → problem → guidance → action&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
           <mxGeometry x="880" y="56" width="384" height="44" as="geometry" />
         </mxCell>
         <mxCell id="alt-11" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#F87171;" vertex="1" parent="1">
           <mxGeometry x="880" y="112" width="384" height="288" as="geometry" />
         </mxCell>
-        <mxCell id="alt-12" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Ã—&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" vertex="1" parent="1" aria-label="Dismiss">
+        <mxCell id="alt-12" value="&lt;div style=&quot;line-height:22px;&quot;&gt;×&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" vertex="1" parent="1" aria-label="Dismiss">
           <mxGeometry x="1218.0" y="124.0" width="32" height="32" as="geometry" />
         </mxCell>
         <mxCell id="alt-13" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Run outcome unconfirmed&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
@@ -56,7 +56,7 @@
         <mxCell id="alt-17" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Once reconnected, check the existing run.&lt;br&gt;Restarting does not rerun the graph.&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" vertex="1" parent="1">
           <mxGeometry x="52" y="244" width="344" height="44" as="geometry" />
         </mxCell>
-        <mxCell id="alt-18" value="&lt;div style=&quot;line-height:22px;&quot;&gt;â–¸ Technical details&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="alt-18" value="&lt;div style=&quot;line-height:22px;&quot;&gt;▸ Technical details&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="52" y="296" width="344" height="24" as="geometry" />
         </mxCell>
         <mxCell id="alt-19" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Run outcome unconfirmed&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
@@ -74,7 +74,7 @@
         <mxCell id="alt-23" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Claude Agent / status&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
           <mxGeometry x="476" y="256" width="344" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="alt-24" value="&lt;div style=&quot;line-height:22px;&quot;&gt;â–¸ Technical details&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="alt-24" value="&lt;div style=&quot;line-height:22px;&quot;&gt;▸ Technical details&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="476" y="296" width="344" height="24" as="geometry" />
         </mxCell>
         <mxCell id="alt-25" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Claude Agent / status&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
@@ -95,10 +95,10 @@
         <mxCell id="alt-32" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Restarting does not rerun the graph.&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" vertex="1" parent="1">
           <mxGeometry x="900" y="264" width="344" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="alt-33" value="&lt;div style=&quot;line-height:22px;&quot;&gt;â–¸ Technical details&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="alt-33" value="&lt;div style=&quot;line-height:22px;&quot;&gt;▸ Technical details&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="900" y="296" width="344" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="alt-34" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Draft proposals Â· confirmed-offline state Â· compact vertical spacing Â· one 14 px font size Â· diagnostics collapsed in every option&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+        <mxCell id="alt-34" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Draft proposals · confirmed-offline state · compact vertical spacing · one 14 px font size · diagnostics collapsed in every option&lt;/div&gt;" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
           <mxGeometry x="32" y="432" width="1256" height="24" as="geometry" />
         </mxCell>
         <mxCell id="action-divider-0" value="" style="fillColor=#E2E8F0;strokeColor=none;" vertex="1" parent="1">
@@ -239,7 +239,7 @@
         <mxCell id="spacing-title-48" value="&lt;div style=&quot;line-height:22px;&quot;&gt;One spacing rhythm&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="64" y="510" width="250" height="22" as="geometry" />
         </mxCell>
-        <mxCell id="spacing-49" value="&lt;div style=&quot;line-height:22px;&quot;&gt;22 px line height. 24 px horizontal panel insets. 8 px between related elements; 16â€“24 px between groups. Buttons are 36 px tall.&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" vertex="1" parent="1">
+        <mxCell id="spacing-49" value="&lt;div style=&quot;line-height:22px;&quot;&gt;22 px line height. 24 px horizontal panel insets. 8 px between related elements; 16–24 px between groups. Buttons are 36 px tall.&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" vertex="1" parent="1">
           <mxGeometry x="64" y="542" width="832" height="44" as="geometry" />
         </mxCell>
         <mxCell id="viewport-title-50" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Viewport and scrolling&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
