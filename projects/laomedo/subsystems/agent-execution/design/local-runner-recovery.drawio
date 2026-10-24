@@ -1,0 +1,381 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="Electron" pages="6">
+  <diagram name="Three compact alternatives" id="URbHWjdpDnPV8iBNRJMt">
+    <mxGraphModel dx="873" dy="645" grid="1" gridSize="8" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1320" pageHeight="472" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="alt-1" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;A · Minimal&lt;/div&gt;" vertex="1">
+          <mxGeometry height="24" width="384" x="32" y="24" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-2" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Neutral border · outline action · quiet hierarchy&lt;/div&gt;" vertex="1">
+          <mxGeometry height="44" width="384" x="32" y="56" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-3" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=0;arcSize=8;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;" value="" vertex="1">
+          <mxGeometry height="224" width="384" x="32" y="112" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-5" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;B · Soft alert&lt;/div&gt;" vertex="1">
+          <mxGeometry height="24" width="384" x="456" y="24" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-6" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Warm tint · accent rail · coloured action&lt;/div&gt;" vertex="1">
+          <mxGeometry height="44" width="384" x="456" y="56" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-7" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=1;arcSize=12;absoluteArcSize=1;fillColor=#FFF7F5;strokeColor=#FECACA;" value="" vertex="1">
+          <mxGeometry height="288" width="384" x="456" y="112" as="geometry" />
+        </mxCell>
+        <mxCell id="alert-rail" parent="1" style="fillColor=#F87171;strokeColor=none;" value="" vertex="1">
+          <mxGeometry height="224" width="4" x="28" y="112" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-8" aria-label="Dismiss" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;×&lt;/div&gt;" vertex="1">
+          <mxGeometry height="32" width="32" x="794" y="124" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-9" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;C · Contrast header&lt;/div&gt;" vertex="1">
+          <mxGeometry height="24" width="384" x="880" y="24" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-10" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Dark header · white body · separate action tray&lt;/div&gt;" vertex="1">
+          <mxGeometry height="44" width="384" x="880" y="56" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-11" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=1;arcSize=12;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;" value="" vertex="1">
+          <mxGeometry height="288" width="384" x="880" y="112" as="geometry" />
+        </mxCell>
+        <mxCell id="contrast-footer" parent="1" style="fillColor=#F1F5F9;strokeColor=none;" value="" vertex="1">
+          <mxGeometry height="70" width="382" x="881" y="329" as="geometry" />
+        </mxCell>
+        <mxCell id="contrast-header" parent="1" style="fillColor=#1E293B;strokeColor=none;" value="" vertex="1">
+          <mxGeometry height="79" width="382" x="881" y="113" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-12" aria-label="Dismiss" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#CBD5E1;fontStyle=0;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;×&lt;/div&gt;" vertex="1">
+          <mxGeometry height="32" width="32" x="1218" y="124" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-13" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Run outcome unconfirmed&lt;/div&gt;" vertex="1">
+          <mxGeometry height="24" width="300" x="52" y="131" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-14" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Claude Agent / status&lt;/div&gt;" vertex="1">
+          <mxGeometry height="24" width="344" x="248" y="131" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-15" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" value="&lt;div&gt;The local backend is offline. Your run may still be active.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="48" width="344" x="52" y="167" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-16" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=1;arcSize=6;absoluteArcSize=1;fillColor=#F9F9F9;strokeColor=#36393d;fontStyle=1;align=center;verticalAlign=middle;" value="Restart local backend" vertex="1">
+          <mxGeometry height="36" width="196" x="52" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-17" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" value="&lt;div&gt;Once reconnected, check the existing run.&lt;br&gt;Restarting does not rerun the graph.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="44" width="344" x="52" y="204" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-18" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;▸ Technical details&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="24" width="344" x="52" y="247" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-19" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Run outcome unconfirmed&lt;/div&gt;" vertex="1">
+          <mxGeometry height="24" width="300" x="476" y="132" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-20" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Local backend offline&lt;/div&gt;" vertex="1">
+          <mxGeometry height="24" width="344" x="476" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-21" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=1;arcSize=6;absoluteArcSize=1;fillColor=#B42318;strokeColor=#B42318;fontColor=#FFFFFF;fontStyle=1;align=center;verticalAlign=middle;" value="Restart local backend" vertex="1">
+          <mxGeometry height="36" width="196" x="476" y="344" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-22" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Restarting does not rerun the graph.&lt;br&gt;Check the existing run before starting another.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="44" width="344" x="476" y="192" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-23" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Claude Agent / status&lt;/div&gt;" vertex="1">
+          <mxGeometry height="24" width="344" x="476" y="256" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-24" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;▸ Technical details&lt;/div&gt;" vertex="1">
+          <mxGeometry height="24" width="344" x="476" y="296" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-25" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#CBD5E1;fontStyle=0;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Claude Agent / status&lt;/div&gt;" vertex="1">
+          <mxGeometry height="24" width="300" x="900" y="132" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-26" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#FFFFFF;fontStyle=1;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Run outcome unconfirmed&lt;/div&gt;" vertex="1">
+          <mxGeometry height="24" width="344" x="900" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-27" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Local backend offline; the run may still be active.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="44" width="344" x="900" y="192" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-29" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=1;arcSize=6;absoluteArcSize=1;fillColor=#0F172A;strokeColor=#0F172A;fontColor=#FFFFFF;fontStyle=1;align=center;verticalAlign=middle;" value="Restart local backend" vertex="1">
+          <mxGeometry height="36" width="196" x="900" y="344" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-31" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Check the existing run before starting another.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="24" width="344" x="900" y="236" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-32" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Restarting does not rerun the graph.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="24" width="344" x="900" y="264" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-33" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;▸ Technical details&lt;/div&gt;" vertex="1">
+          <mxGeometry height="24" width="344" x="900" y="296" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-34" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Draft proposals · confirmed-offline state · compact vertical spacing · 14 px text / 12 px disclosure in A · diagnostics collapsed in every option&lt;/div&gt;" vertex="1">
+          <mxGeometry height="24" width="1256" x="32" y="432" as="geometry" />
+        </mxCell>
+        <mxCell id="action-divider-1" parent="1" style="fillColor=#E2E8F0;strokeColor=none;" value="" vertex="1">
+          <mxGeometry height="1" width="384" x="456" y="328" as="geometry" />
+        </mxCell>
+        <mxCell id="action-divider-2" parent="1" style="fillColor=#E2E8F0;strokeColor=none;" value="" vertex="1">
+          <mxGeometry height="1" width="384" x="880" y="328" as="geometry" />
+        </mxCell>
+        <mxCell id="wzAV9jhJu9H2P56sPYpF-2" parent="1" style="ellipse;whiteSpace=wrap;html=1;shapeInside=1;aspect=fixed;fillColor=#000000;" value="" vertex="1">
+          <mxGeometry height="2" width="2" x="236" y="146" as="geometry" />
+        </mxCell>
+        <mxCell id="wzAV9jhJu9H2P56sPYpF-3" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=1;arcSize=6;absoluteArcSize=1;fontStyle=1;align=center;verticalAlign=middle;" value="Dismiss" vertex="1">
+          <mxGeometry height="36" width="112" x="260" y="280" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Normalized panel" id="r5mvwwqdNJn_zWl6qCba">
+    <mxGraphModel page="1" pageWidth="760" pageHeight="488" grid="1" gridSize="8">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="panel-2" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#F87171;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="64" width="560" height="328" as="geometry" />
+        </mxCell>
+        <mxCell id="error-icon-3" value="!" style="ellipse;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#DC2626;fontColor=#DC2626;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="124" y="89" width="18" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="dismiss-5" value="Dismiss" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=1;arcSize=6;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#0F172A;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="548" y="76" width="88" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="context-8" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Run outcome unconfirmed&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="154" y="86" width="350" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="description-9" value="&lt;div style=&quot;line-height:22px;&quot;&gt;The local backend is offline. Restart to reconnect, then check the existing run before starting another.&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="124" y="168.0" width="512" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="restart-13" value="Restart local backend" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=1;arcSize=6;absoluteArcSize=1;fillColor=#0F172A;strokeColor=#0F172A;fontColor=#FFFFFF;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="124" y="232.0" width="196" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="api-only-14" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Restarting does not rerun the graph.&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="124" y="280.0" width="512" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="disclosure-icon-15" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;shape=triangle;direction=east;fillColor=#0F172A;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="124" y="348.0" width="8" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="details-label-16" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Technical details&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="336.0" width="496" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="draft-note-17" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Draft proposal. Technical details are collapsed by default.&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="100" y="416.0" width="560" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="compact-context-0" value="Claude Agent / status" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="124" y="132" width="512" height="24" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Normalized panel - details expanded" id="CIJOAivUsPNQ8KSW5YpW">
+    <mxGraphModel page="1" pageWidth="760" pageHeight="708" grid="1" gridSize="8">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="panel-19" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#F87171;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="64" width="560" height="548" as="geometry" />
+        </mxCell>
+        <mxCell id="error-icon-20" value="!" style="ellipse;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#DC2626;fontColor=#DC2626;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="124" y="89" width="18" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="dismiss-22" value="Dismiss" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=1;arcSize=6;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#0F172A;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="548" y="76" width="88" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="context-25" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Run outcome unconfirmed&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="154" y="86" width="350" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="description-26" value="&lt;div style=&quot;line-height:22px;&quot;&gt;The local backend is offline. Restart to reconnect, then check the existing run before starting another.&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="124" y="168.0" width="512" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="restart-30" value="Restart local backend" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=1;arcSize=6;absoluteArcSize=1;fillColor=#0F172A;strokeColor=#0F172A;fontColor=#FFFFFF;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="124" y="232.0" width="196" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="api-only-31" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Restarting does not rerun the graph.&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="124" y="280.0" width="512" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="disclosure-icon-32" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;shape=triangle;direction=south;fillColor=#0F172A;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="124" y="348.0" width="8" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="details-label-33" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Technical details&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="336.0" width="496" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="diagnostics-bg-35" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=1;arcSize=6;absoluteArcSize=1;fillColor=#F8FAFC;strokeColor=#E2E8F0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="124" y="376.0" width="512" height="156" as="geometry" />
+        </mxCell>
+        <mxCell id="diagnostics-36" value="&lt;div style=&quot;line-height:22px;white-space:pre-wrap;&quot;&gt;{&lt;br&gt;  &amp;quot;code&amp;quot;: &amp;quot;runner_transport_failed&amp;quot;,&lt;br&gt;  &amp;quot;node_id&amp;quot;: &amp;quot;agent&amp;quot;,&lt;br&gt;  &amp;quot;operation&amp;quot;: &amp;quot;status&amp;quot;,&lt;br&gt;  &amp;quot;run_id&amp;quot;: &amp;quot;ef54c538-d747-4ea7-938e-8fccd5e29bb6&amp;quot;&lt;br&gt;}&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="136" y="388.0" width="488" height="132" as="geometry" />
+        </mxCell>
+        <mxCell id="copy-37" value="Copy diagnostics" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=1;arcSize=6;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontColor=#0F172A;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="124" y="548.0" width="168" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="draft-note-38" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Draft proposal. Technical details are collapsed by default.&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="100" y="636" width="560" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="compact-context-1" value="Claude Agent / status" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="124" y="132" width="512" height="24" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Typography rules" id="2121hHwmmhi8u2HByAos">
+    <mxGraphModel page="1" pageWidth="960" pageHeight="800" grid="1" gridSize="8">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="style-title-39" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Recovery panel / typography rules&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="64" y="48" width="832" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="family-title-40" value="&lt;div style=&quot;line-height:22px;&quot;&gt;One font family&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="64" y="110" width="250" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="family-41" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Inter throughout; the same Arial/sans-serif fallback applies to every cell.&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="64" y="142" width="832" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="sizes-title-42" value="&lt;div style=&quot;line-height:22px;&quot;&gt;14 px text; 12 px disclosure in refined A&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="64" y="216" width="250" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="title-sample-43" value="&lt;div style=&quot;line-height:22px;&quot;&gt;14 px / bold / title and action labels&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="64" y="250" width="832" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="body-sample-44" value="&lt;div style=&quot;line-height:22px;&quot;&gt;14 px / regular / body text and diagnostics&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="64" y="292" width="832" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="label-sample-45" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Use weight and spacing for hierarchy; no extra section headings.&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="64" y="338" width="832" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="weights-title-46" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Two weights&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="64" y="402" width="250" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="weights-47" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Regular (400) and bold (700). No uppercase micro-labels, mixed typefaces or smaller footer text.&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="64" y="434" width="832" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="spacing-title-48" value="&lt;div style=&quot;line-height:22px;&quot;&gt;One spacing rhythm&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="64" y="510" width="250" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="spacing-49" value="&lt;div style=&quot;line-height:22px;&quot;&gt;22 px line height. 24 px horizontal panel insets. 8 px between related elements; 16–24 px between groups. Buttons are 36 px tall.&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="64" y="542" width="832" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="viewport-title-50" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Viewport and scrolling&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="64" y="618" width="250" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="viewport-51" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Keep the header and Dismiss visible. Constrain the panel to the available viewport; scroll its body to reach expanded diagnostics. No control or content should extend below the window.&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="64" y="650" width="832" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="scope-52" value="&lt;div style=&quot;line-height:22px;&quot;&gt;This proposal does not change application typography or recovery behavior.&lt;/div&gt;" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="64" y="744" width="832" height="44" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="App connection-error recovery" id="3nVzJwav8JQ7-wFCTKNT">
+    <mxGraphModel page="1" pageWidth="1200" pageHeight="1050">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="offline" value="APP CONNECTION ERROR / shared error presenter&#10;The remote outcome is not confirmed&#10;A connection failed; the operation may still be active.&#10;What to do: inspect its existing run before new work.&#10;&#10;Local runner backend is offline.&#10;[ Restart local backend ] API only; no graph retry.&#10;&gt; Technical details: transport code + safe run/request UUIDs&#10;[Dismiss] / no generic graph Retry" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=16;fontSize=14;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="520" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="starting" value="PENDING / STARTING&#10;Restarting the local runner backend...&#10;[ Restarting local backend... ] disabled&#10;Poll availability; ignore stale pre-click responses.&#10;Dismiss closes the error UI; startup remains API-only." style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=16;fontSize=14;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry x="640" y="40" width="500" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="ready" value="READY / same shared error panel&#10;Local runner backend is online.&#10;Inspect the existing run before new work; no automatic execution.&#10;Exhausted allowance: status and recorded results remain available.&#10;&gt; Technical details: original code + safe run/request UUIDs&#10;Original build error stays until dismissed." style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=16;fontSize=14;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry x="40" y="370" width="520" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="failure" value="FAILED / UNCONFIGURED / UNVERIFIED&#10;Startup failed: host log guidance + explicit API-only retry.&#10;Not configured: ask operator; no button.&#10;Identity/auth mismatch: do not replace listener.&#10;Checking availability failed: explain; no guessed restart." style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=16;fontSize=14;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry x="640" y="370" width="500" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="rules" value="OWNERSHIP AND TRANSITIONS&#10;Entry: actual runner_transport_failed in app error handling. Recovery only inside the app shared presenter, never node popovers, canvas banners or activity controls.&#10;Offline -&gt; explicit click -&gt; starting -&gt; ready or failed. No graph dependency or browser URL.&#10;GET/status and POST/start select the trusted host configuration; explicit legacy URLs remain allowlisted.&#10;Ready + exhausted is different from offline; never reset the ledger, ceiling or credentials.&#10;One shared diagnostic block keeps the code and safe UUIDs; original exception bodies, secrets and startup logs stay private.&#10;Checking: no action until availability is verified. Health timeout -&gt; bounded TCP probe; present/uncertain listener -&gt; no replacement." style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=16;fontSize=14;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry x="40" y="690" width="1100" height="280" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Popup placement and dismissal">
+    <mxGraphModel page="1" pageWidth="1200" pageHeight="720" grid="1" gridSize="8">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="placement-26" value="• Anchor to the bottom-right of the visible viewport, with 16 px insets plus device safe areas.&lt;br&gt;• Width ≤ viewport width − insets; height ≤ viewport height − insets. Reflow on resize, zoom and keyboard changes.&lt;br&gt;• Keep Dismiss / × visible and keyboard accessible. Escape dismisses the focused popup; restore previous focus or the canvas.&lt;br&gt;• Scroll long body text and expanded diagnostics inside the popup. Keep header and action row visible.&lt;br&gt;• Stack multiple notifications upward inside one bounded, scrollable region; never push one outside the viewport.&lt;br&gt;• No auto-dismiss. Dismiss closes the UI only. It does not cancel a run or interrupt an API restart. No automatic graph retry." style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;fillColor=none;strokeColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="32" y="544" width="1048" height="152" as="geometry" />
+        </mxCell>
+        <mxCell id="frame-0" value="" style="fillColor=#F8FAFC;strokeColor=#CBD5E1;" vertex="1" parent="1">
+          <mxGeometry x="32" y="64" width="640" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="label-0" value="Desktop — your A, unchanged" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;align=left;verticalAlign=top;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="32" y="24" width="640" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="placed-0-alt-3" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=0;arcSize=8;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;" value="" vertex="1">
+          <mxGeometry height="224" width="384" x="272.0" y="184.0" as="geometry" />
+        </mxCell>
+        <mxCell id="placed-0-alert-rail" parent="1" style="fillColor=#F87171;strokeColor=none;" value="" vertex="1">
+          <mxGeometry height="224" width="4" x="268.0" y="184.0" as="geometry" />
+        </mxCell>
+        <mxCell id="placed-0-alt-13" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Run outcome unconfirmed&lt;/div&gt;" vertex="1">
+          <mxGeometry height="24" width="300" x="292.0" y="203.0" as="geometry" />
+        </mxCell>
+        <mxCell id="placed-0-alt-14" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Claude Agent / status&lt;/div&gt;" vertex="1">
+          <mxGeometry height="24" width="152" x="488.0" y="203.0" as="geometry" />
+        </mxCell>
+        <mxCell id="placed-0-alt-15" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" value="&lt;div&gt;The local backend is offline. Your run may still be active.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="48" width="344" x="292.0" y="239.0" as="geometry" />
+        </mxCell>
+        <mxCell id="placed-0-alt-16" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=1;arcSize=6;absoluteArcSize=1;fillColor=#F9F9F9;strokeColor=#36393d;fontStyle=1;align=center;verticalAlign=middle;" value="Restart local backend" vertex="1">
+          <mxGeometry height="36" width="196" x="292.0" y="352.0" as="geometry" />
+        </mxCell>
+        <mxCell id="placed-0-alt-17" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" value="&lt;div&gt;Once reconnected, check the existing run.&lt;br&gt;Restarting does not rerun the graph.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="44" width="344" x="292.0" y="276.0" as="geometry" />
+        </mxCell>
+        <mxCell id="placed-0-alt-18" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;▸ Technical details&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="24" width="344" x="292.0" y="319.0" as="geometry" />
+        </mxCell>
+        <mxCell id="placed-0-wzAV9jhJu9H2P56sPYpF-2" parent="1" style="ellipse;whiteSpace=wrap;html=1;shapeInside=1;aspect=fixed;fillColor=#000000;" value="" vertex="1">
+          <mxGeometry height="2" width="2" x="476.0" y="218.0" as="geometry" />
+        </mxCell>
+        <mxCell id="placed-0-wzAV9jhJu9H2P56sPYpF-3" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=1;arcSize=6;absoluteArcSize=1;fontStyle=1;align=center;verticalAlign=middle;" value="Dismiss" vertex="1">
+          <mxGeometry height="36" width="112" x="500.0" y="352.0" as="geometry" />
+        </mxCell>
+        <mxCell id="caption-0" value="Same text, spacing, controls and colours as your edited A." style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="32" y="448" width="640" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="frame-1" value="" style="fillColor=#F8FAFC;strokeColor=#CBD5E1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="64" width="440" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="label-1" value="Smaller viewport — same A" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;align=left;verticalAlign=top;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="24" width="440" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="placed-1-alt-3" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=0;arcSize=8;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;" value="" vertex="1">
+          <mxGeometry height="224" width="384" x="760.0" y="184.0" as="geometry" />
+        </mxCell>
+        <mxCell id="placed-1-alert-rail" parent="1" style="fillColor=#F87171;strokeColor=none;" value="" vertex="1">
+          <mxGeometry height="224" width="4" x="756.0" y="184.0" as="geometry" />
+        </mxCell>
+        <mxCell id="placed-1-alt-13" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Run outcome unconfirmed&lt;/div&gt;" vertex="1">
+          <mxGeometry height="24" width="300" x="780.0" y="203.0" as="geometry" />
+        </mxCell>
+        <mxCell id="placed-1-alt-14" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Claude Agent / status&lt;/div&gt;" vertex="1">
+          <mxGeometry height="24" width="152" x="976.0" y="203.0" as="geometry" />
+        </mxCell>
+        <mxCell id="placed-1-alt-15" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" value="&lt;div&gt;The local backend is offline. Your run may still be active.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="48" width="344" x="780.0" y="239.0" as="geometry" />
+        </mxCell>
+        <mxCell id="placed-1-alt-16" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=1;arcSize=6;absoluteArcSize=1;fillColor=#F9F9F9;strokeColor=#36393d;fontStyle=1;align=center;verticalAlign=middle;" value="Restart local backend" vertex="1">
+          <mxGeometry height="36" width="196" x="780.0" y="352.0" as="geometry" />
+        </mxCell>
+        <mxCell id="placed-1-alt-17" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" value="&lt;div&gt;Once reconnected, check the existing run.&lt;br&gt;Restarting does not rerun the graph.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="44" width="344" x="780.0" y="276.0" as="geometry" />
+        </mxCell>
+        <mxCell id="placed-1-alt-18" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;▸ Technical details&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="24" width="344" x="780.0" y="319.0" as="geometry" />
+        </mxCell>
+        <mxCell id="placed-1-wzAV9jhJu9H2P56sPYpF-2" parent="1" style="ellipse;whiteSpace=wrap;html=1;shapeInside=1;aspect=fixed;fillColor=#000000;" value="" vertex="1">
+          <mxGeometry height="2" width="2" x="964.0" y="218.0" as="geometry" />
+        </mxCell>
+        <mxCell id="placed-1-wzAV9jhJu9H2P56sPYpF-3" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=1;arcSize=6;absoluteArcSize=1;fontStyle=1;align=center;verticalAlign=middle;" value="Dismiss" vertex="1">
+          <mxGeometry height="36" width="112" x="988.0" y="352.0" as="geometry" />
+        </mxCell>
+        <mxCell id="caption-1" value="Same text, spacing, controls and colours as your edited A." style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="720" y="448" width="440" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-title" value="Placement and dismissal rules" style="text;fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;align=left;verticalAlign=top;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="32" y="504" width="1120" height="24" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
