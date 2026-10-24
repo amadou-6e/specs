@@ -298,22 +298,22 @@
           <mxGeometry x="32" y="64" width="640" height="360" as="geometry" />
         </mxCell>
         <mxCell id="placement-3" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;" vertex="1" parent="1">
-          <mxGeometry x="272" y="128.0" width="384" height="280" as="geometry" />
+          <mxGeometry x="272" y="176" width="384" height="232" as="geometry" />
         </mxCell>
         <mxCell id="placement-4" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=#F87171;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="272" y="128.0" width="4" height="280" as="geometry" />
+          <mxGeometry x="272" y="176" width="4" height="232" as="geometry" />
         </mxCell>
         <mxCell id="placement-5" value="Run outcome unconfirmed" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;fillColor=none;strokeColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="288" y="144.0" width="320" height="24" as="geometry" />
+          <mxGeometry x="288" y="192" width="320" height="24" as="geometry" />
         </mxCell>
         <mxCell id="placement-6" value="×" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;align=center;verticalAlign=middle;fontColor=#475569;" vertex="1" parent="1" tooltip="Dismiss notification; accessible name Dismiss">
-          <mxGeometry x="612" y="136.0" width="32" height="32" as="geometry" />
+          <mxGeometry x="612" y="184" width="32" height="32" as="geometry" />
         </mxCell>
         <mxCell id="placement-7" value="Claude Agent / status" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;fillColor=none;strokeColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" vertex="1" parent="1">
-          <mxGeometry x="288" y="176.0" width="352" height="24" as="geometry" />
+          <mxGeometry x="288" y="216" width="352" height="24" as="geometry" />
         </mxCell>
         <mxCell id="placement-8" value="The local backend is offline. Your run may still be active.&lt;br&gt;Check its status before starting another.&lt;br&gt;Restarting does not rerun the graph.&lt;br&gt;▸ Technical details" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;fillColor=none;strokeColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" vertex="1" parent="1">
-          <mxGeometry x="288" y="208.0" width="344" height="128" as="geometry" />
+          <mxGeometry x="288" y="244" width="344" height="88" as="geometry" />
         </mxCell>
         <mxCell id="placement-9" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=#E2E8F0;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="272" y="344" width="384" height="1" as="geometry" />
@@ -331,28 +331,28 @@
           <mxGeometry x="720" y="64" width="360" height="360" as="geometry" />
         </mxCell>
         <mxCell id="placement-14" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;" vertex="1" parent="1">
-          <mxGeometry x="736" y="128.0" width="328" height="280" as="geometry" />
+          <mxGeometry x="736" y="176" width="328" height="232" as="geometry" />
         </mxCell>
         <mxCell id="placement-15" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=#F87171;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="736" y="128.0" width="4" height="280" as="geometry" />
+          <mxGeometry x="736" y="176" width="4" height="232" as="geometry" />
         </mxCell>
         <mxCell id="placement-16" value="Run outcome unconfirmed" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;fillColor=none;strokeColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="752" y="144.0" width="264" height="24" as="geometry" />
+          <mxGeometry x="752" y="192" width="264" height="24" as="geometry" />
         </mxCell>
         <mxCell id="placement-17" value="×" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;align=center;verticalAlign=middle;fontColor=#475569;" vertex="1" parent="1" tooltip="Dismiss notification; accessible name Dismiss">
-          <mxGeometry x="1020" y="136.0" width="32" height="32" as="geometry" />
+          <mxGeometry x="1020" y="184" width="32" height="32" as="geometry" />
         </mxCell>
         <mxCell id="placement-18" value="Claude Agent / status" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;fillColor=none;strokeColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" vertex="1" parent="1">
-          <mxGeometry x="752" y="176.0" width="296" height="24" as="geometry" />
+          <mxGeometry x="752" y="216" width="296" height="24" as="geometry" />
         </mxCell>
         <mxCell id="placement-19" value="The local backend is offline. Your run may still be active.&lt;br&gt;Check its status before starting another.&lt;br&gt;Restarting does not rerun the graph.&lt;br&gt;▸ Technical details" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;fillColor=none;strokeColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" vertex="1" parent="1">
-          <mxGeometry x="752" y="208.0" width="288" height="128" as="geometry" />
+          <mxGeometry x="752" y="244" width="288" height="88" as="geometry" />
         </mxCell>
         <mxCell id="placement-20" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=#E2E8F0;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="1052" y="208.0" width="4" height="88" as="geometry" />
+          <mxGeometry x="1052" y="244" width="4" height="88" as="geometry" />
         </mxCell>
         <mxCell id="placement-21" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=#94A3B8;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="1052" y="208.0" width="4" height="32" as="geometry" />
+          <mxGeometry x="1052" y="244" width="4" height="32" as="geometry" />
         </mxCell>
         <mxCell id="placement-22" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=#E2E8F0;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="736" y="344" width="328" height="1" as="geometry" />
