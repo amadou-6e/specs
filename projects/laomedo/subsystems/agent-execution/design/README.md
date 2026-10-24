@@ -38,6 +38,6 @@ a single status heading, concise recovery guidance, and collapsed diagnostics. T
 map is retained on its original page. The [current real panel reference](references/local-runner-recovery-current.png)
 records the pre-normalization UI; it is not evidence that the proposal is implemented.
 
-The **Three compact alternatives** page compares direct-stack, action-first and
+The **Three compact alternatives** page compares direct-stack, status-first and
 guided-recovery reading orders in narrower 384 px cards, for the confirmed-offline
-state. These remain selectable proposals, not implemented app changes.
+state, with restart actions in a separate footer beneath a divider. These remain selectable proposals, not implemented app changes.
