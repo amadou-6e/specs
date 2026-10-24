@@ -40,3 +40,6 @@ records the pre-normalization UI; it is not evidence that the proposal is implem
 
 The **Three compact alternatives** page compares minimal neutral, soft alert and contrast-header visual treatments in narrower 384 px cards, for the confirmed-offline
 state, with restart actions in a separate footer beneath a divider. These remain selectable proposals, not implemented app changes.
+
+The **Popup placement and dismissal** page defines viewport containment, bottom-right
+anchoring, keyboard dismissal and bounded scrolling for recovery notifications.

@@ -50,6 +50,21 @@ recovery controls. One combined overlay owns the native error-panel transformati
 A health timeout is not proof of an offline process: probe the listener, and refuse
 startup while a listener is present or its absence cannot be established.
 
+## Popup placement and dismissal
+
+The recovery popup is anchored to the bottom-right of the visible viewport,
+with 16 px insets plus device safe areas. Its width and height must fit the
+available viewport at every resize, zoom level and on-screen keyboard change.
+Long content and expanded diagnostics scroll inside the popup; its dismiss
+control and action row stay visible. Multiple notifications stack upward within
+a bounded scrollable region rather than overflowing the screen.
+
+Provide a visible Dismiss or close control with an accessible name and keyboard
+activation. Escape dismisses the focused popup and returns focus to its trigger.
+Dismissal closes only the notification: it does not cancel work, interrupt an
+API restart or retry the graph. Geometry and narrow-screen examples are on the
+**Popup placement and dismissal** page of the owning Draw.io.
+
 ## Acceptance and evidence
 
 Check authentication, exact endpoint allowlisting, host-selected defaults,

@@ -1,3 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
 <mxfile host="Electron" pages="5">
   <diagram name="Three compact alternatives" id="URbHWjdpDnPV8iBNRJMt">
     <mxGraphModel dx="873" dy="645" grid="1" gridSize="8" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1320" pageHeight="472" math="0" shadow="0">
@@ -47,22 +48,22 @@
           <mxGeometry height="32" width="32" x="1218" y="124" as="geometry" />
         </mxCell>
         <mxCell id="alt-13" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Run outcome unconfirmed&lt;/div&gt;" vertex="1">
-          <mxGeometry height="24" width="300" x="52" y="132" as="geometry" />
+          <mxGeometry height="24" width="300" x="52" y="131" as="geometry" />
         </mxCell>
         <mxCell id="alt-14" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#475569;fontStyle=0;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Claude Agent / status&lt;/div&gt;" vertex="1">
-          <mxGeometry height="24" width="344" x="248" y="132" as="geometry" />
+          <mxGeometry height="24" width="344" x="248" y="131" as="geometry" />
         </mxCell>
         <mxCell id="alt-15" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" value="&lt;div&gt;The local backend is offline. Your run may still be active.&lt;/div&gt;" vertex="1">
-          <mxGeometry height="48" width="344" x="52" y="162" as="geometry" />
+          <mxGeometry height="48" width="344" x="52" y="167" as="geometry" />
         </mxCell>
-        <mxCell id="alt-16" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=1;arcSize=6;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#475569;fontColor=#0F172A;fontStyle=1;align=center;verticalAlign=middle;" value="Restart local backend" vertex="1">
-          <mxGeometry height="36" width="196" x="52" y="258" as="geometry" />
+        <mxCell id="alt-16" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=1;arcSize=6;absoluteArcSize=1;fillColor=#F9F9F9;strokeColor=#36393d;fontStyle=1;align=center;verticalAlign=middle;" value="Restart local backend" vertex="1">
+          <mxGeometry height="36" width="196" x="52" y="280" as="geometry" />
         </mxCell>
         <mxCell id="alt-17" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" value="&lt;div&gt;Once reconnected, check the existing run.&lt;br&gt;Restarting does not rerun the graph.&lt;/div&gt;" vertex="1">
           <mxGeometry height="44" width="344" x="52" y="204" as="geometry" />
         </mxCell>
         <mxCell id="alt-18" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;▸ Technical details&lt;/font&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="24" width="344" x="52" y="294" as="geometry" />
+          <mxGeometry height="24" width="344" x="52" y="247" as="geometry" />
         </mxCell>
         <mxCell id="alt-19" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" value="&lt;div style=&quot;line-height:22px;&quot;&gt;Run outcome unconfirmed&lt;/div&gt;" vertex="1">
           <mxGeometry height="24" width="300" x="476" y="132" as="geometry" />
@@ -113,7 +114,10 @@
           <mxGeometry height="1" width="384" x="880" y="328" as="geometry" />
         </mxCell>
         <mxCell id="wzAV9jhJu9H2P56sPYpF-2" parent="1" style="ellipse;whiteSpace=wrap;html=1;shapeInside=1;aspect=fixed;fillColor=#000000;" value="" vertex="1">
-          <mxGeometry height="2" width="2" x="236" y="147" as="geometry" />
+          <mxGeometry height="2" width="2" x="236" y="146" as="geometry" />
+        </mxCell>
+        <mxCell id="wzAV9jhJu9H2P56sPYpF-3" parent="1" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;rounded=1;arcSize=6;absoluteArcSize=1;fontStyle=1;align=center;verticalAlign=middle;" value="Dismiss" vertex="1">
+          <mxGeometry height="36" width="112" x="260" y="280" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
@@ -264,20 +268,106 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="offline" value="APP CONNECTION ERROR / shared error presenter&#xa;The remote outcome is not confirmed&#xa;A connection failed; the operation may still be active.&#xa;What to do: inspect its existing run before new work.&#xa;&#xa;Local runner backend is offline.&#xa;[ Restart local backend ] API only; no graph retry.&#xa;&gt; Technical details: transport code + safe run/request UUIDs&#xa;[Dismiss] / no generic graph Retry" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=16;fontSize=14;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+        <mxCell id="offline" value="APP CONNECTION ERROR / shared error presenter&#10;The remote outcome is not confirmed&#10;A connection failed; the operation may still be active.&#10;What to do: inspect its existing run before new work.&#10;&#10;Local runner backend is offline.&#10;[ Restart local backend ] API only; no graph retry.&#10;&gt; Technical details: transport code + safe run/request UUIDs&#10;[Dismiss] / no generic graph Retry" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=16;fontSize=14;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
           <mxGeometry x="40" y="40" width="520" height="300" as="geometry" />
         </mxCell>
-        <mxCell id="starting" value="PENDING / STARTING&#xa;Restarting the local runner backend...&#xa;[ Restarting local backend... ] disabled&#xa;Poll availability; ignore stale pre-click responses.&#xa;Dismiss closes the error UI; startup remains API-only." style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=16;fontSize=14;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+        <mxCell id="starting" value="PENDING / STARTING&#10;Restarting the local runner backend...&#10;[ Restarting local backend... ] disabled&#10;Poll availability; ignore stale pre-click responses.&#10;Dismiss closes the error UI; startup remains API-only." style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=16;fontSize=14;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
           <mxGeometry x="640" y="40" width="500" height="190" as="geometry" />
         </mxCell>
-        <mxCell id="ready" value="READY / same shared error panel&#xa;Local runner backend is online.&#xa;Inspect the existing run before new work; no automatic execution.&#xa;Exhausted allowance: status and recorded results remain available.&#xa;&gt; Technical details: original code + safe run/request UUIDs&#xa;Original build error stays until dismissed." style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=16;fontSize=14;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+        <mxCell id="ready" value="READY / same shared error panel&#10;Local runner backend is online.&#10;Inspect the existing run before new work; no automatic execution.&#10;Exhausted allowance: status and recorded results remain available.&#10;&gt; Technical details: original code + safe run/request UUIDs&#10;Original build error stays until dismissed." style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=16;fontSize=14;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
           <mxGeometry x="40" y="370" width="520" height="230" as="geometry" />
         </mxCell>
-        <mxCell id="failure" value="FAILED / UNCONFIGURED / UNVERIFIED&#xa;Startup failed: host log guidance + explicit API-only retry.&#xa;Not configured: ask operator; no button.&#xa;Identity/auth mismatch: do not replace listener.&#xa;Checking availability failed: explain; no guessed restart." style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=16;fontSize=14;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+        <mxCell id="failure" value="FAILED / UNCONFIGURED / UNVERIFIED&#10;Startup failed: host log guidance + explicit API-only retry.&#10;Not configured: ask operator; no button.&#10;Identity/auth mismatch: do not replace listener.&#10;Checking availability failed: explain; no guessed restart." style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=16;fontSize=14;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
           <mxGeometry x="640" y="370" width="500" height="190" as="geometry" />
         </mxCell>
-        <mxCell id="rules" value="OWNERSHIP AND TRANSITIONS&#xa;Entry: actual runner_transport_failed in app error handling. Recovery only inside the app shared presenter, never node popovers, canvas banners or activity controls.&#xa;Offline -&gt; explicit click -&gt; starting -&gt; ready or failed. No graph dependency or browser URL.&#xa;GET/status and POST/start select the trusted host configuration; explicit legacy URLs remain allowlisted.&#xa;Ready + exhausted is different from offline; never reset the ledger, ceiling or credentials.&#xa;One shared diagnostic block keeps the code and safe UUIDs; original exception bodies, secrets and startup logs stay private.&#xa;Checking: no action until availability is verified. Health timeout -&gt; bounded TCP probe; present/uncertain listener -&gt; no replacement." style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=16;fontSize=14;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+        <mxCell id="rules" value="OWNERSHIP AND TRANSITIONS&#10;Entry: actual runner_transport_failed in app error handling. Recovery only inside the app shared presenter, never node popovers, canvas banners or activity controls.&#10;Offline -&gt; explicit click -&gt; starting -&gt; ready or failed. No graph dependency or browser URL.&#10;GET/status and POST/start select the trusted host configuration; explicit legacy URLs remain allowlisted.&#10;Ready + exhausted is different from offline; never reset the ledger, ceiling or credentials.&#10;One shared diagnostic block keeps the code and safe UUIDs; original exception bodies, secrets and startup logs stay private.&#10;Checking: no action until availability is verified. Health timeout -&gt; bounded TCP probe; present/uncertain listener -&gt; no replacement." style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=16;fontSize=14;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
           <mxGeometry x="40" y="690" width="1100" height="280" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Popup placement and dismissal">
+    <mxGraphModel page="1" pageWidth="1120" pageHeight="720" grid="1" gridSize="8">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="placement-1" value="Desktop viewport" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;fillColor=none;strokeColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="32" y="24" width="640" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-2" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;" vertex="1" parent="1">
+          <mxGeometry x="32" y="64" width="640" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-3" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;" vertex="1" parent="1">
+          <mxGeometry x="272" y="160" width="384" height="248" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-4" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=#F87171;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="272" y="160" width="4" height="248" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-5" value="Run outcome unconfirmed" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;fillColor=none;strokeColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="288" y="176" width="320" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-6" value="×" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;align=center;verticalAlign=middle;fontColor=#475569;" vertex="1" parent="1" tooltip="Dismiss notification; accessible name Dismiss">
+          <mxGeometry x="612" y="168" width="32" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-7" value="Claude Agent / status" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;fillColor=none;strokeColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="288" y="208" width="352" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-8" value="The local backend is offline. Your run may still be active.&lt;br&gt;&lt;br&gt;Check its status before starting another." style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;fillColor=none;strokeColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="288" y="240" width="344" height="88" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-9" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=#E2E8F0;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="272" y="344" width="384" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-10" value="Restart local backend" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;fontColor=#0F172A;rounded=1;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="288" y="360" width="184" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-11" value="16 px safe inset from right and bottom" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;fillColor=none;strokeColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="32" y="448" width="640" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-12" value="Narrow viewport / expanded content" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;fillColor=none;strokeColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="24" width="360" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-13" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="64" width="360" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-14" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;" vertex="1" parent="1">
+          <mxGeometry x="736" y="160" width="328" height="248" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-15" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=#F87171;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="736" y="160" width="4" height="248" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-16" value="Run outcome unconfirmed" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;fillColor=none;strokeColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="752" y="176" width="264" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-17" value="×" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;align=center;verticalAlign=middle;fontColor=#475569;" vertex="1" parent="1" tooltip="Dismiss notification; accessible name Dismiss">
+          <mxGeometry x="1020" y="168" width="32" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-18" value="Claude Agent / status" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;fillColor=none;strokeColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="752" y="208" width="296" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-19" value="The local backend is offline. Your run may still be active.&lt;br&gt;&lt;br&gt;Check its status before starting another." style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;fillColor=none;strokeColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="752" y="240" width="288" height="88" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-20" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=#E2E8F0;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1052" y="240" width="4" height="88" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-21" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=#94A3B8;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1052" y="240" width="4" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-22" value="" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=#E2E8F0;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="736" y="344" width="328" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-23" value="Restart local backend" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;fontColor=#0F172A;rounded=1;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="752" y="360" width="184" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-24" value="16 px safe inset from right and bottom" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;fillColor=none;strokeColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="720" y="448" width="360" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-25" value="Placement and dismissal rules" style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;fillColor=none;strokeColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="32" y="504" width="1048" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="placement-26" value="• Anchor to the bottom-right of the visible viewport, with 16 px insets plus device safe areas.&lt;br&gt;• Width ≤ viewport width − insets; height ≤ viewport height − insets. Reflow on resize, zoom and keyboard changes.&lt;br&gt;• Keep Dismiss / × visible and keyboard accessible. Escape dismisses the focused popup; return focus to its trigger.&lt;br&gt;• Scroll long body text and expanded diagnostics inside the popup. Keep header and action row visible.&lt;br&gt;• Stack multiple notifications upward inside one bounded, scrollable region; never push one outside the viewport.&lt;br&gt;• Dismiss closes the UI only. It does not cancel a run or interrupt an API restart. No automatic graph retry." style="fontFamily=Inter,Arial,sans-serif;fontSize=14;whiteSpace=wrap;html=1;text;fillColor=none;strokeColor=none;align=left;verticalAlign=top;spacing=0;fontColor=#0F172A;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="32" y="544" width="1048" height="152" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
