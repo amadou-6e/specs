@@ -60,8 +60,9 @@ The recovery popup must be anchored to the bottom-right of the visible viewport,
 with 16 px insets plus device safe areas. Its width and height must fit the
 available viewport at every resize, zoom level and on-screen keyboard change.
 Long content and expanded diagnostics scroll inside the popup; its dismiss
-control and action row stay visible. Multiple notifications stack upward within
-a bounded scrollable region rather than overflowing the screen.
+control and action row stay visible. The cross-surface stack is a follow-up requirement owned by Laomedo #186,
+as recorded in [the shared popup standard](popup-cards.md); it is not
+implemented by this single-popup slice.
 
 Provide a visible Dismiss or close control with an accessible name and keyboard
 activation. Escape dismisses the focused popup and restores the previously focused element, or the canvas if it is unavailable.
