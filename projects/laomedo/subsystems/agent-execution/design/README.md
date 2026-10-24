@@ -33,6 +33,7 @@ The [node error states](node-error-details.drawio) own descriptive error popover
 The [local runner recovery states](local-runner-recovery.drawio) own the app connection-error recovery controls and transitions.
 
 The first pages of the recovery diagram are an editable **typography proposal**:
-normalized collapsed/expanded panels and their type rules. The existing state
+compact collapsed/expanded panels and their type rules: one 14 px font size,
+a single status heading, concise recovery guidance, and collapsed diagnostics. The existing state
 map is retained on its original page. The [current real panel reference](references/local-runner-recovery-current.png)
 records the pre-normalization UI; it is not evidence that the proposal is implemented.
