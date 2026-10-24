@@ -31,3 +31,8 @@ The [Output Contract v1 design](output-contract-v1.md) proposes the declarative 
 The [node error states](node-error-details.drawio) own descriptive error popovers and safe diagnostic interactions for issue #181.
 
 The [local runner recovery states](local-runner-recovery.drawio) own the app connection-error recovery controls and transitions.
+
+The first pages of the recovery diagram are an editable **typography proposal**:
+normalized collapsed/expanded panels and their type rules. The existing state
+map is retained on its original page. The [current real panel reference](references/local-runner-recovery-current.png)
+records the pre-normalization UI; it is not evidence that the proposal is implemented.
