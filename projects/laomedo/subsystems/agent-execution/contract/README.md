@@ -43,3 +43,5 @@ Contract container: README.md (1), indexed pages (1 each), `schemas/` (1),
 additional owned interface/configuration pages (0..*). The `schemas/` container
 has its own index and one file per direct exchange touching this subsystem.
 New pages must have one observable behavior owner.
+
+[Descriptive node errors](node-errors.md) owns user-facing explanations and safe technical diagnostics; original API error codes remain unchanged.
