@@ -662,3 +662,30 @@ execution deadline. No artificial expiry or user credential change was performed
 The preview still combines the pending Claude adapter with this stacked recovery
 PR. This is not standalone deployment or user graph approval. PR183 and specs393
 remain draft and unmerged; final source/evidence hashes are recorded locally.
+
+
+## 2026-10-25: confirmed-online green contour
+
+At the user's request, the recovery contour stays light red while offline or
+starting and becomes light green only for an authenticated ready state with no
+pending check or error. The shared frame defaults to red for all other cards.
+The textual online confirmation and Dismiss remain; the change does not rerun a
+graph or claim its previous execution succeeded.
+
+Real verification used the existing Status graph, with the dedicated API safely
+stopped after verifying all runs terminal and no active task containers. The
+actual Start local runner button reached ready in22.536 seconds. Browser computed
+colours were red rgb(248,113,113) before and during startup, then green
+rgb(74,222,128) after the authenticated ready response. The390x600 viewport kept
+the card at x16,y382,width358,height202. There was no new model request.
+[Before](design/references/recovery-green-before-live.png),
+[confirmed online](design/references/recovery-green-after-live.png) and
+[narrow](design/references/recovery-green-small-live.png) captures accompany the
+editable Recovery confirmed online Draw.io page.
+
+All188 existing shared UI tests passed. The isolated production bundle completed
+in5m47s and was installed with its index last, retaining previous hashed assets
+for already-open tabs. Specifications validation reported0 errors and1 existing
+large-file warning. Independent review and merge revisions are retained in the
+local final handoff; user approval to merge follows their successful graph review
+and is conditional on this requested green state working.

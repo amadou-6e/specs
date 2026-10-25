@@ -250,3 +250,15 @@ a visible Copied text row or changes card height. The accessible name/tooltip an
 screen-reader status acknowledge success or failure. Recovery copies only safe
 diagnostics; ordinary cards copy the explanation and safe diagnostics. Burst coalescing and a queue cap are
 not implemented in this slice; concurrent cards remain viewport-bound and scroll.
+
+
+### Confirmed recovery colour
+
+Keep the card's left contour light red (`#F87171`) during checking, startup,
+prerequisite failures and unconfirmed outcomes. After the authenticated service
+check reports `ready`, with no pending check or error, change that contour to
+light green (`#4ADE80`). A process being spawned or a spinner stopping is not
+proof of readiness. Retain the text confirmation, safe details and Dismiss;
+colour alone does not communicate success. A later failed check restores red.
+This indicates restored connectivity, not completion or automatic retry of the
+previous graph run.
