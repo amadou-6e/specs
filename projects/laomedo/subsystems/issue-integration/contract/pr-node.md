@@ -113,8 +113,8 @@ The PR node is the loop controller, with one initial read, exactly one Agent
 body execution, one returned operation, and a terminal result. No third Loop
 node or second PR node is required. The Task branch is stopped in the outer
 graph; the native isolated subgraph runs the Agent once, rather than letting
-the outer scheduler invoke it again. Multiple body nodes, fan-out or multiple
-feedback sources are refused in this bounded first slice.
+the outer scheduler invoke it again. Multiple Agent bodies, fan-out or multiple feedback sources are refused.
+Independent read-only Skill dependencies are the only additional body nodes.
 
 Freeze the selected repository/number and fetched content digest before calling
 the Agent. Read refusal stops before the Agent. The feedback must be Data with
@@ -215,3 +215,12 @@ publication marker and branch pair, never resend automatically. A missing/ambigu
 match remains unknown. Creation grant binding and any subsequent update grant are
 separate; the new reference alone grants no writes. This mode and its run-result
 viewer are a proposal, not implemented or accepted UI geometry in this change.
+
+### Skill configuration ownership
+
+Agent skills are selected on independent read-only Skill nodes connected to
+Skill References. The feedback executor includes those nodes with the Agent;
+other external inputs, mutating Skill dependencies and multiple controllers
+remain refused. Building only a read-only Skill must not start the feedback
+Agent. Older inline-only current examples require this wiring migration;
+historical execution evidence is retained separately and not relabelled.
