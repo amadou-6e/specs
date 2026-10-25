@@ -19,7 +19,7 @@ and immutable [skill references](../../skill-registry/contract/langflow-node.md)
 
 ## Provider and ports
 
-The OpenCode Agent has Task, Provider/Model, Variant, Skill References (1..16),
+The OpenCode Agent has Task, Provider/Model, Variant, optional Skill References (0..16),
 Operation, Prior Run and local Runner URL ports. Answer is Message; Run Reference
 is JSON in pinned Langflow 1.12.3. Output methods share one dispatch per build.
 The shared component category must be installed together and on the Python module

@@ -38,11 +38,11 @@ AGENTVIZ and subset skill editing are out of scope.
 | --- | --- |
 | Task | Message or text; nonempty for fresh/resume |
 | Operation | Explicit fresh, resume, status or cancel; fresh default |
-| Skill ID/revision | Fresh runs require an immutable whole-skill SHA-256 revision; no latest fallback |
-| Skill Reference | Optional Data from the [Skill node](../../skill-registry/contract/langflow-node.md); matching inline values allowed, conflicts rejected; resume retains its bound snapshot |
+| Skill ID/revision | Legacy fields are hidden; select optional skills through Skill References |
+| Skill References | Zero to sixteen immutable references from [Skill nodes](../../skill-registry/contract/langflow-node.md); disconnected means a task without skills. Supplied references must remain pinned and valid; resume retains its bound snapshot |
 | Model/effort | Required for fresh/resume; runner validates actual provider support |
 | Prior Run | Structured Data from a previous run; mandatory for resume/status/cancel |
-| Prior Run JSON | Advanced manual/API alternative when no Data input is connected; malformed JSON fails before dispatch |
+| Prior Run JSON | Hidden serialized/API compatibility field; processed even while hidden, using the native skip override. Malformed JSON fails before dispatch |
 | Runner URL | Advanced setting; plain HTTP local loopback or host.docker.internal only; no embedded credentials |
 | Timeout | Advanced HTTP timeout, 1 to 240 seconds; default 210 |
 
