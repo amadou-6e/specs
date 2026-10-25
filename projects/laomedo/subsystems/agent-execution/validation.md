@@ -349,7 +349,7 @@ acceptance. No new model run is needed solely to restate accepted records.
 
 The selected A card and [shared popup standard](contract/popup-cards.md) are
 implemented in [Laomedo PR #183](https://github.com/amadou-6e/laomedo/pull/183),
-at [c8319f4](https://github.com/amadou-6e/laomedo/commit/c8319f4821e79fed29cc5dec769f5deff695a9cd).
+at [2b02bcf](https://github.com/amadou-6e/laomedo/commit/2b02bcf02248ef43ba5581e8254c353c683789de).
 This is an unmerged implementation check, not general runner acceptance.
 The [desktop](design/references/local-runner-recovery-a-live-desktop.png) and
 [short/narrow](design/references/local-runner-recovery-a-live-small.png) references
@@ -394,3 +394,10 @@ constructed codes still require explicit review and fallback checks.
 The same Claude reviewer resolved the blocking normal-runner finding. Final
 visual disposition is recorded in the PR handoff. Merge still requires current
 checks, reviewed compatible dependencies and the user's working-graph approval.
+
+The final scoped visual/code/spec review accepted c8319f4 / ecc3d8d while
+retaining the runtime blocker. The later catalogue-only wording correction
+follows its nonblocking recommendation: remove self-reference and repeated
+restart advice. A fresh production build, 154 frontend checks and the same
+real-browser bounds/dismissal/startup-failure checks pass after that correction.
+No additional independent review of that recommended wording is claimed.

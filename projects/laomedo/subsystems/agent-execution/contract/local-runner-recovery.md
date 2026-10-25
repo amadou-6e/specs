@@ -3,7 +3,7 @@ title: Local runner API recovery from connection errors
 status: draft
 kind: interface-contract
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-23
+last_reviewed: 2026-10-25
 applies_to: [laomedo]
 supersedes: null
 related: []

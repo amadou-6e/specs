@@ -3,7 +3,7 @@ title: Compact popup card presentation
 status: draft
 kind: interface-contract
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-24
+last_reviewed: 2026-10-25
 applies_to: [laomedo]
 supersedes: null
 related: []
