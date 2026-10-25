@@ -343,3 +343,361 @@ owns the aggregate first-slice assessment. This does not claim arbitrary effect
 completeness, power-loss/double-failure safety, Linux real-agent support, hostile
 isolation, semantic success, deployed server408 ingress or publication-feature
 acceptance. No new model run is needed solely to restate accepted records.
+
+
+## Approved A popup implementation, 2026-10-25
+
+The selected A card and [shared popup standard](contract/popup-cards.md) are
+implemented in [Laomedo PR #183](https://github.com/amadou-6e/laomedo/pull/183),
+at [2b02bcf](https://github.com/amadou-6e/laomedo/commit/2b02bcf02248ef43ba5581e8254c353c683789de).
+This is an unmerged implementation check, not general runner acceptance.
+The [desktop](design/references/local-runner-recovery-a-live-desktop.png) and
+[short/narrow](design/references/local-runner-recovery-a-live-small.png) references
+are real app screenshots from the saved Claude Agent **Status** graph, using a
+real prior completed run. They are not fixtures or new model invocations.
+
+Passed browser checks: production-rendered A styling; bottom-right visible-viewport
+bounds at 1280×720 and 360×240; 150% viewport zoom; expanded diagnostics scrolling;
+visible and unobscured 196 px Restart / 112 px Dismiss actions; Escape and button
+dismissal; reload/refresh followed by Status; one API-only startup request with
+no graph dispatch during restart. The popup is layered above the legacy toast,
+so that toast cannot cover its controls. The legacy toast is still a separate
+surface awaiting #186; cross-surface coalescing/stacking is not implemented here.
+
+**Current integration blocker:** the old configured executable disappeared after
+an extension update. The installed official CLI reports **2.1.310**, while the
+adapter's reviewed guard pins **2.1.301**. After correcting the isolated preview's
+executable path, the real startup exits with `unsupported_claude_cli_version`.
+The popup shows the catalogue-backed startup failure and remains dismissible.
+[Laomedo #189](https://github.com/amadou-6e/laomedo/issues/189) owns compatibility
+and executable-update recovery, with #182 / adapter PR #180. The guard was not
+bypassed. Current offline-to-ready startup and in-app recorded-result inspection
+therefore remain **blocked**; older successful restart observations do not prove
+this installation works. No fresh model turn was submitted.
+
+Internal controls: 154 frontend tests, 15 service/catalogue tests and 17 migrated
+verification-caller checks pass. The broader affected suite exercised 117 tests:
+111 initially passed, six short-deadline checks failed under build contention,
+and all six subsequently passed in targeted reruns. The last two also passed on
+the original 85a9ce7 baseline. This is not a claim of one all-green 117-test run.
+The production build passed. The clean pinned Langflow overlay hook matches the
+rendered installation, whose popup/recovery/catalogue files match the source.
+
+The zero-turn default found in independent code review was removed from normal
+runners and managed startup. Normal accounting uses `attempt-count.json` without
+a ceiling; historical verification ledgers are preserved and do not gate future
+user runs. Verification bounds live only in a separate experiment harness. The
+normal-default regression makes no provider call. Producer guards cover literal
+service codes and literal raises in changed attempt accounting; dynamically
+constructed codes still require explicit review and fallback checks.
+
+The same Claude reviewer resolved the blocking normal-runner finding. Final
+visual disposition is recorded in the PR handoff. Merge still requires current
+checks, reviewed compatible dependencies and the user's working-graph approval.
+
+The final scoped visual/code/spec review accepted c8319f4 / ecc3d8d while
+retaining the runtime blocker. The later catalogue-only wording correction
+follows its nonblocking recommendation: remove self-reference and repeated
+restart advice. A fresh production build, 154 frontend checks and the same
+real-browser bounds/dismissal/startup-failure checks pass after that correction.
+No additional independent review of that recommended wording is claimed.
+
+
+## Recovery spinner deadline correction, 2026-10-25
+
+Local working changes atop implementation `2b02bcf` add a 10-second deadline
+around each complete recovery client promise, including authentication/error
+interceptors, plus network timeouts. A failed request clears stale starting state;
+completed startup metadata remains available to Cancel before React rerenders.
+These changes are not yet a committed or merged revision.
+
+- Focused internal regression checks: 18 passed across the recovery controller
+  and popup suites, including a never-settling client promise. These tests use
+  internal mocks; they do not establish real hung-network acceptance.
+- Production build passed. Two real saved-graph Status/restart checks observed
+  startup failure and working dismissal; durations were 14.779 s and 20.861 s.
+  The second check explicitly observed the spinner before it ended. Neither
+  check dispatched a model turn. No response interception was used.
+- Actual [busy state](design/references/local-runner-recovery-busy-live.png)
+  and [failed startup state](design/references/local-runner-recovery-failed-live.png)
+  were independently reviewed against A. The scoped code, contract and these
+  two visuals were acceptable; no blocking findings remained for this correction.
+- Full backend recovery and actual startup cancellation remain blocked by
+  PR180/#189: the preview still has the old host adapter while managed startup
+  arguments target the newer container adapter. Startup failed on its missing
+  executable argument; that failure is not a successful restart or cancellation.
+- Low review notes remain for unconfirmed cancellation wording, late/uncertain
+  request outcomes, a redundant display branch and cancellation polling duration.
+  The added Draw.io busy-state page has not received fresh rendered acceptance.
+  Legacy toast/stack migration remains tracked in #186. No merge is authorised.
+
+Reviewed recovery-controller source SHA-256: `1c145e1ba720e37160b1aab7d0b0f18ecf9260079091abba7400622ec9569f89`.
+
+
+### Local Claude restart installation repair, 2026-10-25
+
+The real saved recovery graph on the isolated local preview reached backend ready
+from its Restart local backend button in 84.73 seconds. Authenticated health
+reported Claude ready; the existing run was read back as completed, and a subsequent
+graph Status operation displayed no build error. No model turn was submitted.
+The preview installed the container adapter and matching dependencies from the
+pending Claude work, retaining recovery health and cooperative cancellation code.
+Its trusted service configuration explicitly selects a dedicated lease supervisor,
+started independently for this review and retained with the preview. This is a
+local integration installation, not proof that either PR independently contains
+the combination or that it survives a machine restart. Merge order must coordinate
+the Claude adapter with the recovery service; the matching adapter and supervisor
+must be installed before enabling its container startup command.
+
+The first attempts failed bounded Docker version/auth controls under host load.
+Separate control checks succeeded before the real button path succeeded. Repeated
+cold startup reliability and actual cancellation remain unverified. Internal
+compatibility checks passed 19 provider tests and 18 recovery service tests; these
+are regression controls, not substitute live acceptance. The existing historical
+ledger hash matches its earlier recorded hash. No develop merge is authorized.
+
+
+### Docker prerequisite recovery, 2026-10-25
+
+The intermediate contract and native Draw.io `Docker prerequisites` page specify
+three distinct recovery paths before implementation: unavailable Docker CLI offers
+an official installation link without asserting that Docker is uninstalled;
+unreachable engine asks the user to start Docker; healthy Docker with an offline
+runner offers **Start local runner**. Unknown availability offers neither start
+nor installation. Technical details retain the original failure code and safe run
+identity, adding an allowlisted recovery code separately.
+
+Real saved-graph verification used the Agent **Status** operation on the existing
+completed run. This was readback, not a fresh Agent execution or a model request.
+
+- [Stopped Docker](design/references/local-runner-docker-down-live.png): the real
+  engine was unavailable. The graph failed descriptively in 9.380 seconds, showed
+  start-Docker guidance, preserved `runner_transport_failed`, offered neither
+  Start local runner nor installation, and could be dismissed. No success toast
+  replaced the failure.
+- After the user started Docker, the real graph showed
+  [Docker ready, runner offline](design/references/local-runner-docker-ready-offline-live.png).
+  Clicking Start local runner reached authenticated provider readiness in
+  33.121 seconds. The [online state](design/references/local-runner-docker-ready-online-live.png)
+  directed the user to check the existing run. Dismissing it and running Status
+  again completed without RUN_ERROR. No model turn was submitted; the historical
+  verification ledger hash stayed unchanged.
+- Internal controls passed: 31 backend tests, 23 recovery UI tests, 11 workflow
+  outcome tests and 147 shared error UI tests. After review, the narrowed English
+  missing-file classification passed all five prerequisite tests and the changed
+  wording passed all 23 recovery UI tests. Internal mocks are regression controls,
+  not live acceptance. Production compilation passed before live verification;
+  final wording rebuild and installation are recorded in the local handoff.
+- Claude reviewed the full substantive own-diff against implementation base
+  `7f9604313b4e8ba90a87c611771875989e0ef74a`, actual source and all four real
+  screenshots. It found no new code blocker and approved the captured recovery
+  visuals. The focused recheck resolved the missing-file classification finding
+  and accepted removal of nonexistent operator wording in the affected entries.
+  The earlier spec visual review's quote-encoding correction was checked directly.
+
+Evidence boundaries and remaining work:
+
+- Docker missing from PATH is internally tested only; no live uninstall or fake
+  provider demonstration was performed. Fresh, Resume and real startup cancellation
+  were not exercised in this slice. No broad execution acceptance is claimed.
+- A concurrent Docker probe can temporarily refuse Start as unconfirmed. This is
+  safe but remains a UX limitation; a future change can wait within a bounded
+  deadline for an in-flight result. Ready APIs also undergo prerequisite checks.
+- The workflow outcome regression covers RUN_ERROR followed by RUN_FINISHED.
+  A failed node result that never emits RUN_ERROR remains a general coverage gap;
+  the contract still requires that failure not become success.
+- The preview combines pending Claude adapter dependencies and the recovery work.
+  Its dedicated lease supervisor was restored independently after confirming the
+  old process absent. This does not demonstrate standalone PR183 deployment,
+  automatic supervisor ownership or persistence across machine restart. A
+  coordinated reproducible PR180/PR183 installation remains a merge blocker.
+- Legacy duplicate toast migration remains #186. Repeated cold starts and the
+  native transient Stop/build-time overlap remain outside this acceptance.
+- The overlay tool requires Git and a clean pinned checkout, as its initial
+  revision and patch checks already require. Patches fail on upstream drift.
+
+These are uncommitted source changes atop implementation `2b02bcf` and specs
+`91a2c6b`; exact source/evidence hashes and reviewer outputs are retained in the
+local Docker recovery handoff. Neither PR is merged. The user must review the
+working graph before any develop merge.
+
+
+Final follow-through: the wording build completed in 6m13s; after reloading the
+isolated preview, the real graph's existing-run Status check passed again in
+2.619 seconds. All 31 backend and 147 shared catalogue checks passed on the final
+source, alongside the 23 recovery checks; the 11 outcome checks remain unchanged.
+Authenticated runner health reported ready. A read-only Docker inspection found
+zero running controller containers from the configured image. The preview and
+runner remain available deliberately for user review. No fresh model request,
+Docker uninstall, real cancellation or standalone deployment proof is claimed.
+
+
+### Existing error-card migration and optional skills, 2026-10-25
+
+Implementation `25aacf8` on PR183 builds on `6233608`. Fetching remote develop
+confirmed `36942fa` was already its ancestor; merging develop reported already
+up to date. The optional-Skill fix was not on develop: the common changes from
+pending Claude commit `44f88c3`, with empty-workspace validation from `50925bb`,
+were ported into this PR without merging the unrelated provider feature.
+
+- Node Error details, graph errors and native error notifications share the A
+  frame and viewport stack. Native errors retain their own title and all native
+  messages, while recognised Laomedo failures use catalogue text and safe codes.
+  Native errors do not receive Agent run/runner advice. Error cards persist until
+  dismissed and support copying without click-on-text dismissal.
+- Real [desktop](design/references/shared-error-desktop-live.png) and
+  [390-by-600](design/references/shared-error-small-live.png) checks ran Status
+  on a real node with no prior run. The error appeared in 1.530 seconds; browser
+  clipboard readback confirmed the explanation and safe code. The body computed
+  to 14px, the narrow card stayed at x16/y188,358-by-396px, and Dismiss worked.
+  Node Error details focused the same card without duplication. No model request
+  was submitted by those Status checks.
+- A real installed Load JSON component with no input selected produced its
+  [native validation error](design/references/shared-native-error-live.png).
+  The original guidance was visible and copied, without Agent advice. No fake
+  provider, response interception or substituted execution data was used.
+- A real Fresh Agent with zero skills reached the runner, then failed with
+  `claude_subscription_unavailable`. This is not a successful Agent answer or
+  provider acceptance. The existing terminal failed run was subsequently read
+  through Status, and its [node Error details](design/references/shared-subscription-error-live.png)
+  showed the specific subscription explanation and original safe code/IDs.
+  That readback did not redispatch inference. No Claude credentials were copied.
+- Internal controls passed 108 backend tests, all60 Codex component tests,
+  185 shared error/recovery UI tests and3 notification/store migration tests.
+  A separate catalogue check passed3 and skipped1: the new literal Claude
+  producer guard activates when that pending provider's source is present.
+  It does not claim coverage of absent or dynamically constructed producer codes.
+- The saved-flow regression uncovered native LFX skipping hidden scalar values.
+  Prior Run JSON now stays hidden but uses the native `override_skip` option so
+  existing serialised references are validated and processed. The regression
+  asserts this, and the primary native example embeds the current component.
+- A production B1/B2 build completed in9m19s. A later accessibility-only rebuild
+  failed when Windows prevented deleting a served asset. The final build uses
+  a separate output directory to avoid mutating assets while they are served.
+  The final build/install result and source hashes are retained in the handoff.
+
+Claude's full review approved the observed Laomedo card layout but required
+preserving non-Laomedo copy (B1) and adding subscription catalogue coverage (B2).
+Both fixes and fresh native/subscription screenshots were submitted for its
+focused recheck. Final disposition is recorded in the local handoff; neither
+passing internal checks nor successful Status readback represents successful
+Fresh inference, standalone deployment, graph approval or merge approval.
+
+Remaining boundaries: successful no-skill Claude inference needs usable runner
+subscription access; no blind inference retry was performed. A successful Status
+build reports a successful lookup even when the recorded execution failed;
+its Error details retain that failure. Queue coalescing/caps, direct screen-reader
+speech verification, repeated cold starts and standalone coordinated adapter/
+supervisor installation remain outside this acceptance. Native success/notice
+cards are not migrated by this error-only change. Both PRs remain unmerged.
+
+
+Focused recheck at implementation `25aacf8`: Claude resolved B1 and B2 for the
+code present in this PR, approved the scoped code/spec alignment and both new
+visuals, and accepted the hidden-reference correction. It did not independently
+re-read the spec text or live-region implementation in that recheck; no broader
+review coverage is implied. Final isolated production compilation completed in
+5m11s, avoiding deletion of served files. The preview was switched to that output
+and reloaded. Implementation `25aacf8` was pushed to the existing draft PR183;
+remote develop was fetched again and remained `36942fa`, already contained.
+Known provider/deployment and user graph-review merge gates remain in force.
+
+
+The final installed bundle was rechecked: the real validation card appeared in
+3.161 seconds, retained the14px body and narrow-viewport bounds, confirmed browser
+clipboard contents and the portal live-region DOM, and passed Dismiss/node-focus
+deduplication. Native validation text/clipboard and the existing failed-run
+explanation passed again without redispatch. The four shared-error references
+now show that final build. Direct screen-reader speech is still unverified.
+Implementation Work Graph CI passed on25aacf8; specs validation CI passed on
+dcd6772. Final evidence/source hashes and any later CI state are in the handoff.
+
+
+## 2026-10-25: subtle copy icon and local Claude login reuse
+
+This later check supersedes the missing-runner-login blocker above. The owner
+explicitly authorised login-only duplication. Host and dedicated runner native
+auth status both reported signed in through claude.ai after copying only the
+current access credential and native scope/expiry metadata. The host retains its
+refresh credential. Sessions, settings and the full profile were not copied.
+The [login-copy contract](contract/local-claude-login-copy.md) defines the opt-in
+and local Docker boundaries. No credential values enter committed evidence.
+
+The final installed backend moves asynchronous mirroring behind the existing
+HTTP acknowledgement gate, before model dispatch. Startup only sets the trusted
+opt-in flag, keeping its cancellation path independent of copying. The actual
+Start local runner control reached authenticated readiness in31.478 seconds.
+A subsequent real Fresh Claude graph with zero skills completed in22.032 seconds
+and returned its requested answer, with RUN_FINISHED and no RUN_ERROR. This is
+actual provider execution, distinct from the successful historical Status lookups.
+No fixture provider was used. Both APIs remain online; no controller is left active.
+
+The shared error popup now has a subtle header copy icon and a two-second
+checkmark acknowledgement, with no visible Copied row or added card height.
+The real missing-prior-run Status validation appeared in1.302 seconds. Browser
+clipboard readback, unchanged height,14px body,390x600 bounds, Dismiss and node
+focus deduplication passed. Native application error text and copying also passed;
+existing failed-run details retain their historical code without redispatch.
+The shared reference screenshots now show this icon build; the new
+[online recovery capture](design/references/shared-recovery-online-live.png)
+records the final managed startup. Direct screen-reader speech remains untested.
+
+Internal controls:42 focused login/service/prerequisite/catalogue tests passed
+with1 optional pending-provider coverage skip;60 component tests,188 shared UI
+checks and3 native notification migration checks passed. 81 local-runner regressions passed with1 optional pending-provider coverage
+skip. Implementation source is129d6d0; precise evidence hashes are retained in
+the final local handoff. The production UI build completed
+in5m40s into a separate output directory.
+
+Claude reviewed the new code/spec and actual three card types, then rechecked
+its blocking acknowledgement and credential-export findings. The recheck approved
+scoped code, specification and visuals after those findings were addressed.
+Its original Docker environment-precedence assertion was corrected against the
+official CLI reference; the implementation additionally pins the validated socket
+and rejects TCP endpoints. It recorded nonblocking recovery-context separator and
+repeated-wording recommendations. Access expiry during a live running task remains
+unverified; pre-dispatch expiry is tested, and the runner retains its normal
+execution deadline. No artificial expiry or user credential change was performed.
+
+The preview still combines the pending Claude adapter with this stacked recovery
+PR. This is not standalone deployment or user graph approval. PR183 and specs393
+remain draft and unmerged; final source/evidence hashes are recorded locally.
+
+
+## 2026-10-25: confirmed-online green contour
+
+At the user's request, the recovery contour stays light red while offline or
+starting and becomes light green only for an authenticated ready state with no
+pending check or error. The shared frame defaults to red for all other cards.
+The textual online confirmation and Dismiss remain; the change does not rerun a
+graph or claim its previous execution succeeded.
+
+Real verification used the existing Status graph, with the dedicated API safely
+stopped after verifying all runs terminal and no active task containers. The
+actual Start local runner button reached ready in22.536 seconds. Browser computed
+colours were red rgb(248,113,113) before and during startup, then green
+rgb(74,222,128) after the authenticated ready response. The390x600 viewport kept
+the card at x16,y382,width358,height202. There was no new model request.
+[Before](design/references/recovery-green-before-live.png),
+[confirmed online](design/references/recovery-green-after-live.png) and
+[narrow](design/references/recovery-green-small-live.png) captures accompany the
+editable Recovery confirmed online Draw.io page.
+
+All188 existing shared UI tests passed. The isolated production bundle completed
+in5m47s and was installed with its index last, retaining previous hashed assets
+for already-open tabs. Specifications validation reported0 errors and1 existing
+large-file warning. Independent review and merge revisions are retained in the
+local final handoff; user approval to merge follows their successful graph review
+and is conditional on this requested green state working.
+
+
+Final green-state review approved code, specification and actual red/green/narrow
+captures with no blocking findings. The earlier25aacf8-to129d6d0 patch is unchanged;
+range-diff shows only the reviewed two-file green-state commit fb1a1e4 added.
+The user's successful graph review and conditional merge approval are now recorded.
+The earlier coordinated-deployment merge-gate wording is superseded for this shared
+recovery stack: Claude managed startup remains an explicit PR180 dependency in
+both the contract and installation docs, and this merge does not claim standalone
+Claude deployment or approve PR180. The reviewer accepted that documented boundary.
+The design's nonblocking clipped body text was corrected with wrapping and re-rendered.
+The remaining recovery-context separator recommendation is nonblocking and unchanged.

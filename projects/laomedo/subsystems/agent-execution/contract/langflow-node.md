@@ -38,11 +38,11 @@ AGENTVIZ and subset skill editing are out of scope.
 | --- | --- |
 | Task | Message or text; nonempty for fresh/resume |
 | Operation | Explicit fresh, resume, status or cancel; fresh default |
-| Skill ID/revision | Obsolete hidden fields; ignored at execution. Configure a Skill node instead |
-| Skill Reference | Required for fresh/start; not used for resume/status/cancel. Data from the [Skill node](../../skill-registry/contract/langflow-node.md); immutable references are authoritative; legacy inline values are ignored; resume retains its bound snapshot |
+| Skill ID/revision | Obsolete hidden fields; ignored at execution. Configure optional skills through Skill References |
+| Skill References | Zero to sixteen immutable references from [Skill nodes](../../skill-registry/contract/langflow-node.md); disconnected means a task without skills. Supplied references must remain pinned and valid; resume retains its bound snapshot |
 | Model/effort | Required for fresh/resume; runner validates actual provider support |
 | Prior Run (hidden compatibility input) | Existing serialized Data reference; required internally for resume/status/cancel until node-local selection exists |
-| Prior Run JSON (hidden compatibility input) | Serialized/API alternative; malformed JSON fails before dispatch; not a visible node control |
+| Prior Run JSON (hidden compatibility input) | Serialized/API alternative, processed even while hidden using the native skip override; malformed JSON fails before dispatch; not a visible node control |
 | Runner URL | Advanced setting; plain HTTP local loopback or host.docker.internal only; no embedded credentials |
 | Timeout | Advanced HTTP timeout, 1 to 240 seconds; default 210 |
 
@@ -162,8 +162,10 @@ Output Requirements, its JSON alternative, Prior Run, Prior Run JSON and Join
 Bridge URL are hidden compatibility fields, not visible node controls. Request identity is automatically allocated by
 execution and is not a user-editable control. Skill selection and revisions
 belong to Skill nodes, supplied through Skill References; there are no manual
-skill controls on the Agent. Legacy request IDs and inline skill overrides are ignored. Fresh/start without
-Skill References refuses before dispatch with skill_reference_required_use_skill_node.
+skill controls on the Agent. Legacy request IDs and inline skill overrides are ignored.
+Fresh/start without Skill References runs the task without skills; supplied
+references must be pinned and valid. Older components or runners may still report
+`skill_reference_required_use_skill_node`; update them to use optional references.
 Update an old component to refresh its Inspector metadata; older Inspector schemas
 may still list obsolete fields, but changing them has no execution effect.
 The canvas suppresses those fields even in older saved schemas.
