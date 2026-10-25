@@ -343,3 +343,54 @@ owns the aggregate first-slice assessment. This does not claim arbitrary effect
 completeness, power-loss/double-failure safety, Linux real-agent support, hostile
 isolation, semantic success, deployed server408 ingress or publication-feature
 acceptance. No new model run is needed solely to restate accepted records.
+
+
+## Approved A popup implementation, 2026-10-25
+
+The selected A card and [shared popup standard](contract/popup-cards.md) are
+implemented in [Laomedo PR #183](https://github.com/amadou-6e/laomedo/pull/183),
+at [c8319f4](https://github.com/amadou-6e/laomedo/commit/c8319f4821e79fed29cc5dec769f5deff695a9cd).
+This is an unmerged implementation check, not general runner acceptance.
+The [desktop](design/references/local-runner-recovery-a-live-desktop.png) and
+[short/narrow](design/references/local-runner-recovery-a-live-small.png) references
+are real app screenshots from the saved Claude Agent **Status** graph, using a
+real prior completed run. They are not fixtures or new model invocations.
+
+Passed browser checks: production-rendered A styling; bottom-right visible-viewport
+bounds at 1280×720 and 360×240; 150% viewport zoom; expanded diagnostics scrolling;
+visible and unobscured 196 px Restart / 112 px Dismiss actions; Escape and button
+dismissal; reload/refresh followed by Status; one API-only startup request with
+no graph dispatch during restart. The popup is layered above the legacy toast,
+so that toast cannot cover its controls. The legacy toast is still a separate
+surface awaiting #186; cross-surface coalescing/stacking is not implemented here.
+
+**Current integration blocker:** the old configured executable disappeared after
+an extension update. The installed official CLI reports **2.1.310**, while the
+adapter's reviewed guard pins **2.1.301**. After correcting the isolated preview's
+executable path, the real startup exits with `unsupported_claude_cli_version`.
+The popup shows the catalogue-backed startup failure and remains dismissible.
+[Laomedo #189](https://github.com/amadou-6e/laomedo/issues/189) owns compatibility
+and executable-update recovery, with #182 / adapter PR #180. The guard was not
+bypassed. Current offline-to-ready startup and in-app recorded-result inspection
+therefore remain **blocked**; older successful restart observations do not prove
+this installation works. No fresh model turn was submitted.
+
+Internal controls: 154 frontend tests, 15 service/catalogue tests and 17 migrated
+verification-caller checks pass. The broader affected suite exercised 117 tests:
+111 initially passed, six short-deadline checks failed under build contention,
+and all six subsequently passed in targeted reruns. The last two also passed on
+the original 85a9ce7 baseline. This is not a claim of one all-green 117-test run.
+The production build passed. The clean pinned Langflow overlay hook matches the
+rendered installation, whose popup/recovery/catalogue files match the source.
+
+The zero-turn default found in independent code review was removed from normal
+runners and managed startup. Normal accounting uses `attempt-count.json` without
+a ceiling; historical verification ledgers are preserved and do not gate future
+user runs. Verification bounds live only in a separate experiment harness. The
+normal-default regression makes no provider call. Producer guards cover literal
+service codes and literal raises in changed attempt accounting; dynamically
+constructed codes still require explicit review and fallback checks.
+
+The same Claude reviewer resolved the blocking normal-runner finding. Final
+visual disposition is recorded in the PR handoff. Merge still requires current
+checks, reviewed compatible dependencies and the user's working-graph approval.

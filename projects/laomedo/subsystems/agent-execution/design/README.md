@@ -47,3 +47,7 @@ anchoring, keyboard dismissal and bounded scrolling for recovery notifications.
 The [shared popup card standard](../contract/popup-cards.md) records the selected
 A treatment, viewport and dismissal rules, and the source-backed migration
 inventory with Laomedo follow-ups #186, #187 and #188.
+
+[Current implementation checks](../validation.md#approved-a-popup-implementation-2026-10-25)
+link real A-card screenshots and distinguish passing UI checks from the CLI
+compatibility blocker in Laomedo #189.

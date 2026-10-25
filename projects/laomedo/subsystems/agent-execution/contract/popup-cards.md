@@ -89,3 +89,6 @@ experiment-only turn ceilings into normal-runner authorization.
 Internal unit tests may use fixtures; they do not establish live acceptance.
 Record exact revisions, screenshots, remaining gaps and independent visual
 review. No merge is authorized by the existence of these requirements.
+
+Current implementation evidence and the installed-CLI startup blocker are
+recorded in [the dated validation entry](../validation.md#approved-a-popup-implementation-2026-10-25).
