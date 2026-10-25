@@ -689,3 +689,15 @@ for already-open tabs. Specifications validation reported0 errors and1 existing
 large-file warning. Independent review and merge revisions are retained in the
 local final handoff; user approval to merge follows their successful graph review
 and is conditional on this requested green state working.
+
+
+Final green-state review approved code, specification and actual red/green/narrow
+captures with no blocking findings. The earlier25aacf8-to129d6d0 patch is unchanged;
+range-diff shows only the reviewed two-file green-state commit fb1a1e4 added.
+The user's successful graph review and conditional merge approval are now recorded.
+The earlier coordinated-deployment merge-gate wording is superseded for this shared
+recovery stack: Claude managed startup remains an explicit PR180 dependency in
+both the contract and installation docs, and this merge does not claim standalone
+Claude deployment or approve PR180. The reviewer accepted that documented boundary.
+The design's nonblocking clipped body text was corrected with wrapping and re-rendered.
+The remaining recovery-context separator recommendation is nonblocking and unchanged.
