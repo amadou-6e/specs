@@ -601,3 +601,13 @@ review coverage is implied. Final isolated production compilation completed in
 and reloaded. Implementation `25aacf8` was pushed to the existing draft PR183;
 remote develop was fetched again and remained `36942fa`, already contained.
 Known provider/deployment and user graph-review merge gates remain in force.
+
+
+The final installed bundle was rechecked: the real validation card appeared in
+3.161 seconds, retained the14px body and narrow-viewport bounds, confirmed browser
+clipboard contents and the portal live-region DOM, and passed Dismiss/node-focus
+deduplication. Native validation text/clipboard and the existing failed-run
+explanation passed again without redispatch. The four shared-error references
+now show that final build. Direct screen-reader speech is still unverified.
+Implementation Work Graph CI passed on25aacf8; specs validation CI passed on
+dcd6772. Final evidence/source hashes and any later CI state are in the handoff.
