@@ -229,8 +229,8 @@ attempt between request completion and the next rendered state.
 
 The Draw.io `Shared error popup` page extends A to node Error details, ordinary
 flow failures and application error notifications. They share its compact card,
-light red left contour and visible-viewport bottom-right stack. Controls stay in
-the footer. Concurrent cards scroll within viewport bounds. No automatic expiry
+light red left contour and visible-viewport bottom-right stack. Primary actions and dismissal stay in
+the footer; the subtle copy icon sits in the header. Concurrent cards scroll within viewport bounds. No automatic expiry
 or click-on-text dismissal interferes with reading, selecting or copying.
 
 Copy error includes the shared explanation, recovery and safe diagnostics only.
@@ -238,12 +238,15 @@ Unrecognized Laomedo failures retain the safe Agent fallback and original safe
 code. Native application errors retain their own title and every message in the
 shared card; they do not receive Agent-specific run or runner guidance. Obvious
 credential values, trace lines and structured technical payloads are omitted. Clipboard success is confirmed
-before saying Copied; failure offers manual selection. Dismiss and Escape close
+before showing the brief checkmark; failure offers manual selection through the icon tooltip and screen-reader status. Dismiss and Escape close
 a card. Node details focus an already-open matching error rather than duplicating
 it. Transport failures retain the recovery controls and cancellation semantics.
 The matching native flow toast is omitted when the graph card already presents
 the same event; notification history retains the safe description and code.
 
-The recovery card retains Copy diagnostics inside its expandable details; ordinary
-error cards offer Copy error in the footer. Burst coalescing and a queue cap are
+Error cards use a subtle header copy icon rather than a labelled footer button.
+Successful copying swaps the icon for a checkmark for two seconds; it never adds
+a visible Copied text row or changes card height. The accessible name/tooltip and
+screen-reader status acknowledge success or failure. Recovery copies only safe
+diagnostics; ordinary cards copy the explanation and safe diagnostics. Burst coalescing and a queue cap are
 not implemented in this slice; concurrent cards remain viewport-bound and scroll.

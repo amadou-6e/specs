@@ -611,3 +611,54 @@ explanation passed again without redispatch. The four shared-error references
 now show that final build. Direct screen-reader speech is still unverified.
 Implementation Work Graph CI passed on25aacf8; specs validation CI passed on
 dcd6772. Final evidence/source hashes and any later CI state are in the handoff.
+
+
+## 2026-10-25: subtle copy icon and local Claude login reuse
+
+This later check supersedes the missing-runner-login blocker above. The owner
+explicitly authorised login-only duplication. Host and dedicated runner native
+auth status both reported signed in through claude.ai after copying only the
+current access credential and native scope/expiry metadata. The host retains its
+refresh credential. Sessions, settings and the full profile were not copied.
+The [login-copy contract](contract/local-claude-login-copy.md) defines the opt-in
+and local Docker boundaries. No credential values enter committed evidence.
+
+The final installed backend moves asynchronous mirroring behind the existing
+HTTP acknowledgement gate, before model dispatch. Startup only sets the trusted
+opt-in flag, keeping its cancellation path independent of copying. The actual
+Start local runner control reached authenticated readiness in31.478 seconds.
+A subsequent real Fresh Claude graph with zero skills completed in22.032 seconds
+and returned its requested answer, with RUN_FINISHED and no RUN_ERROR. This is
+actual provider execution, distinct from the successful historical Status lookups.
+No fixture provider was used. Both APIs remain online; no controller is left active.
+
+The shared error popup now has a subtle header copy icon and a two-second
+checkmark acknowledgement, with no visible Copied row or added card height.
+The real missing-prior-run Status validation appeared in1.302 seconds. Browser
+clipboard readback, unchanged height,14px body,390x600 bounds, Dismiss and node
+focus deduplication passed. Native application error text and copying also passed;
+existing failed-run details retain their historical code without redispatch.
+The shared reference screenshots now show this icon build; the new
+[online recovery capture](design/references/shared-recovery-online-live.png)
+records the final managed startup. Direct screen-reader speech remains untested.
+
+Internal controls:42 focused login/service/prerequisite/catalogue tests passed
+with1 optional pending-provider coverage skip;60 component tests,188 shared UI
+checks and3 native notification migration checks passed. 81 local-runner regressions passed with1 optional pending-provider coverage
+skip. Implementation source is129d6d0; precise evidence hashes are retained in
+the final local handoff. The production UI build completed
+in5m40s into a separate output directory.
+
+Claude reviewed the new code/spec and actual three card types, then rechecked
+its blocking acknowledgement and credential-export findings. The recheck approved
+scoped code, specification and visuals after those findings were addressed.
+Its original Docker environment-precedence assertion was corrected against the
+official CLI reference; the implementation additionally pins the validated socket
+and rejects TCP endpoints. It recorded nonblocking recovery-context separator and
+repeated-wording recommendations. Access expiry during a live running task remains
+unverified; pre-dispatch expiry is tested, and the runner retains its normal
+execution deadline. No artificial expiry or user credential change was performed.
+
+The preview still combines the pending Claude adapter with this stacked recovery
+PR. This is not standalone deployment or user graph approval. PR183 and specs393
+remain draft and unmerged; final source/evidence hashes are recorded locally.
