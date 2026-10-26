@@ -3,7 +3,7 @@ title: OpenCode local provider adapter
 status: draft
 kind: target-contract
 owners: [laomedo-maintainers]
-last_reviewed: 2026-10-02
+last_reviewed: 2026-10-25
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -33,8 +33,11 @@ native session ID, unchanged snapshot, same provider/runtime/model/effort and pi
 skills. Provider is `opencode`; never accept a Codex run reference as OpenCode.
 
 The adapter checks server health version `1.18.33` and connected-model inventory
-before reserving a submitted-turn ledger entry. A submitted turn is charged before
-the message POST, including a timeout or unsuccessful request. Default cap is zero.
+before recording a submitted attempt. Ordinary runners have no verification-only
+turn ceiling. Their diagnostic sequence is separate from historical experiment
+ledgers, which remain unchanged. Explicit verification bounds belong to an isolated
+harness, never normal startup or persistent services. An attempt is recorded before
+the message POST, including a timeout or unsuccessful request.
 Private native response records remain outside Git. Unknown usage remains unknown.
 Terminal assistant metadata and no outstanding native tool are required for success.
 Observed native tool IDs/results are retained; a completed `skill` tool selecting an
@@ -191,3 +194,69 @@ Sources inspected 2026-10-02. Local command evidence: `opencode.cmd --version`,
 At the initial source check, no model turn had been submitted. Later private
 authenticated runs are documented in the linked experiment; subscription
 availability and credential profile are not inferred from public documentation.
+
+
+## Graph activity and usage
+
+The OpenCode node uses the shared graph Agent Activity view, reached through the
+node's Activity action with that node already selected. Viewing or exporting
+activity does not execute an agent. The graph execution selector contains runs of
+the current graph only.
+
+Each Gantt row represents an observed agent conversation, with native parent
+identity determining nesting. Captured turns are separate selectable segments
+on that row. Idle, startup and cleanup gaps have no green envelope bar. The full
+invocation receipt range remains the time axis. Native titles are labels, not
+proof that an agent initiated a child. A host-created child and an agent-delegated
+child must remain distinguishable in verification evidence.
+
+All activity, conversation and turn selections scope messages, tool records,
+OpenTelemetry records, token totals and cost estimates consistently. Unattributed
+records remain available in All activity. Missing attribution, truncated detail,
+or unverified invocation boundaries must not become known zero usage through
+narrower selection. While a selected run or turn is running and has no usage
+observations or capture warning, its total cards display zero, including a
+provisional zero estimate. Reported values replace those initial values; missing
+or unpriced observations remain Unknown. Completed missing usage remains Unknown.
+
+Input includes native cache categories; output includes reasoning. Inclusive
+aggregation must not charge repeated native updates or snapshot reconciliation
+twice. USD values are API-equivalent estimates using recorded model catalog rates,
+not subscription charges or invoices. Unpriced models remain unknown. Token and
+cost charts appear side by side when space permits.
+
+Native SSE receipts and reconciled message snapshots retain their provenance.
+Adapter-generated OpenTelemetry spans are explicitly adapter-observed, not
+claimed native SDK instrumentation. Partial stream evidence does not determine
+task success. Capture notes use the shared [descriptive error presenter](node-errors.md),
+with safe codes and identifiers available separately from the explanation.
+
+Conversation appears last in an open section, has a bounded scrollable body,
+right-aligned user messages, left-aligned agent replies and compact tool rows.
+Tool outputs and native metadata start collapsed; message-source icons expose
+source metadata without an extra disclosure row. Fuzzy search preserves transcript
+order. Conversation exports support Markdown or JSON; OpenTelemetry exports JSON
+records. Exports include the selected scope, filter and capture limits. Exported
+records are not an OTLP ingestion envelope.
+
+## Trusted host agent configuration
+
+The isolated boundary preserves its normal skill and command-worker tools and
+primary instructions. A trusted host may extend the native agent configuration
+before the read-only configuration mount is created. Graph/request inputs cannot
+supply this callback or replace the host policy. A read-only named subagent in a
+local verification profile is not evidence that unrestricted native tools or
+delegation are enabled by default. Provider identity, runtime pins, credentials
+and worker isolation remain governed by the existing isolation contract.
+
+## Verification boundaries for this continuation
+
+Real Docker-backed fresh and resume runs, message/tool capture, per-session token
+usage, API-equivalent estimates, adapter OpenTelemetry records and a native
+parent/child Task delegation have been observed in bounded local verification.
+The final preservation of default skill/worker policy has startup and internal
+test evidence, not a new paid run of those restored tool paths. Initial zero-card
+rendering and live cancellation on the final revision require separate live
+acceptance; internal tests and old screenshots do not establish it. Retain these
+limits in the implementation PR rather than treating document validation as
+runtime proof.
