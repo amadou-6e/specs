@@ -82,9 +82,45 @@ cancellation keeps partial events and does not relabel the run as completed.
 
 ## Implementation note
 
-The local proof of concept has no Claude adapter yet. A short SDK spike must
-verify event coverage, model/effort validation, skill discovery, and session
-storage before finalizing this adapter's estimate. See the official
+The SDK remains the target transport above. The local single-user subscription
+prototype in Laomedo PR #180 instead uses the official Claude Code CLI stream
+protocol, pinned to 2.1.310, following the user's explicit subscription choice.
+It must not claim SDK transport or production credential-broker acceptance.
+See the official
 [Python SDK reference](https://code.claude.com/docs/en/agent-sdk/python),
 [sessions](https://code.claude.com/docs/en/agent-sdk/sessions), and
 [skills](https://code.claude.com/docs/en/agent-sdk/skills).
+
+For this prototype, the executable and native sessions live in a dedicated
+Docker image and profile volume. Personal sessions, settings and memories are
+not imported. Only the current subscription access credential may be mirrored locally with
+explicit opt-in authorization; refresh ownership stays on the host and the
+rotating refresh credential is never copied; this does not establish a general production
+authentication policy or permit copying a personal profile. Reject an access credential that cannot cover the execution deadline, and refuse
+to overwrite a profile holding an independently established login.
+
+Native controller file and shell tools are disabled. All draft file operations
+and commands run in a separate credential-free, network-free worker; external effects require an
+explicit host-mediated grant. Pinned native skills are full read-only bundles.
+Controller-side skill preprocessing and permission/model/session overrides are
+refused before dispatch. A prompt alone cannot establish these boundaries.
+
+Resume across a compatible API restart verifies the account subject, native
+session, image, profile, system configuration, grant and completed snapshot.
+This is explicit completed-session continuation, not automatic crash replay;
+D17 still applies. The independent supervisor must clean owned controllers and
+workers even when the API disappears. Cancellation is confirmed only after
+cleanup verification; uncertain remote effects stay unknown.
+Controllers and workers also enforce their deadline inside the container. An
+unverified container owner is never marked done: heartbeats stop so independent
+lease-loss cleanup retains responsibility for that owner.
+
+Model and effort choices come from native account discovery. Requested effort
+and native-observed effort are separate; missing native evidence stays unknown.
+Execution deadlines include correction turns. Normal runner startup must never
+install experiment-wide model-turn ceilings or exhausted verification ledgers.
+
+Real Fresh, native Skill invocation and completed-session Resume are recorded
+locally during implementation. These do not by themselves establish cancellation,
+handoff, join, error-UI or full target-contract acceptance. PR review must retain
+those evidence boundaries until each required path is verified.
