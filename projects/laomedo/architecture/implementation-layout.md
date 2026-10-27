@@ -52,6 +52,16 @@ non-overwritten sibling backup, preserves graph/run identities and unrelated
 payloads, and updates only embedded code and known launcher fields. Repeating
 migration is idempotent. This tool is not shipped as runtime compatibility.
 
+File migration preserves unrelated bytes, Unicode, number spelling, duplicate
+JSON keys, BOM and line endings by splicing only changed string values. It
+selects template code and explicit root launcher fields, not arbitrary nested
+payload keys. Unparseable retired imports report manual migration, not current
+status. Backup conflicts are checked before writing; writes are atomic per
+file. Unexpected I/O failure can leave a batch partly applied with originals
+retained. Registered scheduled tasks retain their old command independently
+of files: re-run the updated user-task installer with existing configuration
+before enabling an old task. The file migration tool does not update tasks.
+
 Existing locally controlled graph definitions and launchers are migrated before
 their next use with the new package. Report external launchers that cannot be
 migrated; do not silently keep aliases or claim their verification. Historical
