@@ -82,9 +82,83 @@ cancellation keeps partial events and does not relabel the run as completed.
 
 ## Implementation note
 
-The local proof of concept has no Claude adapter yet. A short SDK spike must
-verify event coverage, model/effort validation, skill discovery, and session
-storage before finalizing this adapter's estimate. See the official
+The SDK remains the target transport above. The local single-user subscription
+prototype in Laomedo PR #180 instead uses the official Claude Code CLI stream
+protocol, pinned to 2.1.310, following the user's explicit subscription choice.
+It must not claim SDK transport or production credential-broker acceptance.
+See the official
 [Python SDK reference](https://code.claude.com/docs/en/agent-sdk/python),
 [sessions](https://code.claude.com/docs/en/agent-sdk/sessions), and
 [skills](https://code.claude.com/docs/en/agent-sdk/skills).
+
+For this prototype, the executable and native sessions live in a dedicated
+Docker image and profile volume. Personal sessions, settings and memories are
+not imported. Only the current subscription access credential may be mirrored locally with
+explicit opt-in authorization; refresh ownership stays on the host and the
+rotating refresh credential is never copied; this does not establish a general production
+authentication policy or permit copying a personal profile. Reject an access credential that cannot cover the execution deadline, and refuse
+to overwrite a profile holding an independently established login.
+
+Native controller file and shell tools are disabled. All draft file operations
+and commands run in a separate credential-free, network-free worker; external effects require an
+explicit host-mediated grant. Pinned native skills are full read-only bundles.
+Controller-side skill preprocessing and permission/model/session overrides are
+refused before dispatch. A prompt alone cannot establish these boundaries.
+
+Resume across a compatible API restart verifies the account subject, native
+session, image, profile, system configuration, grant and completed snapshot.
+This is explicit completed-session continuation, not automatic crash replay;
+D17 still applies. The independent supervisor must clean owned controllers and
+workers even when the API disappears. Cancellation is confirmed only after
+cleanup verification; uncertain remote effects stay unknown.
+Controllers and workers also enforce their deadline inside the container. An
+unverified container owner is never marked done: heartbeats stop so independent
+lease-loss cleanup retains responsibility for that owner.
+
+Model and effort choices come from native account discovery. Requested effort
+and native-observed effort are separate; missing native evidence stays unknown.
+Execution deadlines include correction turns. Normal runner startup must never
+install experiment-wide model-turn ceilings or exhausted verification ledgers.
+
+Real Fresh, native Skill invocation and completed-session Resume are recorded
+locally during implementation. These do not by themselves establish cancellation,
+handoff, join, error-UI or full target-contract acceptance. PR review must retain
+those evidence boundaries until each required path is verified.
+
+
+## Native OpenTelemetry capture
+
+The local Claude controller shall configure the official OpenTelemetry metrics,
+logs/events and opt-in beta trace exporters through its own authenticated OTLP
+receiver. Exporter configuration and its temporary capability belong only to the
+controller; isolated command workers shall not inherit either. Authentication,
+version checks and model discovery shall not submit prompts or enable capture
+as if an agent invocation had occurred.
+
+Prompt, assistant-response and tool-content export shall remain disabled. The
+receiver shall additionally allowlist retained attributes, exclude account
+identity and arbitrary body content, and persist actual exporter records with
+explicit native provenance. It shall associate each record with the single
+controller turn that owns the receiver, mark conflicting native session identity,
+and exclude conflicting records from narrower scopes. Time proximity alone shall
+not establish a conversation, turn or tool-call association.
+
+Attempt feed boundaries shall isolate Fresh, Resume and output corrections.
+Receivers shall close and remove their temporary capabilities before final
+capture boundaries are recorded. Partial capture after cancellation or interrupted
+export shall not imply complete exporter flush. A successful native receipt with no exported records shall not establish
+telemetry success. Post-dispatch capture failure shall preserve an attested task
+result, completed snapshot and Resume capability, and appear as a separate
+descriptive Activity capture warning. Failed receiver startup must not submit
+that controller turn. Failures after dispatch must preserve uncertainty
+about work already performed and shall not recommend blind replay.
+
+The existing Activity OpenTelemetry section shall show captured metrics, events
+and spans, support search and export, and omit the section for invocations with no
+records. Telemetry counters shall not be added to native token/cost totals again.
+Raw prompt source and native conversation/tool activity remain separate evidence.
+Real acceptance requires a genuine Claude invocation with exported records and
+completed-session Resume showing distinct attempt boundaries and correct scopes;
+synthetic OTLP controls alone do not establish this integration.
+
+Official exporter configuration: [Claude Code monitoring](https://code.claude.com/docs/en/monitoring-usage).

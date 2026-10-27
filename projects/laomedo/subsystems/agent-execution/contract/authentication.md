@@ -135,7 +135,13 @@ shared runner, or [Claude workload identity
 federation](https://platform.claude.com/docs/en/manage-claude/authentication)
 when a suitable workload identity exists. A personal API key can serve
 single-user development, but is not a shared-service identity. Do not use a
-copied claude.ai or Claude Code personal login for Laomedo. #121 did not run a
+copied claude.ai or Claude Code personal login for shared or hosted Laomedo.
+The owner explicitly chose a Claude Code subscription for the isolated,
+single-user local prototype in PR #180 and authorized an access-only local mirror
+into its dedicated Docker profile, with host-owned refresh and no copied rotating
+refresh credential. Refuse to replace an independently established profile login. This bounded exception does not authorize
+personal session/profile copying, API billing substitution, shared hosting,
+or production credential custody; see [the prototype decision](../../../decisions/0006-local-claude-subscription.md). #121 did not run a
 credentialed turn, so Claude Agent SDK isolation and trace behavior remain
 unverified. A separate licensing review must decide whether the intended
 distribution and hosting of its bundled CLI are permitted.
