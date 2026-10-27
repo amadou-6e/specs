@@ -124,3 +124,38 @@ Real Fresh, native Skill invocation and completed-session Resume are recorded
 locally during implementation. These do not by themselves establish cancellation,
 handoff, join, error-UI or full target-contract acceptance. PR review must retain
 those evidence boundaries until each required path is verified.
+
+
+## Native OpenTelemetry capture
+
+The local Claude controller shall configure the official OpenTelemetry metrics,
+logs/events and opt-in beta trace exporters through its own authenticated OTLP
+receiver. Exporter configuration and its temporary capability belong only to the
+controller; isolated command workers shall not inherit either. Authentication,
+version checks and model discovery shall not submit prompts or enable capture
+as if an agent invocation had occurred.
+
+Prompt, assistant-response and tool-content export shall remain disabled. The
+receiver shall additionally allowlist retained attributes, exclude account
+identity and arbitrary body content, and persist actual exporter records with
+explicit native provenance. It shall associate each record with the single
+controller turn that owns the receiver, mark conflicting native session identity,
+and exclude conflicting records from narrower scopes. Time proximity alone shall
+not establish a conversation, turn or tool-call association.
+
+Attempt feed boundaries shall isolate Fresh, Resume and output corrections.
+Receivers shall close and remove their temporary capabilities before final
+capture boundaries are recorded. Partial capture after cancellation or interrupted
+export shall not imply complete exporter flush. A successful native receipt with no exported records shall not establish
+telemetry success. Failed receiver startup must not submit that controller turn. Failures after dispatch must preserve uncertainty
+about work already performed and shall not recommend blind replay.
+
+The existing Activity OpenTelemetry section shall show captured metrics, events
+and spans, support search and export, and omit the section for invocations with no
+records. Telemetry counters shall not be added to native token/cost totals again.
+Raw prompt source and native conversation/tool activity remain separate evidence.
+Real acceptance requires a genuine Claude invocation with exported records and
+completed-session Resume showing distinct attempt boundaries and correct scopes;
+synthetic OTLP controls alone do not establish this integration.
+
+Official exporter configuration: [Claude Code monitoring](https://code.claude.com/docs/en/monitoring-usage).
