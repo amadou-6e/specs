@@ -147,7 +147,10 @@ Attempt feed boundaries shall isolate Fresh, Resume and output corrections.
 Receivers shall close and remove their temporary capabilities before final
 capture boundaries are recorded. Partial capture after cancellation or interrupted
 export shall not imply complete exporter flush. A successful native receipt with no exported records shall not establish
-telemetry success. Failed receiver startup must not submit that controller turn. Failures after dispatch must preserve uncertainty
+telemetry success. Post-dispatch capture failure shall preserve an attested task
+result, completed snapshot and Resume capability, and appear as a separate
+descriptive Activity capture warning. Failed receiver startup must not submit
+that controller turn. Failures after dispatch must preserve uncertainty
 about work already performed and shall not recommend blind replay.
 
 The existing Activity OpenTelemetry section shall show captured metrics, events
