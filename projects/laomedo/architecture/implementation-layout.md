@@ -9,9 +9,10 @@ applies_to: [laomedo]
 
 # Python package layout and migration
 
-The owner selected a standard src layout and named the execution package agents.
-Canonical Python code lives under src/laomedo. Components, frontend, tests, docs,
-examples and packaging metadata remain at the implementation repository root.
+The owner selected a standard src layout, named the execution package agents,
+and clarified that callers should migrate rather than retain the flat import
+surface. Canonical Python code lives under src/laomedo. Components, frontend,
+tests, docs, examples and packaging metadata stay at the repository root.
 
 | Package | Ownership |
 | --- | --- |
@@ -21,53 +22,70 @@ examples and packaging metadata remain at the implementation repository root.
 | host | Trusted credentials, mediation, leases, publication and startup |
 | activity | Capture, storage, projection, tracing and inspection routes |
 | integrations/langflow | App composition, joins and stage adapters |
-| work_graph | Existing work-graph domain, retained |
+| work_graph | Existing work-graph domain |
 
-No credential or host authority moves into a model-callable boundary because of
-this layout change. Public HTTP records, error codes, request identities,
-acknowledgement order, cancellation and cleanup semantics remain unchanged.
-Configuration bytes and image pins remain stable; no persistent data migration
-or wholesale model-library dependency change is part of this refactor.
+Each implementation has one canonical owning module. Cohesive features are
+subpackages: activity/agent_activity contains store, capture, cost, projection
+and routes. The Python package root contains only its initializer and shared
+package-path infrastructure. Runtime forwarding modules, import hooks and the
+checkout-only bridge are removed; development uses an editable src install.
 
-## Retained interfaces
+No credential or host authority moves into a model-callable boundary. Public
+HTTP records, error codes, request identities, acknowledgement order,
+cancellation and cleanup semantics remain unchanged. Configuration bytes,
+script bytes, policy hashes and image pins remain stable; neither persistent
+record-schema migration nor a wholesale model-library change is included.
 
-Saved graphs embed Python code and import flat module names. Keep the existing
-names as compatibility modules resolving to the identical canonical module object,
-including private symbols, exception/class identity and mutable globals. The
-implementation mapping is tools/package-layout.json. New component definitions
-use canonical imports. Historical execution exports remain unchanged; current
-example exports may be regenerated. Known-source legacy contract migrations keep
-their exact recognised source text.
+## Consumers and one-time migration
 
-Existing python -m commands, scheduler tasks and app factory names remain valid.
-Executable compatibility modules must branch before importing the defining
-module and invoke its real main; a successful no-op is an acceptance failure.
-The checkout-only root laomedo/__init__.py bridge supports working-directory
-imports and old editable mappings. It points only to src/laomedo, never searches
-other checkouts, and is excluded from wheels. The canonical package initializer
-has no executable setup; that invariant needs a regression check before changes.
+Repository imports, current component definitions, launcher commands and
+current graph exports use canonical domain names directly. Flat imports and
+old python -m module names are intentionally retired after caller migration.
+The app factory uses integrations.langflow.langflow_skill_viewer:create_app.
+Launchers use agents.local_runner, agents.providers.claude_runner,
+host.leases.lease_service and host.managed_service under the laomedo namespace.
 
-Resource and import roots are derived from a canonical package helper, independent
-of domain nesting and the checkout bridge's __file__. Resources remain at the
-same package-relative paths. Source origin reports identify the canonical package.
-Stage containers mount the importable package tree, including all canonical
-subpackages and retained facades. Explicit source roots accept the existing checkout root, src import roots and
-installed import roots without searching arbitrary parent directories.
-The host credential helper remains an executable package-root script.
+Saved graphs embed Python code; source migration is explicit. The repository
+provides tools/migrations/migrate_module_paths.py and its reviewed module map.
+The default is a preview on explicitly selected files. Applying retains a
+non-overwritten sibling backup, preserves graph/run identities and unrelated
+payloads, and updates only embedded code and known launcher fields. Repeating
+migration is idempotent. This tool is not shipped as runtime compatibility.
+
+Existing locally controlled graph definitions and launchers are migrated before
+their next use with the new package. Report external launchers that cannot be
+migrated; do not silently keep aliases or claim their verification. Historical
+execution exports, receipts and observation evidence remain unchanged. Migrate
+a copy when historical input is needed for a new graph.
+
+## Runtime assets
+
+Assets belong to their runtime domain: runner config, seccomp and agent-side
+MJS adapters live in agents/resources; bundled skill instructions live in
+skills/resources; the pinned staging script lives in host/publication/resources.
+The standalone stdlib Git credential helper lives in host/credentials and
+remains executable as a script. Docker build definitions belong in containers,
+and package documentation belongs in docs rather than the runtime root.
+
+Resource paths derive from their owners, independent of checkout location.
+Shared import/package roots identify the installed canonical package. Stage
+containers mount that package tree read-only. Explicit source roots may be a
+checkout root, src root or installed import root, without arbitrary parent
+search. Private credentials and service state stay outside source and outside
+model-callable mounts.
 
 ## Verification boundary
 
-Check installed-wheel imports and resources from an unrelated working directory,
-retained entrypoints from the checkout, unchanged pre-refactor embedded component
-code, module/global identity and actual interception by existing patch targets.
-Catalogue guards inspect defining producers rather than compatibility wrappers.
-Run core and explicit Langflow regression suites; internal mocked controls do not
-establish real graph or agent acceptance. Runner-affecting migration also needs
-real managed startup, recorded-run Status and an authorised Fresh execution,
-with unknown outcomes reconciled before any retry.
+Check installed-wheel discovery, canonical imports, resource ownership and
+pinned bytes from an unrelated working directory. Exercise canonical CLI
+entrypoints and reject reintroduction of flat forwarding files. Check migration
+against archived graph inputs, idempotence, identity/content preservation and
+backup behavior. Catalogue guards inspect defining error producers directly.
 
-The original dirty checkout is preserved. Work occurs on an isolated branch from
-current develop; unrelated pending changes are not silently included. Independent
-Claude review and the owner's working-graph review remain required before merge.
-A package move does not imply lifecycle algorithms have been redesigned or prove
-provider scenarios that were not actually exercised.
+Run core and explicit Langflow regression suites. Mocked controls and historical
+receipts do not establish real Agent execution. Runtime migration acceptance
+also requires real managed startup, recorded-run Status and an authorised Fresh
+execution on the installed final package. Reconcile unknown outcomes before
+retrying. Independent Claude review and owner working-graph approval remain
+required before merge; a package refactor does not prove unexercised provider
+scenarios or redesign execution lifecycle behavior.
