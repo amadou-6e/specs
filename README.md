@@ -50,3 +50,17 @@ python tools/validate_specs.py
 
 Validation checks project manifests, temporary files, repository size limits, and
 relative Markdown links. GitHub Actions runs the same checks for pull requests.
+
+## Trace report
+
+```bash
+python tools/trace_graph.py [--json graph.json] [--stale-days 180]
+```
+
+A read-only traceability report built from frontmatter, relative links, and
+interaction IDs in visible Draw.io labels (ranges such as `ED-06–10` and lists such
+as `CA-06/07` are expanded). It lists diagram IDs that Markdown does not project,
+Markdown IDs absent from the current diagrams, interactions not cited by ID in
+`ui-tests.md`, lifecycle status drift, stale reviews, and unlinked documents.
+Findings are review prompts; the command always exits 0 and is not a CI check.
+Run its tests with `python -m unittest discover -s tools -p "test_*.py"`.
