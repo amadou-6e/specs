@@ -25,7 +25,8 @@ that make intent, behavior, constraints, and verification clearer.
   and retain applicable sections from the repository's existing PR template.
 - [Claude reviewer](shared/skills/claude-reviewer/SKILL.md): request an independent,
   read-only Claude Code review directly. Its reviewer session follows the current
-  Codex conversation and reuses the existing subscription login.
+  Codex conversation and reuses the existing subscription login. This entry links
+  to the canonical skill in `my-skills/05-software_engineering/skill-claude-reviewer/`.
 
 Read the relevant skill before applying it. Skills guide authorized work; they do not
 authorize implementing open proposals, changing issue state, or activating repository
