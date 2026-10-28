@@ -123,7 +123,7 @@ checkout root, src root or installed import root, without arbitrary parent
 search. Private credentials and service state stay outside source and outside
 model-callable mounts.
 
-## Verification boundary
+## Settings and exception contracts
 
 Feature configuration modules are named `settings.py`, never `constants.py`.
 Externally supplied configuration is represented by a feature-owned Pydantic
@@ -149,6 +149,8 @@ specialized subclass may inherit its implementation but states its own contract;
 pass-only placeholders are insufficient. Conflict recovery reconciles current
 state before replaying writes. Unknown external outcomes do not authorize retry.
 User-facing explanations and controls remain owned by the shared error catalogue.
+
+## Verification boundary
 
 Regression checks cover settings load timing, missing/empty values, exact flags,
 fixed-pin exclusion, credential-boundary preservation, exception code/inheritance
