@@ -47,7 +47,8 @@ An implementation file introduces classes or standalone functions, not both.
 Functions that belong to an object's responsibility become methods. Independent
 helpers live in the owning feature's utils.py or a focused function-only module.
 Exception classes belong in errors.py; initializers remain small. Hiding a class
-inside a standalone factory does not satisfy this separation.
+inside a standalone factory does not satisfy this separation. Request handlers
+nested in their owning server constructor are allowed.
 
 Values repeatedly passed together as one domain concept use a canonical Pydantic
 model in that feature's models.py. Constructors, validation and projections belong
@@ -82,7 +83,9 @@ provides tools/migrations/migrate_module_paths.py and reviewed module, symbol
 and CLI maps. Every published module generation maps directly to its final owner;
 renamed or extracted symbols migrate to their defining modules. Unsafe dynamic
 references and changed constructor or method signatures require manual migration.
-The tool must not claim such inputs are already current.
+The tool must not claim such inputs are already current. Detection is conservative
+and best-effort; a successful preview does not replace manual review of changed
+call signatures or dynamic references.
 The default is a preview on explicitly selected files. Applying retains a
 non-overwritten sibling backup, preserves graph/run identities and unrelated
 payloads, and updates only embedded code and known launcher fields. Repeating
