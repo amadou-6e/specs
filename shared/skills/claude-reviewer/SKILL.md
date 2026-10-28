@@ -8,7 +8,8 @@ description: Compatibility pointer to the canonical claude-reviewer skill in ama
 The reviewer skill and its bundled scripts are maintained in
 `my-skills/05-software_engineering/skill-claude-reviewer/`, not in this repository.
 
-For sibling checkouts, read the [local canonical skill](../../../../my-skills/05-software_engineering/skill-claude-reviewer/SKILL.md).
+For sibling checkouts, read the local canonical skill at
+`../../../../my-skills/05-software_engineering/skill-claude-reviewer/SKILL.md`.
 Otherwise, read the [canonical skill on GitHub](https://github.com/amadou-6e/my-skills/blob/main/05-software_engineering/skill-claude-reviewer/SKILL.md).
 Follow that skill's instructions and use its launcher in `01-scripts/`.
 
