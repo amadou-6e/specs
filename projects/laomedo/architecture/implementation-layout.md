@@ -113,7 +113,7 @@ Assets belong to their runtime domain: runner config, seccomp and agent-side
 MJS adapters live in agents/resources; bundled skill instructions live in
 skills/resources; the pinned staging script lives in host/publication/resources.
 The standalone stdlib Git credential helper lives in host/credentials and
-remains executable as a script. Docker build definitions belong in containers,
+remains executable as a script. Docker build definitions belong in docker,
 and package documentation belongs in docs rather than the runtime root.
 
 Resource paths derive from their owners, independent of checkout location.
@@ -123,7 +123,38 @@ checkout root, src root or installed import root, without arbitrary parent
 search. Private credentials and service state stay outside source and outside
 model-callable mounts.
 
+## Settings and exception contracts
+
+Feature configuration modules are named `settings.py`, never `constants.py`.
+Externally supplied configuration is represented by a feature-owned Pydantic
+settings object in that file, created at the point of use rather than cached at
+import time. Existing environment names, case handling, missing/empty semantics,
+exact `"1"` flags and public failure categories remain unchanged. Settings read
+explicit arguments and process environment only, without implicit dotenv files,
+secret directories or structured-value decoding. Token paths may be configuration;
+credential values never become settings fields, representations or serialization.
+Explicit child-process filtering, dynamic credential lookups and the standalone
+standard-library Git helper remain credential boundaries, not settings loaders.
+
+Fixed protocol values, image and integrity pins, safety limits and single-owner
+locks stay module-level values, not environment fields. Settings objects are the
+configuration-specific exception to keeping domain payloads in `models.py`.
+The Pydantic Settings dependency must support the host, installed package and
+pinned stage runtime; configuration extraction must not break stage imports.
+
+Domain exceptions in `errors.py` document their distinct failure domain and
+outcome guarantees and expose the existing stable `code`. They retain existing
+base classes, exception arguments and `str(error)` boundary categories. A
+specialized subclass may inherit its implementation but states its own contract;
+pass-only placeholders are insufficient. Conflict recovery reconciles current
+state before replaying writes. Unknown external outcomes do not authorize retry.
+User-facing explanations and controls remain owned by the shared error catalogue.
+
 ## Verification boundary
+
+Regression checks cover settings load timing, missing/empty values, exact flags,
+fixed-pin exclusion, credential-boundary preservation, exception code/inheritance
+and serialization behavior. Internal checks do not establish live integration.
 
 Check installed-wheel discovery, canonical imports, resource ownership and
 pinned bytes from an unrelated working directory. Exercise canonical CLI
