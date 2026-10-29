@@ -29,7 +29,7 @@ Runner checks below are bounded evidence, not graph acceptance or merge approval
 | ACP-01 | Use standard initialize, session/new, session/load, session/set_config_option, session/prompt and session/cancel operations. Resume must load the saved native identity; failure must never create a new session or repeat the task automatically. |
 | ACP-02 | Discover model and effort choices from the installed runtime. Validate the requested pair before a prompt and confirm the agent's observed configuration. A display label or requested value alone does not prove the effective selection. |
 | ACP-03 | Advertise no host filesystem or terminal capabilities. Deny permission requests. The only optional host request extension is pure output-precheck validation; it must not execute commands or mutate files. |
-| ACP-04 | Keep launch policy, credential selection, immutable skill materialization, run authorization and output correction in their existing owners. General container ownership, stream limits and cancellation belong to py-docker. ACP does not authorize tool execution. |
+| ACP-04 | Keep launch policy, credential selection, immutable skill materialization, run authorization and output correction in their existing owners. General container ownership, stream limits and container termination belong to py-docker; ACP session cancellation belongs to Laomedo's shared client. ACP does not authorize tool execution. |
 | ACP-05 | Keep native session/message/tool/turn identities when actually reported. Label host attempt identities as host identities. A normalized ACP title is display text, not a native tool name or proof that a selected skill executed. |
 | ACP-06 | Bound startup, prompts, cancellation grace, captured bytes and metadata export. No verification-only turn limit belongs in ordinary runners or managed services. |
 | ACP-07 | Validate incoming notifications before SDK parsing can log private payload fragments. Malformed frames, capture failures and mismatched sessions must invalidate success. Do not globally suppress logging or silently discard a failed capture while reporting completion. |
@@ -154,6 +154,10 @@ GitHub validation, unselected-skill isolation and child activity. Native child
 agent validation requires the requested user authorization; do not substitute
 synthetic child evidence. Final full-diff reviewer approval and user graph
 validation have not been obtained. No release or merge readiness is claimed.
+
+Claude initialization was observed to advertise bundled skills that were not
+selected. The current tool allowlist denies their invocation, but discovery
+isolation has not been achieved and must not be presented as an accepted capability.
 
 Sources: [ACP stdio transport](https://agentclientprotocol.com/protocol/v1/transports),
 [Python SDK](https://github.com/agentclientprotocol/python-sdk),
