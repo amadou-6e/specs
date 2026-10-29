@@ -125,6 +125,17 @@ inner filesystem boundary. Kernel/user-namespace attack surface remains a limit;
 these controls do not prove hostile multi-tenant isolation. Split-controller
 policy is unchanged. Package the policy, provenance and upstream license together.
 
+For the [shared ACP increment](agent-protocol.md), the separate credential-free
+Codex executor also uses that exact checksum-verified policy. This explicitly
+expands the executor's outer syscall surface beyond Docker's default to permit
+Bubblewrap startup; it is not a claim of unchanged executor isolation. Keep the
+controller on its default outer policy and enforce its no-listener gate. The
+executor remains non-root, drops all capabilities, uses no-new-privileges and
+mounts only its run workspace, with no controller profile or access token.
+Verify both immutable image identities. Do not use unconfined seccomp or change
+host kernel settings as a substitute. Real prototype namespace and executor-loss
+checks support this change; final production/graph validation remains required.
+
 A trusted operator may select an inspected rebuilt non-Git image by full SHA256
 identity. Its fixed version tag must match, native Codex version must be checked
 without credentials/network before dispatch, and execution uses that immutable
