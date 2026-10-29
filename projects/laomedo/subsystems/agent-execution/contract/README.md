@@ -13,6 +13,7 @@ related: []
 
 Canonical draft requirements: [Codex](codex.md), [Claude](claude.md),
 [OpenCode](opencode.md), [isolation](isolation.md),
+[shared local agent protocol](agent-protocol.md),
 [authentication and credential lifecycle](authentication.md),
 [GitHub account connection](github-account-connection.md), the newer
 [subsystem interfaces](interfaces.md), and per-exchange

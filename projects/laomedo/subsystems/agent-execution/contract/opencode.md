@@ -11,6 +11,13 @@ related: []
 
 # OpenCode local provider adapter
 
+The [shared local agent protocol](agent-protocol.md) supersedes the historical
+HTTP/SSE agent-execution transport below for the current increment. The controller
+runs `opencode acp` over stdio; native CLI model discovery and offline history
+export supply metadata ACP does not expose. Historical HTTP/SSE evidence remains
+historical, not acceptance of ACP. The authenticated graph-to-runner HTTP API
+and the credential-free command-worker boundary remain separate interfaces.
+
 Scope: issue [Laomedo #27](https://github.com/amadou-6e/laomedo/issues/27).
 This is a draft local adapter contract. The bounded authenticated Docker pilot is
 recorded in the [latest results](../../../experiments/opencode-agent/iterations/2026-10-02/results.md).

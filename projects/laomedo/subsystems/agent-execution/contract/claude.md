@@ -11,6 +11,12 @@ related: []
 
 # Claude Agent component
 
+The [shared local agent protocol](agent-protocol.md) owns the current ACP
+transport increment. The host communicates through claude-agent-acp and retains
+original SDK receipts through its explicit extension; it does not keep a second
+stream-JSON execution reader. Native authentication, skill and permission policy
+remain Claude-owned. The acceptance limits on that page apply to this increment.
+
 The [central D17 record](../../../decisions/0002-subsystem-handoffs.md)
 defers automatic mid-turn container recovery until a controlled real-agent
 session-restart experiment observes resumed, repeated and lost effects. A
