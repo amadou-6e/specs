@@ -57,8 +57,10 @@ configuration. A project `.codex/config.toml`, including a model-written file,
 must not become a source of runner permissions, approval, hooks or provider
 routing on Fresh, correction or Resume. Native sandbox protection of that path
 is an additional boundary, not a substitute for keeping native project trust off.
-Record effective model/effort provenance as confirmed ACP configuration when
-the adapter's observed configuration supplies those fields.
+When only the adapter's ACP configuration supplies model/effort fields, label
+their provenance `host_requested_adapter_asserted`. This checks configuration
+consistency; it is not an independent native report of effective selection.
+Do not describe an adapter echo as native confirmation.
 
 Claude uses claude-agent-acp with original SDK message receipts enabled. A native
 terminal receipt, matching session and positive descendant cleanup remain
