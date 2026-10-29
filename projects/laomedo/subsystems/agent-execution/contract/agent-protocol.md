@@ -73,15 +73,21 @@ memory and verify that pinned account, account-state, control-account and
 credential tables contain no rows. Unknown credential schemas or populated
 secret-bearing tables refuse export. Rebuild the checked snapshot with SQLite
 VACUUM INTO before writing the disk copy, purging deleted-page contents. Native
-session token counters are usage metadata, not authentication tokens. This
-metadata job receives no credentials or network
-and mounts no writable live profile. Retain original exports, session/parent
+session token counters are usage metadata, not authentication tokens. The job
+receives no authentication files, has no network and mounts no writable live
+profile. Credential-store checks and their limits are described below.
+Retain original exports, session/parent
 bindings, per-attempt message baselines and receipt times. Discover only child
 identities actually linked by a native task result and independently verify each
 child's parent. An unknown old-child baseline, incomplete tool, interrupted export
 batch or uncertain export-container cleanup must never become known zero usage
 or complete inclusive totals. Do not add ACP counters to native export counters.
 Child metadata available only after export must not be described as live streaming.
+The credential check covers known pinned credential stores and a field-name
+heuristic, including key, API-key, bearer and cookie names. It is not a proof that
+arbitrary JSON/blob task content contains no secrets. Native task history stays
+private to its local owner and is not approved for remote export. Do not copy
+a personal OpenCode database or describe the guard as a generic secret scanner.
 
 The default database capture ceiling is 128 MiB. The local user may set
 `LAOMEDO_OPENCODE_HISTORY_MAX_DATABASE_BYTES` in host runner startup configuration,
@@ -90,6 +96,10 @@ incomplete capture and do not replay the task. Larger stores require preserving
 an archive and configuring a separate dedicated store for new work; do not delete
 active history or imply an archive control exists in the graph UI. Guard refusal
 and budget refusal do not imply unconfirmed container cleanup.
+
+The in-memory backup and compaction can peak at roughly twice the configured
+database ceiling, plus interpreter overhead; 512 MiB can therefore require about
+1 GiB of host memory. This setting bounds input size, not total process memory.
 
 ## Failure, cancellation and saved runs
 
