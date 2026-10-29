@@ -46,8 +46,11 @@ creating a session. Matching an upstream adapter version is insufficient.
 The extension forwards allowlisted original native notifications on
 `_laomedo/codexEvent` and drains those notifications before a prompt response.
 Native capture failure terminates native execution. No account, authentication,
-configuration or arbitrary native request tunnel is exposed. Named extensions
-provide bounded model metadata, fixed-enum preflight, one pre-prompt executor
+configuration or arbitrary native request tunnel is exposed.
+The raw archive contains these allowlisted notifications, not every stdout byte;
+ACP responses and adapter stderr are excluded. Stderr is drained within stream
+limits and discarded, so the retired private stderr log is intentionally absent.
+Named extensions provide bounded model metadata, fixed-enum preflight, one pre-prompt executor
 registration/status and the pure output precheck. Typed skill items and normal
 or split policy come only from validated host metadata, never prompt parsing.
 Normal mode inherits the reviewed permission profile with approval set to never;
