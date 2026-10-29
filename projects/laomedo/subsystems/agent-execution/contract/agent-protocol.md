@@ -52,6 +52,13 @@ registration/status and the pure output precheck. Typed skill items and normal
 or split policy come only from validated host metadata, never prompt parsing.
 Normal mode inherits the reviewed permission profile with approval set to never;
 ACP agent modes must not override it or enable agent self-approval.
+The model-writable project root must be explicitly untrusted in native session
+configuration. A project `.codex/config.toml`, including a model-written file,
+must not become a source of runner permissions, approval, hooks or provider
+routing on Fresh, correction or Resume. Native sandbox protection of that path
+is an additional boundary, not a substitute for keeping native project trust off.
+Record effective model/effort provenance as confirmed ACP configuration when
+the adapter's observed configuration supplies those fields.
 
 Claude uses claude-agent-acp with original SDK message receipts enabled. A native
 terminal receipt, matching session and positive descendant cleanup remain
@@ -61,7 +68,13 @@ a retired CLI command must not be retained solely for that fingerprint.
 OpenCode uses its native `opencode acp` command. Where ACP omits complete native
 usage or child history, the host may make a bounded, consistent read-only backup
 of the dedicated runner's native database and run the native CLI export against
-a private disposable copy. This metadata job receives no credentials or network
+a private disposable copy. First take the bounded consistent snapshot in host
+memory and verify that pinned account, account-state, control-account and
+credential tables contain no rows. Unknown credential schemas or populated
+secret-bearing tables refuse export. Rebuild the checked snapshot with SQLite
+VACUUM INTO before writing the disk copy, purging deleted-page contents. Native
+session token counters are usage metadata, not authentication tokens. This
+metadata job receives no credentials or network
 and mounts no writable live profile. Retain original exports, session/parent
 bindings, per-attempt message baselines and receipt times. Discover only child
 identities actually linked by a native task result and independently verify each
@@ -69,6 +82,14 @@ child's parent. An unknown old-child baseline, incomplete tool, interrupted expo
 batch or uncertain export-container cleanup must never become known zero usage
 or complete inclusive totals. Do not add ACP counters to native export counters.
 Child metadata available only after export must not be described as live streaming.
+
+The default database capture ceiling is 128 MiB. The local user may set
+`LAOMEDO_OPENCODE_HISTORY_MAX_DATABASE_BYTES` in host runner startup configuration,
+up to 512 MiB. If that ceiling is exceeded, preserve existing history, report
+incomplete capture and do not replay the task. Larger stores require preserving
+an archive and configuring a separate dedicated store for new work; do not delete
+active history or imply an archive control exists in the graph UI. Guard refusal
+and budget refusal do not imply unconfirmed container cleanup.
 
 ## Failure, cancellation and saved runs
 
@@ -78,6 +99,10 @@ An independently lost executor retains `executor_lost` and an uncertain work
 outcome. ACP cancellation acknowledgement alone is insufficient: Codex needs the
 matching raw native interrupted completion, and all providers need confirmed
 descendant cleanup. A cleanup failure takes precedence over a successful answer.
+Freeze post-run files only after confirmed descendant cleanup, and recheck pinned
+skills and protected mounts at that boundary. Directory creation during native
+shutdown must not invalidate a snapshot made earlier. Include empty directories
+in the frozen tree and verify that actual Fresh-to-Resume remains possible.
 
 Maintain exact precheck call bindings and verified call IDs. Automatic output
 correction continues the same session and must not repeat the original task.
