@@ -57,6 +57,34 @@ nearby guidance for its concrete structure and canonical owners.
   maturity changes, or user experience decisions. Do not describe an independent
   review or self-merge as human approval.
 
+## Browser-based resources: real user-story testing and user validation
+
+Any browser-based resource you build or change must be fully tested against every
+user story it provides. Before implementation, identify those stories and their
+observable acceptance criteria, including important failure and recovery paths.
+Test the complete paths with the actual browser and resource. Mocks, HTTP fixtures,
+protocol tests, successful builds, screenshots and another agent's approval are
+supporting evidence; none substitutes for end-to-end user-story testing.
+
+For supported session-management stories, explicitly verify cookie/state persistence
+across browser restarts, actual profile restoration and authenticated behavior,
+human takeover, expired login, concurrent profile use and crash recovery. Mark
+unsupported behavior as a constraint, not a tested capability. Include normal and
+failure paths and ensure cleanup does not affect unrelated sessions or accounts.
+
+When interactive viewing/control is provided, measure responsiveness, FPS, CPU,
+memory and relevant GPU compatibility against user-agreed criteria on the intended
+environment. Do not accept a technically functioning stream as proof it is usable.
+Record the tested revision, environment, story-by-story results, evidence and gaps.
+If a real path cannot be tested, report it as blocked or unverified; do not claim
+that the browser resource is complete, accepted or ready to merge.
+
+Browser-based changes may be merged only after the requesting user has inspected
+the real workflow/evidence and explicitly validated the relevant user stories for
+the final revision. Independent reviewer approval, green tests and earlier general
+merge authorization do not replace this user validation. This browser-specific
+rule takes precedence over any general permission to merge after agent review.
+
 ## Working rules
 
 - Do specification work in this repository's visible top-level local checkout
