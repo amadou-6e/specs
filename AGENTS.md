@@ -100,8 +100,9 @@ Problem or feedback -> specification issue -> typed issue branch -> spec and evi
 -> validation -> pull request -> review -> merge.
 
 Task branches must use exactly `<type>/<issue-number>`. The only allowed task types
-are `feat`, `fix`, `docs`, `chore`, and `refactor`; for example `feat/12`, `fix/18`,
-`docs/21`, `chore/24`, or `refactor/25`. The suffix is the actual numeric GitHub
+are `feat`, `fix`, `docs`, `chore`, `refactor`, and `exp`; for example `feat/12`,
+`fix/18`, `docs/21`, `chore/24`, `refactor/25`, or `exp/39`. Use `exp` for
+experiment work. The suffix is the actual numeric GitHub
 issue number in the repository containing the branch. Do not append descriptive
 slugs or invent task prefixes such as `review/`, `validation/`, or `checkpoint/`.
 Permanent branches such as `main` and `develop` are not task branches.
