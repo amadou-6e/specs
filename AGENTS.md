@@ -99,9 +99,21 @@ nearby guidance for its concrete structure and canonical owners.
 Problem or feedback -> specification issue -> typed issue branch -> spec and evidence
 -> validation -> pull request -> review -> merge.
 
-Use `<type>/<issue-number>` branches, for example `feat/12`, `fix/18`, `docs/21`, or
-`chore/24`. Pull requests should link the issue and identify the specifications whose
-status or behavior changed.
+Task branches must use exactly `<type>/<issue-number>`. The only allowed task types
+are `feat`, `fix`, `docs`, `chore`, and `refactor`; for example `feat/12`, `fix/18`,
+`docs/21`, `chore/24`, or `refactor/25`. The suffix is the actual numeric GitHub
+issue number in the repository containing the branch. Do not append descriptive
+slugs or invent task prefixes such as `review/`, `validation/`, or `checkpoint/`.
+Permanent branches such as `main` and `develop` are not task branches.
+
+Identify an existing issue that owns the user-selected work, or create one before
+creating its task branch and starting changes. Each PR must link its owning issue
+and identify the specifications whose status or behavior changed. Keep checkpoints
+and validation work on the owning issue branch and describe their purpose in the
+PR. A pushed branch without PR coverage does not complete the change workflow.
+Existing issue edits and closure still require explicit approval; do not use
+automatic-closing PR keywords without that approval. These are workflow rules,
+not a claim that GitHub naming checks or other repository settings are enabled.
 
 1. Inspect Git status and the intended base before editing. Preserve unrelated work;
    use an issue branch in the visible checkout, or ask for direction if concurrent
