@@ -100,8 +100,9 @@ Find, Files and Commits have chevrons without per-section action menus. The sing
 SKILL menu offers Collapse all when Find, Files, Commits and every folder are open,
 otherwise Open all; it changes disclosure without changing selected content.
 Keep hide/reset-width actions and existing keyboard/focus behavior.
-Find searches pinned current text files locally and opens a matching current
-source line; it never changes the Skill revision. Full page/Restore window
+Find searches current text files locally, including unsaved working text while
+editing, and opens a matching current source line. Searching does not save edits
+or change the Skill revision. Full page/Restore window
 resize the same dialog while preserving selection and search state. SH08/SH09
 in the interaction model own these controls and transitions.
 No Files/History mode buttons. A draggable, keyboard-operable vertical separator

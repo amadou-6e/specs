@@ -343,7 +343,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="SH07-rule" value="PROPOSED ? Files/Commits disclosure detail. SH08 adds Find to the same bulk action: all three sections and folders must be open. Keep selection, tabs and scroll mounted. Escape/outside dismisses the menu; actions return focus." style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+        <mxCell id="SH07-rule" value="PROPOSED - Files/Commits disclosure detail. SH08 adds Find to the same bulk action: all three sections and folders must be open. Keep selection, tabs and scroll mounted. Escape/outside dismisses the menu; actions return focus." style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="20" y="1080" width="1520" height="50" as="geometry" />
         </mxCell>
       </root>
