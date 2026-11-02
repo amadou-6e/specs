@@ -24,7 +24,7 @@ owns panel geometry, visible states and transitions; this page indexes it.
 | SF02 | Opening the panel captures Skill ID and exact revision; no model turn or graph execution occurs. |
 | SF03 | Header displays the shortened current revision (full hash on hover) and Read only. Close returns to the unchanged graph. |
 | SF04 | Explorer folders expand/collapse and files open tabs; default SKILL.md; closing a tab chooses another open file. |
-| SF05 | Source uses locally bundled Monaco, read-only, syntax highlighting and editor search. Markdown files also offer Preview. |
+| SF05 | Source uses locally bundled Monaco, read-only, syntax highlighting; SH08 owns workspace search. Markdown files also offer Preview. |
 | SF06 | Markdown preview skips raw HTML and remote images, renders links as text, and never executes scripts or commands. |
 | SF07 | Loading has status text. Missing/invalid/corrupt or oversized revision has a fixed error and Retry. No stale file survives a changed selection. |
 | SF08 | Binary source files show metadata and an unsupported-preview message. No download/write/run action. |
@@ -44,9 +44,9 @@ stays read-only; the graph's Operation input creates candidates separately.
 ## Navigation disclosure (SH02 / SH07)
 
 Files and Commits use their own chevrons, without redundant action menus. The
-single SKILL menu offers **Collapse all** only when both sections and every
+single SKILL menu offers **Collapse all** only when all three sections and every
 folder are open. Otherwise it offers **Open all**, including mixed disclosure
-states. The action changes both sections and all folders; it preserves the
+states. The action changes all three sections and all folders; it preserves the
 selected file, tabs, commit, scroll and pinned current revision. Individual
 chevrons still work. Hide navigation and Reset navigation width remain separate
 menu actions, with existing keyboard, Escape/outside dismissal and focus rules.
@@ -140,7 +140,7 @@ chevrons, without per-section action menus. They share the available column
 height; when one closes, the other fills the remaining height. Keep section and
 folder bodies mounted while hidden so file, tab, commit and scroll state survive.
 The SKILL menu owns the single state-aware Collapse all / Open all action,
-including folders nested inside closed sections. With no folders, both sections
+including folders nested inside closed sections. With no folders, all three sections
 open counts as all open. Hide navigation and Reset navigation width remain
 separate. The selected source/comparison stays visible when all sections close.
 After the bulk action flips its label, close the menu and return focus to its
@@ -178,3 +178,32 @@ host integration documentation. Restate the single-JSON-object operation
 contract after the snapshot. The Agent proposes content and never invokes host
 prepare/apply or supplies provenance. Apply must leave a meaningful description,
 including when an edit would otherwise remove an existing one.
+
+
+## Workspace Find and full-page viewing (SH08 / SH09)
+
+The diagram's fourth page owns these controls and states. Find is a third
+collapsible section in the Skill sidebar, initially closed. It searches the
+pinned current snapshot's text files locally, with literal case-insensitive
+matching and an Aa case toggle. Group matching lines by file, showing line
+numbers and bounded highlighted snippets. Empty queries prompt for text; no
+matches are explicit. Limit displayed matching lines to 500 and disclose
+truncation. Binary and historical-only files are excluded. Result selection
+returns to current source, opens the file and selects/reveals its match.
+Repeated selection works. Collapse/reopen retains the query and results.
+Ctrl/Cmd+F opens and focuses Find; Escape inside Find collapses it and returns
+focus to the header. Remove the old Find in file button and editor find widget.
+The SKILL bulk action includes Find as well as Files, Commits and folders.
+
+Full page and Restore window resize the same accessible dialog within the
+browser viewport. Preserve file, tabs, commit, search, disclosure and navigation
+width; do not navigate away or use the browser fullscreen API. Retain close,
+Escape, focus trapping and resizing. Snapshot/history loading and failure/Retry
+states remain distinct from an empty search. These controls are read-only and
+never dispatch a graph, model, edit or external resource request.
+
+Acceptance covers cross-file/nested matches, case/no-match/empty states, result
+selection after history comparison, repeated selection, collapse/reopen and
+keyboard focus, full-page/restore with preserved state at normal/small
+viewports, and existing real failure/Retry paths. Proposed design is not
+implementation or owner acceptance.
