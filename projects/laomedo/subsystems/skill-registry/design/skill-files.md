@@ -207,3 +207,21 @@ selection after history comparison, repeated selection, collapse/reopen and
 keyboard focus, full-page/restore with preserved state at normal/small
 viewports, and existing real failure/Retry paths. Proposed design is not
 implementation or owner acceptance.
+
+
+## Explorer type icons and disclosure (SH10)
+
+The fifth Draw.io page owns the explorer row geometry. Place a locally bundled
+16 px file-type logo immediately before each filename, with a generic fallback
+for unknown types. Use the installed VS Code Codicon chevron-right/down for
+folders and section headers instead of filled text triangles. Reserve a
+chevron slot on file rows to align root and nested filenames consistently.
+Icons are decorative; retain filename-only accessible names, folder
+aria-expanded and the existing read-only selection/keyboard/disclosure rules.
+Long names may truncate visually; expose their full relative path on hover.
+No remote icon assets, dependencies or file reads are introduced.
+
+Acceptance checks real file icons, folder open/closed chevrons, keyboard and
+bulk actions, selection retention, normal/full-page/small viewports and
+light/dark contrast. Extension/fallback mappings use internal regression
+controls; do not manufacture file types or history for a live demonstration.
