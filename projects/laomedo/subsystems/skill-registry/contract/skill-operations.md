@@ -32,7 +32,16 @@ Other Agent inputs, mutating Skill dependencies, ambiguous returns, indirect
 cycles and multiple feedback controllers refuse before dispatch.
 
 A proposal contains exactly `action: modify`, a nonempty `message`, and `files`:
-a list of `{path, content}`. Content is complete UTF-8 text or null for deletion.
+a list of file edits. Existing `{path, content}` carries complete UTF-8 text or
+null for deletion. Additive `{path, content, encoding: base64}` carries canonical
+base64 binary bytes; invalid encodings and more than 512 KiB decoded content
+refuse. `{path, source_path}` copies exact bytes from a path in the same immutable
+base revision; it cannot reference a host path or another Skill/revision. These
+forms are mutually exclusive; omitted encoding retains the existing wire shape.
+Source copies resolve before the batch applies any deletions. Binary changes
+require explicit asset permission and an admitted asset suffix as well as the
+existing exact-path, size and addition/deletion policy. Text/SKILL requirements
+and protection against execution remain unchanged.
 Several replacements/additions/deletions form one atomic revision. Reject unsafe
 or duplicate/case-alias paths, missing SKILL.md, policy violations and no-change
 bundles. No script or validation command executes because a proposal asks for it.
@@ -173,9 +182,14 @@ policy denial/revocation, invalid batch, network failure/recovery and unsaved-cl
 protection; internal controls are not a substitute for these live stories.
 
 
-Manual UI scope: edit several existing text files; additions, deletions and binary
-editing remain outside the initial manual UI. The operation protocol retains its
-existing additions/deletions semantics. Text editing is available immediately when
+Manual UI scope (SH14): edit existing text, upload text/binary files, rename,
+move and delete through the explorer working copy. Folder changes apply to all
+descendant files; empty directory identity is unsupported. Required SKILL.md
+cannot be renamed, moved or deleted. No implicit overwrites, directory imports
+or binary content editing are provided. Context-menu copy uses the Skill-relative
+path, never an absolute host path. Limits, collisions and invalid paths refuse the
+entire working operation. The service independently enforces the complete policy
+and exact head at Publish; a UI change never grants authority. Text editing is available immediately when
 authorised. The viewer opens the journal head without altering saved graph pins.
 Skill ID and short SHA share one compact header line. Publish and Discard appear
 at the bottom right only after a file changes; an optional message uses a generated
@@ -229,3 +243,44 @@ Completed exact receipts remain readable after
 write-grant revocation/policy change; only an uncompleted/new effect requires
 current write authority. A blocked close during an uncertain write visibly says
 to wait for confirmation or use Check result, rather than silently ignoring it.
+
+
+### Explorer file failures
+
+SH14 uses the shared catalogue and dialog-owned presenter; no file bytes, browser
+exception messages, host paths or base64 appear in diagnostics.
+
+| Code | Meaning | Recovery |
+| --- | --- | --- |
+| `skill_manual_file_invalid` | Unsafe/reserved name, forbidden core-file operation or unsupported directory import | Use a portable name; select files rather than directories; keep SKILL.md at root |
+| `skill_manual_file_conflict` | Destination, case alias or file/folder prefix collides | Choose a different name/destination; no overwrite occurs |
+| `skill_manual_file_limit` | File, bundle, count or request bound exceeded | Choose fewer/smaller files; working tree is unchanged |
+| `skill_manual_file_read_failed` | Browser could not read every selected local file | Re-select accessible files; no partial import |
+| `skill_manual_clipboard_unavailable` | Browser refused copying a relative path | Use the selectable Relative path field for manual copying, or allow clipboard access and repeat Copy relative path |
+
+Acceptance covers real multi-file picker and drop imports including an existing
+binary asset, pointer drag moves, rename/delete confirmations and cancellation,
+copy, collisions and invalid paths, batch limits, read-only/busy gating,
+Publish/Discard, exact stored bytes and immutable per-revision differences. User
+inspection of the final workflow remains required before merge.
+
+Explorer binary hashes use a bundled pinned pure-JavaScript implementation; they
+do not require WebCrypto or a secure origin. The service recomputes authoritative
+hashes from raw bytes. Equivalent base64 uploads and immutable source copies have
+the same byte/tree identity. Source references must exist in the reserved base,
+not in same-batch additions. Executable modes are never imported. The fixed inert
+binary suffixes are `.png`, `.jpg`, `.jpeg`, `.gif`, `.webp`, `.ico`, `.pdf`.
+SVG remains text under explicit policy and is never rendered as an image.
+New file actions refuse dot-directories and secret names `.env*`, `auth.json`,
+`credentials.json`, `credentials`, `.netrc`, `token`, `tokens`, `token.json`,
+`tokens.json`, `id_rsa`, `id_ed25519`, `*.pem`, `*.key`. These restrictions do not
+change existing immutable bundles; save and promotion recheck policy and the
+resulting bundle. Pending exact replay may retain up to the existing 4 MiB request
+bound in memory. Copy is allowed without edit rights; other actions show a reason
+when disabled. Shift+F10/ContextMenu opens the menu and Move to provides keyboard
+parity; closing/cancelling returns focus to the target or surviving root.
+
+The 4MiB encoded-request limit can refuse a new binary batch smaller than the
+4MiB bundle bound: base64 allows roughly3MiB before envelope overhead. Text uploads
+and moved paths still require script/dependency permission where applicable.
+Clipboard refusal exposes a selectable Relative path field for manual copying.

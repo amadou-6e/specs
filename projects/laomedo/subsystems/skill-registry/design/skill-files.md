@@ -299,3 +299,20 @@ The authenticated application owns the open workspace above transient canvas
 toolbars. Refresh and reconnection retain its exact selection, buffers and pending
 identity; a new toolbar request cannot replace it. Leaving the authenticated
 application releases in-memory state; reload/crash restoration remains unsupported.
+
+
+## SH14 - File actions
+
+The Skill explorer file actions page owns context-menu Upload files, Rename,
+Delete and Copy relative path, internal drag-and-drop moves, and external file
+imports. It defines target selection, inline confirmation/forms, immutable batch
+publication, working-copy Discard and protected SKILL.md. Binary files are accepted
+only under explicit asset/path policy; their editor remains metadata-only.
+Empty folders and importing directories are unsupported. The drawing defines
+collision/limit refusal, read-only/busy gating and error recovery.
+
+Keyboard opens the context menu using Shift+F10 or the ContextMenu key; Move to
+provides the drag equivalent. Focus returns to the surviving/new row or root.
+The diagram enumerates root/folder/file/required-entrypoint menus, visible disabled
+reasons and an in-dialog portal boundary. It also fixes the exact inert suffixes,
+secret-path refusals and unchanged byte identity independent of wire encoding.
