@@ -316,3 +316,7 @@ provides the drag equivalent. Focus returns to the surviving/new row or root.
 The diagram enumerates root/folder/file/required-entrypoint menus, visible disabled
 reasons and an in-dialog portal boundary. It also fixes the exact inert suffixes,
 secret-path refusals and unchanged byte identity independent of wire encoding.
+
+The root context/drop target covers the entire Files pane, including blank space.
+New destination restrictions do not prevent unrelated actions after text edits at
+existing legacy paths; whole-tree collisions and limits still apply.
