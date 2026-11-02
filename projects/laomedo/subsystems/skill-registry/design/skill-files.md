@@ -253,3 +253,11 @@ trusted single-user local service, not per-user access control or a signed audit
 Binary editing and durable recovery of unsaved buffers after browser crash are
 unsupported; browser unload warns while edits remain unsaved. No model run, Git
 publication, source write or automatic graph-pin update occurs.
+
+
+Manual failure cards remain within the active Skill dialog's interaction boundary
+while appearing at the bottom-right of the screen. Dismiss, Copy and Escape must
+work with pointer and keyboard; dismissing a card preserves the viewer and its
+working buffers. Window resizing and full-page mode never move a card outside the
+visible screen. The implementation uses a dialog-owned top-layer stack where
+supported rather than an inert body-level sibling of a modal dialog.

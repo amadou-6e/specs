@@ -187,7 +187,7 @@ details. Never forward exception bodies, file contents, tickets or credentials.
 | `skill_manual_controls_unavailable` | Read-only control/permission lookup failed; no edit requested | Retry edit controls |
 | `skill_manual_comparison_unavailable` | Exact publication base could not be loaded; Publish disabled | Retry comparison |
 | `skill_manual_not_authorized` | Required host grant or policy is absent/revoked | Preserve text; inspect local permission configuration |
-| `skill_manual_stale` | Head or registry base changed | Explicit Open latest editable revision after keeping/discarding local work |
+| `skill_manual_stale` | Head or registry base changed | Explicit Open latest editable revision while editing; Keep editing or explicit Discard changes (copy wanted text first) |
 | `skill_manual_invalid` | Malformed request or invalid bundle shape | Correct message/files; preserve working buffers |
 | `skill_manual_request_conflict` | Same save UUID has different content | Inspect existing history before a new save |
 | `skill_manual_policy_denied` | Batch violates configured editing rules/required summary | Correct working text; save again |
@@ -198,3 +198,15 @@ details. Never forward exception bodies, file contents, tickets or credentials.
 Publication receipts record confirmation time, not an invented original publication
 time after crash recovery. A confirmed durable receipt remains a read of the same
 effect; new publication never silently replaces its reviewed base.
+
+
+A stale-head recovery control remains visible while editing. Choosing it opens
+the unsaved-changes confirmation; Keep editing preserves the text, while Discard
+changes explicitly opens the newer head. Copy any wanted working text before
+discarding; no automatic merge or export is implied. If only the canonical
+publication base changed, use Back to files and start a new publication review.
+Revoked grants disable Save while preserving buffers; Retry edit controls can
+refresh restored permission. Completed exact receipts remain readable after
+write-grant revocation/policy change; only an uncompleted/new effect requires
+current write authority. A blocked close during an uncertain write visibly says
+to wait for confirmation or use Check result, rather than silently ignoring it.
