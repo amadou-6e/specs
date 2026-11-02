@@ -265,3 +265,8 @@ supported rather than an inert body-level sibling of a modal dialog.
 While a modal is open, background global notifications retain state but remain
 hidden outside its focus boundary. They reappear after closing; modal error cards
 remain reachable and cannot hide Publish behind an unrelated notification.
+
+The authenticated application owns the open workspace above transient canvas
+toolbars. Refresh and reconnection retain its exact selection, buffers and pending
+identity; a new toolbar request cannot replace it. Leaving the authenticated
+application releases in-memory state; reload/crash restoration remains unsupported.
