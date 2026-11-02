@@ -155,8 +155,9 @@ Stale heads, malformed batches, revoked policy, forbidden paths and missing
 summary refuse without partially committing. Working buffers remain available
 after a refusal; an uncertain response exposes Check result with the same request.
 
-Publish requires an additional explicit host grant. Review uses the exact candidate
-commit and expected canonical current revision. Revalidate the whole cumulative
+Publish requires an additional explicit host grant. One explicit action saves the
+changed-file batch and then promotes its exact candidate commit against the
+captured canonical current revision. Revalidate the whole cumulative
 diff against that policy, stage/freeze from canonical current, then use the existing
 registry CAS promotion and durable publication receipt. A concurrent canonical
 change refuses; never silently rebase or retry against a new base. Identical
@@ -167,15 +168,24 @@ publication reconciles its retained frozen draft before a fresh attempt.
 Old immutable revisions, journal history, source trees and saved graph pins remain
 unchanged. No Git operation or agent request is performed. Local unsaved buffers
 have no crash persistence guarantee. Acceptance exercises real browser two-file
-save, per-file publication review, explicit promotion, exact replay, stale base,
+save and promotion from one Publish action, exact replay, stale base,
 policy denial/revocation, invalid batch, network failure/recovery and unsaved-close
 protection; internal controls are not a substitute for these live stories.
 
 
 Manual UI scope: edit several existing text files; additions, deletions and binary
 editing remain outside the initial manual UI. The operation protocol retains its
-existing additions/deletions semantics. Manual controls belong above the workspace;
-the file editor remains the content region. Window controls contain icons only,
+existing additions/deletions semantics. Text editing is available immediately when
+authorised. The viewer opens the journal head without altering saved graph pins.
+Skill ID and short SHA share one compact header line. Publish and Discard appear
+at the bottom right only after a file changes; an optional message uses a generated
+default when empty. No separate Edit, Review publication or Open latest control is
+shown. A saved candidate remains pending publication after a definitive promotion
+failure; retry requires another explicit Publish action. That action may use the
+newly confirmed registry base; uncertain writes always reconcile their original
+identity first. Discard reloads the journal head and never deletes saved commits or
+changes registry current. The file editor remains the content region.
+Window controls contain icons only,
 with Full page and Restore window as tooltips and accessible names.
 
 ### Manual failure catalogue
@@ -186,28 +196,36 @@ details. Never forward exception bodies, file contents, tickets or credentials.
 | Code | Meaning | Actual recovery control |
 | --- | --- | --- |
 | `skill_manual_controls_unavailable` | Read-only control/permission lookup failed; no edit requested | Retry edit controls |
-| `skill_manual_comparison_unavailable` | Exact publication base could not be loaded; Publish disabled | Retry comparison |
+| `skill_manual_comparison_unavailable` | Cumulative footer comparison failed; Publish disabled | Retry comparison |
 | `skill_manual_not_authorized` | Required host grant or policy is absent/revoked | Preserve text; inspect local permission configuration |
-| `skill_manual_stale` | Head or registry base changed | Explicit Open latest editable revision while editing; Keep editing or explicit Discard changes (copy wanted text first) |
+| `skill_manual_stale` | Head or registry base changed | Keep or copy working text; Discard reloads the head after confirmation. Retry Publish explicitly only when the selected head remains current. |
 | `skill_manual_invalid` | Malformed request or invalid bundle shape | Correct message/files; preserve working buffers |
 | `skill_manual_request_conflict` | Same save UUID has different content | Inspect existing history before a new save |
-| `skill_manual_policy_denied` | Batch violates configured editing rules/required summary | Correct working text; save again |
+| `skill_manual_policy_denied` | Batch violates configured editing rules/required summary | Correct working text; Publish again |
 | `skill_manual_save_expired` | No retained result; unused edit capability expired | Refresh current head, then save preserved edits as a new request |
 | `skill_manual_unavailable` | Write outcome is unknown | Check result with the same exact request |
-| `skill_manual_nothing_to_publish` | Candidate bytes are already registry current | Back to files |
+| `skill_manual_nothing_to_publish` | Candidate bytes are already registry current | Discard the working state; immutable history is retained |
 
 Publication receipts record confirmation time, not an invented original publication
 time after crash recovery. A confirmed durable receipt remains a read of the same
 effect; new publication never silently replaces its reviewed base.
 
 
-A stale-head recovery control remains visible while editing. Choosing it opens
-the unsaved-changes confirmation; Keep editing preserves the text, while Discard
-changes explicitly opens the newer head. Copy any wanted working text before
-discarding; no automatic merge or export is implied. If only the canonical
-publication base changed, use Back to files and start a new publication review.
-Revoked grants disable Save while preserving buffers; Retry edit controls can
-refresh restored permission. Completed exact receipts remain readable after
+A stale-head failure retains working text. Discard opens the unsaved-changes
+confirmation; Keep editing preserves the text, while Discard changes reloads the
+newer head. Copy wanted text first; no automatic merge or export is implied.
+Revoked grants disable Publish while preserving buffers; Retry edit controls
+refreshes restored permission. Before any Publish, a compact footer disclosure
+counts all changed files against the exact registry base, including saved commits
+ahead of current. It lists those paths and opens the selected file's cumulative
+diff in the editor; no separate review mode or confirmation step is required.
+Publish is disabled while this comparison is unavailable. A new explicit attempt
+after a definitive stale-base failure uses the newly loaded cumulative comparison;
+an uncertain attempt always retains its original base. The optional message
+defaults to `Update Skill files`; backend provenance remains `operator`.
+Native unload warning, unsaved-close, saved-candidate failure, grant restoration
+and cumulative disclosure are observable browser acceptance paths.
+Completed exact receipts remain readable after
 write-grant revocation/policy change; only an uncompleted/new effect requires
 current write authority. A blocked close during an uncertain write visibly says
 to wait for confirmation or use Check result, rather than silently ignoring it.

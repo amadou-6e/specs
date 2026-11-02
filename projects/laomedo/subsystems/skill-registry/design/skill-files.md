@@ -238,21 +238,41 @@ groups use folders, files and match rows with independent disclosure, counts and
 the existing Codicon arrows. Search includes unsaved current text during editing;
 historical comparisons remain immutable. Global disclosure includes search groups.
 
-SH13 is the explicit extension of the earlier read-only viewer. Manual editing
-requires the authenticated local app and host-configured manual permissions plus
-the existing edit policy. Defaults deny writes. Saved commits retain all edited
-files atomically; publication is a separate reviewed compare-and-swap operation.
-The viewer can explicitly open the journal head without changing any graph pin.
-The publication review lists changed files and shows only the selected file's
-registry-current-to-candidate diff. Unsaved close/discard has Keep editing and
-Discard changes controls; in-flight saves/publications cannot be dismissed.
-Failures use the shared descriptive presenter and preserve working edits. An
-uncertain save is reconciled with its retained request identity before any new
-save. Publication retains its exact candidate/base replay receipt. This is a
-trusted single-user local service, not per-user access control or a signed audit.
-Binary editing and durable recovery of unsaved buffers after browser crash are
-unsupported; browser unload warns while edits remain unsaved. No model run, Git
-publication, source write or automatic graph-pin update occurs.
+SH13 extends the viewer with always-on text editing at the journal head when
+local host grants and the existing versioned edit policy permit it. Opening the
+viewer selects that head automatically without changing the graph's pinned
+revision. Skill ID and short SHA share one compact line; no generic viewer description paragraph,
+Edit, Review publication or Open latest editable revision control is shown.
+
+The existing SH06 Skill summary/overview stays visible; only the generic viewer
+description paragraph is removed.
+
+Publish and Discard appear at the bottom right only after a file changes, with an
+additional retained state when this session saved a candidate but promotion failed.
+On a fresh open with only earlier unpublished commits, the footer stays hidden
+until a new file edit, as requested; existing history remains inspectable.
+The message is an
+optional commit message (default `Update Skill files`, backend `operator`
+provenance). A compact footer disclosure counts and lists the cumulative changed
+files against registry current, explicitly including earlier saved changes. A path
+opens that file's working-copy-to-registry diff in the main editor. Publish waits
+for this exact comparison; Retry comparison recovers failure. There is no separate
+review mode. Publish is one explicit action: save all changed files
+as one immutable commit, then promote that exact candidate against the captured
+registry current by compare-and-swap. Each stage retains its exact replay identity
+when its outcome is uncertain; Check result reconciles that stage. A definitive
+publication failure retains the saved candidate and supports retry or further
+edits. Discard clears working edits and reloads the journal head; it never deletes
+a saved commit or changes registry current. Closing with unsaved work requires
+confirmation; in-flight or uncertain writes must be reconciled before closing.
+Historical comparisons remain available without altering the working buffers.
+
+Defaults deny writes. Failures use the shared descriptive presenter and retain
+working edits or saved candidates. This is a trusted single-user local service,
+not per-user access control or a signed audit. Binary editing and durable recovery
+of unsaved buffers after browser crash are unsupported; browser unload warns while
+edits remain. No model run, Git publication, source write or automatic graph-pin
+update occurs.
 
 
 Manual failure cards remain within the active Skill dialog's interaction boundary
