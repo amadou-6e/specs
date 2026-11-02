@@ -135,13 +135,16 @@ skill; automatic runtime dispatch is not introduced by this UI change.
 
 ## Collapsible navigation
 
-SH07 in the navigation-states Draw.io page owns two independently collapsible
-sections, Files and Commits, with compact uppercase headers, disclosure chevrons
-and three-dot action disclosures. Both start expanded and share the available
-height. Collapse either to let the other use all remaining height beneath both
-headers. Keep bodies mounted so file, commit, scroll and pagination state survive.
-Section actions expand only that section or expand both. The column header
-three-dot actions hide navigation or reset its width.
+SH07 owns the compact uppercase Files and Commits headers and their disclosure
+chevrons, without per-section action menus. They share the available column
+height; when one closes, the other fills the remaining height. Keep section and
+folder bodies mounted while hidden so file, tab, commit and scroll state survive.
+The SKILL menu owns the single state-aware Collapse all / Open all action,
+including folders nested inside closed sections. With no folders, both sections
+open counts as all open. Hide navigation and Reset navigation width remain
+separate. The selected source/comparison stays visible when all sections close.
+After the bulk action flips its label, close the menu and return focus to its
+trigger. Reset disclosure only when the selected Skill/revision changes.
 
 SH05 accepts widths 0 or 180-600 px, further bounded to retain editor space.
 Dragging below 90 px snaps closed; dragging right past that threshold restores
