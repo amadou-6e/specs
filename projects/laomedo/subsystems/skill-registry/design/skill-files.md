@@ -213,8 +213,10 @@ implementation or owner acceptance.
 
 The fifth Draw.io page owns the explorer row geometry. Place a locally bundled
 16 px file-type logo immediately before each filename, with a generic fallback
-for unknown types. Use the installed VS Code Codicon chevron-right/down for
-folders and section headers instead of filled text triangles. Reserve a
+for unknown names/extensions; known names such as Dockerfile may use their
+type logo. Use the installed VS Code Codicon chevron-right/down for
+folders and section headers instead of filled text triangles. SH10 supersedes
+the older state diagrams' filled-arrow glyphs. Reserve a
 chevron slot on file rows to align root and nested filenames consistently.
 Icons are decorative; retain filename-only accessible names, folder
 aria-expanded and the existing read-only selection/keyboard/disclosure rules.
