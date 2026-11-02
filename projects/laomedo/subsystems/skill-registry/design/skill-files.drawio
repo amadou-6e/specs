@@ -646,7 +646,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="skill-manual-editing" name="Skill workspace editing and publication">
-    <mxGraphModel page="1" pageWidth="1480" pageHeight="1160">
+    <mxGraphModel page="1" pageWidth="1480" pageHeight="1250">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -699,15 +699,15 @@
           <mxGeometry x="264" y="210.0" width="6" height="350" as="geometry" />
         </mxCell>
         <mxCell id="SH13-source-tabs" value="SKILL.md      pr-operation.md" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="278" y="210.0" width="440" height="32" as="geometry" />
+          <mxGeometry x="278" y="210.0" width="408" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="SH13-source-toolbar" value="Source      Preview" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="278" y="248.0" width="440" height="32" as="geometry" />
+        <mxCell id="SH13-source-view-toggle" value="" vertex="1" parent="1" style="shape=image;imageAspect=0;aspect=fixed;image=data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill%3D%22%23172033%22%20fill-rule%3D%22evenodd%22%20d%3D%22M2%202h12l1%201v10l-1%201H2l-1-1V3l1-1zm0%2011h12V3H2v10zm11-9H3v3h10V4zm-1%202H4V5h8v1zm-3%206h4V8H9v4zm1-3h2v2h-2V9zM7%208H3v1h4V8zm-4%203h4v1H3v-1z%22%2F%3E%3C%2Fsvg%3E;verticalAlign=middle;align=center;">
+          <mxGeometry x="694" y="218.0" width="16" height="16" as="geometry" />
         </mxCell>
         <mxCell id="SH13-source-editor" value="---&#10;name: pr-feedback-title&#10;description: Propose a PR operation.&#10;---&#10;&#10;Read the operation contract…" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="278" y="286.0" width="440" height="162" as="geometry" />
+          <mxGeometry x="278" y="242.0" width="440" height="206" as="geometry" />
         </mxCell>
-        <mxCell id="SH13-source-status" value="Editable immediately when authorised. No footer until a file changes." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=12;align=left;verticalAlign=middle;spacing=8;">
+        <mxCell id="SH13-source-status" value="Editable immediately when authorised. No footer until a file changes. One icon at the right of the tabs toggles Markdown preview." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=12;align=left;verticalAlign=middle;spacing=8;">
           <mxGeometry x="32" y="558" width="686" height="34" as="geometry" />
         </mxCell>
         <mxCell id="SH13-edit-frame" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
@@ -756,13 +756,13 @@
           <mxGeometry x="994" y="210.0" width="6" height="350" as="geometry" />
         </mxCell>
         <mxCell id="SH13-edit-tabs" value="SKILL.md •      pr-operation.md •" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="1008" y="210.0" width="440" height="32" as="geometry" />
+          <mxGeometry x="1008" y="210.0" width="408" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="SH13-edit-toolbar" value="Source      Preview" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="1008" y="248.0" width="440" height="32" as="geometry" />
+        <mxCell id="SH13-edit-view-toggle" value="" vertex="1" parent="1" style="shape=image;imageAspect=0;aspect=fixed;image=data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill%3D%22%23172033%22%20fill-rule%3D%22evenodd%22%20d%3D%22M2%202h12l1%201v10l-1%201H2l-1-1V3l1-1zm0%2011h12V3H2v10zm11-9H3v3h10V4zm-1%202H4V5h8v1zm-3%206h4V8H9v4zm1-3h2v2h-2V9zM7%208H3v1h4V8zm-4%203h4v1H3v-1z%22%2F%3E%3C%2Fsvg%3E;verticalAlign=middle;align=center;">
+          <mxGeometry x="1424" y="218.0" width="16" height="16" as="geometry" />
         </mxCell>
         <mxCell id="SH13-edit-editor" value="---&#10;name: pr-feedback-title&#10;description: Propose a PR operation.&#10;---&#10;&#10;Review this updated proposal…" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="1008" y="286.0" width="440" height="162" as="geometry" />
+          <mxGeometry x="1008" y="242.0" width="440" height="206" as="geometry" />
         </mxCell>
         <mxCell id="SH13-edit-message" value="Commit message (optional)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
           <mxGeometry x="1008" y="558" width="220" height="32" as="geometry" />
@@ -815,7 +815,7 @@
         <mxCell id="SH13-retry-controls" value="Footer: Retry edit controls / Retry comparison when needed; Check result on uncertain outcome." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=12;align=left;verticalAlign=middle;spacing=6;">
           <mxGeometry x="750" y="798" width="710" height="18" as="geometry" />
         </mxCell>
-      <mxCell id="SH13-edit-discard" value="Discard" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1"><mxGeometry x="1236" y="558" width="100" height="32" as="geometry" /></mxCell><mxCell id="SH13-source-summary" value="Propose a PR operation.   Overview (expand)" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1"><mxGeometry x="32" y="174" width="686" height="28" as="geometry" /></mxCell><mxCell id="SH13-edit-summary" value="Propose a PR operation.   Overview (expand)" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1"><mxGeometry x="762" y="174" width="686" height="28" as="geometry" /></mxCell></root>
+      <mxCell id="SH13-edit-discard" value="Discard" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1"><mxGeometry x="1236" y="558" width="100" height="32" as="geometry" /></mxCell><mxCell id="SH13-source-summary" value="Propose a PR operation.   Overview (expand)" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1"><mxGeometry x="32" y="174" width="686" height="28" as="geometry" /></mxCell><mxCell id="SH13-edit-summary" value="Propose a PR operation.   Overview (expand)" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1"><mxGeometry x="762" y="174" width="686" height="28" as="geometry" /></mxCell><mxCell id="SH13-view-toggle-rules" value="No Source/Preview/bytes bar. Markdown text only: one fixed icon beside scrollable tabs; Preview Markdown / Show source (tooltip and accessible name). Pressed = preview. Pointer, Enter and Space preserve unsaved text. Other file types keep their existing source/binary view. Find result or Ctrl+F returns to source. Show source also applies read-only. SH13 supersedes older toolbar drawings; byte count removed with the row." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=13;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="20" y="1152" width="1440" height="86" as="geometry" /></mxCell></root>
     </mxGraphModel>
   </diagram>
 </mxfile>

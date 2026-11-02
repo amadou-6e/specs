@@ -247,6 +247,15 @@ Edit, Review publication or Open latest editable revision control is shown.
 The existing SH06 Skill summary/overview stays visible; only the generic viewer
 description paragraph is removed.
 
+Markdown text uses one icon toggle fixed at the right of the scrollable file tabs.
+Its tooltip and accessible name describe the destination: Preview Markdown or Show
+source; pressed means preview is active. Pointer, Enter and Space switch views
+without losing unsaved text. Preview renders the working copy. There is no separate
+Source/Preview/bytes bar, including its byte count. SH13 supersedes the earlier
+toolbar drawings. Other file types retain their source or binary view. Show source
+also applies to read-only text. Selecting a Find result or pressing Ctrl+F while
+previewing returns to source so the match can be selected.
+
 Publish and Discard appear at the bottom right only after a file changes, with an
 additional retained state when this session saved a candidate but promotion failed.
 On a fresh open with only earlier unpublished commits, the footer stays hidden
