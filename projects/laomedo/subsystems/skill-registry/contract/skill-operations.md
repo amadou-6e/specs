@@ -134,3 +134,38 @@ remain unsupported. Model content quality is not guaranteed by mediation.
 
 Internal fixtures establish deterministic controls only. Real integration
 acceptance is pending until recorded with inspected implementation revisions.
+
+
+## Manual edits and registry publication
+
+User-selected extension, 2026-11-02: Publish promotes the registry revision; Git
+publishing remains deferred. SH11–SH13 in the editable interaction model own UI.
+The authenticated viewer may edit text files at the exact journal head only,
+under explicitly configured manual edit permission and the existing versioned
+policy. A missing grant is read-only. Manual requests cannot assert agent identity,
+run IDs, authority, policy or filesystem paths. Backend provenance is operator,
+not a separately verified human account. All changed files and the commit message
+are admitted together through the existing atomic proposal path.
+
+A browser-generated UUID identifies one save. The service durably binds it to the
+exact skill/base/commit/proposal before applying. Identical replay reconciles its
+existing receipt; reuse with changed bytes conflicts. Tickets remain backend-only.
+Stale heads, malformed batches, revoked policy, forbidden paths and missing
+summary refuse without partially committing. Working buffers remain available
+after a refusal; an uncertain response exposes Check result with the same request.
+
+Publish requires an additional explicit host grant. Review uses the exact candidate
+commit and expected canonical current revision. Revalidate the whole cumulative
+diff against that policy, stage/freeze from canonical current, then use the existing
+registry CAS promotion and durable publication receipt. A concurrent canonical
+change refuses; never silently rebase or retry against a new base. Identical
+publication replay returns its original confirmed receipt even after later history
+changes. Failed publication never implies canonical success. An interrupted
+publication reconciles its retained frozen draft before a fresh attempt.
+
+Old immutable revisions, journal history, source trees and saved graph pins remain
+unchanged. No Git operation or agent request is performed. Local unsaved buffers
+have no crash persistence guarantee. Acceptance exercises real browser two-file
+save, per-file publication review, explicit promotion, exact replay, stale base,
+policy denial/revocation, invalid batch, network failure/recovery and unsaved-close
+protection; internal controls are not a substitute for these live stories.

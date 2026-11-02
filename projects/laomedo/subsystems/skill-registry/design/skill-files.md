@@ -1,5 +1,5 @@
 ---
-title: Read-only Skill files in Langflow
+title: Skill workspace in Langflow
 status: draft
 kind: specification
 owners: [laomedo-maintainers]
@@ -9,7 +9,7 @@ supersedes: null
 related: []
 ---
 
-# Read-only Skill files in Langflow
+# Skill workspace in Langflow
 
 Tracking: [specs #370](https://github.com/amadou-6e/specs/issues/370) and
 [Laomedo #154](https://github.com/amadou-6e/laomedo/issues/154).
@@ -227,3 +227,29 @@ Acceptance checks real file icons, folder open/closed chevrons, keyboard and
 bulk actions, selection retention, normal/full-page/small viewports and
 light/dark contrast. Extension/fallback mappings use internal regression
 controls; do not manufacture file types or history for a live demonstration.
+
+
+## Manual workspace and registry publication (SH11–SH13)
+
+The sixth Draw.io page owns icon window controls, nested search results and the
+manual editing/publication states. SH11 supersedes SH09's textual window toggle
+and SH10's generic Markdown logo with the exact VS Code Seti glyph. SH12 search
+groups use folders, files and match rows with independent disclosure, counts and
+the existing Codicon arrows. Search includes unsaved current text during editing;
+historical comparisons remain immutable. Global disclosure includes search groups.
+
+SH13 is the explicit extension of the earlier read-only viewer. Manual editing
+requires the authenticated local app and host-configured manual permissions plus
+the existing edit policy. Defaults deny writes. Saved commits retain all edited
+files atomically; publication is a separate reviewed compare-and-swap operation.
+The viewer can explicitly open the journal head without changing any graph pin.
+The publication review lists changed files and shows only the selected file's
+registry-current-to-candidate diff. Unsaved close/discard has Keep editing and
+Discard changes controls; in-flight saves/publications cannot be dismissed.
+Failures use the shared descriptive presenter and preserve working edits. An
+uncertain save is reconciled with its retained request identity before any new
+save. Publication retains its exact candidate/base replay receipt. This is a
+trusted single-user local service, not per-user access control or a signed audit.
+Binary editing and durable recovery of unsaved buffers after browser crash are
+unsupported; browser unload warns while edits remain unsaved. No model run, Git
+publication, source write or automatic graph-pin update occurs.
