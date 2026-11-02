@@ -43,7 +43,7 @@ stays read-only; the graph's Operation input creates candidates separately.
 
 ## Navigation disclosure (SH02 / SH07)
 
-Files and Commits use their own chevrons, without redundant action menus. The
+Find, Files and Commits use their own chevrons, without redundant action menus. The
 single SKILL menu offers **Collapse all** only when all three sections and every
 folder are open. Otherwise it offers **Open all**, including mixed disclosure
 states. The action changes all three sections and all folders; it preserves the
@@ -135,9 +135,9 @@ skill; automatic runtime dispatch is not introduced by this UI change.
 
 ## Collapsible navigation
 
-SH07 owns the compact uppercase Files and Commits headers and their disclosure
-chevrons, without per-section action menus. They share the available column
-height; when one closes, the other fills the remaining height. Keep section and
+SH07 owns the compact uppercase Files and Commits headers (SH08 adds Find) and their disclosure
+chevrons, without per-section action menus. Open sections share the available column
+height; when one closes, the others fill the remaining height. Keep section and
 folder bodies mounted while hidden so file, tab, commit and scroll state survive.
 The SKILL menu owns the single state-aware Collapse all / Open all action,
 including folders nested inside closed sections. With no folders, all three sections

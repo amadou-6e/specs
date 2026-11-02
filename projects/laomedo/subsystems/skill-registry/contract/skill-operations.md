@@ -96,10 +96,14 @@ The file tree and parent-linked commit graph share one navigation pane, with the
 commit graph below the files. Clicking a file changes the compared file while
 retaining the selected commit. Include historical-only files so deletions remain
 inspectable. Current source exits comparison without changing the pinned revision.
-Files and Commits have chevrons without per-section action menus. The single
-SKILL menu offers Collapse all when both sections and every folder are open,
+Find, Files and Commits have chevrons without per-section action menus. The single
+SKILL menu offers Collapse all when Find, Files, Commits and every folder are open,
 otherwise Open all; it changes disclosure without changing selected content.
 Keep hide/reset-width actions and existing keyboard/focus behavior.
+Find searches pinned current text files locally and opens a matching current
+source line; it never changes the Skill revision. Full page/Restore window
+resize the same dialog while preserving selection and search state. SH08/SH09
+in the interaction model own these controls and transitions.
 No Files/History mode buttons. A draggable, keyboard-operable vertical separator
 controls navigation width within bounds that preserve usable content space.
 A collapsible skill overview sits above the file/history workspace, anchored to
