@@ -41,6 +41,17 @@ revision-local documentation). Its public
 contract is [Skill operations](../contract/skill-operations.md). File browsing
 stays read-only; the graph's Operation input creates candidates separately.
 
+## Navigation disclosure (SH02 / SH07)
+
+Files and Commits use their own chevrons, without redundant action menus. The
+single SKILL menu offers **Collapse all** only when both sections and every
+folder are open. Otherwise it offers **Open all**, including mixed disclosure
+states. The action changes both sections and all folders; it preserves the
+selected file, tabs, commit, scroll and pinned current revision. Individual
+chevrons still work. Hide navigation and Reset navigation width remain separate
+menu actions, with existing keyboard, Escape/outside dismissal and focus rules.
+The diagram records all-open, mixed, all-closed and hidden-column states.
+
 ## API and boundary
 
 Serve GET `/api/v1/laomedo/skills/{skill_id}/{revision_id}` under the existing
