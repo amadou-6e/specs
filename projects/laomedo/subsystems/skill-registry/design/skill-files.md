@@ -261,3 +261,7 @@ work with pointer and keyboard; dismissing a card preserves the viewer and its
 working buffers. Window resizing and full-page mode never move a card outside the
 visible screen. The implementation uses a dialog-owned top-layer stack where
 supported rather than an inert body-level sibling of a modal dialog.
+
+While a modal is open, background global notifications retain state but remain
+hidden outside its focus boundary. They reappear after closing; modal error cards
+remain reachable and cannot hide Publish behind an unrelated notification.
