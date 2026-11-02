@@ -169,3 +169,32 @@ have no crash persistence guarantee. Acceptance exercises real browser two-file
 save, per-file publication review, explicit promotion, exact replay, stale base,
 policy denial/revocation, invalid batch, network failure/recovery and unsaved-close
 protection; internal controls are not a substitute for these live stories.
+
+
+Manual UI scope: edit several existing text files; additions, deletions and binary
+editing remain outside the initial manual UI. The operation protocol retains its
+existing additions/deletions semantics. Manual controls belong above the workspace;
+the file editor remains the content region. Window controls contain icons only,
+with Full page and Restore window as tooltips and accessible names.
+
+### Manual failure catalogue
+
+These stable public categories use the shared error presenter and safe technical
+details. Never forward exception bodies, file contents, tickets or credentials.
+
+| Code | Meaning | Actual recovery control |
+| --- | --- | --- |
+| `skill_manual_controls_unavailable` | Read-only control/permission lookup failed; no edit requested | Retry edit controls |
+| `skill_manual_comparison_unavailable` | Exact publication base could not be loaded; Publish disabled | Retry comparison |
+| `skill_manual_not_authorized` | Required host grant or policy is absent/revoked | Preserve text; inspect local permission configuration |
+| `skill_manual_stale` | Head or registry base changed | Explicit Open latest editable revision after keeping/discarding local work |
+| `skill_manual_invalid` | Malformed request or invalid bundle shape | Correct message/files; preserve working buffers |
+| `skill_manual_request_conflict` | Same save UUID has different content | Inspect existing history before a new save |
+| `skill_manual_policy_denied` | Batch violates configured editing rules/required summary | Correct working text; save again |
+| `skill_manual_save_expired` | No retained result; unused edit capability expired | Refresh current head, then save preserved edits as a new request |
+| `skill_manual_unavailable` | Write outcome is unknown | Check result with the same exact request |
+| `skill_manual_nothing_to_publish` | Candidate bytes are already registry current | Back to files |
+
+Publication receipts record confirmation time, not an invented original publication
+time after crash recovery. A confirmed durable receipt remains a read of the same
+effect; new publication never silently replaces its reviewed base.

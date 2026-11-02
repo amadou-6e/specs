@@ -665,52 +665,52 @@
           <mxGeometry x="32" y="138" width="686" height="28" as="geometry" />
         </mxCell>
         <mxCell id="SH13-source-find" value="⌄ FIND" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=12;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="32" y="178" width="230" height="28" as="geometry" />
+          <mxGeometry x="32" y="218.0" width="230" height="28" as="geometry" />
         </mxCell>
         <mxCell id="SH13-source-query" value="proposal                               Aa" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="32" y="210" width="230" height="28" as="geometry" />
+          <mxGeometry x="32" y="250.0" width="230" height="28" as="geometry" />
         </mxCell>
         <mxCell id="SH13-source-root-file" value="⌄ [MD] SKILL.md   2" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="32" y="242" width="230" height="28" as="geometry" />
+          <mxGeometry x="32" y="282.0" width="230" height="28" as="geometry" />
         </mxCell>
         <mxCell id="SH13-source-root-match" value="12: … proposal …" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="64" y="270" width="198" height="28" as="geometry" />
+          <mxGeometry x="64" y="310.0" width="198" height="28" as="geometry" />
         </mxCell>
         <mxCell id="SH13-source-folder" value="⌄ references" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="32" y="298" width="230" height="28" as="geometry" />
+          <mxGeometry x="32" y="338.0" width="230" height="28" as="geometry" />
         </mxCell>
         <mxCell id="SH13-source-nested-file" value="⌄ [MD] pr-operation.md   2" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="48" y="326" width="214" height="28" as="geometry" />
+          <mxGeometry x="48" y="366.0" width="214" height="28" as="geometry" />
         </mxCell>
         <mxCell id="SH13-source-nested-match" value="3: … proposal …" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="80" y="354" width="182" height="28" as="geometry" />
+          <mxGeometry x="80" y="394.0" width="182" height="28" as="geometry" />
         </mxCell>
         <mxCell id="SH13-source-files" value="⌄ FILES" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=12;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="32" y="394" width="230" height="28" as="geometry" />
+          <mxGeometry x="32" y="434.0" width="230" height="28" as="geometry" />
         </mxCell>
         <mxCell id="SH13-source-commits" value="⌄ COMMITS" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=12;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="32" y="426" width="230" height="28" as="geometry" />
+          <mxGeometry x="32" y="466.0" width="230" height="28" as="geometry" />
         </mxCell>
         <mxCell id="SH13-source-commit" value="○ Clarify PR update boundaries" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="32" y="458" width="230" height="38" as="geometry" />
+          <mxGeometry x="32" y="498.0" width="230" height="38" as="geometry" />
         </mxCell>
         <mxCell id="SH13-source-split" value="↔" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#cbd5e1;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=9;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="264" y="178" width="6" height="350" as="geometry" />
+          <mxGeometry x="264" y="218.0" width="6" height="350" as="geometry" />
         </mxCell>
         <mxCell id="SH13-source-tabs" value="SKILL.md      pr-operation.md" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="278" y="178" width="440" height="32" as="geometry" />
+          <mxGeometry x="278" y="218.0" width="440" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="SH13-source-toolbar" value="Source      Preview              Edit" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="278" y="216" width="440" height="32" as="geometry" />
+        <mxCell id="SH13-source-toolbar" value="Source      Preview" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="278" y="256.0" width="440" height="32" as="geometry" />
         </mxCell>
         <mxCell id="SH13-source-editor" value="---&#10;name: pr-feedback-title&#10;description: Propose a PR operation.&#10;---&#10;&#10;Read the operation contract…" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="278" y="254" width="440" height="202" as="geometry" />
+          <mxGeometry x="278" y="294.0" width="440" height="162" as="geometry" />
         </mxCell>
         <mxCell id="SH13-source-edit" value="Edit" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="278" y="464" width="88" height="32" as="geometry" />
+          <mxGeometry x="32" y="176" width="88" height="32" as="geometry" />
         </mxCell>
         <mxCell id="SH13-source-publish" value="Review publication" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="538" y="464" width="180" height="32" as="geometry" />
+          <mxGeometry x="130" y="176" width="180" height="32" as="geometry" />
         </mxCell>
         <mxCell id="SH13-source-status" value="Candidate revision · registry current remains 4f0efb08" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=12;align=left;verticalAlign=middle;spacing=8;">
           <mxGeometry x="32" y="558" width="686" height="34" as="geometry" />
@@ -728,52 +728,52 @@
           <mxGeometry x="762" y="138" width="686" height="28" as="geometry" />
         </mxCell>
         <mxCell id="SH13-edit-find" value="⌄ FIND" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=12;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="762" y="178" width="230" height="28" as="geometry" />
+          <mxGeometry x="762" y="218.0" width="230" height="28" as="geometry" />
         </mxCell>
         <mxCell id="SH13-edit-query" value="proposal                               Aa" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="762" y="210" width="230" height="28" as="geometry" />
+          <mxGeometry x="762" y="250.0" width="230" height="28" as="geometry" />
         </mxCell>
         <mxCell id="SH13-edit-root-file" value="⌄ [MD] SKILL.md   2" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="762" y="242" width="230" height="28" as="geometry" />
+          <mxGeometry x="762" y="282.0" width="230" height="28" as="geometry" />
         </mxCell>
         <mxCell id="SH13-edit-root-match" value="12: … proposal …" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="794" y="270" width="198" height="28" as="geometry" />
+          <mxGeometry x="794" y="310.0" width="198" height="28" as="geometry" />
         </mxCell>
         <mxCell id="SH13-edit-folder" value="⌄ references" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="762" y="298" width="230" height="28" as="geometry" />
+          <mxGeometry x="762" y="338.0" width="230" height="28" as="geometry" />
         </mxCell>
         <mxCell id="SH13-edit-nested-file" value="⌄ [MD] pr-operation.md   2" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="778" y="326" width="214" height="28" as="geometry" />
+          <mxGeometry x="778" y="366.0" width="214" height="28" as="geometry" />
         </mxCell>
         <mxCell id="SH13-edit-nested-match" value="3: … proposal …" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="810" y="354" width="182" height="28" as="geometry" />
+          <mxGeometry x="810" y="394.0" width="182" height="28" as="geometry" />
         </mxCell>
         <mxCell id="SH13-edit-files" value="⌄ FILES" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=12;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="762" y="394" width="230" height="28" as="geometry" />
+          <mxGeometry x="762" y="434.0" width="230" height="28" as="geometry" />
         </mxCell>
         <mxCell id="SH13-edit-commits" value="⌄ COMMITS" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=12;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="762" y="426" width="230" height="28" as="geometry" />
+          <mxGeometry x="762" y="466.0" width="230" height="28" as="geometry" />
         </mxCell>
         <mxCell id="SH13-edit-commit" value="○ Clarify PR update boundaries" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="762" y="458" width="230" height="38" as="geometry" />
+          <mxGeometry x="762" y="498.0" width="230" height="38" as="geometry" />
         </mxCell>
         <mxCell id="SH13-edit-split" value="↔" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#cbd5e1;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=9;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="994" y="178" width="6" height="350" as="geometry" />
+          <mxGeometry x="994" y="218.0" width="6" height="350" as="geometry" />
         </mxCell>
         <mxCell id="SH13-edit-tabs" value="SKILL.md •      pr-operation.md •" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="1008" y="178" width="440" height="32" as="geometry" />
+          <mxGeometry x="1008" y="218.0" width="440" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="SH13-edit-toolbar" value="Source      Preview       Discard edits" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="1008" y="216" width="440" height="32" as="geometry" />
+        <mxCell id="SH13-edit-toolbar" value="Source      Preview                  Discard edits" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="1008" y="256.0" width="440" height="32" as="geometry" />
         </mxCell>
         <mxCell id="SH13-edit-editor" value="---&#10;name: pr-feedback-title&#10;description: Propose a PR operation.&#10;---&#10;&#10;Review this updated proposal…" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="1008" y="254" width="440" height="202" as="geometry" />
+          <mxGeometry x="1008" y="294.0" width="440" height="162" as="geometry" />
         </mxCell>
         <mxCell id="SH13-edit-message" value="Commit message: Clarify manual proposal" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="1008" y="464" width="440" height="32" as="geometry" />
+          <mxGeometry x="762" y="176" width="488" height="32" as="geometry" />
         </mxCell>
         <mxCell id="SH13-edit-save" value="Save commit · 2 files" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
-          <mxGeometry x="1270" y="504" width="178" height="32" as="geometry" />
+          <mxGeometry x="1260" y="176" width="188" height="32" as="geometry" />
         </mxCell>
         <mxCell id="SH13-edit-status" value="Working copy · unsaved changes" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=12;align=left;verticalAlign=middle;spacing=8;">
           <mxGeometry x="762" y="558" width="686" height="34" as="geometry" />
