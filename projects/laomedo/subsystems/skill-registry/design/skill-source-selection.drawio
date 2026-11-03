@@ -5,7 +5,7 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="SS01" value="SS01: Skill source&#10;Repository URL or local folder link/path&#10;[ Source location (refresh on change)     ]&#10;Source path/URL | loading | fixed access error" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;" vertex="1" parent="1">
+        <mxCell id="SS01" value="SS01: Skill source&#10;Repository URL or local folder link/path&#10;[ Source location (refresh on change)     ]&#10;Failure below Source; no progress or success message" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="40" width="520" height="150" />
         </mxCell>
         <mxCell id="SS02" value="SS02: Skill&#10;[ Type to filter discovered skills        v ]&#10;Matching skill name | relative folder&#10;Choose an existing result | Refresh list&#10;Empty source and no matches are separate states" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;" vertex="1" parent="1">
