@@ -320,3 +320,6 @@ secret-path refusals and unchanged byte identity independent of wire encoding.
 The root context/drop target covers the entire Files pane, including blank space.
 New destination restrictions do not prevent unrelated actions after text edits at
 existing legacy paths; whole-tree collisions and limits still apply.
+
+
+SH15 supersedes SH14 rename/delete/move/drop states: inline filename rename, immediate deletion and Files-local undo/redo, retained working empty folders, drag-only moves, grey drop rows, JSON braces and inert raster/hex binary previews. Empty folders are local to the open workspace; registry revisions remain file-only.

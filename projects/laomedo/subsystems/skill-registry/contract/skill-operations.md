@@ -284,3 +284,33 @@ The 4MiB encoded-request limit can refuse a new binary batch smaller than the
 4MiB bundle bound: base64 allows roughly3MiB before envelope overhead. Text uploads
 and moved paths still require script/dependency permission where applicable.
 Clipboard refusal exposes a selectable Relative path field for manual copying.
+
+
+### Working explorer behavior (SH15)
+
+The open editor retains empty folders after moving/deleting their final file.
+Folders with no files are marked empty and not saved. Registry revisions continue
+to identify file bytes only; folder-only actions do not enable Publish. Publish
+keeps local empty folders in the open workspace; closing/reopening reconstructs
+folders from saved files. Discard restores saved folder structure. No placeholder
+file is silently created.
+
+Rename replaces the row filename with one blue-bordered input, preserving the
+icon/indent. Enter/blur commits; Escape cancels; invalid/colliding names stay
+editable with the shared descriptive error. Delete immediately stages removal.
+Files-focused Ctrl+Z restores deleted files/subtrees, including unsaved text;
+Ctrl+Y/Ctrl+Shift+Z reapplies. Move/rename/upload are also reversible; unrelated
+editor buffers are preserved. New file actions clear redo. Confirmed save/discard
+clears prior tree undo; definitive refusal/unknown save retains it and busy/pending
+blocks mutations. Editor/input undo remains native.
+
+The context menu has Upload, Rename, Delete and Copy relative path, without Move
+to or confirmation cards. Pointer drag/drop uses grey target-row highlighting
+only; Ctrl+X/Ctrl+V on Files provides the keyboard move alternative. Root SKILL.md
+protection, grants, admission, bounds and publication controls remain unchanged.
+
+Authenticated inspection may opt into bounded binary_base64 from verified revision
+bytes; ordinary inspection/operation wire projections remain unchanged. The viewer
+previews magic-identified PNG/JPEG/GIF/WebP/ICO only as inert images and otherwise
+shows paged hex/ASCII bytes. Staged imports use the same preview. Decode failures
+fall back to bytes. No SVG/HTML/PDF document execution or external content load.
