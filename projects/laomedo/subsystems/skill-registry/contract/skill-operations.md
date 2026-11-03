@@ -314,3 +314,6 @@ bytes; ordinary inspection/operation wire projections remain unchanged. The view
 previews magic-identified PNG/JPEG/GIF/WebP/ICO only as inert images and otherwise
 shows paged hex/ASCII bytes. Staged imports use the same preview. Decode failures
 fall back to bytes. No SVG/HTML/PDF document execution or external content load.
+
+
+SH16 refines presentation: binary previews occupy the available editor pane without a byte/hash row; images fit with preserved aspect ratio. A renamed row has no focus outline or border; keyboard focus uses a contrasting blue background. Discard and dirty workspace dismissal open one modal confirmation. Keep editing, popup Escape and outside dismissal preserve exact working buffers; explicit confirmation reloads saved head and retains history. Dirty-close confirmation also closes the workspace. Busy, pending and import holds remain unchanged.

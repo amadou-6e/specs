@@ -323,3 +323,6 @@ existing legacy paths; whole-tree collisions and limits still apply.
 
 
 SH15 supersedes SH14 rename/delete/move/drop states: inline filename rename, immediate deletion and Files-local undo/redo, retained working empty folders, drag-only moves, grey drop rows, JSON braces and inert raster/hex binary previews. Empty folders are local to the open workspace; registry revisions remain file-only.
+
+
+SH16 supersedes SH13 inline Discard confirmation and SH15 binary metadata/focus styling: full-area binary preview without byte/hash row, blue keyboard focus without an outline after inline rename, centered modal Discard/dirty-close confirmation with focus trapping and safe cancellation.
