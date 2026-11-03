@@ -69,3 +69,13 @@ three-key immutable descriptor. Source-empty saved nodes retain their exact manu
 references. Discovery imports and verifies bytes but never invokes an agent or
 proves native skill use. The runner still verifies the exact bundle before dispatch.
 Skill files uses the resolved ID/hash only while the source selection tuple matches.
+
+## Node settings
+
+SS07 in the linked-source interaction model owns the compact card. Source, Skill,
+Discovery status and Operation stay visible; Revision and Base Commit are inside
+Advanced settings, initially collapsed. Disclosure does not change the exact
+selected reference. Edit Request is not a user-facing control. New edits are
+supplied through Operation or the authenticated Skill files editor and Publish.
+Hidden legacy saved requests retain their existing feedback compatibility only;
+this presentation change does not create a new Agent editing prompt.

@@ -31,6 +31,43 @@ and transitions. This page specifies their data and discovery behavior.
 | SS04 | Changing Source clears the previous skill/revision and ignores obsolete discovery responses. Changing Skill clears the previous revision. Never display an old result as belonging to a new selection. |
 | SS05 | Loading, empty source, no filter matches and unavailable source/revision are distinct visible states. Empty or failed discovery offers no implicit executable fallback. |
 | SS06 | Once resolved, Skill files opens exactly the selected immutable bundle. Refreshing available choices must not silently change an existing selected revision or an active run. |
+| SS07 | The compact Skill node shows Source, Skill, read-only Discovery and Operation. Revision and Base Commit live in the initially collapsed Advanced settings disclosure. Edit Request is absent from the card and settings. The editable SS07 page owns layout and disclosure transitions. |
+
+## Compact node controls
+
+The node description is **Use and edit versioned skill files.** New changes arrive
+as an Operation payload, or through manual editing and Publish in Skill files;
+there is no separate editing prompt on the Skill node. A saved legacy feedback
+request may remain hidden compatibility data, preserving that saved graph's
+execution; it is not a newly configurable prompt or a replacement for Operation.
+Direct feedback authoring is legacy-only when a saved request already exists.
+A newly wired return without that request refuses before preparing or dispatching
+an Agent. Preserve `skill_feedback_request_required` under Technical details;
+its recovery directs users to an upstream Operation or manual editor/Publish,
+never to the removed Edit Request control.
+
+Advanced settings expands with pointer or Enter/Space and retains its mounted
+controls and exact values when collapsed. Revision remains an explicit required
+selection; moving it does not select latest or update a saved pin. Source changes
+clear Skill and Revision, while Skill changes clear Revision. Discovery directs
+the user to Advanced settings when a revision must be selected. Operation and
+connected inputs remain on the ordinary canvas path. Minimizing the card hides
+the disclosure without losing selection. The existing Agent disclosure keeps its
+current controls and label.
+
+The frontend identifies `LaomedoSkill` by node type and applies this presentation
+to saved templates too: ignore old `show`/`advanced` flags when hiding
+`edit_request` and grouping `revision_id`/`commit_id`. Hide the request in the
+node settings dialog as well. Do not rewrite any saved value or force a component
+upgrade merely to obtain the compact layout. Expanding/collapsing does not
+refresh discovery. Include a real previously saved graph in acceptance.
+
+Discovery is status, not an editable input or an execution command. Its help
+explains that it scans Source for available skills/revisions and imports verified
+bytes without running a Skill or changing an already selected revision. Source
+help distinguishes a public HTTPS repository from an admitted local folder and
+an empty Source with an existing registry pin. Failure keeps the existing fixed
+access error and refresh recovery; no implicit selection or model dispatch.
 
 ## Resolution and compatibility
 
