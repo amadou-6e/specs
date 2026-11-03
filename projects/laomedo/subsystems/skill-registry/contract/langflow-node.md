@@ -76,7 +76,9 @@ SS07 in the linked-source interaction model owns the compact card. Source, Skill
 and Operation stay visible; source failures appear directly below Source without
 a Discovery heading. With no source/options the empty Skill selector says
 **No source found**; after successful discovery it says **Select an option**.
-No status message appears for empty Source or successful discovery.
+No status message appears for empty Source or successful discovery, including
+empty scan results. Clicking the inline failure opens the shared error presenter
+with safe recovery and `source_discovery_failed` under Technical details.
 Revision and Base Commit are inside
 Advanced settings, initially collapsed. Disclosure does not change the exact
 selected reference. Edit Request is not a user-facing control. New edits are

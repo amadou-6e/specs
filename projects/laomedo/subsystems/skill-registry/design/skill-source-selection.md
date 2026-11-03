@@ -63,8 +63,14 @@ upgrade merely to obtain the compact layout. Expanding/collapsing does not
 refresh discovery. Include a real previously saved graph in acceptance.
 
 Discovery remains internal status, not an editable input or an execution command.
-Only fixed failure or empty-result messages appear directly below a nonempty
+Only a fixed failure message appears directly below a nonempty
 Source input. Loading and successful scans add no separate status row or heading.
+Empty scan results are quiet, not errors. The failure message itself opens the
+shared error presenter; it adds no separate details button beside the text.
+Use the shared catalogue entry for `source_discovery_failed`, keeping this stable
+code under Technical details and a cause-neutral recovery matching the actual
+public repository/local checkout and Skill refresh controls. Never infer that a
+repository is private merely from a failed scan. Do not show raw paths or Git stderr.
 The Skill placeholder reads No source found until a nonempty Source has choices,
 then Select an option. Existing selected values and exact pins are preserved.
 Scanning imports verified bytes without running a Skill or changing an already selected revision. Source
