@@ -1,3 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
 <mxfile host="app.diagrams.net">
   <diagram name="Skill files panel" id="skill-files">
     <mxGraphModel dx="1500" dy="1050" grid="1" gridSize="10" page="1" pageWidth="1500" pageHeight="1050">
@@ -16,7 +17,7 @@
         <mxCell id="tabs" value="SF04: [SKILL.md close] [examples.md close]&#10;Close tab to another open tab; last tab to choose a file." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=14;">
           <mxGeometry x="600" y="120" width="840" height="65" as="geometry" />
         </mxCell>
-        <mxCell id="SF05" value="SF05: [Source] [Preview if Markdown]&#10;Locally bundled Monaco, read-only syntax highlighting, search.&#10;No save, edit, terminal or execute action.&#10;&#10;SF06: Markdown Preview: raw HTML skipped, remote images suppressed.&#10;Links shown as text. No scripts/commands run.&#10;Escape closes search first; otherwise closes the panel." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#64748b;fontColor=#172033;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=14;">
+        <mxCell id="SF05" value="SF05: [Source] [Preview if Markdown]&#10;Locally bundled Monaco, read-only syntax highlighting.&#10;SH08: Find in the Skill sidebar searches every pinned text file.&#10;No save, edit, terminal or execute action.&#10;SF06: Markdown Preview skips HTML and remote images.&#10;Escape inside Find collapses it; otherwise closes the panel." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#64748b;fontColor=#172033;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=14;">
           <mxGeometry x="600" y="190" width="840" height="280" as="geometry" />
         </mxCell>
         <mxCell id="SF08" value="SF08: Binary selection&#10;relative path | bytes | file hash&#10;Preview unavailable for binary files. No download/run action." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=14;">
@@ -31,4 +32,791 @@
       </root>
     </mxGraphModel>
   </diagram>
-<diagram name="Skill operations and history" id="skill-operations-history"><mxGraphModel page="1" pageWidth="1500" pageHeight="1000"><root><mxCell id="0" /><mxCell id="1" parent="0" /><mxCell id="SO01" value="SO01 User | Skill node&#10;Source / Skill / Revision&#10;Base Commit (advanced)&#10;Edit Request&#10;Operation input: ordinary or Agent feedback&#10;Outputs: Skill Reference / Task / Operation Result" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#64748b;"><mxGeometry x="30" y="30" width="430" height="220" as="geometry" /></mxCell><mxCell id="SO02" value="SO02 Agent | Existing Codex Agent&#10;IN: Task + exact skill snapshot and host policy&#10;OUT: modify, message, files[]&#10;Task → Agent → same Skill Operation&#10;One turn; no canonical promotion" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=16;fillColor=#eff6ff;strokeColor=#64748b;"><mxGeometry x="510" y="30" width="450" height="220" as="geometry" /></mxCell><mxCell id="SO03" value="SO03 Laomedo | Atomic proposal&#10;Validate every changed file&#10;Store immutable candidate and one commit&#10;Record policy + adapter run provenance&#10;Canonical/source files remain unchanged" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=16;fillColor=#f0fdf4;strokeColor=#64748b;"><mxGeometry x="1010" y="30" width="450" height="220" as="geometry" /></mxCell><mxCell id="SH01" value="SH01 User | Skill files                                      [Close]&#10;Current: skill ID + full immutable revision captured on open&#10;One workspace: file tree and commit graph left; source or selected-file comparison right. No Files/History mode buttons." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=16;fillColor=#e2e8f0;strokeColor=#64748b;"><mxGeometry x="30" y="300" width="1430" height="90" as="geometry" /></mxCell><mxCell id="SH02" value="SH02 - Files and commits&#10;Independent collapsible sections.&#10;Compact chevron headers + three dots.&#10;Either uses remaining column height.&#10;Preserve selection and scroll state.&#10;Section actions: expand only / both.&#10;Column actions: hide / reset width." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#64748b;"><mxGeometry x="30" y="500" width="310" height="250" as="geometry" /></mxCell><mxCell id="SH03" value="SH03 - Selected file comparison&#10;Click commit: inline selected-file diff to current.&#10;Same old/new number: one index; otherwise both.&#10;Absent index: blank. Shifted context: both indexes.&#10;Digit-sized indexes + 4 px; divider and header rule.&#10;Dedicated 24 px signs: bold, high-contrast +/minus.&#10;Short current hash; full identity on hover.&#10;Switch file: retain selected commit; no raw patch.&#10;Added/deleted: explicit rows; binary: metadata.&#10;Details: backend-asserted provenance." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#64748b;"><mxGeometry x="370" y="500" width="1090" height="250" as="geometry" /></mxCell><mxCell id="SH04" value="SH04 Laomedo | Loading and failure&#10;Loading commits / comparison; clear previous content on selection change&#10;History unavailable or Comparison unavailable with Retry; empty history is explicit.&#10;Files remain usable if history is unavailable. Browsing/comparing/resizing never runs an Agent or edits a skill." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=16;fillColor=#fff7ed;strokeColor=#64748b;"><mxGeometry x="30" y="860" width="1430" height="120" as="geometry" /></mxCell><mxCell id="SH05-handle" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=16;fillColor=#94a3b8;strokeColor=#64748b;"><mxGeometry x="347" y="500" width="8" height="250" as="geometry" /></mxCell><mxCell id="SH05" value="SH05 | Resize or collapse navigation&#10;Drag below 90 px: collapse to 0; otherwise 180-600 px bounded to editor space. Persistent divider + Show navigation restore. Double-click toggle; Home collapse; End maximum; arrows resize/restore." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=16;fillColor=#f1f5f9;strokeColor=#64748b;"><mxGeometry x="30" y="770" width="1430" height="80" as="geometry" /></mxCell><mxCell id="SH06" value="SH06 | Complete purpose summary [disclosure]&#10;Top/bottom dividers only; no frame. Summary always visible, wraps fully.&#10;Details initially collapsed; click or Enter/Space toggles revision-local full docs and images." style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;" vertex="1" parent="1"><mxGeometry x="30" y="400" width="1430" height="80" as="geometry" /></mxCell><mxCell id="SH06-top" value="" style="shape=line;strokeColor=#64748b;" vertex="1" parent="1"><mxGeometry as="geometry" x="30" y="400" width="1430" height="1" /></mxCell><mxCell id="SH06-bottom" value="" style="shape=line;strokeColor=#64748b;" vertex="1" parent="1"><mxGeometry as="geometry" x="30" y="480" width="1430" height="1" /></mxCell></root></mxGraphModel></diagram><diagram name="Skill navigation states" id="skill-navigation-states"><mxGraphModel page="1" pageWidth="1500" pageHeight="900"><root><mxCell id="0" /><mxCell id="1" parent="0" /><mxCell id="SH07-0" value="SH07-A Both expanded&#10;&#10;SKILL                         [...]&#10;FILES [v]                     [...]&#10;File tree (half available height)&#10;COMMITS [v]                   [...]&#10;Commit graph (remaining height)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#64748b;"><mxGeometry as="geometry" x="30" y="40" width="460" height="340" /></mxCell><mxCell id="SH07-1" value="SH07-B One expanded&#10;&#10;SKILL                         [...]&#10;FILES [&gt;]                     [...]&#10;COMMITS [v]                   [...]&#10;Commit graph fills remaining height.&#10;Inverse: collapse Commits for Files." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#64748b;"><mxGeometry as="geometry" x="520" y="40" width="460" height="340" /></mxCell><mxCell id="SH07-2" value="SH07-C Column collapsed&#10;&#10;[Show navigation] | Source / diff&#10;Divider remains grabbable at left.&#10;Drag right or Show restores width.&#10;File and commit selections preserved.&#10;Double-click divider toggles." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#64748b;"><mxGeometry as="geometry" x="1010" y="40" width="460" height="340" /></mxCell><mxCell id="SH07-actions" value="Three-dot actions&#10;Files/Commits: Expand only this section; Expand both sections.&#10;SKILL: Hide navigation; Reset navigation width. Native disclosure buttons support keyboard focus.&#10;Summary remains above this workspace. All navigation is read-only; no model or registry writes.&#10;Escape/outside: dismiss; Escape focuses trigger. Restore focuses separator. Foreground contrast, labels fit." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#64748b;"><mxGeometry as="geometry" x="30" y="430" width="1440" height="240" /></mxCell></root></mxGraphModel></diagram></mxfile>
+  <diagram name="Skill operations and history" id="skill-operations-history">
+    <mxGraphModel page="1" pageWidth="1500" pageHeight="1000">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="SO01" value="SO01 User | Skill node&#10;Source / Skill / Revision&#10;Base Commit (advanced)&#10;Edit Request&#10;Operation input: ordinary or Agent feedback&#10;Outputs: Skill Reference / Task / Operation Result" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#64748b;">
+          <mxGeometry x="30" y="30" width="430" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="SO02" value="SO02 Agent | Existing Codex Agent&#10;IN: Task + exact skill snapshot and host policy&#10;OUT: modify, message, files[]&#10;Task → Agent → same Skill Operation&#10;One turn; no canonical promotion" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=16;fillColor=#eff6ff;strokeColor=#64748b;">
+          <mxGeometry x="510" y="30" width="450" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="SO03" value="SO03 Laomedo | Atomic proposal&#10;Validate every changed file&#10;Store immutable candidate and one commit&#10;Record policy + adapter run provenance&#10;Canonical/source files remain unchanged" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=16;fillColor=#f0fdf4;strokeColor=#64748b;">
+          <mxGeometry x="1010" y="30" width="450" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="SH01" value="SH01 User | Skill files                                      [Close]&#10;Current: skill ID + full immutable revision captured on open&#10;One workspace: file tree and commit graph left; source or selected-file comparison right. No Files/History mode buttons." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=16;fillColor=#e2e8f0;strokeColor=#64748b;">
+          <mxGeometry x="30" y="300" width="1430" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="SH02-nav" value="" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=#d1d5db;" vertex="1" parent="1">
+          <mxGeometry x="30" y="500" width="310" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="SH02-skill" value="SKILL" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=11;fontColor=#172033;fillColor=#f8fafc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="30" y="500" width="310" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH02-trigger" value="⋯" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=18;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="309" y="504" width="28" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="SH02-files-chevron" value="▾" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#f1f5f9;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="30" y="532" width="18" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH02-files" value="FILES" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#f1f5f9;strokeColor=none;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="48" y="532" width="292" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH02-skill-file" value="SKILL.md" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="38" y="564" width="302" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="SH02-folder-chevron" value="▾" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="38" y="590" width="18" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="SH02-folder" value="references" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="56" y="590" width="284" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="SH02-reference" value="pr-operation.md" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="60" y="616" width="280" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="SH02-commits-chevron" value="▾" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#f1f5f9;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="30" y="648" width="18" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH02-commits" value="COMMITS" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#f1f5f9;strokeColor=none;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="48" y="648" width="292" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH02-commit-0" value="○" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=18;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="32" y="680" width="20" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="SH02-message-0" value="Clarify PR update boundaries" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=11;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="53" y="680" width="287" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="SH02-commit-1" value="○" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=18;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="32" y="703" width="20" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="SH02-message-1" value="Add PR operation contract" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=11;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="53" y="703" width="287" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="SH02-commit-2" value="○" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=18;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="32" y="726" width="20" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="SH02-message-2" value="Initial import" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=11;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="53" y="726" width="287" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="SH03" value="SH03 - Selected file comparison&#10;Click commit: inline selected-file diff to current.&#10;Same old/new number: one index; otherwise both.&#10;Absent index: blank. Shifted context: both indexes.&#10;Digit-sized indexes + 4 px; divider and header rule.&#10;Dedicated 24 px signs: bold, high-contrast +/minus.&#10;Short current hash; full identity on hover.&#10;Switch file: retain selected commit; no raw patch.&#10;Added/deleted: explicit rows; binary: metadata.&#10;Details: backend-asserted provenance." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#64748b;">
+          <mxGeometry x="370" y="500" width="1090" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="SH04" value="SH04 Laomedo | Loading and failure&#10;Loading commits / comparison; clear previous content on selection change&#10;History unavailable or Comparison unavailable with Retry; empty history is explicit.&#10;Files remain usable if history is unavailable. Browsing/comparing/resizing never runs an Agent or edits a skill." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=16;fillColor=#fff7ed;strokeColor=#64748b;">
+          <mxGeometry x="30" y="860" width="1430" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="SH05-handle" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=16;fillColor=#94a3b8;strokeColor=#64748b;">
+          <mxGeometry x="347" y="500" width="8" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="SH05" value="SH05 | Resize or collapse navigation&#10;Drag below 90 px: collapse to 0; otherwise 180-600 px bounded to editor space. Persistent divider + Show navigation restore. Double-click toggle; Home collapse; End maximum; arrows resize/restore." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=16;fillColor=#f1f5f9;strokeColor=#64748b;">
+          <mxGeometry x="30" y="770" width="1430" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="SH06" value="SH06 | Complete purpose summary [disclosure]&#10;Top/bottom dividers only; no frame. Summary always visible, wraps fully.&#10;Details initially collapsed; click or Enter/Space toggles revision-local full docs and images." style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="30" y="400" width="1430" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="SH06-top" value="" style="shape=line;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="400" width="1430" height="1" />
+        </mxCell>
+        <mxCell id="SH06-bottom" value="" style="shape=line;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="480" width="1430" height="1" />
+        </mxCell>
+        <mxCell id="SH02-menu" value="" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=#94a3b8;" vertex="1" parent="1">
+          <mxGeometry x="309" y="532" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="SH02-action-0" value="Collapse all" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="310" y="533" width="208" height="29" as="geometry" />
+        </mxCell>
+        <mxCell id="SH02-action-1" value="Hide navigation" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="310" y="562" width="208" height="29" as="geometry" />
+        </mxCell>
+        <mxCell id="SH02-action-2" value="Reset navigation width" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="310" y="591" width="208" height="29" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Skill navigation states" id="skill-navigation-states">
+    <mxGraphModel page="1" pageWidth="1580" pageHeight="1140">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="SH07-0" value="" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#f8fafc;strokeColor=#94a3b8;" vertex="1" parent="1">
+          <mxGeometry x="20" y="30" width="740" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-0-title" value="SH07-A · All open — Collapse all" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontColor=#172033;fillColor=#e2e8f0;strokeColor=none;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="30" width="740" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-0-divider" value="" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#94a3b8;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="300" y="74" width="6" height="416" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-0-source" value="SKILL.md&#10;Selected revision → Current&#10;&#10;Read-only selected file&#10;&#10;The same file and commit stay selected&#10;while sections and folders change." style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="314" y="74" width="434" height="416" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-0-nav" value="" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=#d1d5db;" vertex="1" parent="1">
+          <mxGeometry x="20" y="74" width="280" height="416" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-0-skill" value="SKILL" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=11;fontColor=#172033;fillColor=#f8fafc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="20" y="74" width="280" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-0-trigger" value="⋯" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=18;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="269" y="78" width="28" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-0-files-chevron" value="▾" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#f1f5f9;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="20" y="106" width="18" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-0-files" value="FILES" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#f1f5f9;strokeColor=none;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="38" y="106" width="262" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-0-skill-file" value="SKILL.md" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="28" y="138" width="272" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-0-folder-chevron" value="▾" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="28" y="164" width="18" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-0-folder" value="references" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="46" y="164" width="254" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-0-reference" value="pr-operation.md" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="50" y="190" width="250" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-0-commits-chevron" value="▾" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#f1f5f9;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="20" y="298" width="18" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-0-commits" value="COMMITS" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#f1f5f9;strokeColor=none;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="38" y="298" width="262" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-0-commit-0" value="○" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=18;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="22" y="330" width="20" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-0-message-0" value="Clarify PR update boundaries" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=11;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="43" y="330" width="257" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-0-commit-1" value="○" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=18;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="22" y="368" width="20" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-0-message-1" value="Add PR operation contract" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=11;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="43" y="368" width="257" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-0-commit-2" value="○" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=18;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="22" y="406" width="20" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-0-message-2" value="Initial import" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=11;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="43" y="406" width="257" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-0-menu" value="" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=#94a3b8;" vertex="1" parent="1">
+          <mxGeometry x="269" y="106" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-0-action-0" value="Collapse all" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="270" y="107" width="208" height="29" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-0-action-1" value="Hide navigation" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="270" y="136" width="208" height="29" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-0-action-2" value="Reset navigation width" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="270" y="165" width="208" height="29" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-1" value="" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#f8fafc;strokeColor=#94a3b8;" vertex="1" parent="1">
+          <mxGeometry x="800" y="30" width="740" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-1-title" value="SH07-B · Mixed state — Open all" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontColor=#172033;fillColor=#e2e8f0;strokeColor=none;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="30" width="740" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-1-divider" value="" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#94a3b8;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="74" width="6" height="416" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-1-source" value="SKILL.md&#10;Selected revision → Current&#10;&#10;Read-only selected file&#10;&#10;The same file and commit stay selected&#10;while sections and folders change." style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1094" y="74" width="434" height="416" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-1-nav" value="" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=#d1d5db;" vertex="1" parent="1">
+          <mxGeometry x="800" y="74" width="280" height="416" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-1-skill" value="SKILL" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=11;fontColor=#172033;fillColor=#f8fafc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="800" y="74" width="280" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-1-trigger" value="⋯" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=18;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1049" y="78" width="28" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-1-files-chevron" value="▾" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#f1f5f9;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="800" y="106" width="18" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-1-files" value="FILES" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#f1f5f9;strokeColor=none;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="818" y="106" width="262" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-1-skill-file" value="SKILL.md" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="808" y="138" width="272" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-1-folder-chevron" value="▸" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="808" y="164" width="18" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-1-folder" value="references" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="826" y="164" width="254" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-1-commits-chevron" value="▸" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#f1f5f9;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="800" y="458" width="18" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-1-commits" value="COMMITS" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#f1f5f9;strokeColor=none;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="818" y="458" width="262" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-1-menu" value="" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=#94a3b8;" vertex="1" parent="1">
+          <mxGeometry x="1049" y="106" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-1-action-0" value="Open all" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="107" width="208" height="29" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-1-action-1" value="Hide navigation" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="136" width="208" height="29" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-1-action-2" value="Reset navigation width" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="165" width="208" height="29" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-3" value="" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#f8fafc;strokeColor=#94a3b8;" vertex="1" parent="1">
+          <mxGeometry x="20" y="590" width="740" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-3-title" value="SH07-C · All sections/folders closed — Open all" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontColor=#172033;fillColor=#e2e8f0;strokeColor=none;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="590" width="740" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-3-divider" value="" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#94a3b8;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="300" y="634" width="6" height="416" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-3-source" value="SKILL.md&#10;Selected revision → Current&#10;&#10;Read-only selected file&#10;&#10;The same file and commit stay selected&#10;while sections and folders change." style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="314" y="634" width="434" height="416" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-3-nav" value="" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=#d1d5db;" vertex="1" parent="1">
+          <mxGeometry x="20" y="634" width="280" height="416" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-3-skill" value="SKILL" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=11;fontColor=#172033;fillColor=#f8fafc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="20" y="634" width="280" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-3-trigger" value="⋯" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=18;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="269" y="638" width="28" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-3-files-chevron" value="▸" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#f1f5f9;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="20" y="666" width="18" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-3-files" value="FILES" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#f1f5f9;strokeColor=none;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="38" y="666" width="262" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-3-commits-chevron" value="▸" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#f1f5f9;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="20" y="698" width="18" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-3-commits" value="COMMITS" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#f1f5f9;strokeColor=none;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="38" y="698" width="262" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-3-menu" value="" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=#94a3b8;" vertex="1" parent="1">
+          <mxGeometry x="269" y="666" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-3-action-0" value="Open all" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="270" y="667" width="208" height="29" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-3-action-1" value="Hide navigation" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="270" y="696" width="208" height="29" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-3-action-2" value="Reset navigation width" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="270" y="725" width="208" height="29" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-2" value="" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#f8fafc;strokeColor=#94a3b8;" vertex="1" parent="1">
+          <mxGeometry x="800" y="590" width="740" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-2-title" value="SH07-D · Navigation hidden — restore separately" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontColor=#172033;fillColor=#e2e8f0;strokeColor=none;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="590" width="740" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-2-show" value="Show navigation" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#f1f5f9;strokeColor=#cbd5e1;" vertex="1" parent="1">
+          <mxGeometry x="808" y="635" width="150" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-2-divider" value="" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#94a3b8;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="800" y="670" width="6" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-2-source" value="SKILL.md&#10;Selected revision → Current&#10;&#10;Read-only file comparison remains selected.&#10;&#10;The hidden column can be restored with the divider&#10;or Show navigation, preserving its disclosure state." style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="812" y="674" width="716" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-edge-collapse" value="Collapse all" edge="1" parent="1" source="SH07-0" target="SH07-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#475569;fontColor=#172033;fontSize=12;labelBackgroundColor=#ffffff;exitX=0.25;exitY=1;entryX=0.25;entryY=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-edge-open" value="Open all" edge="1" parent="1" source="SH07-3" target="SH07-0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#475569;fontColor=#172033;fontSize=12;labelBackgroundColor=#ffffff;exitX=0.75;exitY=0;entryX=0.75;entryY=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SH07-edge-mixed" value="Open all" edge="1" parent="1" source="SH07-1" target="SH07-0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#475569;fontColor=#172033;fontSize=12;labelBackgroundColor=#ffffff;exitX=0.5;exitY=0;entryX=0.5;entryY=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1170" y="12" />
+              <mxPoint x="390" y="12" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SH07-rule" value="PROPOSED - Files/Commits disclosure detail. SH08 adds Find to the same bulk action: all three sections and folders must be open. Keep selection, tabs and scroll mounted. Escape/outside dismisses the menu; actions return focus." style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=12;fontColor=#172033;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1080" width="1520" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="skill-workspace-search" name="Skill workspace Find and full page">
+    <mxGraphModel page="1" pageWidth="1520" pageHeight="1080">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="SH08-title" value="PROPOSED · SH08 Find across the pinned Skill · SH09 full-page viewer" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#94a3b8;fontColor=#172033;fontSize=18;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="20" y="15" width="1480" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-frame" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="20" y="70" width="700" height="450" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-title" value="Skill files · Read only" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="28" y="78" width="490" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-maximize" value="Full page" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="526" y="78" width="140" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-close" value="×" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="674" y="78" width="38" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-identity" value="pr-feedback-title · sha256:df5fad52…" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="28" y="118" width="684" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-nav" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="28" y="154" width="240" height="358" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-skill" value="SKILL" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="28" y="154" width="194" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-menu" value="···" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="222" y="154" width="46" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-find-chevron" value="▾" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="28" y="182" width="28" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-find-title" value="FIND" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="56" y="182" width="212" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-query" value="proposal" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="36" y="218" width="180" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-case" value="Aa" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="220" y="218" width="40" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-scope" value="Pinned current files · 2 matching lines" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#172033;fontSize=12;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="36" y="254" width="224" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-result-file" value="▾ SKILL.md" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="36" y="292" width="224" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-result-line" value="14: …response is a proposal." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#94a3b8;fontColor=#172033;fontSize=12;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="48" y="320" width="212" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-result-nested" value="▾ references/pr-operation.md" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#94a3b8;fontColor=#172033;fontSize=12;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="36" y="356" width="224" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-result-nested-line" value="10: Before returning the proposal" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#94a3b8;fontColor=#172033;fontSize=12;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="48" y="384" width="212" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-files" value="▸ FILES" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="28" y="422" width="240" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-commits" value="▸ COMMITS" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="28" y="450" width="240" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-divider" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#94a3b8;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="270" y="154" width="6" height="358" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-tab" value="references/pr-operation.md    ×" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="282" y="154" width="430" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-source" value="Source   Preview" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="282" y="184" width="430" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-line" value="10   Before returning the proposal" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#94a3b8;fontColor=#172033;fontSize=12;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="282" y="218" width="430" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-editor" value="Current pinned source · matching text selected&#10;Read only · no per-file Find button" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="282" y="258" width="430" height="254" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-frame" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="750" y="70" width="750" height="550" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-title" value="Skill files · Read only" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="758" y="78" width="540" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-maximize" value="Restore window" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="1306" y="78" width="140" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-close" value="×" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="1454" y="78" width="38" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-identity" value="pr-feedback-title · sha256:df5fad52…" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="758" y="118" width="734" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-nav" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="758" y="154" width="240" height="458" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-skill" value="SKILL" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="758" y="154" width="194" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-menu" value="···" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="952" y="154" width="46" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-find-chevron" value="▾" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="758" y="182" width="28" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-find-title" value="FIND" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="786" y="182" width="212" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-query" value="proposal" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="766" y="218" width="180" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-case" value="Aa" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="950" y="218" width="40" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-scope" value="Pinned current files · 2 matching lines" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#172033;fontSize=12;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="766" y="254" width="224" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-result-file" value="▾ SKILL.md" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="766" y="292" width="224" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-result-line" value="14: …response is a proposal." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#94a3b8;fontColor=#172033;fontSize=12;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="778" y="320" width="212" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-result-nested" value="▾ references/pr-operation.md" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#94a3b8;fontColor=#172033;fontSize=12;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="766" y="356" width="224" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-result-nested-line" value="10: Before returning the proposal" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#94a3b8;fontColor=#172033;fontSize=12;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="778" y="384" width="212" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-files" value="▸ FILES" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="758" y="422" width="240" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-commits" value="▸ COMMITS" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="758" y="450" width="240" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-divider" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#94a3b8;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="1000" y="154" width="6" height="458" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-tab" value="references/pr-operation.md    ×" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="1012" y="154" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-source" value="Source   Preview" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="1012" y="184" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-line" value="10   Before returning the proposal" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#94a3b8;fontColor=#172033;fontSize=12;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="1012" y="218" width="480" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-editor" value="Current pinned source · matching text selected&#10;Read only · no per-file Find button" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="1012" y="258" width="480" height="354" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-closed" value="▸ FIND" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="20" y="552" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-empty" value="Search all text files…" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="20" y="592" width="240" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-none" value="No matches in pinned current files." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="20" y="640" width="340" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-limit" value="First 500 matching lines shown. Refine search." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="20" y="688" width="400" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="SH08-behavior" value="SH08 transitions: click Find chevron toggles independently; collapse/reopen retains query, case option and result groups. Escape within Find collapses it and focuses its header. Ctrl/Cmd+F opens Find and focuses the query. Empty query shows a prompt; no match shows explicit text. Literal search, case insensitive by default, Aa toggles case. Group matching lines by file; each result shows line number and a bounded highlighted snippet. Result click opens current source at that match, clearing historical comparison explicitly; historical-only and binary files are excluded. A repeat click reselects the match. Search is local to the already verified immutable snapshot; no network, graph execution or edits." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="20" y="752" width="1480" height="112" as="geometry" />
+        </mxCell>
+        <mxCell id="SH09-behavior" value="SH09 transitions: Full page expands the same accessible dialog to the browser viewport; Restore window returns to its former modal size. No browser fullscreen permission or new tab. Keep file, tabs, query, disclosure, commit and navigation width. Close and Escape still dismiss; Escape first closes an open actions menu or collapses focused Find. Bounds remain within viewport at small sizes. Collapse all / Open all includes Find, Files, Commits and folders. Find starts collapsed; Files and Commits start open. Read-only snapshot/history failure and Retry remain available; failure never becomes an empty successful search." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#94a3b8;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="20" y="880" width="1480" height="146" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="skill-explorer-icons" name="Skill explorer file icons and chevrons">
+    <mxGraphModel page="1" pageWidth="1200" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="SH10-title" value="PROPOSED · SH10 Skill explorer · bundled type logos and VS Code Codicon chevrons" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=18;align=left;verticalAlign=middle;spacingLeft=8;">
+          <mxGeometry x="20" y="16" width="1160" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-open-frame" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacingLeft=8;">
+          <mxGeometry x="20" y="84" width="350" height="265" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-open-title" value="Expanded folder" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacingLeft=8;">
+          <mxGeometry x="20" y="84" width="350" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-open-skill" value="SKILL" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacingLeft=8;">
+          <mxGeometry x="20" y="124" width="350" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-open-section-chevron" value="" vertex="1" parent="1" style="shape=image;aspect=fixed;imageAspect=0;image=data:image/svg+xml,%3Csvg%20stroke%3D%22currentColor%22%20fill%3D%22currentColor%22%20stroke-width%3D%220%22%20viewBox%3D%220%200%2016%2016%22%20color%3D%22%23475569%22%20style%3D%22color%3A%23475569%22%20height%3D%2216%22%20width%3D%2216%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M7.976%2010.072l4.357-4.357.62.618L8.284%2011h-.618L3%206.333l.619-.618%204.357%204.357z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E;">
+          <mxGeometry x="28" y="158" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-open-files" value="FILES" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=12;align=left;verticalAlign=middle;spacingLeft=8;">
+          <mxGeometry x="48" y="152" width="322" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-open-root-icon" value="" vertex="1" parent="1" style="shape=image;aspect=fixed;imageAspect=0;image=data:image/svg+xml,%3Csvg%20stroke%3D%22currentColor%22%20fill%3D%22currentColor%22%20stroke-width%3D%220%22%20role%3D%22img%22%20viewBox%3D%220%200%2024%2024%22%20color%3D%22%232563eb%22%20style%3D%22color%3A%232563eb%22%20height%3D%2216%22%20width%3D%2216%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M22.27%2019.385H1.73A1.73%201.73%200%20010%2017.655V6.345a1.73%201.73%200%20011.73-1.73h20.54A1.73%201.73%200%200124%206.345v11.308a1.73%201.73%200%2001-1.73%201.731zM5.769%2015.923v-4.5l2.308%202.885%202.307-2.885v4.5h2.308V8.078h-2.308l-2.307%202.885-2.308-2.885H3.46v7.847zM21.232%2012h-2.309V8.077h-2.307V12h-2.308l3.461%204.039z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E;">
+          <mxGeometry x="48" y="188" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-open-root-label" value="SKILL.md" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacingLeft=8;">
+          <mxGeometry x="68" y="182" width="302" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-open-folder-chevron" value="" vertex="1" parent="1" style="shape=image;aspect=fixed;imageAspect=0;image=data:image/svg+xml,%3Csvg%20stroke%3D%22currentColor%22%20fill%3D%22currentColor%22%20stroke-width%3D%220%22%20viewBox%3D%220%200%2016%2016%22%20color%3D%22%23475569%22%20style%3D%22color%3A%23475569%22%20height%3D%2216%22%20width%3D%2216%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M7.976%2010.072l4.357-4.357.62.618L8.284%2011h-.618L3%206.333l.619-.618%204.357%204.357z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E;">
+          <mxGeometry x="28" y="216" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-open-folder-label" value="references" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacingLeft=8;">
+          <mxGeometry x="48" y="210" width="322" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-open-nested-icon" value="" vertex="1" parent="1" style="shape=image;aspect=fixed;imageAspect=0;image=data:image/svg+xml,%3Csvg%20stroke%3D%22currentColor%22%20fill%3D%22currentColor%22%20stroke-width%3D%220%22%20role%3D%22img%22%20viewBox%3D%220%200%2024%2024%22%20color%3D%22%232563eb%22%20style%3D%22color%3A%232563eb%22%20height%3D%2216%22%20width%3D%2216%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M22.27%2019.385H1.73A1.73%201.73%200%20010%2017.655V6.345a1.73%201.73%200%20011.73-1.73h20.54A1.73%201.73%200%200124%206.345v11.308a1.73%201.73%200%2001-1.73%201.731zM5.769%2015.923v-4.5l2.308%202.885%202.307-2.885v4.5h2.308V8.078h-2.308l-2.307%202.885-2.308-2.885H3.46v7.847zM21.232%2012h-2.309V8.077h-2.307V12h-2.308l3.461%204.039z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E;">
+          <mxGeometry x="64" y="244" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-open-nested-label" value="pr-operation.md" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacingLeft=8;">
+          <mxGeometry x="84" y="238" width="286" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-closed-frame" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacingLeft=8;">
+          <mxGeometry x="410" y="84" width="350" height="265" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-closed-title" value="Collapsed folder" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacingLeft=8;">
+          <mxGeometry x="410" y="84" width="350" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-closed-skill" value="SKILL" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacingLeft=8;">
+          <mxGeometry x="410" y="124" width="350" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-closed-section-chevron" value="" vertex="1" parent="1" style="shape=image;aspect=fixed;imageAspect=0;image=data:image/svg+xml,%3Csvg%20stroke%3D%22currentColor%22%20fill%3D%22currentColor%22%20stroke-width%3D%220%22%20viewBox%3D%220%200%2016%2016%22%20color%3D%22%23475569%22%20style%3D%22color%3A%23475569%22%20height%3D%2216%22%20width%3D%2216%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M7.976%2010.072l4.357-4.357.62.618L8.284%2011h-.618L3%206.333l.619-.618%204.357%204.357z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E;">
+          <mxGeometry x="418" y="158" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-closed-files" value="FILES" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=12;align=left;verticalAlign=middle;spacingLeft=8;">
+          <mxGeometry x="438" y="152" width="322" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-closed-root-icon" value="" vertex="1" parent="1" style="shape=image;aspect=fixed;imageAspect=0;image=data:image/svg+xml,%3Csvg%20stroke%3D%22currentColor%22%20fill%3D%22currentColor%22%20stroke-width%3D%220%22%20role%3D%22img%22%20viewBox%3D%220%200%2024%2024%22%20color%3D%22%232563eb%22%20style%3D%22color%3A%232563eb%22%20height%3D%2216%22%20width%3D%2216%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M22.27%2019.385H1.73A1.73%201.73%200%20010%2017.655V6.345a1.73%201.73%200%20011.73-1.73h20.54A1.73%201.73%200%200124%206.345v11.308a1.73%201.73%200%2001-1.73%201.731zM5.769%2015.923v-4.5l2.308%202.885%202.307-2.885v4.5h2.308V8.078h-2.308l-2.307%202.885-2.308-2.885H3.46v7.847zM21.232%2012h-2.309V8.077h-2.307V12h-2.308l3.461%204.039z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E;">
+          <mxGeometry x="438" y="188" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-closed-root-label" value="SKILL.md" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacingLeft=8;">
+          <mxGeometry x="458" y="182" width="302" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-closed-folder-chevron" value="" vertex="1" parent="1" style="shape=image;aspect=fixed;imageAspect=0;image=data:image/svg+xml,%3Csvg%20stroke%3D%22currentColor%22%20fill%3D%22currentColor%22%20stroke-width%3D%220%22%20viewBox%3D%220%200%2016%2016%22%20color%3D%22%23475569%22%20style%3D%22color%3A%23475569%22%20height%3D%2216%22%20width%3D%2216%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M10.072%208.024L5.715%203.667l.618-.62L11%207.716v.618L6.333%2013l-.618-.619%204.357-4.357z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E;">
+          <mxGeometry x="418" y="216" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-closed-folder-label" value="references" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacingLeft=8;">
+          <mxGeometry x="438" y="210" width="322" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-legend" value="Type icons (same 16 px slot)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacingLeft=8;">
+          <mxGeometry x="800" y="84" width="380" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-type-markdown" value="" vertex="1" parent="1" style="shape=image;aspect=fixed;imageAspect=0;image=data:image/svg+xml,%3Csvg%20stroke%3D%22currentColor%22%20fill%3D%22currentColor%22%20stroke-width%3D%220%22%20role%3D%22img%22%20viewBox%3D%220%200%2024%2024%22%20color%3D%22%232563eb%22%20style%3D%22color%3A%232563eb%22%20height%3D%2216%22%20width%3D%2216%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M22.27%2019.385H1.73A1.73%201.73%200%20010%2017.655V6.345a1.73%201.73%200%20011.73-1.73h20.54A1.73%201.73%200%200124%206.345v11.308a1.73%201.73%200%2001-1.73%201.731zM5.769%2015.923v-4.5l2.308%202.885%202.307-2.885v4.5h2.308V8.078h-2.308l-2.307%202.885-2.308-2.885H3.46v7.847zM21.232%2012h-2.309V8.077h-2.307V12h-2.308l3.461%204.039z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E;">
+          <mxGeometry x="816" y="130" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-label-markdown" value="SKILL.md · Markdown" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacingLeft=8;">
+          <mxGeometry x="840" y="124" width="330" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-type-python" value="" vertex="1" parent="1" style="shape=image;aspect=fixed;imageAspect=0;image=data:image/svg+xml,%3Csvg%20stroke%3D%22currentColor%22%20fill%3D%22currentColor%22%20stroke-width%3D%220%22%20role%3D%22img%22%20viewBox%3D%220%200%2024%2024%22%20color%3D%22%233b82f6%22%20style%3D%22color%3A%233b82f6%22%20height%3D%2216%22%20width%3D%2216%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02%201.27.05zm-6.3%201.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09%203.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14%201.04.05%201.23-.06%201.23-.16%201.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01%202.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47%2014.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E;">
+          <mxGeometry x="816" y="158" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-label-python" value="worker.py · Python" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacingLeft=8;">
+          <mxGeometry x="840" y="152" width="330" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-type-javascript" value="" vertex="1" parent="1" style="shape=image;aspect=fixed;imageAspect=0;image=data:image/svg+xml,%3Csvg%20stroke%3D%22currentColor%22%20fill%3D%22currentColor%22%20stroke-width%3D%220%22%20role%3D%22img%22%20viewBox%3D%220%200%2024%2024%22%20color%3D%22%23a16207%22%20style%3D%22color%3A%23a16207%22%20height%3D%2216%22%20width%3D%2216%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M0%200h24v24H0V0zm22.034%2018.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84%201.515-.66.39.12.75.42.976.9%201.034-.676%201.034-.676%201.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71%201.005-1.14%201.291-.811%203.541.569%204.471%201.365%201.02%203.361%201.244%203.616%202.205.24%201.17-.87%201.545-1.966%201.41-.811-.18-1.26-.586-1.755-1.336l-1.83%201.051c.21.48.45.689.81%201.109%201.74%201.756%206.09%201.666%206.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0%201.938-.009%203.864-.009%205.805%200%201.232.063%202.363-.138%202.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825%201.125c.305.63.75%201.172%201.324%201.517.855.51%202.004.675%203.207.405.783-.226%201.458-.691%201.811-1.411.51-.93.402-2.07.397-3.346.012-2.054%200-4.109%200-6.179l.004-.056z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E;">
+          <mxGeometry x="816" y="186" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-label-javascript" value="worker.js · JavaScript" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacingLeft=8;">
+          <mxGeometry x="840" y="180" width="330" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-type-typescript" value="" vertex="1" parent="1" style="shape=image;aspect=fixed;imageAspect=0;image=data:image/svg+xml,%3Csvg%20stroke%3D%22currentColor%22%20fill%3D%22currentColor%22%20stroke-width%3D%220%22%20role%3D%22img%22%20viewBox%3D%220%200%2024%2024%22%20color%3D%22%232563eb%22%20style%3D%22color%3A%232563eb%22%20height%3D%2216%22%20width%3D%2216%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M1.125%200C.502%200%200%20.502%200%201.125v21.75C0%2023.498.502%2024%201.125%2024h21.75c.623%200%201.125-.502%201.125-1.125V1.125C24%20.502%2023.498%200%2022.875%200zm17.363%209.75c.612%200%201.154.037%201.627.111a6.38%206.38%200%200%201%201.306.34v2.458a3.95%203.95%200%200%200-.643-.361%205.093%205.093%200%200%200-.717-.26%205.453%205.453%200%200%200-1.426-.2c-.3%200-.573.028-.819.086a2.1%202.1%200%200%200-.623.242c-.17.104-.3.229-.393.374a.888.888%200%200%200-.14.49c0%20.196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407%201.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214%201.253%200%20.657-.125%201.21-.373%201.656a3.033%203.033%200%200%201-1.012%201.085%204.38%204.38%200%200%201-1.487.596c-.566.12-1.163.18-1.79.18a9.916%209.916%200%200%201-1.84-.164%205.544%205.544%200%200%201-1.512-.493v-2.63a5.033%205.033%200%200%200%203.237%201.2c.333%200%20.624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023%201.023%200%200%200-.074-1.089%202.12%202.12%200%200%200-.537-.5%205.597%205.597%200%200%200-.807-.444%2027.72%2027.72%200%200%200-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005%200-.614.123-1.141.369-1.582.246-.441.58-.804%201.004-1.089a4.494%204.494%200%200%201%201.47-.629%207.536%207.536%200%200%201%201.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E;">
+          <mxGeometry x="816" y="214" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-label-typescript" value="worker.ts · TypeScript" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacingLeft=8;">
+          <mxGeometry x="840" y="208" width="330" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-type-json" value="" vertex="1" parent="1" style="shape=image;aspect=fixed;imageAspect=0;image=data:image/svg+xml,%3Csvg%20stroke%3D%22currentColor%22%20fill%3D%22currentColor%22%20stroke-width%3D%220%22%20role%3D%22img%22%20viewBox%3D%220%200%2024%2024%22%20color%3D%22%23a16207%22%20style%3D%22color%3A%23a16207%22%20height%3D%2216%22%20width%3D%2216%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M12.043%2023.968c.479-.004.953-.029%201.426-.094a11.805%2011.805%200%20003.146-.863%2012.404%2012.404%200%20003.793-2.542%2011.977%2011.977%200%20002.44-3.427%2011.794%2011.794%200%20001.02-3.476c.149-1.16.135-2.346-.045-3.499a11.96%2011.96%200%2000-.793-2.788%2011.197%2011.197%200%2000-.854-1.617c-1.168-1.837-2.861-3.314-4.81-4.3a12.835%2012.835%200%2000-2.172-.87h-.005c.119.063.24.132.345.201.12.074.239.146.351.225a8.93%208.93%200%20011.559%201.33c1.063%201.145%201.797%202.548%202.218%204.041.284.982.434%201.998.495%203.017.044.743.044%201.491-.047%202.229-.149%201.27-.554%202.51-1.228%203.596a7.475%207.475%200%2001-1.903%202.084c-1.244.928-2.877%201.482-4.436%201.114a3.916%203.916%200%2001-.748-.258%204.692%204.692%200%2001-.779-.45%206.08%206.08%200%2001-1.244-1.105%206.507%206.507%200%2001-1.049-1.747%207.366%207.366%200%2001-.494-2.54c-.03-1.273.225-2.553.854-3.67a6.43%206.43%200%20011.663-1.918c.225-.178.464-.333.704-.479l.016-.007a5.121%205.121%200%2000-1.441-.12%204.963%204.963%200%2000-1.228.24c-.359.12-.704.27-1.019.45a6.146%206.146%200%2000-.733.494c-.211.18-.42.36-.615.555-1.123%201.153-1.768%202.682-2.022%204.256-.15.973-.15%201.96-.091%202.95.105%201.395.391%202.787.945%204.062a8.518%208.518%200%20001.348%202.173%208.14%208.14%200%20003.132%202.23%207.934%207.934%200%20002.113.54c.074.015.149.015.209.015zm-2.934-.398a4.102%204.102%200%2001-.45-.228%208.5%208.5%200%2001-2.038-1.534c-1.094-1.137-1.827-2.566-2.247-4.08a15.184%2015.184%200%2001-.495-3.172%2012.14%2012.14%200%2001.046-2.082c.135-1.257.495-2.501%201.124-3.58a6.889%206.889%200%20011.783-2.053%206.23%206.23%200%20011.633-.9%205.363%205.363%200%20013.522-.045c.029%200%20.029%200%20.045.03.015.015.045.015.06.03.045.016.104.045.165.074.239.12.479.271.704.42a6.294%206.294%200%20012.097%202.502c.42.914.615%201.934.631%202.938.014%201.079-.18%202.157-.645%203.146a6.42%206.42%200%2001-2.638%202.832c.09.03.18.045.271.075.225.044.449.074.688.074%201.468.045%202.892-.66%203.94-1.647.195-.18.375-.375.54-.585.225-.27.435-.54.614-.823.239-.375.435-.75.614-1.154a8.112%208.112%200%2000.509-1.664c.196-1.004.211-2.022.149-3.026-.135-2.022-.673-4.045-1.842-5.724a9.054%209.054%200%2000-.555-.719%209.868%209.868%200%2000-1.063-1.034%208.477%208.477%200%2000-1.363-.915%209.927%209.927%200%2000-1.692-.598l-.3-.06c-.209-.03-.42-.044-.634-.06a8.453%208.453%200%2000-1.015.016c-.704.045-1.412.16-2.112.337C5.799%201.227%202.863%203.566%201.3%206.67A11.834%2011.834%200%2000.238%209.801a11.81%2011.81%200%2000-.104%203.775c.12%201.02.374%202.023.778%202.977.227.57.511%201.124.825%201.648%201.094%201.783%202.683%203.236%204.51%204.24.688.39%201.408.69%202.157.944.226.074.45.15.689.21z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E;">
+          <mxGeometry x="816" y="242" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-label-json" value="config.json · JSON" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacingLeft=8;">
+          <mxGeometry x="840" y="236" width="330" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-type-image" value="" vertex="1" parent="1" style="shape=image;aspect=fixed;imageAspect=0;image=data:image/svg+xml,%3Csvg%20stroke%3D%22currentColor%22%20fill%3D%22currentColor%22%20stroke-width%3D%220%22%20viewBox%3D%220%200%2016%2016%22%20color%3D%22%239333ea%22%20style%3D%22color%3A%239333ea%22%20height%3D%2216%22%20width%3D%2216%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M10.2197%201L10.5703%201.13965L13.8496%204.44043L14%204.7998V7H13V6H9.5L9%205.5V2H3V14H6V15H2.5L2%2014.5V1.5L2.5%201H10.2197ZM10%205H13L10%202V5Z%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M15.5%208H7.5L7%208.5V15.5L7.5%2016H15.5L16%2015.5V8.5L15.5%208ZM15%209V14L13.37%2012.4H12.66L11.5%2013.57L9.37%2011.44H8.66L8%2012.1V9H15ZM12.2%2014.27L13.01%2013.46L14.55%2015H12.93L12.2%2014.27ZM8%2015V13.51L9%2012.51L11.52%2015H8Z%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M14%2010.5C14%2010.7761%2013.7761%2011%2013.5%2011C13.2239%2011%2013%2010.7761%2013%2010.5C13%2010.2239%2013.2239%2010%2013.5%2010C13.7761%2010%2014%2010.2239%2014%2010.5Z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E;">
+          <mxGeometry x="816" y="270" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-label-image" value="diagram.png · Image" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacingLeft=8;">
+          <mxGeometry x="840" y="264" width="330" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-type-file" value="" vertex="1" parent="1" style="shape=image;aspect=fixed;imageAspect=0;image=data:image/svg+xml,%3Csvg%20stroke%3D%22currentColor%22%20fill%3D%22currentColor%22%20stroke-width%3D%220%22%20viewBox%3D%220%200%2016%2016%22%20color%3D%22%2364748b%22%20style%3D%22color%3A%2364748b%22%20height%3D%2216%22%20width%3D%2216%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M13.85%204.44L10.57%201.14L10.22%201H2.5L2%201.5V14.5L2.5%2015H13.5L14%2014.5V4.8L13.85%204.44ZM13%205H10V2L13%205ZM3%2014V2H9V5.5L9.5%206H13V14H3Z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E;">
+          <mxGeometry x="816" y="298" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-label-file" value="unknown.ext · generic file" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacingLeft=8;">
+          <mxGeometry x="840" y="292" width="330" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-rules" value="SH10: Each file row has a bundled, extension-appropriate logo immediately before its filename. Known names such as Dockerfile may use their type logo; unrecognized names/extensions retain a generic file icon. Nested and root rows align using a reserved 16 px chevron slot; only folders have chevrons. Folder disclosure uses the 16 px outline Codicon chevron-right/down, replacing filled text triangles. Files/Find/Commits section headers use the same chevrons. No CDN or remote icon fetch. Logos and chevrons are decorative, hidden from assistive naming; button labels remain filenames and folder buttons expose aria-expanded. Long names truncate visually with their full relative path on hover. Selection, nested expansion, bulk controls, width, search, history and read-only behavior stay the same." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacingLeft=8;">
+          <mxGeometry x="20" y="390" width="1160" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="SH10-checks" value="Transitions: folder click/Enter/Space changes right ↔ down and body visibility without opening a file. File click/Enter selects source and leaves folder expansion intact. Collapse/Open all and hide/restore keep icons aligned and disclosures correct. Verify normal/full-page/small viewport and light/dark contrast against real Skill files; other extension mappings have internal coverage, not fabricated live examples." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=13;align=left;verticalAlign=middle;spacingLeft=8;">
+          <mxGeometry x="20" y="552" width="1160" height="75" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="skill-manual-editing" name="Skill workspace editing and publication">
+    <mxGraphModel page="1" pageWidth="1480" pageHeight="1250">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="SH11-title" value="PROPOSED · SH11–SH13 · Skill workspace · icon window controls, search tree, manual commits and registry publication" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=18;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="20" y="16" width="1440" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-source-frame" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="20" y="86" width="710" height="525" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-source-heading" value="Skill files" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="32" y="98" width="510" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-source-maximize" value="□" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=18;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="670" y="98" width="32" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-source-identity" value="pr-feedback-title    sha256:df5fad52" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="32" y="138" width="686" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-source-find" value="⌄ FIND" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=12;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="32" y="210.0" width="230" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-source-query" value="proposal                               Aa" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="32" y="242.0" width="230" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-source-root-file" value="⌄ [MD] SKILL.md   2" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="32" y="274.0" width="230" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-source-root-match" value="12: … proposal …" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="64" y="302.0" width="198" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-source-folder" value="⌄ references" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="32" y="330.0" width="230" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-source-nested-file" value="⌄ [MD] pr-operation.md   2" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="48" y="358.0" width="214" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-source-nested-match" value="3: … proposal …" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="80" y="386.0" width="182" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-source-files" value="⌄ FILES" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=12;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="32" y="426.0" width="230" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-source-commits" value="⌄ COMMITS" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=12;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="32" y="458.0" width="230" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-source-commit" value="○ Clarify PR update boundaries" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="32" y="490.0" width="230" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-source-split" value="↔" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#cbd5e1;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=9;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="264" y="210.0" width="6" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-source-tabs" value="SKILL.md      pr-operation.md" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="278" y="210.0" width="408" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-source-view-toggle" value="" vertex="1" parent="1" style="shape=image;imageAspect=0;aspect=fixed;image=data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill%3D%22%23172033%22%20fill-rule%3D%22evenodd%22%20d%3D%22M2%202h12l1%201v10l-1%201H2l-1-1V3l1-1zm0%2011h12V3H2v10zm11-9H3v3h10V4zm-1%202H4V5h8v1zm-3%206h4V8H9v4zm1-3h2v2h-2V9zM7%208H3v1h4V8zm-4%203h4v1H3v-1z%22%2F%3E%3C%2Fsvg%3E;verticalAlign=middle;align=center;">
+          <mxGeometry x="694" y="218.0" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-source-editor" value="---&#10;name: pr-feedback-title&#10;description: Propose a PR operation.&#10;---&#10;&#10;Read the operation contract…" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="278" y="242.0" width="440" height="206" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-source-status" value="Editable immediately when authorised. No footer until a file changes. One icon at the right of the tabs toggles Markdown preview." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=12;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="32" y="558" width="686" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-edit-frame" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="750" y="86" width="710" height="525" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-edit-heading" value="Skill files" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="762" y="98" width="510" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-edit-maximize" value="▣" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=18;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="1400" y="98" width="32" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-edit-identity" value="pr-feedback-title    sha256:df5fad52" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="762" y="138" width="686" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-edit-find" value="⌄ FIND" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=12;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="762" y="210.0" width="230" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-edit-query" value="proposal                               Aa" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="762" y="242.0" width="230" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-edit-root-file" value="⌄ [MD] SKILL.md   2" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="762" y="274.0" width="230" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-edit-root-match" value="12: … proposal …" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="794" y="302.0" width="198" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-edit-folder" value="⌄ references" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="762" y="330.0" width="230" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-edit-nested-file" value="⌄ [MD] pr-operation.md   2" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="778" y="358.0" width="214" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-edit-nested-match" value="3: … proposal …" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="810" y="386.0" width="182" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-edit-files" value="⌄ FILES" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=12;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="762" y="426.0" width="230" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-edit-commits" value="⌄ COMMITS" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=12;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="762" y="458.0" width="230" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-edit-commit" value="○ Clarify PR update boundaries" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="762" y="490.0" width="230" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-edit-split" value="↔" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#cbd5e1;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=9;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="994" y="210.0" width="6" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-edit-tabs" value="SKILL.md •      pr-operation.md •" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="1008" y="210.0" width="408" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-edit-view-toggle" value="" vertex="1" parent="1" style="shape=image;imageAspect=0;aspect=fixed;image=data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill%3D%22%23172033%22%20fill-rule%3D%22evenodd%22%20d%3D%22M2%202h12l1%201v10l-1%201H2l-1-1V3l1-1zm0%2011h12V3H2v10zm11-9H3v3h10V4zm-1%202H4V5h8v1zm-3%206h4V8H9v4zm1-3h2v2h-2V9zM7%208H3v1h4V8zm-4%203h4v1H3v-1z%22%2F%3E%3C%2Fsvg%3E;verticalAlign=middle;align=center;">
+          <mxGeometry x="1424" y="218.0" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-edit-editor" value="---&#10;name: pr-feedback-title&#10;description: Propose a PR operation.&#10;---&#10;&#10;Review this updated proposal…" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="1008" y="242.0" width="440" height="206" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-edit-message" value="Commit message (optional)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="1008" y="558" width="220" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-edit-save" value="Publish" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="1348" y="558" width="100" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-edit-status" value="2 files to publish (expand)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=12;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="762" y="558" width="230" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-review" value="Publish: one explicit action, two durable stages" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="20" y="644" width="710" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-review-files" value="Footer disclosure before Publish:&#10;All changed file paths against registry current&#10;Includes earlier saved changes&#10;Choose path for its cumulative diff" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="20" y="684" width="230" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-review-diff" value="Save complete batch once, then promote exact commit.&#10;Optional message defaults to Update Skill files.&#10;Uncertain stage: exact Check result replay.&#10;Summary/overview retained (SH06); remove only generic viewer description." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="258" y="684" width="472" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-published" value="Success: footer disappears. Failure: Saved commit not published | Discard | Publish (retry). Saved history survives Discard." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#dcfce7;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="20" y="858" width="710" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-unsaved" value="Unsaved changes · close/discard confirmation" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="750" y="644" width="710" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-unsaved-text" value="Keep editing retains text. Discard removes only working edits and opens the journal head, never deleting an already-saved immutable commit or altering registry current. Close with unsaved work asks first." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="750" y="684" width="710" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-keep" value="Keep editing" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="750" y="762" width="160" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-discard" value="Discard changes" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="1270" y="762" width="190" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-busy" value="Publishing: spinner; save then promotion; controls locked until confirmed result. Check result reconciles exact pending stage." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="750" y="818" width="710" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-error" value="Failure retains text or the saved candidate. Unknown outcomes: Check result with exact identity. Definitive failure: correct/retry Publish or Discard to reload journal head. A saved candidate remains traceable if publication fails." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#fee2e2;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="750" y="862" width="710" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="SH11-rules" value="SH11: Replace textual Full page / Restore window with 16 px maximize/restore icons in 32 px buttons. Keep those accessible names, tooltips, keyboard activation, focus trap and same-dialog state. Use VS Code Seti Markdown glyph E060 from bundled licensed font, the same 150% scale and light/dark theme colors. Keep Codicon arrows. SH12: Find is a nested folder → file → matching-line tree; folder/file buttons have aria-expanded and counts, independent collapse state retained across typing and section hiding. Global Open/Collapse all includes search groups. Literal current-working-copy text search, bounded to 500 matching lines; choosing a match opens current source, not historical comparison." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=13;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="20" y="972" width="1440" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-rules" value="SH13: Always-editable text at journal head when local grants and versioned policy permit; otherwise read-only. Open journal head automatically without changing saved graph pins. One-line Skill ID + short SHA, no description paragraph or Edit/Review/Open latest controls. Dirty-only bottom-right Discard and Publish, optional commit message. Publish saves all changed files atomically then promotes exact saved commit by CAS with policy revalidation. Keep uncertain stage identity; never blindly retry with a new UUID/base. On definitive promotion failure keep candidate reachable and allow correction/retry; Discard never erases history. New edits after failed promotion produce a new commit. No model, Git or source writes. Binary editing and durable crash restoration unsupported. Actual browser, independent review and owner validation required. Before Publish, footer lists/counts full cumulative changed files including earlier saved changes; choosing one shows its registry diff. Publish waits for comparison. Retain SH06 summary/overview. Show graph pin hint only when different. Default message: Update Skill files; provenance operator." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=13;align=left;verticalAlign=middle;spacing=8;">
+          <mxGeometry x="20" y="1062" width="1440" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-dialog-error" value="SH13 error cards: bottom-right screen bounds; inside the active dialog interaction boundary. Dismiss, Copy and Escape remain keyboard/pointer reachable; Escape dismisses the card without closing the Skill or losing buffers. Background global notifications remain hidden while a modal is open and reappear afterward; they never cover Publish." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=none;fontColor=#172033;fontFamily=Arial;fontSize=12;align=left;verticalAlign=middle;spacing=6;">
+          <mxGeometry x="20" y="942" width="1440" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="SH13-retry-controls" value="Footer: Retry edit controls / Retry comparison when needed; Check result on uncertain outcome." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=12;align=left;verticalAlign=middle;spacing=6;">
+          <mxGeometry x="750" y="798" width="710" height="18" as="geometry" />
+        </mxCell>
+      <mxCell id="SH13-edit-discard" value="Discard" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1"><mxGeometry x="1236" y="558" width="100" height="32" as="geometry" /></mxCell><mxCell id="SH13-source-summary" value="Propose a PR operation.   Overview (expand)" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1"><mxGeometry x="32" y="174" width="686" height="28" as="geometry" /></mxCell><mxCell id="SH13-edit-summary" value="Propose a PR operation.   Overview (expand)" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1"><mxGeometry x="762" y="174" width="686" height="28" as="geometry" /></mxCell><mxCell id="SH13-view-toggle-rules" value="No Source/Preview/bytes bar. Markdown text only: one fixed icon beside scrollable tabs; Preview Markdown / Show source (tooltip and accessible name). Pressed = preview. Pointer, Enter and Space preserve unsaved text. Other file types keep their existing source/binary view. Find result or Ctrl+F returns to source. Show source also applies read-only. SH13 supersedes older toolbar drawings; byte count removed with the row." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=13;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="20" y="1152" width="1440" height="86" as="geometry" /></mxCell></root>
+    </mxGraphModel>
+  </diagram>
+<diagram id="SH14-file-actions" name="Skill explorer file actions"><mxGraphModel dx="1480" dy="1540" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1480" pageHeight="1540"><root><mxCell id="0" /><mxCell id="1" parent="0" /><mxCell id="SH14-title" value="PROPOSED SH14 - Explorer file actions; working copy first, one atomic Publish" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="20" y="16" width="1440" height="42" as="geometry" /></mxCell><mxCell id="SH14-root-frame" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="20" y="80" width="340" height="400" as="geometry" /></mxCell><mxCell id="SH14-root-heading" value="Root context menu" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="28" y="88" width="324" height="30" as="geometry" /></mxCell><mxCell id="SH14-root-tree" value="FILES&#10;  SKILL.md&#10;  references/" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="28" y="126" width="324" height="112" as="geometry" /></mxCell><mxCell id="SH14-root-menu" value="Upload files...&#10;Copy relative path (.)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="52" y="252" width="280" height="208" as="geometry" /></mxCell><mxCell id="SH14-folder-frame" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="390" y="80" width="340" height="400" as="geometry" /></mxCell><mxCell id="SH14-folder-heading" value="Folder context menu" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="398" y="88" width="324" height="30" as="geometry" /></mxCell><mxCell id="SH14-folder-tree" value="FILES&#10;  SKILL.md&#10;&gt; references/" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="398" y="126" width="324" height="112" as="geometry" /></mxCell><mxCell id="SH14-folder-menu" value="Upload files...&#10;Rename...&#10;Move to...&#10;Delete...&#10;Copy relative path" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="422" y="252" width="280" height="208" as="geometry" /></mxCell><mxCell id="SH14-file-frame" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="760" y="80" width="340" height="400" as="geometry" /></mxCell><mxCell id="SH14-file-heading" value="File context menu" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="768" y="88" width="324" height="30" as="geometry" /></mxCell><mxCell id="SH14-file-tree" value="FILES&#10;  SKILL.md&#10;  references/&#10;  &gt; pr-operation.md" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="768" y="126" width="324" height="112" as="geometry" /></mxCell><mxCell id="SH14-file-menu" value="Upload files... (parent)&#10;Rename...&#10;Move to...&#10;Delete...&#10;Copy relative path" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="792" y="252" width="280" height="208" as="geometry" /></mxCell><mxCell id="SH14-core-frame" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="1130" y="80" width="340" height="400" as="geometry" /></mxCell><mxCell id="SH14-core-heading" value="Required SKILL.md" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="1138" y="88" width="324" height="30" as="geometry" /></mxCell><mxCell id="SH14-core-tree" value="FILES&#10;&gt; SKILL.md&#10;  references/" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="1138" y="126" width="324" height="112" as="geometry" /></mxCell><mxCell id="SH14-core-menu" value="Upload files... (parent)&#10;Rename / Move / Delete disabled&#10;Required Skill entrypoint&#10;Copy relative path" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="1162" y="252" width="280" height="208" as="geometry" /></mxCell><mxCell id="SH14-rename" value="Inline rename row&#10;Name [pr-operation.md     ]&#10;Rename    Cancel&#10;Basename only; Enter confirms, Escape cancels." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="20" y="500" width="460" height="140" as="geometry" /></mxCell><mxCell id="SH14-move" value="Inline Move to form (keyboard equivalent)&#10;Destination folder [references / root]&#10;Move    Cancel&#10;No self/descendant destination or implicit overwrite." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="500" y="500" width="460" height="140" as="geometry" /></mxCell><mxCell id="SH14-delete" value="Delete references/pr-operation.md?&#10;1 file will be removed from the working copy.&#10;Delete    Cancel&#10;Confirmation is beside target; SKILL.md protected." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#fee2e2;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="980" y="500" width="490" height="140" as="geometry" /></mxCell><mxCell id="SH14-hover" value="Drag hover on folder&#10;  SKILL.md&#10;  [ references/ ] &lt;-- highlighted drop target&#10;      pr-operation.md&#10;Drop on root background to move out." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="20" y="660" width="460" height="150" as="geometry" /></mxCell><mxCell id="SH14-keyboard" value="Keyboard and focus&#10;Focused row/root: Shift+F10 or ContextMenu key. Arrow keys, Enter/Space select; Escape closes only the menu/form. Move to is equivalent to drag.&#10;Return focus to renamed/moved row; after delete to surviving selection or explorer root." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="500" y="660" width="960" height="150" as="geometry" /></mxCell><mxCell id="SH14-gates" value="Permission states&#10;Read-only, historical, importing, saving or uncertain write: mutation entries disabled with visible reason. Copy stays enabled. Menu/form focus remains inside the Skill dialog, never inert body siblings.&#10;Directory imports and empty folder identity unsupported. Root context/drop target covers the whole Files pane, including blank space. External multi-file import targets selected folder or root; a file target means its parent. Reject the entire batch on invalid/read/collision/limit failure; preserve old tree." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="20" y="830" width="1440" height="118" as="geometry" /></mxCell><mxCell id="SH14-publish" value="Publish and Discard&#10;All file operations are staged. Buffers/tabs follow rename and move; deleted tabs close. Find uses the working tree. Publish saves one immutable full batch, then promotes exact candidate; moves are deletion + byte-identical addition. Discard restores saved tree without deleting history. No new model run, source write or Git publication. Exact uncertain replay bodies may retain up to 4 MiB until reconciled." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="20" y="968" width="1440" height="102" as="geometry" /></mxCell><mxCell id="SH14-binary" value="Binary contract&#10;Canonical bounded base64 upload, or source_path from BEFORE inventory of the same exact reserved base (never another Skill, host path or same-batch addition). Hash raw bytes, not wire encoding: equivalent uploads/copies have identical file/tree bytes. Explicit asset permission, fixed suffixes .png .jpg .jpeg .gif .webp .ico .pdf; other binary changes refuse. No executable mode imported. Scripts/dependencies restrictions remain, including text uploads under scripts/. SVG is UTF-8 source only under explicit policy; never rendered as an image or executed. Pure-JS pinned js-sha256 computes upload hashes even without crypto.subtle; byte/hash controls remain server authoritative." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="20" y="1090" width="1440" height="140" as="geometry" /></mxCell><mxCell id="SH14-paths" value="Portable paths and safety&#10;Reject root escape, backslash, colon, empty/dot segments, Windows reserved names, trailing dot/space, file/folder or case aliases. No overwrite; case-only rename refused. New file actions refuse dot directories and secret names: .env*, auth.json, credentials.json, credentials, .netrc, token(s)[.json], id_rsa/id_ed25519, *.pem, *.key. SKILL.md remains at root. Uploaded bytes are inert; no URL import, archive extraction or execution. Limits512KiB/file128files4MiB bundle plus4MiB encoded request (base64 makes about3MiB new binary fit, less envelope overhead)." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="20" y="1250" width="1440" height="126" as="geometry" /></mxCell><mxCell id="SH14-failures" value="Failure codes and actual recovery&#10;skill_manual_file_invalid -&gt; portable name / select files rather than directories; skill_manual_file_conflict -&gt; another destination/name; skill_manual_file_limit -&gt; fewer/smaller files; skill_manual_file_read_failed -&gt; re-select accessible files; skill_manual_clipboard_unavailable -&gt; select the Relative path field for manual copy or allow clipboard and copy again. Shared presenter, code-only diagnostics; no bytes, host paths or browser exception text. Regression scans the complete file-action producer for catalogue coverage." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#fee2e2;strokeColor=#cbd5e1;fontColor=#172033;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=8;"><mxGeometry x="20" y="1396" width="1440" height="118" as="geometry" /></mxCell></root></mxGraphModel></diagram>
+<diagram id="skill-vscode-files" name="SH15 VS Code-style working explorer"><mxGraphModel page="1" pageWidth="1400" pageHeight="1120"><root><mxCell id="0" /><mxCell id="1" parent="0" /><mxCell id="SH15-title" value="PROPOSED SH15 — working explorer. Supersedes SH14 rename/delete/move/drop states." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontSize=14;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="20" y="15" width="1360" height="40" as="geometry" /></mxCell><mxCell id="SH15-files" value="FILES" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontSize=14;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="20" y="75" width="340" height="32" as="geometry" /></mxCell><mxCell id="SH15-skill" value="       SKILL.md" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontSize=14;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="20" y="107" width="340" height="28" as="geometry" /></mxCell><mxCell id="SH15-folder" value="     references" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e5e7eb;strokeColor=#e5e7eb;fontSize=14;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="20" y="135" width="340" height="28" as="geometry" /></mxCell><mxCell id="SH15-indent" value="       { }" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontSize=14;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="20" y="163" width="55" height="28" as="geometry" /></mxCell><mxCell id="SH15-rename" value="config.json" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#007acc;fontSize=14;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="75" y="163" width="275" height="24" as="geometry" /></mxCell><mxCell id="SH15-empty" value="     assets  (empty · not saved)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontSize=14;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="20" y="191" width="340" height="28" as="geometry" /></mxCell><mxCell id="SH15-editor" value="Current file / raster preview / binary hex view" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#cbd5e1;fontSize=14;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="380" y="75" width="1000" height="320" as="geometry" /></mxCell><mxCell id="SH15-menu" value="Context menu&#10;Upload files...&#10;Rename...&#10;Delete&#10;Copy relative path&#10;(no Move to)" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontSize=14;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="20" y="255" width="340" height="175" as="geometry" /></mxCell><mxCell id="SH15-renaming" value="Rename: input replaces only the filename in the same 28px row.&#10;Keep icon/indent. 1px blue bounding box, no Name label/card/buttons.&#10;Select stem, retain extension. Enter/blur commits; Escape cancels.&#10;F2 starts rename. Invalid/colliding names keep the input and descriptive error.&#10;SKILL.md remains protected. No directory escape or silent overwrite." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontSize=14;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="380" y="420" width="1000" height="140" as="geometry" /></mxCell><mxCell id="SH15-tree-actions" value="Delete immediately stages file/subtree removal; no confirmation.&#10;Ctrl+Z in Files restores it; Ctrl+Y / Ctrl+Shift+Z reapplies (including dirty text).&#10;Ctrl+X cuts a row; Ctrl+V on a folder/root moves it without a Move to menu.&#10;Undo/redo covers upload/move/rename; editor/input shortcuts remain native.&#10;Disabled/pending/read-only cannot mutate. New actions clear redo.&#10;Confirmed save/discard clears history; refused/uncertain save retains it." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontSize=14;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="20" y="580" width="1360" height="160" as="geometry" /></mxCell><mxCell id="SH15-folders" value="Empty directories remain in the open workspace, including across Publish.&#10;They accept imports/drops, rename, move or delete; mark empty · not saved.&#10;Registry commits still store files only: no invented .gitkeep; folder-only changes&#10;do not make Publish dirty. Closing/reopening reconstructs folders from saved files.&#10;Discard restores saved directory structure." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontSize=14;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="20" y="745" width="1360" height="120" as="geometry" /></mxCell><mxCell id="SH15-preview" value="Drop: grey row only, no bars/outline/ring. JSON uses { } glyph.&#10;Binary: preview PNG/JPEG/GIF/WebP/ICO from bounded magic-checked bytes as an image.&#10;All other bytes: hex/ASCII view, size/hash; never execute SVG/HTML/PDF documents.&#10;Decode failure falls back to bytes; staged import limit remains 512 KiB per file.&#10;Test last-child move, empty import, rename failure/cancel, dirty subtree delete/undo/redo,&#10;editor shortcut isolation, cut/paste, grey targets, JSON, images/bytes, narrow/Dark/Light." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontSize=14;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="20" y="885" width="1360" height="170" as="geometry" /></mxCell><mxCell id="SH15-c1" value="" vertex="1" parent="1" style="shape=image;image=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZD0iTTMgNWw1IDUgNS01IiBmaWxsPSJub25lIiBzdHJva2U9IiMxNzIwMzMiIHN0cm9rZS13aWR0aD0iMS41Ii8+PC9zdmc+;"><mxGeometry x="26" y="140" width="16" height="16" as="geometry" /></mxCell><mxCell id="SH15-c2" value="" vertex="1" parent="1" style="shape=image;image=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij48cGF0aCBkPSJNNSAzbDUgNS01IDUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzE3MjAzMyIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48L3N2Zz4=;"><mxGeometry x="26" y="196" width="16" height="16" as="geometry" /></mxCell><mxCell id="SH15-markdown" value="" vertex="1" parent="1" style="shape=image;image=data:image/svg+xml;base64,PHN2ZyBzdHJva2U9ImN1cnJlbnRDb2xvciIgZmlsbD0iY3VycmVudENvbG9yIiBzdHJva2Utd2lkdGg9IjAiIHJvbGU9ImltZyIgdmlld0JveD0iMCAwIDI0IDI0IiBjb2xvcj0iIzI1NjNlYiIgc3R5bGU9ImNvbG9yOiMyNTYzZWIiIGhlaWdodD0iMTYiIHdpZHRoPSIxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMjIuMjcgMTkuMzg1SDEuNzNBMS43MyAxLjczIDAgMDEwIDE3LjY1NVY2LjM0NWExLjczIDEuNzMgMCAwMTEuNzMtMS43M2gyMC41NEExLjczIDEuNzMgMCAwMTI0IDYuMzQ1djExLjMwOGExLjczIDEuNzMgMCAwMS0xLjczIDEuNzMxek01Ljc2OSAxNS45MjN2LTQuNWwyLjMwOCAyLjg4NSAyLjMwNy0yLjg4NXY0LjVoMi4zMDhWOC4wNzhoLTIuMzA4bC0yLjMwNyAyLjg4NS0yLjMwOC0yLjg4NUgzLjQ2djcuODQ3ek0yMS4yMzIgMTJoLTIuMzA5VjguMDc3aC0yLjMwN1YxMmgtMi4zMDhsMy40NjEgNC4wMzl6Ij48L3BhdGg+PC9zdmc+;"><mxGeometry x="46" y="113" width="16" height="16" as="geometry" /></mxCell></root></mxGraphModel></diagram><diagram id="skill-preview-discard" name="SH16 Preview area and discard popup"><mxGraphModel page="1" pageWidth="1500" pageHeight="1020"><root><mxCell id="0" /><mxCell id="1" parent="0" /><mxCell id="SH16-title" value="PROPOSED SH16 — owner corrections: full-area binary preview, quiet filename focus, modal Discard confirmation" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontSize=18;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="20" y="20" width="1460" height="44" as="geometry" /></mxCell><mxCell id="SH16-preview-frame" value="Skill files" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="20" y="90" width="700" height="400" as="geometry" /></mxCell><mxCell id="SH16-nav" value="FILES&#10;&#10;references&#10;    renamed.md&#10;SKILL.md&#10;image.png" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="20" y="130" width="190" height="360" as="geometry" /></mxCell><mxCell id="SH16-tabs" value="image.png" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="210" y="130" width="510" height="30" as="geometry" /></mxCell><mxCell id="SH16-image" value="IMAGE occupies the entire editor content area&#10;&#10;Scale to fit, preserve aspect ratio.&#10;No byte count, hash row, padding or frame.&#10;&#10;Full page uses the existing workspace maximize control." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e0f2fe;strokeColor=none;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="210" y="160" width="510" height="330" as="geometry" /></mxCell><mxCell id="SH16-focus" value="Renamed row: no outline/ring/border after Enter or blur.&#10;Keyboard focus: Light #005fb8 / white text; Dark #4aa0ff / black text.&#10;Distinct blue fill, at least 3:1 against canvas/grey drop; no focus outline.&#10;Rename INPUT keeps blue border." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="20" y="510" width="700" height="125" as="geometry" /></mxCell><mxCell id="SH16-modal-background" value="Workspace remains behind the popup, dimmed and noninteractive.&#10;No confirmation banner is inserted into the workspace layout." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#cbd5e1;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="760" y="90" width="720" height="400" as="geometry" /></mxCell><mxCell id="SH16-dialog" value="Discard changes?&#10;&#10;Your unsaved changes will be lost.&#10;Saved history is kept." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="900" y="210" width="440" height="200" as="geometry" /></mxCell><mxCell id="SH16-cancel" value="Keep editing" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="1040" y="350" width="130" height="36" as="geometry" /></mxCell><mxCell id="SH16-confirm" value="Discard changes" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="1180" y="350" width="150" height="36" as="geometry" /></mxCell><mxCell id="SH16-transitions" value="Discard button → centered modal popup; initial focus on Keep editing.&#10;Keep editing / Escape / outside click → dismiss popup only; keep exact buffers, restore focus.&#10;Discard changes → reload saved head, clear local edits/tree undo; keep saved history.&#10;Closing dirty workspace uses this same popup; cancel keeps workspace, confirm discards and closes.&#10;Trap keyboard focus in popup. No Enter-by-default discard; no background graph/editor actions.&#10;Busy, pending or importing cannot trigger destructive confirmation; existing holds remain." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="760" y="510" width="720" height="180" as="geometry" /></mxCell><mxCell id="SH16-checks" value="Acceptance (actual browser): saved and staged image preview fills available pane; no byte/SHA row in image or hex view.&#10;900×650 + normal/full-page + Dark/Light keep image/popup within viewport. JSON/icon/undo behavior retained.&#10;Rename via Enter/blur returns row focus without outline/border/shadow; keyboard background remains visible.&#10;Discard popup does not shift editor/tree. Tab/Shift+Tab stay inside. Escape, Keep editing and outside click preserve exact text.&#10;Confirm Discard reloads saved files/history; dirty Close uses same popup and closes only on explicit confirmation.&#10;No model/GitHub dispatch or registry write is needed; temporary edits discarded. Unit controls supplement these real paths." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontColor=#172033;fontSize=14;fontFamily=Arial;align=left;verticalAlign=top;spacing=8;"><mxGeometry x="20" y="665" width="1460" height="200" as="geometry" /></mxCell></root></mxGraphModel></diagram></mxfile>
