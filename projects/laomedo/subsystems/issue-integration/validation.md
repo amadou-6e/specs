@@ -28,6 +28,10 @@ publication mechanisms, not a deployed publisher. Proposed acceptance checks:
 The [handoff graph](../../architecture/subsystem-handoffs.md) is design evidence,
 not a runtime result. Pin implementation and API versions when these checks run.
 
+Historical implementation artifacts below are pinned to their exact archive on
+`exp` at `714db418243bc17fff1c2a5bed5181006e21fdee`. Their move preserves
+original source bytes and limitations; it does not establish current acceptance.
+
 ## GitHub PR node local verification, 2026-10-13
 
 Historical checks below include a PR-specific CLI adapter subsequently removed
@@ -38,7 +42,7 @@ requires the existing agent and reports Docker unavailability as a blocker.
 The [PR contract](contract/pr-node.md) and [editable interaction model](design/github-pr-node.drawio)
 were authored for the user-selected PR alignment. Implementation base is Laomedo
 develop `c29c93f2af93dde0a57dcbb3d38f23336407f56c`; the visible implementation
-checkout's `examples/github-pr/evidence.json` pins the changed source hashes.
+checkout's [examples/github-pr/evidence.json](https://github.com/amadou-6e/laomedo/blob/714db418243bc17fff1c2a5bed5181006e21fdee/archives/github-244/files/examples/github-pr/evidence.json) pins the changed source hashes.
 These checks describe the local candidate, not a merged or activated release.
 
 - Twelve credential-free host tests passed for PR discovery, filters, close/
@@ -48,7 +52,7 @@ These checks describe the local candidate, not a merged or activated release.
   passed. Eight existing publisher, 23 mediator, 14 REST transport and 17 live
   Issue fixture regression tests passed.
 - The historical four-node operation graph (implementation commit `fdd17a0`,
-  now preserved as `examples/github-pr/four-node-flow.json`) executed twice
+  now preserved as [examples/github-pr/four-node-flow.json](https://github.com/amadou-6e/laomedo/blob/714db418243bc17fff1c2a5bed5181006e21fdee/archives/github-244/files/examples/github-pr/four-node-flow.json)) executed twice
   through Graph.arun: one confirmed fixture metadata update, no repeated effect,
   zero model turns and zero live provider writes.
 - Five React viewer tests passed with real Markdown rendering, covering exact
@@ -111,8 +115,8 @@ The host confirmed the write; independent GitHub connector readback confirmed
 the appended description section. The live browser check confirmed exactly two
 nodes, PR #20 selection, its updated body and exact external link. The
 [editor screenshot](design/references/github-pr-real-agent.png) records the real
-Agent and selected live PR. Implementation `examples/github-pr/real-flow.json`
-and `real-evidence.json` preserve the importable graph and source hashes.
+Agent and selected live PR. Implementation [examples/github-pr/real-flow.json](https://github.com/amadou-6e/laomedo/blob/714db418243bc17fff1c2a5bed5181006e21fdee/archives/github-244/files/examples/github-pr/real-flow.json)
+and [real-evidence.json](https://github.com/amadou-6e/laomedo/blob/714db418243bc17fff1c2a5bed5181006e21fdee/archives/github-244/files/examples/github-pr/real-evidence.json) preserve the importable graph and source hashes.
 
 An initial live read-only attempt exposed arbitrary cycle entry: Codex ran
 twice, with missing context on the first turn. No write occurred. The fix binds
@@ -150,12 +154,12 @@ the final wiring. The production frontend build emitted successfully.
 Internal regression coverage passed for feedback execution, ordinary upstream
 operations, Message JSON, ambiguous sources, failed reads, concurrent edits,
 cancelled/failed Agents, unknown writes and durable replay. These tests supplement
-the real integration evidence in `examples/github-pr/operation-feedback-evidence.json`.
+the real integration evidence in [examples/github-pr/operation-feedback-evidence.json](https://github.com/amadou-6e/laomedo/blob/714db418243bc17fff1c2a5bed5181006e21fdee/archives/github-244/files/examples/github-pr/operation-feedback-evidence.json).
 
 ## Original Agent and host-owned feedback identity (#383)
 
 The user selected completing the original Docker LocalRunner path. Its new
-prospective protocol is `examples/github-pr/original-agent/PROTOCOL.md` in the
+prospective protocol is [examples/github-pr/original-agent/PROTOCOL.md](https://github.com/amadou-6e/laomedo/blob/714db418243bc17fff1c2a5bed5181006e21fdee/archives/github-244/files/examples/github-pr/original-agent/PROTOCOL.md) in the
 implementation repository. A zero-model-turn preflight on Codex 0.159.2 passed
 workspace-write and canonical/store/auth-read refusal controls on 2026-10-15.
 The real title-only graph updated [PR #22](https://github.com/ga84jog/laomedo-exp104-disposable-20261007/pull/22)
@@ -181,5 +185,5 @@ readback and verified container removal. The three-turn ledger is exhausted.
 The first trial on PR #21 wrote its proposed description but failed its preserve
 instruction; retain that task-quality failure rather than claiming append success.
 No live uncertain write was induced. Implementation-owned sanitized artifacts are
-`examples/github-pr/original-agent/evidence.json` and `cancellation-evidence.json`;
+[examples/github-pr/original-agent/evidence.json](https://github.com/amadou-6e/laomedo/blob/714db418243bc17fff1c2a5bed5181006e21fdee/archives/github-244/files/examples/github-pr/original-agent/evidence.json) and [cancellation-evidence.json](https://github.com/amadou-6e/laomedo/blob/714db418243bc17fff1c2a5bed5181006e21fdee/archives/github-244/files/examples/github-pr/original-agent/cancellation-evidence.json);
 both pin the real source revision and native identities. Raw receipts remain private.
