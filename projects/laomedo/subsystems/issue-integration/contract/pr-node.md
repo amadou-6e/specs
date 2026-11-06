@@ -128,9 +128,13 @@ content may retarget the PR, mint a grant, or trigger another Agent invocation.
 Unknown mutation stops the round trip without retry. Duplicate evaluation of
 node outputs shares the same round trip and terminal operation result.
 
-The importable example uses an explicitly labelled deterministic Agent fixture
-and fake GitHub; it must run through actual Langflow loop handles, subgraph
-execution, gateway and durable effects. It does not claim a real model turn.
+The internal [graph regression builder](https://github.com/amadou-6e/laomedo/blob/9d8793a2076dfa47e20fece851b05f7c9078fe02/tests/test_github/test_pull_requests/test_graph/builder.py)
+uses an explicitly labelled deterministic Agent fixture and fake GitHub. It must
+run through actual Langflow loop handles, subgraph execution, gateway and durable
+effects. It does not claim a real model turn. The maintained
+[GitHub example builder](https://github.com/amadou-6e/laomedo/blob/9d8793a2076dfa47e20fece851b05f7c9078fe02/examples/github/README.md)
+accepts real selected resources and an optional existing Agent feedback path;
+generating a graph does not execute or validate it.
 Fixture examples are internal test material and require explicit user approval
 before presentation. User-requested demonstrations use real agents and live
 integrations; missing connections are reported as blockers.
