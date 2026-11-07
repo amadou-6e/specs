@@ -550,7 +550,7 @@
         <mxCell id="N15" value="&lt;b&gt;N15&lt;/b&gt; Close instructions -&gt; return to the originating E01/E04/E05 state; no configuration, credential or connection effect." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=8;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="30" y="650" width="1140" height="70" />
         </mxCell>
-        <mxCell id="N16" value="&lt;b&gt;N16&lt;/b&gt;  C01/C12/C07/C08/C10 Close -&gt; close panel only, no disconnect or retry; persistent state stays unchanged." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=8;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
+        <mxCell id="N16" value="&lt;b&gt;N16&lt;/b&gt;  C01/C12/C07/C08/C10/C13/C14 Close -&gt; close panel only, no disconnect or retry; persistent state stays unchanged." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=8;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="30" y="730" width="1140" height="44" />
         </mxCell>
         <mxCell id="N17" value="&lt;b&gt;N17&lt;/b&gt;  C09 Open GitHub App registration -&gt; fixed https://github.com/settings/apps/new with reviewed read-only configuration; owner submits explicitly." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=8;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
@@ -558,6 +558,59 @@
         </mxCell>
         <mxCell id="help-close-button" value="Close instructions" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=center;verticalAlign=middle;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="N15">
           <mxGeometry x="40" y="550" width="220" height="38" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="private-session-recovery" name="Private app session recovery">
+    <mxGraphModel dx="1200" dy="950" grid="1" page="1" pageWidth="1200" pageHeight="950">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="session-heading" value="&lt;b&gt;Private app session recovery&lt;/b&gt;&lt;br&gt;PROPOSED / NOT IMPLEMENTED - existing Laomedo login, not GitHub reconnect" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="30" y="20" width="1140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="C13" value="" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="30" y="120" width="540" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="C13-title" value="&lt;b&gt;C13 - Sign in again for private access&lt;/b&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="45" y="140" width="510" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="C13-copy" value="Your Laomedo login is valid, but private access could not be restored.&lt;br&gt;&lt;br&gt;Private files stay hidden. Your GitHub connection and selected Skill remain saved.&lt;br&gt;&lt;br&gt;Sign in again to restore private access." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="45" y="220" width="510" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="C13-action" value="Sign in again" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;align=center;verticalAlign=middle;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="N18">
+          <mxGeometry x="60" y="465" width="480" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="C13-close" value="Close" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;align=center;verticalAlign=middle;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="N16">
+          <mxGeometry x="60" y="520" width="480" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="C14" value="" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="630" y="120" width="540" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="C14-title" value="&lt;b&gt;C14 - Sign-out could not be confirmed&lt;/b&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="645" y="140" width="510" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="C14-copy" value="Private access stays locked.&lt;br&gt;&lt;br&gt;Laomedo could not confirm sign-out. Retry before signing in again.&lt;br&gt;&lt;br&gt;No GitHub reconnection or graph run is needed." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="645" y="220" width="510" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="C14-details" value="Technical details (collapsed): safe catalogue-backed sign-out error; no tokens or session contents." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fontSize=12;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="645" y="405" width="510" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="C14-action" value="Retry sign-out" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;align=center;verticalAlign=middle;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="N19">
+          <mxGeometry x="660" y="465" width="480" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="C14-close" value="Close" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;align=center;verticalAlign=middle;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="N16">
+          <mxGeometry x="660" y="520" width="480" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="N18" value="&lt;b&gt;N18&lt;/b&gt; C13 Sign in again -&gt; same-origin upstream POST logout; revoke this private lease, then existing login page on confirmed success. Failure -&gt; C14; keep locked and preserve GitHub connection/pins." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
+          <mxGeometry x="30" y="640" width="1140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="N19" value="&lt;b&gt;N19&lt;/b&gt; C14 Retry sign-out -&gt; repeat N18. Close via N16 hides panel only; private access remains locked. No refresh-only recovery, new GitHub authorization or Agent task." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
+          <mxGeometry x="30" y="730" width="1140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="session-policy" value="Lifetime: follows normal Laomedo login, including valid refresh and browser/app restart. C13 is exceptional missing/inconsistent private-session recovery, not a shorter routine timeout. Logout revokes only this browser lease; late responses cannot reopen it." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;fillColor=#FFF7ED;strokeColor=#FB923C;" vertex="1" parent="1">
+          <mxGeometry x="30" y="820" width="1140" height="90" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

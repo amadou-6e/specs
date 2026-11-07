@@ -109,9 +109,9 @@ Its authorizing/verifying/consent states are not connection-record states. A rea
 connection is replaced only after successful verification and explicit consent.
 Every failed/cancelled/expired attempt preserves its previous ready connection.
 
-Draw.io cards use unique UI identifiers C01-C12 and error cards E01-E05. Pending
+Draw.io cards use unique UI identifiers C01-C14 and error cards E01-E05. Pending
 attempt transitions P01-P10, ready-connection transitions R01-R08 and navigation
-N01-N17 are separately owned on their named pages. Story IDs GC01-GC10 below
+N01-N19 are separately owned on their named pages. Story IDs GC01-GC10 below
 reference these IDs; a story number is never a second identity for a UI card.
 App registration, app installation and local read consent are separate actions.
 The Install / manage app repositories control derives
@@ -179,9 +179,9 @@ images and the full substantive own-diff read. No implementation exists.
 
 | Finding | Correction | Recheck status |
 | --- | --- | --- |
-| 251-S1 | Unique C01-C12/E01-E05 cards; story matrix derives links to state/transition IDs | Verified in design-readiness review at fefdf89 (specification only) |
+| 251-S1 | Unique C01-C14/E01-E05 cards; story matrix derives links to state/transition IDs | Verified in design-readiness review at fefdf89 (specification only) |
 | 251-S2 | Native Windows app backend owns private broker/vault/store in-process; public service cannot assert private owners | Verified in design-readiness review at fefdf89 (specification only) |
-| 251-S3 | Separate pending-request, navigation and persisted/read transition authority P01-P10/N01-N17/R01-R08 | Verified in design-readiness review at fefdf89 (specification only) |
+| 251-S3 | Separate pending-request, navigation and persisted/read transition authority P01-P10/N01-N19/R01-R08 | Verified in design-readiness review at fefdf89 (specification only) |
 | 251-S4 | Registration vs installation vs read consent separated; manage-installation controls and verified-empty C11 | Verified in design-readiness review at fefdf89 (specification only) |
 | 251-S5 | Shared-presenter E01-E05 for vault/token/ended-attempt/partial-removal/unsupported-owner failures | Verified in design-readiness review at fefdf89 (specification only) |
 | 251-S6 | Pending request states are distinct from per-connection record states; multiple GitHub connections allowed for one app owner | Addressed clarification |
@@ -253,3 +253,16 @@ S17 remains a callback-compatibility implementation gate. These verdicts cover
 the proposed design only. Registration, normal-login deployment, both connection
 modes, private reads, persistence/revocation, latency and owner workflow validation
 are not performed or accepted.
+
+
+## Normal-login lifetime and exceptional private-session recovery
+
+The owner selected following normal Laomedo login lifetime on 2026-11-07,
+including refresh and browser/app restart. A narrow revocable private-session
+record supplements upstream auth; it does not replace passwords or identity.
+Logout revokes only the current browser lease. Missing/inconsistent private
+state cannot be repaired by silently trusting an old JWT or minting on refresh.
+New C13/C14 and N18/N19 own explicit sign-out/sign-in recovery and unconfirmed
+sign-out retry. These additions require their own visual review; prior approval
+at b6152ca does not cover them. GC04/GC10 acceptance includes restored/expired
+private sessions, logout/replayed JWT and unaffected unrelated profiles.

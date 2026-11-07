@@ -81,6 +81,19 @@ or mismatched owner/session contexts. Public/local features remain unchanged.
 Do not change a running app's login configuration automatically. The owner accepted normal Laomedo sign-in for private access on 2026-11-07;
 a different local-owner session design requires explicit review. Hosted, remote and multi-user isolation are unsupported.
 
+Private browser access additionally uses a server-revocable session bound to the
+upstream-authenticated owner. Reuse normal Laomedo login; do not create another
+account/password system. The owner selected following the normal app login
+lifetime, including valid refresh and restart, on 2026-11-07. Refresh must not
+create or resurrect a revoked/missing/expired private session. Logout revokes the
+current browser's private session before completing; it does not silently revoke
+unrelated profiles or disconnect the GitHub connection. A surviving upstream JWT
+alone cannot restore private access. A missing/inconsistent private session under
+an otherwise valid app login offers explicit Sign in again recovery: sign out,
+then open the existing login page. If sign-out is unconfirmed, keep private data
+locked and offer retry; never claim completion. See C13/C14 and N18/N19 in the
+editable design. Actual behavior remains subject to the real browser story gate.
+
 ### SC02: Browser-default and deliberate token entry
 
 Use an explicitly operator-configured GitHub App's web authorization flow with
