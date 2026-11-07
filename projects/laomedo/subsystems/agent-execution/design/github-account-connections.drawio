@@ -563,7 +563,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="private-session-recovery" name="Private app session recovery">
-    <mxGraphModel dx="1200" dy="950" grid="1" page="1" pageWidth="1200" pageHeight="950">
+    <mxGraphModel dx="1200" dy="1050" grid="1" page="1" pageWidth="1200" pageHeight="1050">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -603,14 +603,17 @@
         <mxCell id="C14-close" value="Close" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;align=center;verticalAlign=middle;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="N16">
           <mxGeometry x="660" y="520" width="480" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="N18" value="&lt;b&gt;N18&lt;/b&gt; C13 Sign in again -&gt; same-origin upstream POST logout; revoke this private lease, then existing login page on confirmed success. Failure -&gt; C14; keep locked and preserve GitHub connection/pins." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
+        <mxCell id="N18" value="&lt;b&gt;N18&lt;/b&gt; C13 Sign in again -&gt; existing frontend logout mutation (same-origin upstream POST); revoke this private lease, then existing login page on confirmed success. Failure -&gt; C14; keep locked and preserve GitHub connection/pins." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
           <mxGeometry x="30" y="640" width="1140" height="80" as="geometry" />
         </mxCell>
         <mxCell id="N19" value="&lt;b&gt;N19&lt;/b&gt; C14 Retry sign-out -&gt; repeat N18. Close via N16 hides panel only; private access remains locked. No refresh-only recovery, new GitHub authorization or Agent task." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
           <mxGeometry x="30" y="730" width="1140" height="70" as="geometry" />
         </mxCell>
         <mxCell id="session-policy" value="Lifetime: follows normal Laomedo login, including valid refresh and browser/app restart. C13 is exceptional missing/inconsistent private-session recovery, not a shorter routine timeout. Logout revokes only this browser lease; late responses cannot reopen it." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;fillColor=#FFF7ED;strokeColor=#FB923C;" vertex="1" parent="1">
-          <mxGeometry x="30" y="820" width="1140" height="90" as="geometry" />
+          <mxGeometry x="30" y="910" width="1140" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="N20" value="&lt;b&gt;N20&lt;/b&gt; Otherwise valid app login + missing/expired/inconsistent private session -&gt; C13; clear private buffers, preserve pins. Invalid upstream login -&gt; existing normal login recovery. Never mint a lease from session/refresh." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
+          <mxGeometry x="30" y="810" width="1140" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

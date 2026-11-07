@@ -111,7 +111,7 @@ Every failed/cancelled/expired attempt preserves its previous ready connection.
 
 Draw.io cards use unique UI identifiers C01-C14 and error cards E01-E05. Pending
 attempt transitions P01-P10, ready-connection transitions R01-R08 and navigation
-N01-N19 are separately owned on their named pages. Story IDs GC01-GC10 below
+N01-N20 are separately owned on their named pages. Story IDs GC01-GC10 below
 reference these IDs; a story number is never a second identity for a UI card.
 App registration, app installation and local read consent are separate actions.
 The Install / manage app repositories control derives
@@ -181,7 +181,7 @@ images and the full substantive own-diff read. No implementation exists.
 | --- | --- | --- |
 | 251-S1 | Unique C01-C14/E01-E05 cards; story matrix derives links to state/transition IDs | Verified in design-readiness review at fefdf89 (specification only) |
 | 251-S2 | Native Windows app backend owns private broker/vault/store in-process; public service cannot assert private owners | Verified in design-readiness review at fefdf89 (specification only) |
-| 251-S3 | Separate pending-request, navigation and persisted/read transition authority P01-P10/N01-N19/R01-R08 | Verified in design-readiness review at fefdf89 (specification only) |
+| 251-S3 | Separate pending-request, navigation and persisted/read transition authority P01-P10/N01-N20/R01-R08 | Verified in design-readiness review at fefdf89 (specification only) |
 | 251-S4 | Registration vs installation vs read consent separated; manage-installation controls and verified-empty C11 | Verified in design-readiness review at fefdf89 (specification only) |
 | 251-S5 | Shared-presenter E01-E05 for vault/token/ended-attempt/partial-removal/unsupported-owner failures | Verified in design-readiness review at fefdf89 (specification only) |
 | 251-S6 | Pending request states are distinct from per-connection record states; multiple GitHub connections allowed for one app owner | Addressed clarification |
@@ -266,3 +266,13 @@ New C13/C14 and N18/N19 own explicit sign-out/sign-in recovery and unconfirmed
 sign-out retry. These additions require their own visual review; prior approval
 at b6152ca does not cover them. GC04/GC10 acceptance includes restored/expired
 private sessions, logout/replayed JWT and unaffected unrelated profiles.
+
+
+Focused approach recheck at implementation `e84cd4dd` / specs `2db2845`:
+Approach PROCEED, Specification APPROVE, Visual APPROVE for new pages 8/9.
+P1-P5 resolved at plan level. N20 adds the non-blocking requested C13 entry trigger;
+N18 names the existing frontend logout mutation so auth/query state clears too.
+These follow-up wording additions are checked deterministically. P8 (concurrent
+refresh/logout) and P9 (failed revocation must stop logout; successful logout
+removes the private cookie) are explicit implementation/real-story checks. No
+further plan review is requested or treated as runtime proof.
