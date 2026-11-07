@@ -28,7 +28,9 @@ For saved-graph compatibility, closed retains GitHub's existing closed semantics
 (including merged PRs); merged narrows that set to PRs with verified merged
 metadata: a closed PR with a valid non-null GitHub `merged_at` timestamp,
 normalized to `merged == true`. Missing or contradictory merge metadata never
-qualifies. The Merged filter queries the closed list and filters locally; the
+qualifies. Invalid or contradictory non-null merge metadata refuses the entire
+discovery/read with `pr_response_invalid`; it is never interpreted as unmerged
+to permit a write. The Merged filter queries the closed list and filters locally; the
 same page/deadline bounds apply to that entire closed list, even if few match.
 Merged PRs remain read-only. PR record state stays open/closed and the separate merged flag is
 preserved. Discovery and execution revalidation apply the same state predicate.
