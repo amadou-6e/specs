@@ -23,10 +23,14 @@ shows the bounded modify example.
 
 Display GitHub PR. Repository URL, searchable Labels multi-select, searchable
 PR dropdown and refresh follow the Issue node pattern. State is a normal visible
-control beside the repository filters, offering open, closed, merged and all.
+control between Repository URL feedback and Labels, offering open, closed, merged and all.
 For saved-graph compatibility, closed retains GitHub's existing closed semantics
 (including merged PRs); merged narrows that set to PRs with verified merged
-metadata. PR record state stays open/closed and the separate merged flag is
+metadata: a closed PR with a valid non-null GitHub `merged_at` timestamp,
+normalized to `merged == true`. Missing or contradictory merge metadata never
+qualifies. The Merged filter queries the closed list and filters locally; the
+same page/deadline bounds apply to that entire closed list, even if few match.
+Merged PRs remain read-only. PR record state stays open/closed and the separate merged flag is
 preserved. Discovery and execution revalidation apply the same state predicate.
 All selected labels must match. Only real PRs
 appear, with number/title. Discovery is bounded to ten 100-item pages and a
@@ -39,7 +43,8 @@ The owning Draw.io's **PR controls** page defines the revised node presentation:
 Repository URL, inline source feedback, visible State, Labels, PR, then the
 existing reference/operation inputs and outputs. Discovery feedback sits directly
 below Repository URL with no separate Discovery heading or editable Discovery
-field. Reuse the Skill node's inline feedback treatment and shared safe error
+field. Native refresh buttons remain on Labels and PR, including after failure.
+Reuse the Skill node's inline feedback treatment and shared safe error
 presenter. Empty URL is quiet; loading, failed connection and no matching PRs
 remain distinguishable without displaying raw provider errors. A successful read
 does not add an extra status row or automatically select a PR.
