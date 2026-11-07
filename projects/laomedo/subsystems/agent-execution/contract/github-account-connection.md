@@ -65,8 +65,11 @@ before implementation. Existing mediated-run restrictions above remain in force.
 
 ### SC01: Supported owner and deployment
 
-A private connection belongs to one trusted configured Laomedo owner on the local
-Windows installation. One owner may have multiple separately selected GitHub
+A private connection belongs to the actual authenticated local profile on a
+single-OS-user Windows installation. Profiles select setups, not separate Windows
+users or hosted tenants. The owner requires a PIN for profile entry/switching and
+no separate administrator workflow; see the proposed [local profile design](../design/local-profiles.md).
+One profile may have multiple separately selected GitHub
 connections; each has its own principal, generation, consent and private store. Every private route resolves the actual authenticated app
 principal, never an owner supplied in JSON or a shared service bearer token.
 The private broker, vault adapter, object reader and private store are owned by
@@ -75,8 +78,8 @@ constructs an in-process owner/session context; no private request is sent to th
 existing public source or operation service, and no shared bearer token can mint
 that context. Direct calls to those public services never reach private stores.
 A malicious process running as the same Windows user remains outside this trust
-boundary. The owner-selected supported setup requires AUTO_LOGIN disabled and an explicitly
-bound non-default owner; private routes refuse unknown, auto-login, API-key-only
+boundary. The owner-selected supported setup requires AUTO_LOGIN disabled and an active ordinary local
+profile resolved by upstream authentication; private routes refuse unknown, auto-login, API-key-only
 or mismatched owner/session contexts. Public/local features remain unchanged.
 Do not change a running app's login configuration automatically. The owner accepted normal Laomedo sign-in for private access on 2026-11-07;
 a different local-owner session design requires explicit review. Hosted, remote and multi-user isolation are unsupported.
