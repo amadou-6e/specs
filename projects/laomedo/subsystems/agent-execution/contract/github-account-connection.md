@@ -118,7 +118,9 @@ Windows user. Do not import host gh/GCM/environment/Git credentials.
 ### SC04: Repository read consent is distinct authority
 
 App registration and installation are distinct. Provide an explicit Install /
-manage app repositories action opening the fixed GitHub installations page. A
+manage app repositories action opening the trusted configured app slug's
+`https://github.com/apps/APP-NAME/installations/new` page. Validate the slug and
+construct the exact HTTPS host/path; no browser-supplied target is accepted. A
 verified empty accessible-repository list shows a distinct empty state, no granted
 consent, and that recovery action; a failed permission check is not an empty list.
 After principal verification, show accessible repositories and let the owner

@@ -19,8 +19,8 @@ retains existing public/local controls. All new states are PROPOSED / NOT IMPLEM
 Owner decisions: single-user local Windows first; use a dedicated specs worktree
 to preserve unrelated edits. The owner corrected the earlier registration answer:
 no GitHub App exists. Prepare one-time app setup, with actual registration and
-secret provisioning requiring explicit owner action/approval. AUTO_LOGIN/setup
-and strict online-read policy are proposed, not owner-accepted defaults.
+secret provisioning requiring explicit owner action/approval. Normal Laomedo sign-in is required for private access, as accepted by the owner.
+The strict online-read policy remains proposed pending measured workflow review.
 
 ## Boundaries and object vocabulary
 
@@ -111,11 +111,16 @@ Every failed/cancelled/expired attempt preserves its previous ready connection.
 
 Draw.io cards use unique UI identifiers C01-C11 and error cards E01-E05. Pending
 attempt transitions P01-P10, ready-connection transitions R01-R08 and navigation
-N01-N08 are separately owned on their named pages. Story IDs GC01-GC10 below
+N01-N17 are separately owned on their named pages. Story IDs GC01-GC10 below
 reference these IDs; a story number is never a second identity for a UI card.
 App registration, app installation and local read consent are separate actions.
-The Install / manage app repositories control opens the fixed
-`https://github.com/settings/installations` URL, not a browser-supplied target.
+The Install / manage app repositories control derives
+`https://github.com/apps/APP-NAME/installations/new` from the trusted configured
+app slug. Validate the slug and construct this exact HTTPS host/path; never accept
+a browser-supplied target, query or redirect. GitHub owns account/repository
+selection and installation permission checks. A private app is installable only
+on the account that owns its registration; broader account support requires the
+corresponding GitHub app visibility/installation policy.
 
 ## Required story matrix
 
@@ -132,7 +137,8 @@ The Install / manage app repositories control opens the fixed
 | GC09 | Public/local compatibility and diagnostics | Existing paths usable, missing access distinct from empty source, copy/redaction verified |
 | GC10 | Human takeover, concurrent profile and cleanup limits | Supported paths actually tested; unsupported use refused/documented; unrelated accounts untouched |
 
-Current evidence: source inventory and two bounded approach reviews only. First
+Current evidence: source inventory, two bounded approach reviews and two canonical
+specification/visual reviews. No implementation or real workflow is verified. First
 review skipped required instructions; recheck read them and confirmed corrected
 mechanisms but left design/owner gates open. No real connection, browser state or
 private repository read has been performed. Prototype #108 remains historical.
@@ -175,7 +181,7 @@ images and the full substantive own-diff read. No implementation exists.
 | --- | --- | --- |
 | 251-S1 | Unique C01-C11/E01-E05 cards; story matrix derives links to state/transition IDs | Corrected, pending focused recheck |
 | 251-S2 | Native Windows app backend owns private broker/vault/store in-process; public service cannot assert private owners | Corrected, pending focused recheck |
-| 251-S3 | Separate pending-request, navigation and persisted/read transition authority P01-P10/N01-N08/R01-R08 | Corrected, pending focused recheck |
+| 251-S3 | Separate pending-request, navigation and persisted/read transition authority P01-P10/N01-N17/R01-R08 | Corrected, pending focused recheck |
 | 251-S4 | Registration vs installation vs read consent separated; manage-installation controls and verified-empty C11 | Corrected, pending focused recheck |
 | 251-S5 | Shared-presenter E01-E05 for vault/token/ended-attempt/partial-removal/unsupported-owner failures | Corrected, pending focused recheck |
 | 251-S6 | Pending request states are distinct from per-connection record states; multiple GitHub connections allowed for one app owner | Addressed clarification |
@@ -184,3 +190,44 @@ images and the full substantive own-diff read. No implementation exists.
 Owner decisions now settled: local Windows first, separate specs worktree, no
 existing app (prepare one-time setup), normal app sign-in for private access.
 Actual app registration/secret entry and real browser acceptance remain undone.
+
+
+## Deployment and recovery investigation
+
+The maintained implementation guide, `docs/getting-started.md` (develop
+`bb25013523e37fbb108b51638be171e879eb3883`, Terminal C), starts the Langflow app
+with Windows `.venv/Scripts/python.exe` and Uvicorn's
+`laomedo.integrations.langflow.viewer:create_app`. Docker hosts agent runners in
+that recipe; the application itself is native. This establishes an existing
+supported native deployment, not an observed running service. Its public preview
+uses AUTO_LOGIN; private access requires a separately deliberate normal-sign-in
+configuration. No current preview was reconfigured. Container-hosted application
+private access is unsupported in this increment; no host credential bridge is
+claimed.
+
+GitHub documents first installation through the app's own Install App page and
+its per-app installation URL, rather than the user's already-installed-app list:
+[installing your own app](https://docs.github.com/en/apps/using-github-apps/installing-your-own-github-app)
+and [sharing an app's installation URL](https://docs.github.com/en/apps/sharing-github-apps/sharing-your-github-app).
+These references settle the proposed navigation target; actual first installation
+and organisation permission behavior remain unverified until real acceptance.
+
+All drawn buttons now carry an `actionRef` to their P/N/R transition authority.
+The recovery review was expanded from individual missing labels to every control:
+H01 provides distinct vault, incomplete-removal and normal-sign-in help; N09-N17
+own help, replacement credential, new attempt, dismissal, retry removal, empty-list
+cancellation, return and registration navigation. C11 Cancel discards only its
+pending attempt. E04 retries local secret removal after generation fencing; it
+never re-enables access. P07 distinguishes a declined GitHub callback from failed
+credential verification. Static transition-reference coverage is supporting
+evidence, not a runtime interaction test.
+
+### Follow-up review scope
+
+The recheck at `434a8c1` kept Specification and Visual at REVISE. S2/S5 were
+verified in specification text only; S6/S7 were addressed. Surviving S1/S3 prompted
+a whole-diagram identity/action audit instead of another isolated label patch.
+S8 now has source-backed native deployment evidence above; S9 has official
+first-install documentation. S10 has complete recovery targets and C11/E04 exits;
+S11 has separate declined-callback handling. These corrections require a new
+substantive design-readiness review; no approval is inferred from this ledger.
