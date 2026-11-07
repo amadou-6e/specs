@@ -108,7 +108,11 @@ logout, clears user/query/private buffers and invalidates pending profile-bound
 OAuth before selecting another context. Switch and plain logout use the same SC01/#259 revocation boundary and shared
 sign-out-unconfirmed error catalogue entry as C14; do not implement competing
 logout semantics. A failed switch never claims success or
-silently chooses credentials. In-flight results cannot repopulate the new profile.
+silently chooses credentials. In-flight results cannot repopulate the new profile. Tabs within one browser
+context share its cookie session; a confirmed profile change replaces other
+tabs' documents before their old requests can fill new profile state. Independent
+simultaneous profiles require separate browser contexts. Returning from the
+back-forward cache must not restore a stale profile document.
 Profile switching does not rerun a graph or cancel an unrelated model task.
 
 Keep loopback-only serving, exact origin/host checks and appropriate CSRF guards
