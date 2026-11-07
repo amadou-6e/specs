@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <mxfile host="app.diagrams.net" type="device">
   <diagram id="profile-entry" name="Create and enter a local profile">
-    <mxGraphModel grid="1" page="1" pageWidth="1200" pageHeight="1140">
+    <mxGraphModel grid="1" page="1" pageWidth="1200" pageHeight="1690">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -26,7 +26,7 @@
         <mxCell id="LP-C03-title" value="&lt;b&gt;LP-C03 - Open profile&lt;/b&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="825" y="125" width="330" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="create-fields" value="Profile name&lt;br&gt;[ name ]&lt;br&gt;&lt;br&gt;PIN&lt;br&gt;[ 6 digits ]&lt;br&gt;&lt;br&gt;Confirm PIN&lt;br&gt;[ 6 digits ]" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+        <mxCell id="create-fields" value="Profile name&lt;br&gt;[ name ]&lt;br&gt;&lt;br&gt;PIN (masked, numeric)&lt;br&gt;[ ****** ]&lt;br&gt;&lt;br&gt;Confirm PIN (masked)&lt;br&gt;[ ****** ]" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="45" y="175" width="330" height="225" as="geometry" />
         </mxCell>
         <mxCell id="create-error" value="Inline validation/duplicate error here.&lt;br&gt;Never echo a PIN." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
@@ -47,7 +47,7 @@
         <mxCell id="add" value="Create another profile" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;align=center;verticalAlign=middle;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="LP-T04">
           <mxGeometry x="450" y="505" width="300" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="unlock-fields" value="Selected profile: [ name ]&lt;br&gt;&lt;br&gt;PIN&lt;br&gt;[ 6 digits ]&lt;br&gt;&lt;br&gt;Wrong PIN stays here with a safe error.&lt;br&gt;Rate limiting displays the actual wait." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+        <mxCell id="unlock-fields" value="Selected profile: [ name ]&lt;br&gt;&lt;br&gt;PIN (masked, numeric)&lt;br&gt;[ ****** ]&lt;br&gt;&lt;br&gt;Wrong PIN stays here with a safe error.&lt;br&gt;Rate limiting displays the actual wait." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="825" y="175" width="330" height="230" as="geometry" />
         </mxCell>
         <mxCell id="unlock" value="Open profile" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;align=center;verticalAlign=middle;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="LP-T03">
@@ -56,7 +56,7 @@
         <mxCell id="unlock-back" value="Back to profiles" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;align=center;verticalAlign=middle;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="LP-T05">
           <mxGeometry x="840" y="505" width="300" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="LP-T01" value="&lt;b&gt;LP-T01&lt;/b&gt; Valid name/PIN/confirmation -&gt; create ordinary active profile -&gt; existing login -&gt; confirm matching session -&gt; workspace. If creation committed but login unconfirmed -&gt; LP-C03; never create again." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
+        <mxCell id="LP-T01" value="&lt;b&gt;LP-T01&lt;/b&gt; Create -&gt; confirmed ordinary profile + matching login -&gt; workspace. Duplicate/reserved -&gt; LP-C08. Confirmed failed save -&gt; LP-C09. Committed creation + unconfirmed login -&gt; LP-C10. Unknown save result -&gt; reconcile picker; never blindly create again." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
           <mxGeometry x="30" y="590" width="1140" height="80" as="geometry" />
         </mxCell>
         <mxCell id="LP-T02" value="&lt;b&gt;LP-T02&lt;/b&gt; Select a listed profile -&gt; LP-C03. Profile identity alone grants no authenticated session." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
@@ -65,7 +65,7 @@
         <mxCell id="LP-T03" value="&lt;b&gt;LP-T03&lt;/b&gt; PIN login -&gt; matching ordinary profile session -&gt; LP-C04. Wrong PIN -&gt; inline error; 429 -&gt; actual retry wait. Clear PIN after completion; no credential persistence." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
           <mxGeometry x="30" y="770" width="1140" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="LP-T04" value="&lt;b&gt;LP-T04&lt;/b&gt; LP-C02 Create -&gt; LP-C01. LP-C01 Back -&gt; LP-C02. Empty first run offers Create directly; no administrator/approval step." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
+        <mxCell id="LP-T04" value="&lt;b&gt;LP-T04&lt;/b&gt; Picker Create -&gt; LP-C01; Back -&gt; populated LP-C02 or empty LP-C07. First run -&gt; LP-C07. No administrator step. Every form masks the PIN and requests numeric entry; browser save/autofill is not required." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
           <mxGeometry x="30" y="860" width="1140" height="80" as="geometry" />
         </mxCell>
         <mxCell id="LP-T05" value="&lt;b&gt;LP-T05&lt;/b&gt; LP-C03 Back -&gt; LP-C02 and clear PIN. Submit shows progress; disable conflicting navigation while a login/create request is pending." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
@@ -74,11 +74,65 @@
         <mxCell id="entry-policy" value="Six-digit PIN is the proposed initial policy, with upstream hashing and login rate limiting. No email, role selection or OS-account isolation is implied." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="30" y="1050" width="1140" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="LP-C07" value="" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#CBD5E1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="1140" width="270" height="290" />
+        </mxCell>
+        <mxCell id="LP-C07-title" value="&lt;b&gt;LP-C07 - No profiles yet&lt;/b&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1150" width="250" height="60" />
+        </mxCell>
+        <mxCell id="LP-C07-body" value="Create a setup for this machine.&lt;br&gt;No email or administrator required." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1215" width="250" height="140" />
+        </mxCell>
+        <mxCell id="LP-C07-action" value="Create profile" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;align=center;verticalAlign=middle;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="LP-T04">
+          <mxGeometry as="geometry" x="45" y="1375" width="240" height="38" />
+        </mxCell>
+        <mxCell id="LP-C08" value="" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#CBD5E1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="320" y="1140" width="270" height="290" />
+        </mxCell>
+        <mxCell id="LP-C08-title" value="&lt;b&gt;LP-C08 - Choose another name&lt;/b&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="330" y="1150" width="250" height="60" />
+        </mxCell>
+        <mxCell id="LP-C08-body" value="This name is unavailable.&lt;br&gt;Use a different profile name.&lt;br&gt;Your profile has not been created." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="330" y="1215" width="250" height="140" />
+        </mxCell>
+        <mxCell id="LP-C08-action" value="Edit name" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;align=center;verticalAlign=middle;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="LP-T11">
+          <mxGeometry as="geometry" x="335" y="1375" width="240" height="38" />
+        </mxCell>
+        <mxCell id="LP-C09" value="" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#CBD5E1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="610" y="1140" width="270" height="290" />
+        </mxCell>
+        <mxCell id="LP-C09-title" value="&lt;b&gt;LP-C09 - Profile was not saved&lt;/b&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="620" y="1150" width="250" height="60" />
+        </mxCell>
+        <mxCell id="LP-C09-body" value="The app confirmed the save failed.&lt;br&gt;Your profile has not been created.&lt;br&gt;Try again when the app is available." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="620" y="1215" width="250" height="140" />
+        </mxCell>
+        <mxCell id="LP-C09-action" value="Back to form" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;align=center;verticalAlign=middle;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="LP-T11">
+          <mxGeometry as="geometry" x="625" y="1375" width="240" height="38" />
+        </mxCell>
+        <mxCell id="LP-C10" value="" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#CBD5E1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="900" y="1140" width="270" height="290" />
+        </mxCell>
+        <mxCell id="LP-C10-title" value="&lt;b&gt;LP-C10 - Profile saved&lt;/b&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="910" y="1150" width="250" height="60" />
+        </mxCell>
+        <mxCell id="LP-C10-body" value="Your profile exists.&lt;br&gt;Sign-in could not be confirmed.&lt;br&gt;Enter the PIN to open it.&lt;br&gt;Do not create the profile again." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="910" y="1215" width="250" height="140" />
+        </mxCell>
+        <mxCell id="LP-C10-action" value="Open existing profile" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;align=center;verticalAlign=middle;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="LP-T12">
+          <mxGeometry as="geometry" x="915" y="1375" width="240" height="38" />
+        </mxCell>
+        <mxCell id="LP-T11" value="&lt;b&gt;LP-T11&lt;/b&gt; LP-C08/09 -&gt; LP-C01; preserve only the non-secret name, clear PIN fields. Unknown creation result remains pending reconciliation: list matching profiles, then enter existing profile or offer a new form only after absence is confirmed." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="1460" width="1140" height="85" />
+        </mxCell>
+        <mxCell id="LP-T12" value="&lt;b&gt;LP-T12&lt;/b&gt; LP-C10 -&gt; LP-C03 for the committed identity; no creation replay. Failure controls are disabled while reconciling. All errors use shared catalogue presentation; no submitted PIN or raw validation payload." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="1555" width="1140" height="85" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="profile-switch" name="Switching and session recovery">
-    <mxGraphModel grid="1" page="1" pageWidth="1200" pageHeight="1090">
+    <mxGraphModel grid="1" page="1" pageWidth="1200" pageHeight="1270">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -86,19 +140,19 @@
           <mxGeometry x="30" y="20" width="1140" height="60" as="geometry" />
         </mxCell>
         <mxCell id="LP-C04" value="" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#CBD5E1;" vertex="1" parent="1">
-          <mxGeometry x="30" y="110" width="360" height="320" as="geometry" />
+          <mxGeometry x="30" y="110" width="360" height="420" as="geometry" />
         </mxCell>
         <mxCell id="LP-C04-title" value="&lt;b&gt;LP-C04 - Workspace profile menu&lt;/b&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="45" y="125" width="330" height="65" as="geometry" />
         </mxCell>
         <mxCell id="LP-C05" value="" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#CBD5E1;" vertex="1" parent="1">
-          <mxGeometry x="420" y="110" width="360" height="320" as="geometry" />
+          <mxGeometry x="420" y="110" width="360" height="420" as="geometry" />
         </mxCell>
         <mxCell id="LP-C05-title" value="&lt;b&gt;LP-C05 - Profile session expired&lt;/b&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="435" y="125" width="330" height="65" as="geometry" />
         </mxCell>
         <mxCell id="LP-C06" value="" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#CBD5E1;" vertex="1" parent="1">
-          <mxGeometry x="810" y="110" width="360" height="320" as="geometry" />
+          <mxGeometry x="810" y="110" width="360" height="420" as="geometry" />
         </mxCell>
         <mxCell id="LP-C06-title" value="&lt;b&gt;LP-C06 - Profile switch not confirmed&lt;/b&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="825" y="125" width="330" height="65" as="geometry" />
@@ -116,7 +170,7 @@
           <mxGeometry x="450" y="350" width="300" height="38" as="geometry" />
         </mxCell>
         <mxCell id="switch-error-rail" value="" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#FB8F8F;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="810" y="110" width="4" height="320" as="geometry" />
+          <mxGeometry x="810" y="110" width="4" height="420" as="geometry" />
         </mxCell>
         <mxCell id="switch-error-copy" value="The app could not confirm sign-out.&lt;br&gt;It has not switched profiles.&lt;br&gt;&lt;br&gt;Technical details: safe code only." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="825" y="200" width="330" height="120" as="geometry" />
@@ -127,23 +181,35 @@
         <mxCell id="check-profile" value="Check current profile" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;align=center;verticalAlign=middle;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="LP-T09">
           <mxGeometry x="840" y="378" width="300" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="LP-T06" value="&lt;b&gt;LP-T06&lt;/b&gt; Switch -&gt; existing logout mutation. Confirm sign-out, clear auth/query/private buffers and pending profile-bound OAuth -&gt; LP-C02. Failure -&gt; LP-C06. Preserve saved files/graphs; do not cancel unrelated runs." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
-          <mxGeometry x="30" y="470" width="1140" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="LP-T07" value="&lt;b&gt;LP-T07&lt;/b&gt; Valid restored ordinary session -&gt; workspace after matching identity check. Expired session -&gt; LP-C05 -&gt; LP-C03 for known profile, otherwise LP-C02. Explicit switching always requires target PIN." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
+        <mxCell id="LP-T06" value="&lt;b&gt;LP-T06&lt;/b&gt; Switch -&gt; shared SC01/#259 logout/revocation boundary, then clear auth/query/private buffers and pending OAuth -&gt; LP-C02/07. Unconfirmed sign-out -&gt; LP-C06 using C14 shared error. Never cancel unrelated graph runs." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
           <mxGeometry x="30" y="570" width="1140" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="LP-T08" value="&lt;b&gt;LP-T08&lt;/b&gt; LP-C06 Retry -&gt; repeat LP-T06. Never claim switch on an unconfirmed result or silently select another credential." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
+        <mxCell id="LP-T07" value="&lt;b&gt;LP-T07&lt;/b&gt; Valid restored ordinary session -&gt; workspace after matching identity check. Expired session -&gt; LP-C05 -&gt; LP-C03 for known profile, otherwise LP-C02. Explicit switching always requires target PIN." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
           <mxGeometry x="30" y="670" width="1140" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="LP-T09" value="&lt;b&gt;LP-T09&lt;/b&gt; LP-C06 Check current profile -&gt; query real session: confirmed previous ordinary profile -&gt; LP-C04; confirmed signed out -&gt; LP-C02; unresolved -&gt; remain LP-C06 with descriptive error." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
+        <mxCell id="LP-T08" value="&lt;b&gt;LP-T08&lt;/b&gt; LP-C06 Retry -&gt; repeat LP-T06. Never claim switch on an unconfirmed result or silently select another credential." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
           <mxGeometry x="30" y="770" width="1140" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="LP-T10" value="&lt;b&gt;LP-T10&lt;/b&gt; On every switch/restore, reject stale responses from the prior profile. Public registry/activity remain installation-shared; private data remains profile/consent/generation-bound. Existing SC01 private logout guarantees are not waived." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
+        <mxCell id="LP-T09" value="&lt;b&gt;LP-T09&lt;/b&gt; LP-C06 Check current profile -&gt; query real session: confirmed previous ordinary profile -&gt; LP-C04; confirmed signed out -&gt; LP-C02; unresolved -&gt; remain LP-C06 with descriptive error." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
           <mxGeometry x="30" y="870" width="1140" height="90" as="geometry" />
         </mxCell>
+        <mxCell id="LP-T10" value="&lt;b&gt;LP-T10&lt;/b&gt; On every switch/restore, reject stale responses from the prior profile. Public registry/activity remain installation-shared; private data remains profile/consent/generation-bound. Existing SC01 private logout guarantees are not waived." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
+          <mxGeometry x="30" y="970" width="1140" height="90" as="geometry" />
+        </mxCell>
         <mxCell id="recovery-limit" value="PIN reset/deletion is not shown as implemented. Forgotten PIN must not trigger destructive profile deletion. Real create/switch/restore/failure stories and requesting-owner validation are still required." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="30" y="990" width="1140" height="70" as="geometry" />
+          <mxGeometry x="30" y="1090" width="1140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="logout" value="Log out" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;align=center;verticalAlign=middle;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="LP-T13">
+          <mxGeometry as="geometry" x="60" y="395" width="300" height="38" />
+        </mxCell>
+        <mxCell id="close-menu" value="Close" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;align=center;verticalAlign=middle;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="LP-T14">
+          <mxGeometry as="geometry" x="60" y="440" width="300" height="38" />
+        </mxCell>
+        <mxCell id="expired-choose" value="Choose different profile" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;align=center;verticalAlign=middle;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="LP-T15">
+          <mxGeometry as="geometry" x="450" y="400" width="300" height="38" />
+        </mxCell>
+        <mxCell id="LP-T13" value="&lt;b&gt;LP-T13&lt;/b&gt; Log out -&gt; same revocation as LP-T06 -&gt; picker, no target selected. Failure -&gt; LP-C06; retry repeats the original logout/switch intent. LP-T14 Close -&gt; workspace without changing session. LP-T15 Choose different profile -&gt; LP-C02/07; clear expired identity and PIN." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="1170" width="1140" height="85" />
         </mxCell>
       </root>
     </mxGraphModel>

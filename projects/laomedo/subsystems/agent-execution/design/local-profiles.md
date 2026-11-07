@@ -23,7 +23,8 @@ Reuse ordinary upstream user records, password hashing, rate limiting and sessio
 cookies as internal profile identity. Create profile uses a name and PIN with
 confirmation, no email or approval step. Proposed initial policy is six ASCII
 digits, preserved as text (including leading zeroes), and a trimmed nonempty
-name of at most 40 characters. The PIN is a convenience lock under one OS-user
+name of at most 40 characters. Compare names case-insensitively for both
+reserved names and duplicates; preserve the display spelling. The PIN is a convenience lock under one OS-user
 trust boundary, not a remote-safe account credential. Never log/serialize PINs
 or return submitted values in error details. Unknown/malformed names and PINs
 receive safe catalogue-backed errors, never raw validation payloads.
@@ -42,20 +43,61 @@ Normal upstream startup still provisions a superuser. Proposed minimal adaptatio
 uses one reserved internal system identity solely for upstream initialization and
 controlled profile creation through existing user-service behavior. It is never
 selectable, never used as the browser principal and has no human setup step.
-Its startup-only value is cryptographically random, held in memory and never
-stored as a login secret, exported to processes or disclosed. Existing profiles
+Set the cryptographically random startup value directly on the in-process
+upstream auth settings immediately before startup, never in an environment
+variable or command argument. Upstream may persist its password hash for a new
+internal record; never persist the plaintext. Upstream clears the settings value
+after setup. No child environment, response, log or settings serialization may
+contain the value. Existing profiles
 remain ordinary users. Refuse reserved-name registration, an existing reserved
 record with wrong role/activity/legacy password, other unexpected superusers,
 and a missing internal identity in an otherwise populated profile database.
-New empty owned state may create the internal identity through normal startup.
+Before any migration, classify the explicitly owned database read-only:
+
+- Absent database or a valid SQLite database with no application schema: fresh
+  only if the owned runtime marker authorizes initialization and no unrelated
+  tables/data are present. A zero-byte newly prepared database counts as fresh.
+- Recognized migrated schema with the internal identity: verify role/activity,
+  password format, absence of legacy credentials and absence of internal API keys;
+  ordinary profiles remain unchanged.
+- Populated user table without the internal identity, unexpected superusers,
+  missing required tables/columns, partial schema, corruption, unreadable state or
+  an unknown migration revision: refuse startup with a descriptive error. Do not
+  repair, reset or reinterpret such state as fresh.
+
+Only admitted fresh state may create the internal identity through startup.
 No account reset, user promotion or global auth bypass is a recovery action.
 
 The generic upstream anonymous registration endpoint stays closed. A dedicated
 same-origin local profile-creation boundary validates name/PIN and delegates the
 existing user creation with the verified internal actor; it accepts no arbitrary
 privileged operation. This is a proposed backend compatibility measure, not an
-accepted claim of completed account provisioning. Effective startup, restart,
-reserved-name/role races and upgrade compatibility need real verification.
+accepted claim of completed account provisioning. The pinned upstream call is
+`add_user(user: UserCreate, session: DbSession, current_user: User | None)` at
+Langflow commit `fec71dca901949c09ed4d63315804337cd2eb13d`. Its transaction,
+identity-mutation lock, hashing, default project and audit remain upstream-owned.
+The audit's technical `created_by: admin` denotes this internal actor, not a
+human administrator. A compatibility regression must detect signature changes.
+
+After the upstream lifespan finishes initialization, but before accepting any
+request, install a narrow `LocalProfileAuthService` subclass through the upstream
+service manager. Registration before initialization is insufficient: upstream
+`register_all_service_factories` replaces it. Verify the effective instance before
+yielding the application's lifespan. Refuse internal identity at password login,
+JWT authentication and token creation (including refresh); preserve the upstream
+implementation for ordinary profiles. No API key may belong to the internal
+identity: admission checks for existing keys, authenticated creation is refused,
+and environment-key/external-identity authentication is disabled in profile mode.
+Direct upstream API-key callers bypass the auth service, so subclassing only the
+API-key method is not a complete guard. Verify those routes fail closed too.
+
+The upstream self-update route permits username changes by ordinary users. In
+profile mode refuse direct username, password, role and activity updates there;
+this first slice does not offer profile renaming or PIN changes. This prevents
+reserved-name and casefold uniqueness bypass. No global settings toggles or
+module monkeypatches may temporarily enable privileged public registration.
+Effective startup, restart, reserved-name/role races and upgrade compatibility
+need real verification.
 
 ## Switching, persistence and limits
 
@@ -63,12 +105,18 @@ Successful profile creation and normal entry persist with the app login lifetime
 selected by the owner, including valid refresh and browser/app restart. Every
 explicit switch requires the target PIN. Switching first confirms upstream
 logout, clears user/query/private buffers and invalidates pending profile-bound
-OAuth before selecting another context. A failed switch never claims success or
+OAuth before selecting another context. Switch and plain logout use the same SC01/#259 revocation boundary and shared
+sign-out-unconfirmed error catalogue entry as C14; do not implement competing
+logout semantics. A failed switch never claims success or
 silently chooses credentials. In-flight results cannot repopulate the new profile.
 Profile switching does not rerun a graph or cancel an unrelated model task.
 
 Keep loopback-only serving, exact origin/host checks and appropriate CSRF guards
-on new mutations. One browser session cannot silently use a graph-supplied profile
+on new mutations. Picker reads also validate the exact configured Host. For
+browser same-origin GETs with no Origin header, require the configured host and
+same-origin Fetch Metadata; reject cross-site metadata or a present mismatching
+Origin. Mutations require exact Origin and the agreed CSRF protection; never use
+substring matching or accept arbitrary localhost ports. One browser session cannot silently use a graph-supplied profile
 ID to select credentials. Public Skill registry and existing activity storage are
 installation-shared; no tenant-isolation claim. Private data still belongs to the
 actual authenticated profile plus repository consent/generation. The earlier
@@ -85,3 +133,10 @@ explicit switch and logout failure, concurrent tabs/profiles, browser/app crash
 and restart, and unchanged existing preview. Verify no secret-bearing API/user
 list or stale result appears. Tests/renders/reviewer advice are supporting only.
 The requesting owner must inspect and validate the final workflow before merge.
+
+## Open recovery decision
+
+Forgotten-PIN recovery is not accepted as an unsupported production story. Until
+the owner selects a non-destructive recovery method or explicitly accepts this
+initial-slice limitation, release readiness remains blocked for that story. Data
+is preserved; no destructive delete/recreate advice is a recovery action.
