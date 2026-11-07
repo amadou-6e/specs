@@ -89,8 +89,8 @@ without sending that result back to the agent. Skill feedback keeps its own port
 
 Legacy graphs need an explicit migration. Task edges can move to PR only when
 the consumer is an updated Agent task input; Operation Result edges can move to
-PR; PR-reference edges between PR nodes move to context. A single incoming legacy
-reference or operation can map to context. Two incoming legacy connections or
+PR; PR-reference edges between PR nodes move to context. A single compatible incoming legacy connection can map to context; reference
+producers other than PR nodes need manual wrapping into the new envelope. Two incoming legacy connections or
 incompatible consumers require manual repair; never discard an edge or choose an
 authority source silently. Retain filters, values, identities, positions and all
 unrelated graph data. Maintained examples and the local preview use the new ports.
