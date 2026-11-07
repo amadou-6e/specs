@@ -158,7 +158,7 @@ implementation's acceptance or permission to copy existing credentials.
 
 | Story | Owning Draw.io states / transitions |
 | --- | --- |
-| GC01 browser connection | C01 no-app, C02 pending, C03 consent, C09 setup, C10 ready; P01/P03/P04/P05, N01/N02/N05 |
+| GC01 browser connection | C01 no-app, C12 configured, C02 pending, C03 consent, C09 setup, C10 ready; P01/P03/P04/P05, N01/N02/N05 |
 | GC02 explicit token | C06 secure token entry, E02 refusal; P02/P04/P05/P07 |
 | GC03 cancellation/concurrency | C02/C03, E03 interrupted connection; P06/P07/P08/P09/P10 preserve previous ready |
 | GC04 browser/app restart | C07 reauthorization, C08 crash recovery; P10, R05/R06, E05 unsupported auth |
@@ -241,3 +241,15 @@ and moves its controls, and resolves S14 source-state wording. S15/S16 improve
 help/navigation separation and common button geometry. These new visual blockers
 require their first focused recheck. S17 fixed-loopback callback compatibility
 must be confirmed against GitHub documentation before callback code is final.
+
+
+Final design review record: the first focused recheck at
+`b6152ca837266091999ea8d02e86b01d50218104` returned Specification APPROVE and
+Visual APPROVE. S12-S14 are reviewer-verified fixed; S15/S16 addressed. The
+reviewer read the full 205-line delta, opened pages 1/5/6/7/8 and reused unchanged
+pages 2-4 inspected at `fefdf89`. S18's stale C01 note and GC01 mapping were then
+corrected as non-executable wording only, with deterministic diff checks.
+S17 remains a callback-compatibility implementation gate. These verdicts cover
+the proposed design only. Registration, normal-login deployment, both connection
+modes, private reads, persistence/revocation, latency and owner workflow validation
+are not performed or accepted.

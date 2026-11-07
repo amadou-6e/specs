@@ -328,7 +328,7 @@
         <mxCell id="N08" value="&lt;b&gt;N08&lt;/b&gt;  C10 Connect another account -&gt; new P01 request with independent connection ID; existing Ready retained." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=0;fillColor=#F8FAFC;strokeColor=#E2E8F0;spacing=8;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="30" y="1028" width="1140" height="44" />
         </mxCell>
-        <mxCell id="navnote" value="Close on a ready manager closes only the panel. Token Cancel clears the input. Pending has Cancel sign-in only. The configured C01 primary is Connect GitHub; Use a token instead remains available." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;fillColor=#FFF7ED;strokeColor=#F59E0B;" vertex="1" parent="1">
+        <mxCell id="navnote" value="Close on a ready manager closes only the panel. Token Cancel clears the input. Pending has Cancel sign-in only. The C12 primary is Connect GitHub; Use a token instead remains available." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;fillColor=#FFF7ED;strokeColor=#F59E0B;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="30" y="1355" width="1140" height="75" />
         </mxCell>
         <mxCell id="N09" value="&lt;b&gt;N09&lt;/b&gt;  E01/E04/E05 Open setup instructions -&gt; H01 with vault/removal/app-login section selected; close returns to error." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=8;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
