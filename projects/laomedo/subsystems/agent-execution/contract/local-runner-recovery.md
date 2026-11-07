@@ -51,6 +51,62 @@ recovery controls. One combined overlay owns the native error-panel transformati
 A health timeout is not proof of an offline process: probe the listener, and refuse
 startup while a listener is present or its absence cannot be established.
 
+## Prepared native Codex app launch
+
+The prepared-installation `laomedo-app` command accepts explicit trusted-host
+paths for the runner-service JSON, matching built frontend, component directory
+and persistent app state. It is a native single-user loopback launch path, not
+an installer or a hosted identity boundary. Runtime data and the host file stay
+outside Git. Missing host configuration, frontend or component assets, a missing
+source directory or absent supervisor binding refuse this launch before the app
+binds. App and runner ports must differ.
+
+The command derives the recovery service file, Codex API token path
+(`runner state/api-token`), registry and default endpoint for new Codex nodes
+from that one host configuration. Neither token contents nor credentials appear
+in command arguments or graph data. Explicit CLI arguments are authoritative;
+dotenv, secret-directory and ambient launch-setting overrides cannot retarget
+them. The app binds only to `127.0.0.1`, using the existing explicit local
+auto-login mode. This is not private multi-user access or GitHub account login.
+
+The normal Codex default image/version pins remain enforced. A trusted operator
+may provide the existing CLI's full `sha256:` `image_id` for a reviewed local
+rebuild; reject malformed identities, other providers and Git-workspace image
+overrides. Recovery forwards the exact ID to normal preflight, which verifies
+the local tag/immutable identity and CLI version without login material before
+opening the API. Browser values never select an image or bypass this check.
+The absolute `lease_service` path binds normal Codex execution to an independently
+started supervisor; the app and runner do not start that supervisor as a runner
+child. Existing Claude configuration and other provider launch paths are unchanged.
+
+Starting the app does not start the runner, submit a graph/task, provision login
+or declare the model list available. The existing explicit recovery action still
+owns runner startup and authenticated readiness. Model refresh establishes
+discovery only when the real model list loads; it submits no Agent task. No
+configuration retains the existing unmanaged state and no Start action; guidance
+must describe the configuration needed rather than promise an unavailable action.
+Recovery requests from the current app use the host-selected service without a
+node URL. Legacy explicitly supplied service URLs must still match exactly.
+
+New Codex nodes use the derived loopback endpoint. Saved graphs retain their
+Runner URL and selections; opening them does not silently migrate values. A
+saved endpoint from another installation must be checked explicitly. The app
+retains the selected state's existing `flow.db` and signing-key state. Activity
+defaults to `state/activity.db` so sibling installations do not share a new
+database; an explicit private `--activity-db` path retains an existing database
+stored elsewhere. Do not silently copy or merge activity histories.
+
+Closing the app does not terminate the independent runner, supervisor or active
+work. Automatic dependency/frontend preparation, credential provisioning,
+installation-wide stop and full first-use readiness remain separate work in
+[Laomedo #204](https://github.com/amadou-6e/laomedo/issues/204). This increment
+does not establish PR/Skill-service configuration or full graph execution.
+
+Acceptance must separately verify same-file token/endpoint bindings, persistence,
+invalid setup and port conflicts, actual Start and model refresh with no task,
+and truthful managed/unmanaged guidance. Fixture controls support these checks
+but do not replace the actual browser/runner path or owner validation.
+
 ## Docker prerequisites and recovery actions
 
 The **Docker prerequisites** page in the owning Draw.io specifies the additional
