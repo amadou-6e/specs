@@ -19,7 +19,7 @@ Codex request queues, Claude stream-JSON readers or OpenCode HTTP/SSE execution
 clients beside that path. This changes the agent wire, not the authenticated
 [runner HTTP API](runner-api.md) used by the graph.
 
-Implementation is on draft [Laomedo PR #214](https://github.com/amadou-6e/laomedo/pull/214).
+Implementation is on draft [Laomedo PR #214](https://github.com/amadou-6e/laomedo/pull/250).
 Runner checks below are bounded evidence, not graph acceptance or merge approval.
 
 ## Protocol and policy requirements
