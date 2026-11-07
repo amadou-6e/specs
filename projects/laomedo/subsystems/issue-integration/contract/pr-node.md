@@ -64,7 +64,7 @@ their stored selections or exposing the obsolete Discovery row.
 
 ## Unified PR context ports
 
-One optional **PR** input (`context`, Data or Message) and one **PR** output
+One optional **PR** input (`pr_context`, Data or Message) and one **PR** output
 (`pr`, Data) replace PR Reference/Operation and PR/Task/Operation Result.
 The output is the existing `laomedo.github-pr.v1` result envelope: `pr` contains
 the current snapshot (or null), `operation` contains status/error category, and
