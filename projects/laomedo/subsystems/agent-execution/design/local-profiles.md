@@ -134,9 +134,9 @@ and restart, and unchanged existing preview. Verify no secret-bearing API/user
 list or stale result appears. Tests/renders/reviewer advice are supporting only.
 The requesting owner must inspect and validate the final workflow before merge.
 
-## Open recovery decision
+## Accepted initial recovery constraint
 
-Forgotten-PIN recovery is not accepted as an unsupported production story. Until
-the owner selects a non-destructive recovery method or explicitly accepts this
-initial-slice limitation, release readiness remains blocked for that story. Data
-is preserved; no destructive delete/recreate advice is a recovery action.
+On 2026-11-07 the owner explicitly selected: defer recovery; a forgotten PIN
+blocks entry to that profile. Preserve its data. PIN recovery is unsupported in
+this first slice, not a tested capability or a destructive delete/recreate flow.
+This owner decision resolves LP-R8 without claiming a recovery implementation.
