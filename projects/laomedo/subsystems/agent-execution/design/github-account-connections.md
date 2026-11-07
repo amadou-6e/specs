@@ -109,7 +109,7 @@ Its authorizing/verifying/consent states are not connection-record states. A rea
 connection is replaced only after successful verification and explicit consent.
 Every failed/cancelled/expired attempt preserves its previous ready connection.
 
-Draw.io cards use unique UI identifiers C01-C11 and error cards E01-E05. Pending
+Draw.io cards use unique UI identifiers C01-C12 and error cards E01-E05. Pending
 attempt transitions P01-P10, ready-connection transitions R01-R08 and navigation
 N01-N17 are separately owned on their named pages. Story IDs GC01-GC10 below
 reference these IDs; a story number is never a second identity for a UI card.
@@ -179,11 +179,11 @@ images and the full substantive own-diff read. No implementation exists.
 
 | Finding | Correction | Recheck status |
 | --- | --- | --- |
-| 251-S1 | Unique C01-C11/E01-E05 cards; story matrix derives links to state/transition IDs | Corrected, pending focused recheck |
-| 251-S2 | Native Windows app backend owns private broker/vault/store in-process; public service cannot assert private owners | Corrected, pending focused recheck |
-| 251-S3 | Separate pending-request, navigation and persisted/read transition authority P01-P10/N01-N17/R01-R08 | Corrected, pending focused recheck |
-| 251-S4 | Registration vs installation vs read consent separated; manage-installation controls and verified-empty C11 | Corrected, pending focused recheck |
-| 251-S5 | Shared-presenter E01-E05 for vault/token/ended-attempt/partial-removal/unsupported-owner failures | Corrected, pending focused recheck |
+| 251-S1 | Unique C01-C12/E01-E05 cards; story matrix derives links to state/transition IDs | Verified in design-readiness review at fefdf89 (specification only) |
+| 251-S2 | Native Windows app backend owns private broker/vault/store in-process; public service cannot assert private owners | Verified in design-readiness review at fefdf89 (specification only) |
+| 251-S3 | Separate pending-request, navigation and persisted/read transition authority P01-P10/N01-N17/R01-R08 | Verified in design-readiness review at fefdf89 (specification only) |
+| 251-S4 | Registration vs installation vs read consent separated; manage-installation controls and verified-empty C11 | Verified in design-readiness review at fefdf89 (specification only) |
+| 251-S5 | Shared-presenter E01-E05 for vault/token/ended-attempt/partial-removal/unsupported-owner failures | Verified in design-readiness review at fefdf89 (specification only) |
 | 251-S6 | Pending request states are distinct from per-connection record states; multiple GitHub connections allowed for one app owner | Addressed clarification |
 | 251-S7 | 32 combined refs, exact namespaces, bounded completeness and tag peeling, excess/truncation refusal | Addressed clarification |
 
@@ -231,3 +231,13 @@ S8 now has source-backed native deployment evidence above; S9 has official
 first-install documentation. S10 has complete recovery targets and C11/E04 exits;
 S11 has separate declined-callback handling. These corrections require a new
 substantive design-readiness review; no approval is inferred from this ledger.
+
+
+Design-readiness review at `fefdf89`: Specification APPROVE to begin backend
+implementation; Visual REVISE for S12 (configured Connect control absent) and
+S13 (C11 consent sentence clipped). Neither verdict is runtime acceptance.
+The correction draws C12 with a P01 Connect button, enlarges the C11 statement
+and moves its controls, and resolves S14 source-state wording. S15/S16 improve
+help/navigation separation and common button geometry. These new visual blockers
+require their first focused recheck. S17 fixed-loopback callback compatibility
+must be confirmed against GitHub documentation before callback code is final.
