@@ -5,14 +5,14 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="GI01" value="GitHub PR&#10;Repository URL [ https://github.com/owner/repo ]&#10;Labels [ type to find labels v ] (multi-select)&#10;ALL labels match | [research] [backend]&#10;PR [ #12 Implement endpoint                 v ]&#10;[Refresh list] | Discovery: 1 matching PR&#10;Advanced: State (open / closed / all)&#10;Inputs: Operation, optional PR Reference&#10;Outputs: PR | Task | Operation Result&#10;Tabs: PR viewer | Open in GitHub (replace Code)&#10;Operation input: normal or Agent feedback&#10;Read → Agent once → apply same PR → stop" parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;">
+        <mxCell id="GI01" value="GitHub PR&#10;Repository URL [ https://github.com/owner/repo ]&#10;Inline connection feedback below URL; no Discovery heading&#10;State [ open / closed / merged / all ] (visible)&#10;Labels [ fuzzy search discovered labels v ] (multi-select)&#10;ALL labels match | [research] [backend]&#10;PR [ fuzzy search number/title v ]&#10;Inputs: Operation, optional PR Reference&#10;Outputs: PR | Task | Operation Result&#10;Tabs: PR viewer | Open in GitHub&#10;Read - Agent once - apply same PR - stop" parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;">
           <mxGeometry as="geometry" x="40" y="40" width="550" height="290" />
         </mxCell>
-        <mxCell id="GI02" value="Loading and dependency changes&#10;Repository change: clear labels and PR&#10;Labels/State change: clear PR&#10;Discovery: Discovering GitHub PRs...&#10;Ignore late responses for previous selectors&#10;No implicit first-PR selection" parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;">
+        <mxCell id="GI02" value="Loading and dependency changes&#10;Repository change: clear labels and PR&#10;Labels/State change: clear PR&#10;Loading/failure/empty feedback below Repository URL&#10;Ignore late responses for previous selectors&#10;No implicit first-PR selection" parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;">
           <mxGeometry as="geometry" x="630" y="40" width="600" height="200" />
         </mxCell>
-        <mxCell id="GI03" value="All-label filtering&#10;No labels: all PRs in selected State&#10;research + backend: only PRs with both&#10;Search narrows discovered labels/PRs&#10;Only pull requests; bounded pagination&#10;Refresh keeps a valid exact PR identity" parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;">
-          <mxGeometry as="geometry" x="630" y="270" width="600" height="180" />
+        <mxCell id="GI03" value="All-label and State filtering&#10;No labels: all PRs in selected State&#10;research + backend: only PRs with both&#10;Closed includes merged (saved compatibility)&#10;Merged requires verified merged metadata&#10;Fuzzy search only narrows discovered labels/PRs&#10;Exact PR identity retained; bounded pagination" parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;">
+          <mxGeometry as="geometry" x="630" y="270" width="600" height="190" />
         </mxCell>
         <mxCell id="GI04" value="Incoming operation&#10;Upstream -&gt; Operation (close or modify)&#10;Modify: title / body / labels (replace full set)&#10;PR Reference from an earlier node can bind target&#10;Explicit picker and reference must agree&#10;Host resolves scoped expiring grant; no token field" parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;">
           <mxGeometry as="geometry" x="40" y="370" width="550" height="210" />
@@ -23,7 +23,246 @@
         <mxCell id="GI06" value="Live execution and outcomes&#10;Read current selected PR at invocation&#10;One invocation: all outputs share one execution&#10;Close/modify read back confirmed current PR&#10;Result: not_requested / succeeded / failed / unknown&#10;After a filter-changing write, report the actual target&#10;New reads revalidate; evidence kept internally" parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;">
           <mxGeometry as="geometry" x="40" y="640" width="550" height="220" />
         </mxCell>
-      <mxCell id="GI07" value="Read-only PR viewer&#10;Selected repository and PR identity only&#10;Current title / body / labels / state / draft / merged&#10;Head branch / base branch&#10;Loading, unavailable, no selection and Retry&#10;Selection change aborts/ignores old reads&#10;No raw HTML, scripts or remote images&#10;Open in GitHub: exact URL, new tab, safe opener" parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;"><mxGeometry as="geometry" x="40" y="970" width="1190" height="220" /></mxCell></root>
+        <mxCell id="GI07" value="Read-only PR viewer&#10;Selected repository and PR identity only&#10;Current title / body / labels / state / draft / merged&#10;Head branch / base branch&#10;Loading, unavailable, no selection and Retry&#10;Selection change aborts/ignores old reads&#10;No raw HTML, scripts or remote images&#10;Open in GitHub: exact URL, new tab, safe opener" parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#172033;">
+          <mxGeometry as="geometry" x="40" y="970" width="1190" height="220" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="pr-controls-265" name="PR controls">
+    <mxGraphModel page="1" pageWidth="1500" pageHeight="1080">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pr265-title" value="Proposed GitHub PR node controls - issue #265" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;fontSize=22;fontColor=#18181b;fontStyle=1;locked=1;">
+          <mxGeometry as="geometry" x="35" y="18" width="1400" height="35" />
+        </mxCell>
+        <mxCell id="pr265-0caption" value="Connected - filters visible" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;fontColor=#18181b;fontStyle=1;locked=1;">
+          <mxGeometry as="geometry" x="40" y="62" width="370" height="30" />
+        </mxCell>
+        <mxCell id="pr265-0card" value="" vertex="1" parent="1" style="rounded=1;arcSize=7;whiteSpace=wrap;html=0;align=left;spacingLeft=12;fontFamily=Arial;fontSize=13;fillColor=#18181b;strokeColor=#52525b;fontColor=#f4f4f5;">
+          <mxGeometry as="geometry" x="40" y="105" width="350" height="720" />
+        </mxCell>
+        <mxCell id="pr265-0name" value="  GitHub PR" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;fontStyle=1;">
+          <mxGeometry as="geometry" x="56" y="117" width="318" height="34" />
+        </mxCell>
+        <mxCell id="pr265-0desc" value="Read a live PR or apply a scoped incoming&#10;close/modify operation." vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;fontSize=12;fontColor=#a1a1aa;">
+          <mxGeometry as="geometry" x="56" y="156" width="318" height="42" />
+        </mxCell>
+        <mxCell id="pr265-0separator" value="" vertex="1" parent="1" style="strokeColor=none;fillColor=#3f3f46;">
+          <mxGeometry as="geometry" x="40" y="207" width="350" height="1" />
+        </mxCell>
+        <mxCell id="pr265-0repo-label" value="Repository URL" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;">
+          <mxGeometry as="geometry" x="56" y="220" width="318" height="25" />
+        </mxCell>
+        <mxCell id="pr265-0repo" value="https://github.com/amadou-6e/laomedo" vertex="1" parent="1" style="rounded=1;arcSize=7;whiteSpace=wrap;html=0;align=left;spacingLeft=12;fontFamily=Arial;fontSize=13;fillColor=#18181b;strokeColor=#52525b;fontColor=#f4f4f5;">
+          <mxGeometry as="geometry" x="56" y="250" width="318" height="38" />
+        </mxCell>
+        <mxCell id="pr265-0Statelabel" value="State" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;">
+          <mxGeometry as="geometry" x="56" y="310" width="318" height="23" />
+        </mxCell>
+        <mxCell id="pr265-0State" value="Open                          " vertex="1" parent="1" style="rounded=1;arcSize=7;whiteSpace=wrap;html=0;align=left;spacingLeft=12;fontFamily=Arial;fontSize=13;fillColor=#18181b;strokeColor=#52525b;fontColor=#f4f4f5;">
+          <mxGeometry as="geometry" x="56" y="338" width="318" height="38" />
+        </mxCell>
+        <mxCell id="pr265-0Labelslabel" value="Labels" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;">
+          <mxGeometry as="geometry" x="56" y="392" width="318" height="23" />
+        </mxCell>
+        <mxCell id="pr265-0Labels" value="Select labels              " vertex="1" parent="1" style="rounded=1;arcSize=7;whiteSpace=wrap;html=0;align=left;spacingLeft=12;fontFamily=Arial;fontSize=13;fillColor=#18181b;strokeColor=#52525b;fontColor=#f4f4f5;">
+          <mxGeometry as="geometry" x="56" y="420" width="318" height="38" />
+        </mxCell>
+        <mxCell id="pr265-0PRlabel" value="PR" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;">
+          <mxGeometry as="geometry" x="56" y="474" width="318" height="23" />
+        </mxCell>
+        <mxCell id="pr265-0PR" value="#264 Fix managed Codex recovery " vertex="1" parent="1" style="rounded=1;arcSize=7;whiteSpace=wrap;html=0;align=left;spacingLeft=12;fontFamily=Arial;fontSize=13;fillColor=#18181b;strokeColor=#52525b;fontColor=#f4f4f5;">
+          <mxGeometry as="geometry" x="56" y="502" width="318" height="38" />
+        </mxCell>
+        <mxCell id="pr265-0PR Referencesocket" value="" vertex="1" parent="1" style="ellipse;fillColor=#f87171;strokeColor=none;">
+          <mxGeometry as="geometry" x="35" y="564" width="10" height="10" />
+        </mxCell>
+        <mxCell id="pr265-0PR Referencetext" value="PR Reference" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;">
+          <mxGeometry as="geometry" x="56" y="556" width="318" height="26" />
+        </mxCell>
+        <mxCell id="pr265-0Operationsocket" value="" vertex="1" parent="1" style="ellipse;fillColor=#a1a1aa;strokeColor=none;">
+          <mxGeometry as="geometry" x="35" y="601" width="10" height="10" />
+        </mxCell>
+        <mxCell id="pr265-0Operationtext" value="Operation" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;">
+          <mxGeometry as="geometry" x="56" y="593" width="318" height="26" />
+        </mxCell>
+        <mxCell id="pr265-0PRouttext" value="PR" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;align=right;">
+          <mxGeometry as="geometry" x="56" y="731" width="318" height="25" />
+        </mxCell>
+        <mxCell id="pr265-0PRout" value="" vertex="1" parent="1" style="ellipse;fillColor=#f87171;strokeColor=none;">
+          <mxGeometry as="geometry" x="385" y="739" width="10" height="10" />
+        </mxCell>
+        <mxCell id="pr265-0Taskouttext" value="Task" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;align=right;">
+          <mxGeometry as="geometry" x="56" y="763" width="318" height="25" />
+        </mxCell>
+        <mxCell id="pr265-0Taskout" value="" vertex="1" parent="1" style="ellipse;fillColor=#818cf8;strokeColor=none;">
+          <mxGeometry as="geometry" x="385" y="771" width="10" height="10" />
+        </mxCell>
+        <mxCell id="pr265-0Operation Resultouttext" value="Operation Result" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;align=right;">
+          <mxGeometry as="geometry" x="56" y="795" width="318" height="25" />
+        </mxCell>
+        <mxCell id="pr265-0Operation Resultout" value="" vertex="1" parent="1" style="ellipse;fillColor=#f87171;strokeColor=none;">
+          <mxGeometry as="geometry" x="385" y="803" width="10" height="10" />
+        </mxCell>
+        <mxCell id="pr265-1caption" value="Connection failure - inline recovery" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;fontColor=#18181b;fontStyle=1;locked=1;">
+          <mxGeometry as="geometry" x="450" y="62" width="370" height="30" />
+        </mxCell>
+        <mxCell id="pr265-1card" value="" vertex="1" parent="1" style="rounded=1;arcSize=7;whiteSpace=wrap;html=0;align=left;spacingLeft=12;fontFamily=Arial;fontSize=13;fillColor=#18181b;strokeColor=#52525b;fontColor=#f4f4f5;">
+          <mxGeometry as="geometry" x="450" y="105" width="350" height="720" />
+        </mxCell>
+        <mxCell id="pr265-1name" value="  GitHub PR" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;fontStyle=1;">
+          <mxGeometry as="geometry" x="466" y="117" width="318" height="34" />
+        </mxCell>
+        <mxCell id="pr265-1desc" value="Read a live PR or apply a scoped incoming&#10;close/modify operation." vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;fontSize=12;fontColor=#a1a1aa;">
+          <mxGeometry as="geometry" x="466" y="156" width="318" height="42" />
+        </mxCell>
+        <mxCell id="pr265-1separator" value="" vertex="1" parent="1" style="strokeColor=none;fillColor=#3f3f46;">
+          <mxGeometry as="geometry" x="450" y="207" width="350" height="1" />
+        </mxCell>
+        <mxCell id="pr265-1repo-label" value="Repository URL" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;">
+          <mxGeometry as="geometry" x="466" y="220" width="318" height="25" />
+        </mxCell>
+        <mxCell id="pr265-1repo" value="https://github.com/amadou-6e/laomedo" vertex="1" parent="1" style="rounded=1;arcSize=7;whiteSpace=wrap;html=0;align=left;spacingLeft=12;fontFamily=Arial;fontSize=13;fillColor=#18181b;strokeColor=#52525b;fontColor=#f4f4f5;">
+          <mxGeometry as="geometry" x="466" y="250" width="318" height="38" />
+        </mxCell>
+        <mxCell id="pr265-1error" value="GitHub discovery failed.&#10;Check connection and refresh." vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;fontSize=12;fontColor=#f87171;">
+          <mxGeometry as="geometry" x="466" y="292" width="318" height="42" />
+        </mxCell>
+        <mxCell id="pr265-1Statelabel" value="State" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;">
+          <mxGeometry as="geometry" x="466" y="348" width="318" height="23" />
+        </mxCell>
+        <mxCell id="pr265-1State" value="Open                          " vertex="1" parent="1" style="rounded=1;arcSize=7;whiteSpace=wrap;html=0;align=left;spacingLeft=12;fontFamily=Arial;fontSize=13;fillColor=#18181b;strokeColor=#52525b;fontColor=#f4f4f5;">
+          <mxGeometry as="geometry" x="466" y="376" width="318" height="38" />
+        </mxCell>
+        <mxCell id="pr265-1Labelslabel" value="Labels" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;">
+          <mxGeometry as="geometry" x="466" y="430" width="318" height="23" />
+        </mxCell>
+        <mxCell id="pr265-1Labels" value="No choices available" vertex="1" parent="1" style="rounded=1;arcSize=7;whiteSpace=wrap;html=0;align=left;spacingLeft=12;fontFamily=Arial;fontSize=13;fillColor=#18181b;strokeColor=#52525b;fontColor=#f4f4f5;">
+          <mxGeometry as="geometry" x="466" y="458" width="318" height="38" />
+        </mxCell>
+        <mxCell id="pr265-1PRlabel" value="PR" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;">
+          <mxGeometry as="geometry" x="466" y="512" width="318" height="23" />
+        </mxCell>
+        <mxCell id="pr265-1PR" value="No choices available" vertex="1" parent="1" style="rounded=1;arcSize=7;whiteSpace=wrap;html=0;align=left;spacingLeft=12;fontFamily=Arial;fontSize=13;fillColor=#18181b;strokeColor=#52525b;fontColor=#f4f4f5;">
+          <mxGeometry as="geometry" x="466" y="540" width="318" height="38" />
+        </mxCell>
+        <mxCell id="pr265-1PR Referencesocket" value="" vertex="1" parent="1" style="ellipse;fillColor=#f87171;strokeColor=none;">
+          <mxGeometry as="geometry" x="445" y="602" width="10" height="10" />
+        </mxCell>
+        <mxCell id="pr265-1PR Referencetext" value="PR Reference" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;">
+          <mxGeometry as="geometry" x="466" y="594" width="318" height="26" />
+        </mxCell>
+        <mxCell id="pr265-1Operationsocket" value="" vertex="1" parent="1" style="ellipse;fillColor=#a1a1aa;strokeColor=none;">
+          <mxGeometry as="geometry" x="445" y="639" width="10" height="10" />
+        </mxCell>
+        <mxCell id="pr265-1Operationtext" value="Operation" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;">
+          <mxGeometry as="geometry" x="466" y="631" width="318" height="26" />
+        </mxCell>
+        <mxCell id="pr265-1PRouttext" value="PR" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;align=right;">
+          <mxGeometry as="geometry" x="466" y="731" width="318" height="25" />
+        </mxCell>
+        <mxCell id="pr265-1PRout" value="" vertex="1" parent="1" style="ellipse;fillColor=#f87171;strokeColor=none;">
+          <mxGeometry as="geometry" x="795" y="739" width="10" height="10" />
+        </mxCell>
+        <mxCell id="pr265-1Taskouttext" value="Task" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;align=right;">
+          <mxGeometry as="geometry" x="466" y="763" width="318" height="25" />
+        </mxCell>
+        <mxCell id="pr265-1Taskout" value="" vertex="1" parent="1" style="ellipse;fillColor=#818cf8;strokeColor=none;">
+          <mxGeometry as="geometry" x="795" y="771" width="10" height="10" />
+        </mxCell>
+        <mxCell id="pr265-1Operation Resultouttext" value="Operation Result" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;align=right;">
+          <mxGeometry as="geometry" x="466" y="795" width="318" height="25" />
+        </mxCell>
+        <mxCell id="pr265-1Operation Resultout" value="" vertex="1" parent="1" style="ellipse;fillColor=#f87171;strokeColor=none;">
+          <mxGeometry as="geometry" x="795" y="803" width="10" height="10" />
+        </mxCell>
+        <mxCell id="pr265-2caption" value="Fuzzy PR search - exact choices" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;fontColor=#18181b;fontStyle=1;locked=1;">
+          <mxGeometry as="geometry" x="860" y="62" width="370" height="30" />
+        </mxCell>
+        <mxCell id="pr265-2card" value="" vertex="1" parent="1" style="rounded=1;arcSize=7;whiteSpace=wrap;html=0;align=left;spacingLeft=12;fontFamily=Arial;fontSize=13;fillColor=#18181b;strokeColor=#52525b;fontColor=#f4f4f5;">
+          <mxGeometry as="geometry" x="860" y="105" width="350" height="720" />
+        </mxCell>
+        <mxCell id="pr265-2name" value="  GitHub PR" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;fontStyle=1;">
+          <mxGeometry as="geometry" x="876" y="117" width="318" height="34" />
+        </mxCell>
+        <mxCell id="pr265-2desc" value="Read a live PR or apply a scoped incoming&#10;close/modify operation." vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;fontSize=12;fontColor=#a1a1aa;">
+          <mxGeometry as="geometry" x="876" y="156" width="318" height="42" />
+        </mxCell>
+        <mxCell id="pr265-2separator" value="" vertex="1" parent="1" style="strokeColor=none;fillColor=#3f3f46;">
+          <mxGeometry as="geometry" x="860" y="207" width="350" height="1" />
+        </mxCell>
+        <mxCell id="pr265-2repo-label" value="Repository URL" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;">
+          <mxGeometry as="geometry" x="876" y="220" width="318" height="25" />
+        </mxCell>
+        <mxCell id="pr265-2repo" value="https://github.com/amadou-6e/laomedo" vertex="1" parent="1" style="rounded=1;arcSize=7;whiteSpace=wrap;html=0;align=left;spacingLeft=12;fontFamily=Arial;fontSize=13;fillColor=#18181b;strokeColor=#52525b;fontColor=#f4f4f5;">
+          <mxGeometry as="geometry" x="876" y="250" width="318" height="38" />
+        </mxCell>
+        <mxCell id="pr265-2Statelabel" value="State" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;">
+          <mxGeometry as="geometry" x="876" y="310" width="318" height="23" />
+        </mxCell>
+        <mxCell id="pr265-2State" value="Open                          " vertex="1" parent="1" style="rounded=1;arcSize=7;whiteSpace=wrap;html=0;align=left;spacingLeft=12;fontFamily=Arial;fontSize=13;fillColor=#18181b;strokeColor=#52525b;fontColor=#f4f4f5;">
+          <mxGeometry as="geometry" x="876" y="338" width="318" height="38" />
+        </mxCell>
+        <mxCell id="pr265-2Labelslabel" value="Labels" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;">
+          <mxGeometry as="geometry" x="876" y="392" width="318" height="23" />
+        </mxCell>
+        <mxCell id="pr265-2Labels" value="Select labels              " vertex="1" parent="1" style="rounded=1;arcSize=7;whiteSpace=wrap;html=0;align=left;spacingLeft=12;fontFamily=Arial;fontSize=13;fillColor=#18181b;strokeColor=#52525b;fontColor=#f4f4f5;">
+          <mxGeometry as="geometry" x="876" y="420" width="318" height="38" />
+        </mxCell>
+        <mxCell id="pr265-2PRlabel" value="PR" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;">
+          <mxGeometry as="geometry" x="876" y="474" width="318" height="23" />
+        </mxCell>
+        <mxCell id="pr265-2PR" value="#264 Fix managed Codex recovery " vertex="1" parent="1" style="rounded=1;arcSize=7;whiteSpace=wrap;html=0;align=left;spacingLeft=12;fontFamily=Arial;fontSize=13;fillColor=#18181b;strokeColor=#52525b;fontColor=#f4f4f5;">
+          <mxGeometry as="geometry" x="876" y="502" width="318" height="38" />
+        </mxCell>
+        <mxCell id="pr265-2PR Referencesocket" value="" vertex="1" parent="1" style="ellipse;fillColor=#f87171;strokeColor=none;">
+          <mxGeometry as="geometry" x="855" y="564" width="10" height="10" />
+        </mxCell>
+        <mxCell id="pr265-2PR Referencetext" value="PR Reference" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;">
+          <mxGeometry as="geometry" x="876" y="556" width="318" height="26" />
+        </mxCell>
+        <mxCell id="pr265-2Operationsocket" value="" vertex="1" parent="1" style="ellipse;fillColor=#a1a1aa;strokeColor=none;">
+          <mxGeometry as="geometry" x="855" y="601" width="10" height="10" />
+        </mxCell>
+        <mxCell id="pr265-2Operationtext" value="Operation" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;">
+          <mxGeometry as="geometry" x="876" y="593" width="318" height="26" />
+        </mxCell>
+        <mxCell id="pr265-2PRouttext" value="PR" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;align=right;">
+          <mxGeometry as="geometry" x="876" y="731" width="318" height="25" />
+        </mxCell>
+        <mxCell id="pr265-2PRout" value="" vertex="1" parent="1" style="ellipse;fillColor=#f87171;strokeColor=none;">
+          <mxGeometry as="geometry" x="1205" y="739" width="10" height="10" />
+        </mxCell>
+        <mxCell id="pr265-2Taskouttext" value="Task" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;align=right;">
+          <mxGeometry as="geometry" x="876" y="763" width="318" height="25" />
+        </mxCell>
+        <mxCell id="pr265-2Taskout" value="" vertex="1" parent="1" style="ellipse;fillColor=#818cf8;strokeColor=none;">
+          <mxGeometry as="geometry" x="1205" y="771" width="10" height="10" />
+        </mxCell>
+        <mxCell id="pr265-2Operation Resultouttext" value="Operation Result" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;align=right;">
+          <mxGeometry as="geometry" x="876" y="795" width="318" height="25" />
+        </mxCell>
+        <mxCell id="pr265-2Operation Resultout" value="" vertex="1" parent="1" style="ellipse;fillColor=#f87171;strokeColor=none;">
+          <mxGeometry as="geometry" x="1205" y="803" width="10" height="10" />
+        </mxCell>
+        <mxCell id="pr265-menu" value="" vertex="1" parent="1" style="rounded=1;arcSize=7;whiteSpace=wrap;html=0;align=left;spacingLeft=12;fontFamily=Arial;fontSize=13;fillColor=#18181b;strokeColor=#52525b;fontColor=#f4f4f5;">
+          <mxGeometry as="geometry" x="1235" y="540" width="240" height="130" />
+        </mxCell>
+        <mxCell id="pr265-query" value="  recovry" vertex="1" parent="1" style="rounded=1;arcSize=7;whiteSpace=wrap;html=0;align=left;spacingLeft=12;fontFamily=Arial;fontSize=13;fillColor=#18181b;strokeColor=#52525b;fontColor=#f4f4f5;">
+          <mxGeometry as="geometry" x="1247" y="551" width="215" height="34" />
+        </mxCell>
+        <mxCell id="pr265-result1" value="#264 Fix managed Codex&#10;recovery in native app startup" vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;fontSize=12;">
+          <mxGeometry as="geometry" x="1247" y="592" width="215" height="56" />
+        </mxCell>
+        <mxCell id="pr265-note" value="Search narrows discovered choices.&#10;No free-form PR or label creation.&#10;Exact existing identity is submitted." vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;fontColor=#18181b;fontSize=13;">
+          <mxGeometry as="geometry" x="1235" y="650" width="240" height="92" />
+        </mxCell>
+        <mxCell id="pr265-footer" value="Controls shown as editable geometry. Proposal, not runtime evidence.&#10;Closed includes merged for compatibility; Merged is a dedicated subset. Existing inputs, outputs and authorization stay intact." vertex="1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#e4e4e7;fontColor=#52525b;fontSize=14;locked=1;">
+          <mxGeometry as="geometry" x="40" y="940" width="1400" height="72" />
+        </mxCell>
+      </root>
     </mxGraphModel>
   </diagram>
 </mxfile>
