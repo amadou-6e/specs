@@ -117,13 +117,18 @@ personal login files. Missing access is a visible discovery error.
 A standalone authenticated loopback host service owns discovery, the cache and
 registry import. The Langflow backend forwards only fixed discover/revisions/resolve
 requests using a backend token file. Tokens never appear in node fields or exports.
-Reuse the existing local transport connection during activation; no extra human
-sign-in is introduced. This token is transport protection, not a same-user boundary.
+For existing public/local discovery, reuse the local transport connection during
+activation; no extra human sign-in is introduced for that path. Private GitHub
+connections are a distinct draft increment with explicit owner/session admission
+under [SC01-SC10](../../agent-execution/contract/github-account-connection.md#private-skill-source-increment-sc01-sc10). This token is transport protection, not a same-user boundary.
 
 The initial Git route accepts public HTTPS repository-root URLs on GitHub or GitLab
 (two path segments). It lists heads and tags with full commit IDs and bundle hashes;
 it does not expose arbitrary historical commit selection. GitLab subgroups and
-private-repository authentication are not implemented. A private repository can be
+private-repository authentication are not implemented in that initial route. The
+[draft private GitHub extension](../../agent-execution/design/github-account-connections.md)
+adds a separately authorized, in-process object reader; it does not enable private
+authentication merely by merging this text. A private repository can currently be
 supplied as an already available allowed local checkout. A failed private fetch is
 an access failure, never a prompt to reveal credentials. Git runs with no inherited
 provider credentials, personal Git settings or credential helpers; redirects,
@@ -193,3 +198,12 @@ no added or removed diagnostics after normalizing line offsets.
 
 No model turns, provider credentials or publication writes were involved. These
 observations are bounded fixture evidence, not an active-demo deployment claim.
+
+## Private connection UI extension
+
+The [private source page](../../agent-execution/design/github-account-connections.drawio)
+owns the proposed Connection selector in Advanced settings and the connection-manager
+entry/recovery for private sources. Existing SS01-SS07 controls stay as defined above.
+A graph may retain an opaque connection reference; the backend derives owner/session
+and current generation independently. No token, owner claim or secret enters a node.
+Private URL lookup never falls back to anonymous, local or another connection.
