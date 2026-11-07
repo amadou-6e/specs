@@ -66,14 +66,20 @@ before implementation. Existing mediated-run restrictions above remain in force.
 ### SC01: Supported owner and deployment
 
 A private connection belongs to one trusted configured Laomedo owner on the local
-Windows installation. Every private route resolves the actual authenticated app
+Windows installation. One owner may have multiple separately selected GitHub
+connections; each has its own principal, generation, consent and private store. Every private route resolves the actual authenticated app
 principal, never an owner supplied in JSON or a shared service bearer token.
-The proposed supported setup requires AUTO_LOGIN disabled and an explicitly
+The private broker, vault adapter, object reader and private store are owned by
+the native Windows Langflow backend process. Its authenticated route dependency
+constructs an in-process owner/session context; no private request is sent to the
+existing public source or operation service, and no shared bearer token can mint
+that context. Direct calls to those public services never reach private stores.
+A malicious process running as the same Windows user remains outside this trust
+boundary. The owner-selected supported setup requires AUTO_LOGIN disabled and an explicitly
 bound non-default owner; private routes refuse unknown, auto-login, API-key-only
 or mismatched owner/session contexts. Public/local features remain unchanged.
-Do not change a running app's login configuration automatically. Owner acceptance
-of this setup prerequisite remains open; a different local-owner session design
-requires explicit review. Hosted, remote and multi-user isolation are unsupported.
+Do not change a running app's login configuration automatically. The owner accepted normal Laomedo sign-in for private access on 2026-11-07;
+a different local-owner session design requires explicit review. Hosted, remote and multi-user isolation are unsupported.
 
 ### SC02: Browser-default and deliberate token entry
 
@@ -83,7 +89,10 @@ No device-flow fallback or embedded shared app secret. Bind the pending request
 to the initiating owner, browser session, request identity and generation. Verify
 the returned principal and show it before committing repository consent. Declined,
 cancelled, expired, wrong-session, duplicate or replayed callbacks cannot replace
-a connection. The callback never reports success from merely receiving a code.
+a connection. The callback never reports success from merely receiving a code. Authorizing,
+verifying and awaiting-consent are states of a separate pending request, not a
+ready connection record. Cancelling or failing that request discards provisional
+credentials while preserving any previous ready connection unchanged.
 A pending request is invalidated on broker restart; the existing ready connection
 survives a new failed/cancelled connection attempt.
 
@@ -108,6 +117,10 @@ Windows user. Do not import host gh/GCM/environment/Git credentials.
 
 ### SC04: Repository read consent is distinct authority
 
+App registration and installation are distinct. Provide an explicit Install /
+manage app repositories action opening the fixed GitHub installations page. A
+verified empty accessible-repository list shows a distinct empty state, no granted
+consent, and that recovery action; a failed permission check is not an empty list.
 After principal verification, show accessible repositories and let the owner
 consent to explicit repository content reads. GitHub App access is the
 intersection of user and app installation/repository access; authorization alone
@@ -142,7 +155,8 @@ Before each private user read, including warm-cache history/view, verify the
 current GitHub principal and repository access within a bounded deadline.
 Offline/unavailable verification refuses private content; it does not serve stale
 permission from cache. This incurs network latency and API rate cost, which must
-be measured and disclosed. This strict policy is proposed pending owner acceptance.
+be measured and disclosed. This is the proposed fail-closed implementation policy; its measured latency
+and final workflow remain subject to requesting-owner acceptance before merge.
 
 Disconnect fences new requests before secret deletion, advances generation and
 invalidates open private-view queries; late responses recheck generation and
@@ -173,7 +187,11 @@ Public Git and admitted local readers retain their existing guards. Enumerate
 only heads/tags, bind exact commits and peel annotated tags with a finite bound.
 Refuse truncated inventories, unsupported object modes, links, submodules,
 unsafe paths, oversized blobs/bundles or exhausted total deadline. Preserve the
-existing source/ref/file/cache limits and immutable bundle hashing. Do not follow
+existing source/file/cache limits and immutable bundle hashing. At most 32 combined
+heads/tags are admitted; bounded enumeration must establish completeness and
+refuse excess, truncation or unfinished pagination instead of hiding choices.
+List only the exact heads/ and tags/ namespaces, and peel annotated tags with a
+finite depth/visited-identity bound before accepting a commit. Do not follow
 provider redirects or forwarded download URLs with credentials. No checkout,
 hook, script, executable or submodule operation is needed for source reads.
 This is an explicit private transport extension, not arbitrary Git history support.

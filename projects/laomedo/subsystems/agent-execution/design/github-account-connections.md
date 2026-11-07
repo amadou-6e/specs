@@ -51,9 +51,13 @@ private admission. No general plugin registry or cross-domain utilities.
 4. Commit secrets to vault and non-secret metadata to the broker journal through
    recoverable prepare/commit markers. Do not leave an apparently ready row after
    a partial write. New attempts cannot destroy an existing ready connection.
-5. Discovery receives authenticated owner context from the app and an opaque
-   connection ID. The broker resolves current generation and validates requested
-   repository against consent, then reads exact objects with no child credentials.
+5. The native Windows app backend owns the private broker, vault adapter, reader
+   and private registry/journal in-process. Its authenticated route constructs a
+   non-serializable owner/session context and selects the connection. The broker
+   resolves current generation and consent, then reads exact objects. Do not send
+   private owner claims to the existing source/operation HTTP service. Those
+   public-only services retain their public roots and have no private dispatcher.
+   Test direct forged-owner requests there as refused, not as a trusted hop.
 6. Private bundles and provenance remain in the private namespace. UI inspection,
    history and operation paths route there explicitly; shared readers cannot
    discover it by ID/hash alone. No automatic export to an Agent registry.
@@ -86,8 +90,32 @@ Exact callback matching and its read-only app permissions still require inspecti
 
 A private-only authentication gate preserves auto-login public previews but refuses
 private connection until a supported owner session is deliberately configured.
-It does not by itself solve the usability decision of requiring another app login.
-Owner confirmation and final design review remain necessary.
+The owner accepted requiring normal Laomedo sign-in for private access on
+2026-11-07. Final design review and actual session/persistence checks remain
+necessary; no running preview configuration was changed.
+
+## Pending requests, connections and navigation
+
+The backend trusts its actual authentication dependency and local Windows host,
+not a browser owner claim or a service token holder. Compromise of the same OS
+user/backend process is excluded; remote authenticated requests still require
+owner/session/generation admission. Private stores must not overlap any configured
+public store, source allow-root or Agent mount. Unsupported Linux/container-hosted
+backends refuse private access, rather than importing Windows credentials.
+
+One Laomedo owner may connect several GitHub accounts. Each pending attempt has
+its own request identity, expected replacement connection/generation and session.
+Its authorizing/verifying/consent states are not connection-record states. A ready
+connection is replaced only after successful verification and explicit consent.
+Every failed/cancelled/expired attempt preserves its previous ready connection.
+
+Draw.io cards use unique UI identifiers C01-C11 and error cards E01-E05. Pending
+attempt transitions P01-P10, ready-connection transitions R01-R08 and navigation
+N01-N08 are separately owned on their named pages. Story IDs GC01-GC10 below
+reference these IDs; a story number is never a second identity for a UI card.
+App registration, app installation and local read consent are separate actions.
+The Install / manage app repositories control opens the fixed
+`https://github.com/settings/installations` URL, not a browser-supplied target.
 
 ## Required story matrix
 
@@ -119,3 +147,40 @@ private repository read has been performed. Prototype #108 remains historical.
 
 Checked 2026-11-07. Upstream documentation establishes API intent, not this
 implementation's acceptance or permission to copy existing credentials.
+
+## Story to editable-state coverage
+
+| Story | Owning Draw.io states / transitions |
+| --- | --- |
+| GC01 browser connection | C01 no-app, C02 pending, C03 consent, C09 setup, C10 ready; P01/P03/P04/P05, N01/N02/N05 |
+| GC02 explicit token | C06 secure token entry, E02 refusal; P02/P04/P05/P07 |
+| GC03 cancellation/concurrency | C02/C03, E03 interrupted connection; P06/P07/P08/P09/P10 preserve previous ready |
+| GC04 browser/app restart | C07 reauthorization, C08 crash recovery; P10, R05/R06, E05 unsupported auth |
+| GC05 private discovery/files | C04 Skill selection, C05 locked Skill-files viewer; N03/N04, R01/R02 |
+| GC06 revoke/rotate/disconnect | C10 ready, E04 incomplete vault removal; R03/R04/R05/R07/R08 |
+| GC07 wrong identity/repository | E02 refused credentials, C11 empty installations/access, C05 locked view; P07, N05/N06 |
+| GC08 exchange/refresh crash | C08, E03; P10, R06 |
+| GC09 compatibility/errors | C04/C05 and E01-E05, no public/local fallback |
+| GC10 takeover/profile/cleanup | E05 private auth refusal; owner/session guards on all transitions; unsupported profile use remains explicit |
+
+Per-read online verification remains a proposed strict default with offline
+refusal and measured latency. No asynchronous external revocation SLA is claimed.
+
+## Corrected canonical review ledger
+
+Full review at `c119de7`: Specification REVISE, Visual REVISE; all four original
+images and the full substantive own-diff read. No implementation exists.
+
+| Finding | Correction | Recheck status |
+| --- | --- | --- |
+| 251-S1 | Unique C01-C11/E01-E05 cards; story matrix derives links to state/transition IDs | Corrected, pending focused recheck |
+| 251-S2 | Native Windows app backend owns private broker/vault/store in-process; public service cannot assert private owners | Corrected, pending focused recheck |
+| 251-S3 | Separate pending-request, navigation and persisted/read transition authority P01-P10/N01-N08/R01-R08 | Corrected, pending focused recheck |
+| 251-S4 | Registration vs installation vs read consent separated; manage-installation controls and verified-empty C11 | Corrected, pending focused recheck |
+| 251-S5 | Shared-presenter E01-E05 for vault/token/ended-attempt/partial-removal/unsupported-owner failures | Corrected, pending focused recheck |
+| 251-S6 | Pending request states are distinct from per-connection record states; multiple GitHub connections allowed for one app owner | Addressed clarification |
+| 251-S7 | 32 combined refs, exact namespaces, bounded completeness and tag peeling, excess/truncation refusal | Addressed clarification |
+
+Owner decisions now settled: local Windows first, separate specs worktree, no
+existing app (prepare one-time setup), normal app sign-in for private access.
+Actual app registration/secret entry and real browser acceptance remain undone.
