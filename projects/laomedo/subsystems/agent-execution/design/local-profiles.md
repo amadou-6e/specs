@@ -129,6 +129,15 @@ profile proposal. GitHub connection sharing and PIN reset/deletion are not claim
 as implemented. Forgotten-PIN recovery must preserve data; no destructive reset
 is offered as a shortcut. Define/validate recovery before claiming that story.
 
+## Entry availability
+
+LP-C11/C12/C13 and LP-T17 define loading, unavailable setup and unsupported
+browser states. Gate the profile UI on the explicit backend capability; ordinary
+preview mode retains the native page. Shared catalogue text owns explanations.
+No error advice is shown while checking, and retries only repeat safe reads.
+The error panel Close action dismisses presentation without claiming to cancel
+a submitted sign-out.
+
 ## Acceptance
 
 Real browser stories: empty first run, create/confirm PIN, duplicate/reserved name,

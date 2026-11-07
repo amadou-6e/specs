@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <mxfile host="app.diagrams.net" type="device">
   <diagram id="profile-entry" name="Create and enter a local profile">
-    <mxGraphModel grid="1" page="1" pageWidth="1200" pageHeight="1690">
+    <mxGraphModel grid="1" page="1" pageWidth="1200" pageHeight="2140">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -128,6 +128,42 @@
         <mxCell id="LP-T12" value="&lt;b&gt;LP-T12&lt;/b&gt; LP-C10 -&gt; LP-C03 for the committed identity; no creation replay. Failure controls are disabled while reconciling. All errors use shared catalogue presentation; no submitted PIN or raw validation payload." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="30" y="1555" width="1140" height="85" />
         </mxCell>
+        <mxCell id="LP-C11" value="" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#CBD5E1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="1700" width="360" height="255" />
+        </mxCell>
+        <mxCell id="LP-C11-title" value="&lt;b&gt;LP-C11 - Loading profiles&lt;/b&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="45" y="1710" width="330" height="65" />
+        </mxCell>
+        <mxCell id="LP-C11-body" value="[ throbber ] Loading profiles...&lt;br&gt;No failure advice while checking." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="45" y="1775" width="330" height="110" />
+        </mxCell>
+        <mxCell id="LP-C12" value="" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#CBD5E1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="420" y="1700" width="360" height="255" />
+        </mxCell>
+        <mxCell id="LP-C12-title" value="&lt;b&gt;LP-C12 - Profiles could not be loaded&lt;/b&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="435" y="1710" width="330" height="65" />
+        </mxCell>
+        <mxCell id="LP-C12-body" value="The app could not read saved profiles.&lt;br&gt;Check the local app, then reload.&lt;br&gt;Shared safe technical details." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="435" y="1775" width="330" height="110" />
+        </mxCell>
+        <mxCell id="LP-C12-reload" value="Reload profiles" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;align=center;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="LP-T17">
+          <mxGeometry as="geometry" x="450" y="1900" width="300" height="38" />
+        </mxCell>
+        <mxCell id="LP-C13" value="" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#CBD5E1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="810" y="1700" width="360" height="255" />
+        </mxCell>
+        <mxCell id="LP-C13-title" value="&lt;b&gt;LP-C13 - Browser cannot manage profiles&lt;/b&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="825" y="1710" width="330" height="65" />
+        </mxCell>
+        <mxCell id="LP-C13-body" value="Required coordination features are unavailable.&lt;br&gt;Use a supported local browser setup.&lt;br&gt;Existing profile data is preserved." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="825" y="1775" width="330" height="110" />
+        </mxCell>
+        <mxCell id="LP-C13-reload" value="Reload profiles" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;align=center;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="LP-T17">
+          <mxGeometry as="geometry" x="840" y="1900" width="300" height="38" />
+        </mxCell>
+        <mxCell id="LP-T17" value="&lt;b&gt;LP-T17&lt;/b&gt; Initial login/signup -&gt; LP-C11. Explicit backend profile mode false -&gt; existing native page unchanged. Enabled + list success -&gt; LP-C02/07 (signup -&gt; LP-C01). List/read failure -&gt; LP-C12; missing browser features -&gt; LP-C13. Reload -&gt; LP-C11; no registration replay. Replaced/unmounted requests cannot update the next page." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="1980" width="1140" height="110" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
@@ -155,7 +191,7 @@
           <mxGeometry x="810" y="110" width="360" height="420" as="geometry" />
         </mxCell>
         <mxCell id="LP-C06-title" value="&lt;b&gt;LP-C06 - Profile switch not confirmed&lt;/b&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="825" y="125" width="330" height="65" as="geometry" />
+          <mxGeometry x="825" y="125" width="275" height="65" as="geometry" />
         </mxCell>
         <mxCell id="workspace-body" value="Current profile: [ Work ]&lt;br&gt;&lt;br&gt;Your workspace remains in place.&lt;br&gt;Switching does not rerun a graph." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="45" y="200" width="330" height="110" as="geometry" />
@@ -208,8 +244,11 @@
         <mxCell id="expired-choose" value="Choose different profile" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;align=center;verticalAlign=middle;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="LP-T15">
           <mxGeometry as="geometry" x="450" y="400" width="300" height="38" />
         </mxCell>
-        <mxCell id="LP-T13" value="&lt;b&gt;LP-T13&lt;/b&gt; Log out -&gt; same revocation as LP-T06 -&gt; picker, no target selected. Failure -&gt; LP-C06; retry repeats the original logout/switch intent. LP-T14 Close -&gt; workspace without changing session. LP-T15 Choose different profile -&gt; LP-C02/07; clear expired identity and PIN." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+        <mxCell id="LP-T13" value="&lt;b&gt;LP-T13&lt;/b&gt; Log out -&gt; same revocation as LP-T06 -&gt; picker, no target selected. Failure -&gt; LP-C06; retry repeats the original logout/switch intent. LP-T14 Close -&gt; workspace without changing session. LP-T15 Choose different profile -&gt; LP-C02/07; clear expired identity and PIN. LP-T16 Error Close dismisses the panel only; it does not cancel a submitted sign-out. Pending retry/check replaces advice with progress; copy contains safe details only." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="30" y="1170" width="1140" height="85" />
+        </mxCell>
+        <mxCell id="switch-error-close" value="x" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;align=center;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="LP-T16">
+          <mxGeometry as="geometry" x="1125" y="125" width="30" height="30" />
         </mxCell>
       </root>
     </mxGraphModel>
