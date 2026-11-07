@@ -62,23 +62,50 @@ options. Refresh and search perform reads only, never an Agent task or GitHub
 mutation. Apply this presentation to older saved templates without rewriting
 their stored selections or exposing the obsolete Discovery row.
 
-Inputs: optional PR Reference and Operation. Outputs: PR, Task and Operation
-Result. PR Reference supplies repository/number from an upstream PR node; it
-must match the configured repository and any explicit picker selection. It is
-identity, not permission. With no Operation, execution reads current content,
-revalidating selection and filters. All outputs share one cached invocation.
-Failure/unknown stops Task rather than sending errors as an agent prompt.
-Neither discovery nor inspection makes a model call.
+## Unified PR context ports
+
+One optional **PR** input (`context`, Data or Message) and one **PR** output
+(`pr`, Data) replace PR Reference/Operation and PR/Task/Operation Result.
+The output is the existing `laomedo.github-pr.v1` result envelope: `pr` contains
+the current snapshot (or null), `operation` contains status/error category, and
+fetch/digest evidence remains intact. No flat PR or separate Task output exists.
+
+Disconnected input reads the selected PR. Input may carry `pr` identity
+(repository/number) and an `operation` request (close/modify with existing
+request_id/grant_ref). A previous node's result can be passed directly: its
+operation outcome is evidence, never a request to replay. A failed/unknown
+upstream result is refused before any read/write/agent dispatch, even if it
+contains a PR snapshot. Identity must match Repository URL and any picker choice.
+Malformed input, unknown fields and conflicting identity are refused. Agent
+feedback may return the existing content-only close/modify JSON on this same
+input; only the existing host-stamped feedback path can authorize its application.
+
+The Agent task adapter accepts this Data envelope, formats successful PR context
+as text and refuses failed/unknown or missing PR context before runner dispatch.
+Ordinary text/Message tasks keep their existing behavior. The PR node's one-shot
+feedback loop uses its single PR output and context input, runs the connected
+agent once, applies the operation once, and exposes the terminal full envelope
+without sending that result back to the agent. Skill feedback keeps its own ports.
+
+Legacy graphs need an explicit migration. Task edges can move to PR only when
+the consumer is an updated Agent task input; Operation Result edges can move to
+PR; PR-reference edges between PR nodes move to context. A single incoming legacy
+reference or operation can map to context. Two incoming legacy connections or
+incompatible consumers require manual repair; never discard an edge or choose an
+authority source silently. Retain filters, values, identities, positions and all
+unrelated graph data. Maintained examples and the local preview use the new ports.
+Tests must cover reads, scoped modifications, chained context, failed/uncertain
+input, conflicting identities, one-shot feedback, and safe migration refusals.
 
 PR records contain repository, number, exact `/pull/<number>` URL, node ID,
 title, body, labels, state, draft/merged state, updated marker, head repository,
-branch and SHA, and base branch. Operation Result includes fetched-at evidence,
+branch and SHA, and base branch. The PR context output includes fetched-at evidence,
 content digest and operation status. Fork PRs may be inspected; the initial
 write implementation requires a same-repository head on the granted branch.
 
 ## Operations and permissions
 
-Operation Data uses the Issue node envelope:
+The PR input carries an operation request using the existing Issue envelope:
 
 ```json
 {"action":"modify","request_id":"pr-demo-1","grant_ref":"host-capability-reference",
