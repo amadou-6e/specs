@@ -45,7 +45,9 @@ The owning Draw.io's **PR controls** page defines the revised node presentation:
 Repository URL, inline source feedback, visible State, Labels, PR, then the
 existing reference/operation inputs and outputs. Discovery feedback sits directly
 below Repository URL with no separate Discovery heading or editable Discovery
-field. Native refresh buttons remain on Labels and PR, including after failure.
+field. Refresh list remains inside the native Labels and PR menus, including after
+failure: open either selector, then choose Refresh list. Closed fields have no
+separate refresh icon.
 Reuse the Skill node's inline feedback treatment and shared safe error
 presenter. Empty URL is quiet; loading, failed connection and no matching PRs
 remain distinguishable without displaying raw provider errors. A successful read
