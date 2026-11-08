@@ -201,6 +201,35 @@ explicitly before refresh rather than returning an enforcement claim. A borrowed
 credential release does not revoke host login. Claude/OpenCode without verified
 native prices retain unknown costs; Codex rates are not a shared fallback.
 
+Catalogue observation is a common contract across providers: `snapshot()` returns
+a detached typed copy of the last observed choices or None, without refreshing,
+substituting selection or asserting freshness. `wait_until_idle(timeout=...)`
+observes serialized discovery/cleanup or its shared in-flight Future. Completion
+does not certify success and does not reserve execution admission. Native TTLs
+and refresh ownership remain local.
+
+`BaseCredentialProvider.borrow()` returns host-only `CredentialMaterial`.
+Inline-token providers project their selected host token; volume/profile
+providers retain secrets in their native owner and return the prepared public
+binding without inventing an inline token. Secret fields remain excluded from
+representations and serialization. The operation does not transfer refresh or
+revocation authority.
+
+Activity projectors declare both `accepts` and `project`. Recognition is only
+for unqualified retained observations; persisted provider identity takes
+precedence and recognition never selects an execution provider or credential.
+
+Command executors expose `execute` and `shutdown`, not a parallel public `close`
+alias. Optional `BaseInterruptibleCommandExecutor` is implemented by providers
+owning transient worker cancellation signals: stop admission, request active-job
+interruption and report unknown native acknowledgement until independently
+observed. Shutdown separately waits for exact cleanup. The optional
+`BaseSplitCommandExecutor` describes native persistent executor liveness and
+controller/executor isolation checks. An executor without that native split
+topology does not emulate one or return a placeholder success. Explicit
+capability declarations remain subject to interface/signature checks; they are
+not concrete-provider exceptions.
+
 Use Python ABC/abstractmethod for actual provider extension contracts and
 Pydantic models for values crossing them. Document ownership, method vocabulary,
 side effects and failures before implementation. Split overlapping roles before
