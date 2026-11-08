@@ -168,3 +168,38 @@ Sources: [ACP stdio transport](https://agentclientprotocol.com/protocol/v1/trans
 [Claude adapter](https://github.com/agentclientprotocol/claude-agent-acp),
 [OpenCode ACP](https://opencode.ai/docs/acp/) and
 [native CLI](https://opencode.ai/docs/cli/).
+
+## Provider role contracts (#275)
+
+ACP is communication, not an Agent process, command executor, credential source,
+model catalogue or Activity interpreter. Provider implementations compose the
+shared `AcpSession`; no redundant protocol ABC is required.
+
+| Role | Required operations and guarantees |
+| --- | --- |
+| `BaseAgentRuntime` / `{Provider}AgentRuntime` | `start`, `request_cancel`, `shutdown`: own exact launch/session handles and cancellation/cleanup. Typed results distinguish launched from ready, interruption requested from acknowledged, and exact cleanup confirmed from unknown. Codex/OpenCode attempt scopes differ from Claude turn scopes; do not hide that distinction. |
+| `BaseCommandExecutor` / `{Provider}CommandExecutor` | `execute`, `shutdown`: typed command/deadline/result, native policy and bounded cancellation. HTTP/MCP brokers adapt the command contract; they do not replace it. A command's exit status does not establish resource cleanup. |
+| `BaseCredentialProvider` / `{Provider}CredentialProvider` | `prepare`, `validate`, `release`: native admission/refresh and exact borrowed/temporary state lifetime. Identity metadata is separate from secrets. Releasing borrowed credentials does not revoke a host login. |
+| `BaseModelCatalog` / `{Provider}ModelCatalog` | `discover(refresh=False)`: zero-turn native choices, explicit cache/in-flight semantics, no automatic selection substitution. Preserve provider-specific freshness; share mechanisms only when their guarantees match. |
+| `BaseActivityProjector` / `{Provider}ActivityProjector` | `project`: canonical shared Pydantic values from provider-native observations. Usage unknown differs from zero; native parsing and pricing belong to the provider. Function helpers may parse records. |
+| `AgentProviderRegistry` / `AgentProviderDescriptor` | Host-controlled built-in identities, actual capability metadata and factories. External graph input never chooses imports, executable paths, credential locations or unregistered providers. No provider-specific registry subclasses. |
+
+Readiness, process health and isolation are separate typed observations. An
+unsupported/unobserved check cannot report success. Do not add a check ABC
+without a coordinator that actually requires interchangeable implementations.
+
+Use Python ABC/abstractmethod for actual provider extension contracts and
+Pydantic models for values crossing them. Document ownership, method vocabulary,
+side effects and failures before implementation. Split overlapping roles before
+renaming objects; do not introduce empty modules or package symmetry. Shared
+Docker mechanisms remain composed from py-docker.
+
+Maintain existing public payloads, persisted schemas, native session IDs, stable
+errors, refresh ownership, authorization and fail-closed cleanup. Internal object
+renaming does not rename wire values. Current examples use current definitions;
+no personal saved-source migration support is introduced by this increment.
+
+Acceptance separately covers Fresh, Resume, status, cancellation, model refresh,
+Activity and failure/recovery for each provider. Structural and fixture checks
+support but do not establish real-provider acceptance. No new model-backed probe
+is authorized; the owner's final real-workflow validation remains a merge gate.
