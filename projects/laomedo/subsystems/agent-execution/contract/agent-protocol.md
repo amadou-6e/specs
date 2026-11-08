@@ -188,6 +188,19 @@ Readiness, process health and isolation are separate typed observations. An
 unsupported/unobserved check cannot report success. Do not add a check ABC
 without a coordinator that actually requires interchangeable implementations.
 
+`start` is a host-only class factory returning `RuntimeLaunch` with an opaque
+owned runtime and its initial `RuntimeObservation`; handles are excluded from
+serialization. `shutdown` awaits native resource closure. Prepared OpenCode
+configuration does not imply a launched controller. Claude's turn session does
+not imply an ACP handshake or a known native session identity. Cancellation
+signals active work and never manufactures native acknowledgement.
+
+Typed credential requests retain provider-native refresh ownership. If requested
+validity/deadline constraints cannot be established by that provider, reject them
+explicitly before refresh rather than returning an enforcement claim. A borrowed
+credential release does not revoke host login. Claude/OpenCode without verified
+native prices retain unknown costs; Codex rates are not a shared fallback.
+
 Use Python ABC/abstractmethod for actual provider extension contracts and
 Pydantic models for values crossing them. Document ownership, method vocabulary,
 side effects and failures before implementation. Split overlapping roles before
