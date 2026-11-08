@@ -87,15 +87,10 @@ feedback loop uses its single PR output and context input, runs the connected
 agent once, applies the operation once, and exposes the terminal full envelope
 without sending that result back to the agent. Skill feedback keeps its own ports.
 
-Legacy graphs need an explicit migration. Task edges can move to PR only when
-the consumer is an updated Agent task input; Operation Result edges can move to
-PR; PR-reference edges between PR nodes move to context. A single compatible incoming legacy connection can map to context; reference
-producers other than PR nodes need manual wrapping into the new envelope. Two incoming legacy connections or
-incompatible consumers require manual repair; never discard an edge or choose an
-authority source silently. Retain filters, values, identities, positions and all
-unrelated graph data. Maintained examples and the local preview use the new ports.
+Maintained examples use the new ports. Personal saved graphs are outside this
+change's compatibility scope; no saved-graph migration utility is provided.
 Tests must cover reads, scoped modifications, chained context, failed/uncertain
-input, conflicting identities, one-shot feedback, and safe migration refusals.
+input, conflicting identities and one-shot feedback.
 
 PR records contain repository, number, exact `/pull/<number>` URL, node ID,
 title, body, labels, state, draft/merged state, updated marker, head repository,
@@ -160,14 +155,12 @@ an active GitHub connection.
 ## Operation example and acceptance
 
 The user selected a two-node round trip: one GitHub PR node and one Agent.
-PR Task feeds the Agent, whose selected Operation/answer output returns to the
-same PR's Operation input. Operation supports both ordinary upstream input and
-controlled feedback. A direct Task connection to the source of the incoming
-Operation identifies the bounded round trip. An acyclic upstream Operation is
-evaluated normally. Multiple Operation sources, feedback plus a literal
-Operation value, or combined legacy infinity feedback and Operation are refused.
-The Task output does not expose an infinity socket in newly generated nodes;
-older saved infinity-feedback graphs remain readable for compatibility.
+The PR output feeds the Agent's Task input, whose selected answer returns to the
+same PR's single PR input. That input supports ordinary upstream context and
+controlled feedback. A direct PR connection to the source of the incoming
+request identifies the bounded round trip. An acyclic upstream request is
+evaluated normally. Multiple input sources or feedback combined with a literal
+operation request are refused.
 The PR node is the loop controller, with one initial read, exactly one Agent
 body execution, one returned operation, and a terminal result. No third Loop
 node or second PR node is required. The Task branch is stopped in the outer
@@ -285,5 +278,5 @@ Agent skills are selected on independent read-only Skill nodes connected to
 Skill References. The feedback executor includes those nodes with the Agent;
 other external inputs, mutating Skill dependencies and multiple controllers
 remain refused. Building only a read-only Skill must not start the feedback
-Agent. Older inline-only current examples require this wiring migration;
-historical execution evidence is retained separately and not relabelled.
+Agent. Maintained examples use this wiring; historical execution evidence is
+retained separately and not relabelled.
