@@ -51,3 +51,5 @@ inventory with Laomedo follow-ups #186, #187 and #188.
 [Current implementation checks](../validation.md#approved-a-popup-implementation-2026-10-25)
 link real A-card screenshots and distinguish passing UI checks from the CLI
 compatibility blocker in Laomedo #189.
+
+The [provider role target](provider-roles.md) defines the reviewed #277 object responsibilities, shared Docker ownership, lifecycle contracts and completion checks. Design review permits checkpointed implementation; draft maturity and real-provider acceptance remain unchanged.

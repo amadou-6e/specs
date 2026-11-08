@@ -171,6 +171,13 @@ Sources: [ACP stdio transport](https://agentclientprotocol.com/protocol/v1/trans
 
 ## Provider role contracts (#275)
 
+The following vocabulary describes the interim #275 implementation. The reviewed
+[#277 target](../design/provider-roles.md) supersedes these internal role signatures
+for the next refactor: retain shared Docker ownership, extract attempt drivers,
+and remove symmetry-only interfaces. Migration is incomplete; these descriptions
+do not certify substitutability or change public protocol/persistence semantics.
+
+
 ACP is communication, not an Agent process, command executor, credential source,
 model catalogue or Activity interpreter. Provider implementations compose the
 shared `AcpSession`; no redundant protocol ABC is required.
