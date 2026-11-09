@@ -80,6 +80,7 @@ failure categories. Never expose upstream exception text containing secrets.
 
 ## Acceptance
 
+- With MCP disconnected, preserve existing behavior and internal Laomedo tool grants.
 - Native MCP Toolset connects without re-entering server configuration.
 - Codex, Claude and OpenCode each discover/invoke tools from HTTP and host-owned
   STDIO servers; test all six combinations using harmless read-only tools.
