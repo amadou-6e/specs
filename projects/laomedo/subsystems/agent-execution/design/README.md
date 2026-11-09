@@ -52,6 +52,6 @@ inventory with Laomedo follow-ups #186, #187 and #188.
 link real A-card screenshots and distinguish passing UI checks from the CLI
 compatibility blocker in Laomedo #189.
 
-The [provider role target](provider-roles.md) defines the reviewed #277 object responsibilities, shared Docker ownership, lifecycle contracts and completion checks. Design review permits checkpointed implementation; draft maturity and real-provider acceptance remain unchanged.
+The [direct provider boundaries](provider-roles.md) replace the withdrawn #277 runner/journal/resource-plan proposal. They define shared Docker ownership, container requirements and completion checks. The replacement is draft and requires independent review; earlier proposal reviews do not approve it.
 
-The [new-provider authoring story](provider-authoring.md) contrasts the actual current subclass/composition experience with the proposed Google-backed provider journey. It records missing host integration rather than claiming that exporting an ABC makes a provider runnable.
+The [provider authoring direction](provider-authoring.md) records the single-entry-point discovery requirement and the remaining composition decisions. It does not claim that exporting an ABC makes a provider runnable.
