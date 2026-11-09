@@ -31,3 +31,6 @@ asserting an implemented wire protocol.
 both graphs, the individual user choices and the remaining open product and
 feasibility questions. The old [subsystem decision path](subsystem-decision-record.md)
 is a compatibility pointer only.
+
+[Python implementation layout](implementation-layout.md) owns the src package,
+domain responsibilities and compatibility/verification requirements for migration.
