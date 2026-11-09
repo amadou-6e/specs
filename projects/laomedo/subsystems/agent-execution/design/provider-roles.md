@@ -22,7 +22,7 @@ Equivalent objects must expose equivalent responsibilities through declared inte
 | Role / defining module | Base and implementations | Assigned functionality | Excluded functionality / consumers |
 | --- | --- | --- | --- |
 | Application lifecycle, `base/agent.py` | Existing `BaseAgent`; three existing `{Provider}Agent` | Public start/resume/cancel/status, admission and locking, durable record ownership, interrupted-run recovery, freezing and publication dispatch. Shared `_execute` ultimately consumes the declared driver contract. | No concrete runtime fields or native RPC sequencing. Public interface adapters remain in `agents/interface`. |
-| Attempt execution, `base/base.py` and provider `driver.py` | New `BaseAttemptDriver`; `CodexAttemptDriver`, `ClaudeAttemptDriver`, `OpenCodeAttemptDriver` | Execute one admitted attempt; native initialize/open/load/configure/prompt, correction sequencing, native result capture, post-close history, cleanup coordination. `run(request, journal, stop) -> AttemptOutcome`, synchronous host entry; native async loop remains on the creator thread. | run returns AttemptOutcome for every failure after the first journal reservation or lease acquisition, preserving settlement. Does not own application admission, mutate raw Agent records, freeze the workspace, select another model, or silently replace Resume with Fresh. Consumed polymorphically by Agent. |
+| Attempt execution, `base/contracts.py` and provider `driver.py` | New `BaseAttemptDriver`; `CodexAttemptDriver`, `ClaudeAttemptDriver`, `OpenCodeAttemptDriver` | Execute one admitted attempt; native initialize/open/load/configure/prompt, correction sequencing, native result capture, post-close history, cleanup coordination. `run(request, journal, stop) -> AttemptOutcome`, synchronous host entry; native async loop remains on the creator thread. | run returns AttemptOutcome for every failure after the first journal reservation or lease acquisition, preserving settlement. Does not own application admission, mutate raw Agent records, freeze the workspace, select another model, or silently replace Resume with Fresh. Consumed polymorphically by Agent. |
 | Docker resource lifetime, `base/runtime.py` | Retain `BaseAgentRuntime` as ABC plus shared concrete mechanisms; `{Provider}AgentRuntime` supply launch policy and topology | Shared exact-resource registration, launch and cleanup delegation to py-docker, creator-thread enforcement and cached fail-closed cleanup observations. Public `prepare(request: RuntimeLaunchRequest) -> RuntimeObservation`, `launch() -> RuntimeObservation`, `run_job(job: ContainerJob, *, cancelled=None, deadline=None, cleanup_seconds=None)`, `controller_stream() -> ControllerStream`, `close_controller(cause=None) -> CleanupObservation`, `shutdown(cause=None) -> RuntimeCleanupReport`. Base owns these mechanisms; provider hooks `_resource_plan(request)` and `_map_docker_failure(error, stage)` supply topology and stable error mapping. `prepare` starts dependencies but never the controller; `launch` starts the controller. Inputs are admitted configuration and collaborators, not prebuilt specifications dependent on as-yet unlaunched resources. | No ACP handshake/prompt/history/auth interpretation. Driver consumes this contract. close_controller returns uncertainty rather than raising; shutdown calls it if not already done. Do not force a single container per attempt. Provider specifics may configure mechanisms, not reimplement them. |
 | Model discovery, existing `catalog.py` | `BaseModelCatalog` and three `{Provider}ModelCatalog` | Common `discover(refresh=False) -> ModelCatalogSnapshot`; zero model turns, exact advertised choices, native cache TTL and sharing. Inject discovery collaborator and admission gate rather than call Agent private methods. | Claude snapshot and OpenCode discovery/run exclusion remain explicit local collaborators unless a shared consumer emerges. Discovery does not call an attempt driver or consume a model turn. |
 | Credential admission, existing `credentials.py` | `BaseCredentialProvider` and three `{Provider}CredentialProvider` | `admit(request) -> CredentialAdmission`: validated public binding plus explicitly excluded host-only launch material when needed. Dynamic lookup and native refresh ownership preserved. Native freshness/revocation probes remain provider-local driver collaborators. | Preserve native timing: Claude mirror-only pre-dispatch/resume admission differs from status checking; Codex volume mode persists `credential=None`; OpenCode receives its profile from typed composition. Remove success-only release stubs and universal token borrowing. Borrowed host login is never deleted/revoked. No secrets in representations, JSON, diagnostics or settings. |
@@ -39,6 +39,28 @@ One runtime instance is one single-use resource scope; Claude's driver creates o
 `ControllerStream` exposes only `write(data: bytes)` and `read_line() -> Line | None`, matching py-docker stream values. It has no close/remove method, container handle or credential access. Runtime returns this borrowed view only after launch, never an opaque runtime handle.
 
 `ResourcePlan` is a trusted host-only ordered list of steps: id, depends_on, phase (prepare/launch), and builder receiving prior typed resource bindings. This allows specs to use live exec-server identities and broker ports without prematurely building them. Each resource supports close(cause); optional quiesce is a step field, present only for OpenCode workers in this refactor, preserving Claude cancellation timing. Optional stop_when callback belongs to the controller step: runtime enters stop_on at launch and exits it before close; monitor failure is retained in cleanup. Dependencies define closure order. Resource-plan policy remains provider-owned; generic allocation/registration/rollback and cleanup caching are shared. Builders/handles are never graph-selectable or serializable.
+
+## Interface inspection checkpoint
+
+Target ABCs are declared in `base/contracts.py`, with `BaseAgentRuntime` in
+`base/runtime.py` alongside shared mechanisms. `BaseAgent` stays in `base/agent.py`.
+Existing providers still inherit the interim `base/base.py` during inspection;
+this does not create a compatibility guarantee or certify migration completion.
+
+Container-step builders return native `ContainerSession` specifications; shared
+runtime code allocates the Docker session and produces its typed binding.
+Non-Docker owned-resource builders may allocate brokers/telemetry under shared
+rollback. Each plan declares exactly one launch-phase controller; stop monitors
+are controller-only. This distinguishes launch policy from shared allocation.
+
+Journal operations use separate typed values with native extensions confined to
+non-shared keys. Settlement updates name their allowed fields; Agent retains
+exclusive status/cancellation/snapshot demotion ownership. Attempt outcomes retain
+completed, failed, cancelled, unknown, timeout and interrupted states and their
+existing public error category, separately from allowlisted private diagnostics.
+Deadline inputs remain optional where native policy has no whole-attempt deadline.
+A missing controller observation means never allocated, not cleanup uncertainty.
+All sensitive target values hide input data in validation-error text.
 
 ## Supporting contracts (not three mandatory provider implementations)
 
