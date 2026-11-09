@@ -5,7 +5,7 @@ kind: legacy
 owners: [theseo-team]
 last_reviewed: 2026-09-28
 applies_to: [theseo-anysearch]
-related: []
+related: [subsystems/training-and-tuning, subsystems/trajectory-and-replay]
 ---
 
 # Historical experiment workflow proposal

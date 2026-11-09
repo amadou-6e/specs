@@ -38,6 +38,19 @@ effects it has on other categories. A template is a realistic, populated example
 not an empty file or an abstract directory tree — so copying it and filling in the
 specifics is faster than writing an entry from nothing.
 
+For a project that opts into `spec.json` category validation, the repository
+validator checks Markdown entry leaves **recursively in every fixed category**.
+It excludes container `README.md`, support `SKILL.md`, and the category's
+`template.md` from real-entry checks; a nested non-README Markdown file is an
+entry even when the category does not declare partitions. A fixed category may
+declare `partitions` to enforce its direct child directory names and required
+partition READMEs, and `entry_kind` to constrain each leaf's frontmatter
+`kind`. Those settings strengthen validation; they do not turn recursion on.
+Nested reference IDs use the category-relative path without `.md`, for example
+`implementation/rust/testing`. A project that adds a nested leaf to another
+fixed category must give it valid entry metadata or revise the category's
+declared structure, rather than assuming only top-level files are checked.
+
 ## Creating a new named entry
 
 1. Copy the category's template (`<category>/template/` or `<category>/template.md`).
