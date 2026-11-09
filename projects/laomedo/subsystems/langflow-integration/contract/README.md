@@ -28,3 +28,5 @@ private raw-event reference.
 
 Contract container: README.md (1), focused interface/configuration pages
 (0..*). [Validation](../validation.md) qualifies maturity.
+
+- [Recorded agent inspection](agent-inspection.md): read-only Codex overview, validation and event metadata.
