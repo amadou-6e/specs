@@ -152,7 +152,8 @@ Version-job cleanup uses the existing exact-receipt recovery mechanism.
 `LAOMEDO_IMAGE_BUILD_SECONDS` (default 900) and
 `LAOMEDO_IMAGE_VERIFY_SECONDS` (default 30) are separate from model-turn budgets.
 Progress logging reports build steps without copying arbitrary build diagnostics.
-An acquisition failure stops startup with `container_image_build_failed`.
+Build or verification failures stop startup with `container_image_build_failed`.
+Image lookup and explicit-pin failures retain their provider-specific codes.
 
 
 Existing pre-registration image tags lack the recipe label and must be explicitly removed before managed startup can rebuild them. Operator-pinned images remain local-only; absence does not trigger a network build. Locks and verification receipts use owner-only `~/.laomedo-image-builds`. Version checks have a bounded 64 MiB tmpfs and no host mounts.
