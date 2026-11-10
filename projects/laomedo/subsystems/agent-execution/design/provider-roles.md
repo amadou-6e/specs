@@ -20,7 +20,7 @@ abstract role solely because a provider has a similarly named internal object.
 | --- | --- |
 | Activity | Read history and translate native events into common activity. |
 | Containers/resources | Prepare, launch, inspect and clean up owned resources. |
-| Agent interaction | Start/resume sessions, prompt, stream results and cancel. |
+| Agent interaction | Start/resume runs, observe status and request cancellation. |
 | Model discovery/readiness | List models and report the readiness actually checked. |
 | Recovery | Reconcile interrupted runs and clean up surviving owned resources. |
 
@@ -118,7 +118,7 @@ All providers declare the same resume parameters. Complete request/record
 payloads and provider finalization stay intact; cancellation is an observation,
 not guaranteed termination. Claude alone supports per-run timeout overrides;
 Codex/OpenCode refuse non-None overrides before dispatch. See
-[the complete contract and caller examples](https://github.com/amadou-6e/laomedo/blob/bcbf56238bbb9d12225a90874ce76225808360fd/docs/architecture/agent-interaction.md).
+[the complete contract and caller examples](https://github.com/amadou-6e/laomedo/blob/0b923899/docs/architecture/agent-interaction.md).
 This change does not align native runtime internals or the separate Activity API.
 
 ## Container ownership
