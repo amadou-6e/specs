@@ -163,9 +163,11 @@ evaluated normally. Multiple input sources or feedback combined with a literal
 operation request are refused.
 The PR node is the loop controller, with one initial read, exactly one Agent
 body execution, one returned operation, and a terminal result. No third Loop
-node or second PR node is required. The Task branch is stopped in the outer
+node or second PR node is required. The feedback Agent is excluded from the outer
 graph; the native isolated subgraph runs the Agent once, rather than letting
-the outer scheduler invoke it again. Multiple Agent bodies, fan-out or multiple feedback sources are refused.
+the outer scheduler invoke it again. Multiple Agent bodies, extra consumers of
+that Agent, or multiple feedback sources are refused. Final-result inspectors
+may consume the PR context output.
 Independent read-only Skill dependencies are the only additional body nodes.
 
 Freeze the selected repository/number and fetched content digest before calling
