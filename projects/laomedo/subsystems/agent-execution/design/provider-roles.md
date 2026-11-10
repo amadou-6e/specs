@@ -118,7 +118,7 @@ All providers declare the same resume parameters. Complete request/record
 payloads and provider finalization stay intact; cancellation is an observation,
 not guaranteed termination. Claude alone supports per-run timeout overrides;
 Codex/OpenCode refuse non-None overrides before dispatch. See
-[the complete contract and caller examples](agent-interaction.md).
+[the complete contract and caller examples](https://github.com/amadou-6e/laomedo/blob/bcbf56238bbb9d12225a90874ce76225808360fd/docs/architecture/agent-interaction.md).
 This change does not align native runtime internals or the separate Activity API.
 
 ## Container ownership
