@@ -51,3 +51,5 @@ inventory with Laomedo follow-ups #186, #187 and #188.
 [Current implementation checks](../validation.md#approved-a-popup-implementation-2026-10-25)
 link real A-card screenshots and distinguish passing UI checks from the CLI
 compatibility blocker in Laomedo #189.
+
+The [local setup profiles](local-profiles.md) and [editable profile states](local-profiles.drawio) define PIN entry for one Windows user's local setups. Private GitHub connections remain a separate proposal.
