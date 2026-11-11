@@ -22,13 +22,45 @@ shows the bounded modify example.
 ## Selection and outputs
 
 Display GitHub PR. Repository URL, searchable Labels multi-select, searchable
-PR dropdown, refresh, Discovery status and advanced State (open/closed/all)
-follow the Issue node pattern. All selected labels must match. Only real PRs
+PR dropdown and refresh follow the Issue node pattern. State is a normal visible
+control between Repository URL feedback and Labels, offering open, closed, merged and all.
+For saved-graph compatibility, closed retains GitHub's existing closed semantics
+(including merged PRs); merged narrows that set to PRs with verified merged
+metadata: a closed PR with a valid non-null GitHub `merged_at` timestamp,
+normalized to `merged == true`. Missing or contradictory merge metadata never
+qualifies. Invalid or contradictory non-null merge metadata refuses the entire
+discovery/read with `pr_response_invalid`; it is never interpreted as unmerged
+to permit a write. The Merged filter queries the closed list and filters locally; the
+same page/deadline bounds apply to that entire closed list, even if few match.
+Merged PRs remain read-only. PR record state stays open/closed and the separate merged flag is
+preserved. Discovery and execution revalidation apply the same state predicate.
+All selected labels must match. Only real PRs
 appear, with number/title. Discovery is bounded to ten 100-item pages and a
 60-second deadline; incomplete discovery is refused. Empty, failed and loading
 states are distinct. Changing repository clears labels and PR; changing labels
 or state clears PR. Refresh preserves the same number if still valid and updates
 its title. Obsolete responses cannot replace a newer selection.
+
+The owning Draw.io's **PR controls** page defines the revised node presentation:
+Repository URL, inline source feedback, visible State, Labels, PR, then the
+existing reference/operation inputs and outputs. Discovery feedback sits directly
+below Repository URL with no separate Discovery heading or editable Discovery
+field. Refresh list remains inside the native Labels and PR menus, including after
+failure: open either selector, then choose Refresh list. Closed fields have no
+separate refresh icon.
+Reuse the Skill node's inline feedback treatment and shared safe error
+presenter. Empty URL is quiet; loading, failed connection and no matching PRs
+remain distinguishable without displaying raw provider errors. A successful read
+does not add an extra status row or automatically select a PR.
+
+Labels and PR reuse the native searchable dropdown controls after successful
+discovery. Label search supports selecting only discovered labels; PR text search
+uses fuzzy matching over discovered number/title choices. Typing a search never
+creates a label or PR identity. Keep exact-number selection and current all-label
+matching. With no repository connection, explain that state rather than fabricate
+options. Refresh and search perform reads only, never an Agent task or GitHub
+mutation. Apply this presentation to older saved templates without rewriting
+their stored selections or exposing the obsolete Discovery row.
 
 Inputs: optional PR Reference and Operation. Outputs: PR, Task and Operation
 Result. PR Reference supplies repository/number from an upstream PR node; it
