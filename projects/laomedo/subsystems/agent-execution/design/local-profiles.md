@@ -159,8 +159,12 @@ This owner decision resolves LP-R8 without claiming a recovery implementation.
 
 ## Entry presentation
 
-Each profile picker row includes a decorative person icon beside the stored profile name. The name remains the accessible label. Invalid creation details use plain language: Check your details; enter a profile name and a six-digit PIN; make sure both PINs match. Editing an invalid field clears that validation notice, and moving between picker, create and entry screens clears previous-screen errors. These changes do not dismiss uncertain save or sign-out outcomes automatically.
+Each profile picker row includes a decorative initials avatar beside the left-aligned stored profile name. The name remains the accessible label. Invalid creation details use concise field-specific messages, as defined in Account-picker refinement below. Editing an invalid field clears that validation notice, and moving between picker, create and entry screens clears previous-screen errors. These changes do not dismiss uncertain save or sign-out outcomes automatically.
 
 Owner decision, 2026-11-11: local profiles now; private revocation later. No private-connection capability or specification maturity change is implied.
 
 Errors inside the profile picker, creation, PIN-entry and save-reconciliation forms show only the shared title, explanation and recovery advice, without a technical-details expander. The separate LP-C12 service-availability screen retains its safe technical details. The owner confirmed that valid matching input does not show the validation error; validation rules are unchanged.
+
+## Account-picker refinement
+
+Owner selected the researched contained-list design: fixed 36px decorative initials avatars, left-aligned names, 64px minimum rows, subtle separators and a trailing chevron. The whole row selects the profile. A divider separates the secondary sentence-case Create profile action with a plus icon. Preserve keyboard focus and long-name wrapping. Local submit errors appear beside their fields: Enter a profile name; Use a six-digit PIN; Confirm your PIN; PINs don't match. Associate errors with fields, preserving input for correction; authentication and uncertain-outcome recovery are unchanged.
