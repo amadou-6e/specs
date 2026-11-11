@@ -38,8 +38,7 @@ original build error stays visible until dismissed.
 Stale availability responses must not overwrite a newer restart state. A failed
 restart reports what happened without referring to a separate operator or inventing a fix.
 
-Restart launches only the configured API process. It neither dispatches nor
-retries a graph/model operation, rewrites historical verification evidence nor
+Restart launches only the configured API process. It never dispatches or retries an Agent task or graph execution, rewrites historical verification evidence nor
 replaces an already-online listener. The error panel hides the generic graph
 Retry action for this connection failure. After recovery, advise inspecting the
 existing run before new work. Historical experiment limits are not persistent
@@ -318,3 +317,11 @@ proof of readiness. Retain the text confirmation, safe details and Dismiss;
 colour alone does not communicate success. A later failed check restores red.
 This indicates restored connectivity, not completion or automatic retry of the
 previous graph run.
+
+## Model catalogue recovery after explicit startup
+
+When a node reports `runner_model_catalog_unavailable_check_runner_connection`, its Start local runner action starts only the trusted configured runner. Once that explicit startup reaches authenticated ready state, automatically request the existing read-only model catalogue refresh for that same node exactly once. Do not require a second manual refresh and never execute the graph or submit an Agent task. Initial readiness polling alone must not trigger discovery.
+
+While discovery is pending, show Loading available models. Dismiss the notice only after that node reports catalogue-loaded. If discovery fails, keep the notice and explicit Refresh models retry available; do not restart an already-online runner. Failed/unconfirmed startup, cancellation, node replacement and unrelated run recovery must not trigger automatic discovery. Scope retry intent to the originating node and clear it before dispatch to prevent repeated refreshes on polling.
+
+The editable design page Model catalogue startup recovery owns these transitions; existing transport/run recovery and cancellation semantics remain unchanged.
