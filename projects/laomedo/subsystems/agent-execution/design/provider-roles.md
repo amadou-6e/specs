@@ -338,3 +338,17 @@ view and is excluded from assistant-answer common records. Generic native
 non-message operations use common tool records with their native type as name.
 The HTTP page uses explicit display serialization to preserve absent versus
 null diagnostics. Common JSON field ordering applies to every provider.
+
+## Retire the unused native runtime role
+
+No shared Laomedo caller consumes BaseAgentRuntime. The provider runtime objects
+remain concrete native implementations, preserving their existing interfaces:
+Codex constructed directly and asyncclose; OpenCode existing backendclose/cancel
+factory protocol; Claude creator-thread context manager. Remove the nominal
+BaseAgentRuntime, RuntimeLaunch and unused RuntimeObservation/wrapper methods.
+Existing command/credential/catalogue role contracts remain guarded without
+exceptions. Native close/cancel ordering and uncertainty, persisted records and
+cancel_confirmed semantics do not change. Native Docker mechanisms remain shared.
+
+Implementationacc9c41ae is fully unreviewed - reviewer pending. Prior Activity
+approvals end at3778e2714 and do not cover this subsequent lifecycle correction.
