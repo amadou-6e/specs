@@ -317,6 +317,24 @@ requires the provider's terminal/capture attestation independently of task succe
 
 The exact data fields, paging/error limits, closure rules, ownership, migration
 and acceptance scope are recorded in the implementation's
-`docs/architecture/activity-interface.md`. This Activity delta is fully unreviewed
-? reviewer pending. Earlier Docker/catalog/interaction approvals do not cover it.
+`docs/architecture/activity-interface.md`. The initial Activity code review is REVISE; corrections await focused recheck. Specification coverage remains incomplete. Earlier Docker/catalog/interaction approvals do not cover it.
 Fixture and HTTP tests do not establish real native-provider acceptance.
+
+### Bounded Activity retention
+
+The journal budget applies to logical record/state/display bytes per explicit
+attempt, not the whole run. A source bound retains the readable prefix; a
+publication budget retains earlier immutable records. Both return the stable
+activity_projection_limit reason. Closure continues to mean both sealed source
+ends: while open complete is null, and once sealed a limited capture reports
+complete=false. Budgets never block independent resumed attempts.
+
+The application retains one mutable display snapshot per invocation with an
+atomic revision index; older/repeated revisions cannot overwrite the latest.
+Normalized record receipts remain immutable. Detail returns that latest view
+without duplicate snapshot/record bodies, independent of the historical receipt
+limit; raw receipt paging stays separate. Reasoning stays in the rich display
+view and is excluded from assistant-answer common records. Generic native
+non-message operations use common tool records with their native type as name.
+The HTTP page uses explicit display serialization to preserve absent versus
+null diagnostics. Common JSON field ordering applies to every provider.
