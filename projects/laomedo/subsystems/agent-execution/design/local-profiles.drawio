@@ -51,7 +51,7 @@
         <mxCell id="add" value="+ Create profile" style="text;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=middle;spacing=16;fillColor=none;strokeColor=none;" vertex="1" parent="1" actionRef="LP-T04">
           <mxGeometry x="435" y="425" width="330" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="unlock-fields" value="Selected profile: [ name ]&lt;br&gt;&lt;br&gt;PIN (masked, six digits)&lt;br&gt;[ ****** ]&lt;br&gt;&lt;br&gt;Wrong PIN stays here with a safe error.&lt;br&gt;Rate limiting displays the actual wait." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+        <mxCell id="unlock-fields" value="Selected profile: [ name ]&lt;br&gt;&lt;br&gt;PIN (masked, six digits)&lt;br&gt;[ ****** ]&lt;br&gt;&lt;br&gt;Incorrect PIN stays here with Login failed.&lt;br&gt;Rate limiting displays the actual wait." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="825" y="175" width="330" height="230" as="geometry" />
         </mxCell>
         <mxCell id="unlock" value="Log in" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;align=center;verticalAlign=middle;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="LP-T03">
@@ -64,7 +64,7 @@
         <mxCell id="LP-T02" value="&lt;b&gt;LP-T02&lt;/b&gt; Select a listed profile -&gt; LP-C03. Profile identity alone grants no authenticated session." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
           <mxGeometry x="30" y="680" width="1140" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="LP-T03" value="&lt;b&gt;LP-T03&lt;/b&gt; PIN login -&gt; matching ordinary profile session -&gt; LP-C04. Wrong PIN -&gt; inline error; 429 -&gt; actual retry wait. Clear PIN after completion; no credential persistence." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
+        <mxCell id="LP-T03" value="&lt;b&gt;LP-T03&lt;/b&gt; PIN login -&gt; matching ordinary profile session -&gt; LP-C04. Wrong PIN -&gt; Login failed, not PIN creation guidance; 429 -&gt; actual retry wait. Clear PIN after completion; no credential persistence." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
           <mxGeometry x="30" y="770" width="1140" height="80" as="geometry" />
         </mxCell>
         <mxCell id="LP-T04" value="&lt;b&gt;LP-T04&lt;/b&gt; Picker Create -&gt; LP-C01; Back -&gt; populated LP-C02 or empty LP-C07. First run -&gt; LP-C07. No administrator step. Every form masks the PIN and requests numeric entry; browser save/autofill is not required." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
