@@ -187,9 +187,9 @@ The architecture check scans every Laomedo source file for native Client imports
 and direct SDK dispatch/recovery calls. It does not prove the absence of indirect
 aliases or Docker CLI subprocesses.
 
-Codex `activity/rollout_export.py` still launches three Docker CLI jobs for its
-selected native history export. It uses local-only image lookup (`--pull=never`)
-but does not use shared receipts or pin the daemon with `--host`. Outside Agents,
+Codex `activity/rollout_export.py` uses three bounded shared jobs with exact
+receipts and the recorded daemon/profile/immutable image binding. Missing recorded
+binding is refused, without a default fallback. Outside Agents,
 `work_graph/docker_stage.py` and host publication bundle staging/ownership also
 retain their own Docker CLI operations. These paths remain migration work;
 the current extraction is not complete consolidation of all Docker handling.
@@ -277,7 +277,8 @@ does not resolve or authorize behavioral changes to any of these questions.
 ## Completion checks
 
 - [ ] All agent and worker container launch/close/recovery dispatch paths use
-      shared mechanisms. Codex native rollout export still bypasses this owner.
+      shared mechanisms. Codex native rollout export now uses this owner;
+      whole-boundary acceptance remains open.
       Native SDK image/volume/inspection policy stays explicit.
 - [ ] Existing endpoint, image, deadline, output, receipt and error semantics hold.
 - [ ] Partial startup, cancellation, uncertain cleanup and recovery are covered.
@@ -373,5 +374,6 @@ binding is native_rollout_binding_invalid; failed read native_rollout_export_fai
 malformed JSON native_rollout_content_invalid. Existing path/size/thread identity
 categories remain; cleanup uncertainty is container_termination_unverified.
 
-Implementation0fdacaa78 has focused checks and actual native Codex export
-acceptance; this new section and change are fully unreviewed - reviewer pending.
+Implementation `9bcb0149c..0fdacaa78`, this section and selected documentation
+received Claude APPROVE. Focused checks and actual native Codex export acceptance
+passed. This is scoped approval, not whole-PR or physical host-loss acceptance.
