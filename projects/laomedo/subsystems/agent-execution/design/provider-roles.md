@@ -289,3 +289,34 @@ Unified Docker dispatch does not establish real-provider acceptance or complete
 the other four boundary contracts. The shared SDK dispatch implementation was
 reviewed separately from image acquisition. Neither review establishes full
 provider acceptance or resolves the remaining CLI migrations and runtime contracts.
+
+## Selected Activity boundary
+
+The selected public Python operation is
+`BaseAgent.read_activity(run_id, attempt_id, *, after=0, limit=100) -> ActivityPage`,
+implemented by ClaudeAgent, CodexAgent and OpenCodeAgent. The explicit attempt
+identifies one execution or resumed turn; it never defaults to the latest turn.
+The provider returns typed common message/tool/usage replacement snapshots with
+stable append-only sequences, plus an already assembled shared ActivityProjection
+and monotonic display revision. Physical native/telemetry cursors stay internal.
+
+Shared ActivityCapture follows authenticated runner HTTP `/activity`, validates
+identity and persists common records/revisioned display data in ActivityStore.
+The store retains owner-scoped historical data and deduplication; application
+display of new entries requires no provider parser. Existing native-format saved
+Activity databases have a private historical interpretation path only. No public
+reader or projector collaborator is required. The former BaseActivityProjector
+and its forwarding classes are retired.
+
+Reads never run models, launch resources, cancel work or require live provider
+authentication. They may atomically publish private durable normalized journal
+versions. Replay preserves previously issued sequence meanings. Usage replaces
+per-thread attempt totals, never sums snapshot versions; unknown counters remain
+unknown. Both source intervals must be sealed for closure, while completeness
+requires the provider's terminal/capture attestation independently of task success.
+
+The exact data fields, paging/error limits, closure rules, ownership, migration
+and acceptance scope are recorded in the implementation's
+`docs/architecture/activity-interface.md`. This Activity delta is fully unreviewed
+? reviewer pending. Earlier Docker/catalog/interaction approvals do not cover it.
+Fixture and HTTP tests do not establish real native-provider acceptance.
