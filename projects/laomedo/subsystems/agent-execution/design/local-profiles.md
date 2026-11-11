@@ -163,7 +163,7 @@ Each profile picker row includes a decorative initials avatar beside the left-al
 
 Owner decision, 2026-11-11: local profiles now; private revocation later. No private-connection capability or specification maturity change is implied.
 
-Errors inside the profile picker, creation, PIN-entry and save-reconciliation forms show only the shared title, explanation and recovery advice, without a technical-details expander. The separate LP-C12 service-availability screen retains its safe technical details. The owner confirmed that valid matching input does not show the validation error; validation rules are unchanged.
+Local validation shows the concise catalogue message beside its field. Service and save-reconciliation errors inside profile forms retain the shared title, explanation and recovery advice, without a technical-details expander. The separate LP-C12 service-availability screen retains its safe technical details. The owner confirmed that valid matching input does not show the validation error; validation rules are unchanged.
 
 ## Account-picker refinement
 
