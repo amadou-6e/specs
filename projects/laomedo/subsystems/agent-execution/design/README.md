@@ -56,4 +56,4 @@ compatibility blocker in Laomedo #189.
 [editable UI states](github-account-connections.drawio) define the draft private
 Skill source increment for specs #410 / Laomedo #251. No runtime acceptance is claimed.
 
-The [local setup profile design](local-profiles.md) and [editable states](local-profiles.drawio) describe PIN-based setup selection without a user-facing administrator procedure.
+The [local setup profiles](local-profiles.md) and [editable profile states](local-profiles.drawio) define PIN entry for one Windows user's local setups. Private GitHub connections remain a separate proposal.

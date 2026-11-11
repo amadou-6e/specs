@@ -104,10 +104,12 @@ need real verification.
 Successful profile creation and normal entry persist with the app login lifetime
 selected by the owner, including valid refresh and browser/app restart. Every
 explicit switch requires the target PIN. Switching first confirms upstream
-logout, clears user/query/private buffers and invalidates pending profile-bound
-OAuth before selecting another context. Switch and plain logout use the same SC01/#259 revocation boundary and shared
-sign-out-unconfirmed error catalogue entry as C14; do not implement competing
-logout semantics. A failed switch never claims success or
+logout and clears local authentication and query state before selecting another
+context. Plain logout uses the same local-session boundary and the shared
+`app_signout_unconfirmed` error as switching. Private GitHub access revocation
+and pending OAuth invalidation are deferred to the separate private-connection
+feature; they are not implemented or promised by this local-profile slice.
+A failed switch never claims success or
 silently chooses credentials. In-flight results cannot repopulate the new profile. Tabs within one browser
 context share its cookie session; a confirmed profile change replaces other
 tabs' documents before their old requests can fill new profile state. Independent
@@ -124,8 +126,9 @@ substring matching or accept arbitrary localhost ports. One browser session cann
 ID to select credentials. Public Skill registry and existing activity storage are
 installation-shared; no tenant-isolation claim. Private data still belongs to the
 actual authenticated profile plus repository consent/generation. The earlier
-private-session logout/replay guarantees in SC01/#259 are not weakened by this
-profile proposal. GitHub connection sharing and PIN reset/deletion are not claimed
+private-session logout/replay design remains a separate proposal tracked by
+[Laomedo #259](https://github.com/amadou-6e/laomedo/issues/259).
+GitHub connection sharing and PIN reset/deletion are not claimed
 as implemented. Forgotten-PIN recovery must preserve data; no destructive reset
 is offered as a shortcut. Define/validate recovery before claiming that story.
 
@@ -153,3 +156,19 @@ On 2026-11-07 the owner explicitly selected: defer recovery; a forgotten PIN
 blocks entry to that profile. Preserve its data. PIN recovery is unsupported in
 this first slice, not a tested capability or a destructive delete/recreate flow.
 This owner decision resolves LP-R8 without claiming a recovery implementation.
+
+## Entry presentation
+
+Each profile picker row includes a decorative initials avatar beside the left-aligned stored profile name. The name remains the accessible label. Invalid creation details use concise field-specific messages, as defined in Account-picker refinement below. Editing an invalid field clears that validation notice, and moving between picker, create and entry screens clears previous-screen errors. These changes do not dismiss uncertain save or sign-out outcomes automatically.
+
+Owner decision, 2026-11-11: local profiles now; private revocation later. No private-connection capability or specification maturity change is implied.
+
+Local validation shows the concise catalogue message beside its field. Service and save-reconciliation errors inside profile forms retain the shared title, explanation and recovery advice, without a technical-details expander. The separate LP-C12 service-availability screen retains its safe technical details. The owner confirmed that valid matching input does not show the validation error; validation rules are unchanged.
+
+## Account-picker refinement
+
+Owner selected the researched contained-list design: fixed 36px decorative initials avatars, left-aligned names, 64px minimum rows, subtle separators and a trailing chevron. The whole row selects the profile. A divider separates the secondary sentence-case Create profile action with a plus icon. Preserve keyboard focus and long-name wrapping. Local submit errors appear beside their fields: Enter a profile name; Use a six-digit PIN; Confirm your PIN; PINs don't match. Associate errors with fields, preserving input for correction; authentication and uncertain-outcome recovery are unchanged.
+
+The selected-profile PIN screen is titled Log in and submits with Log in. Replace its bottom Back to profiles button with a top-left back arrow, accessible as Back to profiles, retaining LP-T05 PIN clearing and pending-request disabling. Creation and uncertain-outcome recovery controls are unchanged.
+
+Login rejects an incorrect or malformed submitted PIN with Login failed, never creation guidance about choosing a six-digit PIN. An authentication rejection may explain Check your PIN and try again. Registration retains its field-format guidance. Rate limits, unknown outcomes and PIN clearing remain unchanged.

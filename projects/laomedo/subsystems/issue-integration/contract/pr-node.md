@@ -22,31 +22,86 @@ shows the bounded modify example.
 ## Selection and outputs
 
 Display GitHub PR. Repository URL, searchable Labels multi-select, searchable
-PR dropdown, refresh, Discovery status and advanced State (open/closed/all)
-follow the Issue node pattern. All selected labels must match. Only real PRs
+PR dropdown and refresh follow the Issue node pattern. State is a normal visible
+control between Repository URL feedback and Labels, offering open, closed, merged and all.
+Closed retains GitHub's existing closed semantics
+(including merged PRs); merged narrows that set to PRs with verified merged
+metadata: a closed PR with a valid non-null GitHub `merged_at` timestamp,
+normalized to `merged == true`. Missing or contradictory merge metadata never
+qualifies. Invalid or contradictory non-null merge metadata refuses the entire
+discovery/read with `pr_response_invalid`; it is never interpreted as unmerged
+to permit a write. The Merged filter queries the closed list and filters locally; the
+same page/deadline bounds apply to that entire closed list, even if few match.
+Merged PRs remain read-only. PR record state stays open/closed and the separate merged flag is
+preserved. Discovery and execution revalidation apply the same state predicate.
+All selected labels must match. Only real PRs
 appear, with number/title. Discovery is bounded to ten 100-item pages and a
 60-second deadline; incomplete discovery is refused. Empty, failed and loading
 states are distinct. Changing repository clears labels and PR; changing labels
 or state clears PR. Refresh preserves the same number if still valid and updates
 its title. Obsolete responses cannot replace a newer selection.
 
-Inputs: optional PR Reference and Operation. Outputs: PR, Task and Operation
-Result. PR Reference supplies repository/number from an upstream PR node; it
-must match the configured repository and any explicit picker selection. It is
-identity, not permission. With no Operation, execution reads current content,
-revalidating selection and filters. All outputs share one cached invocation.
-Failure/unknown stops Task rather than sending errors as an agent prompt.
-Neither discovery nor inspection makes a model call.
+The owning Draw.io's **PR controls** page defines the revised node presentation:
+Repository URL, inline source feedback, visible State, Labels, PR, then the
+single PR context input and output. Discovery feedback sits directly
+below Repository URL with no separate Discovery heading or editable Discovery
+field. Refresh list remains inside the native Labels and PR menus, including after
+failure: open either selector, then choose Refresh list. Closed fields have no
+separate refresh icon.
+Reuse the Skill node's inline feedback treatment and shared safe error
+presenter. Empty URL is quiet; loading, failed connection and no matching PRs
+remain distinguishable without displaying raw provider errors. A successful read
+does not add an extra status row or automatically select a PR.
+
+Labels and PR reuse the native searchable dropdown controls after successful
+discovery. Label search supports selecting only discovered labels; PR text search
+uses fuzzy matching over discovered number/title choices. Typing a search never
+creates a label or PR identity. Keep exact-number selection and current all-label
+matching. With no repository connection, explain that state rather than fabricate
+options. Refresh and search perform reads only, never an Agent task or GitHub
+mutation. Render this presentation without mutating the selected repository, labels or PR,
+or exposing the obsolete Discovery row. Personal saved-graph compatibility and
+migration remain outside this change.
+
+## Unified PR context ports
+
+One optional **PR** input (`pr_context`, Data or Message) and one **PR** output
+(`pr`, Data) replace PR Reference/Operation and PR/Task/Operation Result.
+The output is the existing `laomedo.github-pr.v1` result envelope: `pr` contains
+the current snapshot (or null), `operation` contains status/error category, and
+fetch/digest evidence remains intact. No flat PR or separate Task output exists.
+
+Disconnected input reads the selected PR. Input may carry `pr` identity
+(repository/number) and an `operation` request (close/modify with existing
+request_id/grant_ref). A previous node's result can be passed directly: its
+operation outcome is evidence, never a request to replay. A failed/unknown
+upstream result is refused before any read/write/agent dispatch, even if it
+contains a PR snapshot. Identity must match Repository URL and any picker choice.
+Malformed input, unknown fields and conflicting identity are refused. Agent
+feedback may return the existing content-only close/modify JSON on this same
+input; only the existing host-stamped feedback path can authorize its application.
+
+The Agent task adapter accepts this Data envelope, formats successful PR context
+as text and refuses failed/unknown or missing PR context before runner dispatch.
+Ordinary text/Message tasks keep their existing behavior. The PR node's one-shot
+feedback loop uses its single PR output and context input, runs the connected
+agent once, applies the operation once, and exposes the terminal full envelope
+without sending that result back to the agent. Skill feedback keeps its own ports.
+
+Maintained examples use the new ports. Personal saved graphs are outside this
+change's compatibility scope; no saved-graph migration utility is provided.
+Tests must cover reads, scoped modifications, chained context, failed/uncertain
+input, conflicting identities and one-shot feedback.
 
 PR records contain repository, number, exact `/pull/<number>` URL, node ID,
 title, body, labels, state, draft/merged state, updated marker, head repository,
-branch and SHA, and base branch. Operation Result includes fetched-at evidence,
+branch and SHA, and base branch. The PR context output includes fetched-at evidence,
 content digest and operation status. Fork PRs may be inspected; the initial
 write implementation requires a same-repository head on the granted branch.
 
 ## Operations and permissions
 
-Operation Data uses the Issue node envelope:
+The PR input carries an operation request using the existing Issue envelope:
 
 ```json
 {"action":"modify","request_id":"pr-demo-1","grant_ref":"host-capability-reference",
@@ -101,19 +156,19 @@ an active GitHub connection.
 ## Operation example and acceptance
 
 The user selected a two-node round trip: one GitHub PR node and one Agent.
-PR Task feeds the Agent, whose selected Operation/answer output returns to the
-same PR's Operation input. Operation supports both ordinary upstream input and
-controlled feedback. A direct Task connection to the source of the incoming
-Operation identifies the bounded round trip. An acyclic upstream Operation is
-evaluated normally. Multiple Operation sources, feedback plus a literal
-Operation value, or combined legacy infinity feedback and Operation are refused.
-The Task output does not expose an infinity socket in newly generated nodes;
-older saved infinity-feedback graphs remain readable for compatibility.
+The PR output feeds the Agent's Task input, whose selected answer returns to the
+same PR's single PR input. That input supports ordinary upstream context and
+controlled feedback. A direct PR connection to the source of the incoming
+request identifies the bounded round trip. An acyclic upstream request is
+evaluated normally. Multiple input sources or feedback combined with a literal
+operation request are refused.
 The PR node is the loop controller, with one initial read, exactly one Agent
 body execution, one returned operation, and a terminal result. No third Loop
-node or second PR node is required. The Task branch is stopped in the outer
+node or second PR node is required. The feedback Agent is excluded from the outer
 graph; the native isolated subgraph runs the Agent once, rather than letting
-the outer scheduler invoke it again. Multiple Agent bodies, fan-out or multiple feedback sources are refused.
+the outer scheduler invoke it again. Multiple Agent bodies, extra consumers of
+that Agent, or multiple feedback sources are refused. Final-result inspectors
+may consume the PR context output.
 Independent read-only Skill dependencies are the only additional body nodes.
 
 Freeze the selected repository/number and fetched content digest before calling
@@ -161,7 +216,7 @@ limits are recorded in validation, without promoting this specification's maturi
 In feedback mode the trusted host must reserve request identity and an exact
 scoped grant before starting the Agent. The Agent proposes only `action` and,
 for modify, `changes`; it cannot supply identity, grant, target or digest fields.
-Ordinary acyclic Operation payloads retain their explicit request/grant envelope.
+Ordinary acyclic operation requests through `pr_context` retain their explicit request/grant envelope.
 
 The authenticated `prepare-feedback` host endpoint binds a five-minute opaque
 ticket to the selected repository/PR, labels/state, original digest, configured
@@ -190,12 +245,12 @@ The controlled cycle must start at the PR in full editor builds and when
 the Agent's play action is used, irrespective of node ordering or process hash
 seed. Component initialization must bind the controlled feedback handling for
 both payload-loaded and programmatically connected graphs.
-Attaching a downstream Operation Result inspector must preserve that entry rule
+Attaching a downstream PR context output inspector must preserve that entry rule
 and exactly one Agent invocation. This does not authorize arbitrary graph cycles.
-The isolated feedback body currently contains only the returning Agent. An
-additional upstream input to that Agent from another node is refused before
-dispatch, rather than silently omitted. Configure its pinned skill and runner
-directly on the existing Agent for this bounded topology.
+The isolated feedback body contains the returning Agent and its admitted,
+independent read-only Skill dependencies. Any other upstream dependency is
+refused before dispatch rather than silently omitted. Supply pinned Skills through
+those declared Skill inputs and configure the runner on the existing Agent.
 
 Primary API references: [pull requests](https://docs.github.com/en/rest/pulls/pulls)
 and [issue labels](https://docs.github.com/en/rest/issues/labels).
@@ -204,17 +259,17 @@ and [issue labels](https://docs.github.com/en/rest/issues/labels).
 
 User clarification: creation means a new pull request. Proposed follow-up: the
 same visible GitHub PR node has Existing and Create draft modes. Existing keeps
-picker/reference inputs. Create draft disables the PR picker, viewer and external
+picker and PR context input. Create draft disables the PR picker, viewer and external
 link until confirmed creation. It accepts an accepted publication handoff from
 Output Contract rather than inventing a PR number or accepting arbitrary branch
 publication from the agent. The host owns the exact repository/head/base, staged
 commit, title/body, capability and durable request identity.
 
 Reuse the current trusted Draft PR Publisher's run-bound publication operation.
-After confirmed creation, emit PR Reference (repository/number/URL) and the
-confirmed result; the run inspector can open/view that returned PR without
-mutating saved picker state. A downstream Existing instance consumes PR Reference
-for later operations. Unknown creation yields no reference: reconcile the durable
+After confirmed creation, emit a PR context containing its repository/number/URL
+and the confirmed result; the run inspector can open/view that returned PR without
+mutating picker state. A downstream Existing instance consumes this PR context
+for later operations. Unknown creation yields no confirmed PR identity: reconcile the durable
 publication marker and branch pair, never resend automatically. A missing/ambiguous
 match remains unknown. Creation grant binding and any subsequent update grant are
 separate; the new reference alone grants no writes. This mode and its run-result
@@ -226,5 +281,5 @@ Agent skills are selected on independent read-only Skill nodes connected to
 Skill References. The feedback executor includes those nodes with the Agent;
 other external inputs, mutating Skill dependencies and multiple controllers
 remain refused. Building only a read-only Skill must not start the feedback
-Agent. Older inline-only current examples require this wiring migration;
-historical execution evidence is retained separately and not relabelled.
+Agent. Maintained examples use this wiring; historical execution evidence is
+retained separately and not relabelled.
