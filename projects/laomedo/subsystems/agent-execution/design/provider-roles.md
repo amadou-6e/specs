@@ -317,7 +317,7 @@ requires the provider's terminal/capture attestation independently of task succe
 
 The exact data fields, paging/error limits, closure rules, ownership, migration
 and acceptance scope are recorded in the implementation's
-`docs/architecture/activity-interface.md`. The initial Activity code review is REVISE; corrections await focused recheck. Specification coverage remains incomplete. Earlier Docker/catalog/interaction approvals do not cover it.
+`docs/architecture/activity-interface.md`. Claude approved the Activity code delta ebf74f27..3778e2714 and this selected Activity section. Corrected-head native acceptance remains unestablished; this is not whole-PR approval. Earlier Docker/catalog/interaction approvals do not cover it.
 Fixture and HTTP tests do not establish real native-provider acceptance.
 
 ### Bounded Activity retention
