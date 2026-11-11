@@ -49,10 +49,11 @@ question; it does not rename an upstream benchmark.
 | [Automotive cabin harness](https://www.cadcrowd.com/3d-models/cabin-harness-automotive-fusebox-battery) | Locally present 73 MB `.stp` assembly (`CONFIG_CONTROL_DESIGN` STEP header), including modeled harness and electrical packaging; not a complete car/engine bay. | Verified local header and [CC BY-NC listing](https://www.cadcrowd.com/3d-models/cabin-harness-automotive-fusebox-battery); route/solid structure not parsed. | **Reference/audit only** until legal scope and CAD topology are checked. No training, redistribution, or benchmark claim from the local file. |
 | [PipeWiringOptimization](https://github.com/yeyeleijun/PipeWiringOptimization/blob/master/test_case/test.py), [Aker routing assignment](https://github.com/Hallvaeb/automation-p3-pipe-routing) | Source-defined small 3D grids or equipment/port fixtures and route constraints, not diverse scene archives. | Published source; see [shortlist caveats](routing-environment-inventory.md). | Unit/regression fixtures for radius, terminal direction, bends, and simultaneous occupancy, **not** a generalization corpus. |
 
-Ignored local assets also include an older Warframe `.3dmap`/`.3dscen` copy,
-individual OBJ/STL files, and Kenney/other model packs. They are **excluded**:
-Warframe was removed by scope decision; standalone models and packs do not
-become environments or tasks by voxelization. Their presence is not training
+Ignored local assets also include individual OBJ/STL files and Kenney/other
+model packs. They are **excluded**: standalone models and packs do not become
+environments or tasks by voxelization. Warframe is out of scope and its local
+copy was deleted on 2026-09-29 ([specs#138](https://github.com/amadou-6e/specs/issues/138));
+do not reacquire it. Their presence is not training
 approval. No upstream asset or converted corpus belongs in the specs repository.
 
 ## Canonical conversion contract
