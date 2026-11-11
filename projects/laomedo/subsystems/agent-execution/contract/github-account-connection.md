@@ -149,6 +149,14 @@ asserted owner. Read consent authorizes discovery, exact revision resolution and
 private file/history viewing; it grants no Agent run, repository write, Issue/PR
 operation or Git publishing permission.
 
+Owner decision (2026-11-11): consent binds both the numeric repository identity
+and its confirmed owner/name location. A rename or transfer stops private access,
+including retained history, until the owner deliberately reconnects and confirms
+the repository again. Do not follow redirects or silently update stored consent.
+A matching old name with a different numeric identity remains refused. If renewal
+cannot revalidate any consented repository at its confirmed location, require
+reauthorization of the connection rather than partially restoring its authority.
+
 ### SC05: Private store access, not cache-only separation
 
 Private imported bytes, provenance, index and journal live outside all existing
