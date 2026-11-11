@@ -162,3 +162,5 @@ This owner decision resolves LP-R8 without claiming a recovery implementation.
 Each profile picker row includes a decorative person icon beside the stored profile name. The name remains the accessible label. Invalid creation details use plain language: Check your details; enter a profile name and a six-digit PIN; make sure both PINs match. Editing an invalid field clears that validation notice, and moving between picker, create and entry screens clears previous-screen errors. These changes do not dismiss uncertain save or sign-out outcomes automatically.
 
 Owner decision, 2026-11-11: local profiles now; private revocation later. No private-connection capability or specification maturity change is implied.
+
+Profile entry errors show only the shared title, explanation and recovery advice, without a technical-details expander. The owner confirmed that valid matching input does not show the validation error; validation rules are unchanged.
