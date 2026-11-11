@@ -354,3 +354,24 @@ Claude approved the code delta98d130bb9..acc9c41ae and this selected retirement
 section, subject to this review-status update. Full693 Agent tests pass with4skips;
 Codex fresh/resume/cancellation pass atacc9c41ae. These scoped approvals do not
 establish other-provider, host-loss or whole-PR acceptance.
+
+## Recorded Codex rollout export binding
+
+The retained standalone Codex rollout-export command uses the same Docker job
+owner as provider execution. It requires the run's canonical thread UUID,
+recorded profile, immutable image ID and container_ownership.docker_endpoint.
+The owner explicitly selected refusal when bindings are absent: no ambient
+daemon, default profile or image tag fallback. No new provider interface is added.
+
+Images and profiles must already exist. Three bounded find/stat/cat jobs mount
+only that profile read-only, disable networking and use the existing non-root
+user. Exact private job receipts are recovered before dispatch and retained on
+cleanup uncertainty. Export validates one in-tree file, a positive size up to
+64MiB, exact byte count, JSONL and matching native session metadata before atomic
+private publication. Errors exclude raw Docker diagnostics. Unknown/invalid
+binding is native_rollout_binding_invalid; failed read native_rollout_export_failed;
+malformed JSON native_rollout_content_invalid. Existing path/size/thread identity
+categories remain; cleanup uncertainty is container_termination_unverified.
+
+Implementation0fdacaa78 has focused checks and actual native Codex export
+acceptance; this new section and change are fully unreviewed - reviewer pending.
