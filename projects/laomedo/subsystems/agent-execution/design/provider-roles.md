@@ -350,5 +350,7 @@ Existing command/credential/catalogue role contracts remain guarded without
 exceptions. Native close/cancel ordering and uncertainty, persisted records and
 cancel_confirmed semantics do not change. Native Docker mechanisms remain shared.
 
-Implementationacc9c41ae is fully unreviewed - reviewer pending. Prior Activity
-approvals end at3778e2714 and do not cover this subsequent lifecycle correction.
+Claude approved the code delta98d130bb9..acc9c41ae and this selected retirement
+section, subject to this review-status update. Full693 Agent tests pass with4skips;
+Codex fresh/resume/cancellation pass atacc9c41ae. These scoped approvals do not
+establish other-provider, host-loss or whole-PR acceptance.
