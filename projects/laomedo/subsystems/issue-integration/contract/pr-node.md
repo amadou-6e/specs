@@ -24,7 +24,7 @@ shows the bounded modify example.
 Display GitHub PR. Repository URL, searchable Labels multi-select, searchable
 PR dropdown and refresh follow the Issue node pattern. State is a normal visible
 control between Repository URL feedback and Labels, offering open, closed, merged and all.
-For saved-graph compatibility, closed retains GitHub's existing closed semantics
+Closed retains GitHub's existing closed semantics
 (including merged PRs); merged narrows that set to PRs with verified merged
 metadata: a closed PR with a valid non-null GitHub `merged_at` timestamp,
 normalized to `merged == true`. Missing or contradictory merge metadata never
@@ -43,7 +43,7 @@ its title. Obsolete responses cannot replace a newer selection.
 
 The owning Draw.io's **PR controls** page defines the revised node presentation:
 Repository URL, inline source feedback, visible State, Labels, PR, then the
-existing reference/operation inputs and outputs. Discovery feedback sits directly
+single PR context input and output. Discovery feedback sits directly
 below Repository URL with no separate Discovery heading or editable Discovery
 field. Refresh list remains inside the native Labels and PR menus, including after
 failure: open either selector, then choose Refresh list. Closed fields have no
@@ -59,8 +59,9 @@ uses fuzzy matching over discovered number/title choices. Typing a search never
 creates a label or PR identity. Keep exact-number selection and current all-label
 matching. With no repository connection, explain that state rather than fabricate
 options. Refresh and search perform reads only, never an Agent task or GitHub
-mutation. Apply this presentation to older saved templates without rewriting
-their stored selections or exposing the obsolete Discovery row.
+mutation. Render this presentation without mutating the selected repository, labels or PR,
+or exposing the obsolete Discovery row. Personal saved-graph compatibility and
+migration remain outside this change.
 
 ## Unified PR context ports
 
@@ -215,7 +216,7 @@ limits are recorded in validation, without promoting this specification's maturi
 In feedback mode the trusted host must reserve request identity and an exact
 scoped grant before starting the Agent. The Agent proposes only `action` and,
 for modify, `changes`; it cannot supply identity, grant, target or digest fields.
-Ordinary acyclic Operation payloads retain their explicit request/grant envelope.
+Ordinary acyclic operation requests through `pr_context` retain their explicit request/grant envelope.
 
 The authenticated `prepare-feedback` host endpoint binds a five-minute opaque
 ticket to the selected repository/PR, labels/state, original digest, configured
@@ -244,12 +245,12 @@ The controlled cycle must start at the PR in full editor builds and when
 the Agent's play action is used, irrespective of node ordering or process hash
 seed. Component initialization must bind the controlled feedback handling for
 both payload-loaded and programmatically connected graphs.
-Attaching a downstream Operation Result inspector must preserve that entry rule
+Attaching a downstream PR context output inspector must preserve that entry rule
 and exactly one Agent invocation. This does not authorize arbitrary graph cycles.
-The isolated feedback body currently contains only the returning Agent. An
-additional upstream input to that Agent from another node is refused before
-dispatch, rather than silently omitted. Configure its pinned skill and runner
-directly on the existing Agent for this bounded topology.
+The isolated feedback body contains the returning Agent and its admitted,
+independent read-only Skill dependencies. Any other upstream dependency is
+refused before dispatch rather than silently omitted. Supply pinned Skills through
+those declared Skill inputs and configure the runner on the existing Agent.
 
 Primary API references: [pull requests](https://docs.github.com/en/rest/pulls/pulls)
 and [issue labels](https://docs.github.com/en/rest/issues/labels).
@@ -258,17 +259,17 @@ and [issue labels](https://docs.github.com/en/rest/issues/labels).
 
 User clarification: creation means a new pull request. Proposed follow-up: the
 same visible GitHub PR node has Existing and Create draft modes. Existing keeps
-picker/reference inputs. Create draft disables the PR picker, viewer and external
+picker and PR context input. Create draft disables the PR picker, viewer and external
 link until confirmed creation. It accepts an accepted publication handoff from
 Output Contract rather than inventing a PR number or accepting arbitrary branch
 publication from the agent. The host owns the exact repository/head/base, staged
 commit, title/body, capability and durable request identity.
 
 Reuse the current trusted Draft PR Publisher's run-bound publication operation.
-After confirmed creation, emit PR Reference (repository/number/URL) and the
-confirmed result; the run inspector can open/view that returned PR without
-mutating saved picker state. A downstream Existing instance consumes PR Reference
-for later operations. Unknown creation yields no reference: reconcile the durable
+After confirmed creation, emit a PR context containing its repository/number/URL
+and the confirmed result; the run inspector can open/view that returned PR without
+mutating picker state. A downstream Existing instance consumes this PR context
+for later operations. Unknown creation yields no confirmed PR identity: reconcile the durable
 publication marker and branch pair, never resend automatically. A missing/ambiguous
 match remains unknown. Creation grant binding and any subsequent update grant are
 separate; the new reference alone grants no writes. This mode and its run-result
