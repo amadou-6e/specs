@@ -168,3 +168,5 @@ Local validation shows the concise catalogue message beside its field. Service a
 ## Account-picker refinement
 
 Owner selected the researched contained-list design: fixed 36px decorative initials avatars, left-aligned names, 64px minimum rows, subtle separators and a trailing chevron. The whole row selects the profile. A divider separates the secondary sentence-case Create profile action with a plus icon. Preserve keyboard focus and long-name wrapping. Local submit errors appear beside their fields: Enter a profile name; Use a six-digit PIN; Confirm your PIN; PINs don't match. Associate errors with fields, preserving input for correction; authentication and uncertain-outcome recovery are unchanged.
+
+The selected-profile PIN screen is titled Log in and submits with Log in. Replace its bottom Back to profiles button with a top-left back arrow, accessible as Back to profiles, retaining LP-T05 PIN clearing and pending-request disabling. Creation and uncertain-outcome recovery controls are unchanged.

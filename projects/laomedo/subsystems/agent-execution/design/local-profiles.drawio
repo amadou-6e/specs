@@ -23,8 +23,8 @@
         <mxCell id="LP-C03" value="" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#CBD5E1;" vertex="1" parent="1">
           <mxGeometry x="810" y="110" width="360" height="440" as="geometry" />
         </mxCell>
-        <mxCell id="LP-C03-title" value="&lt;b&gt;LP-C03 - Open profile&lt;/b&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="825" y="125" width="330" height="45" as="geometry" />
+        <mxCell id="LP-C03-title" value="&lt;b&gt;LP-C03 - Log in&lt;/b&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="873" y="125" width="282" height="45" as="geometry" />
         </mxCell>
         <mxCell id="create-fields" value="Profile name&lt;br&gt;[ name ]&lt;br&gt;[ Name error ]&lt;br&gt;&lt;br&gt;PIN (masked, six digits)&lt;br&gt;[ ****** ]&lt;br&gt;[ PIN error ]&lt;br&gt;&lt;br&gt;Confirm PIN (masked)&lt;br&gt;[ ****** ]&lt;br&gt;[ Confirmation error ]" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="45" y="175" width="330" height="225" as="geometry" />
@@ -54,12 +54,10 @@
         <mxCell id="unlock-fields" value="Selected profile: [ name ]&lt;br&gt;&lt;br&gt;PIN (masked, six digits)&lt;br&gt;[ ****** ]&lt;br&gt;&lt;br&gt;Wrong PIN stays here with a safe error.&lt;br&gt;Rate limiting displays the actual wait." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="825" y="175" width="330" height="230" as="geometry" />
         </mxCell>
-        <mxCell id="unlock" value="Open profile" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;align=center;verticalAlign=middle;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="LP-T03">
+        <mxCell id="unlock" value="Log in" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;align=center;verticalAlign=middle;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="LP-T03">
           <mxGeometry x="840" y="460" width="300" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="unlock-back" value="Back to profiles" style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;rounded=1;arcSize=8;align=center;verticalAlign=middle;fillColor=#EFF6FF;strokeColor=#94A3B8;" vertex="1" parent="1" actionRef="LP-T05">
-          <mxGeometry x="840" y="505" width="300" height="38" as="geometry" />
-        </mxCell>
+        <mxCell id="unlock-back" value="&#8592;" style="text;html=1;fontFamily=Arial;fontSize=20;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;" vertex="1" parent="1" actionRef="LP-T05"><mxGeometry x="825" y="130" width="36" height="36" as="geometry" /></mxCell>
         <mxCell id="LP-T01" value="&lt;b&gt;LP-T01&lt;/b&gt; Create -&gt; confirmed ordinary profile + matching login -&gt; workspace. Duplicate/reserved -&gt; LP-C08. Confirmed failed save -&gt; LP-C09. Committed creation + unconfirmed login -&gt; LP-C10. Unknown save result -&gt; reconcile picker; never blindly create again. Local field errors show concise catalogue messages beside inputs. Service and save-reconciliation failures show title, explanation and recovery without technical diagnostics. Field errors: Enter a profile name; Use a six-digit PIN; Confirm your PIN; PINs do not match. Associate each error with its field; edits clear relevant advice. Navigation clears previous-screen errors. LP-C12 availability details are unchanged." style="whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=14;align=left;verticalAlign=top;spacing=10;fillColor=#F8FAFC;strokeColor=#E2E8F0;" vertex="1" parent="1">
           <mxGeometry x="30" y="590" width="1140" height="80" as="geometry" />
         </mxCell>
