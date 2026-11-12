@@ -298,3 +298,11 @@ list separates account identity, status, repository summary and row action; it
 includes empty-list guidance. Earlier layout studies remain for discussion history.
 State IDs map the normal, reconnect, cancellation and missing-setup branches before
 screen geometry. All new pages remain proposals pending owner design review.
+
+## Single-canvas workshop
+
+The Draw.io now has one page: the state graph is above the current screen mockups,
+with dashed connectors from states to screens. Installation setup follows below;
+existing detailed authorization and recovery states are retained farther down the
+same canvas. The redundant earlier layout study is removed (available in Git
+history). Earlier references to workshop tabs/pages describe superseded layouts.
