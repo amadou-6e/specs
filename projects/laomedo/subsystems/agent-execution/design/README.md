@@ -52,6 +52,8 @@ inventory with Laomedo follow-ups #186, #187 and #188.
 link real A-card screenshots and distinguish passing UI checks from the CLI
 compatibility blocker in Laomedo #189.
 
+The [local setup profiles](local-profiles.md) and [editable profile states](local-profiles.drawio) define PIN entry for one Windows user's local setups. Private GitHub connections remain a separate proposal.
+
 The [direct provider boundaries](provider-roles.md) replace the withdrawn #277 runner/journal/resource-plan proposal. They define shared Docker ownership, container requirements and completion checks. The replacement remains draft; selected sections carry scoped approvals recorded on that page. Those approvals do not establish whole-spec or runtime acceptance.
 
 The [provider authoring direction](provider-authoring.md) records the single-entry-point discovery requirement and the remaining composition decisions. It does not claim that exporting an ABC makes a provider runnable.
