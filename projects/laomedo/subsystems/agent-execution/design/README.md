@@ -52,4 +52,8 @@ inventory with Laomedo follow-ups #186, #187 and #188.
 link real A-card screenshots and distinguish passing UI checks from the CLI
 compatibility blocker in Laomedo #189.
 
+[Local GitHub connections](github-account-connections.md) and their
+[editable UI states](github-account-connections.drawio) define the draft private
+Skill source increment for specs #410 / Laomedo #251. No runtime acceptance is claimed.
+
 The [local setup profiles](local-profiles.md) and [editable profile states](local-profiles.drawio) define PIN entry for one Windows user's local setups. Private GitHub connections remain a separate proposal.
