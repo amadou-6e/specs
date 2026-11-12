@@ -19,8 +19,10 @@ claimed. Read [the five boundaries and container acceptance requirements](provid
 An author must eventually find required and optional implementations and their
 connections at one clear entry point. Exporting many ABC names alone does not
 meet that requirement. Only contracts consumed by shared Laomedo code should
-be public extension points. The precise agent/activity/discovery composition
-remains open; do not invent constructors or mark provider execution verified.
+be public extension points. `BaseAgent` interaction, `read_activity`, `readiness` and
+`BaseModelCatalog.list_models` are the selected contracts linked above. A single
+authoring entry point and the composition and construction of new providers remain
+open; do not invent constructors or mark provider execution verified.
 
 The first implementation step shares concrete Docker mechanisms and preserves
 current provider lifetimes, error mappings and recovery behavior. Providers

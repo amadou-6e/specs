@@ -119,7 +119,8 @@ payloads and provider finalization stay intact; cancellation is an observation,
 not guaranteed termination. Claude alone supports per-run timeout overrides;
 Codex/OpenCode refuse non-None overrides before dispatch. See
 [the complete contract and caller examples](https://github.com/amadou-6e/laomedo/blob/0b923899/docs/architecture/agent-interaction.md).
-This change does not align native runtime internals or the separate Activity API.
+Native runtime internals stay provider-owned; the Activity boundary is specified
+below.
 
 ## Container ownership
 
@@ -128,8 +129,7 @@ It provides concrete client, session, job and exact-receipt delegation seams.
 Agent execution and independent host lease supervision use these concrete mechanisms.
 Provider code supplies launch configuration, native readiness and resource order.
 It retains existing error mapping and credentials checks. The target for a new provider is to reuse Docker lifecycle rather than subclass
-it or implement another Docker client. Existing live runtime ABCs remain during
-migration.
+it or implement another Docker client.
 
 Interactive agent containers use a `ContainerSession`; finite command containers
 use a `ContainerJob`. Both use native `ContainerSpec` and `StreamLimits`, not a
