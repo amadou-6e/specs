@@ -4,7 +4,7 @@ status: draft
 kind: architecture
 owners:
   - amadou-6e
-last_reviewed: 2026-09-14
+last_reviewed: 2026-11-12
 applies_to:
   - financial-workspace
 supersedes: null
@@ -33,14 +33,16 @@ Finance                                       # Contains the complete personal f
 |   |-- Liabilities                          # Records loans, credit balances, taxes payable, and other confirmed obligations.
 |   `-- Monthly snapshots                    # Preserves month-end balances, assets, liabilities, and calculated net worth.
 |-- Cash flow                                # Records actual movements of money during a period.
-|   |-- Earned income                        # Contains salary, investment income, and other earnings.
+|   |-- Income                               # Contains inflows classified by cadence.
+|   |   |-- Recurring income                # Contains expected repeated inflows such as salary.
+|   |   `-- Irregular income                # Contains one-off, occasional, or non-scheduled inflows.
 |   |-- Expense offsets                      # Contains receipts that reverse or reimburse earlier expenses.
 |   |   |-- Employer reimbursements received # Records payments received for approved work expenses.
 |   |   `-- Merchant refunds received        # Records money returned by sellers for purchases or cancellations.
 |   |-- Expenses                             # Contains outflows for consumption, obligations, travel, tax, and fees.
 |   |   |-- Procurement                      # Tracks meaningful goods and services at item or order level.
-|   |   |-- Recurring expenses               # Tracks rent, utilities, insurance, memberships, and scheduled commitments.
-|   |   |-- Everyday spending                # Groups groceries, dining, entertainment, and other frequent small purchases.
+|   |   |-- Recurring spending               # Tracks rent, utilities, insurance, memberships, and scheduled commitments.
+|   |   |-- Irregular spending               # Groups non-scheduled purchases and variable day-to-day outflows.
 |   |   |-- Travel                           # Contains personal transport, accommodation, and travel-related spending.
 |   |   |-- Taxes                            # Contains tax payments and related cash charges.
 |   |   `-- Financial costs                  # Contains interest, account fees, exchange fees, and similar charges.
@@ -58,12 +60,50 @@ Finance                                       # Contains the complete personal f
     |-- Recurring contracts                  # Contains leases, policies, subscriptions, and recurring service agreements.
     |-- Travel                               # Contains tickets, itineraries, bookings, and accommodation evidence.
     |-- Claims and reimbursements            # Contains claim forms, submissions, decisions, and settlement evidence.
-    |-- Employment                           # Contains contracts, payslips, annual certificates, and employer correspondence.
+    |-- Recurring income                     # Contains evidence for repeated inflows, organized by source and year.
+    |-- Irregular income                     # Contains evidence for one-off or occasional inflows.
     |-- Investments                          # Contains broker statements, trade confirmations, and investment tax documents.
     `-- Tax                                  # Contains filings, assessments, certificates, correspondence, and supporting evidence.
 ~~~
 
 Financial position records what is owned and owed at a point in time. Cash flow records actual account movements. Open matters records processes that may produce future payments, refunds, reimbursements, or obligations. Documents contains the original evidence.
+
+Income and spending use the same cadence axis. `Recurring` means the flow is expected to repeat; `irregular` means it is one-off, occasional, or not scheduled. Direction remains separate: income is an inflow and spending is an outflow. The classification describes the expected pattern, not whether the amount is identical each period. Employment evidence previously filed under `Employment` belongs under `Recurring income/<employer>/<year>/`, while each posted salary remains one Cash flow transaction.
+
+## Relationship diagram
+
+The diagram defines identities and links rather than storage duplication. A source document has one `source_id` and one original Drive file. Tax years, transactions, liabilities, procurement records, recurring schedules, and review artifacts reference that identity.
+
+```mermaid
+erDiagram
+    ACCOUNT ||--o{ TRANSACTION : posts
+    TRANSACTION ||--o{ RECORD_LINK : allocates
+    PROCUREMENT ||--o{ RECORD_LINK : explains
+    RECURRING_SERVICE ||--o{ RECORD_LINK : explains
+    LIABILITY ||--o{ RECORD_LINK : settles
+    MATTER ||--o{ RECORD_LINK : relates
+
+    SOURCE_DOCUMENT ||--o{ EVIDENCE_LINK : supports
+    TRANSACTION ||--o{ EVIDENCE_LINK : evidenced_by
+    PROCUREMENT ||--o{ EVIDENCE_LINK : evidenced_by
+    RECURRING_SERVICE ||--o{ EVIDENCE_LINK : evidenced_by
+    LIABILITY ||--o{ EVIDENCE_LINK : evidenced_by
+    MATTER ||--o{ EVIDENCE_LINK : evidenced_by
+
+    TAX_YEAR ||--|| MATTER : tracked_as
+    TAX_YEAR ||--o{ TAX_SOURCE_LINK : indexes
+    SOURCE_DOCUMENT ||--o{ TAX_SOURCE_LINK : referenced_by
+    TAX_YEAR ||--o{ TAX_POSITION : contains
+    TAX_POSITION ||--o{ EVIDENCE_LINK : supported_by
+    TAX_YEAR ||--o{ REVIEW_ARTIFACT : reviewed_by
+    REVIEW_ARTIFACT }o--|| TAX_POSITION : freezes_review_of
+    TAX_YEAR ||--o{ FILING_EVENT : progresses_through
+    FILING_EVENT }o--o{ SOURCE_DOCUMENT : creates_or_receives
+    TAX_YEAR }o--o{ TRANSACTION : payment_or_refund
+    TAX_YEAR }o--o{ LIABILITY : tax_payable
+```
+
+`RECORD_LINK` prevents a purchase, subscription, liability payment, or matter settlement from becoming a second transaction. `EVIDENCE_LINK` separates documentary support from accounting facts. `TAX_SOURCE_LINK` permits the same scholarship award, lease, employment certificate, or bank statement to support several tax years without copying the file.
 
 Employer reimbursements and merchant refunds are expense offsets so they do not inflate earned income. Transfers between owned accounts are neither income nor expenses.
 
@@ -74,6 +114,8 @@ Tax is cross-cutting. Each tax year is an Open matter with a visible lifecycle s
 A tax-relevant purchase remains in its natural expense category and receives tax metadata: tax relevance, tax year, tax category, deductible percentage, business or personal allocation, supporting document, filing status, and filing reference.
 
 Expected tax payments may appear as liabilities once sufficiently certain. Expected tax refunds may appear as receivables. Actual payments and refunds also appear in Cash flow.
+
+Git is authoritative for the living tax workpapers and indexes: `STATUS.md`, `DOCUMENT_ACQUISITION_CHECKLIST.md`, `EVIDENCE_MANIFEST.md`, `NEXT_STEPS.md`, subject analyses, and immutable review metadata. Drive is authoritative for original evidence, submitted filings, assessments, and authority correspondence. A Git evidence row records the stable Drive file ID when available; a folder path alone is insufficient identity. Notion may publish the tax-year Matter status, deadline, and next action, but it does not own the workpaper or evidence bytes.
 
 ## Claims and reimbursements
 
@@ -125,8 +167,9 @@ My Drive/
     |   +-- Housing/2021/, 2024/, 2026/
     |   +-- Insurance/2023/, 2026/
     |   `-- Subscriptions/2026/
-    +-- 🧾 Everyday spending/Receipts/2026/
-    +-- 💼 Employment/bridgingIT/2024/ ... 2026/
+    +-- 🧾 Irregular spending/Receipts/2026/
+    +-- 🔁 Recurring income/bridgingIT/2024/ ... 2026/
+    +-- 🧾 Irregular income/
     +-- 📈 Investments/
     +-- 🧮 Tax/
     |   +-- Elster/                      # Existing older tax files
@@ -144,14 +187,14 @@ The procurement automation folders remain separate at the Drive root: [Procureme
 
 | Implemented remote location | Relation to proposal |
 |---|---|
-| [Financial Workspace](https://drive.google.com/drive/folders/11t4fi7yXKUSyZBpKkiuEehwxqXll6TN3) is a sibling of Documents, with [🏦 Banking](https://drive.google.com/drive/folders/1vQIl5CWKXT9ragc7Ml8YG_it1ictVczd), [📉 Liabilities](https://drive.google.com/drive/folders/1Tz0EyOtc1msQ3Fxp81OswPfNl9iB_Yuk), [💼 Employment](https://drive.google.com/drive/folders/18JclK-t-r1sPBQBBdKgrC8xAOgcSjK4g), [🧮 Tax](https://drive.google.com/drive/folders/1EfvBeHXYdjKtE-9S3B9DsPxdAyTflhd2), and the other proposed categories. | Matches the proposed top-level separation and main categories. |
+| [Financial Workspace](https://drive.google.com/drive/folders/11t4fi7yXKUSyZBpKkiuEehwxqXll6TN3) is a sibling of Documents, with [🏦 Banking](https://drive.google.com/drive/folders/1vQIl5CWKXT9ragc7Ml8YG_it1ictVczd), [📉 Liabilities](https://drive.google.com/drive/folders/1Tz0EyOtc1msQ3Fxp81OswPfNl9iB_Yuk), [🔁 Recurring income](https://drive.google.com/drive/folders/18JclK-t-r1sPBQBBdKgrC8xAOgcSjK4g), [🧾 Irregular income](https://drive.google.com/drive/folders/1EIBNnuuZxJxjqoFacKH-dYip1qbbuj0x), [🧮 Tax](https://drive.google.com/drive/folders/1EfvBeHXYdjKtE-9S3B9DsPxdAyTflhd2), and the other categories. | Implements the symmetric direction-and-cadence classification while preserving the former Employment folder ID. |
 | [PayPal](https://drive.google.com/drive/folders/1ClzG6OAFRx3txcx_cmGR0IU46lIwPgt4) and [Revolut](https://drive.google.com/drive/folders/1lnoY3R8RSyq2UzaCrVZlBY_q4LQDHyi3) statements are filed by year. The one Revolut file covering 2024 and 2025 is stored once under 2025. | Matches year grouping without duplicating cross-year evidence. |
 | [SSKM loan](https://drive.google.com/drive/folders/1fokPnONYdp3us1ZMeQDFmWh7apmkXx-6) and [KfW](https://drive.google.com/drive/folders/1tx4YhVNV0gzUHm8DUKElEKNZDmFuEc7n) are under Liabilities; the dated KfW balance PDF is under 2026. | Matches the liability distinction. Undated loan files remain at provider level. |
 | [Elster](https://drive.google.com/drive/folders/1JsLXmg2x8DVkUbij2AoyA0FFP7KvUAkL) is under Tax. | Older Elster files have not yet been classified into tax-year and document-type folders. |
 | [Billing/Midjourney](https://drive.google.com/drive/folders/1E0jG_UbCaWX7HHgopAvZMJwAFs6C4Y6W) is under [E-Commerce](https://drive.google.com/drive/folders/1BNOTTGhBz6CA4S0Wd-Oo8f-LP0MVHse7). [Siemens financial records](https://drive.google.com/drive/folders/1b8ToXu8RtEOa2zSIx9UaAWEqg5TU4Wjo) are under the existing [Work/Siemens](https://drive.google.com/drive/folders/1k2DtLtCGUZIuBwwTBLdd9hjUpaCSp86R) folder. | Follows the explicit exceptions to the initial proposal. |
-| [Recurring spending](https://drive.google.com/drive/folders/1bErFY9OC6HCf3jgy6NWsYBXDUr98CE-s), [Everyday spending](https://drive.google.com/drive/folders/1Rr0TqdpRuTk8mHB2UrzYf5Fpwe66cwzv), and [Investments](https://drive.google.com/drive/folders/1LAJZLhxkliR95pmE-5rdG5ocwhq95BHu) exist. [Workspace links](https://docs.google.com/document/d/14-h2WwcFpFYKDVveGAspKcE4eK-cGz1pRp8R4f1TqUo/edit) sits at the Financial Workspace root. | The native Google Doc links to the verified purchase and travel folders. [README](https://docs.google.com/document/d/1AtknilGP8OP8VvRN9U08vfABqhC2669euLQ-pjf9tnw/edit) explains the workspace; no dedicated Claims folder was identified. |
+| [Recurring spending](https://drive.google.com/drive/folders/1bErFY9OC6HCf3jgy6NWsYBXDUr98CE-s), [Irregular spending](https://drive.google.com/drive/folders/1Rr0TqdpRuTk8mHB2UrzYf5Fpwe66cwzv), and [Investments](https://drive.google.com/drive/folders/1LAJZLhxkliR95pmE-5rdG5ocwhq95BHu) exist. [Workspace links](https://docs.google.com/document/d/14-h2WwcFpFYKDVveGAspKcE4eK-cGz1pRp8R4f1TqUo/edit) sits at the Financial Workspace root. | The native Google Doc links to the verified purchase and travel folders. [README](https://docs.google.com/document/d/1AtknilGP8OP8VvRN9U08vfABqhC2669euLQ-pjf9tnw/edit) explains the workspace; no dedicated Claims folder was identified. |
 
-Population update, 2026-09-13: Three historical housing records were filed under Recurring spending/Housing/2021 and 2024. Three TK membership and payment-authorisation records were filed under Recurring spending/Insurance/2023. These years follow the available document dates; the actual expense periods have not been verified. Everyday spending and Investments still have no source evidence filed.
+Population update, 2026-11-12: Three historical housing records are filed under Recurring spending/Housing/2021 and 2024. Three TK membership and payment-authorisation records are filed under Recurring spending/Insurance/2023. The former Everyday spending folder was renamed in place to Irregular spending, and the former Employment folder was renamed in place to Recurring income. Irregular income was added. The renamed folders retained their IDs and links.
 
 ### Proposed Finance Drive
 
@@ -193,7 +236,7 @@ Financial Workspace/
 |   |       \-- [PDF] Beitragsrechnung_2026.pdf
 |   \-- Subscriptions/
 |       \-- 2026/  -> [PDF] Jahresrechnung_2026.pdf
-+-- 🧾 Everyday spending/                            # Original receipt images retained when useful.
++-- 🧾 Irregular spending/                           # Evidence for non-scheduled and variable outflows.
 |   \-- Receipts/
 |       \-- 2026/
 |           +-- 2026-08/
@@ -201,12 +244,22 @@ Financial Workspace/
 |           |   \-- [PDF] 2026-08-18_Restaurant_24-50.pdf
 |           \-- 2026-09/
 |               \-- [HEIC] 2026-09-03_Hardware-store_18-90.heic
-+-- 💼 Employment/                                   # Financial employment evidence only.
-|   \-- BridgingIT/
-|       \-- 2026/
-|           +-- [PDF] Lohnabrechnung_2026-08.pdf
-|           +-- [PDF] Lohnsteuerbescheinigung_2026.pdf
-|           \-- [PDF] Reisekostenerstattung_2026-05.pdf
++-- 🔁 Recurring income/                             # Evidence for expected repeated inflows.
+|   +-- BMW/
+|   |   +-- 2021/ -> [PDF] 2021_bmw-lohnsteuerbescheinigung.pdf
+|   |   \-- 2022/ -> [PDF] 2022_bmw-lohnsteuerbescheinigung.pdf
+|   +-- Bahnwärter Thiel/
+|   |   +-- 2023/ -> [PDF] 2023-12_lohnabrechnung.pdf
+|   |   \-- 2024/ -> [PDF] 2024_lohnkonto.pdf
+|   +-- CRAFT/
+|   |   \-- 2024/ -> [PDF] sozialversicherungsabmeldung.pdf
+|   \-- bridgingIT/
+|       +-- 2024/ -> [PDF] lohnsteuerbescheinigung.pdf
+|       +-- 2025/
+|       |   +-- [PDF] lohnsteuerbescheinigung.pdf
+|       |   \-- [PDF] sv-meldebescheinigung.pdf
+|       \-- 2026/ -> [PDF] Lohnabrechnung_2026-08.pdf
++-- 🧾 Irregular income/                             # Evidence for one-off or occasional inflows.
 +-- 📈 Investments/                                  # Statements, confirmations, and certificates.
 |   \-- Broker name/
 |       \-- 2026/
