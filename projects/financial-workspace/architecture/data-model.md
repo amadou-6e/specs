@@ -4,7 +4,7 @@ status: draft
 kind: architecture
 owners:
   - amadou-6e
-last_reviewed: 2026-09-14
+last_reviewed: 2026-11-12
 applies_to:
   - financial-workspace
 supersedes: null
@@ -65,6 +65,41 @@ Finance                                       # Contains the complete personal f
 
 Financial position records what is owned and owed at a point in time. Cash flow records actual account movements. Open matters records processes that may produce future payments, refunds, reimbursements, or obligations. Documents contains the original evidence.
 
+## Relationship diagram
+
+The diagram defines identities and links rather than storage duplication. A source document has one `source_id` and one original Drive file. Tax years, transactions, liabilities, procurement records, recurring schedules, and review artifacts reference that identity.
+
+```mermaid
+erDiagram
+    ACCOUNT ||--o{ TRANSACTION : posts
+    TRANSACTION ||--o{ RECORD_LINK : allocates
+    PROCUREMENT ||--o{ RECORD_LINK : explains
+    RECURRING_SERVICE ||--o{ RECORD_LINK : explains
+    LIABILITY ||--o{ RECORD_LINK : settles
+    MATTER ||--o{ RECORD_LINK : relates
+
+    SOURCE_DOCUMENT ||--o{ EVIDENCE_LINK : supports
+    TRANSACTION ||--o{ EVIDENCE_LINK : evidenced_by
+    PROCUREMENT ||--o{ EVIDENCE_LINK : evidenced_by
+    RECURRING_SERVICE ||--o{ EVIDENCE_LINK : evidenced_by
+    LIABILITY ||--o{ EVIDENCE_LINK : evidenced_by
+    MATTER ||--o{ EVIDENCE_LINK : evidenced_by
+
+    TAX_YEAR ||--|| MATTER : tracked_as
+    TAX_YEAR ||--o{ TAX_SOURCE_LINK : indexes
+    SOURCE_DOCUMENT ||--o{ TAX_SOURCE_LINK : referenced_by
+    TAX_YEAR ||--o{ TAX_POSITION : contains
+    TAX_POSITION ||--o{ EVIDENCE_LINK : supported_by
+    TAX_YEAR ||--o{ REVIEW_ARTIFACT : reviewed_by
+    REVIEW_ARTIFACT }o--|| TAX_POSITION : freezes_review_of
+    TAX_YEAR ||--o{ FILING_EVENT : progresses_through
+    FILING_EVENT }o--o{ SOURCE_DOCUMENT : creates_or_receives
+    TAX_YEAR }o--o{ TRANSACTION : payment_or_refund
+    TAX_YEAR }o--o{ LIABILITY : tax_payable
+```
+
+`RECORD_LINK` prevents a purchase, subscription, liability payment, or matter settlement from becoming a second transaction. `EVIDENCE_LINK` separates documentary support from accounting facts. `TAX_SOURCE_LINK` permits the same scholarship award, lease, employment certificate, or bank statement to support several tax years without copying the file.
+
 Employer reimbursements and merchant refunds are expense offsets so they do not inflate earned income. Transfers between owned accounts are neither income nor expenses.
 
 ## Tax
@@ -74,6 +109,8 @@ Tax is cross-cutting. Each tax year is an Open matter with a visible lifecycle s
 A tax-relevant purchase remains in its natural expense category and receives tax metadata: tax relevance, tax year, tax category, deductible percentage, business or personal allocation, supporting document, filing status, and filing reference.
 
 Expected tax payments may appear as liabilities once sufficiently certain. Expected tax refunds may appear as receivables. Actual payments and refunds also appear in Cash flow.
+
+Git is authoritative for the living tax workpapers and indexes: `STATUS.md`, `DOCUMENT_ACQUISITION_CHECKLIST.md`, `EVIDENCE_MANIFEST.md`, `NEXT_STEPS.md`, subject analyses, and immutable review metadata. Drive is authoritative for original evidence, submitted filings, assessments, and authority correspondence. A Git evidence row records the stable Drive file ID when available; a folder path alone is insufficient identity. Notion may publish the tax-year Matter status, deadline, and next action, but it does not own the workpaper or evidence bytes.
 
 ## Claims and reimbursements
 

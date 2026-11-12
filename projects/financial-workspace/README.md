@@ -1,6 +1,6 @@
 ﻿# Financial Workspace
 
-Status: Drive folder structure implemented; finance data model remains a discussion draft.
+Status: Drive folder structure implemented; tax-year workspace and relationship model specified for implementation review.
 
 ## Intent
 
