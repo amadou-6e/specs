@@ -291,3 +291,10 @@ status and repository access. Selecting/reconnecting an existing entry is distin
 from Add connection. New consent returns to the list; installation-wide GitHub App
 configuration remains separate. Naming, duplicate accounts and the placement of
 Use this connection remain explicit discussion questions in the diagram.
+
+The workshop now starts with **01 - Connection state graph**. S01-S08 link to
+editable screen pages, and each new screen links back to the graph. The connections
+list separates account identity, status, repository summary and row action; it
+includes empty-list guidance. Earlier layout studies remain for discussion history.
+State IDs map the normal, reconnect, cancellation and missing-setup branches before
+screen geometry. All new pages remain proposals pending owner design review.
