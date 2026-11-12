@@ -277,32 +277,25 @@ refresh/logout) and P9 (failed revocation must stop logout; successful logout
 removes the private cookie) are explicit implementation/real-story checks. No
 further plan review is requested or treated as runtime proof.
 
-## Sign-in flow workshop ? 2026-11-12
+## Connection-manager workshop - 2026-11-12
 
-The first two pages of [the editable workshop](github-account-connections.drawio)
-propose a simpler user sign-in flow and a separate installation setup flow.
-They are discussion drafts, not accepted replacements for the existing state pages.
-The Draw.io pages own the proposed geometry, transitions and open questions.
-Existing authorization, explicit repository consent and credential boundaries remain
-in the canonical contract. No implementation or acceptance is established here.
+[The single editable canvas](github-account-connections.drawio) is a proposed
+workshop, not implementation acceptance. Read it in this order:
 
-Workshop refinement: saved connections are shown as a collection with account,
-status and repository access. Selecting/reconnecting an existing entry is distinct
-from Add connection. New consent returns to the list; installation-wide GitHub App
-configuration remains separate. Naming, duplicate accounts and the placement of
-Use this connection remain explicit discussion questions in the diagram.
+1. **State graph:** start at A, distinguish View existing from Add connection.
+   Adding saves a new entry; reconnecting updates the selected entry and requires
+   its expected account. GitHub authorization and service decisions look distinct.
+2. **Screens A-C:** saved connection rows, existing connection details, and explicit
+   repository read consent. Dotted connectors map graph states to matching IDs.
+3. **Screens D-E:** installation-wide App configuration and shared safe recovery.
+   Neither is a competing account login. Setup alone grants no repository access.
+4. **Recovery and variant map:** compact mappings preserve C01-C14, E01-E05, H01,
+   P01-P10, N01-N20 and R01-R08 behavior without retaining the old reference dump.
 
-The workshop now starts with **01 - Connection state graph**. S01-S08 link to
-editable screen pages, and each new screen links back to the graph. The connections
-list separates account identity, status, repository summary and row action; it
-includes empty-list guidance. Earlier layout studies remain for discussion history.
-State IDs map the normal, reconnect, cancellation and missing-setup branches before
-screen geometry. All new pages remain proposals pending owner design review.
+Custom labels, duplicate-account handling, source-picker selection versus settings,
+and where the operator enters setup remain open decisions, marked in the canvas.
+The existing contract retains authority over owner/session, credential custody,
+explicit consent and response fencing. Prior layout studies remain in Git history.
 
-## Single-canvas workshop
-
-The Draw.io now has one page: the state graph is above the current screen mockups,
-with dashed connectors from states to screens. Installation setup follows below;
-existing detailed authorization and recovery states are retained farther down the
-same canvas. The redundant earlier layout study is removed (available in Git
-history). Earlier references to workshop tabs/pages describe superseded layouts.
+The new workshop is narrower than full PR #411: static design review does not prove
+GitHub integration, runtime fidelity, credential provisioning or owner acceptance.
