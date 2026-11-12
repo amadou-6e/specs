@@ -285,3 +285,9 @@ They are discussion drafts, not accepted replacements for the existing state pag
 The Draw.io pages own the proposed geometry, transitions and open questions.
 Existing authorization, explicit repository consent and credential boundaries remain
 in the canonical contract. No implementation or acceptance is established here.
+
+Workshop refinement: saved connections are shown as a collection with account,
+status and repository access. Selecting/reconnecting an existing entry is distinct
+from Add connection. New consent returns to the list; installation-wide GitHub App
+configuration remains separate. Naming, duplicate accounts and the placement of
+Use this connection remain explicit discussion questions in the diagram.
