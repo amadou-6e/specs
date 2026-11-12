@@ -109,10 +109,10 @@ Its authorizing/verifying/consent states are not connection-record states. A rea
 connection is replaced only after successful verification and explicit consent.
 Every failed/cancelled/expired attempt preserves its previous ready connection.
 
-Draw.io cards use unique UI identifiers C01-C14 and error cards E01-E05. Pending
-attempt transitions P01-P10, ready-connection transitions R01-R08 and navigation
-N01-N20 are separately owned on their named pages. Story IDs GC01-GC10 below
-reference these IDs; a story number is never a second identity for a UI card.
+The current single canvas uses Screens A-F. Historical C01-C14 and E01-E05
+identifiers, pending transitions P01-P10, ready transitions R01-R08 and navigation
+N01-N20 are preserved as mappings in zone 04. The story matrix below is a derived
+traceability index; these are not additional pages or duplicate UI cards.
 App registration, app installation and local read consent are separate actions.
 The Install / manage app repositories control derives
 `https://github.com/apps/APP-NAME/installations/new` from the trusted configured
@@ -286,10 +286,12 @@ workshop, not implementation acceptance. Read it in this order:
    Adding saves a new entry; reconnecting updates the selected entry and requires
    its expected account. GitHub authorization and service decisions look distinct.
 2. **Screens A-C:** saved connection rows, existing connection details, and explicit
-   repository read consent. Dotted connectors map graph states to matching IDs.
+   repository read consent. Dotted connectors map graph states to matching screen IDs.
 3. **Screens D-E:** installation-wide App configuration and shared safe recovery.
    Neither is a competing account login. Setup alone grants no repository access.
-4. **Recovery and variant map:** compact mappings preserve C01-C14, E01-E05, H01,
+4. **Screen F:** deliberate masked token entry, independent of GitHub App setup;
+   verification still leads to explicit read consent or safe refusal.
+5. **Recovery and variant map:** compact mappings preserve C01-C14, E01-E05, H01,
    P01-P10, N01-N20 and R01-R08 behavior without retaining the old reference dump.
 
 Custom labels, duplicate-account handling, source-picker selection versus settings,
