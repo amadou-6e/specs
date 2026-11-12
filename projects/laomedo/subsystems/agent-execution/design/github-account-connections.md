@@ -276,3 +276,12 @@ These follow-up wording additions are checked deterministically. P8 (concurrent
 refresh/logout) and P9 (failed revocation must stop logout; successful logout
 removes the private cookie) are explicit implementation/real-story checks. No
 further plan review is requested or treated as runtime proof.
+
+## Sign-in flow workshop ? 2026-11-12
+
+The first two pages of [the editable workshop](github-account-connections.drawio)
+propose a simpler user sign-in flow and a separate installation setup flow.
+They are discussion drafts, not accepted replacements for the existing state pages.
+The Draw.io pages own the proposed geometry, transitions and open questions.
+Existing authorization, explicit repository consent and credential boundaries remain
+in the canonical contract. No implementation or acceptance is established here.
