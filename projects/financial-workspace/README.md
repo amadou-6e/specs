@@ -15,6 +15,7 @@ The [live README](https://docs.google.com/document/d/1AtknilGP8OP8VvRN9U08vfABqh
 ## System roles
 
 - Google Drive stores original statements, receipts, contracts, certificates, and the native Workspace links and README documents.
+- Cash-flow evidence is symmetric by direction and cadence: Recurring income, Irregular income, Recurring spending, and Irregular spending.
 - The local financial repository holds normalized transactions, reconciliation decisions, exception history, and projected figures with assumptions.
 - Notion shows procurement cards, status, and dashboards. Its presentation is not a substitute for source evidence.
 - Purchase, travel, and work case documents remain in their subject folders. The native [Workspace links](https://docs.google.com/document/d/14-h2WwcFpFYKDVveGAspKcE4eK-cGz1pRp8R4f1TqUo/edit) document points to the verified purchase and travel areas.
