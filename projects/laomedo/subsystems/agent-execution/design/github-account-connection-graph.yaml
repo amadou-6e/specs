@@ -440,3 +440,24 @@ edges:
       end_arrow: "classic"
       dashed: true
 
+
+elk_layout_constraints:
+  start_node: "start"
+  start_layer: "FIRST"
+  direction: "RIGHT"
+  model_order: "NODES_AND_EDGES"
+  forward_edge_priority:
+    start-list: 10000
+    select: 1000
+    add: 1000
+    yes: 1000
+    verified: 1000
+    account-ok: 1000
+    consent-new: 1000
+    consent-update: 1000
+    reconnect: 500
+    token-choice: 1000
+    verify-token: 1000
+    replace-token: 500
+    not-configured: 100
+  return_edge_priority: 0

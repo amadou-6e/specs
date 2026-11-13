@@ -316,3 +316,11 @@ group coordinates when integrating it into the single canonical canvas. Screen
 association remains identifier-only (A-F); screen mockups sit clear of the wider
 ELK graph. Inspect an export of the exact final Draw.io at full-canvas and graph
 scales; an automatic layout does not establish visual or runtime acceptance.
+
+The owner-selected reading order is START and Connections first, then authorization,
+verification, consent and save/update outcomes. The ELK call flattens invisible
+single-node groups for layering, assigns START the FIRST layer, and gives forward
+edges greater direction priority than cyclic return edges. Exact options are
+recorded under `elk_layout_constraints` in the YAML; the skill's default launcher
+does not apply that extension automatically. The native Draw.io contains the
+resulting inspected positions and routes. No transition endpoints are changed.
