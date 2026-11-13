@@ -298,8 +298,10 @@ mockups; no graph-to-screen edges are drawn.
 - **D - Installation setup:** host-wide App configuration, not an account login.
 - **E1 - Attempt problem:** method-specific auth retry retains target and method.
   An uncertain save uses Check connections first, not automatic replay.
+  A failed access check offers Check access again (bound verification), not forced
+  sign-in or token replacement.
 - **E2 - Removal incomplete:** private access stays fenced; Retry removal concerns
-  local deletion only. Close does not start sign-in or restore access.
+  local deletion only. Close returns to A without starting sign-in or restoring access.
 
 The blue context panel explicitly records new versus selected-connection attempts,
 expected account/generation and method preservation. Service verification and
@@ -313,7 +315,7 @@ The workshop does not silently settle them or introduce administrator roles.
 ## Graph layout source
 
 [Styled YAML](github-account-connection-graph.yaml) owns graph input to the
-selected drawio-creation skill. The corrected topology has 13 nodes and 33 edges;
+selected drawio-creation skill. The corrected topology has 13 nodes and 34 edges;
 preserving the earlier flawed 24-edge model is no longer an acceptance criterion.
 ELK Layered places nodes and routes orthogonal edges. START is constrained first,
 with forward direction priorities and group flattening recorded in

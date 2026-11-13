@@ -84,7 +84,7 @@ nodes:
       font_size: 15
       rounded: true
   verify:
-    label: "Verify bound account\nand current repositories"
+    label: "Verify account / repositories\nExpected account on reconnect"
     style:
       shape: "rectangle"
       width: 230
@@ -317,7 +317,7 @@ edges:
   setup-ready:
     from: "setup"
     to: "method"
-    label: "Resume Add"
+    label: "Save or cancel; resume Add"
     style:
       stroke: "#64748b"
       end_arrow: "classic"
@@ -501,7 +501,7 @@ edges:
   disconnect-ok:
     from: "detail"
     to: "list"
-    label: "Disconnect confirmed"
+    label: "Disconnected"
     style:
       stroke: "#64748b"
       end_arrow: "classic"
@@ -524,8 +524,16 @@ edges:
       dashed: true
   close-cleanup:
     from: "cleanup-error"
-    to: "detail"
+    to: "list"
     label: "Close (still disconnected)"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: true
+  retry-access-check:
+    from: "attempt-error"
+    to: "verify"
+    label: "Check access again\n(selected entry)"
     style:
       stroke: "#64748b"
       end_arrow: "classic"
