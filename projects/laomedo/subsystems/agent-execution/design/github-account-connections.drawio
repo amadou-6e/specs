@@ -597,7 +597,7 @@
                 <mxCell id="m-copy" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=17;fontColor=#71717a;fontStyle=0;align=left;" value="We opened GitHub to finish connecting your account.&#10;Return here after you authorize access." vertex="1">
                     <mxGeometry height="74" width="500" x="400.0" y="4956.0" as="geometry" />
                 </mxCell>
-                <mxCell id="m-open" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;fillColor=#18181b;strokeColor=#18181b;fontColor=#ffffff;fontStyle=1;" value="Open GitHub" vertex="1">
+                <mxCell id="m-open" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;fillColor=#18181b;strokeColor=#18181b;fontColor=#ffffff;fontStyle=1;" value="Open GitHub again" vertex="1">
                     <mxGeometry height="44" width="500" x="400.0" y="5064.0" as="geometry" />
                 </mxCell>
                 <mxCell id="m-help" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=14;fontColor=#71717a;fontStyle=0;align=center;" value="If GitHub did not open, use the button above." vertex="1">
@@ -856,6 +856,8 @@
                     <mxGeometry height="260" width="1500" x="1400" y="9440" as="geometry" />
                 </mxCell><mxCell id="user-story-6-screen-copy" parent="1" style="rounded=1;arcSize=5;html=1;whiteSpace=wrap;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#18181b;fontSize=17;align=left;verticalAlign=top;spacing=18;" value="US06 - Disconnect an account&#10;&#10;As a user, I want to disconnect a selected GitHub connection, so Laomedo stops using its access.&#10;&#10;Laomedo does the work: Laomedo blocks further private reads, clears private views and removes its stored credentials. It reports incomplete cleanup honestly and does not claim to revoke GitHub consent." vertex="1">
                     <mxGeometry height="260" width="1500" x="1400" y="10380" as="geometry" />
+                </mxCell><mxCell id="d-advanced" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=14;fontColor=#52525b;fontStyle=0;align=center;" value="Advanced: use a personal access token" vertex="1">
+                    <mxGeometry height="28" width="520" x="390.0" y="8984.0" as="geometry" />
                 </mxCell></root>
         </mxGraphModel>
     </diagram>
