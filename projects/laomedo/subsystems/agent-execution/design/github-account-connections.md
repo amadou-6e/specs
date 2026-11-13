@@ -342,3 +342,34 @@ no graph consistency or runtime completion is claimed by this screen-only revisi
 Provisioning the integration securely is Laomedo/deployment responsibility, with
 its concrete architecture still unresolved. Existing operator-configuration
 contracts are not silently rewritten or treated as implemented by these mockups.
+
+## Visual references and screen gallery - 2026-11-13
+
+The owner requested researched visual cleanup because the wide, vertically
+compressed strips were hard to read. Screen mockups now occupy 1200 x 760 editable
+viewport frames in a gallery below the existing workshop. Each shows one state;
+state variants and design annotations are outside the product surface. Graph and
+user-story cells were preserved exactly. Identifiers still link screens to the
+graph without connector edges. No runtime or graph-alignment completion implied.
+
+Inspected references (2026-11-13):
+
+- [shadcn/ui login blocks](https://ui.shadcn.com/blocks/login), including the official
+  [login-01 reference](references/github-connections-shadcn-login-01.png) and
+  [login-03 reference](references/github-connections-shadcn-login-03.png): focused
+  content width, consistent form spacing, restrained borders and primary actions.
+  Source images are from ui.shadcn.com/r/styles/new-york/login-01-light.png and
+  login-03-light.png; retained as attributed visual references, not Laomedo screens.
+- [GitHub Primer ActionList](https://primer.style/product/components/action-list/):
+  consistent single-column items with leading identity and trailing actions.
+- [Notion connection management](https://www.notion.com/help/add-and-manage-connections-with-the-api):
+  a list of saved connections with a focused management path. Used as a product-flow
+  reference, not as copied geometry or new permission policy.
+
+Applied visual choices: 28 px main headings, 16-17 px body, 14 px secondary copy,
+44 px actions, regular spacing, aligned account rows and quieter status pills.
+Browser sign-in is still automatic with an Open GitHub fallback; token entry is
+secondary; no App registration or credentials are introduced. C illustrates a
+user-selected repository, not a preselected default. Native shapes remain editable.
+The new visual revision is unreviewed; structural and visual self-checks are not
+independent design approval or integration acceptance.
