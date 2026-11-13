@@ -301,3 +301,13 @@ explicit consent and response fencing. Prior layout studies remain in Git histor
 
 The new workshop is narrower than full PR #411: static design review does not prove
 GitHub integration, runtime fidelity, credential provisioning or owner acceptance.
+
+## Graph layout source
+
+[The styled YAML graph](github-account-connection-graph.yaml) records node grouping,
+matrix order, shapes and transition labels for the drawio-creation skill's
+`render_fixed_routes.py` (Libavoid). It regenerates the graph component only, not
+the screen workshop. The canonical Draw.io retains the final inspected manual
+label offsets and separated opposite-direction lanes. Screen association uses
+matching A-F identifiers, never connector edges. Rendering the final whole canvas
+and graph detail is required after rerouting; the routing score is not acceptance.
