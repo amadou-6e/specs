@@ -325,3 +325,20 @@ extension automatically. Screen mockups stay outside the graph bounds.
 Export and inspect the exact canonical Draw.io at full-canvas and component scales
 after topology/layout changes. A structural check or an earlier design review
 establishes neither live GitHub acceptance nor complete specification approval.
+
+## Screen-only alignment to minimal-effort stories
+
+The owner selected US01-US06, appended on the existing canvas, then requested screen
+edits only. The current screen revision makes Add open GitHub automatically;
+M is the waiting/return screen with an Open GitHub fallback and optional Advanced
+token entry. It is no longer a required method-selection step. D is an unavailable
+message, not user-managed App registration. No client ID, secret or callback is
+requested in normal user screens. A supports direct reauthorization when needed;
+C discovers/searches repositories and refreshes automatically after GitHub return.
+
+Graph nodes, edges, graph YAML and the story section were deliberately preserved.
+Their earlier setup/method-choice model is not yet aligned to these screen changes;
+no graph consistency or runtime completion is claimed by this screen-only revision.
+Provisioning the integration securely is Laomedo/deployment responsibility, with
+its concrete architecture still unresolved. Existing operator-configuration
+contracts are not silently rewritten or treated as implemented by these mockups.
