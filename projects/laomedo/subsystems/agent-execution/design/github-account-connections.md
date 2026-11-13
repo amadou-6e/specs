@@ -304,10 +304,15 @@ GitHub integration, runtime fidelity, credential provisioning or owner acceptanc
 
 ## Graph layout source
 
-[The styled YAML graph](github-account-connection-graph.yaml) records node grouping,
-matrix order, shapes and transition labels for the drawio-creation skill's
-`render_fixed_routes.py` (Libavoid). It regenerates the graph component only, not
-the screen workshop. The canonical Draw.io retains the final inspected manual
-label offsets and separated opposite-direction lanes. Screen association uses
-matching A-F identifiers, never connector edges. Rendering the final whole canvas
-and graph detail is required after rerouting; the routing score is not acceptance.
+[The styled YAML graph](github-account-connection-graph.yaml) records nodes,
+groups, shapes and transition labels for the drawio-creation skill.
+The current graph uses `render_elk_layout.py`: ELK Layered owns both node placement
+and orthogonal edge routes. It replaces the earlier fixed-node Libavoid layout;
+the previous version remains in Git history. All 12 nodes and 24 transition
+source/target pairs are preserved.
+
+Regenerate the graph component only, not the screen workshop. Flatten generated
+group coordinates when integrating it into the single canonical canvas. Screen
+association remains identifier-only (A-F); screen mockups sit clear of the wider
+ELK graph. Inspect an export of the exact final Draw.io at full-canvas and graph
+scales; an automatic layout does not establish visual or runtime acceptance.
