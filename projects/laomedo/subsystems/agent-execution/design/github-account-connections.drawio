@@ -519,7 +519,7 @@
                 <mxCell id="a-brand" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=16;fontColor=#52525b;fontStyle=1;align=left;" value="Laomedo" vertex="1">
                     <mxGeometry height="30" width="280" x="82.0" y="3752.0" as="geometry" />
                 </mxCell>
-                <mxCell id="a-caption" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=15;fontColor=#52525b;fontStyle=0;align=left;" value="Connected list. Reauthorization is offered only for the account that needs it; ready accounts keep a quiet management action." vertex="1">
+                <mxCell id="a-caption" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=15;fontColor=#52525b;fontStyle=0;align=left;" value="Every saved account opens its details, including accounts needing sign-in. Details keep Disconnect reachable independently of authorization availability." vertex="1">
                     <mxGeometry height="62" width="1192" x="54.0" y="4514.0" as="geometry" />
                 </mxCell>
                 <mxCell id="a-content" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;" value="" vertex="1">
@@ -567,7 +567,7 @@
                 <mxCell id="a-state1" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;fillColor=#fffbeb;strokeColor=none;fontColor=#92400e;fontSize=13;" value="Sign-in required" vertex="1">
                     <mxGeometry height="30" width="174" x="766.0" y="4188.0" as="geometry" />
                 </mxCell>
-                <mxCell id="a-view1" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;" value="Sign in again" vertex="1">
+                <mxCell id="a-view1" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;" value="View connection" vertex="1">
                     <mxGeometry height="44" width="192" x="970.0" y="4182.0" as="geometry" />
                 </mxCell>
                 <mxCell id="a-separator1" parent="1" style="fillColor=#e4e4e7;strokeColor=none;" value="" vertex="1">
@@ -759,7 +759,7 @@
                 <mxCell id="f-cancel" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=15;fontColor=#71717a;fontStyle=0;align=center;" value="Cancel" vertex="1">
                     <mxGeometry height="30" width="520" x="390.0" y="8066.0" as="geometry" />
                 </mxCell>
-                <mxCell id="d-id" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=17;fontColor=#1d4ed8;fontStyle=1;align=left;" value="D / GitHub unavailable" vertex="1">
+                <mxCell id="d-id" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=17;fontColor=#1d4ed8;fontStyle=1;align=left;" value="D / GitHub sign-in not configured" vertex="1">
                     <mxGeometry height="30" width="1200" x="50.0" y="8388.0" as="geometry" />
                 </mxCell>
                 <mxCell id="d-viewport" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;fillColor=#f8fafc;arcSize=6;" value="" vertex="1">
@@ -777,16 +777,16 @@
                 <mxCell id="d-icon" parent="1" style="ellipse;html=1;fillColor=#f4f4f5;strokeColor=none;fontColor=#52525b;fontSize=21;" value="..." vertex="1">
                     <mxGeometry height="44" width="44" x="390.0" y="8624.0" as="geometry" />
                 </mxCell>
-                <mxCell id="d-title" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=27;fontColor=#18181b;fontStyle=1;align=left;" value="GitHub is unavailable" vertex="1">
+                <mxCell id="d-title" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=27;fontColor=#18181b;fontStyle=1;align=left;" value="GitHub sign-in isn't set up" vertex="1">
                     <mxGeometry height="74" width="520" x="390.0" y="8700.0" as="geometry" />
                 </mxCell>
-                <mxCell id="d-body" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=16;fontColor=#71717a;fontStyle=0;align=left;" value="We could not connect to GitHub right now.&#10;Your saved connections have not changed." vertex="1">
+                <mxCell id="d-body" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=16;fontColor=#71717a;fontStyle=0;align=left;" value="GitHub sign-in hasn't been set up for this installation.&#10;Your saved connections haven't changed." vertex="1">
                     <mxGeometry height="84" width="520" x="390.0" y="8796.0" as="geometry" />
                 </mxCell>
-                <mxCell id="d-primary" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;fillColor=#18181b;strokeColor=#18181b;fontColor=#ffffff;fontStyle=1;" value="Try again" vertex="1">
+                <mxCell id="d-primary" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;fillColor=#18181b;strokeColor=#18181b;fontColor=#ffffff;fontStyle=1;" value="Go back" vertex="1">
                     <mxGeometry height="44" width="292" x="390.0" y="8924.0" as="geometry" />
                 </mxCell>
-                <mxCell id="d-secondary" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;" value="Go back" vertex="1">
+                <mxCell id="d-secondary" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;" value="Check again" vertex="1">
                     <mxGeometry height="44" width="204" x="706.0" y="8924.0" as="geometry" />
                 </mxCell>
                 <mxCell id="e1-id" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=17;fontColor=#1d4ed8;fontStyle=1;align=left;" value="E1 / Sign-in recovery" vertex="1">
