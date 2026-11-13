@@ -109,7 +109,7 @@ Its authorizing/verifying/consent states are not connection-record states. A rea
 connection is replaced only after successful verification and explicit consent.
 Every failed/cancelled/expired attempt preserves its previous ready connection.
 
-The current single canvas uses Screens A-F. Historical C01-C14 and E01-E05
+The current single canvas uses Screens A, B, M, F, C, D, E1 and E2. Historical C01-C14 and E01-E05
 identifiers, pending transitions P01-P10, ready transitions R01-R08 and navigation
 N01-N20 are preserved as mappings in zone 04. The story matrix below is a derived
 traceability index; these are not additional pages or duplicate UI cards.
@@ -277,50 +277,49 @@ refresh/logout) and P9 (failed revocation must stop logout; successful logout
 removes the private cookie) are explicit implementation/real-story checks. No
 further plan review is requested or treated as runtime proof.
 
-## Connection-manager workshop - 2026-11-12
+## Connection-manager workshop - task flow audit
 
-[The single editable canvas](github-account-connections.drawio) is a proposed
-workshop, not implementation acceptance. Read it in this order:
+[The single editable canvas](github-account-connections.drawio) is a discussion
+draft, not runtime acceptance. Screen identifiers associate graph nodes and
+mockups; no graph-to-screen edges are drawn.
 
-1. **State graph:** start at A, distinguish View existing from Add connection.
-   Adding saves a new entry; reconnecting updates the selected entry and requires
-   its expected account. GitHub authorization and service decisions look distinct.
-2. **Screens A-C:** saved connection rows, existing connection details, and explicit
-   repository read consent. Matching A-F identifiers associate graph states with screens; no graph-to-screen edges are drawn.
-3. **Screens D-E:** installation-wide App configuration and shared safe recovery.
-   Neither is a competing account login. Setup alone grants no repository access.
-4. **Screen F:** deliberate masked token entry, independent of GitHub App setup;
-   verification still leads to explicit read consent or safe refusal.
-5. **Recovery and variant map:** compact mappings preserve C01-C14, E01-E05, H01,
-   P01-P10, N01-N20 and R01-R08 behavior without retaining the old reference dump.
+- **A - Connections:** one Add connection entry point. Every saved row opens B.
+- **M - Add connection:** choose browser sign-in (default when configured) or a
+  personal access token. Browser unavailable is a disabled option with a reason;
+  explicit installation setup opens D, then returns to M retaining Add intent.
+- **B - Connection details:** Change repositories revalidates before C. A browser
+  entry requiring sign-in uses Sign in again; a token entry uses Replace token.
+  Both are bound to that entry and its expected account. Disconnect has its own
+  local removal outcome, never an implicit provider-side revocation claim.
+- **F - Personal access token:** deliberate masked input, cleared on submit or
+  cancel. Account and current repository verification precede C. No App required.
+- **C - Choose repositories:** Save access creates a row for a new attempt or
+  updates the selected entry for an existing attempt. Cancel returns to origin.
+- **D - Installation setup:** host-wide App configuration, not an account login.
+- **E1 - Attempt problem:** method-specific auth retry retains target and method.
+  An uncertain save uses Check connections first, not automatic replay.
+- **E2 - Removal incomplete:** private access stays fenced; Retry removal concerns
+  local deletion only. Close does not start sign-in or restore access.
 
-Custom labels, duplicate-account handling, source-picker selection versus settings,
-and where the operator enters setup remain open decisions, marked in the canvas.
-The existing contract retains authority over owner/session, credential custody,
-explicit consent and response fencing. Prior layout studies remain in Git history.
+The blue context panel explicitly records new versus selected-connection attempts,
+expected account/generation and method preservation. Service verification and
+saving are not user choices. The variant map preserves historical C01-C14,
+E01-E05, H01, P01-P10, N01-N20 and R01-R08 coverage without duplicate screens.
 
-The new workshop is narrower than full PR #411: static design review does not prove
-GitHub integration, runtime fidelity, credential provisioning or owner acceptance.
+Duplicate-account handling, custom names, optional disconnect confirmation,
+saving an empty selection and source-picker selection remain owner decisions.
+The workshop does not silently settle them or introduce administrator roles.
 
 ## Graph layout source
 
-[The styled YAML graph](github-account-connection-graph.yaml) records nodes,
-groups, shapes and transition labels for the drawio-creation skill.
-The current graph uses `render_elk_layout.py`: ELK Layered owns both node placement
-and orthogonal edge routes. It replaces the earlier fixed-node Libavoid layout;
-the previous version remains in Git history. All 12 nodes and 24 transition
-source/target pairs are preserved.
+[Styled YAML](github-account-connection-graph.yaml) owns graph input to the
+selected drawio-creation skill. The corrected topology has 13 nodes and 33 edges;
+preserving the earlier flawed 24-edge model is no longer an acceptance criterion.
+ELK Layered places nodes and routes orthogonal edges. START is constrained first,
+with forward direction priorities and group flattening recorded in
+`elk_layout_constraints`; the skill's default launcher does not apply that
+extension automatically. Screen mockups stay outside the graph bounds.
 
-Regenerate the graph component only, not the screen workshop. Flatten generated
-group coordinates when integrating it into the single canonical canvas. Screen
-association remains identifier-only (A-F); screen mockups sit clear of the wider
-ELK graph. Inspect an export of the exact final Draw.io at full-canvas and graph
-scales; an automatic layout does not establish visual or runtime acceptance.
-
-The owner-selected reading order is START and Connections first, then authorization,
-verification, consent and save/update outcomes. The ELK call flattens invisible
-single-node groups for layering, assigns START the FIRST layer, and gives forward
-edges greater direction priority than cyclic return edges. Exact options are
-recorded under `elk_layout_constraints` in the YAML; the skill's default launcher
-does not apply that extension automatically. The native Draw.io contains the
-resulting inspected positions and routes. No transition endpoints are changed.
+Export and inspect the exact canonical Draw.io at full-canvas and component scales
+after topology/layout changes. A structural check or an earlier design review
+establishes neither live GitHub acceptance nor complete specification approval.

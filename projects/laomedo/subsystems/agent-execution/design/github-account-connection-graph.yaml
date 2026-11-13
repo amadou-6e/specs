@@ -3,7 +3,7 @@ title: "GitHub connection state graph"
 matrix:
   rows: 4
   columns: 4
-  cells: [["group-start", "group-list", null, "group-detail"], ["group-setup", "group-gate", "group-github", "group-verify"], ["group-token", null, "group-failure", "group-consent"], [null, null, "group-save-new", "group-save-existing"]]
+  cells: [["group-start", "group-list", "group-method", "group-github"], ["group-detail", "group-token", "group-verify", "group-consent"], ["group-setup", "group-attempt-error", "group-save", "group-cleanup-error"], ["group-origin", null, null, null]]
   origin: [60, 280]
   column_widths: [270, 270, 270, 300]
   column_gaps: [110, 110, 110]
@@ -17,50 +17,6 @@ routing:
   segmentPenalty: 25
   fixedSharedPathPenalty: 100
 nodes:
-  verify:
-    label: "Verify account / token"
-    style:
-      shape: "rectangle"
-      width: 240
-      height: 90
-      fill: "#f1f5f9"
-      stroke: "#64748b"
-      font_color: "#18181b"
-      font_size: 16
-      rounded: true
-  consent:
-    label: "C - Repository consent"
-    style:
-      shape: "rectangle"
-      width: 280
-      height: 90
-      fill: "#ffffff"
-      stroke: "#2563eb"
-      font_color: "#18181b"
-      font_size: 16
-      rounded: true
-  failure:
-    label: "E - Recovery"
-    style:
-      shape: "rectangle"
-      width: 240
-      height: 90
-      fill: "#ffffff"
-      stroke: "#b91c1c"
-      font_color: "#18181b"
-      font_size: 16
-      rounded: true
-  token:
-    label: "F - Token entry"
-    style:
-      shape: "rectangle"
-      width: 240
-      height: 90
-      fill: "#ffffff"
-      stroke: "#2563eb"
-      font_color: "#18181b"
-      font_size: 16
-      rounded: true
   start:
     label: "START"
     style:
@@ -72,84 +28,187 @@ nodes:
       font_color: "#18181b"
       font_size: 16
       rounded: true
-  github:
-    label: "GitHub authorization"
-    style:
-      shape: "rectangle"
-      width: 240
-      height: 90
-      fill: "#f1f5f9"
-      stroke: "#64748b"
-      font_color: "#18181b"
-      font_size: 16
-      rounded: true
-  save-new:
-    label: "Save new connection"
-    style:
-      shape: "rectangle"
-      width: 240
-      height: 90
-      fill: "#f1f5f9"
-      stroke: "#64748b"
-      font_color: "#18181b"
-      font_size: 16
-      rounded: true
   list:
     label: "A - Connections"
     style:
       shape: "rectangle"
-      width: 240
-      height: 90
+      width: 230
+      height: 95
       fill: "#ffffff"
       stroke: "#2563eb"
       font_color: "#18181b"
-      font_size: 16
-      rounded: true
-  setup:
-    label: "D - App setup"
-    style:
-      shape: "rectangle"
-      width: 240
-      height: 90
-      fill: "#ffffff"
-      stroke: "#2563eb"
-      font_color: "#18181b"
-      font_size: 16
-      rounded: true
-  save-existing:
-    label: "Update selected connection"
-    style:
-      shape: "rectangle"
-      width: 240
-      height: 90
-      fill: "#f1f5f9"
-      stroke: "#64748b"
-      font_color: "#18181b"
-      font_size: 16
-      rounded: true
-  gate:
-    label: "App configured?"
-    style:
-      shape: "rhombus"
-      width: 240
-      height: 90
-      fill: "#f1f5f9"
-      stroke: "#64748b"
-      font_color: "#18181b"
-      font_size: 16
+      font_size: 15
       rounded: true
   detail:
-    label: "B - Existing connection"
+    label: "B - Connection details"
     style:
       shape: "rectangle"
-      width: 240
-      height: 90
+      width: 230
+      height: 95
       fill: "#ffffff"
       stroke: "#2563eb"
       font_color: "#18181b"
-      font_size: 16
+      font_size: 15
+      rounded: true
+  method:
+    label: "M - Add connection\nChoose method"
+    style:
+      shape: "rectangle"
+      width: 230
+      height: 95
+      fill: "#ffffff"
+      stroke: "#2563eb"
+      font_color: "#18181b"
+      font_size: 15
+      rounded: true
+  github:
+    label: "GitHub authorization\nExternal GitHub page"
+    style:
+      shape: "rectangle"
+      width: 230
+      height: 95
+      fill: "#f1f5f9"
+      stroke: "#64748b"
+      font_color: "#18181b"
+      font_size: 15
+      rounded: true
+  token:
+    label: "F - Personal access token"
+    style:
+      shape: "rectangle"
+      width: 230
+      height: 95
+      fill: "#ffffff"
+      stroke: "#2563eb"
+      font_color: "#18181b"
+      font_size: 15
+      rounded: true
+  verify:
+    label: "Verify bound account\nand current repositories"
+    style:
+      shape: "rectangle"
+      width: 230
+      height: 95
+      fill: "#f1f5f9"
+      stroke: "#64748b"
+      font_color: "#18181b"
+      font_size: 15
+      rounded: true
+  consent:
+    label: "C - Choose repositories"
+    style:
+      shape: "rectangle"
+      width: 230
+      height: 95
+      fill: "#ffffff"
+      stroke: "#2563eb"
+      font_color: "#18181b"
+      font_size: 15
+      rounded: true
+  save:
+    label: "Save verified access"
+    style:
+      shape: "rectangle"
+      width: 230
+      height: 95
+      fill: "#f1f5f9"
+      stroke: "#64748b"
+      font_color: "#18181b"
+      font_size: 15
+      rounded: true
+  setup:
+    label: "D - Installation setup"
+    style:
+      shape: "rectangle"
+      width: 230
+      height: 95
+      fill: "#ffffff"
+      stroke: "#2563eb"
+      font_color: "#18181b"
+      font_size: 15
+      rounded: true
+  attempt-error:
+    label: "E1 - Attempt problem"
+    style:
+      shape: "rectangle"
+      width: 230
+      height: 95
+      fill: "#ffffff"
+      stroke: "#b91c1c"
+      font_color: "#18181b"
+      font_size: 15
+      rounded: true
+  cleanup-error:
+    label: "E2 - Removal incomplete"
+    style:
+      shape: "rectangle"
+      width: 230
+      height: 95
+      fill: "#ffffff"
+      stroke: "#b91c1c"
+      font_color: "#18181b"
+      font_size: 15
+      rounded: true
+  origin:
+    label: "Return to origin\nNew: A / existing: B"
+    style:
+      shape: "rectangle"
+      width: 230
+      height: 95
+      fill: "#f1f5f9"
+      stroke: "#64748b"
+      font_color: "#18181b"
+      font_size: 15
       rounded: true
 groups:
+  group-start:
+    title: ""
+    layout: "column"
+    children: ["start"]
+    style:
+      padding: [0, 0, 0, 0]
+      fill: "#ffffff"
+      stroke: "#ffffff"
+  group-list:
+    title: ""
+    layout: "column"
+    children: ["list"]
+    style:
+      padding: [0, 0, 0, 0]
+      fill: "#ffffff"
+      stroke: "#ffffff"
+  group-detail:
+    title: ""
+    layout: "column"
+    children: ["detail"]
+    style:
+      padding: [0, 0, 0, 0]
+      fill: "#ffffff"
+      stroke: "#ffffff"
+  group-method:
+    title: ""
+    layout: "column"
+    children: ["method"]
+    style:
+      padding: [0, 0, 0, 0]
+      fill: "#ffffff"
+      stroke: "#ffffff"
+  group-github:
+    title: ""
+    layout: "column"
+    children: ["github"]
+    style:
+      padding: [0, 0, 0, 0]
+      fill: "#ffffff"
+      stroke: "#ffffff"
+  group-token:
+    title: ""
+    layout: "column"
+    children: ["token"]
+    style:
+      padding: [0, 0, 0, 0]
+      fill: "#ffffff"
+      stroke: "#ffffff"
   group-verify:
     title: ""
     layout: "column"
@@ -166,50 +225,10 @@ groups:
       padding: [0, 0, 0, 0]
       fill: "#ffffff"
       stroke: "#ffffff"
-  group-failure:
+  group-save:
     title: ""
     layout: "column"
-    children: ["failure"]
-    style:
-      padding: [0, 0, 0, 0]
-      fill: "#ffffff"
-      stroke: "#ffffff"
-  group-token:
-    title: ""
-    layout: "column"
-    children: ["token"]
-    style:
-      padding: [0, 0, 0, 0]
-      fill: "#ffffff"
-      stroke: "#ffffff"
-  group-start:
-    title: ""
-    layout: "column"
-    children: ["start"]
-    style:
-      padding: [0, 0, 0, 0]
-      fill: "#ffffff"
-      stroke: "#ffffff"
-  group-github:
-    title: ""
-    layout: "column"
-    children: ["github"]
-    style:
-      padding: [0, 0, 0, 0]
-      fill: "#ffffff"
-      stroke: "#ffffff"
-  group-save-new:
-    title: ""
-    layout: "column"
-    children: ["save-new"]
-    style:
-      padding: [0, 0, 0, 0]
-      fill: "#ffffff"
-      stroke: "#ffffff"
-  group-list:
-    title: ""
-    layout: "column"
-    children: ["list"]
+    children: ["save"]
     style:
       padding: [0, 0, 0, 0]
       fill: "#ffffff"
@@ -222,26 +241,26 @@ groups:
       padding: [0, 0, 0, 0]
       fill: "#ffffff"
       stroke: "#ffffff"
-  group-save-existing:
+  group-attempt-error:
     title: ""
     layout: "column"
-    children: ["save-existing"]
+    children: ["attempt-error"]
     style:
       padding: [0, 0, 0, 0]
       fill: "#ffffff"
       stroke: "#ffffff"
-  group-gate:
+  group-cleanup-error:
     title: ""
     layout: "column"
-    children: ["gate"]
+    children: ["cleanup-error"]
     style:
       padding: [0, 0, 0, 0]
       fill: "#ffffff"
       stroke: "#ffffff"
-  group-detail:
+  group-origin:
     title: ""
     layout: "column"
-    children: ["detail"]
+    children: ["origin"]
     style:
       padding: [0, 0, 0, 0]
       fill: "#ffffff"
@@ -255,114 +274,58 @@ edges:
       stroke: "#64748b"
       end_arrow: "classic"
       dashed: false
+  add:
+    from: "list"
+    to: "method"
+    label: "Add connection"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: false
   select:
     from: "list"
     to: "detail"
-    label: "View existing"
+    label: "View connection"
     style:
       stroke: "#64748b"
       end_arrow: "classic"
       dashed: false
-  add:
-    from: "list"
-    to: "gate"
-    label: "+ Add connection"
-    style:
-      stroke: "#64748b"
-      end_arrow: "classic"
-      dashed: false
-  yes:
-    from: "gate"
+  browser:
+    from: "method"
     to: "github"
-    label: "Yes"
+    label: "Sign in with GitHub"
     style:
       stroke: "#64748b"
       end_arrow: "classic"
       dashed: false
-  verified:
+  token-choice:
+    from: "method"
+    to: "token"
+    label: "Use personal access token"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: false
+  setup-link:
+    from: "method"
+    to: "setup"
+    label: "Set up GitHub sign-in"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: true
+  setup-ready:
+    from: "setup"
+    to: "method"
+    label: "Resume Add"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: true
+  signed-in:
     from: "github"
     to: "verify"
-    label: "Callback"
-    style:
-      stroke: "#64748b"
-      end_arrow: "classic"
-      dashed: false
-  account-ok:
-    from: "verify"
-    to: "consent"
-    label: "Verified"
-    style:
-      stroke: "#64748b"
-      end_arrow: "classic"
-      dashed: false
-  reconnect:
-    from: "detail"
-    to: "github"
-    label: "Reconnect browser entry"
-    style:
-      stroke: "#64748b"
-      end_arrow: "classic"
-      dashed: false
-  consent-new:
-    from: "consent"
-    to: "save-new"
-    label: "New entry"
-    style:
-      stroke: "#64748b"
-      end_arrow: "classic"
-      dashed: false
-  consent-update:
-    from: "consent"
-    to: "save-existing"
-    label: "Existing entry"
-    style:
-      stroke: "#64748b"
-      end_arrow: "classic"
-      dashed: false
-  return-new:
-    from: "save-new"
-    to: "list"
-    label: "New entry"
-    style:
-      stroke: "#64748b"
-      end_arrow: "classic"
-      dashed: false
-  return-updated:
-    from: "save-existing"
-    to: "list"
-    label: "Same entry"
-    style:
-      stroke: "#64748b"
-      end_arrow: "classic"
-      dashed: false
-  not-configured:
-    from: "gate"
-    to: "setup"
-    label: "No"
-    style:
-      stroke: "#64748b"
-      end_arrow: "classic"
-      dashed: false
-  wrong-account:
-    from: "verify"
-    to: "failure"
-    label: "Wrong account / refused"
-    style:
-      stroke: "#64748b"
-      end_arrow: "classic"
-      dashed: true
-  cancel:
-    from: "github"
-    to: "failure"
-    label: "Cancelled / failed"
-    style:
-      stroke: "#64748b"
-      end_arrow: "classic"
-      dashed: true
-  token-choice:
-    from: "list"
-    to: "token"
-    label: "Use token"
+    label: "Signed in"
     style:
       stroke: "#64748b"
       end_arrow: "classic"
@@ -375,58 +338,42 @@ edges:
       stroke: "#64748b"
       end_arrow: "classic"
       dashed: false
-  token-cancel:
-    from: "token"
-    to: "list"
-    label: "Cancel"
-    style:
-      stroke: "#64748b"
-      end_arrow: "classic"
-      dashed: true
-  edit-access:
-    from: "detail"
+  account-ok:
+    from: "verify"
     to: "consent"
-    label: "Edit access"
+    label: "Verified"
     style:
       stroke: "#64748b"
       end_arrow: "classic"
-      dashed: true
-  disconnect-return:
+      dashed: false
+  save-access:
+    from: "consent"
+    to: "save"
+    label: "Save access"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: false
+  saved-new:
+    from: "save"
+    to: "list"
+    label: "New: saved row"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: false
+  saved-existing:
+    from: "save"
+    to: "detail"
+    label: "Existing: updated"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: false
+  reconnect-browser:
     from: "detail"
-    to: "list"
-    label: "Disconnect locally"
-    style:
-      stroke: "#64748b"
-      end_arrow: "classic"
-      dashed: true
-  disconnect-incomplete:
-    from: "detail"
-    to: "failure"
-    label: "Cleanup failed"
-    style:
-      stroke: "#64748b"
-      end_arrow: "classic"
-      dashed: true
-  setup-ready:
-    from: "setup"
-    to: "list"
-    label: "Configured"
-    style:
-      stroke: "#64748b"
-      end_arrow: "classic"
-      dashed: true
-  dismiss-return:
-    from: "failure"
-    to: "list"
-    label: "Dismiss"
-    style:
-      stroke: "#64748b"
-      end_arrow: "classic"
-      dashed: true
-  retry-flow:
-    from: "failure"
     to: "github"
-    label: "Retry browser"
+    label: "Sign in again"
     style:
       stroke: "#64748b"
       end_arrow: "classic"
@@ -439,8 +386,150 @@ edges:
       stroke: "#64748b"
       end_arrow: "classic"
       dashed: true
-
-
+  edit-access:
+    from: "detail"
+    to: "verify"
+    label: "Change repositories"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: true
+  verify-refused:
+    from: "verify"
+    to: "attempt-error"
+    label: "Verification refused"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: true
+  browser-refused:
+    from: "github"
+    to: "attempt-error"
+    label: "Sign-in failed"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: true
+  save-problem:
+    from: "save"
+    to: "attempt-error"
+    label: "Save unconfirmed"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: true
+  retry-browser:
+    from: "attempt-error"
+    to: "github"
+    label: "Retry browser"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: true
+  retry-token:
+    from: "attempt-error"
+    to: "token"
+    label: "Retry token"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: true
+  uncertain-save:
+    from: "attempt-error"
+    to: "origin"
+    label: "Check state first"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: true
+  cancel-method:
+    from: "method"
+    to: "origin"
+    label: "Cancel"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: true
+  cancel-token:
+    from: "token"
+    to: "origin"
+    label: "Cancel"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: true
+  cancel-github:
+    from: "github"
+    to: "origin"
+    label: "Cancel"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: true
+  cancel-consent:
+    from: "consent"
+    to: "origin"
+    label: "Cancel"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: true
+  back-error:
+    from: "attempt-error"
+    to: "origin"
+    label: "Back / dismiss"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: true
+  origin-new:
+    from: "origin"
+    to: "list"
+    label: "New attempt"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: true
+  origin-existing:
+    from: "origin"
+    to: "detail"
+    label: "Existing attempt"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: true
+  disconnect-ok:
+    from: "detail"
+    to: "list"
+    label: "Disconnect confirmed"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: true
+  disconnect-partial:
+    from: "detail"
+    to: "cleanup-error"
+    label: "Cleanup failed"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: true
+  retry-cleanup:
+    from: "cleanup-error"
+    to: "list"
+    label: "Retry removal"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: true
+  close-cleanup:
+    from: "cleanup-error"
+    to: "detail"
+    label: "Close (still disconnected)"
+    style:
+      stroke: "#64748b"
+      end_arrow: "classic"
+      dashed: true
 elk_layout_constraints:
   start_node: "start"
   start_layer: "FIRST"
@@ -448,16 +537,15 @@ elk_layout_constraints:
   model_order: "NODES_AND_EDGES"
   forward_edge_priority:
     start-list: 10000
-    select: 1000
     add: 1000
-    yes: 1000
-    verified: 1000
-    account-ok: 1000
-    consent-new: 1000
-    consent-update: 1000
-    reconnect: 500
+    browser: 1000
     token-choice: 1000
+    signed-in: 1000
     verify-token: 1000
+    account-ok: 1000
+    save-access: 1000
+    select: 1000
+    reconnect-browser: 500
     replace-token: 500
-    not-configured: 100
+    edit-access: 500
   return_edge_priority: 0
