@@ -286,7 +286,7 @@ workshop, not implementation acceptance. Read it in this order:
    Adding saves a new entry; reconnecting updates the selected entry and requires
    its expected account. GitHub authorization and service decisions look distinct.
 2. **Screens A-C:** saved connection rows, existing connection details, and explicit
-   repository read consent. Dotted connectors map graph states to matching screen IDs.
+   repository read consent. Matching A-F identifiers associate graph states with screens; no graph-to-screen edges are drawn.
 3. **Screens D-E:** installation-wide App configuration and shared safe recovery.
    Neither is a competing account login. Setup alone grants no repository access.
 4. **Screen F:** deliberate masked token entry, independent of GitHub App setup;
