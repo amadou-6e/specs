@@ -70,7 +70,13 @@ single-OS-user Windows installation. Profiles select setups, not separate Window
 users or hosted tenants. The owner requires a PIN for profile entry/switching and
 no separate administrator workflow; see the proposed [local profile design](../design/local-profiles.md).
 One profile may have multiple separately selected GitHub
-connections; each has its own principal, generation, consent and private store. Every private route resolves the actual authenticated app
+connections; each has its own principal, generation, consent and private store.
+For the same verified numeric GitHub account within one profile, Add Connection
+reuses the existing non-disconnected connection and opens repository access for
+review. Save replaces its consent and credential under the existing generation
+check; Cancel preserves it. Concurrent new attempts must not save duplicate
+connections for that account. This does not combine accounts across profiles.
+Every private route resolves the actual authenticated app
 principal, never an owner supplied in JSON or a shared service bearer token.
 The private broker, vault adapter, object reader and private store are owned by
 the native Windows Langflow backend process. Its authenticated route dependency
