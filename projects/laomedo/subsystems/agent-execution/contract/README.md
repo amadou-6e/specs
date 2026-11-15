@@ -11,6 +11,9 @@ related: []
 
 # Agent execution contract index
 
+[Graph-connected MCP tools](mcp-tools.md) owns native Toolset connections,
+selected external tool grants and their app/runner lifecycle for issue #280.
+
 Canonical draft requirements: [Codex](codex.md), [Claude](claude.md),
 [OpenCode](opencode.md), [isolation](isolation.md),
 [shared local agent protocol](agent-protocol.md),
