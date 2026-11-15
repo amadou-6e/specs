@@ -1,5 +1,5 @@
 ---
-title: Read-only Skill files in Langflow
+title: Skill workspace in Langflow
 status: draft
 kind: specification
 owners: [laomedo-maintainers]
@@ -9,7 +9,7 @@ supersedes: null
 related: []
 ---
 
-# Read-only Skill files in Langflow
+# Skill workspace in Langflow
 
 Tracking: [specs #370](https://github.com/amadou-6e/specs/issues/370) and
 [Laomedo #154](https://github.com/amadou-6e/laomedo/issues/154).
@@ -24,7 +24,7 @@ owns panel geometry, visible states and transitions; this page indexes it.
 | SF02 | Opening the panel captures Skill ID and exact revision; no model turn or graph execution occurs. |
 | SF03 | Header displays the shortened current revision (full hash on hover) and Read only. Close returns to the unchanged graph. |
 | SF04 | Explorer folders expand/collapse and files open tabs; default SKILL.md; closing a tab chooses another open file. |
-| SF05 | Source uses locally bundled Monaco, read-only, syntax highlighting and editor search. Markdown files also offer Preview. |
+| SF05 | Source uses locally bundled Monaco, read-only, syntax highlighting; SH08 owns workspace search. Markdown files also offer Preview. |
 | SF06 | Markdown preview skips raw HTML and remote images, renders links as text, and never executes scripts or commands. |
 | SF07 | Loading has status text. Missing/invalid/corrupt or oversized revision has a fixed error and Retry. No stale file survives a changed selection. |
 | SF08 | Binary source files show metadata and an unsupported-preview message. No download/write/run action. |
@@ -40,6 +40,17 @@ resizable navigation/content separator), plus SH06 (collapsible summary and full
 revision-local documentation). Its public
 contract is [Skill operations](../contract/skill-operations.md). File browsing
 stays read-only; the graph's Operation input creates candidates separately.
+
+## Navigation disclosure (SH02 / SH07)
+
+Find, Files and Commits use their own chevrons, without redundant action menus. The
+single SKILL menu offers **Collapse all** only when all three sections and every
+folder are open. Otherwise it offers **Open all**, including mixed disclosure
+states. The action changes all three sections and all folders; it preserves the
+selected file, tabs, commit, scroll and pinned current revision. Individual
+chevrons still work. Hide navigation and Reset navigation width remain separate
+menu actions, with existing keyboard, Escape/outside dismissal and focus rules.
+The diagram records all-open, mixed, all-closed and hidden-column states.
 
 ## API and boundary
 
@@ -124,13 +135,16 @@ skill; automatic runtime dispatch is not introduced by this UI change.
 
 ## Collapsible navigation
 
-SH07 in the navigation-states Draw.io page owns two independently collapsible
-sections, Files and Commits, with compact uppercase headers, disclosure chevrons
-and three-dot action disclosures. Both start expanded and share the available
-height. Collapse either to let the other use all remaining height beneath both
-headers. Keep bodies mounted so file, commit, scroll and pagination state survive.
-Section actions expand only that section or expand both. The column header
-three-dot actions hide navigation or reset its width.
+SH07 owns the compact uppercase Files and Commits headers (SH08 adds Find) and their disclosure
+chevrons, without per-section action menus. Open sections share the available column
+height; when one closes, the others fill the remaining height. Keep section and
+folder bodies mounted while hidden so file, tab, commit and scroll state survive.
+The SKILL menu owns the single state-aware Collapse all / Open all action,
+including folders nested inside closed sections. With no folders, all three sections
+open counts as all open. Hide navigation and Reset navigation width remain
+separate. The selected source/comparison stays visible when all sections close.
+After the bulk action flips its label, close the menu and return focus to its
+trigger. Reset disclosure only when the selected Skill/revision changes.
 
 SH05 accepts widths 0 or 180-600 px, further bounded to retain editor space.
 Dragging below 90 px snaps closed; dragging right past that threshold restores
@@ -164,3 +178,151 @@ host integration documentation. Restate the single-JSON-object operation
 contract after the snapshot. The Agent proposes content and never invokes host
 prepare/apply or supplies provenance. Apply must leave a meaningful description,
 including when an edit would otherwise remove an existing one.
+
+
+## Workspace Find and full-page viewing (SH08 / SH09)
+
+The diagram's fourth page owns these controls and states. Find is a third
+collapsible section in the Skill sidebar, initially closed. It searches the
+pinned current snapshot's text files locally, with literal case-insensitive
+matching and an Aa case toggle. Group matching lines by file, showing line
+numbers and bounded highlighted snippets. Empty queries prompt for text; no
+matches are explicit. Limit displayed matching lines to 500 and disclose
+truncation. Binary and historical-only files are excluded. Result selection
+returns to current source, opens the file and selects/reveals its match.
+Repeated selection works. Collapse/reopen retains the query and results.
+Ctrl/Cmd+F opens and focuses Find; Escape inside Find collapses it and returns
+focus to the header. Remove the old Find in file button and editor find widget.
+The SKILL bulk action includes Find as well as Files, Commits and folders.
+
+Full page and Restore window resize the same accessible dialog within the
+browser viewport. Preserve file, tabs, commit, search, disclosure and navigation
+width; do not navigate away or use the browser fullscreen API. Retain close,
+Escape, focus trapping and resizing. Snapshot/history loading and failure/Retry
+states remain distinct from an empty search. These controls are read-only and
+never dispatch a graph, model, edit or external resource request.
+
+Acceptance covers cross-file/nested matches, case/no-match/empty states, result
+selection after history comparison, repeated selection, collapse/reopen and
+keyboard focus, full-page/restore with preserved state at normal/small
+viewports, and existing real failure/Retry paths. Proposed design is not
+implementation or owner acceptance.
+
+
+## Explorer type icons and disclosure (SH10)
+
+The fifth Draw.io page owns the explorer row geometry. Place a locally bundled
+16 px file-type logo immediately before each filename, with a generic fallback
+for unknown names/extensions; known names such as Dockerfile may use their
+type logo. Use the installed VS Code Codicon chevron-right/down for
+folders and section headers instead of filled text triangles. SH10 supersedes
+the older state diagrams' filled-arrow glyphs. Reserve a
+chevron slot on file rows to align root and nested filenames consistently.
+Icons are decorative; retain filename-only accessible names, folder
+aria-expanded and the existing read-only selection/keyboard/disclosure rules.
+Long names may truncate visually; expose their full relative path on hover.
+No remote icon assets, dependencies or file reads are introduced.
+
+Acceptance checks real file icons, folder open/closed chevrons, keyboard and
+bulk actions, selection retention, normal/full-page/small viewports and
+light/dark contrast. Extension/fallback mappings use internal regression
+controls; do not manufacture file types or history for a live demonstration.
+
+
+## Manual workspace and registry publication (SH11–SH13)
+
+The sixth Draw.io page owns icon window controls, nested search results and the
+manual editing/publication states. SH11 supersedes SH09's textual window toggle
+and SH10's generic Markdown logo with the exact VS Code Seti glyph. SH12 search
+groups use folders, files and match rows with independent disclosure, counts and
+the existing Codicon arrows. Search includes unsaved current text during editing;
+historical comparisons remain immutable. Global disclosure includes search groups.
+
+SH13 extends the viewer with always-on text editing at the journal head when
+local host grants and the existing versioned edit policy permit it. Opening the
+viewer selects that head automatically without changing the graph's pinned
+revision. Skill ID and short SHA share one compact line; no generic viewer description paragraph,
+Edit, Review publication or Open latest editable revision control is shown.
+
+The existing SH06 Skill summary/overview stays visible; only the generic viewer
+description paragraph is removed.
+
+Markdown text uses one icon toggle fixed at the right of the scrollable file tabs.
+Its tooltip and accessible name describe the destination: Preview Markdown or Show
+source; pressed means preview is active. Pointer, Enter and Space switch views
+without losing unsaved text. Preview renders the working copy. There is no separate
+Source/Preview/bytes bar, including its byte count. SH13 supersedes the earlier
+toolbar drawings. Other file types retain their source or binary view. Show source
+also applies to read-only text. Selecting a Find result or pressing Ctrl+F while
+previewing returns to source so the match can be selected.
+
+Publish and Discard appear at the bottom right only after a file changes, with an
+additional retained state when this session saved a candidate but promotion failed.
+On a fresh open with only earlier unpublished commits, the footer stays hidden
+until a new file edit, as requested; existing history remains inspectable.
+The message is an
+optional commit message (default `Update Skill files`, backend `operator`
+provenance). A compact footer disclosure counts and lists the cumulative changed
+files against registry current, explicitly including earlier saved changes. A path
+opens that file's working-copy-to-registry diff in the main editor. Publish waits
+for this exact comparison; Retry comparison recovers failure. There is no separate
+review mode. Publish is one explicit action: save all changed files
+as one immutable commit, then promote that exact candidate against the captured
+registry current by compare-and-swap. Each stage retains its exact replay identity
+when its outcome is uncertain; Check result reconciles that stage. A definitive
+publication failure retains the saved candidate and supports retry or further
+edits. Discard clears working edits and reloads the journal head; it never deletes
+a saved commit or changes registry current. Closing with unsaved work requires
+confirmation; in-flight or uncertain writes must be reconciled before closing.
+Historical comparisons remain available without altering the working buffers.
+
+Defaults deny writes. Failures use the shared descriptive presenter and retain
+working edits or saved candidates. This is a trusted single-user local service,
+not per-user access control or a signed audit. Binary editing and durable recovery
+of unsaved buffers after browser crash are unsupported; browser unload warns while
+edits remain. No model run, Git publication, source write or automatic graph-pin
+update occurs.
+
+
+Manual failure cards remain within the active Skill dialog's interaction boundary
+while appearing at the bottom-right of the screen. Dismiss, Copy and Escape must
+work with pointer and keyboard; dismissing a card preserves the viewer and its
+working buffers. Window resizing and full-page mode never move a card outside the
+visible screen. The implementation uses a dialog-owned top-layer stack where
+supported rather than an inert body-level sibling of a modal dialog.
+
+While a modal is open, background global notifications retain state but remain
+hidden outside its focus boundary. They reappear after closing; modal error cards
+remain reachable and cannot hide Publish behind an unrelated notification.
+
+The authenticated application owns the open workspace above transient canvas
+toolbars. Refresh and reconnection retain its exact selection, buffers and pending
+identity; a new toolbar request cannot replace it. Leaving the authenticated
+application releases in-memory state; reload/crash restoration remains unsupported.
+
+
+## SH14 - File actions
+
+The Skill explorer file actions page owns context-menu Upload files, Rename,
+Delete and Copy relative path, internal drag-and-drop moves, and external file
+imports. It defines target selection, inline confirmation/forms, immutable batch
+publication, working-copy Discard and protected SKILL.md. Binary files are accepted
+only under explicit asset/path policy; their editor remains metadata-only.
+Empty folders and importing directories are unsupported. The drawing defines
+collision/limit refusal, read-only/busy gating and error recovery.
+
+Keyboard opens the context menu using Shift+F10 or the ContextMenu key; Move to
+provides the drag equivalent. Focus returns to the surviving/new row or root.
+The diagram enumerates root/folder/file/required-entrypoint menus, visible disabled
+reasons and an in-dialog portal boundary. It also fixes the exact inert suffixes,
+secret-path refusals and unchanged byte identity independent of wire encoding.
+
+The root context/drop target covers the entire Files pane, including blank space.
+New destination restrictions do not prevent unrelated actions after text edits at
+existing legacy paths; whole-tree collisions and limits still apply.
+
+
+SH15 supersedes SH14 rename/delete/move/drop states: inline filename rename, immediate deletion and Files-local undo/redo, retained working empty folders, drag-only moves, grey drop rows, JSON braces and inert raster/hex binary previews. Empty folders are local to the open workspace; registry revisions remain file-only.
+
+
+SH16 supersedes SH13 inline Discard confirmation and SH15 binary metadata/focus styling: full-area binary preview without byte/hash row, blue keyboard focus without an outline after inline rename, centered modal Discard/dirty-close confirmation with focus trapping and safe cancellation.

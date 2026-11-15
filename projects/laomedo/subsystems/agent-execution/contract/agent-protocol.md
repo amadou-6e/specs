@@ -19,7 +19,7 @@ Codex request queues, Claude stream-JSON readers or OpenCode HTTP/SSE execution
 clients beside that path. This changes the agent wire, not the authenticated
 [runner HTTP API](runner-api.md) used by the graph.
 
-Implementation is on draft [Laomedo PR #214](https://github.com/amadou-6e/laomedo/pull/250).
+Implementation is on draft [Laomedo PR #250](https://github.com/amadou-6e/laomedo/pull/250).
 Runner checks below are bounded evidence, not graph acceptance or merge approval.
 
 ## Protocol and policy requirements
@@ -169,84 +169,51 @@ Sources: [ACP stdio transport](https://agentclientprotocol.com/protocol/v1/trans
 [OpenCode ACP](https://opencode.ai/docs/acp/) and
 [native CLI](https://opencode.ai/docs/cli/).
 
-## Provider role contracts (#275)
+## Provider extension contracts (#275)
 
-The following vocabulary describes the interim #275 implementation. The reviewed
-[#277 target](../design/provider-roles.md) supersedes these internal role signatures
-for the next refactor: retain shared Docker ownership, extract attempt drivers,
-and remove symmetry-only interfaces. Migration is incomplete; these descriptions
-do not certify substitutability or change public protocol/persistence semantics.
-
+The [direct provider boundaries](../design/provider-roles.md) own the selected
+method, value and lifecycle definitions. The earlier runtime and projector ABC
+proposal is withdrawn. Native runtimes and interpretation helpers remain
+provider-internal; shared Docker mechanics are concrete infrastructure.
 
 ACP is communication, not an Agent process, command executor, credential source,
 model catalogue or Activity interpreter. Provider implementations compose the
 shared `AcpSession`; no redundant protocol ABC is required.
 
-| Role | Required operations and guarantees |
+| Shared consumer boundary | Selected contract |
 | --- | --- |
-| `BaseAgentRuntime` / `{Provider}AgentRuntime` | `start`, `request_cancel`, `shutdown`: own exact launch/session handles and cancellation/cleanup. Typed results distinguish launched from ready, interruption requested from acknowledged, and exact cleanup confirmed from unknown. Codex/OpenCode attempt scopes differ from Claude turn scopes; do not hide that distinction. |
-| `BaseCommandExecutor` / `{Provider}CommandExecutor` | `execute`, `shutdown`: typed command/deadline/result, native policy and bounded cancellation. HTTP/MCP brokers adapt the command contract; they do not replace it. A command's exit status does not establish resource cleanup. |
-| `BaseCredentialProvider` / `{Provider}CredentialProvider` | `prepare`, `validate`, `release`: native admission/refresh and exact borrowed/temporary state lifetime. Identity metadata is separate from secrets. Releasing borrowed credentials does not revoke a host login. |
-| `BaseModelCatalog` / `{Provider}ModelCatalog` | `discover(refresh=False)`: zero-turn native choices, explicit cache/in-flight semantics, no automatic selection substitution. Preserve provider-specific freshness; share mechanisms only when their guarantees match. |
-| `BaseActivityProjector` / `{Provider}ActivityProjector` | `project`: canonical shared Pydantic values from provider-native observations. Usage unknown differs from zero; native parsing and pricing belong to the provider. Function helpers may parse records. |
-| `AgentProviderRegistry` / `AgentProviderDescriptor` | Host-controlled built-in identities, actual capability metadata and factories. External graph input never chooses imports, executable paths, credential locations or unregistered providers. No provider-specific registry subclasses. |
-
-Readiness, process health and isolation are separate typed observations. An
-unsupported/unobserved check cannot report success. Do not add a check ABC
-without a coordinator that actually requires interchangeable implementations.
-
-`start` is a host-only class factory returning `RuntimeLaunch` with an opaque
-owned runtime and its initial `RuntimeObservation`; handles are excluded from
-serialization. `shutdown` awaits native resource closure. Prepared OpenCode
-configuration does not imply a launched controller. Claude's turn session does
-not imply an ACP handshake or a known native session identity. Cancellation
-signals active work and never manufactures native acknowledgement.
-
-Typed credential requests retain provider-native refresh ownership. If requested
-validity/deadline constraints cannot be established by that provider, reject them
-explicitly before refresh rather than returning an enforcement claim. A borrowed
-credential release does not revoke host login. Claude/OpenCode without verified
-native prices retain unknown costs; Codex rates are not a shared fallback.
-
-Catalogue observation is a common contract across providers: `snapshot()` returns
-a detached typed copy of the last observed choices or None, without refreshing,
-substituting selection or asserting freshness. `wait_until_idle(timeout=...)`
-observes serialized discovery/cleanup or its shared in-flight Future. Completion
-does not certify success and does not reserve execution admission. Native TTLs
-and refresh ownership remain local.
+| Agent interaction, Activity and readiness | The existing `BaseAgent` run operations, `read_activity` and `readiness`. Native cancellation acknowledgement and confirmed cleanup remain distinct. |
+| Model discovery | `BaseModelCatalog.list_models(refresh=False)`, `snapshot` and `wait_until_idle`. Discovery never prompts a model or substitutes a selection. |
+| Native command integration | `BaseCommandExecutor.execute` and `shutdown`. HTTP/MCP handlers adapt this contract; command exit status does not establish resource cleanup. |
+| Native credential admission | `BaseCredentialProvider.prepare`, `validate`, `borrow` and `release`. Public identity metadata contains no secret material. |
+| Built-in provider registration | `AgentProviderRegistry` and `AgentProviderDescriptor`: trusted identities and actual capabilities. Graph input cannot choose imports, executables, credentials or unregistered providers. |
 
 `BaseCredentialProvider.borrow()` returns host-only `CredentialMaterial`.
 Inline-token providers project their selected host token; volume/profile
-providers retain secrets in their native owner and return the prepared public
-binding without inventing an inline token. Secret fields remain excluded from
-representations and serialization. The operation does not transfer refresh or
-revocation authority.
+providers keep secrets with their native owner and return a prepared public
+binding. Secret fields are excluded from representations and serialization.
+Borrowing transfers neither refresh nor revocation authority; releasing a
+borrowed profile never revokes host login. Requested validity/deadline
+constraints that cannot be enforced are refused before refresh.
 
-Activity projectors declare both `accepts` and `project`. Recognition is only
-for unqualified retained observations; persisted provider identity takes
-precedence and recognition never selects an execution provider or credential.
+`snapshot()` returns a detached last observation, possibly stale, without
+refreshing or selecting a model. `wait_until_idle(timeout=...)` observes discovery
+and cleanup completion, not success or execution admission. Native cache TTLs
+and refresh ownership remain provider-owned. Readiness, process health and
+isolation are separate observations; unsupported checks never report success.
 
-Command executors expose `execute` and `shutdown`, not a parallel public `close`
-alias. Optional `BaseInterruptibleCommandExecutor` is implemented by providers
-owning transient worker cancellation signals: stop admission, request active-job
-interruption and report unknown native acknowledgement until independently
-observed. Shutdown separately waits for exact cleanup. The optional
-`BaseSplitCommandExecutor` describes native persistent executor liveness and
-controller/executor isolation checks. An executor without that native split
-topology does not emulate one or return a placeholder success. Explicit
-capability declarations remain subject to interface/signature checks; they are
-not concrete-provider exceptions.
+`BaseInterruptibleCommandExecutor` adds `request_cancel` for Claude/OpenCode
+transient workers: stop admission, signal owned work and retain unknown native
+acknowledgement until observed. `shutdown` separately confirms cleanup.
+`BaseSplitCommandExecutor` adds native persistent-executor health and
+controller/executor isolation checks. Providers without that topology do not
+emulate it. Declared capabilities remain subject to interface/signature checks.
 
-Use Python ABC/abstractmethod for actual provider extension contracts and
-Pydantic models for values crossing them. Document ownership, method vocabulary,
-side effects and failures before implementation. Split overlapping roles before
-renaming objects; do not introduce empty modules or package symmetry. Shared
-Docker mechanisms remain composed from py-docker.
-
-Maintain existing public payloads, persisted schemas, native session IDs, stable
-errors, refresh ownership, authorization and fail-closed cleanup. Internal object
-renaming does not rename wire values. Current examples use current definitions;
-no personal saved-source migration support is introduced by this increment.
+Provider-native pricing stays internal. Claude/OpenCode without verified native
+prices retain unknown costs; Codex rates are never a fallback for another
+provider. Maintain public payloads, persisted schemas, session IDs, stable
+errors, authorization and fail-closed cleanup. Renaming internal objects does
+not rename wire values or add personal saved-source migration support.
 
 Acceptance separately covers Fresh, Resume, status, cancellation, model refresh,
 Activity and failure/recovery for each provider. Structural and fixture checks

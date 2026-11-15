@@ -29,8 +29,54 @@ and transitions. This page specifies their data and discovery behavior.
 | SS02 | Skill is a searchable dropdown listing discovered skills from that source. Typing narrows the list; selection chooses a discovered skill rather than accepting an invented ID. |
 | SS03 | Revision uses the same searchable dropdown interaction, scoped to the selected skill. Typing filters discovered revisions rather than accepting an unverified free-text revision. |
 | SS04 | Changing Source clears the previous skill/revision and ignores obsolete discovery responses. Changing Skill clears the previous revision. Never display an old result as belonging to a new selection. |
-| SS05 | Loading, empty source, no filter matches and unavailable source/revision are distinct visible states. Empty or failed discovery offers no implicit executable fallback. |
+| SS05 | Loading remains internal and adds no status text. Empty Source and successful scans, including empty results, show no inline message. The empty Skill selector says No source found until a nonempty Source supplies choices, then Select an option. Filtering still shows its normal no-match state. A failed source/revision scan shows a fixed error below nonempty Source. Empty or failed discovery offers no implicit executable fallback. |
 | SS06 | Once resolved, Skill files opens exactly the selected immutable bundle. Refreshing available choices must not silently change an existing selected revision or an active run. |
+| SS07 | The compact Skill node shows Source, Skill and Operation. Source errors appear below its input without a Discovery heading; clicking the message opens shared recovery and source_discovery_failed under Technical details. Empty Source and success show no message. The empty Skill selector says No source found until discovery supplies options, then Select an option. Revision and Base Commit live in the initially collapsed Advanced settings disclosure. Edit Request and Discovery rows are absent from the card and settings. The editable SS07 page owns layout and disclosure transitions. |
+
+## Compact node controls
+
+The node description is **Use and edit versioned skill files.** New changes arrive
+as an Operation payload, or through manual editing and Publish in Skill files;
+there is no separate editing prompt on the Skill node. A saved legacy feedback
+request may remain hidden compatibility data, preserving that saved graph's
+execution; it is not a newly configurable prompt or a replacement for Operation.
+Direct feedback authoring is legacy-only when a saved request already exists.
+A newly wired return without that request refuses before preparing or dispatching
+an Agent. Preserve `skill_feedback_request_required` under Technical details;
+its recovery directs users to an upstream Operation or manual editor/Publish,
+never to the removed Edit Request control.
+
+Advanced settings expands with pointer or Enter/Space and retains its mounted
+controls and exact values when collapsed. Revision remains an explicit required
+selection; moving it does not select latest or update a saved pin. Source changes
+clear Skill and Revision, while Skill changes clear Revision. Revision remains
+available in Advanced settings when a skill is selected. Operation and
+connected inputs remain on the ordinary canvas path. Minimizing the card hides
+the disclosure without losing selection. The existing Agent disclosure keeps its
+current controls and label.
+
+The frontend identifies `LaomedoSkill` by node type and applies this presentation
+to saved templates too: ignore old `show`/`advanced` flags when hiding
+`edit_request` and grouping `revision_id`/`commit_id`. Hide the request in the
+node settings dialog as well. Do not rewrite any saved value or force a component
+upgrade merely to obtain the compact layout. Expanding/collapsing does not
+refresh discovery. Include a real previously saved graph in acceptance.
+
+Discovery remains internal status, not an editable input or an execution command.
+Only a fixed failure message appears directly below a nonempty
+Source input. Loading and successful scans add no separate status row or heading.
+Empty scan results are quiet, not errors. The failure message itself opens the
+shared error presenter; it adds no separate details button beside the text.
+Use the shared catalogue entry for `source_discovery_failed`, keeping this stable
+code under Technical details and a cause-neutral recovery matching the actual
+public repository/local checkout and Skill refresh controls. Never infer that a
+repository is private merely from a failed scan. Do not show raw paths or Git stderr.
+The Skill placeholder reads No source found until a nonempty Source has choices,
+then Select an option. Existing selected values and exact pins are preserved.
+Scanning imports verified bytes without running a Skill or changing an already selected revision. Source
+help distinguishes a public HTTPS repository from an admitted local folder and
+an empty Source with an existing registry pin. Failure keeps the existing fixed
+access error and refresh recovery; no implicit selection or model dispatch.
 
 ## Resolution and compatibility
 
