@@ -182,6 +182,13 @@ its confirmed, failed or unknown outcome; losing admission never triggers a retr
 Previously acquired history remains owner-scoped rather than requiring a live
 GitHub connection to read it.
 
+A successful routine credential renewal may continue an already admitted run
+only through host-proven refresh continuity for the same account and unchanged
+repository consent. Matching metadata alone is insufficient. Reconnect, consent
+change, revocation and an uncertain refresh break that continuity. Neither a
+restart nor a serialized graph restores it. Buffered browser reads retain their
+exact-generation response-release fence.
+
 Canvas Run, node Run and playground execution share the same host admission.
 If any reachable Issue/PR node has a connected operation input or an Agent feedback
 edge, show one combined approval dialog for the run, listing every saved account,
