@@ -59,12 +59,14 @@ recheck the chosen route and installed version before implementation acceptance.
 | S07 | Disconnect one connection while preserving other accounts and understanding active runs. | P08 |
 | S08 | Use an explicitly supported API-key alternative, with billing visible and secrets protected. | P03, P10 |
 
-## Proposed decisions requiring owner review
+## Owner-confirmed direction and remaining proposals
 
-- D01: multiple connections per type; duplicate identity handling uses verified
-  provider/route/workspace identity only, not user labels or assumed API-key identity.
-- D02: local-profile scope and explicit compatible connection selection by agents;
-  do not silently retarget existing graph or assistant sessions.
+- D01: multiple accounts, including multiple connections per type, confirmed by
+  the owner on 2026-11-16. Duplicate identity handling remains proposed and uses
+  verified provider/route/workspace identity, not labels or assumed API-key identity.
+- D02: selection between saved accounts confirmed by the owner on 2026-11-16.
+  Local-profile scope and the exact consumer-binding realization remain proposed;
+  existing graph or assistant sessions must not be silently retargeted.
 - D03: disconnect follows the existing cancel/quarantine requirement for active
   controllers. Local removal waits for stop and credential cleanup; no unrelated
   host logout or unsupported claim of provider-wide revocation.
@@ -100,3 +102,28 @@ T06 means the selected method fails a prerequisite/capability check when Continu
 is pressed (for example the installed integration disappeared since rendering).
 Known-unavailable routes are not selectable; a type with no enabled methods
 explains that in its method screen without starting authentication.
+
+## Visual reference selected by the owner - 2026-11-16
+
+Use the existing GitHub connection visual language, rather than a new provider
+settings component style. Reference implementation at Laomedo `be73ad9a`:
+[ConnectionNavigation.tsx](https://github.com/amadou-6e/laomedo/blob/be73ad9acd99f53a6c21c6b8999bd775e351dc6e/frontend/langflow-skill-viewer/githubConnections/ConnectionNavigation.tsx),
+[ConnectionForms.tsx](https://github.com/amadou-6e/laomedo/blob/be73ad9acd99f53a6c21c6b8999bd775e351dc6e/frontend/langflow-skill-viewer/githubConnections/ConnectionForms.tsx)
+and [connections.css](https://github.com/amadou-6e/laomedo/blob/be73ad9acd99f53a6c21c6b8999bd775e351dc6e/frontend/langflow-skill-viewer/githubConnections/connections.css).
+The sanitized [navigation crop](references/provider-github-navigation.png) and
+[input crop](references/provider-github-input.png) come from the prior integrated
+GitHub preview captures at `44fb7b10`; they contain no account or credential data.
+They are visual references, not new runtime acceptance for provider settings.
+
+In the workshop, left-hand screens use the existing dark preview theme while the
+canvas and story column stay white/light for editing. The application must reuse
+its existing theme tokens, not hard-code a separate provider-only palette. Back
+is a 20 px left arrow; Refresh is the matching 20 px clockwise icon where a read
+is meaningful, in a shared footer with a 12 px gap below the card. Accessible
+names/tooltips and keyboard focus remain required even though text labels are not
+shown. Confirmation Cancel buttons remain actions, not navigation replacements.
+Refresh is illustrated on P01 (list), P04 (pending check), P05 (detail) and P06
+(recovery); P08 cleanup variants may expose it only for a read, not as a retry
+of cancellation or credential deletion. Back during P04 cancels the attempt first.
+P10 has a placeholder-only masked API-key field, with no visible title above it;
+its accessible name remains API key. Other future text fields follow the same rule.

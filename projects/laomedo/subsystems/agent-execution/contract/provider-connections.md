@@ -14,9 +14,11 @@ related: []
 Owning proposal: [specs #425](https://github.com/amadou-6e/specs/issues/425).
 This is a draft for owner review, not implementation authorization. The owner
 requested a login flow in Settings, a list of provider connections and a provider
-type choice when connecting. Multiple accounts and the detailed list/lifecycle behavior below are proposals,
-not previously accepted product decisions. Existing authentication isolation and
-revocation requirements continue to apply.
+type choice when connecting. On 2026-11-16 the owner confirmed multiple account
+connections and explicit selection between them. Detailed lifecycle and provider
+enablement below remain draft proposals unless already governed by the
+authentication contract. Existing authentication isolation and revocation
+requirements continue to apply.
 
 The [editable workshop](../design/provider-connections.drawio) owns screen states,
 control labels, interaction identifiers and transitions. Its story rows are the
@@ -30,7 +32,7 @@ replace the broader [authentication contract](authentication.md).
 Settings > Providers lists connections owned by the active local profile.
 Provider type identifies the integration (Codex, Claude or OpenCode); a connection
 identifies one explicitly established credential context for that integration.
-Multiple connections of the same type may coexist (proposal D01). Display a label, type,
+Multiple connections of the same type may coexist (owner-confirmed 2026-11-16). Display a label, type,
 authentication method, verified account/workspace when supplied by the provider,
 and current observed connection status. A user label never proves identity;
 API-key methods need not supply an account name. Never invent identity or
@@ -170,3 +172,18 @@ Document validation and fixture tests cannot establish provider-native login,
 refresh, revocation, account selection or isolation acceptance. Future integration
 acceptance records exact provider/runtime versions and sanitized evidence, with
 live model use only under explicit authorization; no credentials or login URLs.
+
+## PC-08 - Existing GitHub connection visual language
+
+Owner direction, 2026-11-16: reuse the GitHub connection screens' visual language.
+Back and read-only Refresh are the same small icon controls below the main card,
+with consistent placement, spacing, accessible names, tooltips and busy states.
+Do not introduce boxed Back buttons or a mixture of text and icon navigation.
+Refresh rereads the current connection/attempt; it never launches sign-in,
+replays a callback, rotates credentials or sends a model request. Back from a
+pending sign-in first cancels/fences that exact attempt and then returns to the
+unchanged list or selected connection. If cancellation cannot be confirmed,
+retain a safe recovery state rather than claiming the attempt was cancelled.
+Text-entry fields use an in-field placeholder and a persistent accessible name;
+there is no separate visible title above the field. Screen headings remain.
+API-key input remains masked. Placeholder text is not the accessible label.
