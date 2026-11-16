@@ -192,13 +192,15 @@ exact-generation response-release fence.
 Every new browser admission still requires a current upstream JWT and live
 private lease. Once admitted, a host-only job scope rechecks the initiating lease
 and the same active ordinary profile through upstream user lookup; routine
-access-JWT rotation alone does not cancel that job. Logout, lease expiry,
+access-JWT rotation alone does not cancel that job. Ordinary lease renewal keeps
+the same cookie/digest; it does not switch to a new login lease. Logout, lease expiry,
 profile removal or deactivation stops its next private request. This job scope
 cannot authorize new browser requests or restore a job after broker restart.
 
 Canvas Run, node Run and playground execution share the same host admission.
 If any reachable Issue/PR node has a connected operation input or an Agent feedback
-edge, show one combined approval dialog for the run, listing every saved account,
+edge, or a configured static operation request, show one combined approval dialog
+for the run, listing every saved account,
 repository, exact permitted Issue/PR target and permitted modify/close operation
 kind. This is an upper bound, not a preview of Agent-generated patch content.
 Current picker targets are mandatory for write-capable saved-account nodes;
@@ -207,12 +209,16 @@ Runtime references must match those approved targets. Downstream references cann
 expand them. Runtime operations outside the envelope fail before dispatch with
 `github_node_operation_not_approved` and a failed outcome, never unknown.
 
-A run with no reachable connected operation input or feedback edge is read-only
+A run with no reachable connected/static operation request or feedback edge is read-only
 and bypasses approval. It receives no mediation write grants. An unexpected write
 attempt still fails before dispatch with the same named error. Connecting an
 account or pressing a read-only Refresh grants no writes. Several Issue/PR nodes
 share one combined dialog; the user approves once rather than once per node.
 Cancel dispatches no job or change.
+
+Saved-account Issue/PR nodes execute as ordinary graph components. They do not
+offer an Agent tool-mode interface; Tool Mode is refused during preparation.
+Earlier PR operation outcomes remain evidence, never static requests to replay.
 
 The plan is consumed once when starting the exact graph job. Within that run it
 covers all permitted effects on the listed targets, not just the first effect.
