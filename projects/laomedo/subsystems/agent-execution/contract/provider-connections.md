@@ -63,7 +63,7 @@ the committed admission index before retrying; never report an unchanged connect
 without confirmation. Routine token rotation does not advance the saved connection
 identity generation. Superseded and crash-left unadmitted credential copies are fenced
 and scrubbed by the owning runtime, without remotely revoking a grant shared with a
-committed revision.
+committed revision. Provider-side revocation of superseded grants remains unconfirmed unless separately observed through a supported revoke-and-recover operation; local scrubbing never claims remote logout.
 
 ## PC-03 - Credential ownership and isolation
 
@@ -85,6 +85,13 @@ A retained native conversation remains pinned to its connection and identity;
 account replacement cannot silently resume it under a different principal.
 Native controller credentials must not become available to model tool processes;
 existing isolation and release gates remain required.
+
+Use distinct generations: `connection_generation` advances only on reconnect, key
+replacement or disconnect and pins saved-connection dispatch and retained identity.
+The broker advances `credential_generation` on token rotation; record it for the
+admitted controller/turn and incident review. Routine renewal preserves the
+connection pin. Authentication lifecycle step 4 still governs controller-token
+replacement between completed turns.
 
 ## PC-04 - Status and readiness
 

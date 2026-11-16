@@ -295,7 +295,11 @@ the selected credential is missing.
    identifier. Never import the IDE's `auth.json` as a production shortcut.
 2. **Dispatch.** Lock one credential generation to a run. Verify its owner,
    provider, workspace, allowed purpose, and readiness. Preserve the requested
-   credential mode in trace metadata even when dispatch fails.
+   credential mode in trace metadata even when dispatch fails. For saved provider
+   connections, pin `connection_generation` to the logical run and record the
+   broker's `credential_generation` for each admitted controller/turn. Routine
+   refresh does not change the connection pin; replacing a controller token
+   remains subject to step 4 below.
 3. **Renew.** A single broker writer performs refresh under a per-profile lock
    and atomically replaces persisted state. Other runs wait for the result
    rather than using parallel copies of a rotating refresh token. OpenAI's

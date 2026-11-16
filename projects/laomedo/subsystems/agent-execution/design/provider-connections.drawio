@@ -65,7 +65,7 @@
         <mxCell id="state-P10" value="&lt;b&gt;P10&lt;/b&gt;&lt;br&gt;Explicit API key" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="480" y="410" width="180" height="65" as="geometry" />
         </mxCell>
-        <mxCell id="state-P06" value="&lt;b&gt;P06&lt;/b&gt;&lt;br&gt;Sign-in failed / expired&lt;br&gt;Check connection if save unconfirmed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
+        <mxCell id="state-P06" value="&lt;b&gt;P06&lt;/b&gt;&lt;br&gt;Sign-in recovery" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="700" y="300" width="180" height="65" as="geometry" />
         </mxCell>
         <mxCell id="state-P07" value="&lt;b&gt;P07&lt;/b&gt;&lt;br&gt;Wrong / duplicate account" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
@@ -301,7 +301,7 @@
         <mxCell id="P06-heading" value="Sign-in failed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#18181b;strokeColor=none;fontColor=#fafafa;fontFamily=Helvetica;fontSize=20;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="2742" width="550" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="story-P06" value="&lt;b&gt;S03 / S05 · Recover without losing my account&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I see a short failure message and can try again or go back. An expired attempt says &quot;Sign-in expired. Try again.&quot;&lt;br&gt;&lt;br&gt;Technical details are collapsed and sanitized. The previous committed account remains unchanged; no repeated browser launch or billing switch occurs automatically.&lt;br&gt;&lt;br&gt;Checking a connection uses its exact ID and generation.&lt;br&gt;&lt;br&gt;Unconfirmed save: show &quot;Check connection&quot;, keep Try again disabled, and use Refresh to reconcile saved state before retrying. Never claim nothing changed until confirmed." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
+        <mxCell id="story-P06" value="&lt;b&gt;S03 / S05 - Recover without losing my account&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I can retry a confirmed failure or go back. Expired: &quot;Sign-in expired. Try again.&quot;&lt;br&gt;&lt;br&gt;Confirmed failure preserves the saved account. Details are collapsed and sanitized. No automatic sign-in or billing switch.&lt;br&gt;&lt;br&gt;Unconfirmed save: &quot;Check connection&quot;; Try again disabled. Refresh checks the existing attempt (T17, P04), never starting sign-in.&lt;br&gt;&lt;br&gt;Committed: T04 opens P05. Not committed: ordinary P06 with retry enabled. Still unknown: stay on Check connection with retry disabled." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="690" y="2720" width="450" height="320" as="geometry" />
         </mxCell>
         <mxCell id="P06-body" value="We couldn't finish signing you in.&lt;br&gt;Your saved connection hasn't changed." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#18181b;strokeColor=none;fontColor=#fafafa;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
@@ -478,7 +478,7 @@
         <mxCell id="P10-update-checkbox" value="" style="rounded=0;fillColor=#18181b;strokeColor=#71717a;" vertex="1" parent="1">
           <mxGeometry x="65" y="4922" width="14" height="14" as="geometry" />
         </mxCell>
-      </root>
+      <mxCell id="T17" value="T17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;jumpStyle=arc;jumpSize=6;exitX=0.75;exitY=0;entryX=0.75;entryY=1;" edge="1" parent="1" source="state-P06" target="state-P04"><mxGeometry relative="1" as="geometry" /></mxCell></root>
     </mxGraphModel>
   </diagram>
 </mxfile>

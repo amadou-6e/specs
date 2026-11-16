@@ -14,7 +14,7 @@ related: []
 Draft for [specs #425](https://github.com/amadou-6e/specs/issues/425), awaiting owner
 selection. No product implementation or provider eligibility approval is implied.
 The [single-page editable workshop](provider-connections.drawio) is the authority
-for UI geometry, screen IDs P01-P10, transition IDs T01-T16 and stories S01-S08.
+for UI geometry, screen IDs P01-P10, transition IDs T01-T17 and stories S01-S08.
 Its state graph is above a column of screens: design left, story/behavior right.
 Identifiers link states to screens; no edges run from the graph into the screens.
 The [connection contract](../contract/provider-connections.md) owns persistent
