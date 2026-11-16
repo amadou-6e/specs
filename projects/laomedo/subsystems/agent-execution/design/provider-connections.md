@@ -37,7 +37,7 @@ Only routes validated for an installed adapter may become actionable in P03.
 
 | Type | Candidate route and boundary | Primary evidence / outstanding gate |
 | --- | --- | --- |
-| Codex | App-owned Sign in with ChatGPT, or a verified native Codex integration; API billing only if explicitly selected and supported. | [Token sharing to Codex app-server](https://developers.openai.com/siwc/token-sharing-open-source/codex-app-server) documents app-owned access-token delivery and renewal. Existing [authentication eligibility and lifecycle gates](../contract/authentication.md) remain; local account success is not universal access. Model listing is not entitlement verification. |
+| Codex | App-owned Sign in with ChatGPT; API billing only if explicitly selected and supported. | [Token sharing to Codex app-server](https://developers.openai.com/siwc/token-sharing-open-source/codex-app-server) documents app-owned access-token delivery and renewal. Existing [authentication eligibility and lifecycle gates](../contract/authentication.md) remain; local account success is not universal access. Model listing is not entitlement verification. |
 | Claude | Guided sign-in through an eligible, unmodified official Claude Code client in this connection's dedicated native profile; alternatively an explicitly supported Console/API credential route. | [Native authentication](https://code.claude.com/docs/en/authentication) and [authentication/product conditions](https://code.claude.com/docs/en/legal-and-compliance) distinguish users signing into official Claude Code from third parties offering their own Claude.ai login or collecting/intermediating session tokens. Do not implement an unofficial OAuth wrapper or infer product permission from a browser URL. Eligibility/distribution review is unresolved. |
 | OpenCode | Installed adapter exposes a supported upstream provider and method, with its own identity/billing label. Current local Go credential borrowing is not a completed Settings login. | [Provider setup](https://opencode.ai/docs/providers/) describes /connect, route selection, optional Go API keys and supported ChatGPT methods. Documented OpenCode capabilities do not prove this Laomedo adapter supports them; version, native authentication orchestration and isolated refresh remain unverified. |
 
@@ -93,3 +93,10 @@ can be exposed as multiple isolated Settings rows merely by adding a list UI.
 Claude-native authentication must stay in the official client, with no Laomedo
 extraction/copy of its subscription credentials; eligibility remains gated.
 These are future implementation requirements, not defects fixed by this draft.
+
+Rename is deferred from this first workshop; connection labels may be derived
+from verified account/type metadata. No rename/edit control is proposed yet.
+T06 means the selected method fails a prerequisite/capability check when Continue
+is pressed (for example the installed integration disappeared since rendering).
+Known-unavailable routes are not selectable; a type with no enabled methods
+explains that in its method screen without starting authentication.

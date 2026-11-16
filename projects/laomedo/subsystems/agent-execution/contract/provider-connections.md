@@ -30,7 +30,7 @@ replace the broader [authentication contract](authentication.md).
 Settings > Providers lists connections owned by the active local profile.
 Provider type identifies the integration (Codex, Claude or OpenCode); a connection
 identifies one explicitly established credential context for that integration.
-Multiple connections of the same type may coexist. Display a label, type,
+Multiple connections of the same type may coexist (proposal D01). Display a label, type,
 authentication method, verified account/workspace when supplied by the provider,
 and current observed connection status. A user label never proves identity;
 API-key methods need not supply an account name. Never invent identity or
@@ -107,7 +107,9 @@ cancellation preserves the previous committed state. If the provider supplies a
 stable principal and the staged account differs, refuse the reconnect with a safe
 account-mismatch result and offer Add as new connection. Do not overwrite the
 selected row or provide an account-replacement shortcut in this first increment.
-Existing sessions remain bound to their original identity.
+Discard the refused attempt's staged credential through its native owner or host
+custody; it must never become a reusable connection. Add as new connection starts
+a fresh attempt. Existing sessions remain bound to their original identity.
 
 When the same verified identity, provider type, route and workspace is already
 connected, refuse a duplicate save and offer that existing connection; do not merge records
@@ -115,6 +117,15 @@ or replace its credential.
 Where identity cannot be established (for example some API keys), do not pretend
 to deduplicate; keep explicitly labelled independent connections. Equal email
 addresses or user labels across types are not a canonical identity match.
+
+For an API-key update, verify the provider workspace/account when that route
+supplies it. A verified identity mismatch follows the wrong-account rule above.
+If the route cannot establish identity, require explicit replacement confirmation
+before committing: the account or API billing may change. Advance the connection
+generation and refuse reuse of retained native sessions; new dispatch starts a
+fresh session. Never swap a credential under a running controller. Cancel or failed
+verification preserves the old committed key. The P10 update variant owns this
+confirmation; it is not implied by pressing Connect for a new connection.
 
 ## PC-06 - Disconnect and removal
 

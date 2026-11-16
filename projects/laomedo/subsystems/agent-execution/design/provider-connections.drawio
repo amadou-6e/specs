@@ -1,82 +1,82 @@
 <?xml version='1.0' encoding='utf-8'?>
 <mxfile host="app.diagrams.net" version="24.7.17">
   <diagram id="provider-settings" name="Provider connections ? draft">
-    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="4850" background="#ffffff" math="0" shadow="0">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="5210" background="#ffffff" math="0" shadow="0">
       <root>
         <mxCell id="0" value="" />
         <mxCell id="1" parent="0" value="" />
-        <mxCell id="title" value="Provider connections" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=24;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="title" value="Provider connections" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=24;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="30" width="1100" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="subtitle" value="DRAFT · specs #425 · Settings list of saved connections · proposal, not implemented login" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="DRAFT · specs #425 · Settings list of saved connections · proposal, not implemented login" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="70" width="1100" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="state-P01" value="&lt;b&gt;P01&lt;/b&gt;&lt;br&gt;Providers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+        <mxCell id="state-P01" value="&lt;b&gt;P01&lt;/b&gt;&lt;br&gt;Providers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="140" width="180" height="65" as="geometry" />
         </mxCell>
-        <mxCell id="state-P02" value="&lt;b&gt;P02&lt;/b&gt;&lt;br&gt;Choose type" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+        <mxCell id="state-P02" value="&lt;b&gt;P02&lt;/b&gt;&lt;br&gt;Choose type" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="260" y="140" width="180" height="65" as="geometry" />
         </mxCell>
-        <mxCell id="state-P03" value="&lt;b&gt;P03&lt;/b&gt;&lt;br&gt;Choose method" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+        <mxCell id="state-P03" value="&lt;b&gt;P03&lt;/b&gt;&lt;br&gt;Choose method" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="480" y="140" width="180" height="65" as="geometry" />
         </mxCell>
-        <mxCell id="state-P04" value="&lt;b&gt;P04&lt;/b&gt;&lt;br&gt;Native sign-in / verify" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+        <mxCell id="state-P04" value="&lt;b&gt;P04&lt;/b&gt;&lt;br&gt;Native sign-in / verify" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="700" y="140" width="180" height="65" as="geometry" />
         </mxCell>
-        <mxCell id="state-P05" value="&lt;b&gt;P05&lt;/b&gt;&lt;br&gt;Connection details" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+        <mxCell id="state-P05" value="&lt;b&gt;P05&lt;/b&gt;&lt;br&gt;Connection details" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="920" y="140" width="180" height="65" as="geometry" />
         </mxCell>
-        <mxCell id="state-P09" value="&lt;b&gt;P09&lt;/b&gt;&lt;br&gt;Unavailable method" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+        <mxCell id="state-P09" value="&lt;b&gt;P09&lt;/b&gt;&lt;br&gt;Unavailable method" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="480" y="300" width="180" height="65" as="geometry" />
         </mxCell>
-        <mxCell id="state-P10" value="&lt;b&gt;P10&lt;/b&gt;&lt;br&gt;Explicit API key" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+        <mxCell id="state-P10" value="&lt;b&gt;P10&lt;/b&gt;&lt;br&gt;Explicit API key" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="480" y="410" width="180" height="65" as="geometry" />
         </mxCell>
-        <mxCell id="state-P06" value="&lt;b&gt;P06&lt;/b&gt;&lt;br&gt;Sign-in failed / expired" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+        <mxCell id="state-P06" value="&lt;b&gt;P06&lt;/b&gt;&lt;br&gt;Sign-in failed / expired" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="700" y="300" width="180" height="65" as="geometry" />
         </mxCell>
-        <mxCell id="state-P07" value="&lt;b&gt;P07&lt;/b&gt;&lt;br&gt;Wrong / duplicate account" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+        <mxCell id="state-P07" value="&lt;b&gt;P07&lt;/b&gt;&lt;br&gt;Wrong / duplicate account" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="920" y="300" width="180" height="65" as="geometry" />
         </mxCell>
-        <mxCell id="state-P08" value="&lt;b&gt;P08&lt;/b&gt;&lt;br&gt;Disconnect / cleanup" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+        <mxCell id="state-P08" value="&lt;b&gt;P08&lt;/b&gt;&lt;br&gt;Disconnect / cleanup" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="920" y="410" width="180" height="65" as="geometry" />
         </mxCell>
-        <mxCell id="T01" value="T01" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="state-P01" target="state-P02">
+        <mxCell id="T01" value="T01" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="state-P01" target="state-P02">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="T02" value="T02" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="state-P02" target="state-P03">
+        <mxCell id="T02" value="T02" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="state-P02" target="state-P03">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="T03" value="T03" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="state-P03" target="state-P04">
+        <mxCell id="T03" value="T03" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="state-P03" target="state-P04">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="T04" value="T04" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="state-P04" target="state-P05">
+        <mxCell id="T04" value="T04" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="state-P04" target="state-P05">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="T05" value="T05" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="state-P04" target="state-P06">
+        <mxCell id="T05" value="T05" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;jumpStyle=arc;jumpSize=6;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="state-P04" target="state-P06">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="T06" value="T06" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="state-P03" target="state-P09">
+        <mxCell id="T06" value="T06" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;jumpStyle=arc;jumpSize=6;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="state-P03" target="state-P09">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="T07" value="T07" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;exitX=0;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="state-P03" target="state-P10">
+        <mxCell id="T07" value="T07" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;jumpStyle=arc;jumpSize=6;exitX=0;exitY=0.7;entryX=0;entryY=0.5;" edge="1" parent="1" source="state-P03" target="state-P10">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="460" y="225" />
-              <mxPoint x="460" y="440" />
+              <mxPoint x="435" y="185" />
+              <mxPoint x="435" y="442" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="T08" value="T08" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0.5;entryY=1;" edge="1" parent="1" source="state-P10" target="state-P04">
+        <mxCell id="T08" value="T08" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;jumpStyle=arc;jumpSize=6;exitX=1;exitY=0.5;entryX=0.39;entryY=1;" edge="1" parent="1" source="state-P10" target="state-P04">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="680" y="442" />
-              <mxPoint x="680" y="245" />
-              <mxPoint x="790" y="245" />
+              <mxPoint x="675" y="442" />
+              <mxPoint x="675" y="225" />
+              <mxPoint x="770" y="225" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="T09" value="T09" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;exitX=0.5;exitY=0;entryX=0.5;entryY=0;" edge="1" parent="1" source="state-P05" target="state-P04">
+        <mxCell id="T09" value="T09" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;exitX=0.5;exitY=0;entryX=0.5;entryY=0;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="state-P05" target="state-P04">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1010" y="115" />
@@ -84,7 +84,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="T10" value="T10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;exitX=1;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="state-P04" target="state-P07">
+        <mxCell id="T10" value="T10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;exitX=1;exitY=1;entryX=0.5;entryY=0;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="state-P04" target="state-P07">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="900" y="260" />
@@ -92,24 +92,24 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="T11" value="T11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0.5;entryY=1;" edge="1" parent="1" source="state-P07" target="state-P02">
+        <mxCell id="T11" value="T11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;jumpStyle=arc;jumpSize=6;exitX=0;exitY=0.5;entryX=0.5;entryY=1;" edge="1" parent="1" source="state-P07" target="state-P02">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="1130" y="332" />
-              <mxPoint x="1130" y="530" />
-              <mxPoint x="350" y="530" />
+              <mxPoint x="900" y="332" />
+              <mxPoint x="900" y="520" />
+              <mxPoint x="350" y="520" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="T12" value="T12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;exitX=1;exitY=1;entryX=1;entryY=0.5;" edge="1" parent="1" source="state-P05" target="state-P08">
+        <mxCell id="T12" value="T12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;jumpStyle=arc;jumpSize=6;exitX=1;exitY=0.75;entryX=1;entryY=0.5;" edge="1" parent="1" source="state-P05" target="state-P08">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="1110" y="205" />
-              <mxPoint x="1110" y="442" />
+              <mxPoint x="1120" y="190" />
+              <mxPoint x="1120" y="442" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="T13" value="T13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=1;" edge="1" parent="1" source="state-P08" target="state-P01">
+        <mxCell id="T13" value="T13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=1;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="state-P08" target="state-P01">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1010" y="560" />
@@ -117,291 +117,318 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="T14" value="T14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=1;" edge="1" parent="1" source="state-P06" target="state-P03">
+        <mxCell id="T14" value="T14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;jumpStyle=arc;jumpSize=6;exitX=0.5;exitY=1;entryX=0.72;entryY=1;" edge="1" parent="1" source="state-P06" target="state-P03">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="790" y="390" />
-              <mxPoint x="680" y="390" />
-              <mxPoint x="680" y="245" />
-              <mxPoint x="570" y="245" />
+              <mxPoint x="790" y="395" />
+              <mxPoint x="690" y="395" />
+              <mxPoint x="690" y="255" />
+              <mxPoint x="610" y="255" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="map-note" value="Graph nodes identify the screen rows below. Back / Cancel returns to P01 (or the unchanged P05 when reconnecting). No authentication starts on page load or selection." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="map-note" value="Graph nodes identify the screen rows below. Back / Cancel returns to P01 (or the unchanged P05 when reconnecting). No authentication starts on page load or selection." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="590" width="1080" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="row-P01" value="P01 · Providers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=17;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="row-P01" value="P01 · Providers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=17;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="680" width="610" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="screen-P01" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+        <mxCell id="screen-P01" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="720" width="610" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="P01-heading" value="Providers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=20;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P01-heading" value="Providers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=20;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="742" width="550" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="story-P01" value="&lt;b&gt;S01 - See my connections&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I can see every saved connection in Settings, including its type, method, account when verified and current status.&lt;br&gt;&lt;br&gt;S04 - Personal and work accounts can be separate rows of the same type. Choosing a row never changes another account.&lt;br&gt;&lt;br&gt;&lt;b&gt;Variants&lt;/b&gt;: Loading shows progress; empty shows &quot;No providers connected&quot; + Add provider; read error shows &quot;Could not load providers&quot; + Retry. A read failure never implies an empty list." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;" vertex="1" parent="1">
+        <mxCell id="story-P01" value="&lt;b&gt;S01 - See my connections&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I can see every saved connection in Settings, including its type, method, account when verified and current status.&lt;br&gt;&lt;br&gt;S04 - Personal and work accounts can be separate rows of the same type. Choosing a row never changes another account.&lt;br&gt;&lt;br&gt;&lt;b&gt;Variants&lt;/b&gt;: Loading shows progress; empty shows &quot;No providers connected&quot; + Add provider; read error shows &quot;Could not load providers&quot; + Retry. A read failure never implies an empty list." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="690" y="720" width="450" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="P01-path" value="Settings / Providers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P01-path" value="Settings / Providers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="784" width="340" height="22" as="geometry" />
         </mxCell>
-        <mxCell id="P01-add" value="+ Add provider" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#182230;strokeColor=#182230;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#ffffff;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P01-add" value="+ Add provider" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#182230;strokeColor=#182230;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#ffffff;align=center;verticalAlign=middle;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="455" y="776" width="165" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="P01-r0" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e2e8f0;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+        <mxCell id="P01-r0" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e2e8f0;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="830" width="555" height="68" as="geometry" />
         </mxCell>
-        <mxCell id="P01-icon0" value="C" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P01-icon0" value="Co" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;align=center;verticalAlign=middle;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="78" y="844" width="36" height="36" as="geometry" />
         </mxCell>
-        <mxCell id="P01-name0" value="&lt;b&gt;Personal Codex&lt;/b&gt;&lt;br&gt;Codex · ChatGPT plan · person@example.test" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P01-name0" value="&lt;b&gt;Personal Codex&lt;/b&gt;&lt;br&gt;Codex · ChatGPT plan · person@example.test" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="126" y="840" width="370" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="P01-state0" value="Connected &gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=12;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P01-state0" value="Connected &gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=12;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="500" y="852" width="108" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="P01-r1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e2e8f0;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+        <mxCell id="P01-r1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e2e8f0;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="908" width="555" height="68" as="geometry" />
         </mxCell>
-        <mxCell id="P01-icon1" value="C" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P01-icon1" value="Cl" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;align=center;verticalAlign=middle;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="78" y="922" width="36" height="36" as="geometry" />
         </mxCell>
-        <mxCell id="P01-name1" value="&lt;b&gt;Work Claude&lt;/b&gt;&lt;br&gt;Claude · Console API key · API billing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P01-name1" value="&lt;b&gt;Work Claude&lt;/b&gt;&lt;br&gt;Claude · Console API key · API billing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="126" y="918" width="370" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="P01-state1" value="Update key &gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=12;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P01-state1" value="Needs attention &gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=12;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="500" y="930" width="108" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="row-P02" value="P02 · Add provider" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=17;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="row-P02" value="P02 · Add provider" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=17;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="1080" width="610" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="screen-P02" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+        <mxCell id="screen-P02" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="1120" width="610" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="P02-heading" value="Add provider" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=20;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P02-heading" value="Add provider" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=20;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="1142" width="550" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="story-P02" value="&lt;b&gt;S02 · Choose provider type&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I choose Codex, Claude or OpenCode when adding a connection, before any sign-in starts.&lt;br&gt;&lt;br&gt;Type cards name the runtime integration. Choose one, then Continue. Back preserves existing connections. No host credentials are scanned or imported." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;" vertex="1" parent="1">
+        <mxCell id="story-P02" value="&lt;b&gt;S02 · Choose provider type&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I choose Codex, Claude or OpenCode when adding a connection, before any sign-in starts.&lt;br&gt;&lt;br&gt;Type cards name the runtime integration. Choose one, then Continue. Back preserves existing connections. No host credentials are scanned or imported." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="690" y="1120" width="450" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="P02-hint" value="Choose the provider you want to connect." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P02-hint" value="Choose the provider you want to connect." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="1185" width="520" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="P02-choice0" value="Codex" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P02-choice0" value="Codex" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;align=center;verticalAlign=middle;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="1230" width="170" height="62" as="geometry" />
         </mxCell>
-        <mxCell id="P02-choice1" value="Claude" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P02-choice1" value="Claude" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;align=center;verticalAlign=middle;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="250" y="1230" width="170" height="62" as="geometry" />
         </mxCell>
-        <mxCell id="P02-choice2" value="OpenCode" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P02-choice2" value="OpenCode" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;align=center;verticalAlign=middle;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="435" y="1230" width="170" height="62" as="geometry" />
         </mxCell>
-        <mxCell id="P02-next" value="Continue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#182230;strokeColor=#182230;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#ffffff;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P02-next" value="Continue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#182230;strokeColor=#182230;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#ffffff;align=center;verticalAlign=middle;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="455" y="1340" width="165" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="P02-back" value="← Back" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P02-back" value="← Back" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="1348" width="120" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="row-P03" value="P03 · Connect Codex" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=17;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="row-P03" value="P03 · Connect Codex" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=17;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="1480" width="610" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="screen-P03" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+        <mxCell id="screen-P03" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="1520" width="610" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="P03-heading" value="Connect Codex" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=20;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P03-heading" value="Connect Codex" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=20;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="1542" width="550" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="story-P03" value="&lt;b&gt;S02 / S08 · Choose a supported method&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I see only methods supported by this installed adapter, with subscription or API billing stated plainly.&lt;br&gt;&lt;br&gt;Illustration: Codex / ChatGPT plan. Claude native sign-in is eligibility-gated; OpenCode needs a supported upstream route (currently Go only in the local prototype). This screen does not promise route parity.&lt;br&gt;&lt;br&gt;No automatic API-billing fallback; no third-party password form." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;" vertex="1" parent="1">
+        <mxCell id="story-P03" value="&lt;b&gt;S02 / S08 · Choose a supported method&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I see only methods supported by this installed adapter, with subscription or API billing stated plainly.&lt;br&gt;&lt;br&gt;Illustration: Codex / ChatGPT plan. Claude native sign-in is eligibility-gated; OpenCode needs a supported upstream route (currently Go only in the local prototype). This screen does not promise route parity.&lt;br&gt;&lt;br&gt;No automatic API-billing fallback; no third-party password form." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="690" y="1520" width="450" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="P03-hint" value="Choose how to connect." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P03-hint" value="Choose how to connect." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="1585" width="520" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="P03-method" value="&lt;b&gt;Sign in with ChatGPT&lt;/b&gt;&lt;br&gt;Use your eligible ChatGPT plan." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+        <mxCell id="P03-method" value="&lt;b&gt;Sign in with ChatGPT&lt;/b&gt;&lt;br&gt;Use your eligible ChatGPT plan." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="1630" width="555" height="75" as="geometry" />
         </mxCell>
-        <mxCell id="P03-continue" value="Continue to sign in" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#182230;strokeColor=#182230;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#ffffff;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P03-continue" value="Continue to sign in" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#182230;strokeColor=#182230;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#ffffff;align=center;verticalAlign=middle;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="410" y="1750" width="210" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="P03-back" value="← Back" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P03-back" value="← Back" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="1758" width="120" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="row-P04" value="P04 · Finish signing in" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=17;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="row-P04" value="P04 · Finish signing in" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=17;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="1880" width="610" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="screen-P04" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+        <mxCell id="screen-P04" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="1920" width="610" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="P04-heading" value="Finish signing in" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=20;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P04-heading" value="Finish signing in" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=20;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="1942" width="550" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="story-P04" value="&lt;b&gt;S03 · Sign in safely&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I complete sign-in in the provider's official browser or native client and return to Laomedo.&lt;br&gt;&lt;br&gt;Laomedo verifies the matching attempt without a model turn. The native client retains credentials when it owns sign-in; Laomedo never extracts Claude subscription tokens.&lt;br&gt;&lt;br&gt;Cancel fences this attempt. Expired, duplicate or late callbacks cannot add an account. Do not launch sign-in again while checking.&lt;br&gt;&lt;br&gt;API-key variant: Checking connection (no browser step); Cancel remains available. No model request is sent." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;" vertex="1" parent="1">
+        <mxCell id="story-P04" value="&lt;b&gt;S03 · Sign in safely&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I complete sign-in in the provider's official browser or native client and return to Laomedo.&lt;br&gt;&lt;br&gt;Laomedo verifies the matching attempt without a model turn. The native client retains credentials when it owns sign-in; Laomedo never extracts Claude subscription tokens.&lt;br&gt;&lt;br&gt;Cancel fences this attempt. Expired, duplicate or late callbacks cannot add an account. Do not launch sign-in again while checking.&lt;br&gt;&lt;br&gt;API-key variant: Checking connection (no browser step); Cancel remains available. No model request is sent." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="690" y="1920" width="450" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="P04-body" value="Complete sign-in with the provider.&lt;br&gt;We'll update this page when it finishes." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P04-body" value="Complete sign-in with the provider.&lt;br&gt;We'll update this page when it finishes." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="2000" width="525" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="P04-waiting" value="Waiting for sign-in..." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;verticalAlign=middle;" vertex="1" parent="1">
+        <mxCell id="P04-waiting" value="Waiting for sign-in..." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;verticalAlign=middle;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="2075" width="555" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="P04-cancel" value="Cancel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#182230;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P04-cancel" value="Cancel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#182230;align=center;verticalAlign=middle;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="455" y="2150" width="165" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="row-P05" value="P05 · Personal Codex" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=17;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="row-P05" value="P05 · Personal Codex" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=17;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="2280" width="610" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="screen-P05" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+        <mxCell id="screen-P05" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="2320" width="610" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="P05-heading" value="Personal Codex" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=20;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P05-heading" value="Personal Codex" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=20;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="2342" width="550" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="story-P05" value="&lt;b&gt;S04 / S05 · Use and repair one connection&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I can rename a connection, inspect its account and method, or sign in again for this exact row.&lt;br&gt;&lt;br&gt;Agents explicitly choose a compatible saved connection. No global active-account fallback. Export removes the private local binding and import asks for rebinding.&lt;br&gt;&lt;br&gt;Connected means credential check passed; model access and usage limits are not proven. Runner offline remains distinct from signed out." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;" vertex="1" parent="1">
+        <mxCell id="story-P05" value="&lt;b&gt;S04 / S05 · Use and repair one connection&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I can inspect its account and method, or sign in again for this exact row.&lt;br&gt;&lt;br&gt;Agents explicitly choose a compatible saved connection. No global active-account fallback. Export removes the private local binding and import asks for rebinding.&lt;br&gt;&lt;br&gt;Connected means credential check passed; model access and usage limits are not proven. Runner offline remains distinct from signed out.&lt;br&gt;&lt;br&gt;Rename is deferred from this first draft; no edit control is proposed." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="690" y="2320" width="450" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="P05-body" value="Codex · ChatGPT plan&lt;br&gt;person@example.test&lt;br&gt;&lt;br&gt;Connected · Credential checked&lt;br&gt;Model usage not yet confirmed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P05-body" value="Codex · ChatGPT plan&lt;br&gt;person@example.test&lt;br&gt;&lt;br&gt;Connected · Credential checked&lt;br&gt;Model usage not yet confirmed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="2390" width="540" height="110" as="geometry" />
         </mxCell>
-        <mxCell id="P05-rename" value="Rename" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
-          <mxGeometry x="65" y="2524" width="110" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="P05-signin" value="Sign in again" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#182230;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P05-signin" value="Sign in again" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#182230;align=center;verticalAlign=middle;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="270" y="2550" width="160" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="P05-disconnect" value="Disconnect" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#182230;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P05-disconnect" value="Disconnect" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#182230;align=center;verticalAlign=middle;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="455" y="2550" width="165" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="row-P06" value="P06 · Sign-in failed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=17;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="row-P06" value="P06 · Sign-in failed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=17;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="2680" width="610" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="screen-P06" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+        <mxCell id="screen-P06" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="2720" width="610" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="P06-heading" value="Sign-in failed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=20;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P06-heading" value="Sign-in failed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=20;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="2742" width="550" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="story-P06" value="&lt;b&gt;S03 / S05 · Recover without losing my account&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I see a short failure message and can try again or go back. An expired attempt says &quot;Sign-in expired. Try again.&quot;&lt;br&gt;&lt;br&gt;Technical details are collapsed and sanitized. The previous committed account remains unchanged; no repeated browser launch or billing switch occurs automatically.&lt;br&gt;&lt;br&gt;Checking a connection uses its exact ID and generation." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;" vertex="1" parent="1">
+        <mxCell id="story-P06" value="&lt;b&gt;S03 / S05 · Recover without losing my account&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I see a short failure message and can try again or go back. An expired attempt says &quot;Sign-in expired. Try again.&quot;&lt;br&gt;&lt;br&gt;Technical details are collapsed and sanitized. The previous committed account remains unchanged; no repeated browser launch or billing switch occurs automatically.&lt;br&gt;&lt;br&gt;Checking a connection uses its exact ID and generation." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="690" y="2720" width="450" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="P06-body" value="We couldn't finish signing you in.&lt;br&gt;Your saved connection hasn't changed." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P06-body" value="We couldn't finish signing you in.&lt;br&gt;Your saved connection hasn't changed." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="2802" width="530" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="P06-details" value="&gt; Details" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P06-details" value="&gt; Details" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="2885" width="200" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="P06-retry" value="Try again" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#182230;strokeColor=#182230;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#ffffff;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P06-retry" value="Try again" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#182230;strokeColor=#182230;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#ffffff;align=center;verticalAlign=middle;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="455" y="2950" width="165" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="P06-back" value="← Back" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P06-back" value="← Back" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="2958" width="120" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="row-P07" value="P07 · Use another connection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=17;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="row-P07" value="P07 - Account check variants" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=17;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="3080" width="610" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="screen-P07" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+        <mxCell id="screen-P07" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="3120" width="610" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="P07-heading" value="Use another connection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=20;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P07-heading" value="Different account" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=20;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="3142" width="550" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="story-P07" value="&lt;b&gt;S06 · Avoid accidental account replacement&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, reconnecting with the wrong account does not overwrite my saved connection. I can add it as a new connection instead.&lt;br&gt;&lt;br&gt;Duplicate variant: &quot;This account is already connected&quot; + View connection. Match verified type, route, principal and workspace only. No merge or replacement.&lt;br&gt;&lt;br&gt;API keys without verified identity remain explicitly labelled independent connections." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;" vertex="1" parent="1">
+        <mxCell id="story-P07" value="&lt;b&gt;S06 · Avoid accidental account replacement&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, reconnecting with the wrong account does not overwrite my saved connection. I can add it as a new connection instead.&lt;br&gt;&lt;br&gt;Duplicate variant: &quot;This account is already connected&quot; + View connection. Match verified type, route, principal and workspace only. No merge or replacement.&lt;br&gt;&lt;br&gt;API keys without verified identity remain explicitly labelled independent connections.&lt;br&gt;&lt;br&gt;Discard the refused attempt's staged credential. Add starts fresh; it does not reuse that credential. The two footer actions are mutually exclusive variants: wrong account / duplicate." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="690" y="3120" width="450" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="P07-body" value="You signed in to a different account.&lt;br&gt;Your existing connection hasn't changed." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P07-body" value="You signed in to a different account.&lt;br&gt;Your existing connection hasn't changed." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="3205" width="530" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="P07-add" value="Add as new connection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#182230;strokeColor=#182230;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#ffffff;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
-          <mxGeometry x="385" y="3350" width="235" height="38" as="geometry" />
+        <mxCell id="P07-add" value="Add as new connection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#182230;strokeColor=#182230;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#ffffff;align=center;verticalAlign=middle;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="3350" width="220" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="P07-back" value="← Back" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P07-back" value="← Back" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="3358" width="120" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="row-P08" value="P08 · Disconnect provider?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=17;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="row-P08" value="P08 · Disconnect provider?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=17;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="3480" width="610" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="screen-P08" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+        <mxCell id="screen-P08" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="3520" width="610" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="P08-heading" value="Disconnect provider?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=20;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P08-heading" value="Disconnect provider?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=20;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="3542" width="550" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="story-P08" value="&lt;b&gt;S07 · Disconnect just this connection&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I confirm which connection is removed and see the affected active-run count.&lt;br&gt;&lt;br&gt;New dispatch stops immediately. Existing authentication policy cancels or quarantines active controllers and preserves partial evidence. Other rows and ordinary host CLI login stay intact.&lt;br&gt;&lt;br&gt;Disconnecting stays visible until stop and cleanup are confirmed. Failure shows &quot;Could not finish disconnecting&quot; + Retry cleanup. No claim of global provider logout." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;" vertex="1" parent="1">
+        <mxCell id="story-P08" value="&lt;b&gt;S07 · Disconnect just this connection&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I confirm which connection is removed and see the affected active-run count.&lt;br&gt;&lt;br&gt;New dispatch stops immediately. Existing authentication policy cancels or quarantines active controllers and preserves partial evidence. Other rows and ordinary host CLI login stay intact.&lt;br&gt;&lt;br&gt;Disconnecting stays visible until stop and cleanup are confirmed. Failure shows &quot;Could not finish disconnecting&quot; + Retry cleanup. No claim of global provider logout." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="690" y="3520" width="450" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="P08-body" value="Disconnect Personal Codex?&lt;br&gt;&lt;br&gt;1 active run will be interrupted.&lt;br&gt;Your other connections won't be changed." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P08-body" value="Disconnect Personal Codex?&lt;br&gt;&lt;br&gt;1 active run will be stopped or held for review.&lt;br&gt;Your other connections won't be changed." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="3595" width="530" height="110" as="geometry" />
         </mxCell>
-        <mxCell id="P08-cancel" value="Cancel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#182230;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P08-cancel" value="Cancel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#182230;align=center;verticalAlign=middle;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="270" y="3750" width="160" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="P08-confirm" value="Disconnect" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#182230;strokeColor=#182230;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#ffffff;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P08-confirm" value="Disconnect" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#182230;strokeColor=#182230;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#ffffff;align=center;verticalAlign=middle;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="455" y="3750" width="165" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="row-P09" value="P09 · Sign-in unavailable" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=17;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="row-P09" value="P09 · Sign-in unavailable" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=17;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="3880" width="610" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="screen-P09" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+        <mxCell id="screen-P09" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="3920" width="610" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="P09-heading" value="Sign-in unavailable" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=20;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P09-heading" value="Sign-in unavailable" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=20;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="3942" width="550" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="story-P09" value="&lt;b&gt;S02 · Understand a missing method&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I am told when a provider method is unavailable in this setup and can choose another supported method or go back.&lt;br&gt;&lt;br&gt;Example: native integration not installed, route unsupported or eligibility review incomplete. No active sign-in button is shown for an unavailable route.&lt;br&gt;&lt;br&gt;No borrowing a host token to make the screen appear successful." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;" vertex="1" parent="1">
+        <mxCell id="story-P09" value="&lt;b&gt;S02 · Understand a missing method&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I am told when a provider method is unavailable in this setup and can choose another supported method or go back.&lt;br&gt;&lt;br&gt;Example: native integration not installed, route unsupported or eligibility review incomplete. No active sign-in button is shown for an unavailable route.&lt;br&gt;&lt;br&gt;No borrowing a host token to make the screen appear successful.&lt;br&gt;&lt;br&gt;T06: Continue discovers that a previously available method no longer meets its prerequisites. Choose another method returns to P03; Back returns to the list/details." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="690" y="3920" width="450" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="P09-body" value="This sign-in method isn't available in this setup.&lt;br&gt;&lt;br&gt;Choose a supported method to continue." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P09-body" value="This sign-in method isn't available in this setup.&lt;br&gt;&lt;br&gt;Choose a supported method to continue." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="4005" width="530" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="P09-back" value="Choose another method" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#182230;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P09-back" value="Choose another method" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#182230;align=center;verticalAlign=middle;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="385" y="4150" width="235" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="row-P10" value="P10 · Connect with an API key" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=17;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="row-P10" value="P10 · Connect with an API key" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=17;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="4280" width="610" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="screen-P10" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
+        <mxCell id="screen-P10" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="4320" width="610" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="P10-heading" value="Connect with an API key" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=20;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P10-heading" value="Connect with an API key" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=20;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="4342" width="550" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="story-P10" value="&lt;b&gt;S08 · Choose API billing explicitly&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I can deliberately supply a supported API key, with API billing clearly labelled before submission.&lt;br&gt;&lt;br&gt;The field is masked, never prefilled from the machine, and cleared on submit, Back and unmount. The server verifies credentials without running a model; failure does not restore the secret.&lt;br&gt;&lt;br&gt;Provider passwords and subscription session tokens are never requested here." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;" vertex="1" parent="1">
+        <mxCell id="story-P10" value="&lt;b&gt;S08 · Choose API billing explicitly&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I can deliberately supply a supported API key, with API billing clearly labelled before submission.&lt;br&gt;&lt;br&gt;The field is masked, never prefilled from the machine, and cleared on submit, Back and unmount. The server verifies credentials without running a model; failure does not restore the secret.&lt;br&gt;&lt;br&gt;Provider passwords and subscription session tokens are never requested here.&lt;br&gt;&lt;br&gt;Update variant below: if identity cannot be verified, explicit confirmation allows a new key generation and fresh sessions, with no mid-run swap." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="690" y="4320" width="450" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="P10-body" value="Uses API billing for this provider." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P10-body" value="Uses API billing for this provider." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="4390" width="530" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="P10-label" value="API key" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P10-label" value="API key" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="4435" width="530" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="P10-field" value="Enter your API key" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;verticalAlign=middle;fontColor=#64748b;" vertex="1" parent="1">
+        <mxCell id="P10-field" value="Enter your API key" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;verticalAlign=middle;fontColor=#64748b;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="4465" width="555" height="44" as="geometry" />
         </mxCell>
-        <mxCell id="P10-connect" value="Connect" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#182230;strokeColor=#182230;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#ffffff;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P10-connect" value="Connect" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#182230;strokeColor=#182230;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#ffffff;align=center;verticalAlign=middle;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="455" y="4550" width="165" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="P10-back" value="← Back" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P10-back" value="← Back" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="4558" width="120" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="accessibility" value="All screens: labelled keyboard-accessible controls; logical focus and return focus; announced asynchronous status; narrow layouts stack controls without horizontal scrolling. No provider passwords, credentials, login URLs or technical transport details in user-facing errors. Example data is illustrative, not live acceptance." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
-          <mxGeometry x="40" y="4710" width="1100" height="75" as="geometry" />
+        <mxCell id="accessibility" value="All screens: labelled keyboard-accessible controls; logical focus and return focus; announced asynchronous status; narrow layouts stack controls without horizontal scrolling. No provider passwords, credentials, login URLs or technical transport details in user-facing errors. Example data is illustrative, not live acceptance." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="5060" width="1100" height="75" as="geometry" />
         </mxCell>
-        <mxCell id="T15" value="T15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;entryX=0.25;entryY=1;" edge="1" parent="1" source="state-P09" target="state-P03">
+        <mxCell id="T15" value="T15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;jumpStyle=arc;jumpSize=6;exitX=0;exitY=0.5;entryX=0.22;entryY=1;" edge="1" parent="1" source="state-P09" target="state-P03">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="450" y="332" />
-              <mxPoint x="450" y="230" />
-              <mxPoint x="530" y="230" />
+              <mxPoint x="450" y="245" />
+              <mxPoint x="520" y="245" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="T16" value="T16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0.75;entryY=0;" edge="1" parent="1" source="state-P07" target="state-P05">
+        <mxCell id="T16" value="T16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;jumpStyle=arc;jumpSize=6;exitX=1;exitY=0.23;entryX=0.75;entryY=0;" edge="1" parent="1" source="state-P07" target="state-P05">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="1145" y="332" />
-              <mxPoint x="1145" y="100" />
-              <mxPoint x="1055" y="100" />
+              <mxPoint x="1140" y="315" />
+              <mxPoint x="1140" y="80" />
+              <mxPoint x="1055" y="80" />
             </Array>
           </mxGeometry>
+        </mxCell>
+        <mxCell id="P05-back" value="&lt; Back" style="rounded=1;arcSize=8;absoluteArcSize=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="65" y="2550" width="120" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="P09-back" value="&lt; Back" style="rounded=1;arcSize=8;absoluteArcSize=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="65" y="4150" width="120" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="P07-view-variant" value="View connection" style="rounded=1;arcSize=8;absoluteArcSize=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="455" y="3350" width="165" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="P10-update-frame" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="40" y="4790" width="610" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="P10-update-title" value="&lt;b&gt;P10 update variant - Update API key&lt;/b&gt;" style="rounded=1;arcSize=8;absoluteArcSize=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="65" y="4805" width="555" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="P10-update-warning" value="This key may change the account or API billing.&lt;br&gt;Existing sessions will not resume with the new key." style="rounded=1;arcSize=8;absoluteArcSize=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="65" y="4850" width="555" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="P10-update-confirm" value="[ ] I understand and want to replace this connection's key." style="rounded=1;arcSize=8;absoluteArcSize=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="65" y="4910" width="555" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="P10-update-save" value="Update key" style="rounded=1;arcSize=8;absoluteArcSize=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="455" y="4965" width="165" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="P10-update-cancel" value="Cancel" style="rounded=1;arcSize=8;absoluteArcSize=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="270" y="4965" width="160" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="P10-update-story" value="&lt;b&gt;S08 - Confirm an unverifiable key replacement&lt;/b&gt;&lt;br&gt;&lt;br&gt;Only this update variant requires the confirmation. Verify available workspace identity first; known mismatches use P07 instead. No model turn. A successful update advances generation and requires fresh sessions; failure keeps the old committed key." style="rounded=1;arcSize=8;absoluteArcSize=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="690" y="4790" width="450" height="230" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
