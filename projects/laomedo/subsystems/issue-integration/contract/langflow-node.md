@@ -148,7 +148,9 @@ The Connection selector precedes Repository URL. It lists only connections owned
 by the active local profile, with their verified account names and availability.
 Selecting a different connection clears discovered labels and Issue/PR choices.
 An explicit Configured host connection option retains the existing operator-owned
-service path. An empty selection asks the user to choose a connection. A selected
+service path, shown disabled with "Not configured" when unavailable. A saved
+connection owned by another profile appears only as "Connection unavailable",
+without its account name. An empty selection asks the user to choose a connection. A selected
 saved account never falls back to that host service or another account.
 
 Before discovery and execution, revalidate the current profile/browser lease,
@@ -174,22 +176,49 @@ The host binds each private graph run to its initiating profile/lease, exact gra
 job, vertex, selected connection generation and repository. That binding remains
 host-only and expires; a serialized graph, restart or copied job identifier cannot
 reconstruct it. Native background execution, event delivery and cached results
-must enforce this binding, not merely the browser's dropdown request.
+must enforce this binding, not merely the browser's dropdown request. Logout or
+lease expiry stops the next provider read/write. A write already dispatched keeps
+its confirmed, failed or unknown outcome; losing admission never triggers a retry.
+Previously acquired history remains owner-scoped rather than requiring a live
+GitHub connection to read it.
 
-Changes require one explicit approval per run, listing the account, repository and
-selected Issue/PR targets and allowed modify/close operations. Connecting an
-account or pressing a read-only Refresh grants no writes. Cancel dispatches no job
-or change. The approval is single-use and bound to the displayed graph/targets;
-changing the connection, repository, target or graph invalidates it. Writes use
-the existing mediated exact-target grants, connection-generation checks, optimistic
-content verification, durable effect identity and uncertain-delivery semantics.
-Approval cannot authorize arbitrary GitHub endpoints, merge PRs or issue creation.
+Canvas Run, node Run and playground execution share the same host admission.
+If any reachable Issue/PR node has a connected operation input or an Agent feedback
+edge, show one combined approval dialog for the run, listing every saved account,
+repository, exact permitted Issue/PR target and permitted modify/close operation
+kind. This is an upper bound, not a preview of Agent-generated patch content.
+Current picker targets are mandatory for write-capable saved-account nodes;
+no target means "Choose an Issue/PR before allowing changes", with no job dispatch.
+Runtime references must match those approved targets. Downstream references cannot
+expand them. Runtime operations outside the envelope fail before dispatch with
+`github_node_operation_not_approved` and a failed outcome, never unknown.
+
+A run with no reachable connected operation input or feedback edge is read-only
+and bypasses approval. It receives no mediation write grants. An unexpected write
+attempt still fails before dispatch with the same named error. Connecting an
+account or pressing a read-only Refresh grants no writes. Several Issue/PR nodes
+share one combined dialog; the user approves once rather than once per node.
+Cancel dispatches no job or change.
+
+The plan is consumed once when starting the exact graph job. Within that run it
+covers all permitted effects on the listed targets, not just the first effect.
+Changing connection, repository, target or executable graph requires a new plan.
+Each effect still uses the existing mediated exact-target grant, optimistic content
+verification, connection-generation fence and durable request identity. Repeated
+evaluation of the same effect cannot dispatch twice. Unknown delivery is not
+silently replayed; a new run requires new approval and cannot erase an existing
+unknown effect record. Approval cannot authorize arbitrary endpoints, PR merge
+or issue creation.
 
 New account-owned private Apps request Issues and Pull requests write, alongside
 Contents/Metadata read. Existing Apps have an explicit permission-update path to
 their own GitHub settings and installation approval, then current access is
 rechecked. Never replace an App automatically, borrow another account's App or
-claim permissions before GitHub confirms them. GitHub permission is only an upper
+claim permissions before GitHub confirms them. The node's "Review GitHub access"
+action opens Settings for that selected connection. Settings shows the required
+Issues/PR permissions, "Open App settings" and "Check access". After the owner
+updates and approves permissions on GitHub, Check access verifies them online;
+"Back to node" restores the same graph selection without starting a run. GitHub permission is only an upper
 bound; it never replaces the narrower per-run approval.
 
 ### Acceptance for saved accounts
