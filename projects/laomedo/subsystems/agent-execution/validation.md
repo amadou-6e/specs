@@ -11,6 +11,18 @@ related: []
 
 # Agent execution validation
 
+## Persistent assistant proposal, 2026-11-16
+
+[Spec issue #423](https://github.com/amadou-6e/specs/issues/423) proposes
+[direct provider chat and Laomedo MCP tools](contract/application-assistant.md),
+with an [implementation plan](design/application-assistant.md) and
+[editable UI proposal](design/application-assistant.drawio). The owner requested
+drafting and independent consultation, with final approval before implementation.
+No new model turn, runtime acceptance, production code or implemented chat screen
+is established by this specification work. Existing provider/MCP results do not
+establish continuation after Stop/failure or atomic draft persistence for chat.
+Proposal verification and review revisions are recorded in its linked PR.
+
 ## Output Contract and routable Codex outcomes, 2026-10-10
 
 Governing [v1 design](design/output-contract-v1.md), merged under [specs #339](https://github.com/amadou-6e/specs/pull/339). [Laomedo #140](https://github.com/amadou-6e/laomedo/pull/140) adds the submission port; [#141](https://github.com/amadou-6e/laomedo/pull/141) adds the shared evaluator, downstream node and synthetic native precheck/continuation transport. Both were independently reviewed through the same bound Claude reviewer session and merged only after their Python 3.10/3.13 CI checks passed. Issue state is not implied by merge.

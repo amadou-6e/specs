@@ -11,6 +11,10 @@ related: []
 
 # Agent execution contract index
 
+[Persistent application assistant](application-assistant.md) proposes direct
+provider chat, app-owned Laomedo MCP authoring tools and durable draft receipts.
+Final owner approval is required before implementation.
+
 [Graph-connected MCP tools](mcp-tools.md) owns native Toolset connections,
 selected external tool grants and their app/runner lifecycle for issue #280.
 

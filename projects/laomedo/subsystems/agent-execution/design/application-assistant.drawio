@@ -1,0 +1,117 @@
+<mxfile>
+  <diagram name="A1 - Normal persistent chat">
+    <mxGraphModel page="1" pageWidth="1380" pageHeight="1040">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="heading" value="PROPOSAL A1 / Laomedo application assistant ? no workflow" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=20;align=left;verticalAlign=top;spacing=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="20" width="1280" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="entry" value="ENTRY-01  App header: Assistant&#10;Opens /assistant in a separate application tab. Existing editor and unsaved work remain in their original tab." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=16;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="30" y="95" width="1280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="history" value="HISTORY-01&#10;Conversations&#10;&#10;[ New conversation ]&#10;&#10;Research + Implement&#10;Today ? Codex&#10;&#10;Earlier discussion&#10;Yesterday ? Codex&#10;&#10;Switching conversations&#10;does not stop active work." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=17;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="30" y="200" width="260" height="660" as="geometry" />
+        </mxCell>
+        <mxCell id="binding" value="BINDING-01  Research + Implement&#10;Codex ? gpt-6-luna ? low  |  Ready&#10;Provider / Model / Effort selected when creating a conversation; retained for follow-ups." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=17;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="310" y="200" width="1000" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="user" value="MESSAGE-01  You&#10;Combine Research and Implement using Skill X. Add an Output Contract at the end." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=18;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="500" y="330" width="790" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="tool" value="TOOL-01  Workflow tools&#10;Read 2 workflows ? checked installed component ports&#10;Saved draft: Research + Implement ? revision r1&#10;Status comes from persisted receipts, not assistant prose." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f0fdf4;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=17;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="330" y="450" width="940" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="answer" value="MESSAGE-02  Assistant&#10;I saved a separate draft. The original workflows are unchanged.&#10;The graph has not been run or published." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=18;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="330" y="600" width="940" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="draft" value="DRAFT-01  Saved draft: Research + Implement ? r1&#10;[ Open draft in new tab ]&#10;Opening is your choice; stay here to continue chatting." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#eff6ff;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=17;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="330" y="720" width="940" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="composer" value="COMPOSER-01  Message this assistant?&#10;[ Send ] when idle   /   [ Stop response ] while active&#10;Send disabled while active; ongoing text/tool progress above. Stop shows stopping until settled." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=17;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="310" y="880" width="1000" height="120" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="A2 - Chat and recovery states">
+    <mxGraphModel page="1" pageWidth="1500" pageHeight="1600">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="PROPOSAL A2 / Interaction and failure states" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#e2e8f0;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=20;align=left;verticalAlign=top;spacing=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="20" width="1380" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="new" value="STATE-NEW  New conversation&#10;Provider: Codex (initial support)&#10;Model / Effort: reported options&#10;[ Create conversation ]&#10;No inference on creation." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#eff6ff;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=16;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="30" y="110" width="420" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="idle" value="STATE-IDLE  Ready&#10;Retained messages + draft receipts&#10;[ Send ]  [ New conversation ]&#10;Choose history without dispatch.&#10;No live container required while idle." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f0fdf4;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=16;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="530" y="110" width="420" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="active" value="STATE-ACTIVE  Responding&#10;Stream text + tool progress&#10;[ Stop response ]&#10;Send disabled. Switching/closing chat&#10;does not cancel the active turn." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=16;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="110" width="420" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="create" value="Create; no model request" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=0;fontSize=13;labelBackgroundColor=#ffffff;strokeColor=#475569;" edge="1" parent="1" source="new" target="idle">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="send" value="Send new message identity" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=0;fontSize=13;labelBackgroundColor=#ffffff;strokeColor=#475569;" edge="1" parent="1" source="idle" target="active">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="stopping" value="STATE-STOPPING  Stopping?&#10;Keep partial text and tool state&#10;Send disabled; no second dispatch&#10;Cancellation requested is not&#10;confirmed cleanup." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fef3c7;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=16;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="410" width="420" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="settled" value="STATE-SETTLED  Response stopped / failed&#10;Partial history retained&#10;Saved drafts remain visible if committed&#10;[ Send ] only after continuation&#10;safety checks pass." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=16;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="530" y="410" width="420" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="attention" value="STATE-ATTENTION  Cannot safely continue&#10;Session unavailable / cleanup uncertain&#10;Show stable reason + recovery guidance&#10;[ Check status ]&#10;[ Start linked conversation ]&#10;Never silently replay or replace session." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fff7ed;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=16;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="30" y="410" width="420" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="stop" value="Stop response" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=0;fontSize=13;labelBackgroundColor=#ffffff;strokeColor=#475569;" edge="1" parent="1" source="active" target="stopping">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="terminal" value="Completed + settled" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=0;fontSize=13;labelBackgroundColor=#ffffff;strokeColor=#475569;" edge="1" parent="1" source="active" target="idle">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="settle" value="Native work + effects reconciled" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=0;fontSize=13;labelBackgroundColor=#ffffff;strokeColor=#475569;" edge="1" parent="1" source="stopping" target="settled">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="unsafe" value="Continuation cannot be established" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=0;fontSize=13;labelBackgroundColor=#ffffff;strokeColor=#475569;" edge="1" parent="1" source="settled" target="attention">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="next" value="Continuation safe; retain session" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=0;fontSize=13;labelBackgroundColor=#ffffff;strokeColor=#475569;" edge="1" parent="1" source="settled" target="idle">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="reconnect" value="STATE-RECONNECT  Reconnecting?&#10;App reopened / connection lost&#10;Reload same conversation + attempt&#10;Send disabled until status reconciles&#10;No new model request." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=16;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="30" y="740" width="420" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="save" value="STATE-SAVE  Save pending / outcome unknown&#10;Show tool progress; no success card&#10;Reconcile operation key + receipt&#10;Committed -&gt; exact saved draft card&#10;Refused -&gt; errors, no new success card." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fef3c7;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=16;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="530" y="740" width="420" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="open" value="STATE-OPEN  Saved draft card&#10;[ Open draft in new tab ]&#10;Click opens exact saved draft identity&#10;Existing editor/unsaved work untouched&#10;No click -&gt; stay in chat; draft retained&#10;Open failure -&gt; retain card + retry link." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#eff6ff;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=16;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="740" width="420" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="reload" value="Settled binding confirmed" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=0;fontSize=13;labelBackgroundColor=#ffffff;strokeColor=#475569;" edge="1" parent="1" source="reconnect" target="idle">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="reconnectunsafe" value="Missing/unsafe native binding" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=0;fontSize=13;labelBackgroundColor=#ffffff;strokeColor=#475569;" edge="1" parent="1" source="reconnect" target="attention">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="receipt" value="Persisted save receipt" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=0;fontSize=13;labelBackgroundColor=#ffffff;strokeColor=#475569;" edge="1" parent="1" source="save" target="open">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="refusal" value="STATE-ERROR  Cannot save this change&#10;Stale revision / invalid ports /&#10;unsupported dynamic field / source changed&#10;Show stable scoped explanation&#10;No overwrite; no graph execution." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fff7ed;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=16;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="30" y="1080" width="420" height="195" as="geometry" />
+        </mxCell>
+        <mxCell id="locked" value="STATE-LOCKED  Profile locked&#10;Hide private messages/draft details&#10;Stop new dispatch; invalidate tool access&#10;[ Unlock profile ] via existing sign-in&#10;No credential form in the assistant." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=16;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="530" y="1080" width="420" height="195" as="geometry" />
+        </mxCell>
+        <mxCell id="unavailable" value="STATE-UNAVAILABLE  Assistant unavailable&#10;Provider/model/runner not ready&#10;Show existing reason/recovery action&#10;Preserve history; do not switch models&#10;No automatic login or inference probe." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fff7ed;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=16;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="1080" width="420" height="195" as="geometry" />
+        </mxCell>
+        <mxCell id="rules" value="INTERACTION RULES&#10;Keyboard: logical focus order; labelled composer and buttons; visible focus; Ctrl+Enter sends, Enter adds newline.&#10;Streaming uses a polite status region without stealing focus. Stop remains reachable.&#10;Errors/state are named in text, not color alone. Narrow screens stack history behind a labelled Conversations control.&#10;New conversation preserves the old one. Provider change creates a separate conversation; no hidden session switch.&#10;This diagram is proposed geometry and behavior; no implemented UI or accessibility acceptance is claimed." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=17;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="30" y="1330" width="1420" height="215" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
