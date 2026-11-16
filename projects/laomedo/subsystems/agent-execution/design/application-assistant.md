@@ -73,6 +73,15 @@ The current resume HTTP call is synchronous: dispatch from an application-owned
 background job, return the durable app attempt immediately and poll Activity.
 Browser disconnect must not terminate/replay the background dispatch.
 
+Required runner addition: durable idempotent resume admission and lookup keyed by
+`(run_id, activity_attempt_id)` plus semantic request digest. Return the existing
+attempt for duplicates, refuse changed content and reserve before native dispatch.
+Transient MCP references/capabilities are excluded from the semantic digest.
+Admission checks precede MCP claim/replacement so a duplicate cannot steal or
+revoke the active grant. App message jobs alone cannot guarantee this across a
+lost synchronous resume response. Preserve existing direct API behavior for callers
+outside this explicitly scoped idempotent path; do not add chat-specific provider methods.
+
 ## MCP server and client reuse
 
 Proposed transport: a real FastMCP HTTP tool surface hosted in the existing local
@@ -94,6 +103,21 @@ before its listener exists in lifespan startup. Compose server/client/registry
 lifespans: revoke provider grants, settle/reconcile owned work, close clients,
 then stop the tool surface. All host endpoints remain explicit local/private;
 MCP presence is not blanket authority to the general workflow API.
+
+The parent application's composed lifespan must explicitly enter the MCP server's
+`session_manager.run()` exactly once; mounting its Starlette sub-app alone does
+not establish that lifetime. Compose this with the existing registry/upstream
+lifespans. Set explicit narrow MCP Host/origin allowances for the actual local
+deployment; do not use wildcard host trust or disable transport protection.
+Use literal loopback for the private native connection. Verify LFX's real connector
+and HTTP-transport SSRF settings with that connection; tests which disable SSRF
+are not acceptance. Never globally turn protection off. Pinned source exposes
+`connector_ssrf_allow_loopback` and `ssrf_allowed_hosts`; any needed configuration
+change must be scoped, explicit and reviewed rather than applied silently.
+Handlers use asynchronous DB operations or bounded off-loop work so self-HTTP
+does not block the app loop. If supported HTTP hosting/client admission cannot
+meet these conditions, return a documented proposal revision for a real STDIO
+MCP server; do not silently add a private socket protocol or general app API key.
 
 Each attempt registers a fresh scoped forwarding capability with a stable tool
 manifest; completion/cancel/expiry revokes it. Idle MCP sessions may be closed
@@ -119,7 +143,10 @@ the gap between reservation and a remote runner acknowledgment.
 
 Use ordinary Langflow flow records for complete saved drafts. Extend the owning
 flow persistence service with an atomic create/update-plus-receipt operation and
-expected-revision check shared with editor writes; no parallel workflow database.
+assistant expected-revision check under the same row-lock/transaction discipline
+as editor writes; no parallel workflow database. Refuse an assistant save when
+the editor has changed the row. Changing the editor PATCH API itself is outside
+this proposal.
 The exact service seam must be verified. Store canonical request digest with each
 save key. Applying identical keys returns the prior receipt; changing semantics
 under the same key refuses. Model output contains a typed graph description, not
@@ -167,8 +194,11 @@ than assuming an empty directory is admissible under every provider.
 1. Inspect metadata-only graph helpers, transactional flow persistence, native MCP
    HTTP hosting/client lifecycle and current runner setup. Resolve mechanisms
    against this contract; do not run model probes merely to explore APIs.
-2. Implement continuation safety for the initial provider, with meaningful current
-   regression tests. Prepare bounded live Stop/failure/session checks separately
+2. Implement runner-side idempotent resume/lookup and continuation safety for the
+   initial provider, with meaningful current regression tests. Reuse observed
+   attempt/cleanup fields only where their actual guarantees suffice; a boolean
+   named finished or cancel-confirmed alone is not proof of all owned work settling.
+   Prepare bounded live Stop/failure/session checks separately
    on `exp` when authorized; no production verification-only turn caps.
 3. Implement the workflow owner's atomic draft/receipt operation, pure validation
    and six MCP tools. Check stale/concurrent/idempotent/uncertain save behavior.

@@ -70,6 +70,15 @@ Resume does not get a fresh semantic identity merely because an HTTP response wa
 lost. Resolve submitted attempts through retained request/attempt records before
 retrying. An unresolved dispatch is visible as unknown; never blindly re-prompt.
 
+The runner must durably admit follow-up messages idempotently by
+`(run_id, activity_attempt_id)` and a canonical digest of task and semantic
+resume bindings, with an attempt lookup operation. The existing synchronous
+resume endpoint does not yet supply this guarantee. Reserve before dispatch;
+duplicates return the existing pending/terminal attempt and changed content under
+the same key refuses. Check this before claiming/replacing a new MCP registration;
+duplicate requests must not revoke or replace an active attempt's tool access.
+The app's own message reservation alone cannot close a lost-resume-response gap.
+
 ## Normal chat, Activity and Stop
 
 Show messages, ongoing assistant content, tool progress, final result and the
@@ -125,6 +134,11 @@ path in tool arguments. No tool exposes login, execution, publish, delete or
 unrestricted component/code editing. Source workflow names, prompts, descriptions
 and Skill content are untrusted data, never authorization.
 
+The host native-client credential binds owner/conversation and is distinct from
+the provider's per-attempt forwarding capability. Keep the former only in private
+host client configuration and invalidate it on profile lock/sign-out; revoke the
+latter for affected attempts and fence dispatch/late response release separately.
+
 Proposed wire signatures, with bounded typed arguments/results:
 
 | MCP tool | Arguments | Result / invariant |
@@ -160,10 +174,13 @@ validity is not proof of executable success. A requested intentionally incomplet
 draft may be saved only with explicit incomplete diagnostics, never labelled valid.
 
 Persist the complete draft and its receipt atomically through the workflow owner.
-New draft creation must not expose partially assembled graphs. Updating requires
-an atomic expected-revision comparison and is limited to this conversation's own
-drafts. A read-compare-PATCH race or process-local lock alone is insufficient when
-the editor or another process can also write. Source workflows remain unchanged.
+New draft creation must not expose partially assembled graphs. Assistant updating
+requires an atomic expected-revision comparison and is limited to this conversation's
+own drafts. If the editor or any other writer changed the row since that revision,
+refuse the assistant edit. A read-compare-PATCH race or process-local lock alone
+is insufficient. Use the flow owner's transactional locking; this does not add
+expected-revision parameters to the editor's existing PATCH contract. Source
+workflows remain unchanged.
 
 `draft_key` is unique within the conversation. Repeating the same key and same
 canonical operation returns the original receipt; a different operation with
