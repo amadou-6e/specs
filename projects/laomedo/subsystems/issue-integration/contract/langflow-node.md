@@ -164,6 +164,26 @@ storage, exports and Agent workspaces.
 
 ### Run admission, history and writes
 
+For saved-account runs, the owner selected **trusted catalog nodes only**.
+Before component construction or execution, the host verifies every node,
+including unreachable nodes, and its canonical catalog identity and executable code against the trusted host
+catalog. A matching display name, posted type or browser-supplied hash is not
+proof of trust. Custom nodes and edited Python are rejected, including inside
+nested graphs. Repeat validation on the effective graph after native expansion
+and tweaks, before its first vertex executes. An unavailable catalog fails closed.
+Refuse nodes that load additional saved flows at runtime until that loading path
+enforces the same validation before construction. Pin the trusted catalog snapshot
+for admission and construction; do not accept a hot-reloaded replacement midway.
+Catalog nodes that execute supplied Python in the host backend cannot bypass
+this restriction through an input field. Connected Agent tools that are graph
+components are subject to the same checks. This does not restrict a trusted Agent
+node's normal provider-isolated workspace execution. The restriction applies to
+saved-account execution; it does not change the configured-host-service path.
+
+This per-run check alone does not isolate credentials from other Python executing
+in the same backend process. Activation remains blocked until the owner selects
+and the implementation enforces a process-wide restriction or process isolation.
+
 The user selected normal local-profile run history, including private Issue/PR text.
 Disconnect stops future GitHub access but does not erase history already acquired
 by that profile. Native flow, job, trace, build-history and message reads must be
