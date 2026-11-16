@@ -189,6 +189,13 @@ change, revocation and an uncertain refresh break that continuity. Neither a
 restart nor a serialized graph restores it. Buffered browser reads retain their
 exact-generation response-release fence.
 
+Every new browser admission still requires a current upstream JWT and live
+private lease. Once admitted, a host-only job scope rechecks the initiating lease
+and the same active ordinary profile through upstream user lookup; routine
+access-JWT rotation alone does not cancel that job. Logout, lease expiry,
+profile removal or deactivation stops its next private request. This job scope
+cannot authorize new browser requests or restore a job after broker restart.
+
 Canvas Run, node Run and playground execution share the same host admission.
 If any reachable Issue/PR node has a connected operation input or an Agent feedback
 edge, show one combined approval dialog for the run, listing every saved account,
