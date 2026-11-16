@@ -180,9 +180,21 @@ components are subject to the same checks. This does not restrict a trusted Agen
 node's normal provider-isolated workspace execution. The restriction applies to
 saved-account execution; it does not change the configured-host-service path.
 
-This per-run check alone does not isolate credentials from other Python executing
-in the same backend process. Activation remains blocked until the owner selects
-and the implementation enforces a process-wide restriction or process isolation.
+The owner selected a separate credential broker process. The graph process must
+not own the vault, reusable GitHub credentials, browser admission signing secrets
+or unrestricted broker authority. Broker operations carry only run-, vertex-,
+repository-, target- and operation-scoped requests, with the broker independently
+enforcing admission, current access and durable effect authority. A copied graph
+or job identifier is not authentication. Custom Python elsewhere must not obtain
+another run's broker authority. A second process with an unrestricted shared
+credential or vault-access path is insufficient isolation. Activation remains
+blocked until these boundaries are implemented and verified.
+A graph runtime with the same OS identity and access to the vault or broker state
+does not satisfy this boundary. Use a container without those resources or a
+separate OS identity with enforced access controls. Saved-account runs execute in
+a runtime not shared with other runs or profiles; a job capability is never
+visible to co-resident graph code. The broker enforces the approved bounds
+independently of graph validation and of graph or job data supplied by the worker.
 
 The user selected normal local-profile run history, including private Issue/PR text.
 Disconnect stops future GitHub access but does not erase history already acquired
