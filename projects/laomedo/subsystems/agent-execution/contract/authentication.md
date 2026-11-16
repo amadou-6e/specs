@@ -33,6 +33,10 @@ bounded check connected one app-owned ChatGPT account and completed two
 `gpt-6-luna` turns on the pinned split runner before and after process restart;
 see the separately pinned [validation evidence](../validation.md).
 
+The [provider connection Settings proposal](provider-connections.md) adds a draft
+connection-list and provider-type selection experience. It preserves this page's
+authentication, release and revocation gates and is not implemented login parity.
+
 ## Decision and deployment gates
 
 Laomedo needs a persistent **credential broker** owned by the runner, separate

@@ -11,6 +11,8 @@ related: []
 
 # Agent execution design
 
+[Provider connection workshop](provider-connections.md) proposes explicit provider login and independent saved connections; owner review is pending.
+
 Native app-server/SDK processes operate behind a separate runner. Source, effective and post-run snapshots are distinct. Resume restores the last post-run files before native thread reuse. Docker is a bounded prototype mechanism, not proof of production confinement.
 
 Reconstructed from local specs and evidence reports; implementation was not re-executed

@@ -11,6 +11,8 @@ related: []
 
 # Agent execution contract index
 
+[Provider connection settings](provider-connections.md) proposes explicit provider login and independent saved connections; owner review is pending.
+
 [Graph-connected MCP tools](mcp-tools.md) owns native Toolset connections,
 selected external tool grants and their app/runner lifecycle for issue #280.
 
