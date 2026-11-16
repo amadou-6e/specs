@@ -133,3 +133,72 @@ noopener/noreferrer. It is disabled when the selected identity is absent or
 invalid; it never opens an arbitrary URL supplied in issue text. An instance
 fed only by a runtime Issue Reference without a configured picker reports that
 no inspectable UI selection is available rather than guessing an issue.
+
+
+## Saved GitHub account connections (#286)
+
+Owner-selected on 2026-11-16 in implementation issue
+[laomedo#286](https://github.com/amadou-6e/laomedo/issues/286): both Issue and PR
+nodes use saved GitHub accounts for reads and the existing scoped modify/close
+operations, including private repositories. The **Saved accounts** page of each
+node's Draw.io owns GN286-S01 through GN286-S07 and the approval screen. Earlier
+pages retain the explicit configured-host-service path.
+
+The Connection selector precedes Repository URL. It lists only connections owned
+by the active local profile, with their verified account names and availability.
+Selecting a different connection clears discovered labels and Issue/PR choices.
+An explicit Configured host connection option retains the existing operator-owned
+service path. An empty selection asks the user to choose a connection. A selected
+saved account never falls back to that host service or another account.
+
+Before discovery and execution, revalidate the current profile/browser lease,
+connection generation, numeric repository identity, exact consented repository name
+and live GitHub access. Account possession or a repository URL alone is not consent.
+Disconnect, expired admission, a stale generation, missing provider permissions or
+an unconfirmed rename/transfer refuses new reads and effects. Recovery selects or
+reconnects that same account; an ambiguous GitHub 404 never proves a private
+repository exists. Tokens stay in host custody, outside graph parameters, browser
+storage, exports and Agent workspaces.
+
+### Run admission, history and writes
+
+The user selected normal local-profile run history, including private Issue/PR text.
+Disconnect stops future GitHub access but does not erase history already acquired
+by that profile. Native flow, job, trace, build-history and message reads must be
+restricted to that owning profile. Exported flow definitions must omit private
+runtime output. A public/shared execution route cannot acquire a profile's GitHub
+access. Downstream Agents may receive the authorized Issue/PR text, never its
+credential or reusable browser admission.
+
+The host binds each private graph run to its initiating profile/lease, exact graph,
+job, vertex, selected connection generation and repository. That binding remains
+host-only and expires; a serialized graph, restart or copied job identifier cannot
+reconstruct it. Native background execution, event delivery and cached results
+must enforce this binding, not merely the browser's dropdown request.
+
+Changes require one explicit approval per run, listing the account, repository and
+selected Issue/PR targets and allowed modify/close operations. Connecting an
+account or pressing a read-only Refresh grants no writes. Cancel dispatches no job
+or change. The approval is single-use and bound to the displayed graph/targets;
+changing the connection, repository, target or graph invalidates it. Writes use
+the existing mediated exact-target grants, connection-generation checks, optimistic
+content verification, durable effect identity and uncertain-delivery semantics.
+Approval cannot authorize arbitrary GitHub endpoints, merge PRs or issue creation.
+
+New account-owned private Apps request Issues and Pull requests write, alongside
+Contents/Metadata read. Existing Apps have an explicit permission-update path to
+their own GitHub settings and installation approval, then current access is
+rechecked. Never replace an App automatically, borrow another account's App or
+claim permissions before GitHub confirms them. GitHub permission is only an upper
+bound; it never replaces the narrower per-run approval.
+
+### Acceptance for saved accounts
+
+Use the real authenticated UI and an owner-approved disposable private repository:
+select each account, discover actual issues/PRs, view details, run reads, approve a
+bounded reversible modify/close operation and verify its acknowledgement/readback.
+Verify account/repository mismatch, missing permissions, cancelled approval,
+expired/revoked admission, generation rotation, stale choices, repeated evaluation,
+unknown delivery, owner-scoped history/cache/events and output-free exports.
+Credential-free tests support these controls but are not live acceptance. A source
+or layout review does not establish that native graph execution is integrated.
