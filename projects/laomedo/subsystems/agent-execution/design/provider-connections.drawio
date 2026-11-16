@@ -157,7 +157,7 @@
         <mxCell id="P01-name0" value="&lt;b&gt;Personal Codex&lt;/b&gt;&lt;br&gt;Codex · ChatGPT plan · person@example.test" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
           <mxGeometry x="126" y="840" width="370" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="P01-state0" value="Connected  ?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=12;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P01-state0" value="Connected &gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=12;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
           <mxGeometry x="500" y="852" width="108" height="25" as="geometry" />
         </mxCell>
         <mxCell id="P01-r1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e2e8f0;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;" vertex="1" parent="1">
@@ -169,7 +169,7 @@
         <mxCell id="P01-name1" value="&lt;b&gt;Work Claude&lt;/b&gt;&lt;br&gt;Claude · Console API key · API billing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
           <mxGeometry x="126" y="918" width="370" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="P01-state1" value="Sign in again  ?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=12;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P01-state1" value="Update key &gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=12;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
           <mxGeometry x="500" y="930" width="108" height="25" as="geometry" />
         </mxCell>
         <mxCell id="row-P02" value="P02 · Add provider" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=17;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;" vertex="1" parent="1">
@@ -187,7 +187,7 @@
         <mxCell id="P02-hint" value="Choose the provider you want to connect." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
           <mxGeometry x="65" y="1185" width="520" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="P02-choice0" value="Codex  ?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P02-choice0" value="Codex" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
           <mxGeometry x="65" y="1230" width="170" height="62" as="geometry" />
         </mxCell>
         <mxCell id="P02-choice1" value="Claude" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
@@ -286,7 +286,7 @@
         <mxCell id="P06-body" value="We couldn't finish signing you in.&lt;br&gt;Your saved connection hasn't changed." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
           <mxGeometry x="65" y="2802" width="530" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="P06-details" value="? Details" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P06-details" value="&gt; Details" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
           <mxGeometry x="65" y="2885" width="200" height="25" as="geometry" />
         </mxCell>
         <mxCell id="P06-retry" value="Try again" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#182230;strokeColor=#182230;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#ffffff;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
@@ -328,7 +328,7 @@
         <mxCell id="story-P08" value="&lt;b&gt;S07 · Disconnect just this connection&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I confirm which connection is removed and see the affected active-run count.&lt;br&gt;&lt;br&gt;New dispatch stops immediately. Existing authentication policy cancels or quarantines active controllers and preserves partial evidence. Other rows and ordinary host CLI login stay intact.&lt;br&gt;&lt;br&gt;Disconnecting stays visible until stop and cleanup are confirmed. Failure shows &quot;Could not finish disconnecting&quot; + Retry cleanup. No claim of global provider logout." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;" vertex="1" parent="1">
           <mxGeometry x="690" y="3520" width="450" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="P08-body" value="Disconnect Personal Codex?&lt;br&gt;&lt;br&gt;1 active run will be stopped or quarantined.&lt;br&gt;Your other connections won't be changed." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
+        <mxCell id="P08-body" value="Disconnect Personal Codex?&lt;br&gt;&lt;br&gt;1 active run will be interrupted.&lt;br&gt;Your other connections won't be changed." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
           <mxGeometry x="65" y="3595" width="530" height="110" as="geometry" />
         </mxCell>
         <mxCell id="P08-cancel" value="Cancel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#182230;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">

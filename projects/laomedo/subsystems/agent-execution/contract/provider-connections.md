@@ -83,7 +83,7 @@ existing isolation and release gates remain required.
 
 Reuse the canonical auth_state values from authentication.md: ready, refreshing,
 reauthorization_required, expired, revoked and unavailable. The UI maps them to
-Connected, Checking, Sign in again or Unavailable; it does not invent another
+Connected, Checking, Sign in again (native/browser), Update key (API) or Unavailable; it does not invent another
 credential state machine. Disconnecting, Cleanup required and Removed describe
 local removal progress. Connecting/verifying belongs to a bounded attempt;
 read/check activity does not create another connection. Connected means successful
