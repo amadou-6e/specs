@@ -235,7 +235,7 @@
         <mxCell id="P04-heading" value="Finish signing in" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=20;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;" vertex="1" parent="1">
           <mxGeometry x="65" y="1942" width="550" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="story-P04" value="&lt;b&gt;S03 · Sign in safely&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I complete sign-in in the provider's official browser or native client and return to Laomedo.&lt;br&gt;&lt;br&gt;Laomedo verifies the matching attempt without a model turn. The native client retains credentials when it owns sign-in; Laomedo never extracts Claude subscription tokens.&lt;br&gt;&lt;br&gt;Cancel fences this attempt. Expired, duplicate or late callbacks cannot add an account. Do not launch sign-in again while checking." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;" vertex="1" parent="1">
+        <mxCell id="story-P04" value="&lt;b&gt;S03 · Sign in safely&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I complete sign-in in the provider's official browser or native client and return to Laomedo.&lt;br&gt;&lt;br&gt;Laomedo verifies the matching attempt without a model turn. The native client retains credentials when it owns sign-in; Laomedo never extracts Claude subscription tokens.&lt;br&gt;&lt;br&gt;Cancel fences this attempt. Expired, duplicate or late callbacks cannot add an account. Do not launch sign-in again while checking.&lt;br&gt;&lt;br&gt;API-key variant: Checking connection (no browser step); Cancel remains available. No model request is sent." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d0d7de;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;spacing=20;" vertex="1" parent="1">
           <mxGeometry x="690" y="1920" width="450" height="320" as="geometry" />
         </mxCell>
         <mxCell id="P04-body" value="Complete sign-in with the provider.&lt;br&gt;We'll update this page when it finishes." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
@@ -384,6 +384,24 @@
         </mxCell>
         <mxCell id="accessibility" value="All screens: labelled keyboard-accessible controls; logical focus and return focus; announced asynchronous status; narrow layouts stack controls without horizontal scrolling. No provider passwords, credentials, login URLs or technical transport details in user-facing errors. Example data is illustrative, not live acceptance." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;fontColor=#182230;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;" vertex="1" parent="1">
           <mxGeometry x="40" y="4710" width="1100" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="T15" value="T15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;entryX=0.25;entryY=1;" edge="1" parent="1" source="state-P09" target="state-P03">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="332" />
+              <mxPoint x="450" y="230" />
+              <mxPoint x="530" y="230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="T16" value="T16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0.75;entryY=0;" edge="1" parent="1" source="state-P07" target="state-P05">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1145" y="332" />
+              <mxPoint x="1145" y="100" />
+              <mxPoint x="1055" y="100" />
+            </Array>
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
