@@ -18,20 +18,21 @@ six read/draft tools keep their narrower behavior until this extension is instal
 
 ## Concrete tools and app routes
 
-- `propose_graph_edit(operation_key, workflow_id, expected_revision, changes)`
-  records a bounded patch, never applies it. Changes name exact existing node IDs
+- `propose_graph_edit(operation_key, workflow_id, expected_revision, changes, summary)`
+  records a bounded patch; applies it only with existing human-granted category consent, otherwise waits for an app decision. Changes name exact existing node IDs
   and writable static settings, trusted installed nodes to add, nodes to remove,
   and exact named connections to add/remove. No executable templates or secrets.
 - `propose_graph_run(operation_key, workflow_id, expected_revision, input_value,
-  input_type, output_type)` records the exact run request, never starts it.
+  input_type, output_type, summary)` records the exact run request; dispatches only after human approval or under existing human-granted Run consent.
 - `get_graph_action(action_id)` reports that conversation's authoritative action
   state and safe result identity, without private graph bytes or raw run outputs.
 - Authenticated `POST /conversations/{id}/actions/{action}/decision` with
-  `{decision: approve|reject, digest}` is a human app operation. It is not an MCP
+  `{decision: approve|always_approve|reject, digest}` is a human app operation. It is not an MCP
   tool. Natural-language approval and model tool arguments cannot invoke it.
 - Conversation detail includes bounded action summaries/cards across turn end,
-  reload and app restart. A proposed tool call returns promptly with pending
-  status; the native agent does not hold a tool call open waiting for the human.
+  reload and app restart. A proposed tool call returns the authoritative current
+  state: pending without category consent, or the admitted outcome under existing
+  consent. The native agent never holds a tool call open waiting for the human.
   Approval does not automatically resume the agent or submit another model turn.
   The next explicit user message can read action outcomes through the MCP tool.
 
@@ -44,14 +45,34 @@ preview from the actual saved graph and validated patch, not the model's summary
 The same operation key and identical semantics return the same action; changed
 semantics under that key refuse. Pending proposals expire after 15 minutes.
 
-The card shows Edit graph or Run graph, target name/revision, readable exact
-field/node/connection changes or run inputs, and Approve/Reject. Model text is
+The card foregrounds Rename workflow, Edit workflow or Run workflow, the target
+name, and a short plain-text description supplied by the agent (maximum 240
+characters, part of the request digest). Rename shows the actual old and new name,
+not the agent's summary. The server derives Rename only for name-only changes;
+settings, nodes, connections and mixed patches are Edit. The agent must not repeat
+approval boilerplate, proposal IDs or revision hashes in its chat reply.
+
+Buttons are Approve, Always approve renames/edits/runs, and Reject. The Always
+scope is stated alongside them: any graph in this conversation. Exact server-built
+changes, revision/proposal/run identities, expiry and the editor warning are in
+collapsed Details; they remain inspectable but are not the main message. Model text is
 rendered as data, never HTML. A run card states that existing components may
 consume model quota and perform their configured external actions. Preview inputs
 are non-secret only; credentials must remain configured through existing settings.
 
-Approve applies only the displayed digest; no approve-all, remembered consent or
-permission to approve a later revision. Reject/expiry causes no effect. A changed
+Approve applies only the displayed digest. Always approve also grants the actual
+server-derived category across any owned graph in this conversation and original
+app session. Rename, Edit and Run grants are independent; no cross-conversation or
+cross-login consent. The grant is created only when that current action is admitted
+successfully, never on stale/expired/rejected/failed admission. It does not bypass
+revision, ownership, editability, component policy or execution permission checks.
+Subsequent proposals under that category recheck authority and consent inside the
+same serialized decision transaction, then apply/claim once; without consent they
+remain pending. The model cannot create/revoke consent or choose its category.
+Conversation UI lists current grants with Ask every time per category. Human-only
+POST /conversations/{id}/permissions/{category}/revoke serializes with action
+decisions; it prevents subsequent admission, not already-admitted effects. Native
+logout/revocation invalidates that session's grants. Reject/expiry causes no effect. A changed
 workflow, revoked session, wrong owner/conversation or unavailable target refuses
 before any write/dispatch; a fresh proposal is required. Never silently rebase.
 Pending proposals from a revoked originating session cannot be adopted by a new
@@ -76,7 +97,7 @@ Refuse locked/published/filesystem-managed flows under existing edit rules.
 The edit and successful action receipt commit atomically. The assistant refuses a changed base revision, and duplicate approval clicks
 cannot repeat an edit. Ordinary editor PATCH does not require an expected revision:
 an already-open editor can later overwrite the approved change. Both the pending
-and success card must warn: Reload open editor tabs before saving; unsaved editor
+and success card must retain in Details the warning: Reload open editor tabs before saving; unsaved editor
 work may overwrite this saved change. No automatic reload or unsaved-work loss is
 allowed. Approval changes the saved version only; this is not bidirectional
 editor conflict prevention. Opening is an explicit separate-tab action.
@@ -135,3 +156,14 @@ Acceptance includes an editor already open on the edited graph and the explicit
 reload warning, rather than claiming the editor cannot overwrite it.
 Fixtures and proposal renders alone are not real integration acceptance. Independent
 code/spec/actual-render review and final-head checks are required before merge.
+
+
+## Compact approvals and remembered consent checks
+
+Verify server-derived Rename/Edit/Run, digest-bound model description, actual old/new
+rename values, compact controls and expandable exact details. Human Always approve
+must cover any graph in this conversation only, independently per category and
+originating app session. Test revocation, cross-conversation/session refusal,
+category escalation refusal, stale revision and repeated same-key admission. Real
+native MCP and browser checks must demonstrate the first explicit grant, a later
+covered proposal, an uncovered category and revocation without automatic replay.
