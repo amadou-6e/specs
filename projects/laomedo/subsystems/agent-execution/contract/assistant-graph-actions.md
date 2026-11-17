@@ -58,7 +58,12 @@ external-link icon opens the graph in a new tab, with an accessible name and
 tooltip. No technical Details section, revision/proposal/run IDs or expiry text
 is rendered in the card. Backend receipts retain those identities. Settled cards
 collapse to operation, change description and a short outcome: Renamed, Edited,
-Completed, Rejected, Expired, Failed, Not started or Outcome unknown. Do not add a
+Completed, Rejected, Expired, Failed, Not started or Outcome unknown. The outcome
+is below the description and aligned left, never grouped beneath the graph icon.
+Run text is a sentence using the actual server-built input: Run workflow "name"
+with input "value" while pending, Running workflow while executing, and Ran
+workflow only after success. An empty input is shown explicitly as "". Do not
+repeat the model's input summary or infer success from its wording. Do not add a
 separate Saved graph updated sentence. Relevant failure/recovery meaning remains
 in the outcome tooltip; uncertain effects are never labeled a definite failure. Model text is
 rendered as data, never HTML. A run card states that existing components may
