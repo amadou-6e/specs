@@ -97,7 +97,12 @@ as the approving app user, resolving that user's configured credentials and glob
 variables. Use context={} for the existing cold execution path; this is not a
 claim that the revision-checked warm cache is stale.
 
-Run states are pending -> executing -> succeeded/failed/unknown, or rejected,
+A last-moment authority/input refusal before entry into the execution owner is
+recorded as not_dispatched, with no graph execution claimed. Once execution is
+entered, exceptions are reconciled against the actual exact-owned job; unknown
+effects remain unknown rather than being mislabeled a definite no-dispatch.
+
+Run states are pending -> executing -> succeeded/failed/unknown/not_dispatched, or rejected,
 expired/stale before dispatch. Persist executing before any execution call. Repeat
 approval returns the existing state and never dispatches again. There is no claim
 of exactly-once completion across a process crash: interrupted executing actions
