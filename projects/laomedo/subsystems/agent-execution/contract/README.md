@@ -55,3 +55,5 @@ New pages must have one observable behavior owner.
 [Descriptive node errors](node-errors.md) owns user-facing explanations and safe technical diagnostics; original API error codes remain unchanged.
 
 [Local runner API recovery](local-runner-recovery.md) owns app-level connection-error recovery, independent of graph elements.
+
+[Human-approved assistant graph actions](assistant-graph-actions.md) defines the selected edit/run extension and its separate human decision boundary. Publication remains deferred.
