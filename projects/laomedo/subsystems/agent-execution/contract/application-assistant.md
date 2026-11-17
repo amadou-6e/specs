@@ -3,7 +3,7 @@ title: Persistent application assistant and Laomedo MCP
 status: draft
 kind: target-contract
 owners: [laomedo-maintainers]
-last_reviewed: 2026-11-16
+last_reviewed: 2026-11-17
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -16,15 +16,18 @@ Proposal for [specs #423](https://github.com/amadou-6e/specs/issues/423) and
 a long-lived normal chat backed directly by an existing provider, with Laomedo
 MCP tools. The assistant itself has no Langflow workflow. This is an explicit
 exception to the earlier all-agent-interactions-through-Langflow direction.
-Langflow still owns workflows that the assistant creates. Implementation starts
-only after the owner's final approval of this proposal; review is not that approval.
+Langflow still owns workflows that the assistant creates. The owner subsequently
+authorized implementation and requested the final UI changes
+recorded below. This amendment aligns the specification with those decisions;
+independent review does not substitute for owner approval.
 
 The [editable assistant design](../design/application-assistant.drawio) owns
-proposed geometry, visible controls, states and transitions. The
+geometry, visible controls, states and transitions. The
 [realization plan](../design/application-assistant.md) explains mechanisms and
-remaining engineering checks, without claiming implementation or runtime acceptance.
+engineering boundaries. The validation record separates observed implementation
+checks from target guarantees and remaining limits.
 
-## Scope and proposed initial defaults
+## Scope and selected initial behavior
 
 Windows, trusted single-user local deployment, Codex first. Use the existing
 provider runner, subscription login, model discovery, Activity and cancellation;
@@ -38,8 +41,12 @@ GitHub writes, generate custom component code or manipulate account connections.
 Private Skill access remains subject to its separately accepted authorization;
 this feature never bypasses it or claims unfinished private-source support.
 
-Proposed defaults for final approval: one provider/model/effort binding per
-conversation; other choices create a new conversation. Conversations and draft
+The provider binding remains fixed for a conversation; another provider requires
+a separate conversation. Model and reasoning effort are selected for each turn
+from discovered supported options, without replacing the native thread/run. The
+composer visibly reuses a supported current/recent pair or the first supported
+pair for a new chat; this is a UI selection, not a claim about provider defaults.
+Selection and conversation creation never submit inference. Conversations and draft
 receipts persist across app restarts. History is retained locally; no automatic
 expiry or external transcript publication. Reinstall/migration and a deletion
 UI are outside the initial slice; they must not be claimed. New conversation
@@ -62,9 +69,15 @@ leave usable provider access after a turn ends.
 
 At most one turn is active per conversation. Persist message identity and its
 dispatch reservation before submitting native work. Duplicate submission of the
-same message/content returns its existing attempt; reuse with different content
+same message/content/configuration returns its existing attempt; reuse with
+different content or configuration
 is refused. Another message while active is refused without dispatch. Conversation
-creation and model selection do not call a model.
+creation and model selection do not call a model. Each admitted message records
+its immutable model/effort selection. Omitting both uses the conversation
+defaults; supplying only one refuses. Explicit selection forms part of the
+canonical retry digest; retry must preserve its original identity and selection.
+Codex resume accepts supported model/effort changes without requiring model
+equality, while preserving native thread, account, workspace and safety checks.
 
 Resume does not get a fresh semantic identity merely because an HTTP response was
 lost. Resolve submitted attempts through retained request/attempt records before
@@ -117,6 +130,41 @@ not necessarily runner restart. Runner restart and provider authentication chang
 retain existing fail-closed rules unless separately verified continuation permits
 them. Transparent mid-turn recovery is not a promise of this feature. Idle
 reopening must preserve history even if the native binding is no longer resumable.
+
+## Owner-selected chat controls and send feedback
+
+The editable design owns the detailed layout and transitions. The title header
+shows the conversation name without repeated provider/model metadata. Double-click
+or keyboard title activation opens a wide inline rename field; Enter or Save
+commits, Escape or Cancel leaves the title unchanged. Rename does not dispatch
+inference. User and assistant bodies use the same 14 px text size.
+
+History is collapsible, with New conversation at its bottom. New chat shows a
+workflow illustration and the supported Codex provider card. The compact composer
+model menu uses the discovered model list and an annotated effort slider; there
+is no Refresh models action or model-card grid. Changing a selection during an
+idle conversation applies to its next turn. Selection is locked during dispatch
+and an active turn. Native permission modes are deferred to Laomedo #288.
+
+Enter sends, Shift+Enter inserts a newline, and Enter during IME composition does
+not send. The message box retains focus after Enter and remains read-only during
+dispatch/response. Keyboard and button use the same admission rule: no dispatch
+while active, pending, busy, needing attention, or in an observation/error state.
+Stop remains available while the active turn can be cancelled.
+
+A normal send clears the composer after durable local reservation and immediately
+shows the user bubble with stable retained-message geometry. It must not flash
+retry instructions. Before answer text appears, show accessible Thinking with
+subtle staggered letter motion, disabled for reduced-motion preference. Hide
+Thinking as soon as streamed or retained answer text is visible. Stopping and
+reconciliation retain their own meaningful status rather than Thinking.
+
+Only an uncertain failure or a restored, still-unobserved pending submission may
+offer explicit same-key Retry after status observation settles. A successful
+acknowledgement followed by history-read failure must not turn into a new retry
+or automatic resubmission. Definite refusal restores the original draft; owner/
+profile changes fence late state updates. The existing sidebar may still label
+a running turn responding; Thinking is the main conversation waiting indicator.
 
 ## Laomedo MCP boundary
 

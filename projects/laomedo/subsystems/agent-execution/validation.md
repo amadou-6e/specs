@@ -11,7 +11,7 @@ related: []
 
 # Agent execution validation
 
-## Persistent assistant proposal, 2026-11-16
+## Persistent assistant proposal, 2026-11-16 (historical)
 
 [Spec issue #423](https://github.com/amadou-6e/specs/issues/423) proposes
 [direct provider chat and Laomedo MCP tools](contract/application-assistant.md),
@@ -21,7 +21,10 @@ drafting and independent consultation, with final approval before implementation
 No new model turn, runtime acceptance, production code or implemented chat screen
 is established by this specification work. Existing provider/MCP results do not
 establish continuation after Stop/failure or atomic draft persistence for chat.
-Proposal verification and review revisions are recorded in its linked PR.
+Proposal verification and review revisions are recorded in its linked PR. This
+is the historical proposal boundary; the later owner-authorized implementation
+and selected-control amendment are recorded in the
+[2026-11-17 entry](#application-assistant-implementation-2026-11-17).
 
 ## Output Contract and routable Codex outcomes, 2026-10-10
 
@@ -713,3 +716,44 @@ both the contract and installation docs, and this merge does not claim standalon
 Claude deployment or approve PR180. The reviewer accepted that documented boundary.
 The design's nonblocking clipped body text was corrected with wrapping and re-rendered.
 The remaining recovery-context separator recommendation is nonblocking and unchanged.
+
+
+## Application assistant implementation, 2026-11-17
+
+Laomedo #282 / [PR #283](https://github.com/amadou-6e/laomedo/pull/283), implementation
+revision `7911f134bf29bf2e11c37ecbe9ae87fe1ba43687`, supplies persistent direct
+Codex chat with the six authoring MCP tools, owner/profile fences, Activity,
+continuation and atomic saved-draft receipts. The contract and editable design
+record the owner's later per-turn selection, compact controls and send-feedback
+decisions; the original fixed model/effort and header metadata proposal is superseded.
+
+At that revision, all hosted checks pass, as do 16 UI controls, the production
+frontend build and diff whitespace checks. The 41 assistant backend tests plus
+8 subtests passed at `8e4311af`, before the final frontend-only admission guard.
+Whole-upstream TypeScript retains baseline errors; these are not represented as
+a clean whole-application type check.
+
+Real isolated initial-provider acceptance covered fresh/follow-up/Stop/post-Stop,
+same native thread/run after application restart, model/effort switches, actual
+MCP draft save/copy preserving source workflows, draft editor inspection and
+resource cleanup. A delayed-dispatch real greeting at `d749bc85` verified no retry
+flash, stable bubble geometry, staggered Thinking letters and reduced-motion
+suppression. Later keyboard/focus/admission refinements have regression controls
+and a final built retained-chat render; no new live inference is claimed for them.
+Experiments and sanitized harness evidence are on permanent `exp`; private
+runtime state and screenshots are not committed or required by production tests.
+
+The existing Claude reviewer session independently covered the substantive
+implementation from `2344408f` through `7911f134`, including actual rendered UI.
+Its final focused recheck resolved the keyboard admission finding: Implementation,
+requested-behavior Spec fit and Visual APPROVE. The current spec amendment still
+requires its own review and final-head validation before the coordinated merge.
+Static/retained renders do not establish live streaming, motion or keyboard behavior.
+
+Scoped limits remain: Codex-first local single-user deployment, bounded history/
+receipt reconciliation, single-user startup upgrade assumption, and a pre-existing
+same-frame double-Enter race refused server-side that can restore the draft.
+The sidebar may retain responding while main chat uses Thinking. Other providers
+are not chat-accepted by these checks. Native permission modes (#288) and human-
+approved edits/runs/publication of workflows are outside this slice; no such
+workflow actions or automatic uncertain replay are enabled.

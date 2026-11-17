@@ -3,7 +3,7 @@ title: Persistent application assistant realization proposal
 status: draft
 kind: design
 owners: [laomedo-maintainers]
-last_reviewed: 2026-11-16
+last_reviewed: 2026-11-17
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -13,11 +13,12 @@ related: []
 
 Behavior belongs to [the assistant contract](../contract/application-assistant.md).
 Geometry/states/transitions belong to [the editable design](application-assistant.drawio).
-This is a proposal for final owner approval, not implemented classes/endpoints or
-permission to begin production work. Existing source inspected: Laomedo
-`ead50c23865b3d2e19bfb2eab976f3bc5947d062`, merged as
-`2344408faf24570581cc61498ec9796059d7baaa`; Langflow/LFX1.12.3 pinned checkout
-`fec71dca901949c09ed4d63315804337cd2eb13d`. No new live/model probes were run.
+The owner authorized the implementation in Laomedo #282 / PR #283 and then
+selected the revised controls recorded in the contract and editable design.
+Implementation reviewed at `7911f134bf29bf2e11c37ecbe9ae87fe1ba43687` uses the
+pinned Langflow/LFX1.12.3 checkout `fec71dca901949c09ed4d63315804337cd2eb13d`.
+This amendment records the selected behavior; it does not promote the broader
+agent-execution subsystem or claim acceptance for other providers.
 
 ## Concrete arrangement
 
@@ -40,7 +41,7 @@ workflow store. The application controller owns conversation orchestration aroun
 existing providers. The assistant's authored drafts are normal workflow definitions
 with explicit draft provenance; they are never passed to graph execution by chat.
 
-## Proposed material interfaces
+## Material interfaces
 
 Application HTTP, authenticated in the same app/profile context as ordinary UI:
 
@@ -48,7 +49,9 @@ Application HTTP, authenticated in the same app/profile context as ordinary UI:
 POST /api/v1/laomedo/assistant/conversations
   {provider, model, effort} -> {conversation_id, state}
 POST /api/v1/laomedo/assistant/conversations/{id}/messages
-  {client_message_id, text} -> 202 {message_id, attempt_id, state}
+  {client_message_id, text, model?, effort?} -> 202 {message_id, attempt_id, state}
+PATCH /api/v1/laomedo/assistant/conversations/{id}
+  {title} -> updated owner-scoped conversation; no inference
 GET /api/v1/laomedo/assistant/conversations
   ?cursor=... -> bounded conversation summaries
 GET /api/v1/laomedo/assistant/conversations/{id}
@@ -67,7 +70,10 @@ Actual existing runner endpoints are `/v1/runs/async`, `/v1/runs/{id}/resume`,
 status `/v1/runs/{id}`, `/v1/runs/{id}/activity`, `/v1/runs/{id}/cancel`, request
 lookup and `/v1/models`. First submit uses stable `request_id`; follow-up resume
 uses recorded `expected_thread_id`, `expected_post_run_hash`, model/effort and a
-new `activity_attempt_id`. First-attempt identity must be observed/bound using
+new `activity_attempt_id`. A supported new model/effort pair resumes the same
+native thread/run; model equality is not a continuation requirement. Account,
+workspace checkpoint, request identity and settled-resource checks still apply.
+First-attempt identity must be observed/bound using
 the actual current runner representation, not an invented resume-only field.
 The current resume HTTP call is synchronous: dispatch from an application-owned
 background job, return the durable app attempt immediately and poll Activity.
@@ -165,7 +171,8 @@ User sends "Combine Research and Implement using Skill X"
   Activity streams; app exposes D from the receipt even if the turn later fails
   terminal attempt revokes tool access and unlocks Send after settlement
 User clicks Open on D -> new app tab; original editor is untouched
-User sends M2 -> same provider/native session, new attempt and MCP capability
+User selects model/effort and sends M2 -> same provider/native session,
+  immutable turn selection, new attempt and MCP capability
 ```
 
 ## Provider continuation is a gate, not a status-string relaxation
@@ -189,7 +196,7 @@ configured for the user's repository. No publication controller or GitHub grant
 is supplied. Confirm allowed workspace shape and isolated worker mounts rather
 than assuming an empty directory is admissible under every provider.
 
-## Ordered realization after final approval
+## Realization sequence and evidence boundary
 
 1. Inspect metadata-only graph helpers, transactional flow persistence, native MCP
    HTTP hosting/client lifecycle and current runner setup. Resolve mechanisms
@@ -211,11 +218,10 @@ than assuming an empty directory is admissible under every provider.
 
 ## Review questions and known gaps
 
-The wire/storage/hosting names above are proposals, not existing APIs. Required
-source checks: safe installed metadata without component execution, flow revision
-atomicity across editor writes, profile response-release fences, native HTTP MCP
-loop/lifespan compatibility and provider continuation after failed/cancelled work.
-No new runtime acceptance, screenshot of an implemented chat, or provider restart
-guarantee exists. There is no proposed merge or implementation permission until
-the owner gives final approval. Additional product options are recorded in the
-contract as proposed defaults rather than silently selected decisions.
+The initial source checks and implementation acceptance are summarized in
+[validation](../validation.md#application-assistant-implementation-2026-11-17).
+The selected chat controls, per-turn configuration, retry identity and keyboard
+feedback supersede the original fixed-model/header-metadata proposal. Provider
+change still creates a separate conversation. No permission dropdown or tool
+for running/publishing/updating original workflows is introduced. Human-approved
+workflow actions require a separate selected specification and implementation.
