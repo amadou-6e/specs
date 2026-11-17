@@ -53,9 +53,14 @@ settings, nodes, connections and mixed patches are Edit. The agent must not repe
 approval boilerplate, proposal IDs or revision hashes in its chat reply.
 
 Buttons are Approve, Always approve renames/edits/runs, and Reject. The Always
-scope is stated alongside them: any graph in this conversation. Exact server-built
-changes, revision/proposal/run identities, expiry and the editor warning are in
-collapsed Details; they remain inspectable but are not the main message. Model text is
+scope is stated alongside them: any graph in this conversation. Use muted, regular-weight change text and a small operation heading. A top-right
+external-link icon opens the graph in a new tab, with an accessible name and
+tooltip. No technical Details section, revision/proposal/run IDs or expiry text
+is rendered in the card. Backend receipts retain those identities. Settled cards
+collapse to operation, change description and a short outcome: Renamed, Edited,
+Completed, Rejected, Expired, Failed, Not started or Outcome unknown. Do not add a
+separate Saved graph updated sentence. Relevant failure/recovery meaning remains
+in the outcome tooltip; uncertain effects are never labeled a definite failure. Model text is
 rendered as data, never HTML. A run card states that existing components may
 consume model quota and perform their configured external actions. Preview inputs
 are non-secret only; credentials must remain configured through existing settings.
@@ -97,8 +102,8 @@ Refuse locked/published/filesystem-managed flows under existing edit rules.
 The edit and successful action receipt commit atomically. The assistant refuses a changed base revision, and duplicate approval clicks
 cannot repeat an edit. Ordinary editor PATCH does not require an expected revision:
 an already-open editor can later overwrite the approved change. Both the pending
-and success card must retain in Details the warning: Reload open editor tabs before saving; unsaved editor
-work may overwrite this saved change. No automatic reload or unsaved-work loss is
+and success card's graph-link tooltip must warn that open editors need reloading
+before saving, to avoid overwriting saved changes. No automatic reload or unsaved-work loss is
 allowed. Approval changes the saved version only; this is not bidirectional
 editor conflict prevention. Opening is an explicit separate-tab action.
 
@@ -161,7 +166,7 @@ code/spec/actual-render review and final-head checks are required before merge.
 ## Compact approvals and remembered consent checks
 
 Verify server-derived Rename/Edit/Run, digest-bound model description, actual old/new
-rename values, compact controls and expandable exact details. Human Always approve
+rename values, compact controls, muted change text, external-link icon and collapsed outcomes. Human Always approve
 must cover any graph in this conversation only, independently per category and
 originating app session. Test revocation, cross-conversation/session refusal,
 category escalation refusal, stale revision and repeated same-key admission. Real
