@@ -66,6 +66,14 @@ in [subsystem handoffs](../../../architecture/subsystem-handoffs.md).
 
 ## Direct Laomedo chat assistant
 
+Owner-selected direction, 2026-11-16: this assistant is a persistent direct
+conversation with an existing provider and Laomedo MCP tools, not an assistant
+Langflow workflow. The [assistant contract](../../agent-execution/contract/application-assistant.md)
+now owns the proposed conversation/tool lifecycle and the
+[editable design](../../agent-execution/design/application-assistant.drawio)
+owns its proposed controls and transitions. Final owner approval is required
+before implementation. Langflow continues to own the workflows it authors.
+
 Confirmed: Laomedo includes a chat in which the user communicates directly with
 an agent that helps them interact with Laomedo. One intended task is creating a
 new workflow that combines existing graphs, such as Research and Implement,
@@ -80,10 +88,10 @@ an authoring operation, distinct
 from automatically launching both matching defaults. Chat alone must not be
 treated as evidence that a graph was saved, tagged or executed.
 
-The assistant's permitted actions beyond that draft handoff, context access,
-provider/session lifetime and monitoring remain to be specified. This brief does
-not introduce another sign-in or activate the retired approval authority.
-Chat layout and transitions need the owning Draw.io before implementation.
+The proposed initial action/context scope, provider/session lifetime, monitoring
+and draft behavior are defined by that assistant contract. It introduces no
+new sign-in or retired approval authority. This section retains the existing
+draft/editor handoff choices; the linked proposal is not implementation evidence.
 
 ## Functional reference
 

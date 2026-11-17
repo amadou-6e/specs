@@ -11,6 +11,10 @@ related: []
 
 # Agent execution design
 
+[Application assistant realization](application-assistant.md) and its
+[editable chat proposal](application-assistant.drawio) describe direct provider
+chat and narrow Laomedo MCP tools. The owner-selected amendments record the implemented chat controls; scoped evidence is linked from validation.
+
 Native app-server/SDK processes operate behind a separate runner. Source, effective and post-run snapshots are distinct. Resume restores the last post-run files before native thread reuse. Docker is a bounded prototype mechanism, not proof of production confinement.
 
 Reconstructed from local specs and evidence reports; implementation was not re-executed

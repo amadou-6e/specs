@@ -48,6 +48,13 @@ order, and do not imply that unanswered mechanism questions were settled.
 
 ## Workflow setup and definitions
 
+Later owner clarification, 2026-11-16: the application chat assistant is a
+long-lived direct provider conversation with Laomedo MCP tools. It has no
+Langflow workflow. This explicitly narrows D02 for the assistant only; normal
+user-authored workflows remain Langflow-owned. See the
+[assistant proposal](../subsystems/agent-execution/contract/application-assistant.md).
+The historical rows below are retained; implementation awaits final approval.
+
 | ID | Decision | Handoff affected |
 | --- | --- | --- |
 | D01 | Laomedo embeds a heavily modified Langflow editor and exposes all Langflow components. Langflow owns graph authoring, workflow sequencing and live run state. A Langflow process restart or crash ends the run; Laomedo does not resume an in-flight workflow. The safety/observability implications of exposing every component remain contested. | H4-H7 |
