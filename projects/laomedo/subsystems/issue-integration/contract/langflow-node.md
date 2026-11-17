@@ -133,3 +133,157 @@ noopener/noreferrer. It is disabled when the selected identity is absent or
 invalid; it never opens an arbitrary URL supplied in issue text. An instance
 fed only by a runtime Issue Reference without a configured picker reports that
 no inspectable UI selection is available rather than guessing an issue.
+
+
+## Saved GitHub account connections (#286)
+
+Owner-selected on 2026-11-16 in implementation issue
+[laomedo#286](https://github.com/amadou-6e/laomedo/issues/286): both Issue and PR
+nodes use saved GitHub accounts for reads and the existing scoped modify/close
+operations, including private repositories. The **Saved accounts** page of each
+node's Draw.io owns GN286-S01 through GN286-S07 and the approval screen. Earlier
+pages retain the explicit configured-host-service path.
+
+The Connection selector precedes Repository URL. It lists only connections owned
+by the active local profile, with their verified account names and availability.
+Selecting a different connection clears discovered labels and Issue/PR choices.
+An explicit Configured host connection option retains the existing operator-owned
+service path, shown disabled with "Not configured" when unavailable. A saved
+connection owned by another profile appears only as "Connection unavailable",
+without its account name. An empty selection asks the user to choose a connection. A selected
+saved account never falls back to that host service or another account.
+
+Before discovery and execution, revalidate the current profile/browser lease,
+connection generation, numeric repository identity, exact consented repository name
+and live GitHub access. Account possession or a repository URL alone is not consent.
+Disconnect, expired admission, a stale generation, missing provider permissions or
+an unconfirmed rename/transfer refuses new reads and effects. Recovery selects or
+reconnects that same account; an ambiguous GitHub 404 never proves a private
+repository exists. Tokens stay in host custody, outside graph parameters, browser
+storage, exports and Agent workspaces.
+
+### Run admission, history and writes
+
+For saved-account runs, the owner selected **trusted catalog nodes only**.
+Before component construction or execution, the host verifies every node,
+including unreachable nodes, and its canonical catalog identity and executable code against the trusted host
+catalog. A matching display name, posted type or browser-supplied hash is not
+proof of trust. Custom nodes and edited Python are rejected, including inside
+nested graphs. Repeat validation on the effective graph after native expansion
+and tweaks, before its first vertex executes. An unavailable catalog fails closed.
+Refuse nodes that load additional saved flows at runtime until that loading path
+enforces the same validation before construction. Pin the trusted catalog snapshot
+for admission and construction; do not accept a hot-reloaded replacement midway.
+Catalog nodes that execute supplied Python in the host backend cannot bypass
+this restriction through an input field. Connected Agent tools that are graph
+components are subject to the same checks. This does not restrict a trusted Agent
+node's normal provider-isolated workspace execution. The restriction applies to
+saved-account execution; it does not change the configured-host-service path.
+
+The owner selected a separate credential broker process. The graph process must
+not own the vault, reusable GitHub credentials, browser admission signing secrets
+or unrestricted broker authority. Broker operations carry only run-, vertex-,
+repository-, target- and operation-scoped requests, with the broker independently
+enforcing admission, current access and durable effect authority. A copied graph
+or job identifier is not authentication. Custom Python elsewhere must not obtain
+another run's broker authority. A second process with an unrestricted shared
+credential or vault-access path is insufficient isolation. Activation remains
+blocked until these boundaries are implemented and verified.
+A graph runtime with the same OS identity and access to the vault or broker state
+does not satisfy this boundary. Use a container without those resources or a
+separate OS identity with enforced access controls. Saved-account runs execute in
+a runtime not shared with other runs or profiles; a job capability is never
+visible to co-resident graph code. The broker enforces the approved bounds
+independently of graph validation and of graph or job data supplied by the worker.
+Profile identity records, password verification and signing authority remain in
+broker-only storage. The graph runtime cannot write that database or supply
+authoritative user records or JWTs to the broker. Its operational graph database
+is separate from the broker's identity and credential state.
+
+The user selected normal local-profile run history, including private Issue/PR text.
+Disconnect stops future GitHub access but does not erase history already acquired
+by that profile. Native flow, job, trace, build-history and message reads must be
+restricted to that owning profile. Exported flow definitions must omit private
+runtime output. A public/shared execution route cannot acquire a profile's GitHub
+access. Downstream Agents may receive the authorized Issue/PR text, never its
+credential or reusable browser admission.
+
+The host binds each private graph run to its initiating profile/lease, exact graph,
+job, vertex, selected connection generation and repository. That binding remains
+host-only and expires; a serialized graph, restart or copied job identifier cannot
+reconstruct it. Native background execution, event delivery and cached results
+must enforce this binding, not merely the browser's dropdown request. Logout or
+lease expiry stops the next provider read/write. A write already dispatched keeps
+its confirmed, failed or unknown outcome; losing admission never triggers a retry.
+Previously acquired history remains owner-scoped rather than requiring a live
+GitHub connection to read it.
+
+A successful routine credential renewal may continue an already admitted run
+only through host-proven refresh continuity for the same account and unchanged
+repository consent. Matching metadata alone is insufficient. Reconnect, consent
+change, revocation and an uncertain refresh break that continuity. Neither a
+restart nor a serialized graph restores it. Buffered browser reads retain their
+exact-generation response-release fence.
+
+Every new browser admission still requires a current upstream JWT and live
+private lease. Once admitted, a host-only job scope rechecks the initiating lease
+and the same active ordinary profile through upstream user lookup; routine
+access-JWT rotation alone does not cancel that job. Ordinary lease renewal keeps
+the same cookie/digest; it does not switch to a new login lease. Logout, lease expiry,
+profile removal or deactivation stops its next private request. This job scope
+cannot authorize new browser requests or restore a job after broker restart.
+
+Canvas Run, node Run and playground execution share the same host admission.
+If any reachable Issue/PR node has a connected operation input or an Agent feedback
+edge, or a configured static operation request, show one combined approval dialog
+for the run, listing every saved account,
+repository, exact permitted Issue/PR target and permitted modify/close operation
+kind. This is an upper bound, not a preview of Agent-generated patch content.
+Current picker targets are mandatory for write-capable saved-account nodes;
+no target means "Choose an Issue/PR before allowing changes", with no job dispatch.
+Runtime references must match those approved targets. Downstream references cannot
+expand them. Runtime operations outside the envelope fail before dispatch with
+`github_node_operation_not_approved` and a failed outcome, never unknown.
+
+A run with no reachable connected/static operation request or feedback edge is read-only
+and bypasses approval. It receives no mediation write grants. An unexpected write
+attempt still fails before dispatch with the same named error. Connecting an
+account or pressing a read-only Refresh grants no writes. Several Issue/PR nodes
+share one combined dialog; the user approves once rather than once per node.
+Cancel dispatches no job or change.
+
+Saved-account Issue/PR nodes execute as ordinary graph components. They do not
+offer an Agent tool-mode interface; Tool Mode is refused during preparation.
+Earlier PR operation outcomes remain evidence, never static requests to replay.
+
+The plan is consumed once when starting the exact graph job. Within that run it
+covers all permitted effects on the listed targets, not just the first effect.
+Changing connection, repository, target or executable graph requires a new plan.
+Each effect still uses the existing mediated exact-target grant, optimistic content
+verification, connection-generation fence and durable request identity. Repeated
+evaluation of the same effect cannot dispatch twice. Unknown delivery is not
+silently replayed; a new run requires new approval and cannot erase an existing
+unknown effect record. Approval cannot authorize arbitrary endpoints, PR merge
+or issue creation.
+
+New account-owned private Apps request Issues and Pull requests write, alongside
+Contents/Metadata read. Existing Apps have an explicit permission-update path to
+their own GitHub settings and installation approval, then current access is
+rechecked. Never replace an App automatically, borrow another account's App or
+claim permissions before GitHub confirms them. The node's "Review GitHub access"
+action opens Settings for that selected connection. Settings shows the required
+Issues/PR permissions, "Open App settings" and "Check access". After the owner
+updates and approves permissions on GitHub, Check access verifies them online;
+"Back to node" restores the same graph selection without starting a run. GitHub permission is only an upper
+bound; it never replaces the narrower per-run approval.
+
+### Acceptance for saved accounts
+
+Use the real authenticated UI and an owner-approved disposable private repository:
+select each account, discover actual issues/PRs, view details, run reads, approve a
+bounded reversible modify/close operation and verify its acknowledgement/readback.
+Verify account/repository mismatch, missing permissions, cancelled approval,
+expired/revoked admission, generation rotation, stale choices, repeated evaluation,
+unknown delivery, owner-scoped history/cache/events and output-free exports.
+Credential-free tests support these controls but are not live acceptance. A source
+or layout review does not establish that native graph execution is integrated.

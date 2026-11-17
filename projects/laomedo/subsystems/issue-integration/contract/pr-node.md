@@ -283,3 +283,17 @@ other external inputs, mutating Skill dependencies and multiple controllers
 remain refused. Building only a read-only Skill must not start the feedback
 Agent. Maintained examples use this wiring; historical execution evidence is
 retained separately and not relabelled.
+
+
+## Saved GitHub account connections (#286)
+
+The shared [saved-account node contract](langflow-node.md#saved-github-account-connections-286)
+owns account selection, per-run approval bounds, native-job admission, permission
+recovery and profile-history retention for both Issue and PR nodes. Its owner
+choices apply here without a separate copy of that protocol. The **Saved accounts**
+page in [github-pr-node.drawio](../design/github-pr-node.drawio) owns PR-specific
+control geometry and GN286 state/interaction identifiers. Existing PR ports,
+Agent-feedback behavior, merged/read-only filtering and uncertain-write outcomes
+remain governed by the PR contract above. A connected feedback edge makes the run
+write-capable for the shared approval rule; the picker supplies its permitted
+exact PR target before the Agent runs.
