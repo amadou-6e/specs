@@ -69,10 +69,13 @@ code. New nodes use installed templates; secret/code/host-routing fields remain
 unwritable. Removing a node also removes its incident edges and the preview says so.
 Refuse locked/published/filesystem-managed flows under existing edit rules.
 
-The edit and successful action receipt commit atomically. Concurrent editor writes
-or duplicate approval clicks cannot overwrite a different revision or repeat an
-edit. Editor tabs and unsaved work stay untouched; approval changes the saved
-version only. Opening the resulting graph is an explicit separate-tab action.
+The edit and successful action receipt commit atomically. The assistant refuses a changed base revision, and duplicate approval clicks
+cannot repeat an edit. Ordinary editor PATCH does not require an expected revision:
+an already-open editor can later overwrite the approved change. Both the pending
+and success card must warn: Reload open editor tabs before saving; unsaved editor
+work may overwrite this saved change. No automatic reload or unsaved-work loss is
+allowed. Approval changes the saved version only; this is not bidirectional
+editor conflict prevention. Opening is an explicit separate-tab action.
 
 ## Execution and uncertainty
 
@@ -85,11 +88,23 @@ inputs and a stable action-owned run/session ID. Do not reload a changed graph
 or reuse a cached template from another revision. Existing configured credentials
 and external services remain live dependencies; approval is not a snapshot of them.
 
+Run inputs are limited to 12000 characters. Pinned SimplifiedAPIRequest accepts
+input_type chat/text/any and output_type chat/text/any/debug; the proposed tool
+exposes that exact list, defaults to chat/any, and includes every input in its
+digest. The server derives session_id from the action ID; the model cannot
+supply session_id, tweaks, output_component or tracing user_id. The run executes
+as the approving app user, resolving that user's configured credentials and global
+variables. Use context={} for the existing cold execution path; this is not a
+claim that the revision-checked warm cache is stale.
+
 Run states are pending -> executing -> succeeded/failed/unknown, or rejected,
 expired/stale before dispatch. Persist executing before any execution call. Repeat
 approval returns the existing state and never dispatches again. There is no claim
 of exactly-once completion across a process crash: interrupted executing actions
-become unknown on restart and are never automatically rerun. Retain stable run ID
+are reconciled against the existing job service using their run ID and exact
+owner: completed/failed jobs resolve their outcome; absent/nonterminal/ambiguous
+jobs become unknown and are never automatically rerun. App shutdown requests
+task cancellation but does not claim graph effects were cleanly cancelled. Retain stable run ID
 and direct the user to inspect actual history before proposing another run.
 Unknown must not be labelled failed-with-no-effects. Raw execution exceptions and
 outputs are not returned to the model; safe status and run identity are retained.
@@ -107,5 +122,7 @@ UI checks cover both approval cards, exact preview, reject, stale/unknown outcom
 reload and keyboard accessibility. Real app/editor acceptance must show a graph
 unchanged before approval, edited once after approval and preserved on rejection;
 a real small graph must run only after approval, with its actual run outcome.
+Acceptance includes an editor already open on the edited graph and the explicit
+reload warning, rather than claiming the editor cannot overwrite it.
 Fixtures and proposal renders alone are not real integration acceptance. Independent
 code/spec/actual-render review and final-head checks are required before merge.
