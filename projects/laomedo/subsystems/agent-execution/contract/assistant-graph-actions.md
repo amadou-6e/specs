@@ -52,6 +52,11 @@ not the agent's summary. The server derives Rename only for name-only changes;
 settings, nodes, connections and mixed patches are Edit. The agent must not repeat
 approval boilerplate, proposal IDs or revision hashes in its chat reply.
 
+Owner decision (2026-11-17): Edit cards retain only the agent's short description,
+without server-verified operation counts or an additional effects summary. That
+description is digest-bound, not independent verification of the patch; category,
+revision and policy checks remain server-enforced.
+
 Buttons are Approve, Always approve renames/edits/runs, and Reject. The Always
 scope is stated alongside them: any graph in this conversation. Use muted, regular-weight change text and a small operation heading. A top-right
 external-link icon opens the graph in a new tab, with an accessible name and
