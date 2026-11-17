@@ -55,7 +55,11 @@ permission to approve a later revision. Reject/expiry causes no effect. A change
 workflow, revoked session, wrong owner/conversation or unavailable target refuses
 before any write/dispatch; a fresh proposal is required. Never silently rebase.
 Pending proposals from a revoked originating session cannot be adopted by a new
-login. Access is checked inside the decision transaction and before execution.
+login. Read responses indicate whether this app session can decide; cards from
+another session show fresh-proposal guidance without approval controls. Native
+auto-login may rotate the session cookie when reopening a page or editor tab;
+then a fresh proposal is required. Access is checked inside the decision
+transaction and before execution.
 
 ## Safe graph editing
 

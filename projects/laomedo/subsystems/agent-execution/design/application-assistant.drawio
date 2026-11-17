@@ -120,7 +120,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="A4 - Human-approved graph actions">
-    <mxGraphModel page="1" pageWidth="1380" pageHeight="1160">
+    <mxGraphModel page="1" pageWidth="1380" pageHeight="1220">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -139,8 +139,8 @@
         <mxCell id="outcome" value="OUTCOMES&#10;Edit succeeded: Saved graph updated | [ Open graph in new tab ]&#10;Reload open editor tabs before saving; unsaved work may overwrite this change.&#10;Run succeeded/failed: authoritative state and stable run ID, safe explanation.&#10;Not dispatched: authority/input refusal before entering execution; graph not started.&#10;Rejected / Expired / Stale revision: no effect; ask for a fresh proposal.&#10;Unknown after interruption: outcome uncertain; inspect history; do not automatically rerun.&#10;Graph run is independent of assistant Stop; closing chat does not cancel it." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=17;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="30" y="670" width="1280" height="200" />
         </mxCell>
-        <mxCell id="rules" value="TRANSITIONS AND ACCESSIBILITY&#10;A01 MCP proposal -&gt; pending card attached to originating message; record before exposing Approve/Reject.&#10;A02 Approve exact digest -&gt; revision/session check -&gt; atomic edit or durable run claim -&gt; authoritative outcome.&#10;A03 Reject -&gt; retained rejected card. Expiry/stale/revocation refuses effects. No approve-all or remembered consent.&#10;A04 Pending and settled cards survive reload; executing after restart is reconciled by run ID and exact owner/flow; completed/failed resolve, otherwise unknown; never redispatched.&#10;A05 Model may read outcome on next user-requested turn; approval itself submits no new model prompt.&#10;Labelled keyboard-operable buttons, visible focus, polite state updates; untrusted preview is plain text.&#10;No automatic editor navigation or loss of unsaved work. No publication or provider permission control." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=17;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
-          <mxGeometry as="geometry" x="30" y="910" width="1280" height="220" />
+        <mxCell id="rules" value="TRANSITIONS AND ACCESSIBILITY&#10;A01 MCP proposal -&gt; pending card attached to originating message; record before exposing Approve/Reject.&#10;A02 Approve exact digest -&gt; revision/session check -&gt; atomic edit or durable run claim -&gt; authoritative outcome.&#10;A03 Reject -&gt; retained rejected card. Expiry/stale/revocation refuses effects. No approve-all or remembered consent.&#10;A04 Restart: reconcile exact run ID/owner/flow. Terminal jobs resolve; others unknown. Never replay.&#10;A05 Model may read outcome on next user-requested turn; approval itself submits no new model prompt.&#10;Labelled keyboard-operable buttons, visible focus, polite state updates; untrusted preview is plain text.&#10;No automatic editor navigation or loss of unsaved work. No publication or provider permission control.&#10;New app session: old pending cards show fresh-proposal guidance without approval controls." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=17;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="910" width="1280" height="260" />
         </mxCell>
       </root>
     </mxGraphModel>
