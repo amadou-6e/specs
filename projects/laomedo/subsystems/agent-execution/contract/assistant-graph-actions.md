@@ -60,7 +60,10 @@ is rendered in the card. Backend receipts retain those identities. Settled cards
 collapse to operation, change description and a short outcome: Renamed, Edited,
 Completed, Rejected, Expired, Failed, Not started or Outcome unknown. The outcome
 is below the description and aligned left, never grouped beneath the graph icon.
-Run text is a sentence using the actual server-built input: Run workflow "name"
+All categories share one muted, regular-weight sentence and no separate title or
+standalone workflow-name row. Rename says Rename/Renamed workflow "old" to "new".
+Edit says Edit/Edited workflow "name": brief change description. Run text is a
+sentence using the actual server-built input: Run workflow "name"
 with input "value" while pending, Running workflow while executing, and Ran
 workflow only after success. An empty input is shown explicitly as "". Do not
 repeat the model's input summary or infer success from its wording. Do not add a
