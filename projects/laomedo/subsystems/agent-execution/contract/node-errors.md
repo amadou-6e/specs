@@ -46,12 +46,14 @@ outcomes require checking existing runs before a new request, never a blind
 retry. A routed failed runner result exposes details even when graph routing
 itself succeeds; do not describe it as a successful agent answer.
 
-## Verification boundary
+## Runner diagnostic observations
 
-### Runner diagnostic observations
-
-For a runner HTTP failure, Technical details and the existing copy action expose
-the observed HTTP status and a fixed failure stage. Where the runner supplies
+For Agent dispatch and submission requests handled by the graph adapter's runner
+HTTP boundary, including its run-status lookups, Technical details and the
+existing copy action expose the observed HTTP status and a fixed failure stage.
+Independent Stop/cancellation, model-catalogue and activity-polling transports
+are outside this extension and retain their existing error contracts.
+Where the runner supplies
 them, also expose a diagnostic UUID, fixed failure kind, bounded numeric OS errno
 and safe original runner code. The UUID correlates the displayed error with the
 host diagnostic log; it is neither a run ID nor authority to access a run. Do not
