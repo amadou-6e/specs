@@ -53,8 +53,8 @@ HTTP boundary, including its run-status lookups, Technical details and the
 existing copy action expose the observed HTTP status and a fixed failure stage.
 Independent Stop/cancellation, model-catalogue and activity-polling transports
 are outside this extension and retain their existing error contracts.
-Where the runner supplies
-them, also expose a diagnostic UUID, fixed failure kind, bounded numeric OS errno
+Where the runner supplies them, also expose a diagnostic UUID, fixed failure
+kind, bounded numeric OS errno
 and safe original runner code. The UUID correlates the displayed error with the
 host diagnostic log; it is neither a run ID nor authority to access a run. Do not
 invent a host correlation UUID when an older or external server supplies none.
@@ -66,7 +66,8 @@ fields. The receiving HTTP status is authoritative over a claimed envelope
 status. Each boundary independently admits fields and rejects arbitrary keys,
 free-form text, URLs, paths, credentials, task contents and stack traces. OS errno
 is an observation, not an arbitrary exception message; explain only recognized
-values as interpretations of the reported OS code, not a verified root cause or proof that no work ran. Distinguish unknown causes honestly.
+values as interpretations of the reported OS code, not a verified root cause or
+proof that no work ran. Distinguish unknown causes honestly.
 
 The host log uses the same diagnostic UUID and safe observations even if a run
 record does not exist. Expected request-lookup misses during cancellation polling
