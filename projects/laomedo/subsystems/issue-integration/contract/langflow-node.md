@@ -195,6 +195,10 @@ separate OS identity with enforced access controls. Saved-account runs execute i
 a runtime not shared with other runs or profiles; a job capability is never
 visible to co-resident graph code. The broker enforces the approved bounds
 independently of graph validation and of graph or job data supplied by the worker.
+Profile identity records, password verification and signing authority remain in
+broker-only storage. The graph runtime cannot write that database or supply
+authoritative user records or JWTs to the broker. Its operational graph database
+is separate from the broker's identity and credential state.
 
 The user selected normal local-profile run history, including private Issue/PR text.
 Disconnect stops future GitHub access but does not erase history already acquired
