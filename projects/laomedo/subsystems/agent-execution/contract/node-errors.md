@@ -64,7 +64,7 @@ fields. The receiving HTTP status is authoritative over a claimed envelope
 status. Each boundary independently admits fields and rejects arbitrary keys,
 free-form text, URLs, paths, credentials, task contents and stack traces. OS errno
 is an observation, not an arbitrary exception message; explain only recognized
-values and distinguish unknown causes honestly.
+values as interpretations of the reported OS code, not a verified root cause or proof that no work ran. Distinguish unknown causes honestly.
 
 The host log uses the same diagnostic UUID and safe observations even if a run
 record does not exist. Expected request-lookup misses during cancellation polling
@@ -76,7 +76,7 @@ alone cannot prove that no work started. Do not automatically retry.
 This extension tracks [Laomedo #289](https://github.com/amadou-6e/laomedo/issues/289)
 and [specs #428](https://github.com/amadou-6e/specs/issues/428).
 
-### Required checks
+## Verification boundary
 
 Check code mappings, unknown fallback, safe diagnostics and original code
 preservation with focused tests. Validate native node errors in an actual
