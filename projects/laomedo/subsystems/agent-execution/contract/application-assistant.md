@@ -39,7 +39,9 @@ history shows the same owner-scoped conversations as full-window chat. Selection
 does not alter the graph URL. Closing retains the mounted chat's draft and active
 response; reopening restores them. Navigating away may unmount the sidebar, while
 accepted work continues in the existing service. A full-window icon uses router navigation in the current tab to open the
-selected saved conversation. Unsent text remains local to its originating
+selected saved conversation. The sidebar full-window icon leaves the editor;
+unsent sidebar text is discarded and the existing guard applies, including
+stopping an active build. Unsent text otherwise remains local to its originating
 surface; no cross-tab draft synchronization is promised. Profile changes clear
 private rendered state and selection as in full-window chat.
 
