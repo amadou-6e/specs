@@ -142,3 +142,8 @@ credentials are copied. The native client owns token exchange and refresh.
 Back cancels; Refresh observes without opening another login or resending a code.
 A lost submission reply is reconciled rather than declaring the connection unchanged.
 Reference: https://code.claude.com/docs/en/authentication (2026-11-18).
+
+
+## Subscription allowance extension (#437 / Laomedo #300)
+
+The owning Draw.io P13/P14, S10/S11 and Q0-Q5 define the allowance rows, explicit refresh and stale/unavailable states. PC-09 in the [contract](../contract/provider-connections.md) defines account-generation/lease fencing, zero-turn native reads, cache bounds and evidence requirements. Screens use the existing graph harness/account structure; do not derive allowance from Activity token/cost records.

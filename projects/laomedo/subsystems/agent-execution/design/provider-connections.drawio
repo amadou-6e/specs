@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <mxfile host="app.diagrams.net" version="24.7.17">
   <diagram id="provider-settings" name="Provider connections ? draft">
-    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="6290" background="#ffffff" math="0" shadow="0">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="7590" background="#ffffff" math="0" shadow="0">
       <root>
         <mxCell id="0" value="" />
         <mxCell id="1" parent="0" value="" />
@@ -511,7 +511,100 @@
         <mxCell id="P11-nav-back" value="←" style="text;html=1;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;fontColor=#fafafa;fontSize=24;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="60" y="5610" width="24" height="24" />
         </mxCell>
-      <mxCell id="P12-card" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#18181b;strokeColor=#3f3f46;fontColor=#fafafa;arcSize=6;" vertex="1" parent="1"><mxGeometry x="30" y="5770" width="630" height="450" as="geometry" /></mxCell><mxCell id="P12-title" value="P12 - Finish connecting Claude Code" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontColor=#fafafa;fontSize=14;fontSize=22;fontStyle=1;arcSize=6;" vertex="1" parent="1"><mxGeometry x="60" y="5800" width="560" height="35" as="geometry" /></mxCell><mxCell id="P12-body" value="Sign in with Claude, then paste the completion code below." style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontColor=#fafafa;fontSize=14;arcSize=6;" vertex="1" parent="1"><mxGeometry x="60" y="5850" width="560" height="45" as="geometry" /></mxCell><mxCell id="P12-authorize" value="Continue to Claude &amp;#8599;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#18181b;strokeColor=#3f3f46;fontColor=#fafafa;fillColor=#fafafa;fontColor=#18181b;arcSize=6;" vertex="1" parent="1"><mxGeometry x="60" y="5920" width="560" height="40" as="geometry" /></mxCell><mxCell id="P12-code" value="Completion code &amp;#8226;&amp;#8226;&amp;#8226;&amp;#8226;&amp;#8226;&amp;#8226;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#18181b;strokeColor=#3f3f46;fontColor=#fafafa;align=left;spacingLeft=12;arcSize=6;" vertex="1" parent="1"><mxGeometry x="60" y="5985" width="560" height="40" as="geometry" /></mxCell><mxCell id="P12-finish" value="Finish sign-in" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#18181b;strokeColor=#3f3f46;fontColor=#fafafa;fillColor=#fafafa;fontColor=#18181b;arcSize=6;" vertex="1" parent="1"><mxGeometry x="60" y="6050" width="560" height="40" as="geometry" /></mxCell><mxCell id="P12-nav" value="&amp;#8592; &amp;nbsp; &amp;#10227;" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontColor=#fafafa;fontSize=14;fontSize=20;arcSize=6;" vertex="1" parent="1"><mxGeometry x="60" y="6160" width="80" height="24" as="geometry" /></mxCell><mxCell id="P12-story" value="&lt;b&gt;P12 - User story&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I connect a Claude subscription through the official client without copying local login files.&lt;br&gt;&lt;br&gt;1. Press Continue to Claude.&lt;br&gt;2. Complete native sign-in.&lt;br&gt;3. Paste its one-use code and press Finish sign-in.&lt;br&gt;&lt;br&gt;Laomedo verifies account identity and returns to the connection. Back cancels; Refresh only checks progress. Failed reconnect preserves the existing account. No model turn is submitted." style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=18;fillColor=#ffffff;strokeColor=#dddddd;fontColor=#222222;fontSize=15;arcSize=6;" vertex="1" parent="1"><mxGeometry x="710" y="5800" width="440" height="400" as="geometry" /></mxCell></root>
+        <mxCell id="P12-card" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#18181b;strokeColor=#3f3f46;fontColor=#fafafa;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="30" y="5770" width="630" height="450" as="geometry" />
+        </mxCell>
+        <mxCell id="P12-title" value="P12 - Finish connecting Claude Code" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontColor=#fafafa;fontSize=14;fontSize=22;fontStyle=1;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="60" y="5800" width="560" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="P12-body" value="Sign in with Claude, then paste the completion code below." style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontColor=#fafafa;fontSize=14;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="60" y="5850" width="560" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="P12-authorize" value="Continue to Claude &amp;#8599;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#18181b;strokeColor=#3f3f46;fontColor=#fafafa;fillColor=#fafafa;fontColor=#18181b;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="60" y="5920" width="560" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="P12-code" value="Completion code &amp;#8226;&amp;#8226;&amp;#8226;&amp;#8226;&amp;#8226;&amp;#8226;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#18181b;strokeColor=#3f3f46;fontColor=#fafafa;align=left;spacingLeft=12;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="60" y="5985" width="560" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="P12-finish" value="Finish sign-in" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#18181b;strokeColor=#3f3f46;fontColor=#fafafa;fillColor=#fafafa;fontColor=#18181b;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="60" y="6050" width="560" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="P12-nav" value="&amp;#8592; &amp;nbsp; &amp;#10227;" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontColor=#fafafa;fontSize=14;fontSize=20;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="60" y="6160" width="80" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="P12-story" value="&lt;b&gt;P12 - User story&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I connect a Claude subscription through the official client without copying local login files.&lt;br&gt;&lt;br&gt;1. Press Continue to Claude.&lt;br&gt;2. Complete native sign-in.&lt;br&gt;3. Paste its one-use code and press Finish sign-in.&lt;br&gt;&lt;br&gt;Laomedo verifies account identity and returns to the connection. Back cancels; Refresh only checks progress. Failed reconnect preserves the existing account. No model turn is submitted." style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=18;fillColor=#ffffff;strokeColor=#dddddd;fontColor=#222222;fontSize=15;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="710" y="5800" width="440" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="P13-card" value="" style="rounded=1;absoluteArcSize=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#19191c;strokeColor=#34343a;" vertex="1" parent="1">
+          <mxGeometry x="30" y="6330" width="630" height="570" as="geometry" />
+        </mxCell>
+        <mxCell id="P13-title" value="P13 - Subscription agents" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="6350" width="560" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="P13-tabs" value="&lt;b&gt;Codex&lt;/b&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp; Claude Code &amp;nbsp;&amp;nbsp;&amp;nbsp; OpenCode" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="6395" width="560" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="P13-preference" value="&lt;b&gt;Account preference&lt;/b&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp; Manage accounts" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="6450" width="560" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="P13-select" value="Personal Codex &amp;nbsp; &amp;#9662;" style="rounded=1;absoluteArcSize=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#19191c;strokeColor=#34343a;fontColor=#f4f4f5;align=left;spacingLeft=12;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="6487" width="560" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="P13-heading" value="&lt;b&gt;Subscription limits&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="6560" width="560" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="P13-account" value="&lt;b&gt;Personal Codex&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="6602" width="500" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="P13-refresh" value="&amp;#10227;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;align=center;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="586" y="6600" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P13-primary" value="5-hour window &lt;b&gt;75% remaining&lt;/b&gt; &amp;nbsp; Resets today,15:30" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="6644" width="560" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="P13-bar" value="" style="rounded=1;fillColor=#8b8b94;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="60" y="6680" width="420" height="6" as="geometry" />
+        </mxCell>
+        <mxCell id="P13-secondary" value="7-day window &lt;b&gt;58% remaining&lt;/b&gt; &amp;nbsp; Resets Nov23,18:00" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="6710" width="560" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="P13-credits" value="Credits:10.25 &amp;nbsp;&amp;nbsp; Checked14:28" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;fontColor=#a1a1aa;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="6750" width="560" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="P13-account2" value="&lt;b&gt;Work Codex&lt;/b&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp; Not checked &amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;#10227;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="6810" width="560" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="P13-story" value="&lt;b&gt;S10 / Q0-Q2 - Inspect real allowance&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I open a harness and see each saved account with its own explicit Refresh limits icon. Opening, changing a preference or switching tabs sends no model task.&lt;br&gt;&lt;br&gt;Q0 Not checked -&gt; Q01 Refresh -&gt; Q1 Checking -&gt; Q02 Read succeeds -&gt; Q2 Current.&lt;br&gt;&lt;br&gt;Each provider-reported bucket can contain primary and secondary windows; absent fields remain unknown. Labels/durations/reset times shown here are illustrative, not fixed plan tiers. Credit balance stays separate.&lt;br&gt;&lt;br&gt;Q03 Another account/graph/harness: clear the pending view and ignore its late result. Preserve graph-scoped preferences." style="rounded=1;absoluteArcSize=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d9dee7;fontColor=#263547;align=left;verticalAlign=top;spacing=16;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="710" y="6350" width="440" height="530" as="geometry" />
+        </mxCell>
+        <mxCell id="P14-card" value="" style="rounded=1;absoluteArcSize=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#19191c;strokeColor=#34343a;" vertex="1" parent="1">
+          <mxGeometry x="30" y="6970" width="630" height="530" as="geometry" />
+        </mxCell>
+        <mxCell id="P14-title" value="P14 - Honest refresh and unavailable states" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="6990" width="560" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="P14-loading" value="&lt;b&gt;Personal Codex&lt;/b&gt; &amp;nbsp;&amp;nbsp; Checking... &amp;nbsp; &amp;#10227;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="7050" width="560" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="P14-stale" value="&lt;b&gt;Personal Codex&lt;/b&gt; &amp;nbsp;&amp;nbsp; Out of date &amp;nbsp; &amp;#10227;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="7120" width="560" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="P14-last" value="5-hour window &lt;b&gt;75% remaining&lt;/b&gt;&lt;br&gt;Last checked14:28. Could not refresh. Try again." style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;fontColor=#a1a1aa;" vertex="1" parent="1">
+          <mxGeometry x="60" y="7160" width="560" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="P14-unsupported" value="&lt;b&gt;Personal Claude&lt;/b&gt; &amp;nbsp;&amp;nbsp; Not available" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="7260" width="560" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="P14-unsupported-copy" value="This provider does not report subscription limits here." style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;fontColor=#a1a1aa;" vertex="1" parent="1">
+          <mxGeometry x="60" y="7300" width="560" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="P14-reconnect" value="&lt;b&gt;Personal Codex&lt;/b&gt; &amp;nbsp;&amp;nbsp; Account unavailable&lt;br&gt;Manage accounts" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="7370" width="560" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="P14-story" value="&lt;b&gt;S11 / Q3-Q5 - Trust freshness and account ownership&lt;/b&gt;&lt;br&gt;&lt;br&gt;Q04 60seconds pass or a reported reset passes: Q2 -&gt; Q3 Out of date. Keep last observed values; do not invent replenishment.&lt;br&gt;&lt;br&gt;Q05 Failed refresh: retain only the same-binding snapshot, clearly stale; no snapshot -&gt; Q4 Unavailable with retry. Q06 Unsupported provider -&gt; Q4 Not available, no hidden network/model work.&lt;br&gt;&lt;br&gt;Q07 Logout/disconnect/reconnect or revoked generation: discard old display/cache -&gt; Q5 Account unavailable. Late results never cross an account/session boundary.&lt;br&gt;&lt;br&gt;Retry returns through Q1. Spinner/disabled Refresh is per account; keyboard labels/status announcements remain available. Cache is bounded, memory-only and expires after10minutes." style="rounded=1;absoluteArcSize=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d9dee7;fontColor=#263547;align=left;verticalAlign=top;spacing=16;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="710" y="6990" width="440" height="510" as="geometry" />
+        </mxCell>
+      </root>
     </mxGraphModel>
   </diagram>
 </mxfile>

@@ -230,3 +230,50 @@ only observes; Back fences the attempt and confirms native cleanup. Account and
 workspace identity come from native auth status before publication. A failed
 reconnect leaves the saved connection intact. Live acceptance remains required.
 These selected requirements do not establish implemented or reviewed support.
+
+
+## PC-09 - Subscription allowance observations (#300, specification #437)
+
+P13/P14 and Q0-Q5 in the owning Draw.io define the Subscription agents allowance
+surface. Graphs keep separate harness preferences; allowance belongs to each
+current-profile saved connection, never to a run or its token/cost counters.
+
+Opening the tab reads only cached observations. Each account has an explicitly
+labelled Refresh limits icon. It invokes only the selected provider's bounded
+read operation; no prompt, new thread, model probe, login, alternate account or
+ambient host credential import is permitted. Codex admits only
+`account/rateLimits/read`, with empty parameters, before creating a native
+session. The existing connection-owned controller and exact cleanup receipts
+remain authoritative; discovery/active-work conflicts report temporary
+unavailability instead of weakening admission. Claude/OpenCode report unavailable
+until a supported account-scoped zero-turn quota operation is established.
+
+Preserve primary/secondary windows and every returned metered bucket. Prefer
+`rateLimitsByLimitId` when present; otherwise use the single `rateLimits` view.
+Do not duplicate that fallback bucket. Preserve absent/null windows, duration,
+reset, plan and credit details as unknown. Empty authoritative buckets mean no
+reported limits. Used percentages must be finite and nonnegative; remaining is
+max(0, 100 minus used), never inferred from tokens. Reset timestamps are Unix
+seconds, displayed in local time with full date/time available. Window names are
+derived from provider-reported minutes, never fixed hourly/weekly/monthly tiers.
+Credits/balance/unlimited flags remain separate from percentage allowance.
+Only explicit safe fields cross the browser boundary; no raw responses/errors,
+credential paths, tokens or login metadata are returned or logged.
+
+Cache in memory only, scoped to profile, connection, generation and browser
+lease. Freshness lasts at most60seconds, and ends sooner if a reported reset
+passes. Retain a stale same-binding snapshot after failed refresh with a concise
+retry state; never claim a reset replenished allowance without a new read.
+Retained cache is bounded and expires after10minutes. Concurrent refresh is
+single-flight per binding; late responses cannot overwrite newer ones. Check
+profile/connection/generation and the browser revocation fence both before and
+after native reads. Disconnect, reconnect, logout, unavailable credentials or
+controller closure prevent publication of an old observation. No account or
+harness/graph change may show the previous selection's pending result. Native
+cleanup failure remains a failure, and is not turned into a successful quota read.
+
+Acceptance: observe real saved-Codex quota/reset data with zero submitted model
+turns; cover null/multiple/malformed windows, over-limit percentages, credit
+separation, foreign profiles, generation changes, disconnect/logout during reads,
+failed refresh with stale retention and out-of-order browser responses. Inspect
+narrow/wide rendered states; supporting fixtures are not real account acceptance.
