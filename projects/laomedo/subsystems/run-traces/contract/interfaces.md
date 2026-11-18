@@ -203,3 +203,18 @@ OTLP receipt. Internal fixtures cover negative cases only. See the dated
 [validation](../validation.md#original-docker-agents-graph-inspection-2026-10-15).
 Other providers, OTLP metrics, hard-crash reconciliation, deletion UI, external
 collectors and the remaining Draw.io interactions remain open targets.
+
+
+## Activity inspection controls - owner feedback 2026-11-18
+
+The [Activity detail controls page](../design/agent-activity.drawio) owns ACT-295.
+Search starts collapsed behind an icon beside each telemetry/conversation heading.
+Opening focuses the relevant input. Close/Escape clears its query, restores all
+records and collapses it; Escape returns focus to the icon. Clear empties the
+query while keeping the field open. Agent/turn changes reset both query and open
+state. Existing fuzzy matching, retained order, source disclosures and scoped
+exports remain. The usage section has additional top spacing (40 px from preceding
+metadata in the current layout). Empty telemetry uses centered muted text without
+a bordered card; filtered-to-zero remains distinct from uncaptured telemetry.
+Decorative ghost rows are not required and no loading animation is introduced.
+These are presentation changes, not new runtime or capture acceptance.
