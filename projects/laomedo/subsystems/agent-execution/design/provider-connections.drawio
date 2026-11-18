@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <mxfile host="app.diagrams.net" version="24.7.17">
   <diagram id="provider-settings" name="Provider connections ? draft">
-    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="7590" background="#ffffff" math="0" shadow="0">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="8820" background="#ffffff" math="0" shadow="0">
       <root>
         <mxCell id="0" value="" />
         <mxCell id="1" parent="0" value="" />
@@ -568,13 +568,13 @@
         <mxCell id="P13-secondary" value="7-day window &lt;b&gt;58% remaining&lt;/b&gt; &amp;nbsp; Resets Nov23,18:00" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
           <mxGeometry x="60" y="6710" width="560" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="P13-credits" value="Credits:10.25 &amp;nbsp;&amp;nbsp; Checked14:28" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;fontColor=#a1a1aa;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="60" y="6750" width="560" height="28" as="geometry" />
+        <mxCell id="P13-credits" value="Credit balance:10.25 &amp;nbsp;&amp;nbsp; Checked14:28" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;fontColor=#a1a1aa;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="6770" width="560" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="P13-account2" value="&lt;b&gt;Work Codex&lt;/b&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp; Not checked &amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;#10227;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="60" y="6810" width="560" height="38" as="geometry" />
+        <mxCell id="P13-account2" value="&lt;b&gt;Work Codex&lt;/b&gt; &amp;nbsp;&amp;nbsp; Not checked" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="6810" width="500" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="P13-story" value="&lt;b&gt;S10 / Q0-Q2 - Inspect real allowance&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I open a harness and see each saved account with its own explicit Refresh limits icon. Opening, changing a preference or switching tabs sends no model task.&lt;br&gt;&lt;br&gt;Q0 Not checked -&gt; Q01 Refresh -&gt; Q1 Checking -&gt; Q02 Read succeeds -&gt; Q2 Current.&lt;br&gt;&lt;br&gt;Each provider-reported bucket can contain primary and secondary windows; absent fields remain unknown. Labels/durations/reset times shown here are illustrative, not fixed plan tiers. Credit balance stays separate.&lt;br&gt;&lt;br&gt;Q03 Another account/graph/harness: clear the pending view and ignore its late result. Preserve graph-scoped preferences." style="rounded=1;absoluteArcSize=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d9dee7;fontColor=#263547;align=left;verticalAlign=top;spacing=16;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="P13-story" value="&lt;b&gt;S10 / Q0-Q2 - Inspect real allowance&lt;/b&gt;&lt;br&gt;&lt;br&gt;As a user, I open a harness and see each saved account with its own explicit Refresh limits icon. Opening, changing a preference or switching tabs sends no model task.&lt;br&gt;&lt;br&gt;Q0 Not checked -&gt; Q01 Refresh -&gt; Q1 Checking -&gt; Q02 Read succeeds -&gt; Q2 Current.&lt;br&gt;&lt;br&gt;Each provider-reported bucket can contain primary and secondary windows; absent fields remain unknown. Labels/durations/reset times shown here are illustrative, not fixed plan tiers. Credit balance stays separate.&lt;br&gt;&lt;br&gt;Q03 Another account/graph/harness: clear the pending view and ignore its late result. Preserve graph-scoped preferences.&lt;br&gt;&lt;br&gt;Bars show remaining allowance. Fresh Refresh reuses its snapshot; failed reads have a10second retry cooldown. Native single-flight is per account generation, while cache visibility is per lease." style="rounded=1;absoluteArcSize=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d9dee7;fontColor=#263547;align=left;verticalAlign=top;spacing=16;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
           <mxGeometry x="710" y="6350" width="440" height="530" as="geometry" />
         </mxCell>
         <mxCell id="P14-card" value="" style="rounded=1;absoluteArcSize=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#19191c;strokeColor=#34343a;" vertex="1" parent="1">
@@ -583,11 +583,11 @@
         <mxCell id="P14-title" value="P14 - Honest refresh and unavailable states" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;fontSize=20;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="60" y="6990" width="560" height="36" as="geometry" />
         </mxCell>
-        <mxCell id="P14-loading" value="&lt;b&gt;Personal Codex&lt;/b&gt; &amp;nbsp;&amp;nbsp; Checking... &amp;nbsp; &amp;#10227;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="60" y="7050" width="560" height="38" as="geometry" />
+        <mxCell id="P14-loading" value="&lt;b&gt;Personal Codex&lt;/b&gt; &amp;nbsp;&amp;nbsp; Checking..." style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="7050" width="500" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="P14-stale" value="&lt;b&gt;Personal Codex&lt;/b&gt; &amp;nbsp;&amp;nbsp; Out of date &amp;nbsp; &amp;#10227;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="60" y="7120" width="560" height="32" as="geometry" />
+        <mxCell id="P14-stale" value="&lt;b&gt;Personal Codex&lt;/b&gt; &amp;nbsp;&amp;nbsp; Out of date" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="7120" width="500" height="32" as="geometry" />
         </mxCell>
         <mxCell id="P14-last" value="5-hour window &lt;b&gt;75% remaining&lt;/b&gt;&lt;br&gt;Last checked14:28. Could not refresh. Try again." style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;fontColor=#a1a1aa;" vertex="1" parent="1">
           <mxGeometry x="60" y="7160" width="560" height="58" as="geometry" />
@@ -603,6 +603,87 @@
         </mxCell>
         <mxCell id="P14-story" value="&lt;b&gt;S11 / Q3-Q5 - Trust freshness and account ownership&lt;/b&gt;&lt;br&gt;&lt;br&gt;Q04 60seconds pass or a reported reset passes: Q2 -&gt; Q3 Out of date. Keep last observed values; do not invent replenishment.&lt;br&gt;&lt;br&gt;Q05 Failed refresh: retain only the same-binding snapshot, clearly stale; no snapshot -&gt; Q4 Unavailable with retry. Q06 Unsupported provider -&gt; Q4 Not available, no hidden network/model work.&lt;br&gt;&lt;br&gt;Q07 Logout/disconnect/reconnect or revoked generation: discard old display/cache -&gt; Q5 Account unavailable. Late results never cross an account/session boundary.&lt;br&gt;&lt;br&gt;Retry returns through Q1. Spinner/disabled Refresh is per account; keyboard labels/status announcements remain available. Cache is bounded, memory-only and expires after10minutes." style="rounded=1;absoluteArcSize=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d9dee7;fontColor=#263547;align=left;verticalAlign=top;spacing=16;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
           <mxGeometry x="710" y="6990" width="440" height="510" as="geometry" />
+        </mxCell>
+        <mxCell id="P13-secondary-bar" value="" style="rounded=1;fillColor=#8b8b94;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="60" y="6745" width="325" height="6" as="geometry" />
+        </mxCell>
+        <mxCell id="P13-work-refresh" value="&amp;#10227;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;align=center;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="586" y="6810" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P14-loading-refresh" value="&amp;#10227;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;align=center;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="586" y="7050" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P14-stale-refresh" value="&amp;#10227;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;align=center;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="586" y="7120" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P15-card" value="" style="rounded=1;absoluteArcSize=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#19191c;strokeColor=#34343a;" vertex="1" parent="1">
+          <mxGeometry x="30" y="7560" width="630" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="P15-title" value="P15 - Multiple metered buckets" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="7580" width="560" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="P15-account" value="&lt;b&gt;Personal Codex&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="7640" width="500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P15-refresh" value="&amp;#10227;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;align=center;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="586" y="7640" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P15-bucket-a" value="&lt;b&gt;Codex&lt;/b&gt; &amp;nbsp; &lt;span style=&quot;color:#a1a1aa&quot;&gt;codex&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="7700" width="560" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="P15-window-a" value="5-hour window &amp;nbsp; &lt;b&gt;75% remaining&lt;/b&gt;&lt;br&gt;Resets today,15:30" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="7740" width="560" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="P15-bar-a" value="" style="rounded=1;fillColor=#8b8b94;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="60" y="7800" width="420" height="6" as="geometry" />
+        </mxCell>
+        <mxCell id="P15-bucket-b" value="&lt;b&gt;Review&lt;/b&gt; &amp;nbsp; &lt;span style=&quot;color:#a1a1aa&quot;&gt;codex_review&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="7840" width="560" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="P15-window-b" value="7-day window &amp;nbsp; &lt;b&gt;40% remaining&lt;/b&gt;&lt;br&gt;Resets Nov23,18:00" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="7880" width="560" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="P15-bar-b" value="" style="rounded=1;fillColor=#8b8b94;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="60" y="7940" width="224" height="6" as="geometry" />
+        </mxCell>
+        <mxCell id="P15-credit-states" value="Unlimited credits / No credits / Credit balance unknown" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;fontSize=12;fontColor=#a1a1aa;" vertex="1" parent="1">
+          <mxGeometry x="60" y="7980" width="560" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="P15-story" value="&lt;b&gt;S10 / Q2 - Multiple buckets and partial fields&lt;/b&gt;&lt;br&gt;&lt;br&gt;Bucket order: ascending native ID. Label: reported display name, otherwise ID. Native primary/secondary windows stay separate; the Review example has only secondary.&lt;br&gt;&lt;br&gt;Every known percentage has the same remaining-allowance bar. Invalid scalar fields become unknown locally; malformed response structure fails the read. Unknown percentages have no bar. Empty reported buckets: No limits reported.&lt;br&gt;&lt;br&gt;Credits are independent: Credit balance followed by reported value (no invented currency), Unlimited credits, No credits, or Credit balance unknown. Absent credits: no line.&lt;br&gt;&lt;br&gt;Values are illustrative. No fixed product windows or priorities." style="rounded=1;absoluteArcSize=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d9dee7;fontColor=#263547;align=left;verticalAlign=top;spacing=16;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="710" y="7580" width="440" height="470" as="geometry" />
+        </mxCell>
+        <mxCell id="P16-card" value="" style="rounded=1;absoluteArcSize=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#19191c;strokeColor=#34343a;" vertex="1" parent="1">
+          <mxGeometry x="30" y="8130" width="320" height="570" as="geometry" />
+        </mxCell>
+        <mxCell id="P16-title" value="Subscription agents" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="8150" width="280" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="P16-tabs" value="&lt;b&gt;Codex&lt;/b&gt; &amp;nbsp; Claude Code &amp;nbsp; OpenCode" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="50" y="8200" width="280" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="P16-heading" value="&lt;b&gt;Subscription limits&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="50" y="8270" width="280" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="P16-account" value="&lt;b&gt;Personal Codex&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="50" y="8320" width="230" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="P16-refresh" value="&amp;#10227;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;align=center;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="294" y="8320" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P16-bucket" value="&lt;b&gt;Codex&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="50" y="8380" width="280" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="P16-window" value="5-hour window&lt;br&gt;&lt;b&gt;75% remaining&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="50" y="8425" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="P16-bar" value="" style="rounded=1;fillColor=#8b8b94;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="50" y="8490" width="210" height="6" as="geometry" />
+        </mxCell>
+        <mxCell id="P16-reset" value="Resets Nov18,15:30&lt;br&gt;Checked14:28" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;fontSize=12;fontColor=#a1a1aa;" vertex="1" parent="1">
+          <mxGeometry x="50" y="8530" width="280" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="P16-story" value="&lt;b&gt;S10 / Q2 - Narrow320px panel&lt;/b&gt;&lt;br&gt;&lt;br&gt;Use the same hierarchy and controls; preserve account/refresh alignment. Window name and remaining text wrap without clipping; reset/last-check text is below the bar. Long provider labels wrap. The list scrolls vertically.&lt;br&gt;&lt;br&gt;Q1-Q5 follow P14 in the same flow. Native reads are bounded initialization/read operations in a temporary process; close it and verify cleanup before publication. No native session/thread/prompt is started.&lt;br&gt;&lt;br&gt;Parent implementation/specification remain separate integration and merge gates." style="rounded=1;absoluteArcSize=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d9dee7;fontColor=#263547;align=left;verticalAlign=top;spacing=16;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="710" y="8150" width="440" height="510" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

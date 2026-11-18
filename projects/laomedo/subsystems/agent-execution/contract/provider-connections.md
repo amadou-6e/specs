@@ -264,8 +264,11 @@ Cache in memory only, scoped to profile, connection, generation and browser
 lease. Freshness lasts at most60seconds, and ends sooner if a reported reset
 passes. Retain a stale same-binding snapshot after failed refresh with a concise
 retry state; never claim a reset replenished allowance without a new read.
-Retained cache is bounded and expires after10minutes. Concurrent refresh is
-single-flight per binding; late responses cannot overwrite newer ones. Check
+Retained cache is bounded and expires after10minutes. Native refresh is single-flight on (profile, connection, generation), independent
+of browser lease. Cache visibility and publication remain lease-gated. Revoking
+one waiter discards only its own result, not another valid waiter's read. Fresh
+snapshots are reused even for explicit Refresh; failures have a10second retry
+cooldown per native binding. Late responses cannot overwrite newer ones. Check
 profile/connection/generation and the browser revocation fence both before and
 after native reads. Disconnect, reconnect, logout, unavailable credentials or
 controller closure prevent publication of an old observation. No account or
@@ -277,3 +280,36 @@ turns; cover null/multiple/malformed windows, over-limit percentages, credit
 separation, foreign profiles, generation changes, disconnect/logout during reads,
 failed refresh with stale retention and out-of-order browser responses. Inspect
 narrow/wide rendered states; supporting fixtures are not real account acceptance.
+
+
+PC-09 clarifications (Q1-Q9 review): P15 defines labelled buckets ordered by
+opaque bucket ID, ascending; use the reported display name when present, otherwise
+the ID. Do not impose a preferred bucket. A secondary-only bucket renders just its
+secondary window. Each window has the same remaining-allowance bar; unknown
+percentages have no bar. Empty windows/buckets say No limits reported. P16 defines
+a320px view: headings/refresh remain aligned; window allowance is on its own line,
+reset time wraps beneath it; no horizontal clipping.
+
+A nonfinite/negative/nonnumeric percentage, nonpositive/noninteger duration or
+noninteger/nonpositive/out-of-display-range reset becomes unknown for that field
+only. Preserve other valid observations. Structurally invalid responses (wrong
+bucket/window/map types or excessive records/strings/response size) fail the read
+and keep the previous same-binding snapshot stale. Credits display Credit balance
+with its provider-reported value; no currency is invented. Unlimited credits and
+No credits are distinct from unknown credit details; no credit field implies no
+credit line. Text fields are bounded safe fields, not unfiltered raw responses.
+
+Explicit Refresh may start a temporary native app-server process in the existing
+connection-owned isolation boundary. It sends only initialization and the named
+rate-limit read, never session/new, thread/start or prompt. Reuse the admitted
+zero-turn discovery lifecycle, with native request budget30seconds, initialization
+budget45seconds, existing bounded image/startup budgets and exact native teardown.
+The temporary controller is closed before publishing the observation. Startup,
+protocol or cleanup failure becomes unavailable/stale, not a successful read;
+client timeout/abort never authorizes replay or another account. No persistent
+model task or credential-bearing process is created by mounting the panel.
+
+Both parent PRs (#426 specification, Laomedo#285 implementation) are explicit
+integration/merge gates. Their incomplete review or live acceptance is not waived
+by this focused extension. If their ownership/lease contract changes, review this
+extension against the resulting boundary again.
