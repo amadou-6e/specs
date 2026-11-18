@@ -13,11 +13,14 @@ related: []
 
 ## Graph editor sidebar — selected owner feedback, Laomedo #296
 
-AS-296: The graph editor offers Assistant in its header. It toggles a right-hand
-chat column using the same conversations and APIs as `/assistant`, including
+AS-296: The header Assistant link opens full-window `/assistant` in the current
+tab, on both the workflow list and graph pages, using the router and its existing
+unsaved-editor navigation guard. An Assistant icon in the graph left rail toggles
+a right-hand chat column using the same conversations and APIs as `/assistant`, including
 existing approvals, tools, copy, export and deletion. It creates no workflow or
 second inference integration. Opening, closing, resizing and selecting a saved
-conversation never submit a prompt. The editor and unsaved canvas remain mounted.
+conversation never submit a prompt. The editor and unsaved canvas remain mounted when toggling the sidebar. The rail
+control leaves the selected left section unchanged, including the Agents view.
 
 The divider supports pointer dragging, Arrow Left/Right in 24px steps, Home for
 minimum and End for maximum, with an accessible name, orientation and current
