@@ -205,9 +205,12 @@ Reduce stacked bottom padding so the last answer stays close to the composer.
 ## Delete conversation
 
 A trash icon beside header Export opens a confirmation naming the conversation.
-Cancel leaves it intact; Delete permanently removes the owned conversation, its
+Cancel leaves it intact; Delete removes the owned conversation from Laomedo
+history, including its
 messages/activity snapshots, draft/action receipts and remembered permissions.
-Saved workflows and independent workflow run history remain. Deletion is refused
+Saved workflows and independent workflow run history remain. Native provider
+thread/session records are outside this deletion; no provider-side erasure is
+claimed. The confirmation says "Delete from Laomedo history". Deletion is refused
 while an assistant response is active/unsettled or a graph action is executing;
 stop/wait for settlement first. The server enforces owner, current app-session
 authority and concurrency under the same transaction/row lock as Send and graph
