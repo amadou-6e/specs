@@ -11,6 +11,51 @@ related: []
 
 # Persistent application assistant and Laomedo MCP
 
+## Native agents and slash commands — selected work, Laomedo #293
+
+AS-293 is an incomplete implementation target tracked by specs #435. The owner
+selected provider-native agents and slash commands, with built-ins only. This is
+not a request to expose Laomedo runner start/resume/cancel controls. Personal CLI
+profiles, repository-defined commands, custom agent files and plugins are outside
+this selection. Native permission modes remain separately owned by Laomedo #288.
+
+The assistant must discover actual native capabilities through Laomedo MCP and
+propose exact invocations for human approval. Merely offering a human-only slash
+menu does not complete this requirement. Discovery grants no invocation authority.
+Catalog descriptions and argument hints are untrusted display data. Missing,
+unsupported, invalid and explicitly empty observations must not be conflated.
+Optional discovery failures must not break normal chat or graph-agent execution.
+
+Command catalogs belong to the same owner, conversation, native session and
+isolated workspace in which execution occurs. ACP command updates replace the
+complete list, including an empty list. Clearing per-turn Activity buffers must
+not discard session command metadata. Bounded detached observations have a stable
+metadata revision; the revision is not an authorization token.
+
+Invocations must bind the exact command or agent identity, arguments, catalog
+revision, owner, conversation and originating human app session. The model cannot
+approve its own proposal. Existing graph permissions do not authorize native
+commands. No command may bypass account-management restrictions or alter native
+permission modes through this interface. Unknown or UI-only commands must not be
+silently interpreted as ordinary prompts or reported as successfully executed.
+
+Execution must not re-enter an active native prompt. An admitted operation must
+retain an unambiguous dispatch identity, recheck authority and native availability,
+and settle the thread/workspace checkpoint before further chat uses that session.
+Commands that return a native control result without a model turn must not invent
+turn IDs, model usage or native completion events. Model-generating commands keep
+the existing native terminal-evidence requirements. Uncertain outcomes are retained
+without automatic replay; cancellation, revocation and restart must not duplicate
+effects. Results remain visible and copyable in the conversation.
+
+The current chat composes Codex only. Its pinned ACP interface advertises slash
+commands but has no configured built-in-agent enumeration. Spawned-child events
+are not a selectable agent catalog. Whether this work adds Claude/OpenCode chat
+provider support or first delivers Codex commands is an outstanding owner choice.
+Do not claim native-agent support or complete AS-293 acceptance before that choice
+and real provider verification. The approval interaction design and final supported
+command policy must be reviewed before their implementation is accepted.
+
 ## Graph editor sidebar — selected owner feedback, Laomedo #296
 
 AS-296: The header Assistant link opens full-window `/assistant` in the current
