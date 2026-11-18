@@ -333,3 +333,6 @@ is introduced. Any live acceptance harness has its own explicit scope.
 
 AS-296 workflow-card graph icons use same-tab router navigation to open the
 corresponding graph; they do not require integrated-browser popup support.
+If that graph is already open, the icon reloads the document to fetch its saved
+state. The editor's existing browser leave confirmation protects unsaved changes
+and active builds; cancelling that confirmation keeps the current editor intact.
