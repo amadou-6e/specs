@@ -29,11 +29,16 @@ value. Initial width is 480px, minimum 280px and maximum 720px, clamped to the
 available editor. Narrow windows use an overlay with a visible close control.
 Resizing the window reclamps width. Focus returns to the opener on close.
 
+The sidebar uses one top header row: conversation title (including rename),
+existing export/delete actions, full-window link and close control. There is no
+extra Assistant title row. Expanded history keeps full-window and close controls
+reachable, and the locked state still offers close. The collapsed embedded
+history strip is 8px wide. Full-window chat retains its existing history geometry.
 The sidebar initially hides its conversation list to prioritize chat. Expanding
 history shows the same owner-scoped conversations as full-window chat. Selection
 does not alter the graph URL. Closing retains the mounted chat's draft and active
 response; reopening restores them. Navigating away may unmount the sidebar, while
-accepted work continues in the existing service. A full-window icon opens the
+accepted work continues in the existing service. A full-window icon uses router navigation in the current tab to open the
 selected saved conversation. Unsent text remains local to its originating
 surface; no cross-tab draft synchronization is promised. Profile changes clear
 private rendered state and selection as in full-window chat.
