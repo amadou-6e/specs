@@ -50,11 +50,41 @@ effects. Results remain visible and copyable in the conversation.
 
 The current chat composes Codex only. Its pinned ACP interface advertises slash
 commands but has no configured built-in-agent enumeration. Spawned-child events
-are not a selectable agent catalog. Whether this work adds Claude/OpenCode chat
-provider support or first delivers Codex commands is an outstanding owner choice.
-Do not claim native-agent support or complete AS-293 acceptance before that choice
-and real provider verification. The approval interaction design and final supported
-command policy must be reviewed before their implementation is accepted.
+are not a selectable agent catalog. The owner selected Codex commands first;
+Claude/OpenCode chat support and native agent invocation are outside this slice.
+`list_native_agents()` reports unsupported with that explanation, not an empty
+list implying no native agents exist.
+
+The concrete MCP surface is `list_native_commands()`, `list_native_agents()`,
+`propose_native_command(command, arguments, catalog_revision, operation_key)`
+and `get_native_action(action_id)`. All calls are host-bound to the current
+conversation. The model supplies no owner, runner address, workspace or native
+thread ID. Command discovery requires a native session to have advertised its
+catalog; opening a conversation alone does not create a native session or model
+turn. Observed descriptions are not execution policy.
+
+The initial execution policy admits `/status`, `/mcp`, `/skills`, `/review` and
+`/compact` only when actually advertised.
+`/logout` is unavailable account management; `/rename` remains app-owned;
+`/goal` changes autonomous continuation; `/plan` changes native configuration
+that is not retained by the existing per-turn runtime. Branch/commit review
+commands require a selected repository and are unavailable in scratch chat. These are shown as
+unavailable, never silently mapped to another operation. Unknown commands and
+custom skills are unavailable in this built-ins-only slice. Review and compact
+can consume model quota. Arguments must be shown exactly before approval.
+
+Each proposal renders a compact native command card in its originating response:
+`Run /review with arguments "inspect error handling"`, followed by Approve and
+Reject. There is no native-command Always grant in this slice. Decisions are
+human-only app routes bound to the exact action digest. Approval during an active
+chat turn is refused without consuming the proposal; the user can approve after
+that turn settles. Approval atomically reserves a command message or produces an
+explicit non-replayable uncertain outcome. The command result appears as the
+response to that command message; it does not automatically start another model
+turn. Approved graph actions and their existing consent remain unchanged.
+
+The approval interaction design and final implementation require independent
+review and real provider verification before this slice is accepted.
 
 ## Graph editor sidebar — selected owner feedback, Laomedo #296
 
@@ -384,3 +414,10 @@ and active builds; cancelling that confirmation keeps the current editor intact.
 Graph navigation resets the sidebar's selected conversation; saved conversations
 remain in History. A document reload also closes the sidebar and discards unsent
 sidebar text, without a separate chat-draft confirmation.
+
+AS-293 upgrade boundary: native tool manifests remain frozen for a native session.
+A new conversation receives the expanded MCP surface. Earlier retained sessions
+keep their exact tool set when compatible; an image/configuration mismatch requires
+an explicit new conversation rather than silently replacing the native session.
+History is preserved. Native commands use the same scoped MCP tools as chat;
+any proposals they create still require their own human approval.
