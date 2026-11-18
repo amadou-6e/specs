@@ -122,7 +122,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="activity-hierarchy-295" name="ACT-295 Activity hierarchy">
-    <mxGraphModel dx="1800" dy="1400" grid="1" gridSize="10" page="1" pageWidth="1800" pageHeight="1400" background="#ffffff">
+    <mxGraphModel dx="1800" dy="1400" grid="1" gridSize="10" page="1" pageWidth="1800" pageHeight="1470" background="#ffffff">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -130,10 +130,10 @@
           <mxGeometry x="30" y="20" width="1700" height="70" as="geometry" />
         </mxCell>
         <mxCell id="app-frame" value="" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=#18181b;strokeColor=#3f3f46;fontColor=#e4e4e7;fontFamily=Arial;fontSize=15;absoluteArcSize=1;arcSize=8;" vertex="1" parent="1">
-          <mxGeometry x="30" y="110" width="1040" height="1170" as="geometry" />
+          <mxGeometry x="30" y="110" width="1040" height="1240" as="geometry" />
         </mxCell>
         <mxCell id="execution-container" value="" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=#18181b;strokeColor=#3f3f46;fontColor=#e4e4e7;fontFamily=Arial;fontSize=15;absoluteArcSize=1;arcSize=8;" vertex="1" parent="1">
-          <mxGeometry x="50" y="170" width="1000" height="1000" as="geometry" />
+          <mxGeometry x="50" y="170" width="1000" height="1070" as="geometry" />
         </mxCell>
         <mxCell id="activity-heading" value="Agents                                             [Refresh]" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=#18181b;strokeColor=none;fontColor=#e4e4e7;fontFamily=Arial;fontSize=17;absoluteArcSize=1;arcSize=8;" vertex="1" parent="1">
           <mxGeometry x="50" y="115" width="1000" height="45" as="geometry" />
@@ -144,8 +144,8 @@
         <mxCell id="timeline-axis" value="Agent runs                    02:00:21 PM          37.6 seconds          02:00:59 PM" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=#18181b;strokeColor=none;fontColor=#e4e4e7;fontFamily=Arial;fontSize=13;absoluteArcSize=1;arcSize=8;" vertex="1" parent="1">
           <mxGeometry x="70" y="310" width="960" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="U2-conversation" value="U2  v  [provider mark] Codex Agent   2 turns&#10;      v  Child review conversation   1 turn" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=#18181b;strokeColor=none;fontColor=#e4e4e7;fontFamily=Arial;fontSize=15;absoluteArcSize=1;arcSize=8;" vertex="1" parent="1">
-          <mxGeometry x="70" y="360" width="420" height="85" as="geometry" />
+        <mxCell id="U2-conversation" value="U2  v  [provider mark] Codex Agent   2 turns" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=#18181b;strokeColor=none;fontColor=#e4e4e7;fontFamily=Arial;fontSize=15;absoluteArcSize=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="70" y="360" width="420" height="55" as="geometry" />
         </mxCell>
         <mxCell id="run-segment-a" value="12.0s" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=#064e3b;strokeColor=#059669;fontColor=#6ee7b7;fontFamily=Arial;fontSize=10;absoluteArcSize=1;arcSize=8;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
           <mxGeometry x="590" y="365" width="180" height="18" as="geometry" />
@@ -154,7 +154,7 @@
           <mxGeometry x="820" y="365" width="150" height="18" as="geometry" />
         </mxCell>
         <mxCell id="child-segment" value="6.0s" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=#064e3b;strokeColor=#059669;fontColor=#6ee7b7;fontFamily=Arial;fontSize=10;absoluteArcSize=1;arcSize=8;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
-          <mxGeometry x="780" y="409" width="150" height="18" as="geometry" />
+          <mxGeometry x="780" y="515" width="150" height="18" as="geometry" />
         </mxCell>
         <mxCell id="U3-turn" value="U3       Turn 1&#10;           Turn 2" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=#18181b;strokeColor=none;fontColor=#e4e4e7;fontFamily=Arial;fontSize=13;absoluteArcSize=1;arcSize=8;" vertex="1" parent="1">
           <mxGeometry x="70" y="450" width="420" height="65" as="geometry" />
@@ -163,22 +163,22 @@
           <mxGeometry x="590" y="455" width="180" height="18" as="geometry" />
         </mxCell>
         <mxCell id="metadata-usage-card" value="" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=#18181b;strokeColor=#3f3f46;fontColor=#e4e4e7;fontFamily=Arial;fontSize=15;absoluteArcSize=1;arcSize=8;" vertex="1" parent="1">
-          <mxGeometry x="70" y="540" width="960" height="290" as="geometry" />
+          <mxGeometry x="70" y="610" width="960" height="290" as="geometry" />
         </mxCell>
         <mxCell id="U5-breadcrumb" value="U5  02:00:21 PM  /  All activity&#10;Codex Agent                                  completed   37.6s  (i)&#10;Provider / model / captured stream                    Node identity" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=#18181b;strokeColor=none;fontColor=#e4e4e7;fontFamily=Arial;fontSize=16;absoluteArcSize=1;arcSize=8;" vertex="1" parent="1">
-          <mxGeometry x="85" y="550" width="930" height="105" as="geometry" />
+          <mxGeometry x="85" y="620" width="930" height="105" as="geometry" />
         </mxCell>
         <mxCell id="usage-cards" value="Input          Cached input          Output          Reasoning          Cost&#10;46,288         27,008                  960              0                   $0.002678&#10;&#10;[Tokens over time]                     [API-equivalent estimate over time]&#10;Scope label changes with the selected conversation or turn." style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=#18181b;strokeColor=none;fontColor=#e4e4e7;fontFamily=Arial;fontSize=15;absoluteArcSize=1;arcSize=8;" vertex="1" parent="1">
-          <mxGeometry x="85" y="665" width="930" height="155" as="geometry" />
+          <mxGeometry x="85" y="735" width="930" height="155" as="geometry" />
         </mxCell>
         <mxCell id="U6-telemetry" value="U6  OPENTELEMETRY                   6687 records   (i) [Search] [Export]&#10;&gt; Native record / log&#10;&gt; Native span&#10;Bounded scrolling list; disclosures and matching counts." style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=#18181b;strokeColor=none;fontColor=#e4e4e7;fontFamily=Arial;fontSize=15;absoluteArcSize=1;arcSize=8;" vertex="1" parent="1">
-          <mxGeometry x="70" y="875" width="960" height="110" as="geometry" />
+          <mxGeometry x="70" y="945" width="960" height="110" as="geometry" />
         </mxCell>
         <mxCell id="U7-conversation" value="U7  CONVERSATION                        10 items   [Search] [Export]&#10;You                                      [right-aligned message bubble]&#10;Codex&#10;Readable Markdown, tables, code and tool output; bounded transcript." style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=#18181b;strokeColor=none;fontColor=#e4e4e7;fontFamily=Arial;fontSize=15;absoluteArcSize=1;arcSize=8;" vertex="1" parent="1">
-          <mxGeometry x="70" y="1025" width="960" height="120" as="geometry" />
+          <mxGeometry x="70" y="1095" width="960" height="120" as="geometry" />
         </mxCell>
         <mxCell id="U8-footer" value="U8   Copyright 2026 Laomedo contributors. MIT License.&#10;At viewport bottom for short content; follows long content." style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=#18181b;strokeColor=none;fontColor=#e4e4e7;fontFamily=Arial;fontSize=12;absoluteArcSize=1;arcSize=8;" vertex="1" parent="1">
-          <mxGeometry x="70" y="1200" width="960" height="65" as="geometry" />
+          <mxGeometry x="70" y="1270" width="960" height="65" as="geometry" />
         </mxCell>
         <mxCell id="states-title" value="Selection states - identifiers link to the screen" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=none;strokeColor=none;fontColor=#18181b;fontFamily=Arial;fontSize=20;absoluteArcSize=1;arcSize=8;" vertex="1" parent="1">
           <mxGeometry x="1120" y="110" width="600" height="55" as="geometry" />
@@ -206,6 +206,12 @@
         </mxCell>
         <mxCell id="transition-contract" value="ACT-295-07 / U1 execution change: clear scope; reset collapsed rows; select the first chronological captured invocation (or newest matching node when targeted).&#10;&#10;ACT-295-08 / U5 All activity: return to S0. Conversation breadcrumb: S1. Re-expanding a collapsed row keeps its conversation selected (S1).&#10;&#10;ACT-295-09 / U8: footer placement follows content height. U6/U7 stay outside the metadata/usage card.&#10;&#10;ACT-295-10 / Empty and short states: missing values remain unknown, zero telemetry is centered unbordered text, and empty activity has no selected detail.&#10;&#10;ACT-295-01..03 / Search and disclosure contracts remain on Activity detail controls.&#10;&#10;U4 is the conversation collapse/expand chevron in U2; it changes visibility only unless it hides the selection. Viewing never dispatches an agent." style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#18181b;fontFamily=Arial;fontSize=15;absoluteArcSize=1;arcSize=8;" vertex="1" parent="1">
           <mxGeometry x="1120" y="790" width="610" height="490" as="geometry" />
+        </mxCell>
+        <mxCell id="U2-child-conversation" value="        v  Child review conversation   1 turn" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=#18181b;strokeColor=none;fontColor=#e4e4e7;fontFamily=Arial;fontSize=15;absoluteArcSize=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="70" y="510" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="U3-child-turn" value="              Turn 1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=14;fillColor=#18181b;strokeColor=none;fontColor=#e4e4e7;fontFamily=Arial;fontSize=13;absoluteArcSize=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="70" y="550" width="420" height="35" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
