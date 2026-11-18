@@ -192,8 +192,11 @@ covered proposal, an uncovered category and revocation without automatic replay.
 The conversation header offers Markdown export of all retained user and assistant
 text, including older message pages and normalized answer text. Tool payloads and
 hidden native records are excluded. Export is a snapshot; active, unavailable or
-partially retained answers are identified rather than claimed complete. Each
-rendered assistant text block has an accessible copy action with success/failure
-feedback. Export must abandon results if the owner, profile or conversation
+partially retained answers are identified rather than claimed complete. One accessible copy action below each complete response copies all retained
+agent activity since that user request: assistant messages, tool/command names
+and their displayed inputs/outputs, graph action outcomes and saved drafts, in
+retained order. It excludes that user message, native prompt wrappers and other
+requests. Streaming/incomplete copies are marked snapshots. Copy success/failure
+is shown locally. Export must abandon results if the owner, profile or conversation
 changes during collection. Neither action submits a prompt or changes consent.
 Reduce stacked bottom padding so the last answer stays close to the composer.

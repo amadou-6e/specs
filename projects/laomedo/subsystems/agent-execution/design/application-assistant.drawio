@@ -92,7 +92,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="A3 - Composer and title controls">
-    <mxGraphModel page="1" pageWidth="1380" pageHeight="1450">
+    <mxGraphModel page="1" pageWidth="1380" pageHeight="1500">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -117,7 +117,7 @@
         <mxCell id="transitions" value="CONTROL TRANSITIONS&#10;C01 Welcome: visible supported pair permits first Send without opening picker. No inference on selection.&#10;C02 Idle selection changes next-turn model/effort, retaining native thread/run. Admitted settings are immutable.&#10;C03 Enter dispatches only when Send is admitted. Shift+Enter inserts newline; IME Enter does not dispatch.&#10;C04 Definite refusal restores draft. Uncertain outcome retains exact key/content/configuration for explicit retry.&#10;C05 Successful ACK plus history-read failure never becomes an automatic or new-key resend.&#10;C06 Title save updates header/sidebar; cancel does not mutate. Model selection never renames or reopens a session." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=17;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="30" y="855" width="1280" height="245" />
         </mxCell>
-      <mxCell id="transcript-controls" value="TRANSCRIPT-01  Export conversation (header download icon)&#10;Download Markdown of all retained user/assistant text, including earlier pages.&#10;Copy answer icon below each assistant text block; copied/error feedback.&#10;Export is a retained snapshot, with partial/unavailable history stated.&#10;No tools or hidden native records in the text transcript.&#10;Compact bottom spacing: last answer/copy control stays close to composer.&#10;These actions never submit inference or change graph consent." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=17;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1"><mxGeometry x="30" y="1140" width="1280" height="245" as="geometry" /></mxCell></root>
+      <mxCell id="transcript-controls" value="TRANSCRIPT-01  Export conversation (header download icon)&#10;Download Markdown of all retained user/assistant text, including earlier pages.&#10;One Copy icon below each full response; copied/error feedback.&#10;Export is a retained snapshot, with partial/unavailable history stated.&#10;Export excludes tool payloads. Copy includes all retained agent text and displayed&#10;tool/command input/output, graph outcomes and drafts since that user request.&#10;Copy excludes user/native prompt wrappers and other requests.&#10;Compact bottom spacing: last answer/copy control stays close to composer.&#10;These actions never submit inference or change graph consent." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=17;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1"><mxGeometry x="30" y="1140" width="1280" height="285" as="geometry" /></mxCell></root>
     </mxGraphModel>
   </diagram>
   <diagram name="A4 - Human-approved graph actions">
