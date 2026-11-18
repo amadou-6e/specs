@@ -200,3 +200,19 @@ requests. Streaming/incomplete copies are marked snapshots. Copy success/failure
 is shown locally. Export must abandon results if the owner, profile or conversation
 changes during collection. Neither action submits a prompt or changes consent.
 Reduce stacked bottom padding so the last answer stays close to the composer.
+
+
+## Delete conversation
+
+A trash icon beside header Export opens a confirmation naming the conversation.
+Cancel leaves it intact; Delete permanently removes the owned conversation, its
+messages/activity snapshots, draft/action receipts and remembered permissions.
+Saved workflows and independent workflow run history remain. Deletion is refused
+while an assistant response is active/unsettled or a graph action is executing;
+stop/wait for settlement first. The server enforces owner, current app-session
+authority and concurrency under the same transaction/row lock as Send and graph
+approval. Pending proposals disappear with the conversation and cannot execute.
+Linked successor conversations remain, with the deleted predecessor link cleared.
+After success, clear that chat's local draft/pending state, remove it from history
+and show a new conversation. Failure keeps the chat visible with retry guidance;
+no automatic retry. A changed owner/selection must not receive late UI updates.
