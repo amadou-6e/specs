@@ -185,3 +185,15 @@ originating app session. Test revocation, cross-conversation/session refusal,
 category escalation refusal, stale revision and repeated same-key admission. Real
 native MCP and browser checks must demonstrate the first explicit grant, a later
 covered proposal, an uncovered category and revocation without automatic replay.
+
+
+## Conversation transcript controls
+
+The conversation header offers Markdown export of all retained user and assistant
+text, including older message pages and normalized answer text. Tool payloads and
+hidden native records are excluded. Export is a snapshot; active, unavailable or
+partially retained answers are identified rather than claimed complete. Each
+rendered assistant text block has an accessible copy action with success/failure
+feedback. Export must abandon results if the owner, profile or conversation
+changes during collection. Neither action submits a prompt or changes consent.
+Reduce stacked bottom padding so the last answer stays close to the composer.
