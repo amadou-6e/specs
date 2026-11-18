@@ -133,3 +133,12 @@ P11 adds the owner-selected OpenCode Go subscription-key entry, local custody
 disclosure, exact-key duplicate recovery and harness-specific graph binding.
 The Go key route is selected for implementation; browser-only Go sign-in is not
 claimed. Primary reference: https://opencode.ai/docs/console/go/ (2026-11-18).
+
+
+P12 specifies the official Claude Code browser/code handoff. Continue to Claude
+opens only the official authorization URL after the user presses it. Paste the
+one-use completion code into the masked field, then Finish sign-in. No host
+credentials are copied. The native client owns token exchange and refresh.
+Back cancels; Refresh observes without opening another login or resending a code.
+A lost submission reply is reconciled rather than declaring the connection unchanged.
+Reference: https://code.claude.com/docs/en/authentication (2026-11-18).

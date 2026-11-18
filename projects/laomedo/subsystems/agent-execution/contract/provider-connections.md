@@ -221,6 +221,12 @@ node selector overrides only its harness preference. A retained run stays with
 its original connection and generation. Cross-harness selectors are refused.
 
 Claude native sign-in remains an official-client operation inside its own private
-profile, with no host credential import or third-party token exchange. Its
-container callback and user handoff still need implementation and live acceptance.
+profile, with no host credential import or third-party token exchange. The official
+client may provide an authorization URL and a one-use completion code instead of
+a host callback. P12 relays that URL only to the initiating browser and accepts
+the completion code in a masked, accessible field. The code is passed once to
+the original client process, never exchanged by Laomedo or persisted. Refresh
+only observes; Back fences the attempt and confirms native cleanup. Account and
+workspace identity come from native auth status before publication. A failed
+reconnect leaves the saved connection intact. Live acceptance remains required.
 These selected requirements do not establish implemented or reviewed support.
