@@ -26,14 +26,17 @@ control leaves the selected left section unchanged, including the Agents view.
 The divider supports pointer dragging, Arrow Left/Right in 24px steps, Home for
 minimum and End for maximum, with an accessible name, orientation and current
 value. Initial width is 480px, minimum 280px and maximum 720px, clamped to the
-available editor. Narrow windows use an overlay with a visible close control.
+available editor. Narrow windows use an overlay with the same visible collapse strip.
 Resizing the window reclamps width. Focus returns to the opener on close.
 
 The sidebar uses one top header row: conversation title (including rename),
-existing export/delete actions, full-window link and close control. There is no
-extra Assistant title row. Expanded history keeps full-window and close controls
-reachable, and the locked state still offers close. The collapsed embedded
-history strip is 8px wide. Full-window chat retains its existing history geometry.
+History, existing export/delete actions and the full-window link. There is no
+extra Assistant title row or header close icon. The outer 8px edge strip collapses
+the entire assistant panel without discarding its mounted draft. It stays available
+in chat, history and locked states. The header History icon opens/closes the
+conversation list; choosing a conversation restores the chat view. Expanded history
+keeps History and full-window actions reachable. Full-window chat retains its
+existing history geometry and controls.
 The sidebar initially hides its conversation list to prioritize chat. Expanding
 history shows the same owner-scoped conversations as full-window chat. Selection
 does not alter the graph URL. Closing retains the mounted chat's draft and active
@@ -327,3 +330,6 @@ is introduced. Any live acceptance harness has its own explicit scope.
 8. Independently review code/spec fit and actual rendered UI at exact revisions;
    fixtures do not replace real agent/MCP/editor acceptance. Proposal review and
    Draw.io inspection alone establish neither implementation nor execution readiness.
+
+AS-296 workflow-card graph icons use same-tab router navigation to open the
+corresponding graph; they do not require integrated-browser popup support.
