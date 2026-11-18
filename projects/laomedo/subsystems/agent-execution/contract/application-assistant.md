@@ -15,7 +15,8 @@ related: []
 
 AS-296: The header Assistant link opens full-window `/assistant` in the current
 tab, on both the workflow list and graph pages, using the router and its existing
-unsaved-editor navigation guard. An Assistant icon in the graph left rail toggles
+unsaved-editor navigation guard. Navigating away during a graph build stops it
+through the existing guard. The rail toggle keeps the graph running. An Assistant icon in the graph left rail toggles
 a right-hand chat column using the same conversations and APIs as `/assistant`, including
 existing approvals, tools, copy, export and deletion. It creates no workflow or
 second inference integration. Opening, closing, resizing and selecting a saved
