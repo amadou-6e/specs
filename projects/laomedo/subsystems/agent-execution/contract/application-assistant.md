@@ -11,6 +11,48 @@ related: []
 
 # Persistent application assistant and Laomedo MCP
 
+## Graph editor sidebar — selected owner feedback, Laomedo #296
+
+AS-296: The header Assistant link opens full-window `/assistant` in the current
+tab, on both the workflow list and graph pages, using the router and its existing
+unsaved-editor navigation guard. Navigating away during a graph build stops it
+through the existing guard. The rail toggle keeps the graph running. An Assistant icon in the graph left rail toggles
+a right-hand chat column using the same conversations and APIs as `/assistant`, including
+existing approvals, tools, copy, export and deletion. It creates no workflow or
+second inference integration. Opening, closing, resizing and selecting a saved
+conversation never submit a prompt. The editor and unsaved canvas remain mounted when toggling the sidebar. The rail
+control leaves the selected left section unchanged, including the Agents view.
+
+The divider supports pointer dragging, Arrow Left/Right in 24px steps, Home for
+minimum and End for maximum, with an accessible name, orientation and current
+value. Initial width is 480px, minimum 280px and maximum 720px, clamped to the
+available editor. Narrow windows use an overlay with the same visible collapse strip.
+Resizing the window reclamps width. Focus returns to the opener on close.
+
+The sidebar uses one top header row: conversation title (including rename),
+History, existing export/delete actions and the full-window link. There is no
+extra Assistant title row or header close icon. The outer 8px edge strip collapses
+the entire assistant panel without discarding its mounted draft. It stays available
+in chat, history and locked states. The header History icon opens/closes the
+conversation list; choosing a conversation restores the chat view. Expanded history
+keeps History and full-window actions reachable. Full-window chat retains its
+existing history geometry and controls.
+The sidebar initially hides its conversation list to prioritize chat. Expanding
+history shows the same owner-scoped conversations as full-window chat. Selection
+does not alter the graph URL. Closing retains the mounted chat's draft and active
+response; reopening restores them. Navigating away may unmount the sidebar, while
+accepted work continues in the existing service. A full-window icon uses router navigation in the current tab to open the
+selected saved conversation. The sidebar full-window icon leaves the editor;
+unsent sidebar text is discarded and the existing guard applies, including
+stopping an active build. Unsent text otherwise remains local to its originating
+surface; no cross-tab draft synchronization is promised. Profile changes clear
+private rendered state and selection as in full-window chat.
+
+The appended AS-296 page in the editable assistant diagram defines its geometry.
+Acceptance requires actual shared conversation history, close/reopen draft
+retention, keyboard and pointer resize, preserved canvas and existing approval
+behavior in a real application preview. Fixture tests alone are insufficient.
+
 Proposal for [specs #423](https://github.com/amadou-6e/specs/issues/423) and
 [Laomedo #282](https://github.com/amadou-6e/laomedo/issues/282). The owner selected
 a long-lived normal chat backed directly by an existing provider, with Laomedo
@@ -288,3 +330,12 @@ is introduced. Any live acceptance harness has its own explicit scope.
 8. Independently review code/spec fit and actual rendered UI at exact revisions;
    fixtures do not replace real agent/MCP/editor acceptance. Proposal review and
    Draw.io inspection alone establish neither implementation nor execution readiness.
+
+AS-296 workflow-card graph icons use same-tab router navigation to open the
+corresponding graph; they do not require integrated-browser popup support.
+If that graph is already open, the icon reloads the document to fetch its saved
+state. The editor's existing browser leave confirmation protects unsaved changes
+and active builds; cancelling that confirmation keeps the current editor intact.
+Graph navigation resets the sidebar's selected conversation; saved conversations
+remain in History. A document reload also closes the sidebar and discards unsent
+sidebar text, without a separate chat-draft confirmation.
