@@ -11,7 +11,7 @@ related: []
 
 # Persistent application assistant and Laomedo MCP
 
-## Native agents and slash commands — selected work, Laomedo #293
+## Native agents and slash commands â€” selected work, Laomedo #293
 
 AS-293 is an incomplete implementation target tracked by specs #435. The owner
 selected provider-native agents and slash commands, with built-ins only. This is
@@ -43,7 +43,9 @@ Execution must not re-enter an active native prompt. An admitted operation must
 retain an unambiguous dispatch identity, recheck authority and native availability,
 and settle the thread/workspace checkpoint before further chat uses that session.
 Commands that return a native control result without a model turn must not invent
-turn IDs, model usage or native completion events. Model-generating commands keep
+turn IDs, model usage, native completion events or assistant response text.
+A compact operation completing without an agent message shows only its outcome
+state. Other model-generating commands keep
 the existing native terminal-evidence requirements. Uncertain outcomes are retained
 without automatic replay; cancellation, revocation and restart must not duplicate
 effects. Results remain visible and copyable in the conversation.
@@ -64,7 +66,11 @@ catalog; opening a conversation alone does not create a native session or model
 turn. Observed descriptions are not execution policy.
 
 The initial execution policy admits `/status`, `/mcp`, `/skills`, `/review` and
-`/compact` only when actually advertised.
+`/compact` only when actually advertised. Only `/review` accepts arguments: one
+line of at most 4000 characters without control or line-separator characters.
+The other admitted commands accept no arguments. Execution rechecks the catalog
+observed in the resumed native session itself; an absent catalog or changed
+revision refuses the command before dispatch.
 `/logout` is unavailable account management; `/rename` remains app-owned;
 `/goal` changes autonomous continuation; `/plan` changes native configuration
 that is not retained by the existing per-turn runtime. Branch/commit review
@@ -86,7 +92,7 @@ turn. Approved graph actions and their existing consent remain unchanged.
 The approval interaction design and final implementation require independent
 review and real provider verification before this slice is accepted.
 
-## Graph editor sidebar — selected owner feedback, Laomedo #296
+## Graph editor sidebar â€” selected owner feedback, Laomedo #296
 
 AS-296: The header Assistant link opens full-window `/assistant` in the current
 tab, on both the workflow list and graph pages, using the router and its existing
@@ -421,3 +427,7 @@ keep their exact tool set when compatible; an image/configuration mismatch requi
 an explicit new conversation rather than silently replacing the native session.
 History is preserved. Native commands use the same scoped MCP tools as chat;
 any proposals they create still require their own human approval.
+
+AS-293 proposals expire after 15 minutes. Receipts distinguish Expired, Commands
+changed, Stopped and Interrupted as well as Completed, Failed, Rejected and
+Outcome unknown. Expiry or stale discovery never grants execution authority.
