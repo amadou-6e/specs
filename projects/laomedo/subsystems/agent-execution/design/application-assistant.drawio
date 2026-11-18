@@ -1,3 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
 <mxfile>
   <diagram name="A1 - Owner-selected persistent chat">
     <mxGraphModel page="1" pageWidth="1380" pageHeight="1040">
@@ -91,7 +92,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="A3 - Composer and title controls">
-    <mxGraphModel page="1" pageWidth="1380" pageHeight="1140">
+    <mxGraphModel page="1" pageWidth="1380" pageHeight="1650">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -115,6 +116,32 @@
         </mxCell>
         <mxCell id="transitions" value="CONTROL TRANSITIONS&#10;C01 Welcome: visible supported pair permits first Send without opening picker. No inference on selection.&#10;C02 Idle selection changes next-turn model/effort, retaining native thread/run. Admitted settings are immutable.&#10;C03 Enter dispatches only when Send is admitted. Shift+Enter inserts newline; IME Enter does not dispatch.&#10;C04 Definite refusal restores draft. Uncertain outcome retains exact key/content/configuration for explicit retry.&#10;C05 Successful ACK plus history-read failure never becomes an automatic or new-key resend.&#10;C06 Title save updates header/sidebar; cancel does not mutate. Model selection never renames or reopens a session." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=17;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="30" y="855" width="1280" height="245" />
+        </mxCell>
+      <mxCell id="transcript-controls" value="TRANSCRIPT-01  Export conversation (header download icon)&#10;Download Markdown of all retained user/assistant text, including earlier pages.&#10;One Copy icon below each full response; copied/error feedback.&#10;Export is a retained snapshot, with partial/unavailable history stated.&#10;Export excludes tool payloads. Copy includes all retained agent text and displayed&#10;tool/command input/output, graph outcomes and drafts since that user request.&#10;Copy excludes user/native prompt wrappers and other requests.&#10;Compact bottom spacing: last answer/copy control stays close to composer.&#10;Copy/export never submit inference or change graph consent.&#10;DELETE-01  Trash icon beside Export opens confirmation naming this chat.&#10;Delete this conversation from Laomedo history? Saved workflows stay. [Cancel] [Delete]&#10;Active response/workflow: refuse with Stop/wait guidance, keep chat.&#10;Success: remove chat and its approvals/history, show new conversation.&#10;Failure: keep confirmation/chat, show retry guidance. Cancel has no effect." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=17;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1"><mxGeometry x="30" y="1140" width="1280" height="410" as="geometry" /></mxCell></root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="A4 - Human-approved graph actions">
+    <mxGraphModel page="1" pageWidth="1380" pageHeight="1220">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="A4 / Human-approved edits and runs - publication deferred" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=17;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="20" width="1280" height="60" />
+        </mxCell>
+        <mxCell id="edit" value="ACTION-EDIT  Edit workflow &quot;Research + Implement&quot;:&#10;Add Chat Output and connect it to the agent response.&#10;[ Approve ] [ Always approve edits ] [ Reject ]&#10;Always: any graph in this conversation.&#10;Top-right graph-link icon; reload warning in tooltip. No Details." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=17;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="110" width="610" height="325" />
+        </mxCell>
+        <mxCell id="run" value="ACTION-RUN  Run workflow &quot;Research + Implement&quot; with input &quot;Hello&quot;.&#10;Uses configured credentials; may incur costs or perform external actions.&#10;[ Approve ] [ Always approve runs ] [ Reject ]&#10;Always: any graph in this conversation.&#10;Top-right graph-link icon. Settled: operation, change and short outcome." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=17;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="680" y="110" width="630" height="325" />
+        </mxCell>
+        <mxCell id="pending" value="PENDING -&gt; ADMITTED&#10;Human chooses Approve or Always approve: disable controls while checking.&#10;Always grants only Rename/Edit/Run for this conversation and original app session.&#10;Covered proposals recheck consent/revision/authority atomically; otherwise pending.&#10;No model approval tool. Repeat admission never duplicates effects." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=17;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="460" width="1280" height="170" />
+        </mxCell>
+        <mxCell id="outcome" value="OUTCOMES&#10;Settled card: one muted sentence, no separate heading; outcome below left; graph-link icon top right.&#10;Graph-link tooltip: reload open editors before saving to avoid overwriting saved changes.&#10;Run succeeded/failed: authoritative short outcome; stable run ID retained in backend receipts.&#10;Not dispatched: authority/input refusal before entering execution; graph not started.&#10;Rejected / Expired / Stale revision: no effect; ask for a fresh proposal.&#10;Unknown after interruption: outcome uncertain; inspect history; do not automatically rerun.&#10;Graph run is independent of assistant Stop; closing chat does not cancel it." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=17;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="670" width="1280" height="200" />
+        </mxCell>
+        <mxCell id="rules" value="TRANSITIONS AND ACCESSIBILITY&#10;A01 MCP proposal -&gt; pending card attached to originating message; record before exposing Approve/Reject.&#10;A02 Approve exact digest -&gt; revision/session check -&gt; atomic edit or durable run claim -&gt; authoritative outcome.&#10;A03 Reject -&gt; retained rejected card. Expiry/stale/revocation refuses effects. Always is category/conversation/session scoped; Ask every time revokes it.&#10;A04 Restart: reconcile exact run ID/owner/flow. Terminal jobs resolve; others unknown. Never replay.&#10;A05 Model may read outcome on next user-requested turn; approval itself submits no new model prompt.&#10;Labelled keyboard-operable buttons, visible focus, polite state updates; untrusted preview is plain text.&#10;No automatic editor navigation or loss of unsaved work. No publication or provider permission control.&#10;New app session: old pending cards show fresh-proposal guidance without approval controls." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#94a3b8;fontColor=#0f172a;fontFamily=Arial;fontSize=17;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="910" width="1280" height="260" />
         </mxCell>
       </root>
     </mxGraphModel>

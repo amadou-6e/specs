@@ -27,6 +27,11 @@ geometry, visible controls, states and transitions. The
 engineering boundaries. The validation record separates observed implementation
 checks from target guarantees and remaining limits.
 
+The selected [approval-gated graph extension](assistant-graph-actions.md) adds
+human-approved edits and runs when implemented and accepted. Its explicit
+approval boundary supersedes the initial read/draft-only restriction only for
+those actions. Publication and native permissions remain excluded.
+
 ## Scope and selected initial behavior
 
 Windows, trusted single-user local deployment, Codex first. Use the existing
