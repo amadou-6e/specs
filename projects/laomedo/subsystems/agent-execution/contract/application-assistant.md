@@ -11,6 +11,34 @@ related: []
 
 # Persistent application assistant and Laomedo MCP
 
+## Graph editor sidebar — selected owner feedback, Laomedo #296
+
+AS-296: The graph editor offers Assistant in its header. It toggles a right-hand
+chat column using the same conversations and APIs as `/assistant`, including
+existing approvals, tools, copy, export and deletion. It creates no workflow or
+second inference integration. Opening, closing, resizing and selecting a saved
+conversation never submit a prompt. The editor and unsaved canvas remain mounted.
+
+The divider supports pointer dragging, Arrow Left/Right in 24px steps, Home for
+minimum and End for maximum, with an accessible name, orientation and current
+value. Initial width is 480px, minimum 280px and maximum 720px, clamped to the
+available editor. Narrow windows use an overlay with a visible close control.
+Resizing the window reclamps width. Focus returns to the opener on close.
+
+The sidebar initially hides its conversation list to prioritize chat. Expanding
+history shows the same owner-scoped conversations as full-window chat. Selection
+does not alter the graph URL. Closing retains the mounted chat's draft and active
+response; reopening restores them. Navigating away may unmount the sidebar, while
+accepted work continues in the existing service. A full-window icon opens the
+selected saved conversation. Unsent text remains local to its originating
+surface; no cross-tab draft synchronization is promised. Profile changes clear
+private rendered state and selection as in full-window chat.
+
+The appended AS-296 page in the editable assistant diagram defines its geometry.
+Acceptance requires actual shared conversation history, close/reopen draft
+retention, keyboard and pointer resize, preserved canvas and existing approval
+behavior in a real application preview. Fixture tests alone are insufficient.
+
 Proposal for [specs #423](https://github.com/amadou-6e/specs/issues/423) and
 [Laomedo #282](https://github.com/amadou-6e/laomedo/issues/282). The owner selected
 a long-lived normal chat backed directly by an existing provider, with Laomedo
