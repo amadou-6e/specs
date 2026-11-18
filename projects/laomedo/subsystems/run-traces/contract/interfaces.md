@@ -236,3 +236,10 @@ remain visually inside that execution. The detail breadcrumb exposes the chosen
 conversation and turn and permits returning to all invocation activity.
 The copyright footer rests at the viewport bottom when content is short and
 follows the content when it grows; it must not cover activity or scroll panels.
+
+The owning Draw.io page `ACT-295 Activity hierarchy` records geometry and
+interaction IDs ACT-295-04..10. All activity is invocation scope; no conversation
+row is pressed until that conversation is selected. Metadata and usage share
+one card without a visible usage heading; telemetry and conversation sit outside
+it. The older Trace anatomy page is an architectural reference, not current UI
+geometry. The HTML proposal is supporting history, not the geometry authority.
