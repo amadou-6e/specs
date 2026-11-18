@@ -439,3 +439,10 @@ checks late failure/cancellation before normal cleanup. The receipt distinguishe
 compaction terminal evidence from a model-turn result and records whether a turn
 terminal was observed. Missing, conflicting or failed evidence remains unknown.
 Compaction without an assistant message renders its outcome only.
+
+AS-293 handler admission: an advertised command catalog is insufficient unless
+the bound adapter explicitly advertises native command execution support. The
+current handshake uses integer `nativeCommands: 1`. A base-only pinned adapter
+may run ordinary chat, but native discovery is unavailable and explicit command
+requests are refused before any prompt; they must never become ordinary model
+text. Unknown or invalid capability fields fail initialization.
