@@ -199,3 +199,28 @@ retain a safe recovery state rather than claiming the attempt was cancelled.
 Text-entry fields use an in-field placeholder and a persistent accessible name;
 there is no separate visible title above the field. Screen headings remain.
 API-key input remains masked. Placeholder text is not the accessible label.
+
+
+## Selected extension - Claude Code and OpenCode Go (2026-11-18)
+
+The owner selected implementation of the remaining harness connections and
+explicitly selected OpenCode Go, using its supported Go key connection first.
+A Go key belongs to the Go subscription route; it is not a Console login or an
+automatic switch to another billing source. P11 owns its entry and disclosure.
+When the installed adapter cannot verify a Go key without inference, record only
+local custody and display Key saved, with verification unavailable. Do not submit
+a hidden test turn or claim authenticated account identity. Such an explicitly
+supplied key may be selected for a user-requested run; upstream refusal remains
+a run diagnostic. Missing or altered local key material blocks selection/dispatch.
+Exact repeated keys may be detected; different keys are not evidence of different
+accounts. Key replacement is not offered in the initial Go increment.
+
+Graph preferences select one compatible connection independently for Codex,
+Claude Code and OpenCode, scoped to the authenticated owner and graph. An explicit
+node selector overrides only its harness preference. A retained run stays with
+its original connection and generation. Cross-harness selectors are refused.
+
+Claude native sign-in remains an official-client operation inside its own private
+profile, with no host credential import or third-party token exchange. Its
+container callback and user handoff still need implementation and live acceptance.
+These selected requirements do not establish implemented or reviewed support.

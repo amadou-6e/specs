@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <mxfile host="app.diagrams.net" version="24.7.17">
   <diagram id="provider-settings" name="Provider connections ? draft">
-    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="5210" background="#ffffff" math="0" shadow="0">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="5720" background="#ffffff" math="0" shadow="0">
       <root>
         <mxCell id="0" value="" />
         <mxCell id="1" parent="0" value="" />
@@ -478,7 +478,40 @@
         <mxCell id="P10-update-checkbox" value="" style="rounded=0;fillColor=#18181b;strokeColor=#71717a;" vertex="1" parent="1">
           <mxGeometry x="65" y="4922" width="14" height="14" as="geometry" />
         </mxCell>
-      <mxCell id="T17" value="T17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;jumpStyle=arc;jumpSize=6;exitX=0.75;exitY=0;entryX=0.75;entryY=1;" edge="1" parent="1" source="state-P06" target="state-P04"><mxGeometry relative="1" as="geometry" /></mxCell></root>
+        <mxCell id="T17" value="T17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#64748b;fontColor=#334155;fontSize=12;labelBackgroundColor=#ffffff;jumpStyle=arc;jumpSize=6;exitX=0.75;exitY=0;entryX=0.75;entryY=1;" edge="1" parent="1" source="state-P06" target="state-P04">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P11-page-background" value="" style="rounded=0;fillColor=#18181b;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="5210" width="630" height="450" />
+        </mxCell>
+        <mxCell id="P11-heading" value="Connect OpenCode Go" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#18181b;strokeColor=none;fontColor=#fafafa;fontFamily=Helvetica;fontSize=20;align=left;verticalAlign=top;spacing=14;fontStyle=1;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="5240" width="560" height="40" />
+        </mxCell>
+        <mxCell id="P11-body" value="Use a key from your OpenCode Go subscription." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#18181b;strokeColor=none;fontColor=#fafafa;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="5290" width="560" height="35" />
+        </mxCell>
+        <mxCell id="P11-console" value="Open OpenCode Console" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#18181b;strokeColor=none;fontColor=#fafafa;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;fontStyle=4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="5335" width="560" height="30" />
+        </mxCell>
+        <mxCell id="P11-label" value="Connection name" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#18181b;strokeColor=#3f3f46;fontColor=#fafafa;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;verticalAlign=middle;fontColor=#a1a1aa;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="5380" width="560" height="40" />
+        </mxCell>
+        <mxCell id="P11-key" value="OpenCode Go key" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#18181b;strokeColor=#3f3f46;fontColor=#fafafa;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;verticalAlign=middle;fontColor=#a1a1aa;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="5435" width="560" height="40" />
+        </mxCell>
+        <mxCell id="P11-disclosure" value="Saving stores the key locally. It does not verify your account or send a model request." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#18181b;strokeColor=none;fontColor=#fafafa;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="5485" width="560" height="55" />
+        </mxCell>
+        <mxCell id="P11-save" value="Save connection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fafafa;strokeColor=#182230;fontColor=#fafafa;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#ffffff;align=center;verticalAlign=middle;spacing=0;arcSize=8;absoluteArcSize=1;fontColor=#18181b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="5555" width="560" height="40" />
+        </mxCell>
+        <mxCell id="P11-story" value="&lt;b&gt;S09 - Connect OpenCode Go&lt;/b&gt;&lt;br&gt;&lt;br&gt;Choose OpenCode, then supply a Go subscription key and a local connection name. Open OpenCode Console goes to the provider in a new tab; Laomedo never collects its password.&lt;br&gt;&lt;br&gt;Save stores a private key revision and clears the secret field. The row says Key saved; account identity and entitlement remain unverified. Exact repeated keys open the existing connection; different keys cannot prove whether accounts match.&lt;br&gt;&lt;br&gt;Use this connection only for OpenCode. Select it on a node or as this graph's OpenCode default. No fallback to Console or other providers. Disconnect fences dispatch and waits for owned cleanup before erasing the key.&lt;br&gt;&lt;br&gt;Go key replacement is not offered in this increment; add a new key connection explicitly, then remove the old one.&lt;br&gt;&lt;br&gt;P11 is the OpenCode Go variant of key-entry state P10. Back cancels entry and clears the key; Refresh never submits a key." style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=15;fontColor=#172033;spacing=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="710" y="5240" width="440" height="400" />
+        </mxCell>
+        <mxCell id="P11-nav-back" value="←" style="text;html=1;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;fontColor=#fafafa;fontSize=24;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="5610" width="24" height="24" />
+        </mxCell>
+      </root>
     </mxGraphModel>
   </diagram>
 </mxfile>
