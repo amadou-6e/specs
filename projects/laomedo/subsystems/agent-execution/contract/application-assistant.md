@@ -431,3 +431,11 @@ any proposals they create still require their own human approval.
 AS-293 proposals expire after 15 minutes. Receipts distinguish Expired, Commands
 changed, Stopped and Interrupted as well as Completed, Failed, Rejected and
 Outcome unknown. Expiry or stale discovery never grants execution authority.
+
+AS-293 compaction completion: `/compact` may settle on one ordered native
+contextCompaction item start/completion pair with the same observed thread, turn
+and item IDs, in addition to ordinary native turn completion. A bounded drain
+checks late failure/cancellation before normal cleanup. The receipt distinguishes
+compaction terminal evidence from a model-turn result and records whether a turn
+terminal was observed. Missing, conflicting or failed evidence remains unknown.
+Compaction without an assistant message renders its outcome only.
