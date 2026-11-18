@@ -242,7 +242,11 @@ Conversation appears last in an open section, has a bounded scrollable body,
 right-aligned user messages, left-aligned agent replies and compact tool rows.
 Tool outputs and native metadata start collapsed; message-source icons expose
 source metadata without an extra disclosure row. Fuzzy search preserves transcript
-order. Conversation exports support Markdown or JSON; OpenTelemetry exports JSON
+order. Conversation and OpenTelemetry searches start as icon buttons; selecting
+one reveals and focuses its search field. Closing a search clears its filter.
+Empty OpenTelemetry results appear as centered text without an empty records card.
+The usage and diagnostics section has clear spacing from the preceding run details.
+Conversation exports support Markdown or JSON; OpenTelemetry exports JSON
 records. Exports include the selected scope, filter and capture limits. Exported
 records are not an OTLP ingestion envelope.
 
