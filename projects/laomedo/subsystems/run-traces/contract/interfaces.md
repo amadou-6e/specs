@@ -213,8 +213,10 @@ Opening focuses the relevant input. Close/Escape clears its query, restores all
 records and collapses it; Escape returns focus to the icon. Clear empties the
 query while keeping the field open. Agent/turn changes reset both query and open
 state. Existing fuzzy matching, retained order, source disclosures and scoped
-exports remain. The usage section has additional top spacing (40 px from preceding
-metadata in the current layout). Empty telemetry uses centered muted text without
+exports remain. Major sections (selection and metadata, capture/partial notices, usage, telemetry
+and conversation) are separated by 48 px (`gap-12`). Empty telemetry uses centered muted text without
 a bordered card; filtered-to-zero remains distinct from uncaptured telemetry.
 Decorative ghost rows are not required and no loading animation is introduced.
 These are presentation changes, not new runtime or capture acceptance.
+
+ACT-295 count labels show the total when unfiltered and matching of total while filtering. Conversation counts use "items" because they include messages and tool calls; telemetry counts use "records".
