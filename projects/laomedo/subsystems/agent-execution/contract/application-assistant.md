@@ -336,3 +336,6 @@ corresponding graph; they do not require integrated-browser popup support.
 If that graph is already open, the icon reloads the document to fetch its saved
 state. The editor's existing browser leave confirmation protects unsaved changes
 and active builds; cancelling that confirmation keeps the current editor intact.
+Graph navigation resets the sidebar's selected conversation; saved conversations
+remain in History. A document reload also closes the sidebar and discards unsent
+sidebar text, without a separate chat-draft confirmation.
