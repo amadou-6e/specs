@@ -11,7 +11,88 @@ related: []
 
 # Persistent application assistant and Laomedo MCP
 
-## Graph editor sidebar — selected owner feedback, Laomedo #296
+## Native agents and slash commands â€” selected work, Laomedo #293
+
+AS-293 is an incomplete implementation target tracked by specs #435. The owner
+selected provider-native agents and slash commands, with built-ins only. This is
+not a request to expose Laomedo runner start/resume/cancel controls. Personal CLI
+profiles, repository-defined commands, custom agent files and plugins are outside
+this selection. Native permission modes remain separately owned by Laomedo #288.
+
+The assistant must discover actual native capabilities through Laomedo MCP and
+propose exact invocations for human approval. Merely offering a human-only slash
+menu does not complete this requirement. Discovery grants no invocation authority.
+Catalog descriptions and argument hints are untrusted display data. Missing,
+unsupported, invalid and explicitly empty observations must not be conflated.
+Optional discovery failures must not break normal chat or graph-agent execution.
+
+Command catalogs belong to the same owner, conversation, native session and
+isolated workspace in which execution occurs. ACP command updates replace the
+complete list, including an empty list. Clearing per-turn Activity buffers must
+not discard session command metadata. Bounded detached observations have a stable
+metadata revision; the revision is not an authorization token.
+
+Invocations must bind the exact command or agent identity, arguments, catalog
+revision, owner, conversation and originating human app session. The model cannot
+approve its own proposal. Existing graph permissions do not authorize native
+commands. No command may bypass account-management restrictions or alter native
+permission modes through this interface. Unknown or UI-only commands must not be
+silently interpreted as ordinary prompts or reported as successfully executed.
+
+Execution must not re-enter an active native prompt. An admitted operation must
+retain an unambiguous dispatch identity, recheck authority and native availability,
+and settle the thread/workspace checkpoint before further chat uses that session.
+Commands that return a native control result without a model turn must not invent
+turn IDs, model usage, native completion events or assistant response text.
+A compact operation completing without an agent message shows only its outcome
+state. Other model-generating commands keep
+the existing native terminal-evidence requirements. Uncertain outcomes are retained
+without automatic replay; cancellation, revocation and restart must not duplicate
+effects. Results remain visible and copyable in the conversation.
+
+The current chat composes Codex only. Its pinned ACP interface advertises slash
+commands but has no configured built-in-agent enumeration. Spawned-child events
+are not a selectable agent catalog. The owner selected Codex commands first;
+Claude/OpenCode chat support and native agent invocation are outside this slice.
+`list_native_agents()` reports unsupported with that explanation, not an empty
+list implying no native agents exist.
+
+The concrete MCP surface is `list_native_commands()`, `list_native_agents()`,
+`propose_native_command(command, arguments, catalog_revision, operation_key)`
+and `get_native_action(action_id)`. All calls are host-bound to the current
+conversation. The model supplies no owner, runner address, workspace or native
+thread ID. Command discovery requires a native session to have advertised its
+catalog; opening a conversation alone does not create a native session or model
+turn. Observed descriptions are not execution policy.
+
+The initial execution policy admits `/status`, `/mcp`, `/skills`, `/review` and
+`/compact` only when actually advertised. Only `/review` accepts arguments: one
+line of at most 4000 characters without control or line-separator characters.
+The other admitted commands accept no arguments. Execution rechecks the catalog
+observed in the resumed native session itself; an absent catalog or changed
+revision refuses the command before dispatch.
+`/logout` is unavailable account management; `/rename` remains app-owned;
+`/goal` changes autonomous continuation; `/plan` changes native configuration
+that is not retained by the existing per-turn runtime. Branch/commit review
+commands require a selected repository and are unavailable in scratch chat. These are shown as
+unavailable, never silently mapped to another operation. Unknown commands and
+custom skills are unavailable in this built-ins-only slice. Review and compact
+can consume model quota. Arguments must be shown exactly before approval.
+
+Each proposal renders a compact native command card in its originating response:
+`Run /review with arguments "inspect error handling"`, followed by Approve and
+Reject. There is no native-command Always grant in this slice. Decisions are
+human-only app routes bound to the exact action digest. Approval during an active
+chat turn is refused without consuming the proposal; the user can approve after
+that turn settles. Approval atomically reserves a command message or produces an
+explicit non-replayable uncertain outcome. The command result appears as the
+response to that command message; it does not automatically start another model
+turn. Approved graph actions and their existing consent remain unchanged.
+
+The approval interaction design and final implementation require independent
+review and real provider verification before this slice is accepted.
+
+## Graph editor sidebar â€” selected owner feedback, Laomedo #296
 
 AS-296: The header Assistant link opens full-window `/assistant` in the current
 tab, on both the workflow list and graph pages, using the router and its existing
@@ -339,3 +420,29 @@ and active builds; cancelling that confirmation keeps the current editor intact.
 Graph navigation resets the sidebar's selected conversation; saved conversations
 remain in History. A document reload also closes the sidebar and discards unsent
 sidebar text, without a separate chat-draft confirmation.
+
+AS-293 upgrade boundary: native tool manifests remain frozen for a native session.
+A new conversation receives the expanded MCP surface. Earlier retained sessions
+keep their exact tool set when compatible; an image/configuration mismatch requires
+an explicit new conversation rather than silently replacing the native session.
+History is preserved. Native commands use the same scoped MCP tools as chat;
+any proposals they create still require their own human approval.
+
+AS-293 proposals expire after 15 minutes. Receipts distinguish Expired, Commands
+changed, Stopped and Interrupted as well as Completed, Failed, Rejected and
+Outcome unknown. Expiry or stale discovery never grants execution authority.
+
+AS-293 compaction completion: `/compact` may settle on one ordered native
+contextCompaction item start/completion pair with the same observed thread, turn
+and item IDs, in addition to ordinary native turn completion. A bounded drain
+checks late failure/cancellation before normal cleanup. The receipt distinguishes
+compaction terminal evidence from a model-turn result and records whether a turn
+terminal was observed. Missing, conflicting or failed evidence remains unknown.
+Compaction without an assistant message renders its outcome only.
+
+AS-293 handler admission: an advertised command catalog is insufficient unless
+the bound adapter explicitly advertises native command execution support. The
+current handshake uses integer `nativeCommands: 1`. A base-only pinned adapter
+may run ordinary chat, but native discovery is unavailable and explicit command
+requests are refused before any prompt; they must never become ordinary model
+text. Unknown or invalid capability fields fail initialization.
