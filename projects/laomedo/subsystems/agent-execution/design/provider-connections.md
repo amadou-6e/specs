@@ -30,6 +30,22 @@ Graph/assistant bindings select compatible connection IDs, not a global host log
 GitHub repository connections, provider billing changes, hosted/multi-user release
 and provider password collection are outside this increment.
 
+## Implementation ownership
+
+Shared saved-account lifecycle, owner/generation admission, graph preferences and
+connection-owned runtime orchestration belong to `laomedo.agents.connections`.
+Concrete sign-in, native account identity and profile lifecycle belong to each
+harness under `agents/agents/{codex,claude,opencode}/connection.py`; provider-only
+models and policy stay beside that harness. All adapters share the existing
+service lock and participate in shutdown, lease revocation and Disconnect fencing.
+
+Host credentials/private-state modules retain storage and permission mechanisms;
+local profile authorization remains host-owned. Framework routes, cookie handling
+and graph bindings remain under `integrations/langflow/provider_connections`.
+The Agent connection layer carries only opaque lease identifiers and does not
+import the framework. This ownership split changes no persisted paths, credential
+schemas, callback addresses, volume labels or public request/response contracts.
+
 ## Source-backed capability research - checked 2026-11-16
 
 These are documentation findings, not live support or legal approval for Laomedo.
