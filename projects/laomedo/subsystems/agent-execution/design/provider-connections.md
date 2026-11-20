@@ -73,8 +73,10 @@ recheck the chosen route and installed version before implementation acceptance.
 - D04: which methods are eligible and actually available for the first release.
   All three type choices may explain setup requirements, but no unavailable sign-in
   becomes an active button merely for visual symmetry.
-- D05: existing development-only credential copying remains an isolated opt-in;
-  it is not imported, enabled or retired automatically by adding this settings UI.
+- D05: owner-approved cleanup retires development-only host credential copying
+  with this rollout, including opt-in flags, helpers and retired-only tests.
+  Keep current native admission/deadline checks and explicit dedicated-profile
+  sign-in. Preserve exact historical sources on `exp` before production removal.
 
 ## Validation and handoff
 

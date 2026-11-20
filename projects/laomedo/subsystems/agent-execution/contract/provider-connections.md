@@ -71,8 +71,10 @@ Store secrets only in host/native custody outside repositories and tool mounts,
 scoped to the local profile and opaque connection ID. Native-provider profiles
 are dedicated per connection where the official client owns authentication; do
 not extract or copy its login into a different client. Host IDE/CLI credentials
-are not imported automatically. Existing explicitly authorized development-only
-mirroring remains separately scoped and is not evidence of this Settings feature.
+are not imported. The provider-connections rollout retires development-only
+host-login mirroring, its configuration and executable helpers. Standalone
+runners may use explicitly authenticated dedicated native profiles; they must
+not read or copy the ambient host login.
 
 Local graph and assistant bindings select an opaque compatible connection ID,
 separate from the host-only credential_ref. Export omits the private local binding;
