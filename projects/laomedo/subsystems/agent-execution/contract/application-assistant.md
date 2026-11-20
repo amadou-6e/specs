@@ -496,7 +496,9 @@ observes its actual supported catalog and executes native status with that
 observed revision; it never submits an ordinary model prompt or fabricates a
 pre-session catalog. The initial request is digest-bound and idempotent, retains
 normal cancellation/cleanup/checkpoint handling, and permits subsequent messages
-to resume that same thread. Other commands and providers cannot use this initial
+to continue that same thread under the [zero-turn lifetime rules](#initial-codex-status-retain-the-live-zero-turn-session).
+An unused thread requires its original live controller; its ID is not durable
+resumable history. Other commands and providers cannot use this initial
 mode. The actual native status result uses the existing status panel and export
 path, without an approval proposal or a model turn.
 User-entered slash commands use the authenticated human app
@@ -511,12 +513,15 @@ with a white Approve button; slash messages use plain right-aligned text.
 Draft editing remains responsive while model discovery and history load; Send
 still waits for a valid model selection and execution admission.
 
-On resume, reopen the saved native session, observe its current catalog and
+On resume after durable native history exists, reopen the saved native session, observe its current catalog and
 validate exact command/arguments, built-in provenance, pinned handler/image and
 catalog revision before any native prompt. The revision for newly admitted
 providers binds provider, handler version/image and observed entries. Retain the
 existing run/thread/app-session and atomic-reservation checks. Refusal must never
 fall through to ordinary model text or a fresh native session.
+For an initial zero-turn session, use the original live session directly under
+the [zero-turn lifetime rules](#initial-codex-status-retain-the-live-zero-turn-session);
+expiry, cancellation or loss of that controller requires an explicit new conversation.
 
 | Provider | Initial candidate policy | Required proof |
 | --- | --- | --- |
@@ -646,6 +651,14 @@ replace the thread or replay the message to work around that limitation.
   of model-turn execution limits. Expiry closes it and makes continuation
   unavailable; it does not silently start a replacement session. Credentials
   must still satisfy the saved account/generation fence at the first model turn.
+- The owner selected in-place native credential refresh. Routine OAuth token
+  rotation for the same admitted account and generation must update the retained
+  controller before inference without replacing its native thread. The host
+  remains the OAuth-refresh owner; the executor receives no credential, refresh
+  token or credential-store mount. An unconfirmed update or changed account
+  binding refuses before prompting and releases exact owned resources; it never
+  recreates or replays the session. A token's byte value changing alone is not
+  grounds to require a new conversation.
 - After restart, reconcile the exact saved resource receipt. An unmaterialized
   session is unavailable if its process was lost; its indexed thread ID alone is
   not resumable history.
