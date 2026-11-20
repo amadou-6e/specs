@@ -605,12 +605,21 @@ Acceptance for the additional slice:
 ## Saved account chat binding ? selected owner direction, 2026-11-20
 
 The owner requested wiring chat to the saved provider login capability on
-`develop`. New chats require an explicit connection selection from the current
-profile's safe saved-account list, even when there is only one account. Model
-discovery uses that exact connection. Conversation creation retains its opaque
+`develop`. New chats default to the first connected, ready account in the current
+profile's safe saved-account list for the selected provider. The visible account
+choice can be changed before chat starts. Defaulting waits for that profile's own
+list to load; it never uses stale accounts from a different profile. It does not
+create a conversation, dispatch a command or send a model prompt. When no choice
+is selected, the composer placeholder says Select an account, or No account
+available when that provider has no connected account; it does not show a stale
+model/effort or a separate selection paragraph. Model discovery uses that exact
+connection. Conversation creation retains its opaque
 connection UUID and observed connection generation, independently of model and
 effort. The binding cannot change within the conversation. No service account,
-host token, different saved account or graph preference is an implicit fallback.
+host token, different provider or graph preference is an implicit fallback.
+Existing conversations never switch their saved account or generation, even if
+another account is ready. An explicit choice in a new chat is not overwritten by
+list refresh or discovery.
 
 Chat uses the existing saved-account controller, credential admission and
 isolation paths for Codex, Claude and OpenCode. Its controller state and scratch
@@ -645,7 +654,7 @@ and graph availability and the old files for explicit reconciliation. This
 transition check can retire only after the older operational state has been explicitly reconciled; it does not require personal graph export
 compatibility.
 
-Acceptance requires tests for explicit selection, foreign-profile and generation
+Acceptance requires tests for account defaulting, explicit override, foreign-profile and generation
 refusal, no fallback, independent graph/chat sources and run lookup, disconnect
 inventory/cancellation and assistant-only restart recovery. Real saved-account
 chat, initial status, MCP use and same-session continuation remain live acceptance
