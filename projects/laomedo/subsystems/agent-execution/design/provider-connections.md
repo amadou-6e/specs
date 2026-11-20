@@ -43,7 +43,10 @@ Host credentials/private-state modules retain storage and permission mechanisms;
 local profile authorization remains host-owned. Framework routes, cookie handling
 and graph bindings remain under `integrations/langflow/provider_connections`.
 The Agent connection layer carries only opaque lease identifiers and does not
-import the framework. This ownership split changes no persisted paths, credential
+import the framework. Generic login progress/cancel routes pass that verified
+lease to the owning adapter; a different browser session on the same local
+profile cannot observe or cancel the attempt. Provider construction remains in
+the existing Agent registry composition root, imported lazily. This ownership split changes no persisted paths, credential
 schemas, callback addresses, volume labels or public request/response contracts.
 
 ## Source-backed capability research - checked 2026-11-16
