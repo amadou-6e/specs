@@ -17,6 +17,14 @@ This is a target contract, not evidence of implementation or live acceptance.
 
 ## Graph interface
 
+The [application assistant proposal](application-assistant.md) additionally admits
+app-owned native MCP sessions without graph construction. The app is responsible
+for connecting/closing those clients and binding authenticated conversation scope;
+the same manifest, forwarding, app-loop, custody and revocation requirements
+apply. This exception does not admit arbitrary model-supplied connections or
+replace MCP with direct Python tool objects. It awaits final owner approval for
+implementation. Existing graph-connected MCP behavior is unchanged.
+
 The optional list-valued **MCP Tools** input accepts the native MCP node's
 **Toolset** output. Server registration and selection stay on the existing
 Langflow node. Skill References remain independent and may be connected alongside
