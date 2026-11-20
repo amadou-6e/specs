@@ -11,6 +11,8 @@ related: []
 
 # Agent execution design
 
+[Provider connection workshop](provider-connections.md) proposes explicit provider login and independent saved connections; owner review is pending.
+
 [Application assistant realization](application-assistant.md) and its
 [editable chat proposal](application-assistant.drawio) describe direct provider
 chat and narrow Laomedo MCP tools. The owner-selected amendments record the implemented chat controls; scoped evidence is linked from validation.
