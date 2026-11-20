@@ -315,3 +315,47 @@ Both parent PRs (#426 specification, Laomedo#285 implementation) are explicit
 integration/merge gates. Their incomplete review or live acceptance is not waived
 by this focused extension. If their ownership/lease contract changes, review this
 extension against the resulting boundary again.
+
+
+## Selected Codex connection - one native method (2026-11-20)
+
+Owner direction: expose one Codex connection method which supports both Agent
+execution and read-only subscription allowance. Replace the Settings token-sharing
+method rather than offering native authentication as a second method. One saved
+connection, identity generation and native credential profile govern both uses.
+The older token-sharing credentials must never be reinterpreted as native tokens.
+
+The pinned official Codex 0.159.2 app-server owns ChatGPT device-code sign-in
+(`account/login/start`, type `chatgptDeviceCode`). Laomedo relays only the returned
+one-use code and exact official verification URL to the initiating browser lease.
+There is no password collection, API-billing fallback, host-login import or second
+quota-only sign-in. Back cancels and fences the attempt; public progress reads do
+not disclose the code. Refresh observes the existing attempt and never starts one.
+Unavailable/disabled device authentication remains an explicit recoverable error.
+
+Create custody before an authentication container starts: a dedicated labelled
+volume, exact daemon and immutable managed image belong to one credential revision.
+Saved-mode Agent startup verifies that admitted volume and must never create an
+empty replacement or use the global/derived disposable credential volume. The
+same profile is used by inference and quota discovery; model tool workers never
+mount it and controller tool-policy denial of auth.json remains in force.
+
+Use the native client's account/read ChatGPT observation plus the single account_id
+metadata field persisted by that official client for stable account/workspace
+binding. The fixed native helper may read that field inside its owned profile;
+it must not export, log or decode ID/access/refresh tokens. A label or email alone
+does not establish identity. Missing or ambiguous account metadata fails closed.
+Native refresh stays client-owned; at most one live writer may use a credential
+revision. Existing per-connection run/discovery fences and exact native teardown
+must serialize temporary clients, including login, validation and quota reads.
+
+Quota uses only the named bounded account/rateLimits/read operation before any
+thread/prompt. It submits zero model turns and never grants inference entitlement.
+Canonical browser lease renewal, profile/connection generation fences, stale/cache
+rules, cancellation and Disconnect custody guarantees apply unchanged.
+
+The existing token-sharing account transition is pending owner selection between
+explicit confirmed replacement preserving graph selectors and a new connection
+requiring rebinding. Until that decision and its reviewed screen are implemented,
+no automatic identity equivalence or token conversion is permitted. Failed or
+cancelled native sign-in preserves the previous committed revision.
