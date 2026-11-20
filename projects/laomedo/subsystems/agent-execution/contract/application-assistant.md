@@ -506,8 +506,12 @@ path, without an approval proposal or a model turn.
 Exact observed slash commands use the authenticated human app route directly;
 refused or uncertain native dispatch never falls through to an ordinary model
 prompt. Incomplete or unmatched slash text is ordinary chat, with its original
-text retained. A known unsupported command and invalid native arguments still
-refuse before effects. Editing or choosing a new command clears only a definite
+text retained. “Known” means an exact entry in the observed provider catalog or
+the AP-2 candidate names: Codex status/mcp/skills/review/compact; Claude compact;
+OpenCode init/review/compact (including the unavailable compact candidate).
+Those names refuse while unadvertised, and known unsupported commands or invalid
+native arguments still refuse before effects. This refusal list grants no native
+execution authority. Editing or choosing a new command clears only a definite
 command-input rejection; uncertain dispatch and account/model/observation errors
 remain fenced. A rejected input must not permanently disable Send. Whitespace
 inserted by menu selection must still permit the exact initial-status mode.
