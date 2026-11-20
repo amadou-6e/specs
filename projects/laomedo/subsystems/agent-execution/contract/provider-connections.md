@@ -340,22 +340,31 @@ empty replacement or use the global/derived disposable credential volume. The
 same profile is used by inference and quota discovery; model tool workers never
 mount it and controller tool-policy denial of auth.json remains in force.
 
-Use the native client's account/read ChatGPT observation plus the single account_id
-metadata field persisted by that official client for stable account/workspace
-binding. The fixed native helper may read that field inside its owned profile;
-it must not export, log or decode ID/access/refresh tokens. A label or email alone
-does not establish identity. Missing or ambiguous account metadata fails closed.
-Native refresh stays client-owned; at most one live writer may use a credential
-revision. Existing per-connection run/discovery fences and exact native teardown
-must serialize temporary clients, including login, validation and quota reads.
+Use only native public observations: account/read with refreshToken false and
+experimental workspaceRouting.chatgptAccountId, and account/rateLimits/read's
+accountId. Cross-check both when present; missing or conflicting identity fails
+closed. Reject unsupported account routing. Do not read credential-file contents,
+decode token claims, or export tokens. Verify the official client's auth.json
+exists only after the login process has stopped. Force file custody, the official
+login issuer and the native OpenAI provider; never use an ambient keyring.
+Email plus account/workspace ID is an observed binding, not an immutable user ID.
+An email change cannot silently establish identity equivalence.
+
+Native refresh stays client-owned. At most one live writer may use a credential
+revision, including runs, validation and quota. Refuse overlapping use as connection
+busy. Hold custody through confirmed teardown and reconcile exact owned session
+receipts after a crash before admitting another writer. Cancelled or unpublished
+attempts erase their entire staged revision, even after a late native completion.
 
 Quota uses only the named bounded account/rateLimits/read operation before any
 thread/prompt. It submits zero model turns and never grants inference entitlement.
 Canonical browser lease renewal, profile/connection generation fences, stale/cache
 rules, cancellation and Disconnect custody guarantees apply unchanged.
 
-The existing token-sharing account transition is pending owner selection between
-explicit confirmed replacement preserving graph selectors and a new connection
-requiring rebinding. Until that decision and its reviewed screen are implemented,
-no automatic identity equivalence or token conversion is permitted. Failed or
-cancelled native sign-in preserves the previous committed revision.
+For an existing token-sharing account, Sign in again stages a fresh native login
+and shows the newly verified account before explicit replacement confirmation.
+Only confirmation publishes the revision using the same opaque connection ID,
+keeping graph selections and incrementing generation. Never infer cross-method
+identity equivalence from matching email. Back, failure, expiry or cancellation
+preserves the committed login and erases the unpublished native revision. Retained
+sessions from the old generation cannot resume with the replacement credentials.

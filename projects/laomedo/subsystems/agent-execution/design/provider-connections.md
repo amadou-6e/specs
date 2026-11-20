@@ -182,16 +182,17 @@ those credentials for native account RPCs.
 Pinned source evidence: openai/codex rust-v0.159.2 account_processor.rs implements
 chatgptDeviceCode login, completion and cancellation, and rate-limit reads without
 thread state. protocol/v2/account.rs returns verificationUrl and userCode. The
-native account/read response has email and plan, not stable account/workspace ID;
-unused AccountSession declarations are not an exposed account/sessions/list RPC.
-A fixed helper reads only the official client's persisted tokens.account_id inside
-the isolated profile, combining it with native account verification. No token
-claims are decoded or sent to the browser. The existing operation gate serializes
-logical connection use, with a credential custody lock enforcing one live writer
-across temporary clients. No daemon-wide/network setting changes are required.
+native account/read response exposes experimental workspaceRouting.chatgptAccountId;
+account/rateLimits/read also exposes accountId. Use these public observations and
+cross-check them; do not read token-file contents. Unused AccountSession declarations
+are not an exposed account/sessions/list RPC. Email plus account/workspace ID is an
+observed binding, not an immutable user identifier. A credential custody lock holds
+one live writer through confirmed cleanup, including crash receipt reconciliation.
+Overlapping native use reports connection busy. No daemon-wide settings change.
 
 P04 will show the one-use device code and one Continue to ChatGPT action using the
-existing card, footer and Back/Refresh visual language. Native account confirmation
-and the existing-row transition need their final reviewed workshop geometry before
-frontend implementation. Reviewer design gates G1-G4 are being resolved against
+existing card, footer and Back/Refresh visual language. Existing token-sharing rows require explicit confirmation of the newly verified
+native account, preserving their connection ID and graph selections while advancing
+generation. Cancellation keeps the old login. These states need final reviewed
+workshop geometry before frontend implementation. Reviewer design gates G1-G4 are being resolved against
 pinned source; this note is not native acceptance or an implementation approval.
