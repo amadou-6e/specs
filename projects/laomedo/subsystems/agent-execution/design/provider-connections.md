@@ -30,6 +30,27 @@ Graph/assistant bindings select compatible connection IDs, not a global host log
 GitHub repository connections, provider billing changes, hosted/multi-user release
 and provider password collection are outside this increment.
 
+## Implementation ownership
+
+Shared saved-account lifecycle, owner/generation admission, graph preferences and
+connection-owned runtime orchestration belong to `laomedo.agents.connections`.
+Concrete sign-in, native account identity and profile lifecycle belong to each
+harness under `agents/agents/{codex,claude,opencode}/connection.py`; provider-only
+models and policy stay beside that harness. All adapters share the existing
+service lock and participate in shutdown, lease revocation and Disconnect fencing.
+
+Host credentials/private-state modules retain storage and permission mechanisms;
+local profile authorization remains host-owned. Framework routes, cookie handling
+and graph bindings remain under `integrations/langflow/provider_connections`.
+The Agent connection layer carries only opaque lease identifiers and does not
+import the framework. Generic login progress/cancel routes pass that verified
+lease to the owning adapter; a different browser session on the same local
+profile cannot observe or cancel the attempt. Provider construction remains in
+the existing Agent registry composition root, imported lazily. This ownership split changes no persisted paths, credential
+schemas, callback addresses, volume labels or public request/response contracts.
+
+Successful browser access-token refresh preserves the original provider-attempt lease only after the integration independently verifies both access cookies for the same local profile. Local profile tokens carry unique per-issuance IDs; conflicting renewal digests are refused rather than reassigned between browsers. Renewals retain only opaque digests until the renewed token expires. Another browser of the same profile cannot adopt the lease; failed refresh, profile changes and logout cannot revive it. This allows the frontend to refresh its local authentication after an OAuth return without losing the completed receipt.
+
 ## Source-backed capability research - checked 2026-11-16
 
 These are documentation findings, not live support or legal approval for Laomedo.
@@ -73,8 +94,10 @@ recheck the chosen route and installed version before implementation acceptance.
 - D04: which methods are eligible and actually available for the first release.
   All three type choices may explain setup requirements, but no unavailable sign-in
   becomes an active button merely for visual symmetry.
-- D05: existing development-only credential copying remains an isolated opt-in;
-  it is not imported, enabled or retired automatically by adding this settings UI.
+- D05: owner-approved cleanup retires development-only host credential copying
+  with this rollout, including opt-in flags, helpers and retired-only tests.
+  Keep current native admission/deadline checks and explicit dedicated-profile
+  sign-in. Preserve exact historical sources on `exp` before production removal.
 
 ## Validation and handoff
 

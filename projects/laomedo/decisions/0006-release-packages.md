@@ -145,6 +145,13 @@ mechanics are engineering work and should not be sent back as owner questions.
 
 ### Parked by the implementation redirection
 
+Update, 2026-11-16: the owner has brought the application assistant back for a
+focused specification/realization proposal and independent consultation. Selected
+direction: normal persistent chat, existing provider directly, Laomedo MCP tools,
+no assistant workflow. The board/distribution work below remains parked. The
+[assistant proposal](../subsystems/agent-execution/contract/application-assistant.md)
+records proposed defaults and acceptance; implementation requires final approval.
+
 Standalone Laomedo issue-board/chat UI implementation; component distribution
 implementation/outreach; OpenCode release acceptance; macOS/Linux support;
 multi-user/hosted operation; arbitrary workflow cycles. Keep them in the release
