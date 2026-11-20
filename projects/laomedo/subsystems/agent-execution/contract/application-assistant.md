@@ -621,6 +621,21 @@ cannot resolve an assistant run. Credential material never enters chat rows,
 model arguments or browser responses. Native browser session leases and profile
 revocation remain enforced; account selection does not authorize native commands.
 
+Normal signed access-token renewal retains the originating browser's assistant
+approval identity through the profile boundary's verified renewal binding.
+Persist only token fingerprints and their canonical authority, never bearers.
+Retain verified bindings with the session revocation fence across restart: a
+renewed token must not become a new authority after logout because an in-memory
+alias map was lost. Logout also fences a renewed token not yet used by chat.
+Owner mismatches, conflicting bindings and revocation refuse; unrelated logins
+cannot inherit pending approvals. Existing pre-fix proposals require a fresh
+proposal rather than being rebound to a different browser session.
+
+Acceptance covers a normal renewal and page reload with an approvable proposal,
+subsequent renewal after service restart, and logout through an unused renewed
+token followed by restart. The latter must remain refused with a still-valid
+signed token. Model execution is not needed for the database revocation checks.
+
 Disconnected, removed, changed-generation and unbound conversations keep their
 retained history but refuse new native operations. A new account needs a new
 conversation. The transition must not abandon earlier operational state: if an
