@@ -49,7 +49,7 @@ profile cannot observe or cancel the attempt. Provider construction remains in
 the existing Agent registry composition root, imported lazily. This ownership split changes no persisted paths, credential
 schemas, callback addresses, volume labels or public request/response contracts.
 
-Successful browser access-token refresh preserves the original provider-attempt lease only after the integration independently verifies both access cookies for the same local profile. Renewals retain only opaque digests until the renewed token expires. Another browser of the same profile cannot adopt the lease; failed refresh, profile changes and logout cannot revive it. This allows the frontend to refresh its local authentication after an OAuth return without losing the completed receipt.
+Successful browser access-token refresh preserves the original provider-attempt lease only after the integration independently verifies both access cookies for the same local profile. Local profile tokens carry unique per-issuance IDs; conflicting renewal digests are refused rather than reassigned between browsers. Renewals retain only opaque digests until the renewed token expires. Another browser of the same profile cannot adopt the lease; failed refresh, profile changes and logout cannot revive it. This allows the frontend to refresh its local authentication after an OAuth return without losing the completed receipt.
 
 ## Source-backed capability research - checked 2026-11-16
 
