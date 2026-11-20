@@ -619,3 +619,38 @@ inventory/cancellation and assistant-only restart recovery. Real saved-account
 chat, initial status, MCP use and same-session continuation remain live acceptance
 requirements; fixture checks alone do not establish them. Implementation/review
 and live acceptance are pending.
+
+
+### Initial Codex status: retain the live zero-turn session
+
+The owner selected keeping the actual native controller alive between first
+`/status` and the first ordinary message. The pinned Codex does not persist an
+unused thread, so closing its controller and later attempting disk resume cannot
+meet the same-thread contract. Do not submit a hidden turn, reconstruct a rollout,
+replace the thread or replay the message to work around that limitation.
+
+- Status completion and resource cleanup are separate observations. An idle live
+  session keeps exact controller/executor ownership and its original native
+  event loop. The first ordinary message uses that same live ACP/native session.
+  Once a model turn has materialized durable history, normal cleanup and later
+  native resume apply.
+- No tool authority survives between messages. An inactive transport may remain
+  attached to the retained native session, but its owner/conversation/browser
+  binding must match and its current message authority must be reestablished
+  before any tool call. The frozen manifest cannot expand during reuse.
+- Account disconnect, browser logout, conversation deletion, explicit
+  cancellation, native failure and app shutdown release the idle native
+  ownership. Observe cleanup; do not rewrite a completed status command as a
+  failed model turn or claim an uncertain cleanup succeeded.
+- An unused session has an explicit host-configured idle lifetime, independent
+  of model-turn execution limits. Expiry closes it and makes continuation
+  unavailable; it does not silently start a replacement session. Credentials
+  must still satisfy the saved account/generation fence at the first model turn.
+- After restart, reconcile the exact saved resource receipt. An unmaterialized
+  session is unavailable if its process was lost; its indexed thread ID alone is
+  not resumable history.
+
+Acceptance must demonstrate real status, first message and contextual follow-up
+with one native thread, real Laomedo MCP use under the new message authority,
+inactive tools between requests, and idle ownership cleanup on
+disconnect/shutdown. Implementation and reviewer acceptance remain pending.
