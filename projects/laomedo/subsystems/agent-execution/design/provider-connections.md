@@ -165,3 +165,34 @@ credentials are copied. The native client owns token exchange and refresh.
 Back cancels; Refresh observes without opening another login or resending a code.
 A lost submission reply is reconciled rather than declaring the connection unchanged.
 Reference: https://code.claude.com/docs/en/authentication (2026-11-18).
+
+
+## Subscription allowance extension (#437 / Laomedo #300)
+
+The owning Draw.io P13/P14, S10/S11 and Q0-Q5 define the allowance rows, explicit refresh and stale/unavailable states. PC-09 in the [contract](../contract/provider-connections.md) defines account-generation/lease fencing, zero-turn native reads, cache bounds and evidence requirements. Screens use the existing graph harness/account structure; do not derive allowance from Activity token/cost records.
+
+
+## Unified Codex connection - owner-selected revision, 2026-11-20
+
+One native Codex sign-in must support both model execution and subscription quota.
+There is no method picker or second quota connection. Implementation replaces the
+Settings token-sharing route; historical research above does not authorize using
+those credentials for native account RPCs.
+
+Pinned source evidence: openai/codex rust-v0.159.2 account_processor.rs implements
+chatgptDeviceCode login, completion and cancellation, and rate-limit reads without
+thread state. protocol/v2/account.rs returns verificationUrl and userCode. The
+native account/read response exposes experimental workspaceRouting.chatgptAccountId;
+account/rateLimits/read also exposes accountId. Use these public observations and
+cross-check them; do not read token-file contents. Unused AccountSession declarations
+are not an exposed account/sessions/list RPC. Email plus account/workspace ID is an
+observed binding, not an immutable user identifier. A credential custody lock holds
+one live writer through confirmed cleanup, including crash receipt reconciliation.
+Overlapping native use reports connection busy. No daemon-wide settings change.
+
+P04 will show the one-use device code and one Continue to ChatGPT action using the
+existing card, footer and Back/Refresh visual language. Existing token-sharing rows require explicit confirmation of the newly verified
+native account, preserving their connection ID and graph selections while advancing
+generation. Cancellation keeps the old login. These states need final reviewed
+workshop geometry before frontend implementation. Reviewer design gates G1-G4 are being resolved against
+pinned source; this note is not native acceptance or an implementation approval.
