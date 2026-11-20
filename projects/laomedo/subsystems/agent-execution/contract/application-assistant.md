@@ -486,6 +486,22 @@ mode changes remain excluded. Command descriptions/hints grant no authority.
 A provider catalog is an observation, not a fabricated list copied from another
 provider or inferred from an unadvertised handler branch.
 
+Typing `/` in the composer opens matching executable commands from the selected
+conversation's observed native catalog. Keyboard arrows navigate, Enter selects,
+and Escape dismisses. Before a native session exists, explain that commands become
+available after the first response rather than inventing a catalog or sending a
+hidden model prompt. User-entered slash commands use the authenticated human app
+route directly; refusal never falls through to an ordinary model prompt.
+
+An explicitly typed Codex `/status`, without arguments, can run without a second
+approval only when the actual provider projection classifies it as non-model.
+It retains the same owner/session, run/thread, catalog-revision, idempotency,
+atomic reservation, cancellation and outcome checks. Other typed commands and
+model-originated proposals retain human approval. Approval cards align right,
+with a white Approve button; slash messages use plain right-aligned text.
+Draft editing remains responsive while model discovery and history load; Send
+still waits for a valid model selection and execution admission.
+
 On resume, reopen the saved native session, observe its current catalog and
 validate exact command/arguments, built-in provenance, pinned handler/image and
 catalog revision before any native prompt. The revision for newly admitted
