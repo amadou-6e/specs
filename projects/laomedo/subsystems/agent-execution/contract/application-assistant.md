@@ -664,6 +664,7 @@ replace the thread or replay the message to work around that limitation.
   not resumable history.
 
 Acceptance must demonstrate real status, first message and contextual follow-up
-with one native thread, real Laomedo MCP use under the new message authority,
+with one native thread, real OAuth token rotation followed by the first model
+message on that same thread, real Laomedo MCP use under the new message authority,
 inactive tools between requests, and idle ownership cleanup on
 disconnect/shutdown. Implementation and reviewer acceptance remain pending.
