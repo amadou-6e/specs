@@ -488,9 +488,11 @@ provider or inferred from an unadvertised handler branch.
 
 Typing `/` in the composer opens matching executable commands from the selected
 conversation's observed native catalog. Keyboard arrows navigate, Enter selects,
-and Escape dismisses. Before a native session exists, explain that commands become
-available after a session starts rather than inventing a catalog or sending a
-hidden model prompt. A first Codex `/status` can create that session using an
+and Escape dismisses. Before a native session exists, show clearly labelled Codex
+documentation previews for status, mcp, skills, review and compact, with only
+initial status selectable. Other previews stay disabled until a session actually
+advertises them. Previews are not a native catalog or an execution grant; no
+selection sends a hidden prompt. A first Codex `/status` can create that session using an
 explicit, persisted initial-native-control mode. The runner opens the session,
 observes its actual supported catalog and executes native status with that
 observed revision; it never submits an ordinary model prompt or fabricates a
@@ -501,8 +503,14 @@ An unused thread requires its original live controller; its ID is not durable
 resumable history. Other commands and providers cannot use this initial
 mode. The actual native status result uses the existing status panel and export
 path, without an approval proposal or a model turn.
-User-entered slash commands use the authenticated human app
-route directly; refusal never falls through to an ordinary model prompt.
+Exact observed slash commands use the authenticated human app route directly;
+refused or uncertain native dispatch never falls through to an ordinary model
+prompt. Incomplete or unmatched slash text is ordinary chat, with its original
+text retained. A known unsupported command and invalid native arguments still
+refuse before effects. Editing or choosing a new command clears only a definite
+command-input rejection; uncertain dispatch and account/model/observation errors
+remain fenced. A rejected input must not permanently disable Send. Whitespace
+inserted by menu selection must still permit the exact initial-status mode.
 
 An explicitly typed Codex `/status`, without arguments, can run without a second
 approval only when the actual provider projection classifies it as non-model.
