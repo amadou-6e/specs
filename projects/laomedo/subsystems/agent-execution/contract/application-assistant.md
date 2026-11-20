@@ -489,8 +489,17 @@ provider or inferred from an unadvertised handler branch.
 Typing `/` in the composer opens matching executable commands from the selected
 conversation's observed native catalog. Keyboard arrows navigate, Enter selects,
 and Escape dismisses. Before a native session exists, explain that commands become
-available after the first response rather than inventing a catalog or sending a
-hidden model prompt. User-entered slash commands use the authenticated human app
+available after a session starts rather than inventing a catalog or sending a
+hidden model prompt. A first Codex `/status` can create that session using an
+explicit, persisted initial-native-control mode. The runner opens the session,
+observes its actual supported catalog and executes native status with that
+observed revision; it never submits an ordinary model prompt or fabricates a
+pre-session catalog. The initial request is digest-bound and idempotent, retains
+normal cancellation/cleanup/checkpoint handling, and permits subsequent messages
+to resume that same thread. Other commands and providers cannot use this initial
+mode. The actual native status result uses the existing status panel and export
+path, without an approval proposal or a model turn.
+User-entered slash commands use the authenticated human app
 route directly; refusal never falls through to an ordinary model prompt.
 
 An explicitly typed Codex `/status`, without arguments, can run without a second
@@ -574,3 +583,39 @@ Acceptance for the additional slice:
 - Reviewed canonical spec, full substantive code diff, required CI and explicit
   remaining limits before merge; parent Codex spec/implementation dependencies
   are merged or separately accounted for, never assumed.
+
+
+## Saved account chat binding ? selected owner direction, 2026-11-20
+
+The owner requested wiring chat to the saved provider login capability on
+`develop`. New chats require an explicit connection selection from the current
+profile's safe saved-account list, even when there is only one account. Model
+discovery uses that exact connection. Conversation creation retains its opaque
+connection UUID and observed connection generation, independently of model and
+effort. The binding cannot change within the conversation. No service account,
+host token, different saved account or graph preference is an implicit fallback.
+
+Chat uses the existing saved-account controller, credential admission and
+isolation paths for Codex, Claude and OpenCode. Its controller state and scratch
+source are separate from graph execution. Account disconnect inventories and
+cancels both graph and assistant work, including unresolved resume reservations;
+startup recovers both scopes before continuing a pending disconnect. Graph calls
+cannot resolve an assistant run. Credential material never enters chat rows,
+model arguments or browser responses. Native browser session leases and profile
+revocation remain enforced; account selection does not authorize native commands.
+
+Disconnected, removed, changed-generation and unbound conversations keep their
+retained history but refuse new native operations. A new account needs a new
+conversation. The transition must not abandon earlier operational state: if an
+old dedicated chat runner retains active runs, unresolved resume dispatches or
+resource receipts, block new assistant dispatch while preserving app, Settings
+and graph availability and the old files for explicit reconciliation. This
+transition check can retire only after the older operational state has been explicitly reconciled; it does not require personal graph export
+compatibility.
+
+Acceptance requires tests for explicit selection, foreign-profile and generation
+refusal, no fallback, independent graph/chat sources and run lookup, disconnect
+inventory/cancellation and assistant-only restart recovery. Real saved-account
+chat, initial status, MCP use and same-session continuation remain live acceptance
+requirements; fixture checks alone do not establish them. Implementation/review
+and live acceptance are pending.
