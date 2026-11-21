@@ -279,8 +279,14 @@ not send. The message box retains focus after Enter and remains read-only during
 dispatch/response. Keyboard and button use the same admission rule: no dispatch
 while active, pending, busy, needing attention, or in an observation/error state.
 Stop remains available while the active turn can be cancelled.
+The composer remains editable during startup, dispatch and active responses so
+the user can draft the next message; typing never queues or submits another turn.
+Late acknowledgements preserve newer text. If a definite refusal restores the
+submitted text, retain any newer draft too. Locked/attention states retain their
+existing restrictions. Provider cards have a 320px maximum width independent of
+the explanatory sentence, and shrink within narrow sidebars.
 
-A normal send clears the composer after durable local reservation and immediately
+A normal send clears the submitted text after durable local reservation and immediately
 shows the user bubble with stable retained-message geometry. It must not flash
 retry instructions. Before answer text appears, show accessible Thinking with
 subtle staggered letter motion, disabled for reduced-motion preference. Hide
