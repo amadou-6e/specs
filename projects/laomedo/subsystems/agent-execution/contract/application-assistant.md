@@ -275,8 +275,8 @@ idle conversation applies to its next turn. Selection is locked during dispatch
 and an active turn. Native permission modes are deferred to Laomedo #288.
 
 Enter sends, Shift+Enter inserts a newline, and Enter during IME composition does
-not send. The message box retains focus after Enter and remains read-only during
-dispatch/response. Keyboard and button use the same admission rule: no dispatch
+not send. The message box retains focus after Enter and remains editable during
+dispatch/response while Send stays fenced. Keyboard and button use the same admission rule: no dispatch
 while active, pending, busy, needing attention, or in an observation/error state.
 Stop remains available while the active turn can be cancelled.
 The composer remains editable during startup, dispatch and active responses so
