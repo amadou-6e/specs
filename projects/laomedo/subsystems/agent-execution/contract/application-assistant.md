@@ -606,7 +606,12 @@ Acceptance for the additional slice:
 
 The owner requested wiring chat to the saved provider login capability on
 `develop`. New chats default to the first connected, ready account in the current
-profile's safe saved-account list for the selected provider. The visible account
+profile's safe saved-account list for the selected provider. If none is ready,
+a connected account with an expired access token may default into the existing
+guarded discovery and credential-refresh path. Revoked, reauthorization-required
+and unavailable accounts never default; selection does not bypass admission.
+Connect account and Manage accounts open Settings > Providers in the current
+tab, without depending on integrated-browser popup handling. The visible account
 choice can be changed before chat starts. Defaulting waits for that profile's own
 list to load; it never uses stale accounts from a different profile. It does not
 create a conversation, dispatch a command or send a model prompt. When no choice
