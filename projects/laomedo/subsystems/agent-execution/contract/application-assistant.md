@@ -547,6 +547,7 @@ expiry, cancellation or loss of that controller requires an explicit new convers
 | Provider | Initial candidate policy | Required proof |
 | --- | --- | --- |
 | Claude | Actually advertised `/compact`, no arguments | Root-session raw SDK compaction boundary, or compacting start followed by native success; terminal prompt response; no native failure/cancellation. |
+| Claude read-only views | Actually advertised `/usage`, `/context` and `/mcp`, no arguments | Root-session native local-command-output receipt and terminal ACP response; actual nonempty ACP view text; native failure or reported model output refuses completion. No fabricated model turn or usage. Live acceptance remains required. |
 | OpenCode | Actually advertised `/init` and `/review`, no arguments | Terminal error-free native root/child history, successful task/tool states and verified cleanup; review includes the matching completed native child. |
 | OpenCode `/compact` | Unavailable in the initial pinned catalog | A handler branch and ACP end_turn without command evidence cannot establish support. |
 
