@@ -492,12 +492,15 @@ mode changes remain excluded. Command descriptions/hints grant no authority.
 A provider catalog is an observation, not a fabricated list copied from another
 provider or inferred from an unadvertised handler branch.
 
-Typing `/` in the composer opens matching executable commands from the selected
-conversation's observed native catalog. Keyboard arrows navigate, Enter selects,
-and Escape dismisses. Before a native session exists, show clearly labelled Codex
-documentation previews for status, mcp, skills, review and compact, with only
-initial status selectable. Other previews stay disabled until a session actually
-advertises them. Previews are not a native catalog or an execution grant; no
+Typing `/` in the composer opens the matching entries from the selected
+conversation's complete observed native catalog. Unavailable commands remain
+visible and disabled with an explanation; listing is not execution support.
+Keyboard arrows navigate executable entries, Enter selects, and Escape dismisses.
+Before a native session exists, show documentation previews of the pinned Codex
+adapter's eleven built-ins and known Claude/OpenCode native entry points, with
+only initial Codex status selectable. Other previews stay disabled pending both
+actual advertisement and implemented admission/settlement support.
+Previews are not a native catalog or an execution grant; no
 selection sends a hidden prompt. A first Codex `/status` can create that session using an
 explicit, persisted initial-native-control mode. The runner opens the session,
 observes its actual supported catalog and executes native status with that
