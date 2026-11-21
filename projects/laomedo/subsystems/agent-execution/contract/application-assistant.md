@@ -609,9 +609,16 @@ The owner requested wiring chat to the saved provider login capability on
 profile's safe saved-account list for the selected provider. If none is ready,
 a connected account with an expired access token may default into the existing
 guarded discovery and credential-refresh path. Revoked, reauthorization-required
-and unavailable accounts never default; selection does not bypass admission.
+and unavailable accounts never default except OpenCode's `opencode_go_key`
+local-custody summary: its unavailable state means upstream authentication is
+unverified, while missing custody is revoked. This may default into guarded
+discovery; it does not certify authentication or bypass admission.
 Connect account and Manage accounts open Settings > Providers in the current
-tab, without depending on integrated-browser popup handling. The visible account
+tab, without depending on integrated-browser popup handling. Retain unsent drafts
+and provider in profile-scoped tab session storage before navigation, restore once
+on return, and clear on profile changes or locking. If storage fails, ask before
+discarding the draft. Preserve the editor's unsaved/build document-navigation
+guard when opened from the assistant sidebar. The visible account
 choice can be changed before chat starts. Defaulting waits for that profile's own
 list to load; it never uses stale accounts from a different profile. It does not
 create a conversation, dispatch a command or send a model prompt. When no choice
