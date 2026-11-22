@@ -577,6 +577,11 @@ create AGENTS.md only in the scratch environment. A command completing is not
 proof that it changed a file or reviewed a repository: claim those effects only
 with their own actual receipts. A swallowed child failure, tool error or unknown
 slash no-op followed by end_turn cannot count as successful native execution.
+Terminal native commands whose admitted tool or assistant step reports an error
+are retained as known failed commands (`opencode_native_command_failed`) with
+their actual response. Once cleanup is confirmed they are not presented as
+uncertain remote work, and claim no file or repository effect. Incomplete,
+unadmitted or unlinked native work remains unconfirmed.
 
 ### AP-3: truthful display, cancellation and acceptance
 
