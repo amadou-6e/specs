@@ -524,7 +524,7 @@ command-input rejection; uncertain dispatch and account/model/observation errors
 remain fenced. A rejected input must not permanently disable Send. Whitespace
 inserted by menu selection must still permit the exact initial-status mode.
 
-An explicitly typed Codex `/status`, without arguments, can run without a second
+An explicitly typed Codex `/status` or Claude `/usage`, without arguments, can run without a second
 approval only when the actual provider projection classifies it as non-model.
 It retains the same owner/session, run/thread, catalog-revision, idempotency,
 atomic reservation, cancellation and outcome checks. Other typed commands and
@@ -532,6 +532,12 @@ model-originated proposals retain human approval. Approval cards align right,
 with a white Approve button; slash messages use plain right-aligned text.
 Draft editing remains responsive while model discovery and history load; Send
 still waits for a valid model selection and execution admission.
+
+Claude `/usage` displays, copies and exports only its native Limits section:
+reported windows, percentages, reset times and bars. Other usage report sections
+are omitted from this view; the full original native receipt remains retained.
+If no Limits section is reported, show that limits are unavailable without
+inventing values or exposing unrelated report sections.
 
 On resume after durable native history exists, reopen the saved native session, observe its current catalog and
 validate exact command/arguments, built-in provenance, pinned handler/image and
