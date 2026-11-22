@@ -586,6 +586,15 @@ does not dispatch. Approval revalidates provenance and catalog before dispatch,
 without fallback to ordinary model text or a different session. Codex system skills
 are extracted only into a bounded disposable controller filesystem, verified
 against the pinned image manifest; no host skills or persistent profile changes.
+The credential-free worker contains the same public helper tree read-only at its
+native paths so bundled helper scripts remain usable without controller access.
+
+Codex resolves native dollar skill mentions inside ordinary text as well as
+structured skill input. Known bundled mentions and native skill links therefore
+require the approved skill route; refuse other occurrences before native dispatch
+with guidance to use the menu, preserving the text for correction. Dollar-prefixed
+ordinary text such as `$20 a month` remains chat. An approved skill's arguments
+cannot implicitly invoke a different bundled skill. No silent text rewriting.
 
 A completed model-backed skill requires normal native root-turn completion plus
 provider-specific evidence that the requested skill was loaded or expanded.
@@ -595,6 +604,12 @@ cancellation semantics. Control receipts and compaction boundaries cannot stand
 in for skill completion. Real discovery, approved invocation, unsupported refusal
 and retained streaming outcomes are acceptance requirements for each enabled
 provider. These remain pending until evidenced; a menu test is not live acceptance.
+For Codex, retain an explicitly labelled adapter receipt that the verified native
+structured skill input was prepared and its root turn accepted, including the
+unique invocation ID, native session/turn IDs, canonical skill/path and image
+manifest digest. Require this receipt in order between the matching native turn
+start and completion; a generic successful turn or an old receipt is insufficient.
+This admission receipt does not claim a native file or external effect.
 
 Claude built-in provenance requires disabled host/project setting sources and
 no custom/pinned skill collision. Native root identity and current-attempt
