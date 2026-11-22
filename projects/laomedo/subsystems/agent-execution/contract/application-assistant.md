@@ -561,6 +561,41 @@ required proof or isolation is unavailable remain unavailable, with a reason;
 implementation must not claim parity with Codex. Other commands require their
 own traced policy, arguments and completion semantics before admission.
 
+#### Bundled native skills
+
+The native menu separates **Commands** and **Skills**, preserving provider names,
+descriptions and argument hints. Only skills observed in the pinned running CLI
+are listed; the application does not invent entries from a website or a host CLI
+installation. This is distinct from Laomedo's skill registry and MCP `list_skills`.
+Personal, project and marketplace skill import remains outside this slice.
+
+Skill discovery records native provenance and binds it to the current image,
+session and catalog revision. Claude uses its isolated native SDK initialization
+skill list; Codex retains native system scope and exact system-skill path;
+OpenCode requires the pinned built-in source. Ambiguous names or missing source
+evidence never grant execution. A skill must satisfy a traced provider capability
+policy before it becomes selectable. Unsupported skills remain visible with a
+specific reason, including provider configuration, subagents, scheduling, missing
+external services or unverified requirements. Discovery never widens the existing
+controller tools, writable roots, credential access or external-effect permissions.
+
+Selection fills the composer with the exact native invocation and leaves arguments
+editable. Submission uses the existing conversation-bound proposal and human
+approval path, with the exact name, arguments and model-use disclosure. Rejection
+does not dispatch. Approval revalidates provenance and catalog before dispatch,
+without fallback to ordinary model text or a different session. Codex system skills
+are extracted only into a bounded disposable controller filesystem, verified
+against the pinned image manifest; no host skills or persistent profile changes.
+
+A completed model-backed skill requires normal native root-turn completion plus
+provider-specific evidence that the requested skill was loaded or expanded.
+Completion does not imply any file, configuration or external change without the
+corresponding effect receipt. Retain streamed tool activity, native errors and
+cancellation semantics. Control receipts and compaction boundaries cannot stand
+in for skill completion. Real discovery, approved invocation, unsupported refusal
+and retained streaming outcomes are acceptance requirements for each enabled
+provider. These remain pending until evidenced; a menu test is not live acceptance.
+
 Claude built-in provenance requires disabled host/project setting sources and
 no custom/pinned skill collision. Native root identity and current-attempt
 boundaries must exclude replayed or child compaction receipts. Native command
