@@ -579,6 +579,12 @@ specific reason, including provider configuration, subagents, scheduling, missin
 external services or unverified requirements. Discovery never widens the existing
 controller tools, writable roots, credential access or external-effect permissions.
 
+New Claude assistant controllers select the current registered execution image
+while retaining the saved account's exact native profile volume. The separate
+login-custody image stays pinned for authentication operations; it does not pin
+chat's adapter version. Existing run image/thread checks still refuse incompatible
+resume rather than replaying history. Graph image selection is unchanged.
+
 Selection fills the composer with the exact native invocation and leaves arguments
 editable. Submission uses the existing conversation-bound proposal and human
 approval path, with the exact name, arguments and model-use disclosure. Rejection
