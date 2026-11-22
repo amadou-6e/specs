@@ -71,11 +71,10 @@ line of at most 4000 characters without control or line-separator characters.
 The other admitted commands accept no arguments. Execution rechecks the catalog
 observed in the resumed native session itself; an absent catalog or changed
 revision refuses the command before dispatch.
-`/logout` is unavailable account management; `/rename` remains app-owned;
-`/goal` changes autonomous continuation; `/plan` changes native configuration
+Codex `/logout`, Claude `/login` and `/logout`, and OpenCode `/connect` open the existing Settings → Providers screen without disconnecting an account. Codex and Claude `/rename` open the existing Laomedo conversation title form, with Save/Enter to apply and Escape to cancel. These are explicitly labelled app actions, not native command execution; they do not invoke a model or native command.
+`/goal` and `/plan` remain deferred by owner decision: `/goal` changes autonomous continuation; `/plan` changes native configuration
 that is not retained by the existing per-turn runtime. Branch/commit review
-commands require a selected repository and are unavailable in scratch chat. These are shown as
-unavailable, never silently mapped to another operation. Unknown commands and
+commands require a selected repository and are unavailable in scratch chat. Deferred plan/goal and repository-review commands remain disabled, never silently mapped to another operation. Unknown commands and
 custom skills are unavailable in this built-ins-only slice. Review and compact
 can consume model quota. Arguments must be shown exactly before approval.
 
