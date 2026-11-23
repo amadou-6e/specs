@@ -147,4 +147,56 @@
     </mxGraphModel>
   </diagram>
 <diagram id="assistant-sidebar-296" name="AS-296 - Resizable editor assistant"><mxGraphModel dx="1440" dy="900" grid="1" page="1" pageWidth="1440" pageHeight="900"><root><mxCell id="0" /><mxCell id="1" parent="0" /><mxCell id="title" value="AS-296: same persistent chat beside the graph" style="text;fontSize=24;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="30" y="20" width="1300" height="40" as="geometry" /></mxCell><mxCell id="header" value="Graph name                                  Assistant [full chat]" style="rounded=0;fillColor=#202124;fontColor=#eeeeee;" vertex="1" parent="1"><mxGeometry x="30" y="80" width="1360" height="56" as="geometry" /></mxCell><mxCell id="canvas" value="Left rail: Assistant [toggle right chat]&#10;&#10;Existing graph editor stays mounted&#10;&#10;Unsaved canvas is preserved" style="rounded=0;fillColor=#18191b;fontColor=#eeeeee;fontSize=20;" vertex="1" parent="1"><mxGeometry x="30" y="136" width="860" height="650" as="geometry" /></mxCell><mxCell id="divider" value="" style="rounded=0;fillColor=#777777;" vertex="1" parent="1"><mxGeometry x="890" y="136" width="20" height="650" as="geometry" /></mxCell><mxCell id="chat" value="Conversation title      [history/export/delete] [full chat]&#10;&#10;Same saved conversations&#10;History from header icon; 8px edge collapses assistant&#10;&#10;Retained chat and existing approval cards&#10;&#10;&#10;&#10;&#10;Message composer + model / effort" style="rounded=0;fillColor=#202124;fontColor=#eeeeee;align=left;verticalAlign=top;spacing=18;fontSize=16;" vertex="1" parent="1"><mxGeometry x="910" y="136" width="480" height="650" as="geometry" /></mxCell><mxCell id="note" value="480px initially; 280-720px bounded width. Arrow keys +/-24px; Home/End. Narrow windows overlay the editor.&#10;Edge collapse/reopen preserves this mounted draft; full-chat link opens selected saved conversation, without transferring unsent text." style="text;align=left;fontSize=16;" vertex="1" parent="1"><mxGeometry x="30" y="805" width="1360" height="70" as="geometry" /></mxCell></root></mxGraphModel></diagram>
+
+<diagram name="A6 - Native Codex command approval">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" page="1" pageWidth="1200" pageHeight="1000">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="native-chat" value="User asks assistant to inspect native commands" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#1f1f23;fontColor=#eeeeee;strokeColor=#666666;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="80" y="50" width="480" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="native-list" value="list_native_commands() / list_native_agents()&#10;Same conversation native catalog; agents unsupported" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#1f1f23;fontColor=#eeeeee;strokeColor=#666666;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="80" y="150" width="480" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="native-proposal" value="propose_native_command(review, arguments, catalog revision, key)&#10;Pending exact digest; no command dispatched" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#1f1f23;fontColor=#eeeeee;strokeColor=#666666;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="80" y="280" width="480" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="native-card" value="Run /review with arguments &quot;inspect error handling&quot;&#10;May consume model quota&#10;[Approve]  [Reject]" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#1f1f23;fontColor=#eeeeee;strokeColor=#666666;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="650" y="280" width="470" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="native-active" value="Active chat turn?&#10;Keep pending; approve after settlement" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#1f1f23;fontColor=#eeeeee;strokeColor=#666666;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="650" y="450" width="470" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="native-command" value="Human approval -&gt; reserve one command message&#10;Fresh catalog and owner/session checks&#10;Bare native command; same thread/checkpoint" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#1f1f23;fontColor=#eeeeee;strokeColor=#666666;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="650" y="590" width="470" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="native-result" value="Command response + retained receipt&#10;Completed / Failed / Rejected / Outcome unknown&#10;No automatic follow-up or replay" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#1f1f23;fontColor=#eeeeee;strokeColor=#666666;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="650" y="750" width="470" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="native-policy" value="Built-ins only: status, mcp, skills, review, compact&#10;Unavailable: account/title/goal/configuration controls,&#10;repository-specific reviews, unknown/custom commands&#10;Opening chat or listing does not submit inference" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#1f1f23;fontColor=#eeeeee;strokeColor=#666666;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="80" y="460" width="480" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="native-edge-0" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;" edge="1" parent="1" source="native-chat" target="native-list">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="native-edge-1" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;" edge="1" parent="1" source="native-list" target="native-proposal">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="native-edge-2" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;" edge="1" parent="1" source="native-proposal" target="native-card">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="native-edge-3" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;" edge="1" parent="1" source="native-card" target="native-active">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="native-edge-4" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;" edge="1" parent="1" source="native-active" target="native-command">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="native-edge-5" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;" edge="1" parent="1" source="native-command" target="native-result">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
 </mxfile>
