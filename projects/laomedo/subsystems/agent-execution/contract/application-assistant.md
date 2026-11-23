@@ -585,6 +585,12 @@ login-custody image stays pinned for authentication operations; it does not pin
 chat's adapter version. Existing run image/thread checks still refuse incompatible
 resume rather than replaying history. Graph image selection is unchanged.
 
+Claude's approval revision binds executable command/skill entries, their native
+provenance, the observed skill set and the pinned image. Sort executable entries
+canonically. Unavailable display-only entries may appear or reorder on native
+resume without invalidating unchanged executable contracts; changes to an
+executable entry or its admission requirements still invalidate approval.
+
 Selection fills the composer with the exact native invocation and leaves arguments
 editable. Submission uses the existing conversation-bound proposal and human
 approval path, with the exact name, arguments and model-use disclosure. Rejection
