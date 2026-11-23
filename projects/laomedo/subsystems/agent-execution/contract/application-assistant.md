@@ -544,7 +544,8 @@ inventing values or exposing unrelated report sections.
 On resume after durable native history exists, reopen the saved native session, observe its current catalog and
 validate exact command/arguments, built-in provenance, pinned handler/image and
 catalog revision before any native prompt. The revision for newly admitted
-providers binds provider, handler version/image and observed entries. Retain the
+providers binds provider, handler version/image and observed entries (Claude:
+executable entries, as specified below). Retain the
 existing run/thread/app-session and atomic-reservation checks. Refusal must never
 fall through to ordinary model text or a fresh native session.
 For an initial zero-turn session, use the original live session directly under
