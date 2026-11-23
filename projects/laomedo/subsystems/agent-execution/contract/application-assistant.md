@@ -524,11 +524,13 @@ command-input rejection; uncertain dispatch and account/model/observation errors
 remain fenced. A rejected input must not permanently disable Send. Whitespace
 inserted by menu selection must still permit the exact initial-status mode.
 
-An explicitly typed Codex `/status` or Claude `/usage`, without arguments, can run without a second
-approval only when the actual provider projection classifies it as non-model.
-It retains the same owner/session, run/thread, catalog-revision, idempotency,
-atomic reservation, cancellation and outcome checks. Other typed commands and
-model-originated proposals retain human approval. Approval cards align right,
+Sending an exact native command or skill through the authenticated human chat
+route is approval of that request, including its arguments. Do not ask again
+after Send. This applies to every provider and supported native operation,
+independently of its name, kind or model-use classification; no special-case
+approval bypass list. Retain the same owner/session, run/thread, catalog-revision,
+idempotency, atomic reservation, cancellation and outcome checks. Model-originated
+proposals still require a separate human decision. Approval cards align right,
 with a white Approve button; slash messages use plain right-aligned text.
 Draft editing remains responsive while model discovery and history load; Send
 still waits for a valid model selection and execution admission.
@@ -592,9 +594,11 @@ resume without invalidating unchanged executable contracts; changes to an
 executable entry or its admission requirements still invalidate approval.
 
 Selection fills the composer with the exact native invocation and leaves arguments
-editable. Submission uses the existing conversation-bound proposal and human
-approval path, with the exact name, arguments and model-use disclosure. Rejection
-does not dispatch. Approval revalidates provenance and catalog before dispatch,
+editable. Human Send approves that exact request and reuses the conversation-bound
+atomic decision/reservation path without another approval card. Assistant-proposed
+invocations retain the exact name, arguments and model-use disclosure and require
+a human decision; rejection does not dispatch. Both paths revalidate provenance
+and catalog before dispatch,
 without fallback to ordinary model text or a different session. Codex system skills
 are extracted only into a bounded disposable controller filesystem, verified
 against the pinned image manifest; no host skills or persistent profile changes.
