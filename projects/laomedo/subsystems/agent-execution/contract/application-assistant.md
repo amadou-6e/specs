@@ -3,7 +3,7 @@ title: Persistent application assistant and Laomedo MCP
 status: draft
 kind: target-contract
 owners: [laomedo-maintainers]
-last_reviewed: 2026-11-17
+last_reviewed: 2026-11-19
 applies_to: [laomedo]
 supersedes: null
 related: []
@@ -50,10 +50,10 @@ the existing native terminal-evidence requirements. Uncertain outcomes are retai
 without automatic replay; cancellation, revocation and restart must not duplicate
 effects. Results remain visible and copyable in the conversation.
 
-The current chat composes Codex only. Its pinned ACP interface advertises slash
-commands but has no configured built-in-agent enumeration. Spawned-child events
-are not a selectable agent catalog. The owner selected Codex commands first;
-Claude/OpenCode chat support and native agent invocation are outside this slice.
+The first selected slice composes Codex only. Its pinned ACP interface advertises
+slash commands but has no configured built-in-agent enumeration. Spawned-child
+events are not a selectable agent catalog. The owner then selected the additional
+Claude/OpenCode slice defined below; native agent invocation remains excluded.
 `list_native_agents()` reports unsupported with that explanation, not an empty
 list implying no native agents exist.
 
@@ -71,11 +71,10 @@ line of at most 4000 characters without control or line-separator characters.
 The other admitted commands accept no arguments. Execution rechecks the catalog
 observed in the resumed native session itself; an absent catalog or changed
 revision refuses the command before dispatch.
-`/logout` is unavailable account management; `/rename` remains app-owned;
-`/goal` changes autonomous continuation; `/plan` changes native configuration
+Codex `/logout`, Claude `/login` and `/logout`, and OpenCode `/connect` open the existing Settings → Providers screen without disconnecting an account. Codex and Claude `/rename` open the existing Laomedo conversation title form, with Save/Enter to apply and Escape to cancel. These are explicitly labelled app actions, not native command execution; they do not invoke a model or native command.
+`/goal` and `/plan` remain deferred by owner decision: `/goal` changes autonomous continuation; `/plan` changes native configuration
 that is not retained by the existing per-turn runtime. Branch/commit review
-commands require a selected repository and are unavailable in scratch chat. These are shown as
-unavailable, never silently mapped to another operation. Unknown commands and
+commands require a selected repository and are unavailable in scratch chat. Deferred plan/goal and repository-review commands remain disabled, never silently mapped to another operation. Unknown commands and
 custom skills are unavailable in this built-ins-only slice. Review and compact
 can consume model quota. Arguments must be shown exactly before approval.
 
@@ -106,7 +105,8 @@ control leaves the selected left section unchanged, including the Agents view.
 
 The divider supports pointer dragging, Arrow Left/Right in 24px steps, Home for
 minimum and End for maximum, with an accessible name, orientation and current
-value. Initial width is 480px, minimum 280px and maximum 720px, clamped to the
+value. Drag resizing uses the same arrow strip as click collapse, with no second
+rail or column. A drag must not collapse the panel on release. Initial width is 480px, minimum 280px and maximum 720px, clamped to the
 available editor. Narrow windows use an overlay with the same visible collapse strip.
 Resizing the window reclamps width. Focus returns to the opener on close.
 
@@ -118,6 +118,13 @@ in chat, history and locked states. The header History icon opens/closes the
 conversation list; choosing a conversation restores the chat view. Expanded history
 keeps History and full-window actions reachable. Full-window chat retains its
 existing history geometry and controls.
+Conversation metadata replaces the provider text labels with monochrome SVG
+provider marks alongside the date/state. Faint rules separate the vertically
+stacked conversation rows, rather than adding dividers inside their metadata. Do not
+add a new icon column before the conversation title; retain accessible provider names.
+Earlier conversations load automatically when scrolling near the end, with a
+loading indicator and no separate pagination action. Active rows show a spinner;
+background work shows a throbber instead of the static switching-conversations tip.
 The sidebar initially hides its conversation list to prioritize chat. Expanding
 history shows the same owner-scoped conversations as full-window chat. Selection
 does not alter the graph URL. Closing retains the mounted chat's draft and active
@@ -270,17 +277,30 @@ inference. User and assistant bodies use the same 14 px text size.
 History is collapsible, with New conversation at its bottom. New chat shows a
 workflow illustration and the supported Codex provider card. The compact composer
 model menu uses the discovered model list and an annotated effort slider; there
-is no Refresh models action or model-card grid. Changing a selection during an
+is no Refresh models action or model-card grid.
+OpenCode Go model labels omit the `opencode-go/` prefix; exact IDs remain unchanged
+in the provider contract and model selection. Changing a selection during an
 idle conversation applies to its next turn. Selection is locked during dispatch
 and an active turn. Native permission modes are deferred to Laomedo #288.
 
-Enter sends, Shift+Enter inserts a newline, and Enter during IME composition does
-not send. The message box retains focus after Enter and remains read-only during
-dispatch/response. Keyboard and button use the same admission rule: no dispatch
-while active, pending, busy, needing attention, or in an observation/error state.
+When the command/skill picker is open, Enter selects its first executable match
+without dispatching; after selection, Enter sends the prepared message.
+Otherwise Enter sends, Shift+Enter inserts a newline, and Enter during IME composition does
+not send. The message box retains focus after Enter and remains editable during
+dispatch/response while Send stays fenced. Keyboard and button use the same admission rule: no dispatch
+while active, pending, busy, needing attention, or unable to observe current state.
+A displayed error from a definite rejected request must not permanently disable
+Send after the conversation is observed idle. Unknown dispatch retains its exact-key
+pending fence and explicit recovery rather than permitting a duplicate request.
 Stop remains available while the active turn can be cancelled.
+The composer remains editable during startup, dispatch and active responses so
+the user can draft the next message; typing never queues or submits another turn.
+Late acknowledgements preserve newer text. If a definite refusal restores the
+submitted text, retain any newer draft too. Locked/attention states retain their
+existing restrictions. Provider cards have a 320px maximum width independent of
+the explanatory sentence, and shrink within narrow sidebars.
 
-A normal send clears the composer after durable local reservation and immediately
+A normal send clears the submitted text after durable local reservation and immediately
 shows the user bubble with stable retained-message geometry. It must not flash
 retry instructions. Before answer text appears, show accessible Thinking with
 subtle staggered letter motion, disabled for reduced-motion preference. Hide
@@ -446,3 +466,376 @@ current handshake uses integer `nativeCommands: 1`. A base-only pinned adapter
 may run ordinary chat, but native discovery is unavailable and explicit command
 requests are refused before any prompt; they must never become ordinary model
 text. Unknown or invalid capability fields fail initialization.
+
+
+## Additional assistant providers - selected target, Laomedo305 / specs439
+
+This extends the Codex-first slice; it is a target until its implementation and
+real acceptance are reviewed. It does not retroactively claim that existing
+Claude/OpenCode execution integrations already support application chat.
+
+### AP-1: immutable provider and host-owned composition
+
+New conversations may select Codex, Claude or OpenCode. Discovery returns actual
+models/options from the selected configured provider, without inference.
+Unconfigured or unavailable providers report a concrete setup/readiness reason;
+no request silently switches to Codex. The initial selected defaults remain a UI
+choice, not an assertion about native model defaults.
+
+A conversation's provider is immutable. Another provider requires another
+conversation. Every send/resume, native proposal/decision, Stop, Activity,
+reconciliation and sign-out cancellation uses that saved provider. The tool
+binding never follows the newest selected UI provider or another owner's runner.
+Model responses arriving after the user selects another provider cannot replace
+that selection's catalog. Draft text and retained conversations are preserved.
+
+The concrete application calls are `runtime.models(owner, provider)` and
+`runtime.runner(owner, provider)`. `AssistantRunner` composes the existing
+registered provider. Extra profile/volume paths are trusted host settings, never
+browser/model input or public settings output. New provider runners, locks and
+private source/runtime roots are separate for each owner/provider. Existing Codex
+root/key and operational identity are preserved rather than relocated. Global
+OpenCode managed-startup capability is unchanged. Native sessions, credentials
+and command metadata must not cross provider/owner boundaries.
+
+### AP-2: exact built-in admission
+
+Reuse the existing native MCP proposal and human decision surface. Native agents,
+host custom commands, repository commands, plugins, publication and permission
+mode changes remain excluded. Command descriptions/hints grant no authority.
+A provider catalog is an observation, not a fabricated list copied from another
+provider or inferred from an unadvertised handler branch.
+
+Typing `/` in the composer opens the matching entries from the selected
+conversation's complete observed native catalog. Unavailable commands remain
+visible and disabled with an explanation; listing is not execution support.
+Keyboard arrows navigate executable entries, Enter selects, and Escape dismisses.
+Before a native session exists, show documentation previews of the pinned Codex
+adapter's eleven built-ins and known Claude/OpenCode native entry points, with
+only initial Codex status selectable. Other previews stay disabled pending both
+actual advertisement and implemented admission/settlement support.
+Previews are not a native catalog or an execution grant; no
+selection sends a hidden prompt. A first Codex `/status` can create that session using an
+explicit, persisted initial-native-control mode. The runner opens the session,
+observes its actual supported catalog and executes native status with that
+observed revision; it never submits an ordinary model prompt or fabricates a
+pre-session catalog. The initial request is digest-bound and idempotent, retains
+normal cancellation/cleanup/checkpoint handling, and permits subsequent messages
+to continue that same thread under the [zero-turn lifetime rules](#initial-codex-status-retain-the-live-zero-turn-session).
+An unused thread requires its original live controller; its ID is not durable
+resumable history. Other commands and providers cannot use this initial
+mode. The actual native status result uses the existing status panel and export
+path, without an approval proposal or a model turn.
+Exact observed slash commands use the authenticated human app route directly;
+refused or uncertain native dispatch never falls through to an ordinary model
+prompt. Incomplete or unmatched slash text is ordinary chat, with its original
+text retained. “Known” means an exact entry in the observed provider catalog or
+the AP-2 candidate names: Codex status/mcp/skills/review/compact; Claude compact;
+OpenCode init/review/compact (including the unavailable compact candidate).
+Those names refuse while unadvertised, and known unsupported commands or invalid
+native arguments still refuse before effects. This refusal list grants no native
+execution authority. Editing or choosing a new command clears only a definite
+command-input rejection; uncertain dispatch and account/model/observation errors
+remain fenced. A rejected input must not permanently disable Send. Whitespace
+inserted by menu selection must still permit the exact initial-status mode.
+
+Sending an exact native command or skill through the authenticated human chat
+route is approval of that request, including its arguments. Do not ask again
+after Send. This applies to every provider and supported native operation,
+independently of its name, kind or model-use classification; no special-case
+approval bypass list. Retain the same owner/session, run/thread, catalog-revision,
+idempotency, atomic reservation, cancellation and outcome checks. Model-originated
+proposals still require a separate human decision. Approval cards align right,
+with a white Approve button; slash messages use plain right-aligned text.
+Draft editing remains responsive while model discovery and history load; Send
+still waits for a valid model selection and execution admission.
+
+Claude `/usage` displays, copies and exports only its native Limits section:
+reported windows, percentages, reset times and bars. Other usage report sections
+are omitted from this view; the full original native receipt remains retained.
+If no Limits section is reported, show that limits are unavailable without
+inventing values or exposing unrelated report sections.
+
+On resume after durable native history exists, reopen the saved native session, observe its current catalog and
+validate exact command/arguments, built-in provenance, pinned handler/image and
+catalog revision before any native prompt. The revision for newly admitted
+providers binds provider, handler version/image and observed entries (Claude:
+executable entries, as specified below). Retain the
+existing run/thread/app-session and atomic-reservation checks. Refusal must never
+fall through to ordinary model text or a fresh native session.
+For an initial zero-turn session, use the original live session directly under
+the [zero-turn lifetime rules](#initial-codex-status-retain-the-live-zero-turn-session);
+expiry, cancellation or loss of that controller requires an explicit new conversation.
+
+| Provider | Initial candidate policy | Required proof |
+| --- | --- | --- |
+| Claude | Actually advertised `/compact`, no arguments | Root-session raw SDK compaction boundary, or compacting start followed by native success; terminal prompt response; no native failure/cancellation. |
+| Claude read-only views | Actually advertised `/usage`, `/context` and `/mcp`, no arguments | Root-session native local-command-output receipt, or an assistant local-command-run receipt with the exact command and empty arguments matched by the local-command name in the result; successful native result with zero output tokens and terminal ACP response; actual nonempty ACP view text. Missing receipts, native failure or reported model output refuse completion. No fabricated model turn or usage. Completed views show the command followed by retained native output, without a redundant completion card; usage includes only Limits. Reports may contain upstream errors and do not establish service health. Copy/export use the same displayed output, without earlier model usage or partial-model-reply warnings; full native receipts remain retained. Live acceptance remains required. |
+| OpenCode | Actually advertised `/init` and `/review`, no arguments | Terminal error-free native root/child history, successful task/tool states and verified cleanup; review includes the matching completed native child. |
+| OpenCode `/compact` | Unavailable in the initial pinned catalog | A handler branch and ACP end_turn without command evidence cannot establish support. |
+
+These candidates become accepted only with real provider evidence. Commands whose
+required proof or isolation is unavailable remain unavailable, with a reason;
+implementation must not claim parity with Codex. Other commands require their
+own traced policy, arguments and completion semantics before admission.
+
+#### Bundled native skills
+
+The native menu shows **Commands** first and **Skills** after, preserving provider
+names, descriptions and argument hints. Search narrows both groups; headings and
+the divider disappear when only one group has matches. Usable entries precede
+blocked entries within each group, and blocked entries show a concise reason
+rather than a generic unavailable label. Only skills observed in the pinned running CLI
+are listed; the application does not invent entries from a website or a host CLI
+installation. This is distinct from Laomedo's skill registry and MCP `list_skills`.
+Personal, project and marketplace skill import remains outside this slice.
+
+Skill discovery records native provenance and binds it to the current image,
+session and catalog revision. Claude uses its isolated native SDK initialization
+skill list; Codex retains native system scope and exact system-skill path;
+OpenCode requires the pinned built-in source. Ambiguous names or missing source
+evidence never grant execution. A skill must satisfy a traced provider capability
+policy before it becomes selectable. Unsupported skills remain visible with a
+specific reason, including provider configuration, subagents, scheduling, missing
+external services or unverified requirements. Discovery never widens the existing
+controller tools, writable roots, credential access or external-effect permissions.
+
+New Claude assistant controllers select the current registered execution image
+while retaining the saved account's exact native profile volume. The separate
+login-custody image stays pinned for authentication operations; it does not pin
+chat's adapter version. Existing run image/thread checks still refuse incompatible
+resume rather than replaying history. Graph image selection is unchanged.
+
+Claude's approval revision binds executable command/skill entries, their native
+provenance, the observed skill set and the pinned image. Sort executable entries
+canonically. Unavailable display-only entries may appear or reorder on native
+resume without invalidating unchanged executable contracts; changes to an
+executable entry or its admission requirements still invalidate approval.
+
+Selection fills the composer with the exact native invocation and leaves arguments
+editable. Human Send approves that exact request and reuses the conversation-bound
+atomic decision/reservation path without another approval card. Assistant-proposed
+invocations retain the exact name, arguments and model-use disclosure and require
+a human decision; rejection does not dispatch. Both paths revalidate provenance
+and catalog before dispatch,
+without fallback to ordinary model text or a different session. Codex system skills
+are extracted only into a bounded disposable controller filesystem, verified
+against the pinned image manifest; no host skills or persistent profile changes.
+The credential-free worker contains the same public helper tree read-only at its
+native paths so bundled helper scripts remain usable without controller access.
+
+Codex resolves native dollar skill mentions inside ordinary text as well as
+structured skill input. Known bundled mentions and native skill links therefore
+require the approved skill route; refuse other occurrences before native dispatch
+with guidance to use the menu, preserving the text for correction. Dollar-prefixed
+ordinary text such as `$20 a month` remains chat. An approved skill's arguments
+cannot implicitly invoke a different bundled skill. No silent text rewriting.
+
+A completed model-backed skill requires normal native root-turn completion plus
+provider-specific evidence that the requested skill was loaded or expanded.
+Completion does not imply any file, configuration or external change without the
+corresponding effect receipt. Retain streamed tool activity, native errors and
+cancellation semantics. Control receipts and compaction boundaries cannot stand
+in for skill completion. Real discovery, approved invocation, unsupported refusal
+and retained streaming outcomes are acceptance requirements for each enabled
+provider. These remain pending until evidenced; a menu test is not live acceptance.
+For Codex, retain an explicitly labelled adapter receipt that the verified native
+structured skill input was prepared and its root turn accepted, including the
+unique invocation ID, native session/turn IDs, canonical skill/path and image
+manifest digest. Require this receipt in order between the matching native turn
+start and completion; a generic successful turn or an old receipt is insufficient.
+This admission receipt does not claim a native file or external effect.
+
+Claude built-in provenance requires disabled host/project setting sources and
+no custom/pinned skill collision. Native root identity and current-attempt
+boundaries must exclude replayed or child compaction receipts. Native command
+completion has its own receipt: no invented assistant answer, model turn ID,
+model usage or success event. Observed compaction context occupancy is distinct
+from model-token usage. Failed/cancelled/conflicting or missing evidence cannot
+be reported completed. A normal message resumes the same settled native thread.
+
+OpenCode's command templates perform shell interpolation before native tool
+permission checks. This slice therefore permits no arguments. The pinned built-in
+templates themselves must be checked for controller-side shell expansion.
+A generated command subtask is not proof that the model's native Task tool is
+available; its actual child permissions/tool exposure must preserve worker-only
+execution. Do not enable unrestricted Task, shell or file tools to make a command
+work. Require real evidence alongside source/configuration checks.
+
+OpenCode commands run in an isolated controller view, not the user's repository.
+Approval must disclose that files/Git state may be unavailable and `/init` may
+create AGENTS.md only in the scratch environment. A command completing is not
+proof that it changed a file or reviewed a repository: claim those effects only
+with their own actual receipts. A swallowed child failure, tool error or unknown
+slash no-op followed by end_turn cannot count as successful native execution.
+Terminal native commands whose admitted tool or assistant step reports an error
+are retained as known failed commands (`opencode_native_command_failed`) with
+their actual response. Once cleanup is confirmed they are not presented as
+uncertain remote work, and claim no file or repository effect. Incomplete,
+unadmitted or unlinked native work remains unconfirmed.
+
+### AP-3: truthful display, cancellation and acceptance
+
+Conversation rendering, copy/export and Activity use the actual provider. Native
+command messages remain plain right-aligned text. Codex-specific status parsing
+must not be applied to Claude/OpenCode output. Exact observed responses and
+outcomes remain visible; unsupported fields remain unavailable.
+
+Stop and session revocation must target the bound provider's actual active
+attempt, including native review children. Acknowledgement alone does not prove
+cancellation or cleanup. If settlement is uncertain, retain unknown state and
+never replay automatically. Provider-specific resume limitations must be stated;
+do not silently resume a cancelled run as a new session.
+
+Acceptance for the additional slice:
+
+- Actual configured Claude/OpenCode model discovery and fresh chat, then normal
+  resume on the same native thread through the existing Laomedo MCP tools.
+- Independent owner/provider roots and concurrent routing; existing Codex state
+  remains usable. Delayed catalog results and Stop/revocation never cross them.
+- Human-approved supported native command, rejection/revocation, changed catalog
+  refusal and exact command grammar; model cannot approve itself.
+- Claude compaction completion with genuine root native evidence and no invented
+  text/usage, followed by same-thread chat. Exercise Stop against active work.
+- OpenCode built-in provenance and no-argument admission; actual child permission
+  and terminal receipts for review; no success for missing/error/no-op evidence.
+  Disclose unavailable repository context rather than pretending a review occurred.
+- Actual rendered provider selection, responses, approvals and outcomes reviewed
+  in the shared integrated browser. Fixture tests do not establish live acceptance.
+- Reviewed canonical spec, full substantive code diff, required CI and explicit
+  remaining limits before merge; parent Codex spec/implementation dependencies
+  are merged or separately accounted for, never assumed.
+
+
+## Saved account chat binding ? selected owner direction, 2026-11-20
+
+The owner requested wiring chat to the saved provider login capability on
+`develop`. New chats default to the first connected, ready account in the current
+profile's safe saved-account list for the selected provider. If none is ready,
+a connected account with an expired access token may default into the existing
+guarded discovery and credential-refresh path. Revoked, reauthorization-required
+and unavailable accounts never default except OpenCode's `opencode_go_key`
+local-custody summary: its unavailable state means upstream authentication is
+unverified, while missing custody is revoked. This may default into guarded
+discovery; it does not certify authentication or bypass admission.
+Connect account and Manage accounts open Settings > Providers in the current
+tab, without depending on integrated-browser popup handling. Retain unsent drafts
+and provider in profile-scoped tab session storage before navigation, restore once
+on return, and clear on profile changes or locking. If storage fails, ask before
+discarding the draft. Preserve the editor's unsaved/build document-navigation
+guard when opened from the assistant sidebar. The visible account
+choice can be changed before chat starts. Defaulting waits for that profile's own
+list to load; it never uses stale accounts from a different profile. It does not
+create a conversation, dispatch a command or send a model prompt. When no choice
+is selected, the composer placeholder says Select an account, or No account
+available when that provider has no connected account; it does not show a stale
+model/effort or a separate selection paragraph. Model discovery uses that exact
+connection. Conversation creation retains its opaque
+connection UUID and observed connection generation, independently of model and
+effort. The binding cannot change within the conversation. No service account,
+host token, different provider or graph preference is an implicit fallback.
+Existing conversations never switch their saved account or generation, even if
+another account is ready. An explicit choice in a new chat is not overwritten by
+list refresh or discovery.
+
+Chat uses the existing saved-account controller, credential admission and
+isolation paths for Codex, Claude and OpenCode. Its controller state and scratch
+source are separate from graph execution. Account disconnect inventories and
+cancels both graph and assistant work, including unresolved resume reservations;
+startup recovers both scopes before continuing a pending disconnect. Graph calls
+cannot resolve an assistant run. Credential material never enters chat rows,
+model arguments or browser responses. Native browser session leases and profile
+revocation remain enforced; account selection does not authorize native commands.
+
+Normal signed access-token renewal retains the originating browser's assistant
+approval identity through the profile boundary's verified renewal binding.
+Persist only token fingerprints and their canonical authority, never bearers.
+Retain verified bindings with the session revocation fence across restart: a
+renewed token must not become a new authority after logout because an in-memory
+alias map was lost. Logout also fences a renewed token not yet used by chat.
+Owner mismatches, conflicting bindings and revocation refuse; unrelated logins
+cannot inherit pending approvals. Existing pre-fix proposals require a fresh
+proposal rather than being rebound to a different browser session.
+
+Acceptance covers a normal renewal and page reload with an approvable proposal,
+subsequent renewal after service restart, and logout through an unused renewed
+token followed by restart. The latter must remain refused with a still-valid
+signed token. Model execution is not needed for the database revocation checks.
+
+Disconnected, removed, changed-generation and unbound conversations keep their
+retained history but refuse new native operations. A new account needs a new
+conversation. The transition must not abandon earlier operational state: if an
+old dedicated chat runner retains active runs, unresolved resume dispatches or
+resource receipts, block new assistant dispatch while preserving app, Settings
+and graph availability and the old files for explicit reconciliation. This
+transition check can retire only after the older operational state has been explicitly reconciled; it does not require personal graph export
+compatibility.
+
+Acceptance requires tests for account defaulting, explicit override, foreign-profile and generation
+refusal, no fallback, independent graph/chat sources and run lookup, disconnect
+inventory/cancellation and assistant-only restart recovery. Real saved-account
+chat, initial status, MCP use and same-session continuation remain live acceptance
+requirements; fixture checks alone do not establish them. Implementation/review
+and live acceptance are pending.
+
+
+### Initial Codex status: retain the live zero-turn session
+
+The owner selected keeping the actual native controller alive between first
+`/status` and the first ordinary message. The pinned Codex does not persist an
+unused thread, so closing its controller and later attempting disk resume cannot
+meet the same-thread contract. Do not submit a hidden turn, reconstruct a rollout,
+replace the thread or replay the message to work around that limitation.
+
+- Status completion and resource cleanup are separate observations. An idle live
+  session keeps exact controller/executor ownership and its original native
+  event loop. The first ordinary message uses that same live ACP/native session.
+  Once a model turn has materialized durable history, normal cleanup and later
+  native resume apply.
+- No tool authority survives between messages. An inactive transport may remain
+  attached to the retained native session, but its owner/conversation/browser
+  binding must match and its current message authority must be reestablished
+  before any tool call. The frozen manifest cannot expand during reuse.
+- Account disconnect, browser logout, conversation deletion, explicit
+  cancellation, native failure and app shutdown release the idle native
+  ownership. Observe cleanup; do not rewrite a completed status command as a
+  failed model turn or claim an uncertain cleanup succeeded.
+- An unused session has an explicit host-configured idle lifetime, independent
+  of model-turn execution limits. Expiry closes it and makes continuation
+  unavailable; it does not silently start a replacement session. Credentials
+  must still satisfy the saved account/generation fence at the first model turn.
+- The owner selected in-place native credential refresh. Routine OAuth token
+  rotation for the same admitted account and generation must update the retained
+  controller before inference without replacing its native thread. The host
+  remains the OAuth-refresh owner; the executor receives no credential, refresh
+  token or credential-store mount. An unconfirmed update or changed account
+  binding refuses before prompting and releases exact owned resources; it never
+  recreates or replays the session. A token's byte value changing alone is not
+  grounds to require a new conversation.
+- After restart, reconcile the exact saved resource receipt. An unmaterialized
+  session is unavailable if its process was lost; its indexed thread ID alone is
+  not resumable history.
+
+Acceptance must demonstrate real status, first message and contextual follow-up
+with one native thread, real OAuth token rotation followed by the first model
+message on that same thread, real Laomedo MCP use under the new message authority,
+inactive tools between requests, and idle ownership cleanup on
+disconnect/shutdown. Implementation and reviewer acceptance remain pending.
+
+
+### History panel and native command results
+
+The conversation list heading is **History**. Titles use muted text, with faint
+separators between conversations. Its scrollbar sits at the panel's right edge,
+beside the single arrow divider. In the full-page chat, drag that divider to
+resize history (180-480px, further bounded to the available width), or click it
+to collapse/reopen. Drag release must not collapse the panel. Arrow keys adjust
+24px; Home/End use the bounds. Resizing and selection never dispatch a turn and
+preserve the draft. The existing editor assistant retains its separate panel
+width and resize controls.
+
+Completed native commands show the user's command followed by its actual
+retained output, without a separate "Ran /command. Completed" receipt card.
+Pending assistant-proposed approvals and non-success/uncertain outcomes remain
+visible. Persisted completion receipts remain authoritative for reconciliation
+and are not deleted merely because their redundant UI card is suppressed.
