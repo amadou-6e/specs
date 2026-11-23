@@ -821,3 +821,21 @@ with one native thread, real OAuth token rotation followed by the first model
 message on that same thread, real Laomedo MCP use under the new message authority,
 inactive tools between requests, and idle ownership cleanup on
 disconnect/shutdown. Implementation and reviewer acceptance remain pending.
+
+
+### History panel and native command results
+
+The conversation list heading is **History**. Titles use muted text, with faint
+separators between conversations. Its scrollbar sits at the panel's right edge,
+beside the single arrow divider. In the full-page chat, drag that divider to
+resize history (180-480px, further bounded to the available width), or click it
+to collapse/reopen. Drag release must not collapse the panel. Arrow keys adjust
+24px; Home/End use the bounds. Resizing and selection never dispatch a turn and
+preserve the draft. The existing editor assistant retains its separate panel
+width and resize controls.
+
+Completed native commands show the user's command followed by its actual
+retained output, without a separate "Ran /command. Completed" receipt card.
+Pending assistant-proposed approvals and non-success/uncertain outcomes remain
+visible. Persisted completion receipts remain authoritative for reconciliation
+and are not deleted merely because their redundant UI card is suppressed.
