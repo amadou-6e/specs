@@ -12,24 +12,22 @@ related: []
 # Repository storage pilot
 
 Owner request: [Laomedo #309](https://github.com/amadou-6e/laomedo/issues/309).
-The pilot connects existing local Git checkouts. Remote cloning, synchronization,
-diff review, commits, pushes and publication are deferred. A connection grants no
-access to the entire checkout: chat sees only selected graph files and the selected
-agent-files directory through authenticated Laomedo MCP tools.
-
-**Open owner decisions after independent review:** local-checkout-only connection
-and MCP-only rather than native shell workspace access are implementation proposals,
-not recorded owner approvals. The owner has been asked whether the pilot must clone
-a selected repository and expose selected files in the normal shell workspace.
-Resolve these questions before claiming the pilot fulfills the selected scope.
+The pilot clones a selected repository into app-owned storage. The owner selected
+remote cloning and normal shell workspace access on 2026-11-23. Diff review,
+commits, pushes and publication remain deferred. Chat receives selected graph files
+and the general agent-files folder, not the entire checkout or Git metadata.
 
 ## Storage selection
 
-The authenticated local profile registers an absolute checkout path and a display
-name. Verify the checkout through filesystem inspection only; never invoke Git,
-repository configuration, filters, hooks or repository code during registration.
-This is a single-user local pilot: selecting a host checkout is an explicit profile
-grant to its chosen subtrees, not hosted multi-user filesystem isolation.
+The authenticated local profile selects a GitHub owner/repository and display name.
+Clone its default branch into a fresh profile-owned directory. An optional one-use
+read token supports private repositories; never retain it in repository configuration,
+settings responses, logs, or provider workspaces. Run Git with isolated host
+configuration, prompting disabled, hooks/filters disabled and HTTPS-only transport;
+refuse redirects, submodules and symbolic links. A failed clone creates no connection.
+The pilot accepts at most 10,000 regular files. Existing absolute checkout
+registration remains filesystem-only. This is a single-user local pilot, not
+hosted multi-user filesystem isolation.
 Persist connections per profile. Each saved graph can independently select a
 connection and relative JSON filename. A profile selects one general agent-files
 directory within one connection. Selecting another location does not move/delete
@@ -67,8 +65,23 @@ path traversal, absolute child paths, symlinks/junctions, Git metadata, environm
 files and credential/private-state locations. Credentials and operational databases
 are not copied or mounted into provider containers. Chat receives relative paths,
 not unrestricted host filesystem access. Enforce current profile/session/attempt
-authority before file effects and response release. Native shell workspace remains
-isolated; repository access is through the MCP tools, not an unrestricted mount.
+authority before file effects and response release.
+
+On first dispatch, freeze selected UTF-8 files into the conversation's normal native
+shell workspace: `/draft/project/agent-files/` and
+`/draft/project/graphs/<workflow-id>.json`. Retain the initial bundle for idempotent
+retries. Maximum 256 files and 256 KiB serialized JSON; reject an oversized selection
+rather than truncate it. Normal shell tools can read, edit, create and delete selected
+files. Resumes retain the same native workspace and selected locations. Changing
+storage settings applies to new conversations, never silently retargets an old one.
+After a completed turn, read only the verified frozen workspace and persist changed
+files against their original host hashes. Reject conflicting external changes,
+unknown graph paths and protected names. Failed/interrupted turns are not exported.
+Write-back failures retain the native snapshot and show a recoverable error while
+unlocking Send. Each replacement is atomic, but a multi-file write is not a distributed
+transaction. Reconciliation can retry already-written identical contents safely.
+Shell graph-file edits do not update app graphs until explicit Load; MCP graph
+proposal approvals remain unchanged. No provider receives a host path or mount.
 Prompt text and ordinary graph values are exported; secret-field filtering is not
 content classification. Agent files and graph definitions may be committed by the
 user and this is disclosed. The app never commits them automatically. Maximums:
@@ -81,7 +94,10 @@ concurrently are outside this local pilot's filesystem-isolation claims.
 
 - Two graphs retain independent file locations across service restart.
 - Save/load a supported graph without execution or loss of app-managed secrets.
-- Configure an agent-files folder; chat reads and writes a text file there.
+- Clone a selected repository; private read credentials never reach the provider.
+- Configure an agent-files folder; chat reads and writes through its normal shell.
+- Resume retains files; completed shell changes persist across new conversations.
+- External edits conflict without overwrite; failures unlock Send and retain history.
 - Wrong-owner requests, escaping paths, links and stale writes fail safely.
 - Missing checkout and write failures preserve existing app data and give recovery.
 - Inspect the actual controls in the integrated browser and review exact revisions.
