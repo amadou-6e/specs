@@ -118,7 +118,9 @@ in chat, history and locked states. The header History icon opens/closes the
 conversation list; choosing a conversation restores the chat view. Expanded history
 keeps History and full-window actions reachable. Full-window chat retains its
 existing history geometry and controls.
-Conversation rows show mini provider logos with faint vertical separators.
+Conversation metadata replaces the provider text labels with monochrome SVG
+provider marks, alongside the date/state and faint vertical separators. Do not
+add a new icon column before the conversation title; retain accessible provider names.
 Earlier conversations load automatically when scrolling near the end, with a
 loading indicator and no separate pagination action. Active rows show a spinner;
 background work shows a throbber instead of the static switching-conversations tip.
