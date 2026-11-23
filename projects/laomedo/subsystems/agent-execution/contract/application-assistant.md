@@ -105,7 +105,8 @@ control leaves the selected left section unchanged, including the Agents view.
 
 The divider supports pointer dragging, Arrow Left/Right in 24px steps, Home for
 minimum and End for maximum, with an accessible name, orientation and current
-value. Initial width is 480px, minimum 280px and maximum 720px, clamped to the
+value. Drag resizing uses the same arrow strip as click collapse, with no second
+rail or column. A drag must not collapse the panel on release. Initial width is 480px, minimum 280px and maximum 720px, clamped to the
 available editor. Narrow windows use an overlay with the same visible collapse strip.
 Resizing the window reclamps width. Focus returns to the opener on close.
 
@@ -117,6 +118,10 @@ in chat, history and locked states. The header History icon opens/closes the
 conversation list; choosing a conversation restores the chat view. Expanded history
 keeps History and full-window actions reachable. Full-window chat retains its
 existing history geometry and controls.
+Conversation rows show mini provider logos with faint vertical separators.
+Earlier conversations load automatically when scrolling near the end, with a
+loading indicator and no separate pagination action. Active rows show a spinner;
+background work shows a throbber instead of the static switching-conversations tip.
 The sidebar initially hides its conversation list to prioritize chat. Expanding
 history shows the same owner-scoped conversations as full-window chat. Selection
 does not alter the graph URL. Closing retains the mounted chat's draft and active
@@ -269,14 +274,21 @@ inference. User and assistant bodies use the same 14 px text size.
 History is collapsible, with New conversation at its bottom. New chat shows a
 workflow illustration and the supported Codex provider card. The compact composer
 model menu uses the discovered model list and an annotated effort slider; there
-is no Refresh models action or model-card grid. Changing a selection during an
+is no Refresh models action or model-card grid.
+OpenCode Go model labels omit the `opencode-go/` prefix; exact IDs remain unchanged
+in the provider contract and model selection. Changing a selection during an
 idle conversation applies to its next turn. Selection is locked during dispatch
 and an active turn. Native permission modes are deferred to Laomedo #288.
 
-Enter sends, Shift+Enter inserts a newline, and Enter during IME composition does
+When the command/skill picker is open, Enter selects its first executable match
+without dispatching; after selection, Enter sends the prepared message.
+Otherwise Enter sends, Shift+Enter inserts a newline, and Enter during IME composition does
 not send. The message box retains focus after Enter and remains editable during
 dispatch/response while Send stays fenced. Keyboard and button use the same admission rule: no dispatch
-while active, pending, busy, needing attention, or in an observation/error state.
+while active, pending, busy, needing attention, or unable to observe current state.
+A displayed error from a definite rejected request must not permanently disable
+Send after the conversation is observed idle. Unknown dispatch retains its exact-key
+pending fence and explicit recovery rather than permitting a duplicate request.
 Stop remains available while the active turn can be cancelled.
 The composer remains editable during startup, dispatch and active responses so
 the user can draft the next message; typing never queues or submits another turn.
