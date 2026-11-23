@@ -11,6 +11,9 @@ related: []
 
 # Agent execution design
 
+[Project storage pilot](project-storage.drawio) defines checkout, agent-file and
+per-graph location controls; behavior is in [the contract](../contract/project-storage.md).
+
 [Provider connection workshop](provider-connections.md) proposes explicit provider login and independent saved connections; owner review is pending.
 
 [Application assistant realization](application-assistant.md) and its
