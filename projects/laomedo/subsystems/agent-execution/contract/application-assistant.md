@@ -566,8 +566,11 @@ own traced policy, arguments and completion semantics before admission.
 
 #### Bundled native skills
 
-The native menu separates **Commands** and **Skills**, preserving provider names,
-descriptions and argument hints. Only skills observed in the pinned running CLI
+The native menu shows **Commands** first and **Skills** after, preserving provider
+names, descriptions and argument hints. Search narrows both groups; headings and
+the divider disappear when only one group has matches. Usable entries precede
+blocked entries within each group, and blocked entries show a concise reason
+rather than a generic unavailable label. Only skills observed in the pinned running CLI
 are listed; the application does not invent entries from a website or a host CLI
 installation. This is distinct from Laomedo's skill registry and MCP `list_skills`.
 Personal, project and marketplace skill import remains outside this slice.
