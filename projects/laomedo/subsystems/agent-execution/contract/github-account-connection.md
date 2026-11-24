@@ -75,7 +75,11 @@ For the same verified numeric GitHub account within one profile, Add Connection
 reuses the existing non-disconnected connection and opens repository access for
 review. Save replaces its consent and credential under the existing generation
 check; Cancel preserves it. Concurrent new attempts must not save duplicate
-connections for that account. This does not combine accounts across profiles.
+connections for that account or silently replace its authentication method or App.
+When the GitHub registration return reveals an already connected account after
+creating a second App, keep the existing binding, open its connection, and tell the
+user about the extra App so they can remove it in GitHub settings. Do not store
+the extra App's credentials. This does not combine accounts across profiles.
 Every private route resolves the actual authenticated app
 principal, never an owner supplied in JSON or a shared service bearer token.
 The private broker, vault adapter, object reader and private store are owned by
