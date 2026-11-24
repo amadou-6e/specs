@@ -11,6 +11,9 @@ related: []
 
 # Agent execution contract index
 
+[Repository storage pilot](project-storage.md) defines per-graph file locations,
+shared agent files and scoped chat access for selected cloned GitHub repositories.
+
 [Provider connection settings](provider-connections.md) proposes explicit provider login and independent saved connections; owner review is pending.
 
 [Persistent application assistant](application-assistant.md) defines direct
