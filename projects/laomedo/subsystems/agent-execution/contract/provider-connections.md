@@ -368,3 +368,45 @@ keeping graph selections and incrementing generation. Never infer cross-method
 identity equivalence from matching email. Back, failure, expiry or cancellation
 preserves the committed login and erases the unpublished native revision. Retained
 sessions from the old generation cannot resume with the replacement credentials.
+
+
+## Selected Claude subscription observation (2026-11-24)
+
+Owner direction extends the same saved-account quota panel to Claude Code.
+Use the existing connection-owned native profile and the pinned official Claude
+CLI2.1.310. Do not introduce a second sign-in, inspect token-file contents or
+call a quota endpoint with exported OAuth credentials.
+
+Explicit Refresh sends only native initialize and the structured `get_usage`
+control request with `skip_behaviors: true`. The latter suppresses scans of local
+transcripts and their behavioral summaries. No user message, model turn, tool,
+resumed conversation or persisted model session is submitted. This is a pinned
+experimental native surface, not a stable public SDK promise; unavailable or
+changed structures fail closed and preserve only visibly stale prior evidence.
+
+Validate the selected saved account before reading. Hold the existing controller
+catalog admission fence through native job teardown and revalidate generation
+before publishing. Cached panel reads remain metadata/memory-only. Existing
+profile, browser-lease, reconnect, cancellation and Disconnect fences apply.
+No raw CLI errors or unrelated session/behavior fields reach the browser.
+
+Project native five_hour and seven_day utilization/reset observations as5hour
+and7day windows. Additional OAuth-app, Opus, Sonnet or model-scoped weekly
+windows are separate labelled buckets. Do not invent missing windows, remaining
+quota or reset times. Invalid scalar observations remain unknown; invalid
+structure fails the read. Extra-usage billing/credits are not subscription
+allowance and are excluded. Reuse P15/P16's existing meter layout and narrow-view
+rules in the Claude tab; no additional login or design screen is introduced.
+
+Acceptance requires a real explicit read through an existing saved Claude
+connection, including an exhausted allowance when that is what the provider
+reports, and no model turns. Fixtures support protocol/isolation/error checks;
+they do not establish real provider acceptance or independent visual review.
+
+OpenCode feasibility: its current official Go documentation exposes read-only
+GET https://opencode.ai/inference/go/v1/usage using the same Go key. It returns
+rolling, weekly and monthly percentages and reset timestamps. This establishes
+an available integration route, not implementation or live acceptance here.
+A later Go implementation must preserve all three reported windows; the current
+two-window bucket contract must be deliberately extended or explicitly mapped.
+Source: https://opencode.ai/docs/console/go/#usage
