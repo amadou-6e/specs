@@ -170,6 +170,8 @@ when verification confirms that access or the confirmed location changed.
 If verification is temporarily unavailable after a successful token rotation,
 keep the connection fenced and permit verification to be retried with the new
 credential; do not force sign-in solely for that temporary failure.
+An explicit unauthenticated response requires sign-in again; an ambiguous 403
+or 404 remains fenced and retryable rather than asserting the repository is gone.
 
 ### SC05: Private store access, not cache-only separation
 
