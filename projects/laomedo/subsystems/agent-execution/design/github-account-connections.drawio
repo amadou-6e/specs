@@ -916,6 +916,60 @@
                 <mxCell id="pending-signin" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;" value="Sign in again" vertex="1">
                     <mxGeometry height="44" width="200" x="520.0" y="12228.0" as="geometry" />
                 </mxCell>
+                <mxCell id="duplicate-id" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=17;fontColor=#1d4ed8;fontStyle=1;align=left;" value="B / Duplicate account after registration" vertex="1">
+                    <mxGeometry height="30" width="1200" x="50.0" y="12508.0" as="geometry" />
+                </mxCell>
+                <mxCell id="duplicate-viewport" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;fillColor=#f8fafc;arcSize=6;" value="" vertex="1">
+                    <mxGeometry height="760" width="1200" x="50.0" y="12550.0" as="geometry" />
+                </mxCell>
+                <mxCell id="duplicate-brand" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=16;fontColor=#52525b;fontStyle=1;align=left;" value="Laomedo" vertex="1">
+                    <mxGeometry height="30" width="280" x="82.0" y="12572.0" as="geometry" />
+                </mxCell>
+                <mxCell id="duplicate-caption" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=15;fontColor=#52525b;fontStyle=0;align=left;" value="The existing connection and its App remain unchanged. The notice identifies the extra GitHub App and tells the owner it can be removed in GitHub settings." vertex="1">
+                    <mxGeometry height="62" width="1192" x="54.0" y="13334.0" as="geometry" />
+                </mxCell>
+                <mxCell id="duplicate-panel" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;" value="" vertex="1">
+                    <mxGeometry height="580" width="880" x="210.0" y="12680.0" as="geometry" />
+                </mxCell>
+                <mxCell id="duplicate-back" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=14;fontColor=#71717a;fontStyle=0;align=left;" value="&lt; GitHub connections" vertex="1">
+                    <mxGeometry height="28" width="800" x="250.0" y="12710.0" as="geometry" />
+                </mxCell>
+                <mxCell id="duplicate-avatar" parent="1" style="ellipse;html=1;fillColor=#f1f5f9;strokeColor=none;fontColor=#334155;fontFamily=Helvetica;fontSize=20;fontStyle=1;" value="A" vertex="1">
+                    <mxGeometry height="48" width="48" x="250.0" y="12770.0" as="geometry" />
+                </mxCell>
+                <mxCell id="duplicate-name" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=25;fontColor=#18181b;fontStyle=1;align=left;" value="@amadou" vertex="1">
+                    <mxGeometry height="34" width="560" x="320.0" y="12766.0" as="geometry" />
+                </mxCell>
+                <mxCell id="duplicate-status" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;fillColor=#f0fdf4;strokeColor=none;fontColor=#15803d;fontSize=13;" value="Connected" vertex="1">
+                    <mxGeometry height="28" width="146" x="904.0" y="12776.0" as="geometry" />
+                </mxCell>
+                <mxCell id="duplicate-note" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=15;fontColor=#71717a;fontStyle=0;align=left;" value="Access is maintained automatically." vertex="1">
+                    <mxGeometry height="28" width="650" x="320.0" y="12808.0" as="geometry" />
+                </mxCell>
+                <mxCell id="duplicate-divider" parent="1" style="fillColor=#e4e4e7;strokeColor=none;" value="" vertex="1">
+                    <mxGeometry height="1" width="800" x="250.0" y="12868.0" as="geometry" />
+                </mxCell>
+                <mxCell id="duplicate-heading" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=18;fontColor=#18181b;fontStyle=1;align=left;" value="Repository access" vertex="1">
+                    <mxGeometry height="30" width="800" x="250.0" y="12898.0" as="geometry" />
+                </mxCell>
+                <mxCell id="duplicate-repos" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=17;fontColor=#52525b;fontStyle=0;align=left;" value="amadou/my-skills&#10;amadou/private-specs" vertex="1">
+                    <mxGeometry height="78" width="800" x="250.0" y="12948.0" as="geometry" />
+                </mxCell>
+                <mxCell id="duplicate-change" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;" value="Change repositories" vertex="1">
+                    <mxGeometry height="44" width="244" x="250.0" y="13058.0" as="geometry" />
+                </mxCell>
+                <mxCell id="duplicate-footer-line" parent="1" style="fillColor=#e4e4e7;strokeColor=none;" value="" vertex="1">
+                    <mxGeometry height="1" width="800" x="250.0" y="13132.0" as="geometry" />
+                </mxCell>
+                <mxCell id="duplicate-local" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=14;fontColor=#71717a;fontStyle=0;align=left;" value="Removing this connection stops Laomedo access." vertex="1">
+                    <mxGeometry height="40" width="560" x="250.0" y="13162.0" as="geometry" />
+                </mxCell>
+                <mxCell id="duplicate-disconnect" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;" value="Disconnect" vertex="1">
+                    <mxGeometry height="44" width="184" x="866.0" y="13160.0" as="geometry" />
+                </mxCell>
+                <mxCell id="duplicate-notice" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#52525b;fontSize=14;spacing=0;" value="This GitHub account is already connected. Its existing setup and repository access were kept. GitHub created an extra App (laomedo-local-example); you can delete it in GitHub settings." vertex="1">
+                    <mxGeometry height="64" width="880" x="210.0" y="12610.0" as="geometry" />
+                </mxCell>
             </root>
         </mxGraphModel>
     </diagram>
