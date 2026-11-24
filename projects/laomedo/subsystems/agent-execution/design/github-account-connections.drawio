@@ -586,34 +586,37 @@
                     <mxGeometry height="62" width="1192" x="54.0" y="5454.0" as="geometry" />
                 </mxCell>
                 <mxCell id="m-panel" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;shadow=1;" value="" vertex="1">
-                    <mxGeometry height="488" width="580" x="360.0" y="4810.0" as="geometry" />
+                    <mxGeometry height="575" width="580" x="360.0" y="4760" as="geometry" />
                 </mxCell>
-                <mxCell id="m-progress" parent="1" style="fillColor=#18181b;strokeColor=none;" value="" vertex="1">
-                    <mxGeometry height="4" width="64" x="400.0" y="4852.0" as="geometry" />
+                <mxCell id="m-progress" parent="1" style="text;html=1;align=left;fontFamily=Helvetica;fontSize=12;fontColor=#71717a;" value="ONE-TIME SETUP" vertex="1">
+                    <mxGeometry height="25" width="64" x="400.0" y="4780" as="geometry" />
                 </mxCell>
                 <mxCell id="m-title" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=28;fontColor=#18181b;fontStyle=1;align=left;" value="Connect a GitHub account" vertex="1">
-                    <mxGeometry height="44" width="500" x="400.0" y="4890.0" as="geometry" />
+                    <mxGeometry height="44" width="500" x="400.0" y="4810" as="geometry" />
                 </mxCell>
-                <mxCell id="m-copy" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=17;fontColor=#71717a;fontStyle=0;align=left;" value="Choose your GitHub account, then continue to the prefilled setup.&#10;Confirm the account owner on GitHub." vertex="1">
-                    <mxGeometry height="74" width="500" x="400.0" y="4956.0" as="geometry" />
+                <mxCell id="m-copy" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=17;fontColor=#71717a;fontStyle=0;align=left;" value="A private connection for this account. No credentials to copy.&#10;&#10;1. Choose your account&#10;Open GitHub and select the account you want to connect from its profile menu. Then return here." vertex="1">
+                    <mxGeometry height="115" width="500" x="400.0" y="4855" as="geometry" />
                 </mxCell>
-                <mxCell id="m-account-link" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#2563eb;fontSize=14;spacing=0;" value="Open GitHub to choose an account" vertex="1">
-                    <mxGeometry height="25" width="500" x="400.0" y="5034.0" as="geometry" />
+                <mxCell id="m-account-link" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#2563eb;fontSize=14;spacing=0;" value="Open GitHub" vertex="1">
+                    <mxGeometry height="30" width="500" x="400.0" y="4970" as="geometry" />
                 </mxCell>
                 <mxCell id="m-open" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;fillColor=#18181b;strokeColor=#18181b;fontColor=#ffffff;fontStyle=1;" value="Continue to GitHub" vertex="1">
-                    <mxGeometry height="44" width="500" x="400.0" y="5064.0" as="geometry" />
+                    <mxGeometry height="44" width="500" x="400.0" y="5130" as="geometry" />
                 </mxCell>
-                <mxCell id="m-help" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=14;fontColor=#71717a;fontStyle=0;align=center;" value="Next, choose which repositories Laomedo may read." vertex="1">
-                    <mxGeometry height="28" width="500" x="400.0" y="5121.0" as="geometry" />
+                <mxCell id="m-help" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=14;fontColor=#71717a;fontStyle=0;align=center;" value="Next, choose the repositories Laomedo can read." vertex="1">
+                    <mxGeometry height="28" width="500" x="400.0" y="5180" as="geometry" />
                 </mxCell>
                 <mxCell id="m-divider" parent="1" style="fillColor=#e4e4e7;strokeColor=none;" value="" vertex="1">
-                    <mxGeometry height="1" width="500" x="400.0" y="5174.0" as="geometry" />
+                    <mxGeometry height="1" width="500" x="400.0" y="5215" as="geometry" />
                 </mxCell>
-                <mxCell id="m-advanced" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=14;fontColor=#52525b;fontStyle=0;align=center;" value="Advanced: use a personal access token" vertex="1">
-                    <mxGeometry height="28" width="500" x="400.0" y="5202.0" as="geometry" />
+                <mxCell id="m-advanced" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=14;fontColor=#52525b;fontStyle=0;align=center;" value="Use a personal access token instead" vertex="1">
+                    <mxGeometry height="28" width="500" x="400.0" y="5230" as="geometry" />
                 </mxCell>
-                <mxCell id="m-cancel" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=14;fontColor=#71717a;fontStyle=0;align=center;" value="Cancel" vertex="1">
-                    <mxGeometry height="28" width="500" x="400.0" y="5246.0" as="geometry" />
+                <mxCell id="m-cancel" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=14;fontColor=#71717a;fontStyle=0;align=center;" value="Back" vertex="1">
+                    <mxGeometry height="28" width="500" x="400.0" y="5270" as="geometry" />
+                </mxCell>
+                <mxCell id="m-step-two" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#52525b;fontSize=14;spacing=0;" value="2. Approve the connection&#10;Continue to the prefilled setup on GitHub. Check the account shown as the owner before approving.&#10;&#10;Already connected this account? Go back and open its existing connection instead." vertex="1">
+                    <mxGeometry height="120" width="500" x="400.0" y="5004.0" as="geometry" />
                 </mxCell>
                 <mxCell id="b-id" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=17;fontColor=#1d4ed8;fontStyle=1;align=left;" value="B / Saved connection details" vertex="1">
                     <mxGeometry height="30" width="1200" x="50.0" y="6508.0" as="geometry" />
@@ -642,7 +645,7 @@
                 <mxCell id="b-status" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;fillColor=#f0fdf4;strokeColor=none;fontColor=#15803d;fontSize=13;" value="Connected" vertex="1">
                     <mxGeometry height="28" width="146" x="904.0" y="6746.0" as="geometry" />
                 </mxCell>
-                <mxCell id="b-note" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=15;fontColor=#71717a;fontStyle=0;align=left;" value="Access is maintained automatically." vertex="1">
+                <mxCell id="b-note" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=15;fontColor=#71717a;fontStyle=0;align=left;" value="Access is maintained automatically when supported." vertex="1">
                     <mxGeometry height="28" width="650" x="320.0" y="6778.0" as="geometry" />
                 </mxCell>
                 <mxCell id="b-divider" parent="1" style="fillColor=#e4e4e7;strokeColor=none;" value="" vertex="1">
@@ -654,7 +657,7 @@
                 <mxCell id="b-repos" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=17;fontColor=#52525b;fontStyle=0;align=left;" value="amadou/my-skills&#10;amadou/private-specs" vertex="1">
                     <mxGeometry height="78" width="800" x="250.0" y="6918.0" as="geometry" />
                 </mxCell>
-                <mxCell id="b-change" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;" value="Change repositories" vertex="1">
+                <mxCell id="b-change" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;" value="Edit" vertex="1">
                     <mxGeometry height="44" width="244" x="250.0" y="7028.0" as="geometry" />
                 </mxCell>
                 <mxCell id="b-footer-line" parent="1" style="fillColor=#e4e4e7;strokeColor=none;" value="" vertex="1">
@@ -943,7 +946,7 @@
                 <mxCell id="duplicate-status" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;fillColor=#f0fdf4;strokeColor=none;fontColor=#15803d;fontSize=13;" value="Connected" vertex="1">
                     <mxGeometry height="28" width="146" x="904.0" y="12776.0" as="geometry" />
                 </mxCell>
-                <mxCell id="duplicate-note" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=15;fontColor=#71717a;fontStyle=0;align=left;" value="Access is maintained automatically." vertex="1">
+                <mxCell id="duplicate-note" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=15;fontColor=#71717a;fontStyle=0;align=left;" value="Access is maintained automatically when supported." vertex="1">
                     <mxGeometry height="28" width="650" x="320.0" y="12808.0" as="geometry" />
                 </mxCell>
                 <mxCell id="duplicate-divider" parent="1" style="fillColor=#e4e4e7;strokeColor=none;" value="" vertex="1">
@@ -955,7 +958,7 @@
                 <mxCell id="duplicate-repos" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=17;fontColor=#52525b;fontStyle=0;align=left;" value="amadou/my-skills&#10;amadou/private-specs" vertex="1">
                     <mxGeometry height="78" width="800" x="250.0" y="12948.0" as="geometry" />
                 </mxCell>
-                <mxCell id="duplicate-change" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;" value="Change repositories" vertex="1">
+                <mxCell id="duplicate-change" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;" value="Edit" vertex="1">
                     <mxGeometry height="44" width="244" x="250.0" y="13058.0" as="geometry" />
                 </mxCell>
                 <mxCell id="duplicate-footer-line" parent="1" style="fillColor=#e4e4e7;strokeColor=none;" value="" vertex="1">
