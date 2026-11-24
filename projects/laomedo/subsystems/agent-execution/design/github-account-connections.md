@@ -20,6 +20,9 @@ Owner decisions: single-user local Windows first; use a dedicated specs worktree
 to preserve unrelated edits. The owner corrected the earlier registration answer:
 no GitHub App exists. Prepare one-time app setup, with actual registration and
 secret provisioning requiring explicit owner action/approval. Normal Laomedo sign-in is required for private access, as accepted by the owner.
+On 2026-11-24 the owner selected the account-owned private App setup screen,
+reuse of a profile's existing connection for the same GitHub account, and retry
+of temporarily unavailable verification after a successful credential rotation.
 The strict online-read policy remains proposed pending measured workflow review.
 
 ## Boundaries and object vocabulary
@@ -284,9 +287,9 @@ draft, not runtime acceptance. Screen identifiers associate graph nodes and
 mockups; no graph-to-screen edges are drawn.
 
 - **A - Connections:** one Add connection entry point. Every saved row opens B.
-- **M - Add connection:** choose browser sign-in (default when configured) or a
-  personal access token. Browser unavailable is a disabled option with a reason;
-  explicit installation setup opens D, then returns to M retaining Add intent.
+- **M - Add connection:** the one-time setup screen explains the account-owned
+  App and offers Continue to GitHub. A personal access token remains an advanced
+  alternative. The owner confirms App creation on GitHub.
 - **B - Connection details:** Change repositories revalidates before C. A browser
   entry requiring sign-in uses Sign in again; a token entry uses Replace token.
   Both are bound to that entry and its expected account. Disconnect has its own
@@ -295,7 +298,8 @@ mockups; no graph-to-screen edges are drawn.
   cancel. Account and current repository verification precede C. No App required.
 - **C - Choose repositories:** Save access creates a row for a new attempt or
   updates the selected entry for an existing attempt. Cancel returns to origin.
-- **D - Installation setup:** host-wide App configuration, not an account login.
+- **D - Setup unavailable:** explain the failed setup and offer a return or retry;
+  do not ask the owner to copy client credentials.
 - **E1 - Attempt problem:** method-specific auth retry retains target and method.
   An uncertain save uses Check connections first, not automatic replay.
   A failed access check offers Check access again (bound verification), not forced
@@ -308,8 +312,9 @@ expected account/generation and method preservation. Service verification and
 saving are not user choices. The variant map preserves historical C01-C14,
 E01-E05, H01, P01-P10, N01-N20 and R01-R08 coverage without duplicate screens.
 
-Duplicate-account handling, custom names, optional disconnect confirmation,
-saving an empty selection and source-picker selection remain owner decisions.
+Custom names, optional disconnect confirmation, saving an empty selection and
+source-picker selection remain owner decisions. Adding a duplicate verified
+account reuses the profile's existing connection for review and update.
 The workshop does not silently settle them or introduce administrator roles.
 
 ## Graph layout source
@@ -328,20 +333,14 @@ establishes neither live GitHub acceptance nor complete specification approval.
 
 ## Screen-only alignment to minimal-effort stories
 
-The owner selected US01-US06, appended on the existing canvas, then requested screen
-edits only. The current screen revision makes Add open GitHub automatically;
-M is the waiting/return screen with an Open GitHub fallback and optional Advanced
-token entry. It is no longer a required method-selection step. D is an unavailable
-message, not user-managed App registration. No client ID, secret or callback is
-requested in normal user screens. A supports direct reauthorization when needed;
-C discovers/searches repositories and refreshes automatically after GitHub return.
-
-Graph nodes, edges, graph YAML and the story section were deliberately preserved.
-Their earlier setup/method-choice model is not yet aligned to these screen changes;
-no graph consistency or runtime completion is claimed by this screen-only revision.
-Provisioning the integration securely is Laomedo/deployment responsibility, with
-its concrete architecture still unresolved. Existing operator-configuration
-contracts are not silently rewritten or treated as implemented by these mockups.
+The owner selected US01-US06, then on 2026-11-24 selected the one-time setup
+screen used by the pilot. M offers Continue to GitHub and an optional Advanced
+token entry. A private GitHub App is created under the chosen GitHub account with
+the owner's confirmation; Laomedo stores its binding for the current profile.
+No client ID, secret or callback is requested in normal user screens. A supports
+direct reauthorization when needed; C discovers and searches repositories.
+See the editable canvas and graph for the selected setup and recovery direction.
+The retry-after-rotation recovery is a target requiring implementation and review.
 
 ## Visual references and screen gallery - 2026-11-13
 

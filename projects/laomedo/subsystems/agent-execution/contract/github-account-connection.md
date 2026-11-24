@@ -105,8 +105,12 @@ editable design. Actual behavior remains subject to the real browser story gate.
 
 ### SC02: Browser-default and deliberate token entry
 
-Use an explicitly operator-configured GitHub App's web authorization flow with
-S256 PKCE, unpredictable one-use state and an exact registered loopback callback.
+For a new browser connection, show the one-time setup screen and let the owner
+continue to GitHub. Create a private App owned by the selected GitHub account
+using the GitHub App manifest flow and record its credentials for the current
+Laomedo profile. Do not create an App without the owner's action on GitHub.
+Retain each connection's App binding; do not substitute another profile's App.
+Use web authorization with S256 PKCE, unpredictable one-use state and an exact registered loopback callback.
 No device-flow fallback or embedded shared app secret. Bind the pending request
 to the initiating owner, browser session, request identity and generation. Verify
 the returned principal and show it before committing repository consent. Declined,
@@ -161,7 +165,11 @@ including retained history, until the owner deliberately reconnects and confirms
 the repository again. Do not follow redirects or silently update stored consent.
 A matching old name with a different numeric identity remains refused. If renewal
 cannot revalidate any consented repository at its confirmed location, require
-reauthorization of the connection rather than partially restoring its authority.
+reauthorization of the connection rather than partially restoring its authority
+when verification confirms that access or the confirmed location changed.
+If verification is temporarily unavailable after a successful token rotation,
+keep the connection fenced and permit verification to be retried with the new
+credential; do not force sign-in solely for that temporary failure.
 
 ### SC05: Private store access, not cache-only separation
 
@@ -208,6 +216,12 @@ lost response after refresh may have consumed the old refresh token: mark
 reauthorization required rather than replaying it. Pending sign-in and refresh
 recovery cannot silently use another account. Broker/app restart restores ready
 metadata only with the matching vault material and supported session ownership.
+When GitHub returned a new credential successfully but a subsequent account or
+repository verification is temporarily unavailable, retain the new credential
+in host custody without granting access. An explicit retry revalidates the same
+principal and all consented repositories before committing the new generation;
+it must never replay the consumed refresh token. This recovery is a target
+requirement and is not established by the current implementation.
 Cancellation stops local waiting and invalidates pending state; it does not claim
 to revoke consent already granted at GitHub.
 

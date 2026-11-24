@@ -51,7 +51,7 @@ nodes:
       font_size: 15
       rounded: true
   method:
-    label: "M - Add connection\nChoose method"
+    label: "M - One-time setup\nContinue to GitHub"
     style:
       shape: "rectangle"
       width: 230
@@ -117,7 +117,7 @@ nodes:
       font_size: 15
       rounded: true
   setup:
-    label: "D - Installation setup"
+    label: "D - Setup unavailable"
     style:
       shape: "rectangle"
       width: 230
@@ -293,7 +293,7 @@ edges:
   browser:
     from: "method"
     to: "github"
-    label: "Sign in with GitHub"
+    label: "Continue to GitHub"
     style:
       stroke: "#64748b"
       end_arrow: "classic"
@@ -309,7 +309,7 @@ edges:
   setup-link:
     from: "method"
     to: "setup"
-    label: "Set up GitHub sign-in"
+    label: "Setup unavailable"
     style:
       stroke: "#64748b"
       end_arrow: "classic"
@@ -317,7 +317,7 @@ edges:
   setup-ready:
     from: "setup"
     to: "method"
-    label: "Save or cancel; resume Add"
+    label: "Retry or go back"
     style:
       stroke: "#64748b"
       end_arrow: "classic"

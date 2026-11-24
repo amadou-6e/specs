@@ -8,10 +8,10 @@
                 <mxCell id="7MNxFoL0Qz2x0F-fCPQH-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="" vertex="1">
                     <mxGeometry height="7760" width="1300" x="-14" y="3500" as="geometry" />
                 </mxCell>
-            <mxCell id="title" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=4;fontSize=32;fontStyle=1;" value="GitHub connections - one task, two sign-in methods" vertex="1">
+            <mxCell id="title" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=4;fontSize=32;fontStyle=1;" value="GitHub connections - account-owned setup" vertex="1">
                     <mxGeometry height="50" width="4000" x="50" y="25" as="geometry" />
                 </mxCell>
-                <mxCell id="goal" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=4;fontSize=19;fontColor=#52525b;" value="Add a connection, choose a method, verify the account, choose repositories, then save. Existing entries keep their identity through edits and recovery." vertex="1">
+                <mxCell id="goal" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=4;fontSize=19;fontColor=#52525b;" value="Add a connection, review setup, continue to GitHub, choose repositories, then save. Existing entries keep their identity through edits and recovery." vertex="1">
                     <mxGeometry height="45" width="4100" x="50" y="90" as="geometry" />
                 </mxCell>
                 <mxCell id="legend" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=4;fontSize=16;fontColor=#1d4ed8;" value="Screens match by A / B / M / F / C / D / E1 / E2. Arrows show transitions only. Dashed GitHub node = external page; grey nodes = service steps." vertex="1">
@@ -23,7 +23,7 @@
                 <mxCell id="attempt-context" parent="1" style="rounded=1;arcSize=6;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#cbd5e1;fontColor=#18181b;fontFamily=Helvetica;fontSize=16;fillColor=#eff6ff;align=left;spacingLeft=16;fontSize=17;" value="ATTEMPT CONTEXT - carried through verification, consent, saving and retry&#10;NEW: add a connection. EXISTING: selected connection + expected account + generation.&#10;The chosen method is retained. A retry never changes account or creates a different entry silently. Cancel returns to A (new) or B (existing)." vertex="1">
                     <mxGeometry height="155" width="2800" x="60" y="1110" as="geometry" />
                 </mxCell>
-                <mxCell id="decision-note" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=4;fontSize=15;fontColor=#52525b;" value="OPEN OWNER DECISIONS: duplicate accounts, optional connection names, disconnect confirmation and saving zero repositories. None is decided by this workshop." vertex="1">
+                <mxCell id="decision-note" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=4;fontSize=15;fontColor=#52525b;" value="OPEN OWNER DECISIONS: optional connection names, disconnect confirmation and saving zero repositories. Reuse the existing connection for a duplicate account." vertex="1">
                     <mxGeometry height="75" width="2800" x="60" y="1300" as="geometry" />
                 </mxCell>
                 <mxCell id="coverage-title" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=4;fontSize=24;fontStyle=1;" value="04  Variant and contract map - not additional screens" vertex="1">
@@ -35,7 +35,7 @@
                 <mxCell id="variant-title0" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=4;fontSize=17;fontStyle=1;" value="Empty list / no App" vertex="1">
                     <mxGeometry height="30" width="652" x="64" y="2840" as="geometry" />
                 </mxCell>
-                <mxCell id="variant-copy0" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=4;fontSize=14;fontColor=#3f3f46;" value="A empty: one Add connection action opens M. Both methods belong to Add. Browser unavailable is a disabled option with explicit D setup link; token remains available." vertex="1">
+                <mxCell id="variant-copy0" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=4;fontSize=14;fontColor=#3f3f46;" value="A empty: Add opens the one-time setup screen. Continue opens GitHub for App creation. Token entry remains available under Advanced." vertex="1">
                     <mxGeometry height="86" width="652" x="64" y="2876" as="geometry" />
                 </mxCell>
                 <mxCell id="variant-ids0" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=4;fontSize=12;fontColor=#1d4ed8;" value="C01, C09, C12; N01-N02, N17" vertex="1">
@@ -83,7 +83,7 @@
                 <mxCell id="variant-title4" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=4;fontSize=17;fontStyle=1;" value="Expired / renamed / offline" vertex="1">
                     <mxGeometry height="30" width="652" x="64" y="3045" as="geometry" />
                 </mxCell>
-                <mxCell id="variant-copy4" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=4;fontSize=14;fontColor=#3f3f46;" value="Expired or renamed/transferred: reconnect deliberately. Offline/rate-limited access check: E1 Check access again or Back, never forced reauthorization. Pins remain; no public/account fallback." vertex="1">
+                <mxCell id="variant-copy4" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=4;fontSize=14;fontColor=#3f3f46;" value="Offline access check: retry. After token rotation, retain the unverified credential and retry verification; confirmed lost access or changed location requires reauthorization." vertex="1">
                     <mxGeometry height="86" width="652" x="64" y="3081" as="geometry" />
                 </mxCell>
                 <mxCell id="variant-ids4" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=4;fontSize=12;fontColor=#1d4ed8;" value="C05, C07; R01-R05; SC04, SC06" vertex="1">
@@ -167,7 +167,7 @@
                 <mxCell id="variant-title11" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=4;fontSize=17;fontStyle=1;" value="Open decisions / draft scope" vertex="1">
                     <mxGeometry height="30" width="652" x="2164" y="3250" as="geometry" />
                 </mxCell>
-                <mxCell id="variant-copy11" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=4;fontSize=14;fontColor=#3f3f46;" value="Unresolved owner policy: duplicate accounts, optional names, disconnect confirmation, empty selection saving and where source-picker selection belongs. No policy is inferred from cleanup." vertex="1">
+                <mxCell id="variant-copy11" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=4;fontSize=14;fontColor=#3f3f46;" value="Reuse a duplicate verified account for consent review. Optional names, disconnect confirmation, empty selection and source-picker selection remain open." vertex="1">
                     <mxGeometry height="86" width="652" x="2164" y="3286" as="geometry" />
                 </mxCell>
                 <mxCell id="variant-ids11" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=4;fontSize=12;fontColor=#1d4ed8;" value="All screens proposed; no runtime acceptance" vertex="1">
@@ -188,7 +188,7 @@
                 <mxCell id="origin" parent="1" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=10;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#18181b;fontSize=15;" value="Return to origin&#10;New: A / existing: B" vertex="1">
                     <mxGeometry height="95" width="230" x="2272" y="292" as="geometry" />
                 </mxCell>
-                <mxCell id="setup" parent="1" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=10;fillColor=#ffffff;strokeColor=#2563eb;fontColor=#18181b;fontSize=15;" value="D - Installation setup" vertex="1">
+                <mxCell id="setup" parent="1" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=10;fillColor=#ffffff;strokeColor=#2563eb;fontColor=#18181b;fontSize=15;" value="D - Setup unavailable" vertex="1">
                     <mxGeometry height="95" width="230" x="812" y="313.556" as="geometry" />
                 </mxCell>
                 <mxCell id="save" parent="1" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=10;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#18181b;fontSize=15;" value="Save verified access" vertex="1">
@@ -209,7 +209,7 @@
                 <mxCell id="token" parent="1" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=10;fillColor=#ffffff;strokeColor=#2563eb;fontColor=#18181b;fontSize=15;" value="F - Personal access token" vertex="1">
                     <mxGeometry height="95" width="230" x="812" y="580.056" as="geometry" />
                 </mxCell>
-                <mxCell id="method" parent="1" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=10;fillColor=#ffffff;strokeColor=#2563eb;fontColor=#18181b;fontSize=15;" value="M - Add connection&#10;Choose method" vertex="1">
+                <mxCell id="method" parent="1" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=10;fillColor=#ffffff;strokeColor=#2563eb;fontColor=#18181b;fontSize=15;" value="M - One-time setup&#10;Continue to GitHub" vertex="1">
                     <mxGeometry height="95" width="230" x="522" y="329.389" as="geometry" />
                 </mxCell>
                 <mxCell id="list" parent="1" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=10;fillColor=#ffffff;strokeColor=#2563eb;fontColor=#18181b;fontSize=15;" value="A - Connections" vertex="1">
@@ -238,7 +238,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="browser" edge="1" parent="1" source="method" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.666667;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.333333;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#64748b;strokeWidth=1.5;endArrow=classic;startArrow=none;dashed=0;fontSize=12;labelBackgroundColor=#FFFFFF;fontSize=13;labelBackgroundColor=#ffffff;" target="github" value="Sign in with GitHub">
+                <mxCell id="browser" edge="1" parent="1" source="method" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.666667;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.333333;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#64748b;strokeWidth=1.5;endArrow=classic;startArrow=none;dashed=0;fontSize=12;labelBackgroundColor=#FFFFFF;fontSize=13;labelBackgroundColor=#ffffff;" target="github" value="Continue to GitHub">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="772" y="392.722" />
@@ -254,7 +254,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="setup-link" edge="1" parent="1" source="method" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.333333;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#64748b;strokeWidth=1.5;endArrow=classic;startArrow=none;dashed=1;fontSize=12;labelBackgroundColor=#FFFFFF;fontSize=13;labelBackgroundColor=#ffffff;" target="setup" value="Set up GitHub sign-in">
+                <mxCell id="setup-link" edge="1" parent="1" source="method" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.333333;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#64748b;strokeWidth=1.5;endArrow=classic;startArrow=none;dashed=1;fontSize=12;labelBackgroundColor=#FFFFFF;fontSize=13;labelBackgroundColor=#ffffff;" target="setup" value="Setup unavailable">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="772" y="361.056" />
@@ -262,7 +262,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="setup-ready" edge="1" parent="1" source="setup" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.666667;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#64748b;strokeWidth=1.5;endArrow=classic;startArrow=none;dashed=1;fontSize=12;labelBackgroundColor=#FFFFFF;fontSize=13;labelBackgroundColor=#ffffff;" target="method" value="Save or cancel; resume Add">
+                <mxCell id="setup-ready" edge="1" parent="1" source="setup" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.666667;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#64748b;strokeWidth=1.5;endArrow=classic;startArrow=none;dashed=1;fontSize=12;labelBackgroundColor=#FFFFFF;fontSize=13;labelBackgroundColor=#ffffff;" target="method" value="Retry or go back">
                     <mxGeometry relative="1" as="geometry" />
                 </mxCell>
                 <mxCell id="signed-in" edge="1" parent="1" source="github" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.8;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#64748b;strokeWidth=1.5;endArrow=classic;startArrow=none;dashed=0;fontSize=12;labelBackgroundColor=#FFFFFF;fontSize=13;labelBackgroundColor=#ffffff;" target="verify" value="Signed in">
@@ -492,10 +492,10 @@
                 <mxCell id="user-story-3" parent="1" style="rounded=1;arcSize=5;html=1;whiteSpace=wrap;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#18181b;fontSize=17;align=left;verticalAlign=top;spacing=18;" value="US03 - Use a saved connection&#10;&#10;As a user, I want to select a saved GitHub connection and use its permitted repositories, so I do not have to sign in or configure it again each time.&#10;&#10;Laomedo does the work: Laomedo remembers the account and consent, checks current access, and renews credentials automatically when supported." vertex="1">
                     <mxGeometry height="260" width="1500" x="1400" y="3800" as="geometry" />
                 </mxCell>
-                <mxCell id="user-story-4" parent="1" style="rounded=1;arcSize=5;html=1;whiteSpace=wrap;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#18181b;fontSize=17;align=left;verticalAlign=top;spacing=18;" value="US04 - Add another account&#10;&#10;As a user, I want to add another GitHub account through the same Add connection flow, so I can use multiple accounts without disturbing existing connections.&#10;&#10;Laomedo does the work: Laomedo manages each connection separately and shows which account and repositories belong to it. Duplicate-account handling remains an open decision." vertex="1">
+                <mxCell id="user-story-4" parent="1" style="rounded=1;arcSize=5;html=1;whiteSpace=wrap;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#18181b;fontSize=17;align=left;verticalAlign=top;spacing=18;" value="US04 - Add another account&#10;&#10;As a user, I want to add another GitHub account through the same Add connection flow, so I can use multiple accounts without disturbing existing connections.&#10;&#10;Laomedo does the work: Laomedo manages each connection separately and shows which account and repositories belong to it. Adding the same verified account reuses its existing connection for repository review." vertex="1">
                     <mxGeometry height="260" width="1500" x="1400" y="4090" as="geometry" />
                 </mxCell>
-                <mxCell id="user-story-5" parent="1" style="rounded=1;arcSize=5;html=1;whiteSpace=wrap;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#18181b;fontSize=17;align=left;verticalAlign=top;spacing=18;" value="US05 - Recover access&#10;&#10;As a user, I want a clear explanation and the appropriate recovery action when access fails, so I can continue with minimal effort.&#10;&#10;Laomedo does the work: Laomedo preserves my selections and performs safe automatic recovery where possible. An offline check does not force a new login. It asks me to authorize again only when needed, for the correct saved account." vertex="1">
+                <mxCell id="user-story-5" parent="1" style="rounded=1;arcSize=5;html=1;whiteSpace=wrap;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#18181b;fontSize=17;align=left;verticalAlign=top;spacing=18;" value="US05 - Recover access&#10;&#10;As a user, I want a clear explanation and the appropriate recovery action when access fails, so I can continue with minimal effort.&#10;&#10;Laomedo does the work: Laomedo preserves my selections and performs safe automatic recovery where possible. Offline verification can be retried, including after token rotation; confirmed lost access requires authorization again." vertex="1">
                     <mxGeometry height="260" width="1500" x="1400" y="8500" as="geometry" />
                 </mxCell>
                 <mxCell id="user-story-6" parent="1" style="rounded=1;arcSize=5;html=1;whiteSpace=wrap;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#18181b;fontSize=17;align=left;verticalAlign=top;spacing=18;" value="US06 - Disconnect an account&#10;&#10;As a user, I want to disconnect a selected GitHub connection, so Laomedo stops using its access.&#10;&#10;Laomedo does the work: Laomedo blocks further private reads, clears private views and removes its stored credentials. It reports incomplete cleanup honestly and does not claim to revoke GitHub consent." vertex="1">
@@ -573,7 +573,7 @@
                 <mxCell id="a-separator1" parent="1" style="fillColor=#e4e4e7;strokeColor=none;" value="" vertex="1">
                     <mxGeometry height="1" width="1024" x="138.0" y="4274.0" as="geometry" />
                 </mxCell>
-                <mxCell id="m-id" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=17;fontColor=#1d4ed8;fontStyle=1;align=left;" value="M / GitHub sign-in in progress" vertex="1">
+                <mxCell id="m-id" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=17;fontColor=#1d4ed8;fontStyle=1;align=left;" value="M / One-time GitHub setup" vertex="1">
                     <mxGeometry height="30" width="1200" x="50.0" y="4628.0" as="geometry" />
                 </mxCell>
                 <mxCell id="m-viewport" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;fillColor=#f8fafc;arcSize=6;" value="" vertex="1">
@@ -582,7 +582,7 @@
                 <mxCell id="m-brand" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=16;fontColor=#52525b;fontStyle=1;align=left;" value="Laomedo" vertex="1">
                     <mxGeometry height="30" width="280" x="82.0" y="4692.0" as="geometry" />
                 </mxCell>
-                <mxCell id="m-caption" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=15;fontColor=#52525b;fontStyle=0;align=left;" value="Add opens GitHub automatically. This is the return/waiting view; Open GitHub is a fallback, not another mandatory click." vertex="1">
+                <mxCell id="m-caption" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=15;fontColor=#52525b;fontStyle=0;align=left;" value="Add shows this one-time setup. Continue opens GitHub; the owner confirms creation under the selected account." vertex="1">
                     <mxGeometry height="62" width="1192" x="54.0" y="5454.0" as="geometry" />
                 </mxCell>
                 <mxCell id="m-panel" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;shadow=1;" value="" vertex="1">
@@ -591,16 +591,16 @@
                 <mxCell id="m-progress" parent="1" style="fillColor=#18181b;strokeColor=none;" value="" vertex="1">
                     <mxGeometry height="4" width="64" x="400.0" y="4852.0" as="geometry" />
                 </mxCell>
-                <mxCell id="m-title" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=28;fontColor=#18181b;fontStyle=1;align=left;" value="Continue on GitHub" vertex="1">
+                <mxCell id="m-title" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=28;fontColor=#18181b;fontStyle=1;align=left;" value="Connect a GitHub account" vertex="1">
                     <mxGeometry height="44" width="500" x="400.0" y="4890.0" as="geometry" />
                 </mxCell>
-                <mxCell id="m-copy" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=17;fontColor=#71717a;fontStyle=0;align=left;" value="We opened GitHub to finish connecting your account.&#10;Return here after you authorize access." vertex="1">
+                <mxCell id="m-copy" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=17;fontColor=#71717a;fontStyle=0;align=left;" value="Choose your GitHub account, then continue to the prefilled setup.&#10;Confirm the account owner on GitHub." vertex="1">
                     <mxGeometry height="74" width="500" x="400.0" y="4956.0" as="geometry" />
                 </mxCell>
-                <mxCell id="m-open" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;fillColor=#18181b;strokeColor=#18181b;fontColor=#ffffff;fontStyle=1;" value="Open GitHub again" vertex="1">
+                <mxCell id="m-open" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;fillColor=#18181b;strokeColor=#18181b;fontColor=#ffffff;fontStyle=1;" value="Continue to GitHub" vertex="1">
                     <mxGeometry height="44" width="500" x="400.0" y="5064.0" as="geometry" />
                 </mxCell>
-                <mxCell id="m-help" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=14;fontColor=#71717a;fontStyle=0;align=center;" value="If GitHub did not open, use the button above." vertex="1">
+                <mxCell id="m-help" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=14;fontColor=#71717a;fontStyle=0;align=center;" value="Next, choose which repositories Laomedo may read." vertex="1">
                     <mxGeometry height="28" width="500" x="400.0" y="5121.0" as="geometry" />
                 </mxCell>
                 <mxCell id="m-divider" parent="1" style="fillColor=#e4e4e7;strokeColor=none;" value="" vertex="1">
@@ -621,7 +621,7 @@
                 <mxCell id="b-brand" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=16;fontColor=#52525b;fontStyle=1;align=left;" value="Laomedo" vertex="1">
                     <mxGeometry height="30" width="280" x="82.0" y="6572.0" as="geometry" />
                 </mxCell>
-                <mxCell id="b-caption" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=15;fontColor=#52525b;fontStyle=0;align=left;" value="Shown: a connected browser account. When sign-in is required, show an inline Sign in again action. Token replacement belongs under Advanced for token entries only." vertex="1">
+                <mxCell id="b-caption" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=15;fontColor=#52525b;fontStyle=0;align=left;" value="Connected account shown. When verification is pending after rotation, show Check access again, Sign in again and Disconnect; keep private access locked." vertex="1">
                     <mxGeometry height="62" width="1192" x="54.0" y="7334.0" as="geometry" />
                 </mxCell>
                 <mxCell id="b-panel" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;" value="" vertex="1">
@@ -798,7 +798,7 @@
                 <mxCell id="e1-brand" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=16;fontColor=#52525b;fontStyle=1;align=left;" value="Laomedo" vertex="1">
                     <mxGeometry height="30" width="280" x="82.0" y="9392.0" as="geometry" />
                 </mxCell>
-                <mxCell id="e1-caption" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=15;fontColor=#52525b;fontStyle=0;align=left;" value="Other E1 variants reuse this layout: token refused -&gt; Enter token again; uncertain save -&gt; Check connections; access-check failure -&gt; Try again. Each preserves its method and target." vertex="1">
+                <mxCell id="e1-caption" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=15;fontColor=#52525b;fontStyle=0;align=left;" value="For temporary verification failure, offer Check access again. If token rotation succeeded, retry verifies the saved new credential and never replays the old refresh token." vertex="1">
                     <mxGeometry height="62" width="1192" x="54.0" y="10154.0" as="geometry" />
                 </mxCell>
                 <mxCell id="e1-panel" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;shadow=1;" value="" vertex="1">
@@ -852,13 +852,68 @@
                 <mxCell id="screen-design-reference-note" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=17;fontColor=#52525b;fontStyle=0;align=left;" value="DESIGN REFERENCES&#10;shadcn/ui login-01 and login-03: focused panels, content width, generous spacing.&#10;GitHub Primer ActionList: consistent identity rows, leading avatars and trailing actions.&#10;Reference links and original screenshots are recorded beside the workshop.&#10;These are editable design mockups, not a runtime implementation or full review claim." vertex="1">
                     <mxGeometry height="240" width="1500" x="1400" y="10710" as="geometry" />
                 </mxCell>
-                <mxCell id="user-story-5-screen-copy" parent="1" style="rounded=1;arcSize=5;html=1;whiteSpace=wrap;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#18181b;fontSize=17;align=left;verticalAlign=top;spacing=18;" value="US05 - Recover access&#10;&#10;As a user, I want a clear explanation and the appropriate recovery action when access fails, so I can continue with minimal effort.&#10;&#10;Laomedo does the work: Laomedo preserves my selections and performs safe automatic recovery where possible. An offline check does not force a new login. It asks me to authorize again only when needed, for the correct saved account." vertex="1">
+                <mxCell id="user-story-5-screen-copy" parent="1" style="rounded=1;arcSize=5;html=1;whiteSpace=wrap;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#18181b;fontSize=17;align=left;verticalAlign=top;spacing=18;" value="US05 - Recover access&#10;&#10;As a user, I want a clear explanation and the appropriate recovery action when access fails, so I can continue with minimal effort.&#10;&#10;Laomedo does the work: Laomedo preserves my selections and performs safe automatic recovery where possible. Offline verification can be retried, including after token rotation; confirmed lost access requires authorization again." vertex="1">
                     <mxGeometry height="260" width="1500" x="1400" y="9440" as="geometry" />
                 </mxCell><mxCell id="user-story-6-screen-copy" parent="1" style="rounded=1;arcSize=5;html=1;whiteSpace=wrap;fillColor=#f8fafc;strokeColor=#cbd5e1;fontColor=#18181b;fontSize=17;align=left;verticalAlign=top;spacing=18;" value="US06 - Disconnect an account&#10;&#10;As a user, I want to disconnect a selected GitHub connection, so Laomedo stops using its access.&#10;&#10;Laomedo does the work: Laomedo blocks further private reads, clears private views and removes its stored credentials. It reports incomplete cleanup honestly and does not claim to revoke GitHub consent." vertex="1">
                     <mxGeometry height="260" width="1500" x="1400" y="10380" as="geometry" />
                 </mxCell><mxCell id="d-advanced" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=14;fontColor=#52525b;fontStyle=0;align=center;" value="Advanced: use a personal access token" vertex="1">
                     <mxGeometry height="28" width="520" x="390.0" y="8984.0" as="geometry" />
-                </mxCell></root>
+                </mxCell>
+                <mxCell id="pending-id" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=17;fontColor=#1d4ed8;fontStyle=1;align=left;" value="B / Verification pending" vertex="1">
+                    <mxGeometry height="30" width="1200" x="50.0" y="11708.0" as="geometry" />
+                </mxCell>
+                <mxCell id="pending-viewport" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;fillColor=#f8fafc;arcSize=6;" value="" vertex="1">
+                    <mxGeometry height="760" width="1200" x="50.0" y="11750.0" as="geometry" />
+                </mxCell>
+                <mxCell id="pending-brand" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=16;fontColor=#52525b;fontStyle=1;align=left;" value="Laomedo" vertex="1">
+                    <mxGeometry height="30" width="280" x="82.0" y="11772.0" as="geometry" />
+                </mxCell>
+                <mxCell id="pending-caption" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=15;fontColor=#52525b;fontStyle=0;align=left;" value="Target state after successful token rotation when GitHub verification is temporarily unavailable. No private reads are allowed." vertex="1">
+                    <mxGeometry height="62" width="1192" x="54.0" y="12534.0" as="geometry" />
+                </mxCell>
+                <mxCell id="pending-panel" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;" value="" vertex="1">
+                    <mxGeometry height="580" width="880" x="210.0" y="11850.0" as="geometry" />
+                </mxCell>
+                <mxCell id="pending-back" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=14;fontColor=#71717a;fontStyle=0;align=left;" value="&lt; GitHub connections" vertex="1">
+                    <mxGeometry height="28" width="800" x="250.0" y="11880.0" as="geometry" />
+                </mxCell>
+                <mxCell id="pending-avatar" parent="1" style="ellipse;html=1;fillColor=#f1f5f9;strokeColor=none;fontColor=#334155;fontFamily=Helvetica;fontSize=20;fontStyle=1;" value="A" vertex="1">
+                    <mxGeometry height="48" width="48" x="250.0" y="11940.0" as="geometry" />
+                </mxCell>
+                <mxCell id="pending-name" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=25;fontColor=#18181b;fontStyle=1;align=left;" value="@amadou" vertex="1">
+                    <mxGeometry height="34" width="560" x="320.0" y="11936.0" as="geometry" />
+                </mxCell>
+                <mxCell id="pending-status" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;fillColor=#fffbeb;strokeColor=none;fontColor=#92400e;fontSize=13;" value="Check access" vertex="1">
+                    <mxGeometry height="28" width="146" x="904.0" y="11946.0" as="geometry" />
+                </mxCell>
+                <mxCell id="pending-note" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=15;fontColor=#71717a;fontStyle=0;align=left;" value="GitHub access could not be verified." vertex="1">
+                    <mxGeometry height="28" width="650" x="320.0" y="11978.0" as="geometry" />
+                </mxCell>
+                <mxCell id="pending-divider" parent="1" style="fillColor=#e4e4e7;strokeColor=none;" value="" vertex="1">
+                    <mxGeometry height="1" width="800" x="250.0" y="12038.0" as="geometry" />
+                </mxCell>
+                <mxCell id="pending-heading" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=18;fontColor=#18181b;fontStyle=1;align=left;" value="Repository access is paused" vertex="1">
+                    <mxGeometry height="30" width="800" x="250.0" y="12068.0" as="geometry" />
+                </mxCell>
+                <mxCell id="pending-repos" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=17;fontColor=#52525b;fontStyle=0;align=left;" value="Try the check again when GitHub is available. Your previous selections are retained." vertex="1">
+                    <mxGeometry height="78" width="800" x="250.0" y="12118.0" as="geometry" />
+                </mxCell>
+                <mxCell id="pending-change" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;" value="Check access again" vertex="1">
+                    <mxGeometry height="44" width="244" x="250.0" y="12228.0" as="geometry" />
+                </mxCell>
+                <mxCell id="pending-footer-line" parent="1" style="fillColor=#e4e4e7;strokeColor=none;" value="" vertex="1">
+                    <mxGeometry height="1" width="800" x="250.0" y="12302.0" as="geometry" />
+                </mxCell>
+                <mxCell id="pending-local" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=14;fontColor=#71717a;fontStyle=0;align=left;" value="You can also sign in again or disconnect." vertex="1">
+                    <mxGeometry height="40" width="560" x="250.0" y="12332.0" as="geometry" />
+                </mxCell>
+                <mxCell id="pending-disconnect" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;" value="Disconnect" vertex="1">
+                    <mxGeometry height="44" width="184" x="866.0" y="12330.0" as="geometry" />
+                </mxCell>
+                <mxCell id="pending-signin" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;" value="Sign in again" vertex="1">
+                    <mxGeometry height="44" width="200" x="520.0" y="12228.0" as="geometry" />
+                </mxCell>
+            </root>
         </mxGraphModel>
     </diagram>
 </mxfile>
