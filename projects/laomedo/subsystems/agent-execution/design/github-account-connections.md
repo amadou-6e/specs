@@ -14,7 +14,9 @@ related: []
 [SC01-SC10](../contract/github-account-connection.md#private-skill-source-increment-sc01-sc10)
 own observable requirements. [Editable interaction states](github-account-connections.drawio)
 own new connection controls and transitions. [Skill source selection](../../skill-registry/design/skill-source-selection.md)
-retains existing public/local controls. All new states are PROPOSED / NOT IMPLEMENTED.
+retains existing public/local controls. The GitHub Settings pilot is implemented
+in draft [Laomedo PR #257](https://github.com/amadou-6e/laomedo/pull/257);
+the broader private Skill reading workflow remains a proposal.
 
 Owner decisions: single-user local Windows first; use a dedicated specs worktree
 to preserve unrelated edits. The owner corrected the earlier registration answer:
@@ -140,11 +142,12 @@ corresponding GitHub app visibility/installation policy.
 | GC09 | Public/local compatibility and diagnostics | Existing paths usable, missing access distinct from empty source, copy/redaction verified |
 | GC10 | Human takeover, concurrent profile and cleanup limits | Supported paths actually tested; unsupported use refused/documented; unrelated accounts untouched |
 
-Current evidence: source inventory, two bounded approach reviews and two canonical
-specification/visual reviews. No implementation or real workflow is verified. First
+Earlier design evidence: source inventory, two bounded approach reviews and two canonical
+specification/visual reviews. At that point no implementation or real workflow was verified. First
 review skipped required instructions; recheck read them and confirmed corrected
-mechanisms but left design/owner gates open. No real connection, browser state or
-private repository read has been performed. Prototype #108 remains historical.
+mechanisms but left design/owner gates open. Since then, a real account was connected
+in the pilot preview. The full private repository reading workflow and outage recovery
+remain unverified live. Prototype #108 remains historical.
 
 ## Upstream references
 
@@ -340,7 +343,8 @@ the owner's confirmation; Laomedo stores its binding for the current profile.
 No client ID, secret or callback is requested in normal user screens. A supports
 direct reauthorization when needed; C discovers and searches repositories.
 See the editable canvas and graph for the selected setup and recovery direction.
-The retry-after-rotation recovery is a target requiring implementation and review.
+The retry-after-rotation recovery is implemented in the draft pilot, with focused
+review and live outage acceptance still pending.
 
 ## Visual references and screen gallery - 2026-11-13
 
@@ -367,8 +371,8 @@ Inspected references (2026-11-13):
 
 Applied visual choices: 28 px main headings, 16-17 px body, 14 px secondary copy,
 44 px actions, regular spacing, aligned account rows and quieter status pills.
-Browser sign-in is still automatic with an Open GitHub fallback; token entry is
-secondary; no App registration or credentials are introduced. C illustrates a
+The selected flow uses an account-owned private GitHub App created through the
+one-time setup screen; token entry is secondary. C illustrates a
 user-selected repository, not a preselected default. Native shapes remain editable.
 The new visual revision is unreviewed; structural and visual self-checks are not
 independent design approval or integration acceptance.
