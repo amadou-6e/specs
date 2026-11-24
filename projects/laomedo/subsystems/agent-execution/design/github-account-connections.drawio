@@ -917,7 +917,7 @@
                     <mxGeometry height="44" width="184" x="866.0" y="12330.0" as="geometry" />
                 </mxCell>
                 <mxCell id="pending-signin" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;" value="Sign in again" vertex="1">
-                    <mxGeometry height="44" width="200" x="520.0" y="12228.0" as="geometry" />
+                    <mxGeometry height="44" width="200" x="640.0" y="12330.0" as="geometry" />
                 </mxCell>
                 <mxCell id="duplicate-id" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=17;fontColor=#1d4ed8;fontStyle=1;align=left;" value="B / Duplicate account after registration" vertex="1">
                     <mxGeometry height="30" width="1200" x="50.0" y="12508.0" as="geometry" />
