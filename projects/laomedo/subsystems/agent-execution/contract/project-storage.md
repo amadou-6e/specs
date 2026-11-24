@@ -74,12 +74,20 @@ retries. Maximum 256 files and 256 KiB serialized JSON; reject an oversized sele
 rather than truncate it. Normal shell tools can read, edit, create and delete selected
 files. Resumes retain the same native workspace and selected locations. Changing
 storage settings applies to new conversations, never silently retargets an old one.
+MCP project file tools use the same frozen locations as the shell, including an
+initially empty selection; reads observe the current repository contents.
 After a completed turn, read only the verified frozen workspace and persist changed
 files against their original host hashes. Reject conflicting external changes,
 unknown graph paths and protected names. Failed/interrupted turns are not exported.
 Write-back failures retain the native snapshot and show a recoverable error while
 unlocking Send. Each replacement is atomic, but a multi-file write is not a distributed
 transaction. Reconciliation can retry already-written identical contents safely.
+For a conflicting file, read the current repository text through `read_project_file`
+and restore that exact content in the native workspace on a subsequent turn. The
+identical-content check safely updates the baseline; later edits can save normally.
+Remove unsupported paths or non-UTF-8 files from the native project tree before
+retrying. A preflight refusal writes no files; Send remains available and recovery
+does not require a new conversation. Preserve existing CRLF when decoding text.
 Shell graph-file edits do not update app graphs until explicit Load; MCP graph
 proposal approvals remain unchanged. No provider receives a host path or mount.
 Prompt text and ordinary graph values are exported; secret-field filtering is not

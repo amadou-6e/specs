@@ -100,6 +100,9 @@
         <mxCell id="ST10-rejected" value="Graph file not supported&#10;&#10;Oversized, malformed, wrong-workflow or unsupported graph: no app replacement. Inline recovery asks for a supported portable file. App data stays available." style="rounded=1;whiteSpace=wrap;fillColor=#242428;fontColor=#eeeeee;strokeColor=#45454b;align=left;verticalAlign=top;spacing=16;fontSize=14;" vertex="1" parent="1">
           <mxGeometry x="580" y="790" width="520" height="160" as="geometry" />
         </mxCell>
+        <mxCell id="ST11-chat-recovery" value="Project files were not saved&#10;&#10;The answer and native files are retained; Send remains available. For a conflict, read current repository text, restore it exactly in the shell to rebaseline, then edit on the next turn. Remove unsupported or non-UTF-8 project files before retrying. No new conversation is required." style="rounded=1;whiteSpace=wrap;fillColor=#242428;fontColor=#eeeeee;strokeColor=#45454b;align=left;verticalAlign=top;spacing=16;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="30" y="980" width="1070" height="160" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
