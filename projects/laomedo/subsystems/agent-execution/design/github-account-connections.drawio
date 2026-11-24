@@ -597,7 +597,7 @@
                 <mxCell id="m-copy" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=17;fontColor=#71717a;fontStyle=0;align=left;" value="Choose your GitHub account, then continue to the prefilled setup.&#10;Confirm the account owner on GitHub." vertex="1">
                     <mxGeometry height="74" width="500" x="400.0" y="4956.0" as="geometry" />
                 </mxCell>
-                <mxCell id="m-account-link" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#2563eb;fontSize=14;spacing=0;" value="Open GitHub to choose an account ?" vertex="1">
+                <mxCell id="m-account-link" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#2563eb;fontSize=14;spacing=0;" value="Open GitHub to choose an account" vertex="1">
                     <mxGeometry height="25" width="500" x="400.0" y="5034.0" as="geometry" />
                 </mxCell>
                 <mxCell id="m-open" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;fillColor=#18181b;strokeColor=#18181b;fontColor=#ffffff;fontStyle=1;" value="Continue to GitHub" vertex="1">
