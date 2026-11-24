@@ -11,6 +11,10 @@ related: []
 
 # Codex Agent component
 
+The [shared local agent protocol](agent-protocol.md) owns the current ACP
+transport increment and its native-event extension. Historical app-server pilot
+observations below do not establish acceptance of that new wire or saved-run migration.
+
 Status: proposed. This component runs Codex as a flow step through the
 isolated runner. It is distinct from using Codex to design the flow. A
 view-owned Draw.io spec must define its controls and states before UI work.

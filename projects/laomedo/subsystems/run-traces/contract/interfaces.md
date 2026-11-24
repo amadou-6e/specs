@@ -203,3 +203,43 @@ OTLP receipt. Internal fixtures cover negative cases only. See the dated
 [validation](../validation.md#original-docker-agents-graph-inspection-2026-10-15).
 Other providers, OTLP metrics, hard-crash reconciliation, deletion UI, external
 collectors and the remaining Draw.io interactions remain open targets.
+
+
+## Activity inspection controls - owner feedback 2026-11-18
+
+The [Activity detail controls page](../design/agent-activity.drawio) owns ACT-295.
+Search starts collapsed behind an icon beside each telemetry/conversation heading.
+Opening focuses the relevant input. Close/Escape clears its query, restores all
+records and collapses it; Escape returns focus to the icon. Clear empties the
+query while keeping the field open. Agent/turn changes reset both query and open
+state. Existing fuzzy matching, retained order, source disclosures and scoped
+exports remain. Major sections (selection and metadata, capture/partial notices, usage, telemetry
+and conversation) are separated by 48 px (`gap-12`). Empty telemetry uses centered muted text without
+a bordered card; filtered-to-zero remains distinct from uncaptured telemetry.
+Decorative ghost rows are not required and no loading animation is introduced.
+These are presentation changes, not new runtime or capture acceptance.
+
+ACT-295 count labels show the total when unfiltered and matching of total while filtering. Conversation counts use "items" because they include messages and tool calls; telemetry counts use "records".
+
+
+### Accepted activity hierarchy, 2026-11-18
+
+The owner accepted the execution container, nested agent/turn rows, monochrome
+provider marks and selected detail shown by the [standalone proposal](https://github.com/amadou-6e/laomedo/blob/60aa27aa/experiments/activity-selector/hierarchy.html)
+on the implementation experiment branch. Its sample data demonstrates layout;
+it is not integration evidence. Preserve the shared activity attribution and
+idle-gap contracts while applying this hierarchy to captured records.
+
+The execution selector has a prominent Graph execution label and a compact
+control retaining full execution IDs. Timeline rows and their selected detail
+remain visually inside that execution. The detail breadcrumb exposes the chosen
+conversation and turn and permits returning to all invocation activity.
+The copyright footer rests at the viewport bottom when content is short and
+follows the content when it grows; it must not cover activity or scroll panels.
+
+The owning Draw.io page `ACT-295 Activity hierarchy` records geometry and
+interaction IDs ACT-295-04..10. All activity is invocation scope; no conversation
+row is pressed until that conversation is selected. Metadata and usage share
+one card without a visible usage heading; telemetry and conversation sit outside
+it. The older Trace anatomy page is an architectural reference, not current UI
+geometry. The HTML proposal is supporting history, not the geometry authority.

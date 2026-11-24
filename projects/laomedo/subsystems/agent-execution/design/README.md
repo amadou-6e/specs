@@ -11,6 +11,12 @@ related: []
 
 # Agent execution design
 
+[Provider connection workshop](provider-connections.md) proposes explicit provider login and independent saved connections; owner review is pending.
+
+[Application assistant realization](application-assistant.md) and its
+[editable chat proposal](application-assistant.drawio) describe direct provider
+chat and narrow Laomedo MCP tools. The owner-selected amendments record the implemented chat controls; scoped evidence is linked from validation.
+
 Native app-server/SDK processes operate behind a separate runner. Source, effective and post-run snapshots are distinct. Resume restores the last post-run files before native thread reuse. Docker is a bounded prototype mechanism, not proof of production confinement.
 
 Reconstructed from local specs and evidence reports; implementation was not re-executed
@@ -57,3 +63,7 @@ compatibility blocker in Laomedo #189.
 Skill source increment for specs #410 / Laomedo #251. No runtime acceptance is claimed.
 
 The [local setup profiles](local-profiles.md) and [editable profile states](local-profiles.drawio) define PIN entry for one Windows user's local setups. Private GitHub connections remain a separate proposal.
+
+The [direct provider boundaries](provider-roles.md) replace the withdrawn #277 runner/journal/resource-plan proposal. They define shared Docker ownership, container requirements and completion checks. The replacement remains draft; selected sections carry scoped approvals recorded on that page. Those approvals do not establish whole-spec or runtime acceptance.
+
+The [provider authoring direction](provider-authoring.md) records the single-entry-point discovery requirement and the remaining composition decisions. It does not claim that exporting an ABC makes a provider runnable.

@@ -11,6 +11,13 @@ related: []
 
 # OpenCode local provider adapter
 
+The [shared local agent protocol](agent-protocol.md) supersedes the historical
+HTTP/SSE agent-execution transport below for the current increment. The controller
+runs `opencode acp` over stdio; native CLI model discovery and offline history
+export supply metadata ACP does not expose. Historical HTTP/SSE evidence remains
+historical, not acceptance of ACP. The authenticated graph-to-runner HTTP API
+and the credential-free command-worker boundary remain separate interfaces.
+
 Scope: issue [Laomedo #27](https://github.com/amadou-6e/laomedo/issues/27).
 This is a draft local adapter contract. The bounded authenticated Docker pilot is
 recorded in the [latest results](../../../experiments/opencode-agent/iterations/2026-10-02/results.md).
@@ -203,9 +210,18 @@ node's Activity action with that node already selected. Viewing or exporting
 activity does not execute an agent. The graph execution selector contains runs of
 the current graph only.
 
-Each Gantt row represents an observed agent conversation, with native parent
-identity determining nesting. Captured turns are separate selectable segments
-on that row. Idle, startup and cleanup gaps have no green envelope bar. The full
+The execution selector, timeline and selected activity share one visual container.
+The selector retains the full execution ID beside its local start time. Opening
+the view selects the first captured agent run in chronological order unless the
+node Activity action targets a particular node. Changing execution resets the
+selection to an available run of that execution. No run is dispatched.
+
+Conversation rows use monochrome provider marks and native parent identity for
+nesting. Each conversation has expandable, selectable turn rows underneath it.
+Selecting a row highlights it and updates the detail panel within the same
+container. Collapsing a conversation that contains the current selection restores
+inspection to that conversation; reopening does not lose captured history.
+Parent summary bars and nested turn bars use the same captured turn intervals. Idle, startup and cleanup gaps have no green envelope bar. The full
 invocation receipt range remains the time axis. Native titles are labels, not
 proof that an agent initiated a child. A host-created child and an agent-delegated
 child must remain distinguishable in verification evidence.
@@ -260,3 +276,10 @@ rendering and live cancellation on the final revision require separate live
 acceptance; internal tests and old screenshots do not establish it. Retain these
 limits in the implementation PR rather than treating document validation as
 runtime proof.
+
+The owning Draw.io page `ACT-295 Activity hierarchy` records geometry and
+interaction IDs ACT-295-04..10. All activity is invocation scope; no conversation
+row is pressed until that conversation is selected. Metadata and usage share
+one card without a visible usage heading; telemetry and conversation sit outside
+it. The older Trace anatomy page is an architectural reference, not current UI
+geometry. The HTML proposal is supporting history, not the geometry authority.

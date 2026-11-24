@@ -11,8 +11,18 @@ related: []
 
 # Agent execution contract index
 
+[Provider connection settings](provider-connections.md) proposes explicit provider login and independent saved connections; owner review is pending.
+
+[Persistent application assistant](application-assistant.md) defines direct
+provider chat, app-owned Laomedo MCP authoring tools and durable draft receipts.
+The owner authorized implementation; the contract records later model-selection and UI decisions.
+
+[Graph-connected MCP tools](mcp-tools.md) owns native Toolset connections,
+selected external tool grants and their app/runner lifecycle for issue #280.
+
 Canonical draft requirements: [Codex](codex.md), [Claude](claude.md),
 [OpenCode](opencode.md), [isolation](isolation.md),
+[shared local agent protocol](agent-protocol.md),
 [authentication and credential lifecycle](authentication.md),
 [GitHub account connection](github-account-connection.md), the newer
 [subsystem interfaces](interfaces.md), and per-exchange
@@ -47,3 +57,5 @@ New pages must have one observable behavior owner.
 [Descriptive node errors](node-errors.md) owns user-facing explanations and safe technical diagnostics; original API error codes remain unchanged.
 
 [Local runner API recovery](local-runner-recovery.md) owns app-level connection-error recovery, independent of graph elements.
+
+[Human-approved assistant graph actions](assistant-graph-actions.md) defines the selected edit/run extension and its separate human decision boundary. Publication remains deferred.
