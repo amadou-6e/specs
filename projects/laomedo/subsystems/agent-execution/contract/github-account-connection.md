@@ -222,8 +222,9 @@ When GitHub returned a new credential successfully but a subsequent account or
 repository verification is temporarily unavailable, retain the new credential
 in host custody without granting access. An explicit retry revalidates the same
 principal and all consented repositories before committing the new generation;
-it must never replay the consumed refresh token. This recovery is a target
-requirement and is not established by the current implementation.
+it must never replay the consumed refresh token. The recovery is implemented in
+draft [Laomedo PR #257](https://github.com/amadou-6e/laomedo/pull/257) and has
+synthetic test coverage; live outage acceptance and independent review remain pending.
 Cancellation stops local waiting and invalidates pending state; it does not claim
 to revoke consent already granted at GitHub.
 
