@@ -232,3 +232,183 @@ only observes; Back fences the attempt and confirms native cleanup. Account and
 workspace identity come from native auth status before publication. A failed
 reconnect leaves the saved connection intact. Live acceptance remains required.
 These selected requirements do not establish implemented or reviewed support.
+
+
+## PC-09 - Subscription allowance observations (#300, specification #437)
+
+P13/P14 and Q0-Q5 in the owning Draw.io define the Subscription agents allowance
+surface. Graphs keep separate harness preferences; allowance belongs to each
+current-profile saved connection, never to a run or its token/cost counters.
+
+Opening the tab reads only cached observations. Each account has an explicitly
+labelled Refresh limits icon. It invokes only the selected provider's bounded
+read operation; no prompt, new thread, model probe, login, alternate account or
+ambient host credential import is permitted. Codex admits only
+`account/rateLimits/read`, with empty parameters, before creating a native
+session. The existing connection-owned controller and exact cleanup receipts
+remain authoritative; discovery/active-work conflicts report temporary
+unavailability instead of weakening admission. OpenCode reports unavailable until a supported account-scoped zero-turn quota
+operation is established. The selected Claude observation below supersedes the
+earlier Claude-unavailable state and reuses the same P13-P16 surface.
+
+Preserve primary/secondary windows and every returned metered bucket. Prefer
+`rateLimitsByLimitId` when present; otherwise use the single `rateLimits` view.
+Do not duplicate that fallback bucket. Preserve absent/null windows, duration,
+reset, plan and credit details as unknown. Empty authoritative buckets mean no
+reported limits. Used percentages must be finite and nonnegative; remaining is
+max(0, 100 minus used), never inferred from tokens. Reset timestamps are Unix
+seconds, displayed in local time with full date/time available. Window names are
+derived from provider-reported minutes, never fixed hourly/weekly/monthly tiers.
+Credits/balance/unlimited flags remain separate from percentage allowance.
+Only explicit safe fields cross the browser boundary; no raw responses/errors,
+credential paths, tokens or login metadata are returned or logged.
+
+Cache in memory only, scoped to profile, connection, generation and browser
+lease. Freshness lasts at most60seconds, and ends sooner if a reported reset
+passes. Retain a stale same-binding snapshot after failed refresh with a concise
+retry state; never claim a reset replenished allowance without a new read.
+Retained cache is bounded and expires after10minutes. Native refresh is single-flight on (profile, connection, generation), independent
+of browser lease. Cache visibility and publication remain lease-gated. Revoking
+one waiter discards only its own result, not another valid waiter's read. Fresh
+snapshots are reused even for explicit Refresh; failures have a10second retry
+cooldown per native binding. Late responses cannot overwrite newer ones. Check
+profile/connection/generation and the browser revocation fence both before and
+after native reads. Disconnect, reconnect, logout, unavailable credentials or
+controller closure prevent publication of an old observation. No account or
+harness/graph change may show the previous selection's pending result. Native
+cleanup failure remains a failure, and is not turned into a successful quota read.
+
+Acceptance: observe real saved-Codex quota/reset data with zero submitted model
+turns; cover null/multiple/malformed windows, over-limit percentages, credit
+separation, foreign profiles, generation changes, disconnect/logout during reads,
+failed refresh with stale retention and out-of-order browser responses. Inspect
+narrow/wide rendered states; supporting fixtures are not real account acceptance.
+
+
+PC-09 clarifications (Q1-Q9 review): P15 defines labelled buckets ordered by
+opaque bucket ID, ascending; use the reported display name when present, otherwise
+the ID. Do not impose a preferred bucket. A secondary-only bucket renders just its
+secondary window. Each window has the same remaining-allowance bar; unknown
+percentages have no bar. Empty windows/buckets say No limits reported. P16 defines
+a320px view: headings/refresh remain aligned; window allowance is on its own line,
+reset time wraps beneath it; no horizontal clipping.
+
+A nonfinite/negative/nonnumeric percentage, nonpositive/noninteger duration or
+noninteger/nonpositive/out-of-display-range reset becomes unknown for that field
+only. Preserve other valid observations. Structurally invalid responses (wrong
+bucket/window/map types or excessive records/strings/response size) fail the read
+and keep the previous same-binding snapshot stale. Credits display Credit balance
+with its provider-reported value; no currency is invented. Unlimited credits and
+No credits are distinct from unknown credit details; no credit field implies no
+credit line. Text fields are bounded safe fields, not unfiltered raw responses.
+
+Explicit Refresh may start a temporary native app-server process in the existing
+connection-owned isolation boundary. It sends only initialization and the named
+rate-limit read, never session/new, thread/start or prompt. Reuse the admitted
+zero-turn discovery lifecycle, with native request budget30seconds, initialization
+budget45seconds, existing bounded image/startup budgets and exact native teardown.
+The temporary controller is closed before publishing the observation. Startup,
+protocol or cleanup failure becomes unavailable/stale, not a successful read;
+client timeout/abort never authorizes replay or another account. No persistent
+model task or credential-bearing process is created by mounting the panel.
+
+Both parent PRs (#426 specification, Laomedo#285 implementation) are explicit
+integration/merge gates. Their incomplete review or live acceptance is not waived
+by this focused extension. If their ownership/lease contract changes, review this
+extension against the resulting boundary again.
+
+
+## Selected Codex connection - one native method (2026-11-20)
+
+Owner direction: expose one Codex connection method which supports both Agent
+execution and read-only subscription allowance. Replace the Settings token-sharing
+method rather than offering native authentication as a second method. One saved
+connection, identity generation and native credential profile govern both uses.
+The older token-sharing credentials must never be reinterpreted as native tokens.
+
+The pinned official Codex 0.159.2 app-server owns ChatGPT device-code sign-in
+(`account/login/start`, type `chatgptDeviceCode`). Laomedo relays only the returned
+one-use code and exact official verification URL to the initiating browser lease.
+There is no password collection, API-billing fallback, host-login import or second
+quota-only sign-in. Back cancels and fences the attempt; public progress reads do
+not disclose the code. Refresh observes the existing attempt and never starts one.
+Unavailable/disabled device authentication remains an explicit recoverable error.
+
+Create custody before an authentication container starts: a dedicated labelled
+volume, exact daemon and immutable managed image belong to one credential revision.
+Saved-mode Agent startup verifies that admitted volume and must never create an
+empty replacement or use the global/derived disposable credential volume. The
+same profile is used by inference and quota discovery; model tool workers never
+mount it and controller tool-policy denial of auth.json remains in force.
+
+Use only native public observations: account/read with refreshToken false and
+experimental workspaceRouting.chatgptAccountId, and account/rateLimits/read's
+accountId. Cross-check both when present; missing or conflicting identity fails
+closed. Reject unsupported account routing. Do not read credential-file contents,
+decode token claims, or export tokens. Verify the official client's auth.json
+exists only after the login process has stopped. Force file custody, the official
+login issuer and the native OpenAI provider; never use an ambient keyring.
+Email plus account/workspace ID is an observed binding, not an immutable user ID.
+An email change cannot silently establish identity equivalence.
+
+Native refresh stays client-owned. At most one live writer may use a credential
+revision, including runs, validation and quota. Refuse overlapping use as connection
+busy. Hold custody through confirmed teardown and reconcile exact owned session
+receipts after a crash before admitting another writer. Cancelled or unpublished
+attempts erase their entire staged revision, even after a late native completion.
+
+Quota uses only the named bounded account/rateLimits/read operation before any
+thread/prompt. It submits zero model turns and never grants inference entitlement.
+Canonical browser lease renewal, profile/connection generation fences, stale/cache
+rules, cancellation and Disconnect custody guarantees apply unchanged.
+
+For an existing token-sharing account, Sign in again stages a fresh native login
+and shows the newly verified account before explicit replacement confirmation.
+Only confirmation publishes the revision using the same opaque connection ID,
+keeping graph selections and incrementing generation. Never infer cross-method
+identity equivalence from matching email. Back, failure, expiry or cancellation
+preserves the committed login and erases the unpublished native revision. Retained
+sessions from the old generation cannot resume with the replacement credentials.
+
+
+## Selected Claude subscription observation (2026-11-24)
+
+Owner direction extends the same saved-account quota panel to Claude Code.
+Use the existing connection-owned native profile and the pinned official Claude
+CLI2.1.310. Do not introduce a second sign-in, inspect token-file contents or
+call a quota endpoint with exported OAuth credentials.
+
+Explicit Refresh sends only native initialize and the structured `get_usage`
+control request with `skip_behaviors: true`. The latter suppresses scans of local
+transcripts and their behavioral summaries. No user message, model turn, tool,
+resumed conversation or persisted model session is submitted. This is a pinned
+experimental native surface, not a stable public SDK promise; unavailable or
+changed structures fail closed and preserve only visibly stale prior evidence.
+
+Validate the selected saved account before reading. Hold the existing controller
+catalog admission fence through native job teardown and revalidate generation
+before publishing. Cached panel reads remain metadata/memory-only. Existing
+profile, browser-lease, reconnect, cancellation and Disconnect fences apply.
+No raw CLI errors or unrelated session/behavior fields reach the browser.
+
+Project native five_hour and seven_day utilization/reset observations as5hour
+and7day windows. Additional OAuth-app, Opus, Sonnet or model-scoped weekly
+windows are separate labelled buckets. Do not invent missing windows, remaining
+quota or reset times. Invalid scalar observations remain unknown; invalid
+structure fails the read. Extra-usage billing/credits are not subscription
+allowance and are excluded. Reuse P15/P16's existing meter layout and narrow-view
+rules in the Claude tab; no additional login or design screen is introduced.
+
+Acceptance requires a real explicit read through an existing saved Claude
+connection, including an exhausted allowance when that is what the provider
+reports, and no model turns. Fixtures support protocol/isolation/error checks;
+they do not establish real provider acceptance or independent visual review.
+
+OpenCode feasibility: its current official Go documentation exposes read-only
+GET https://opencode.ai/inference/go/v1/usage using the same Go key. It returns
+rolling, weekly and monthly percentages and reset timestamps. This identifies a documented integration route, not implementation or live
+acceptance here. Two read-only checks using the existing Go key returned HTTP403;
+the cause is unestablished, so no working Go allowance read is claimed.
+A later Go implementation must preserve all three reported windows; the current
+two-window bucket contract must be deliberately extended or explicitly mapped.
+Source: https://opencode.ai/docs/console/go/#usage
