@@ -70,6 +70,13 @@ revision and human consent checks. Never expose a generic tweaks/HTTP/code tool.
 Late schema, resource generation or graph changes refuse rather than overwrite.
 The exact approved graph revision is the executed snapshot.
 
+Runs admitted through existing conversation consent retain only the original
+verified browser authentication and provider-session metadata, bound to the
+active owner, conversation, message and browser authority. A private MCP bearer
+never becomes browser authentication. Discard that capture on turn release,
+session revocation and shutdown; recheck current session and resource authority
+before dispatch. Do not carry unrelated chat/request context into graph execution.
+
 ### Run evidence and cancellation
 
 `get_workflow_run` selects this conversation's approved action, with optional
