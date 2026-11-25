@@ -83,6 +83,9 @@ objects. Recheck current session/owner/resource authority at release.
 
 `cancel_workflow_run` affects only an exact owned previously approved run through
 the existing execution owner. It is idempotent and submits no new graph work.
+Owner decision (2026-11-25): the assistant may request cancellation of its own
+conversation's previously approved runs without another human approval. This
+does not grant cancellation authority over another conversation or owner.
 Distinguish requested cancellation, observed settlement and uncertain outcomes;
 cancelled is separate from failed. Chat Stop retains its existing scope. Never
 automatically replay a run or infer success from assistant prose.
