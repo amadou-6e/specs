@@ -81,8 +81,9 @@ a Discovery heading. With no source/options the empty Skill selector says
 No status message appears for empty Source or successful discovery, including
 empty scan results. Clicking the inline failure opens the shared error presenter
 with safe recovery and `source_discovery_failed` under Technical details.
-For GitHub Skill, Revision and Base Commit are inside
-Advanced settings, initially collapsed. Local Skill exposes neither control. Disclosure does not change the exact
+For GitHub Skill, Revision is inside Advanced settings, initially collapsed.
+Local Skill exposes no revision control. Neither node exposes Base Commit; edit
+preparation captures the current history head automatically. Disclosure does not change the exact
 selected reference. Edit Request is not a user-facing control. New edits are
 supplied through Operation or the authenticated Skill files editor and Publish.
 Hidden legacy saved requests retain their existing feedback compatibility only;

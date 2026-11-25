@@ -77,8 +77,9 @@ Failed/unknown operations stop Skill Reference and Task branches, so downstream
 consumers cannot silently use the unchanged base. Operation Result retains the
 diagnostic status. Invalid reference-only selections fail visibly at the Skill node.
 
-Empty Base Commit is permitted only at the imported root. Later edits require
-the exact commit and revision; a stale initial node remains stale after a revert.
+Edit preparation captures the current history head when its revision matches the
+selected files. Applying the edit rejects any head change after preparation. An
+explicit base, when supplied by another client, must also match the current head.
 With Source empty, Skill and Revision accept typed exact registry IDs/hashes, so
 the operator can select a candidate from history. Linked-source discovery remains
 restricted to its discovered choices and never writes candidates back to source.
