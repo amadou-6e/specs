@@ -20,7 +20,7 @@ owns panel geometry, visible states and transitions; this page indexes it.
 
 | ID | Behavior in the diagram |
 | --- | --- |
-| SF01 | The selected LaomedoSkill node exposes Skill files in place of its primary Code action. Other nodes keep Code. |
+| SF01 | The selected Local Skill or GitHub Skill node exposes Skill files in place of its primary Code action. Other nodes keep Code. |
 | SF02 | Opening the panel captures Skill ID and exact revision; no model turn or graph execution occurs. |
 | SF03 | Header displays the shortened current revision (full hash on hover) and Read only. Close returns to the unchanged graph. |
 | SF04 | Explorer folders expand/collapse and files open tabs; default SKILL.md; closing a tab chooses another open file. |

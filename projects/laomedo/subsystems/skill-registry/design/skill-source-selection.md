@@ -14,7 +14,8 @@ related: []
 Tracking: [specs #372](https://github.com/amadou-6e/specs/issues/372) and
 [Laomedo #157](https://github.com/amadou-6e/laomedo/issues/157). This specifies the
 linked-source selector implementation; activating its host service is separately
-gated. Source-empty saved nodes retain manual exact references. The existing
+gated. A source-empty Local Skill accepts manual exact registry references. GitHub
+Skill requires a repository source. The existing
 [node contract](../contract/langflow-node.md) and [file inspection](skill-files.md)
 retain the immutable descriptor boundary.
 
@@ -25,8 +26,8 @@ and transitions. This page specifies their data and discovery behavior.
 
 | ID | Control and behavior |
 | --- | --- |
-| SS01 | Source accepts either a repository URL or a local folder link/path. Discover on source change and expose refresh on the searchable dropdowns, with status and fixed errors. Repository URLs and local paths remain visible as the source. |
-| SS02 | Skill is a searchable dropdown listing discovered skills from that source. Typing narrows the list; selection chooses a discovered skill rather than accepting an invented ID. |
+| SS01 | Local Skill accepts a local folder link/path; GitHub Skill accepts a GitHub or public GitLab repository URL and offers an optional private GitHub connection. Discover on source change and expose refresh on the searchable dropdowns, with status and fixed errors. Repository URLs and local paths remain visible as the source. |
+| SS02 | Skill is a searchable dropdown listing discovered skills from that source. Typing narrows the list; selection chooses a discovered skill rather than accepting an invented ID. Display only its folder path, preserving the full identity as the selected value. |
 | SS03 | Revision uses the same searchable dropdown interaction, scoped to the selected skill. Typing filters discovered revisions rather than accepting an unverified free-text revision. |
 | SS04 | Changing Source clears the previous skill/revision and ignores obsolete discovery responses. Changing Skill clears the previous revision. Never display an old result as belonging to a new selection. |
 | SS05 | Loading remains internal and adds no status text. Empty Source and successful scans, including empty results, show no inline message. The empty Skill selector says No source found until a nonempty Source supplies choices, then Select an option. Filtering still shows its normal no-match state. A failed source/revision scan shows a fixed error below nonempty Source. Empty or failed discovery offers no implicit executable fallback. |
@@ -35,7 +36,7 @@ and transitions. This page specifies their data and discovery behavior.
 
 ## Compact node controls
 
-The node description is **Use and edit versioned skill files.** New changes arrive
+Local Skill and GitHub Skill expose their respective source requirements. New changes arrive
 as an Operation payload, or through manual editing and Publish in Skill files;
 there is no separate editing prompt on the Skill node. A saved legacy feedback
 request may remain hidden compatibility data, preserving that saved graph's
@@ -55,12 +56,11 @@ connected inputs remain on the ordinary canvas path. Minimizing the card hides
 the disclosure without losing selection. The existing Agent disclosure keeps its
 current controls and label.
 
-The frontend identifies `LaomedoSkill` by node type and applies this presentation
-to saved templates too: ignore old `show`/`advanced` flags when hiding
-`edit_request` and grouping `revision_id`/`commit_id`. Hide the request in the
-node settings dialog as well. Do not rewrite any saved value or force a component
-upgrade merely to obtain the compact layout. Expanding/collapsing does not
-refresh discovery. Include a real previously saved graph in acceptance.
+The frontend identifies `LaomedoLocalSkill` and `LaomedoGitHubSkill` by node
+type and applies the compact layout and Skill files action to both. The GitHub
+connection controls appear only on GitHub Skill. Expanding or collapsing advanced
+settings does not refresh discovery. Existing personal graph exports are not a
+compatibility requirement for the retired combined node.
 
 Discovery remains internal status, not an editable input or an execution command.
 Only a fixed failure message appears directly below a nonempty
