@@ -910,8 +910,8 @@
                 <mxCell id="pending-footer-line" parent="1" style="fillColor=#e4e4e7;strokeColor=none;" value="" vertex="1">
                     <mxGeometry height="1" width="800" x="250.0" y="12302.0" as="geometry" />
                 </mxCell>
-                <mxCell id="pending-local" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=14;fontColor=#71717a;fontStyle=0;align=left;" value="You can also sign in again or disconnect." vertex="1">
-                    <mxGeometry height="40" width="560" x="250.0" y="12332.0" as="geometry" />
+                <mxCell id="pending-local" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#18181b;fontSize=16;spacing=0;fontSize=14;fontColor=#71717a;fontStyle=0;align=left;" value="Removing this connection stops Laomedo access." vertex="1">
+                    <mxGeometry height="40" width="360" x="250.0" y="12332.0" as="geometry" />
                 </mxCell>
                 <mxCell id="pending-disconnect" parent="1" style="rounded=1;absoluteArcSize=1;arcSize=12;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#e4e4e7;fontFamily=Helvetica;fontColor=#18181b;fontSize=15;" value="Disconnect" vertex="1">
                     <mxGeometry height="44" width="184" x="866.0" y="12330.0" as="geometry" />
