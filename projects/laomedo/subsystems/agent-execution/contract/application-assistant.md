@@ -74,7 +74,9 @@ The exact approved graph revision is the executed snapshot.
 
 `get_workflow_run` selects this conversation's approved action, with optional
 node/result pagination. Return authoritative lifecycle, output availability,
-bounded typed outputs, partial results and safe structured diagnostics. A
+bounded typed captured outputs and safe structured diagnostics. Owner decision
+(2026-11-25): cancelled runs retain available node statuses and explicitly report
+output not captured; partial-output capture is outside this feature. A
 completed job without retained output is not a fabricated answer. Reuse existing
 Langflow execution records; retain any missing bridge result under the same owned
 database lifecycle, with bounded release and restart reconciliation. Do not
