@@ -247,8 +247,9 @@ ambient host credential import is permitted. Codex admits only
 `account/rateLimits/read`, with empty parameters, before creating a native
 session. The existing connection-owned controller and exact cleanup receipts
 remain authoritative; discovery/active-work conflicts report temporary
-unavailability instead of weakening admission. Claude/OpenCode report unavailable
-until a supported account-scoped zero-turn quota operation is established.
+unavailability instead of weakening admission. OpenCode reports unavailable until a supported account-scoped zero-turn quota
+operation is established. The selected Claude observation below supersedes the
+earlier Claude-unavailable state and reuses the same P13-P16 surface.
 
 Preserve primary/secondary windows and every returned metered bucket. Prefer
 `rateLimitsByLimitId` when present; otherwise use the single `rateLimits` view.
@@ -405,8 +406,9 @@ they do not establish real provider acceptance or independent visual review.
 
 OpenCode feasibility: its current official Go documentation exposes read-only
 GET https://opencode.ai/inference/go/v1/usage using the same Go key. It returns
-rolling, weekly and monthly percentages and reset timestamps. This establishes
-an available integration route, not implementation or live acceptance here.
+rolling, weekly and monthly percentages and reset timestamps. This identifies a documented integration route, not implementation or live
+acceptance here. Two read-only checks using the existing Go key returned HTTP403;
+the cause is unestablished, so no working Go allowance read is claimed.
 A later Go implementation must preserve all three reported windows; the current
 two-window bucket contract must be deliberately extended or explicitly mapped.
 Source: https://opencode.ai/docs/console/go/#usage

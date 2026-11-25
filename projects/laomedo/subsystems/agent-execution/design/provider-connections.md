@@ -190,9 +190,9 @@ observed binding, not an immutable user identifier. A credential custody lock ho
 one live writer through confirmed cleanup, including crash receipt reconciliation.
 Overlapping native use reports connection busy. No daemon-wide settings change.
 
-P04 will show the one-use device code and one Continue to ChatGPT action using the
-existing card, footer and Back/Refresh visual language. Existing token-sharing rows require explicit confirmation of the newly verified
-native account, preserving their connection ID and graph selections while advancing
-generation. Cancellation keeps the old login. These states need final reviewed
-workshop geometry before frontend implementation. Reviewer design gates G1-G4 are being resolved against
-pinned source; this note is not native acceptance or an implementation approval.
+P04 shows the one-use device code and one Continue to ChatGPT action using the
+existing card, footer and Back/Refresh visual language. P17 confirms replacement
+with the newly verified native account and reported ChatGPT plan. It preserves
+the connection ID and graph selections while advancing generation; cancellation
+keeps the old login. The workshop records this selected geometry and behavior.
+Source/design review and actual native acceptance remain separate evidence.

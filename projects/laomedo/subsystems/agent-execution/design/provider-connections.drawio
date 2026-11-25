@@ -592,7 +592,7 @@
         <mxCell id="P14-last" value="5-hour window &lt;b&gt;75% remaining&lt;/b&gt;&lt;br&gt;Last checked14:28. Could not refresh. Try again." style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;fontColor=#a1a1aa;" vertex="1" parent="1">
           <mxGeometry x="60" y="7160" width="560" height="58" as="geometry" />
         </mxCell>
-        <mxCell id="P14-unsupported" value="&lt;b&gt;Personal Claude&lt;/b&gt; &amp;nbsp;&amp;nbsp; Not available" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="P14-unsupported" value="&lt;b&gt;Personal OpenCode&lt;/b&gt; &amp;nbsp;&amp;nbsp; Not available" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
           <mxGeometry x="60" y="7260" width="560" height="32" as="geometry" />
         </mxCell>
         <mxCell id="P14-unsupported-copy" value="This provider does not report subscription limits here." style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;fontColor=#a1a1aa;" vertex="1" parent="1">
@@ -601,7 +601,7 @@
         <mxCell id="P14-reconnect" value="&lt;b&gt;Personal Codex&lt;/b&gt; &amp;nbsp;&amp;nbsp; Account unavailable&lt;br&gt;Manage accounts" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
           <mxGeometry x="60" y="7370" width="560" height="64" as="geometry" />
         </mxCell>
-        <mxCell id="P14-story" value="&lt;b&gt;S11 / Q3-Q5 - Trust freshness and account ownership&lt;/b&gt;&lt;br&gt;&lt;br&gt;Q04 60seconds pass or a reported reset passes: Q2 -&gt; Q3 Out of date. Keep last observed values; do not invent replenishment.&lt;br&gt;&lt;br&gt;Q05 Failed refresh: retain only the same-binding snapshot, clearly stale; no snapshot -&gt; Q4 Unavailable with retry. Q06 Unsupported provider -&gt; Q4 Not available, no hidden network/model work.&lt;br&gt;&lt;br&gt;Q07 Logout/disconnect/reconnect or revoked generation: discard old display/cache -&gt; Q5 Account unavailable. Late results never cross an account/session boundary.&lt;br&gt;&lt;br&gt;Retry returns through Q1. Spinner/disabled Refresh is per account; keyboard labels/status announcements remain available. Cache is bounded, memory-only and expires after10minutes." style="rounded=1;absoluteArcSize=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d9dee7;fontColor=#263547;align=left;verticalAlign=top;spacing=16;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="P14-story" value="&lt;b&gt;S11 / Q3-Q5 - Trust freshness and account ownership&lt;/b&gt;&lt;br&gt;&lt;br&gt;Q04 60seconds pass or a reported reset passes: Q2 -&gt; Q3 Out of date. Keep last observed values; do not invent replenishment.&lt;br&gt;&lt;br&gt;Q05 Failed refresh: retain only the same-binding snapshot, clearly stale; no snapshot -&gt; Q4 Unavailable with retry. Q06 Unsupported provider (OpenCode) -&gt; Q4 Not available, no hidden network/model work. Claude reuses P13-P16 through its saved native connection.&lt;br&gt;&lt;br&gt;Q07 Logout/disconnect/reconnect or revoked generation: discard old display/cache -&gt; Q5 Account unavailable. Late results never cross an account/session boundary.&lt;br&gt;&lt;br&gt;Retry returns through Q1. Spinner/disabled Refresh is per account; keyboard labels/status announcements remain available. Cache is bounded, memory-only and expires after10minutes." style="rounded=1;absoluteArcSize=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#d9dee7;fontColor=#263547;align=left;verticalAlign=top;spacing=16;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
           <mxGeometry x="710" y="6990" width="440" height="510" as="geometry" />
         </mxCell>
         <mxCell id="P13-secondary-bar" value="" style="rounded=1;fillColor=#8b8b94;strokeColor=none;" vertex="1" parent="1">
@@ -628,7 +628,7 @@
         <mxCell id="P15-refresh" value="&amp;#10227;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;align=center;fontSize=22;" vertex="1" parent="1">
           <mxGeometry x="586" y="7640" width="30" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="P15-bucket-a" value="&lt;b&gt;Codex&lt;/b&gt; &amp;nbsp; &lt;span style=&quot;color:#a1a1aa&quot;&gt;codex&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="P15-bucket-a" value="&lt;b&gt;Codex&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
           <mxGeometry x="60" y="7700" width="560" height="28" as="geometry" />
         </mxCell>
         <mxCell id="P15-window-a" value="5-hour window &amp;nbsp; &lt;b&gt;75% remaining&lt;/b&gt;&lt;br&gt;Resets today,15:30" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
@@ -637,7 +637,7 @@
         <mxCell id="P15-bar-a" value="" style="rounded=1;fillColor=#8b8b94;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="60" y="7800" width="420" height="6" as="geometry" />
         </mxCell>
-        <mxCell id="P15-bucket-b" value="&lt;b&gt;Review&lt;/b&gt; &amp;nbsp; &lt;span style=&quot;color:#a1a1aa&quot;&gt;codex_review&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="P15-bucket-b" value="&lt;b&gt;Review&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
           <mxGeometry x="60" y="7840" width="560" height="28" as="geometry" />
         </mxCell>
         <mxCell id="P15-window-b" value="7-day window &amp;nbsp; &lt;b&gt;40% remaining&lt;/b&gt;&lt;br&gt;Resets Nov23,18:00" style="text;html=1;whiteSpace=wrap;overflow=hidden;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;fontColor=#f4f4f5;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
@@ -709,7 +709,7 @@
         <mxCell id="P17-body" value="Replace the saved Codex login with this verified account.&lt;br&gt;Your graph selections will stay the same." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#18181b;strokeColor=none;fontColor=#fafafa;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;rounded=0;spacing=0;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="8888.0" width="525" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="P17-account" value="&lt;b&gt;person@example.com&lt;/b&gt;&lt;br&gt;Personal workspace - ChatGPT Plus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#27272a;strokeColor=#3f3f46;fontColor=#fafafa;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
+        <mxCell id="P17-account" value="&lt;b&gt;person@example.com&lt;/b&gt;&lt;br&gt;ChatGPT plus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#27272a;strokeColor=#3f3f46;fontColor=#fafafa;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;arcSize=8;absoluteArcSize=1;" vertex="1" parent="1">
           <mxGeometry x="65" y="8954.0" width="555" height="62" as="geometry" />
         </mxCell>
         <mxCell id="P17-confirm" value="Replace connection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fafafa;strokeColor=#182230;fontColor=#fafafa;fontFamily=Helvetica;fontSize=14;align=left;verticalAlign=top;spacing=14;fontColor=#ffffff;align=center;verticalAlign=middle;spacing=0;arcSize=8;absoluteArcSize=1;fontColor=#18181b;" vertex="1" parent="1">
