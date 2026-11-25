@@ -14,8 +14,8 @@ related: []
 Tracking: [specs #372](https://github.com/amadou-6e/specs/issues/372) and
 [Laomedo #157](https://github.com/amadou-6e/laomedo/issues/157). This specifies the
 linked-source selector implementation; activating its host service is separately
-gated. A source-empty Local Skill accepts manual exact registry references. GitHub
-Skill requires a repository source. The existing
+gated. Local Skill requires a folder and automatically snapshots the current files; its
+revision and commit controls are absent. GitHub Skill requires a repository source. The existing
 [node contract](../contract/langflow-node.md) and [file inspection](skill-files.md)
 retain the immutable descriptor boundary.
 
@@ -28,11 +28,11 @@ and transitions. This page specifies their data and discovery behavior.
 | --- | --- |
 | SS01 | Local Skill accepts a local folder link/path; GitHub Skill accepts a GitHub or public GitLab repository URL and offers an optional private GitHub connection. Discover on source change and expose refresh on the searchable dropdowns, with status and fixed errors. Repository URLs and local paths remain visible as the source. |
 | SS02 | Skill is a searchable dropdown listing discovered skills from that source. Typing narrows the list; selection chooses a discovered skill rather than accepting an invented ID. Display only its folder path, preserving the full identity as the selected value. |
-| SS03 | Revision uses the same searchable dropdown interaction, scoped to the selected skill. Typing filters discovered revisions rather than accepting an unverified free-text revision. |
+| SS03 | For GitHub Skill, Revision uses the same searchable dropdown interaction, scoped to the selected skill. Local Skill uses the current folder contents automatically. Typing filters discovered revisions rather than accepting an unverified free-text revision. |
 | SS04 | Changing Source clears the previous skill/revision and ignores obsolete discovery responses. Changing Skill clears the previous revision. Never display an old result as belonging to a new selection. |
 | SS05 | Loading remains internal and adds no status text. Empty Source and successful scans, including empty results, show no inline message. The empty Skill selector says No source found until a nonempty Source supplies choices, then Select an option. Filtering still shows its normal no-match state. A failed source/revision scan shows a fixed error below nonempty Source. Empty or failed discovery offers no implicit executable fallback. |
 | SS06 | Once resolved, Skill files opens exactly the selected immutable bundle. Refreshing available choices must not silently change an existing selected revision or an active run. |
-| SS07 | The compact Skill node shows Source, Skill and Operation. Source errors appear below its input without a Discovery heading; clicking the message opens shared recovery and source_discovery_failed under Technical details. Empty Source and success show no message. The empty Skill selector says No source found until discovery supplies options, then Select an option. Revision and Base Commit live in the initially collapsed Advanced settings disclosure. Edit Request and Discovery rows are absent from the card and settings. The editable SS07 page owns layout and disclosure transitions. |
+| SS07 | The compact Skill node shows Source, Skill and Operation. Source errors appear below its input without a Discovery heading; clicking the message opens shared recovery and source_discovery_failed under Technical details. Empty Source and success show no message. The empty Skill selector says No source found until discovery supplies options, then Select an option. For GitHub Skill, Revision and Base Commit live in the initially collapsed Advanced settings disclosure; Local Skill shows neither. Edit Request and Discovery rows are absent from the card and settings. The editable SS07 page owns layout and disclosure transitions. |
 
 ## Compact node controls
 
@@ -48,13 +48,16 @@ its recovery directs users to an upstream Operation or manual editor/Publish,
 never to the removed Edit Request control.
 
 Advanced settings expands with pointer or Enter/Space and retains its mounted
-controls and exact values when collapsed. Revision remains an explicit required
+controls and exact values when collapsed. For GitHub Skill, Revision remains an explicit required
 selection; moving it does not select latest or update a saved pin. Source changes
-clear Skill and Revision, while Skill changes clear Revision. Revision remains
+clear Skill and its resolved revision, while Skill changes clear its revision. GitHub Skill revision remains
 available in Advanced settings when a skill is selected. Operation and
 connected inputs remain on the ordinary canvas path. Minimizing the card hides
 the disclosure without losing selection. The existing Agent disclosure keeps its
 current controls and label.
+
+Local Skill snapshots the current files again when executed, preserving an immutable
+internal reference without requiring the user to select a revision or commit.
 
 The frontend identifies `LaomedoLocalSkill` and `LaomedoGitHubSkill` by node
 type and applies the compact layout and Skill files action to both. The GitHub

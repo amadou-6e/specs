@@ -14,8 +14,8 @@ related: []
 Tracking: [Laomedo #25](https://github.com/amadou-6e/laomedo/issues/25), explicitly
 selected after the Codex node pilot. Expose Local Skill (LaomedoLocalSkill) and
 GitHub Skill (LaomedoGitHubSkill) in the same operator-installed category as
-LaomedoCodexAgent. Local Skill accepts a local folder or an existing local registry
-reference. GitHub Skill accepts GitHub and public GitLab repository URLs; its
+LaomedoCodexAgent. Local Skill accepts a local folder and automatically snapshots its current Skill
+files; it does not expose revision or commit controls. GitHub Skill accepts GitHub and public GitLab repository URLs; its
 optional connection enables private GitHub reads, not private Skill execution. Existing four-node pilot exports remain historical
 evidence and are not silently rewritten.
 
@@ -68,7 +68,7 @@ The selected node can open the exact registered bundle in the [Skill files panel
 
 Source adds [bounded discovery and searchable selection](../design/skill-source-selection.md). The Skill dropdown displays the discovered folder path while retaining its complete selection identity for resolution.
 Skill and Revision choices resolve through the host source service to the same
-three-key immutable descriptor. A source-empty Local Skill can use exact manual registry references; GitHub Skill requires a repository source. Discovery imports and verifies bytes but never invokes an agent or
+three-key immutable descriptor. Local Skill requires a folder; GitHub Skill requires a repository source. Discovery imports and verifies bytes but never invokes an agent or
 proves native skill use. The runner still verifies the exact bundle before dispatch.
 Skill files uses the resolved ID/hash only while the source selection tuple matches.
 
@@ -81,8 +81,8 @@ a Discovery heading. With no source/options the empty Skill selector says
 No status message appears for empty Source or successful discovery, including
 empty scan results. Clicking the inline failure opens the shared error presenter
 with safe recovery and `source_discovery_failed` under Technical details.
-Revision and Base Commit are inside
-Advanced settings, initially collapsed. Disclosure does not change the exact
+For GitHub Skill, Revision and Base Commit are inside
+Advanced settings, initially collapsed. Local Skill exposes neither control. Disclosure does not change the exact
 selected reference. Edit Request is not a user-facing control. New edits are
 supplied through Operation or the authenticated Skill files editor and Publish.
 Hidden legacy saved requests retain their existing feedback compatibility only;
