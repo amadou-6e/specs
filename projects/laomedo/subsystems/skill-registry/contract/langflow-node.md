@@ -12,8 +12,11 @@ related: []
 # Langflow Skill reference node
 
 Tracking: [Laomedo #25](https://github.com/amadou-6e/laomedo/issues/25), explicitly
-selected after the Codex node pilot. Expose LaomedoSkill in the same operator-installed
-category as LaomedoCodexAgent. Existing four-node pilot exports remain historical
+selected after the Codex node pilot. Expose Local Skill (LaomedoLocalSkill) and
+GitHub Skill (LaomedoGitHubSkill) in the same operator-installed category as
+LaomedoCodexAgent. Local Skill accepts a local folder and automatically snapshots its current Skill
+files; it does not expose revision or commit controls. GitHub Skill accepts GitHub and public GitLab repository URLs; its
+optional connection enables private GitHub reads, not private Skill execution. Existing four-node pilot exports remain historical
 evidence and are not silently rewritten.
 
 Inputs: existing Skill ID and exact immutable SHA-256 revision. Validate the ID
@@ -63,10 +66,9 @@ The selected node can open the exact registered bundle in the [Skill files panel
 
 ## Linked-source selection
 
-An optional Source adds [bounded discovery and searchable selection](../design/skill-source-selection.md).
+Source adds [bounded discovery and searchable selection](../design/skill-source-selection.md). The Skill dropdown displays the discovered folder path while retaining its complete selection identity for resolution.
 Skill and Revision choices resolve through the host source service to the same
-three-key immutable descriptor. Source-empty saved nodes retain their exact manual
-references. Discovery imports and verifies bytes but never invokes an agent or
+three-key immutable descriptor. Local Skill requires a folder; GitHub Skill requires a repository source. Discovery imports and verifies bytes but never invokes an agent or
 proves native skill use. The runner still verifies the exact bundle before dispatch.
 Skill files uses the resolved ID/hash only while the source selection tuple matches.
 
@@ -79,8 +81,9 @@ a Discovery heading. With no source/options the empty Skill selector says
 No status message appears for empty Source or successful discovery, including
 empty scan results. Clicking the inline failure opens the shared error presenter
 with safe recovery and `source_discovery_failed` under Technical details.
-Revision and Base Commit are inside
-Advanced settings, initially collapsed. Disclosure does not change the exact
+For GitHub Skill, Revision is inside Advanced settings, initially collapsed.
+Local Skill exposes no revision control. Neither node exposes Base Commit; edit
+preparation captures the current history head automatically. Disclosure does not change the exact
 selected reference. Edit Request is not a user-facing control. New edits are
 supplied through Operation or the authenticated Skill files editor and Publish.
 Hidden legacy saved requests retain their existing feedback compatibility only;

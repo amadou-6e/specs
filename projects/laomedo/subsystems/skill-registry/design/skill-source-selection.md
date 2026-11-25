@@ -14,7 +14,8 @@ related: []
 Tracking: [specs #372](https://github.com/amadou-6e/specs/issues/372) and
 [Laomedo #157](https://github.com/amadou-6e/laomedo/issues/157). This specifies the
 linked-source selector implementation; activating its host service is separately
-gated. Source-empty saved nodes retain manual exact references. The existing
+gated. Local Skill requires a folder and automatically snapshots the current files; its
+revision and commit controls are absent. GitHub Skill requires a repository source. The existing
 [node contract](../contract/langflow-node.md) and [file inspection](skill-files.md)
 retain the immutable descriptor boundary.
 
@@ -25,17 +26,17 @@ and transitions. This page specifies their data and discovery behavior.
 
 | ID | Control and behavior |
 | --- | --- |
-| SS01 | Source accepts either a repository URL or a local folder link/path. Discover on source change and expose refresh on the searchable dropdowns, with status and fixed errors. Repository URLs and local paths remain visible as the source. |
-| SS02 | Skill is a searchable dropdown listing discovered skills from that source. Typing narrows the list; selection chooses a discovered skill rather than accepting an invented ID. |
-| SS03 | Revision uses the same searchable dropdown interaction, scoped to the selected skill. Typing filters discovered revisions rather than accepting an unverified free-text revision. |
+| SS01 | Local Skill accepts a local folder link/path; GitHub Skill accepts a GitHub or public GitLab repository URL and offers an optional private GitHub connection. Discover on source change and expose refresh on the searchable dropdowns, with status and fixed errors. Repository URLs and local paths remain visible as the source. |
+| SS02 | Skill is a searchable dropdown listing discovered skills from that source. Typing narrows the list; selection chooses a discovered skill rather than accepting an invented ID. Display only its folder path, preserving the full identity as the selected value. |
+| SS03 | For GitHub Skill, Revision uses the same searchable dropdown interaction, scoped to the selected skill. Local Skill uses the current folder contents automatically. Typing filters discovered revisions rather than accepting an unverified free-text revision. |
 | SS04 | Changing Source clears the previous skill/revision and ignores obsolete discovery responses. Changing Skill clears the previous revision. Never display an old result as belonging to a new selection. |
 | SS05 | Loading remains internal and adds no status text. Empty Source and successful scans, including empty results, show no inline message. The empty Skill selector says No source found until a nonempty Source supplies choices, then Select an option. Filtering still shows its normal no-match state. A failed source/revision scan shows a fixed error below nonempty Source. Empty or failed discovery offers no implicit executable fallback. |
 | SS06 | Once resolved, Skill files opens exactly the selected immutable bundle. Refreshing available choices must not silently change an existing selected revision or an active run. |
-| SS07 | The compact Skill node shows Source, Skill and Operation. Source errors appear below its input without a Discovery heading; clicking the message opens shared recovery and source_discovery_failed under Technical details. Empty Source and success show no message. The empty Skill selector says No source found until discovery supplies options, then Select an option. Revision and Base Commit live in the initially collapsed Advanced settings disclosure. Edit Request and Discovery rows are absent from the card and settings. The editable SS07 page owns layout and disclosure transitions. |
+| SS07 | The compact Skill node shows Source, Skill and Operation. Source errors appear below its input without a Discovery heading; clicking the message opens shared recovery and source_discovery_failed under Technical details. Empty Source and success show no message. The empty Skill selector says No source found until discovery supplies options, then Select an option. For GitHub Skill, Revision lives in the initially collapsed Advanced settings disclosure; Local Skill has no revision control. Neither node exposes Base Commit. Edit Request and Discovery rows are absent from the card and settings. The editable SS07 page owns layout and disclosure transitions. |
 
 ## Compact node controls
 
-The node description is **Use and edit versioned skill files.** New changes arrive
+Local Skill and GitHub Skill expose their respective source requirements. New changes arrive
 as an Operation payload, or through manual editing and Publish in Skill files;
 there is no separate editing prompt on the Skill node. A saved legacy feedback
 request may remain hidden compatibility data, preserving that saved graph's
@@ -47,20 +48,22 @@ its recovery directs users to an upstream Operation or manual editor/Publish,
 never to the removed Edit Request control.
 
 Advanced settings expands with pointer or Enter/Space and retains its mounted
-controls and exact values when collapsed. Revision remains an explicit required
+controls and exact values when collapsed. For GitHub Skill, Revision remains an explicit required
 selection; moving it does not select latest or update a saved pin. Source changes
-clear Skill and Revision, while Skill changes clear Revision. Revision remains
+clear Skill and its resolved revision, while Skill changes clear its revision. GitHub Skill revision remains
 available in Advanced settings when a skill is selected. Operation and
 connected inputs remain on the ordinary canvas path. Minimizing the card hides
 the disclosure without losing selection. The existing Agent disclosure keeps its
 current controls and label.
 
-The frontend identifies `LaomedoSkill` by node type and applies this presentation
-to saved templates too: ignore old `show`/`advanced` flags when hiding
-`edit_request` and grouping `revision_id`/`commit_id`. Hide the request in the
-node settings dialog as well. Do not rewrite any saved value or force a component
-upgrade merely to obtain the compact layout. Expanding/collapsing does not
-refresh discovery. Include a real previously saved graph in acceptance.
+Local Skill snapshots the current files again when executed, preserving an immutable
+internal reference without requiring the user to select a revision or commit.
+
+The frontend identifies `LaomedoLocalSkill` and `LaomedoGitHubSkill` by node
+type and applies the compact layout and Skill files action to both. The GitHub
+connection controls appear only on GitHub Skill. Expanding or collapsing advanced
+settings does not refresh discovery. Existing personal graph exports are not a
+compatibility requirement for the retired combined node.
 
 Discovery remains internal status, not an editable input or an execution command.
 Only a fixed failure message appears directly below a nonempty
@@ -117,13 +120,18 @@ personal login files. Missing access is a visible discovery error.
 A standalone authenticated loopback host service owns discovery, the cache and
 registry import. The Langflow backend forwards only fixed discover/revisions/resolve
 requests using a backend token file. Tokens never appear in node fields or exports.
-Reuse the existing local transport connection during activation; no extra human
-sign-in is introduced. This token is transport protection, not a same-user boundary.
+For existing public/local discovery, reuse the local transport connection during
+activation; no extra human sign-in is introduced for that path. Private GitHub
+connections are a distinct draft increment with explicit owner/session admission
+under [SC01-SC10](../../agent-execution/contract/github-account-connection.md#private-skill-source-increment-sc01-sc10). This token is transport protection, not a same-user boundary.
 
 The initial Git route accepts public HTTPS repository-root URLs on GitHub or GitLab
 (two path segments). It lists heads and tags with full commit IDs and bundle hashes;
 it does not expose arbitrary historical commit selection. GitLab subgroups and
-private-repository authentication are not implemented. A private repository can be
+private-repository authentication are not implemented in that initial route. The
+[draft private GitHub extension](../../agent-execution/design/github-account-connections.md)
+adds a separately authorized, in-process object reader; it does not enable private
+authentication merely by merging this text. A private repository can currently be
 supplied as an already available allowed local checkout. A failed private fetch is
 an access failure, never a prompt to reveal credentials. Git runs with no inherited
 provider credentials, personal Git settings or credential helpers; redirects,
@@ -193,3 +201,12 @@ no added or removed diagnostics after normalizing line offsets.
 
 No model turns, provider credentials or publication writes were involved. These
 observations are bounded fixture evidence, not an active-demo deployment claim.
+
+## Private connection UI extension
+
+The [private source page](../../agent-execution/design/github-account-connections.drawio)
+owns the proposed Connection selector in Advanced settings and the connection-manager
+entry/recovery for private sources. Existing SS01-SS07 controls stay as defined above.
+A graph may retain an opaque connection reference; the backend derives owner/session
+and current generation independently. No token, owner claim or secret enters a node.
+Private URL lookup never falls back to anonymous, local or another connection.
