@@ -84,6 +84,17 @@ The graph does not publish or change GitHub unless separately authorized. Keep
 credentials, API capabilities and unrelated private files out of the graph and
 the handoff.
 
+The ownership and grant checks must remain effective against arbitrary Python
+in another graph node, not only when every node follows the intended adapter.
+Do not expose retained patches, runner credentials, or grant issuance through
+objects available in that code's process. A separate process under the same
+unrestricted operating-system identity is not sufficient isolation. The host
+must enforce trusted catalog execution and isolate the authority and private
+run state from untrusted graph execution; refusal tests must cover another
+profile, relabelled or custom code, and attempts to obtain or replay a grant.
+Until that boundary is verified, the handoff is not available to saved-account
+graph runs, even if its honest-path tests pass.
+
 Acceptance requires a real graph run: read a live issue, make a concrete isolated
 workspace edit, independently compare the host-derived changes to the saved
 snapshots, and verify that the reviewing agent received and reviewed those changes.
