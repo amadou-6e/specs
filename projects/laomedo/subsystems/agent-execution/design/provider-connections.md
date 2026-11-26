@@ -196,3 +196,12 @@ with the newly verified native account and reported ChatGPT plan. It preserves
 the connection ID and graph selections while advancing generation; cancellation
 keeps the old login. The workshop records this selected geometry and behavior.
 Source/design review and actual native acceptance remain separate evidence.
+
+
+## OpenCode Go allowance extension (#445 / Laomedo #313)
+
+P18/P19 and S12 add Go rolling, weekly and calendar-month allowance to the existing
+Subscription agents layout, without new connection controls. PC-09 remains the
+cache/ownership boundary; the selected Go section defines its bounded HTTPS read
+and safe refusal categories. A live403 remains a disclosed entitlement/access
+blocker, not evidence of implemented quota values.

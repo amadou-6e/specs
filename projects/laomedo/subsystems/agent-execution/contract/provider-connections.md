@@ -412,3 +412,44 @@ the cause is unestablished, so no working Go allowance read is claimed.
 A later Go implementation must preserve all three reported windows; the current
 two-window bucket contract must be deliberately extended or explicitly mapped.
 Source: https://opencode.ai/docs/console/go/#usage
+
+
+## Selected OpenCode Go allowance read (#445 / Laomedo #313)
+
+Owner selected implementation on 2026-11-26. This supersedes the earlier
+OpenCode-unavailable/feasibility-only projection for saved Go key connections.
+P18/P19 and S12 in the workshop define its reuse of the existing allowance panel.
+
+An explicit Refresh uses only the admitted saved Go key for GET
+`https://opencode.ai/inference/go/v1/usage`. No second connection, browser login,
+inference request, credential refresh/export, redirect, ambient login or billing
+fallback is permitted. Validate private key custody before and after the bounded
+read. Existing profile, generation, browser-lease, coalescing, stale-cache,
+Disconnect and logout fences remain mandatory. Mounting reads cache only.
+A stored Go key whose upstream authentication has not been checked may request
+this explicit read; successful quota does not silently change its auth state.
+
+Preserve all reported meters in provider order: rolling five-hour as primary,
+weekly as secondary, and calendar monthly as monthly. Extend the shared window
+kind with monthly and its per-bucket maximum from two to three on both wire
+boundaries. Monthly has no fixed minute duration and is labelled Monthly window;
+never infer thirty days or reset times. Each meter shows reported used percentage
+as remaining allowance and its timezone-aware reported reset. Missing meters
+remain absent, invalid scalar values remain unknown, invalid structural data
+fails safely. No model/cost/credit values substitute for subscription allowance.
+
+Use one bounded HTTPS GET (15-second timeout, at most 64 KiB) and no automatic
+retry. HTTP401 means the key was not accepted; HTTP403 means this key cannot
+access Go limits, without asserting which subscription/workspace cause applies;
+HTTP429 asks the user to try later. Other HTTP/transport/protocol errors are a
+failed refresh. Do not display raw upstream messages, keys or request headers.
+These failures preserve the saved connection and any previous snapshot, explicitly
+marked stale; they never imply zero allowance or successful authentication.
+
+Acceptance: verify all three meters, unknown/missing fields, bounded reads,
+redirect refusal, HTTP failure categories and key-change rejection in meaningful
+deterministic tests. Verify the actual saved Go connection with zero inference;
+if refused, report the safe HTTP category as the live blocker, not a fabricated
+success. Inspect the implemented panel at wide and narrow widths using live
+provider data when available, retaining source versus live evidence separately.
+Source: https://opencode.ai/docs/console/go/#usage (checked 2026-11-26).
