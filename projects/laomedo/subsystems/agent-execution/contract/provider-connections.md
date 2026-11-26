@@ -240,7 +240,7 @@ P13/P14 and Q0-Q5 in the owning Draw.io define the Subscription agents allowance
 surface. Graphs keep separate harness preferences; allowance belongs to each
 current-profile saved connection, never to a run or its token/cost counters.
 
-Opening the tab reads only cached observations. Each account has an explicitly
+Opening the tab requests fresh observations and polls every 10 seconds while mounted, for all supported providers, subject to account admission and single-writer availability. Codex may start a temporary native app-server and Claude may start a zero-turn CLI usage read; no model turn is submitted. The API retains a cache-only read operation for callers that request it. Each account has an explicitly
 labelled Refresh limits icon. It invokes only the selected provider's bounded
 read operation; no prompt, new thread, model probe, login, alternate account or
 ambient host credential import is permitted. Codex admits only
@@ -302,15 +302,15 @@ with its provider-reported value; no currency is invented. Unlimited credits and
 No credits are distinct from unknown credit details; no credit field implies no
 credit line. Text fields are bounded safe fields, not unfiltered raw responses.
 
-Explicit Refresh may start a temporary native app-server process in the existing
+Automatic or manual refresh may start a temporary native app-server process in the existing
 connection-owned isolation boundary. It sends only initialization and the named
 rate-limit read, never session/new, thread/start or prompt. Reuse the admitted
 zero-turn discovery lifecycle, with native request budget30seconds, initialization
 budget45seconds, existing bounded image/startup budgets and exact native teardown.
 The temporary controller is closed before publishing the observation. Startup,
 protocol or cleanup failure becomes unavailable/stale, not a successful read;
-client timeout/abort never authorizes replay or another account. No persistent
-model task or credential-bearing process is created by mounting the panel.
+client timeout/abort never authorizes replay or another account. Mounting the panel may create a temporary admitted quota reader, but never a persistent
+model task. This is subject to the same single-writer and teardown requirements.
 
 Both parent PRs (#426 specification, Laomedo#285 implementation) are explicit
 integration/merge gates. Their incomplete review or live acceptance is not waived
@@ -378,7 +378,7 @@ Use the existing connection-owned native profile and the pinned official Claude
 CLI2.1.310. Do not introduce a second sign-in, inspect token-file contents or
 call a quota endpoint with exported OAuth credentials.
 
-Explicit Refresh sends only native initialize and the structured `get_usage`
+Automatic or manual refresh sends only native initialize and the structured `get_usage`
 control request with `skip_behaviors: true`. The latter suppresses scans of local
 transcripts and their behavioral summaries. No user message, model turn, tool,
 resumed conversation or persisted model session is submitted. This is a pinned
@@ -463,3 +463,5 @@ For all supported connected providers, opening the subscription panel immediatel
 Expose `/usage`, matching OpenCode's native TUI View usage command name. Laomedo handles it as a local UI operation: show the same subscription limits panel for the exact account and generation selected by the chat. It must not create a conversation, dispatch a model message or pretend to execute a native ACP slash command. Allow use before the first model response. The profile-owned quota route enforces the authenticated owner, same-origin cookie lease and generation fencing. Closing the dialog stops polling; account/owner selection changes close it. No purchases, billing changes or alternate credential source are implied.
 
 Go quota HTTP requests identify the client with a Laomedo User-Agent. Live comparison confirmed a generic Python User-Agent can receive403 while the same key succeeds with Laomedo identification;403 alone does not prove a subscription is inactive.
+
+Automatic polling explicitly applies to Codex and Claude as well as Go. Each eligible visible panel may trigger its existing native zero-turn quota process after the shared 60-second freshness cache expires. Account execution/single-writer fences take precedence: a busy account reports unavailable/busy rather than stealing a running session. This owner-selected behavior supersedes prior mount-time process prohibitions in PC-09 and the Claude amendment.
