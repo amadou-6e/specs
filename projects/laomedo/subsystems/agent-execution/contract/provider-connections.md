@@ -438,7 +438,7 @@ as remaining allowance and its timezone-aware reported reset. Missing meters
 remain absent, invalid scalar values remain unknown, invalid structural data
 fails safely. No model/cost/credit values substitute for subscription allowance.
 
-Use one bounded HTTPS GET (15-second timeout, at most 64 KiB) and no automatic
+Use one bounded HTTPS GET (15-second total process deadline, at most 64 KiB) and no automatic
 retry. HTTP401 means the key was not accepted; HTTP403 means this key cannot
 access Go limits, without asserting which subscription/workspace cause applies;
 HTTP429 asks the user to try later. Other HTTP/transport/protocol errors are a
