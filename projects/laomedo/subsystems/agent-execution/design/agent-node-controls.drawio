@@ -4,7 +4,7 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="main" value="Agent node - main controls&#10;Task input&#10;Operation&#10;Model: runner-discovered dropdown&#10;Reasoning Effort: model-specific dropdown&#10;Skill References input (below Reasoning Effort)&#10;MCP Tools input (below Skill References; optional list)&#10;Claude: optional Verified Changes input (Run Reference)&#10;Answer / Run Reference / Submission outputs" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#eff6ff;" vertex="1" parent="1">
+        <mxCell id="main" value="Agent node - main controls&#10;Task input&#10;Operation&#10;Model: runner-discovered dropdown&#10;Reasoning Effort: model-specific dropdown&#10;Skill References input (below Reasoning Effort)&#10;MCP Tools input (below Skill References; optional list)&#10;Claude: Verified Changes input below MCP Tools&#10;Answer / Run Reference / Submission outputs" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#eff6ff;" vertex="1" parent="1">
           <mxGeometry x="40" y="40" width="440" height="240" as="geometry" />
         </mxCell>
         <mxCell id="advanced" value="Advanced controls - collapsed by default&#10;Expand inside node with click or keyboard&#10;Preserve values; no graph execution on toggle" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;" vertex="1" parent="1">
@@ -22,17 +22,20 @@
         <mxCell id="behavior" value="Execution and ownership&#10;Request identity is automatic.&#10;Skills and revisions are configured on Skill nodes.&#10;Codex bridge applies only to fresh/start; lifecycle&#10;operations and OpenCode use their runner directly." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f0fdf4;" vertex="1" parent="1">
           <mxGeometry x="540" y="530" width="460" height="170" as="geometry" />
         </mxCell>
-        <mxCell id="review-editor" value="Codex Agent&#10;&#10;Task: implement the live issue&#10;&#10;Run Reference  ●" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#eff6ff;align=left;spacing=14;fontSize=15;" vertex="1" parent="1">
+        <mxCell id="review-editor" value="Codex Agent&#10;&#10;Task: implement the live issue&#10;&#10;Run Reference" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#eff6ff;align=left;spacing=14;fontSize=15;" vertex="1" parent="1">
           <mxGeometry x="40" y="760" width="380" height="140" as="geometry" />
         </mxCell>
-        <mxCell id="reviewer" value="Claude Agent&#10;&#10;Task: review instructions&#10;●  Verified Changes: connect Codex Run Reference&#10;&#10;Answer: advisory review" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#eff6ff;align=left;spacing=14;fontSize=15;" vertex="1" parent="1">
+        <mxCell id="reviewer" value="Claude Agent&#10;&#10;Task: review instructions&#10;Verified Changes: connect an Agent Run Reference&#10;&#10;Answer: advisory review" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#eff6ff;align=left;spacing=14;fontSize=15;" vertex="1" parent="1">
           <mxGeometry x="590" y="760" width="410" height="140" as="geometry" />
         </mxCell>
-        <mxCell id="review-edge" value="verified run" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;exitX=1;exitY=0.7;entryX=0;entryY=0.5;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="review-editor" target="reviewer">
+        <mxCell id="review-edge" value="Run Reference" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;exitX=1;exitY=0.7;entryX=0;entryY=0.7;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="review-editor" target="reviewer">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="review-rule" value="The host derives and verifies the actual changes before dispatch. Empty, unsafe, stale or unavailable changes stop the review. No GitHub write or publication is granted." style="text;whiteSpace=wrap;html=0;align=left;fontSize=14;" vertex="1" parent="1">
           <mxGeometry x="40" y="925" width="960" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="review-refusal" value="No edits — review not performed&#10;The reviewer did not start. Inspect the source run before retrying." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fff7ed;align=left;spacing=14;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1000" width="960" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
