@@ -205,3 +205,5 @@ Subscription agents layout, without new connection controls. PC-09 remains the
 cache/ownership boundary; the selected Go section defines its bounded HTTPS read
 and safe refusal categories. A live403 remains a disclosed entitlement/access
 blocker, not evidence of implemented quota values.
+
+Selected quota interaction (2026-11-26): P13/P18/P19 load on opening and refresh every 10 seconds while mounted, without overlapping checks. Refresh remains an icon-only manual control. This supersedes earlier explicit-only quota refresh descriptions; authentication polling is unchanged.

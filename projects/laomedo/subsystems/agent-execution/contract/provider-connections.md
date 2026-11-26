@@ -425,7 +425,7 @@ An explicit Refresh uses only the admitted saved Go key for GET
 inference request, credential refresh/export, redirect, ambient login or billing
 fallback is permitted. Validate private key custody before and after the bounded
 read. Existing profile, generation, browser-lease, coalescing, stale-cache,
-Disconnect and logout fences remain mandatory. Mounting reads cache only.
+Disconnect and logout fences remain mandatory. Opening the subscription panel requests fresh limits automatically, then refreshes every 10 seconds while mounted. Do not overlap requests; stop the timer and cancel in-flight browser requests on unmount or account/generation change. Keep manual Refresh icon-only.
 A stored Go key whose upstream authentication has not been checked may request
 this explicit read; successful quota does not silently change its auth state.
 
@@ -453,3 +453,7 @@ if refused, report the safe HTTP category as the live blocker, not a fabricated
 success. Inspect the implemented panel at wide and narrow widths using live
 provider data when available, retaining source versus live evidence separately.
 Source: https://opencode.ai/docs/console/go/#usage (checked 2026-11-26).
+
+### Selected automatic quota refresh (owner decision, 2026-11-26)
+
+For all supported connected providers, opening the subscription panel immediately requests fresh limits and repeats every 10 seconds while the panel remains mounted. This supersedes earlier explicit-only/cache-only mounting requirements in PC-09 and its provider amendments. Keep the manual Refresh icon without button text. Skip polling ticks while a check is in flight; clean up timers and browser requests when leaving the panel or changing account generation. Existing native admission, zero-inference, lifecycle, single-writer and stale-data protections remain mandatory. Failures remain visible and do not fabricate allowance or start authentication. Verify initial automatic loading, ten-second repetition, no overlapping checks and cleanup on leaving.
