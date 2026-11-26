@@ -457,3 +457,9 @@ Source: https://opencode.ai/docs/console/go/#usage (checked 2026-11-26).
 ### Selected automatic quota refresh (owner decision, 2026-11-26)
 
 For all supported connected providers, opening the subscription panel immediately requests fresh limits and repeats every 10 seconds while the panel remains mounted. This supersedes earlier explicit-only/cache-only mounting requirements in PC-09 and its provider amendments. Keep the manual Refresh icon without button text. Skip polling ticks while a check is in flight; clean up timers and browser requests when leaving the panel or changing account generation. Existing native admission, zero-inference, lifecycle, single-writer and stale-data protections remain mandatory. Failures remain visible and do not fabricate allowance or start authentication. Verify initial automatic loading, ten-second repetition, no overlapping checks and cleanup on leaving.
+
+### OpenCode chat usage command (selected 2026-11-26)
+
+Expose `/usage`, matching OpenCode's native TUI View usage command name. Laomedo handles it as a local UI operation: show the same subscription limits panel for the exact account and generation selected by the chat. It must not create a conversation, dispatch a model message or pretend to execute a native ACP slash command. Allow use before the first model response. The profile-owned quota route enforces the authenticated owner, same-origin cookie lease and generation fencing. Closing the dialog stops polling; account/owner selection changes close it. No purchases, billing changes or alternate credential source are implied.
+
+Go quota HTTP requests identify the client with a Laomedo User-Agent. Live comparison confirmed a generic Python User-Agent can receive403 while the same key succeeds with Laomedo identification;403 alone does not prove a subscription is inactive.
