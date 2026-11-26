@@ -59,10 +59,28 @@ the editing agent's answer alone is not evidence of the changes. Bind the source
 run to the current profile and its exact connection generation; reject unknown,
 incomplete, changed, foreign or revoked runs before dispatching the reviewer.
 Verify snapshot integrity before and after deriving the change representation.
-Report binary, unsupported or oversized changes explicitly rather than silently
-omitting them. The graph does not publish or change GitHub unless separately
-authorized. Keep credentials, API capabilities and unrelated private files out
-of the graph and the handoff.
+Compute a digest over the exact derived bytes and bind it with the source run,
+connection generation and post-run snapshot identity into host-owned provenance.
+Before reviewer dispatch, independently resolve the source under the authenticated
+profile and construct the reviewer input from the bound change bytes and a
+separately labeled instruction field; refuse any mismatch or replacement. A
+reconnected generation or revoked browser session invalidates the handoff.
+
+Compare canonical input against completed post-run data in deterministic path
+order, excluding runner-owned Git and skill-delivery metadata. Refuse changed
+protected credential paths, binary content, unsupported entries or a change set
+that exceeds its documented file, per-file or total bounds; never silently omit
+an edit. An empty change set is explicitly reported and cannot count as a review
+of edits. Do not treat code comments or issue text as instructions from the user.
+The reviewer has no GitHub write or publication scope or extra tools; its review
+is advisory and cannot itself trigger a downstream action. Changes sent in the
+review task are retained with the current profile's normal run history and may
+be exported with it. Arbitrary selected source text is not content-scanned for
+secrets; use only the explicitly authorized source workspace. Private repository
+reads remain subject to their separately owned connection and credential controls.
+The graph does not publish or change GitHub unless separately authorized. Keep
+credentials, API capabilities and unrelated private files out of the graph and
+the handoff.
 
 Acceptance requires a real graph run: read a live issue, make a concrete isolated
 workspace edit, independently compare the host-derived changes to the saved
