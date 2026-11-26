@@ -166,6 +166,12 @@ skill controls on the Agent. Legacy request IDs and inline skill overrides are i
 Fresh/start without Skill References runs the task without skills; supplied
 references must be pinned and valid. Older components or runners may still report
 `skill_reference_required_use_skill_node`; update them to use optional references.
+The Claude node also offers an optional **Verified Changes** input for a completed
+Agent Run Reference. When connected, the host constructs the review input from
+the source run's verified changes and the separately supplied Task instructions,
+under the [verified handoff contract](handoffs.md#reviewing-actual-changes-across-agents).
+This is a fresh review, not a resume. Unsafe, stale or empty changes stop before
+the review starts; no write or publication authority is implied.
 Update an old component to refresh its Inspector metadata; older Inspector schemas
 may still list obsolete fields, but changing them has no execution effect.
 The canvas suppresses those fields even in older saved schemas.
