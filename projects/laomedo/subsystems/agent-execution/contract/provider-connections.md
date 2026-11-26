@@ -465,3 +465,5 @@ Expose `/usage` as a clearly Laomedo-owned quota action, without claiming the in
 Go quota HTTP requests identify the client with a Laomedo User-Agent. Live comparison confirmed a generic Python User-Agent can receive403 while the same key succeeds with Laomedo identification;403 alone does not prove a subscription is inactive.
 
 Automatic polling explicitly applies to Codex and Claude as well as Go. Each eligible visible panel may trigger its existing native zero-turn quota process after the shared 60-second freshness cache expires. Account execution/single-writer fences take precedence: a busy account reports unavailable/busy rather than stealing a running session. This owner-selected behavior supersedes prior mount-time process prohibitions in PC-09 and the Claude amendment.
+
+OpenCode chat usage shows one remaining-allowance bar per reported window in the shared command-result renderer. Display reset text slightly smaller than the window label and percentage. Unknown allowance has no fabricated bar; retained failure snapshots remain labelled last known. No reload or close controls are added.
