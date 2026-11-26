@@ -49,6 +49,28 @@ content-scanned for secrets; callers remain responsible for choosing task conten
 Cross-provider file transfer fails closed without an explicitly audited shared
 artifact store. Sequential shared workspaces remain unsupported and are rejected.
 
+### Reviewing actual changes across agents
+
+For an issue-to-edit-to-review graph, issue input must be a live read from the
+authorized GitHub issue owner. The editing agent works in its isolated run
+workspace. The reviewing agent receives a host-derived, bounded representation of
+the changes between the run's verified source and completed post-run snapshot;
+the editing agent's answer alone is not evidence of the changes. Bind the source
+run to the current profile and its exact connection generation; reject unknown,
+incomplete, changed, foreign or revoked runs before dispatching the reviewer.
+Verify snapshot integrity before and after deriving the change representation.
+Report binary, unsupported or oversized changes explicitly rather than silently
+omitting them. The graph does not publish or change GitHub unless separately
+authorized. Keep credentials, API capabilities and unrelated private files out
+of the graph and the handoff.
+
+Acceptance requires a real graph run: read a live issue, make a concrete isolated
+workspace edit, independently compare the host-derived changes to the saved
+snapshots, and verify that the reviewing agent received and reviewed those changes.
+Test wrong-profile, tampered snapshot, incomplete run and revoked connection
+refusals. A fixture or an agent's own description of its edits is not end-to-end
+acceptance.
+
 ## Execution limits and stopping
 
 The controller requires positive maximum iterations, aggregate submitted-turn
