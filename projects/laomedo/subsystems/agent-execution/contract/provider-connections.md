@@ -240,15 +240,14 @@ P13/P14 and Q0-Q5 in the owning Draw.io define the Subscription agents allowance
 surface. Graphs keep separate harness preferences; allowance belongs to each
 current-profile saved connection, never to a run or its token/cost counters.
 
-Opening the tab reads only cached observations. Each account has an explicitly
+Opening the tab requests fresh observations and polls every 10 seconds while mounted, for all supported providers, subject to account admission and single-writer availability. Codex may start a temporary native app-server and Claude may start a zero-turn CLI usage read; no model turn is submitted. The API retains a cache-only read operation for callers that request it. Each account has an explicitly
 labelled Refresh limits icon. It invokes only the selected provider's bounded
 read operation; no prompt, new thread, model probe, login, alternate account or
 ambient host credential import is permitted. Codex admits only
 `account/rateLimits/read`, with empty parameters, before creating a native
 session. The existing connection-owned controller and exact cleanup receipts
 remain authoritative; discovery/active-work conflicts report temporary
-unavailability instead of weakening admission. OpenCode reports unavailable until a supported account-scoped zero-turn quota
-operation is established. The selected Claude observation below supersedes the
+unavailability instead of weakening admission. OpenCode Go uses the supported account-scoped zero-turn quota operation in the Go amendment below; other unsupported OpenCode account methods report unavailable. The selected Claude observation below supersedes the
 earlier Claude-unavailable state and reuses the same P13-P16 surface.
 
 Preserve primary/secondary windows and every returned metered bucket. Prefer
@@ -302,15 +301,15 @@ with its provider-reported value; no currency is invented. Unlimited credits and
 No credits are distinct from unknown credit details; no credit field implies no
 credit line. Text fields are bounded safe fields, not unfiltered raw responses.
 
-Explicit Refresh may start a temporary native app-server process in the existing
+Automatic or manual refresh may start a temporary native app-server process in the existing
 connection-owned isolation boundary. It sends only initialization and the named
 rate-limit read, never session/new, thread/start or prompt. Reuse the admitted
 zero-turn discovery lifecycle, with native request budget30seconds, initialization
 budget45seconds, existing bounded image/startup budgets and exact native teardown.
 The temporary controller is closed before publishing the observation. Startup,
 protocol or cleanup failure becomes unavailable/stale, not a successful read;
-client timeout/abort never authorizes replay or another account. No persistent
-model task or credential-bearing process is created by mounting the panel.
+client timeout/abort never authorizes replay or another account. Mounting the panel may create a temporary admitted quota reader, but never a persistent
+model task. This is subject to the same single-writer and teardown requirements.
 
 Both parent PRs (#426 specification, Laomedo#285 implementation) are explicit
 integration/merge gates. Their incomplete review or live acceptance is not waived
@@ -378,7 +377,7 @@ Use the existing connection-owned native profile and the pinned official Claude
 CLI2.1.310. Do not introduce a second sign-in, inspect token-file contents or
 call a quota endpoint with exported OAuth credentials.
 
-Explicit Refresh sends only native initialize and the structured `get_usage`
+Automatic or manual refresh sends only native initialize and the structured `get_usage`
 control request with `skip_behaviors: true`. The latter suppresses scans of local
 transcripts and their behavioral summaries. No user message, model turn, tool,
 resumed conversation or persisted model session is submitted. This is a pinned
@@ -412,3 +411,63 @@ the cause is unestablished, so no working Go allowance read is claimed.
 A later Go implementation must preserve all three reported windows; the current
 two-window bucket contract must be deliberately extended or explicitly mapped.
 Source: https://opencode.ai/docs/console/go/#usage
+
+
+## Selected OpenCode Go allowance read (#445 / Laomedo #313)
+
+Owner selected implementation on 2026-11-26. This supersedes the earlier
+OpenCode-unavailable/feasibility-only projection for saved Go key connections.
+P18/P19 and S12 in the workshop define its reuse of the existing allowance panel.
+
+An explicit Refresh uses only the admitted saved Go key for GET
+`https://opencode.ai/inference/go/v1/usage`. No second connection, browser login,
+inference request, credential refresh/export, redirect, ambient login or billing
+fallback is permitted. Validate private key custody before and after the bounded
+read. Existing profile, generation, browser-lease, coalescing, stale-cache,
+Disconnect and logout fences remain mandatory. Opening the subscription panel requests fresh limits automatically, then refreshes every 10 seconds while mounted. Do not overlap requests; stop the timer and cancel in-flight browser requests on unmount or account/generation change. Keep manual Refresh icon-only.
+A stored Go key whose upstream authentication has not been checked may request
+this explicit read; successful quota does not silently change its auth state.
+
+Preserve all reported meters in provider order: rolling five-hour as primary,
+weekly as secondary, and calendar monthly as monthly. Extend the shared window
+kind with monthly and its per-bucket maximum from two to three on both wire
+boundaries. Monthly has no fixed minute duration and is labelled Monthly window;
+never infer thirty days or reset times. Each meter shows reported used percentage
+as remaining allowance and its timezone-aware reported reset. Missing meters
+remain absent, invalid scalar values remain unknown, invalid structural data
+fails safely. No model/cost/credit values substitute for subscription allowance.
+
+Use one bounded HTTPS GET per observation (15-second total process deadline, at most 64 KiB), with no internal retry. The owner-selected panel polling below may request another observation after a failure. HTTP401 means the key was not accepted; HTTP403 means this key cannot
+access Go limits, without asserting which subscription/workspace cause applies;
+HTTP429 asks the user to try later. Other HTTP/transport/protocol errors are a
+failed refresh. Do not display raw upstream messages, keys or request headers.
+These failures preserve the saved connection and any previous snapshot, explicitly
+marked stale; they never imply zero allowance or successful authentication.
+
+Acceptance: verify all three meters, unknown/missing fields, bounded reads,
+redirect refusal, HTTP failure categories and key-change rejection in meaningful
+deterministic tests. Verify the actual saved Go connection with zero inference;
+if refused, report the safe HTTP category as the live blocker, not a fabricated
+success. Inspect the implemented panel at wide and narrow widths using live
+provider data when available, retaining source versus live evidence separately.
+Source: https://opencode.ai/docs/console/go/#usage (checked 2026-11-26).
+
+### Selected automatic quota refresh (owner decision, 2026-11-26)
+
+For all supported connected providers, opening the subscription panel immediately requests fresh limits and repeats every 10 seconds while the panel remains mounted. This supersedes earlier explicit-only/cache-only mounting requirements in PC-09 and its provider amendments. Keep the manual Refresh icon without button text. Skip polling ticks while a check is in flight; clean up timers and browser requests when leaving the panel or changing account generation. Existing native admission, zero-inference, lifecycle, single-writer and stale-data protections remain mandatory. Failures remain visible and do not fabricate allowance or start authentication. Owner decision (2026-11-27): continue panel polling every 10 seconds after failures, including HTTP429, while mounted; polling does not wait for a manual Refresh. Each tick remains subject to the existing freshness cache, failure cooldown, account admission and no-overlap protections. Leaving the panel stops polling and preserves the last snapshot. This authorizes new scheduled observations, not retries inside an individual bounded read. Verify initial automatic loading, ten-second repetition, no overlapping checks and cleanup on leaving.
+
+### OpenCode chat usage command (selected 2026-11-26)
+
+Expose `/usage` as a clearly Laomedo-owned quota action, without claiming the installed OpenCode client provides a native slash command. Laomedo handles it as a local UI operation: show an inline command usage result in the transcript for the exact account and generation selected by the chat, following the existing provider status presentation. Identify it as a Laomedo action; do not open a dialog or claim native command execution. It must not create a conversation, dispatch a model message or pretend to execute a native ACP slash command. Allow use before the first model response. The profile-owned quota route enforces the authenticated owner, same-origin cookie lease and generation fencing. The chat command performs one read and renders its result using the existing Claude usage renderer without refresh or close controls, Settings cards or automatic polling. Re-invoking /usage reads another snapshot. Account/owner selection changes clear the result. No purchases, billing changes or alternate credential source are implied.
+
+Go quota HTTP requests identify the client with a Laomedo User-Agent. Live comparison confirmed a generic Python User-Agent can receive403 while the same key succeeds with Laomedo identification;403 alone does not prove a subscription is inactive.
+
+Automatic polling explicitly applies to Codex and Claude as well as Go. Each eligible visible panel may trigger its existing native zero-turn quota process after the shared 60-second freshness cache expires. Account execution/single-writer fences take precedence: a busy account reports unavailable/busy rather than stealing a running session. This owner-selected behavior supersedes prior mount-time process prohibitions in PC-09 and the Claude amendment.
+
+OpenCode chat usage shows one remaining-allowance bar per reported window in the shared command-result renderer. Display reset text slightly smaller than the window label and percentage. Unknown allowance has no fabricated bar; retained failure snapshots remain labelled last known. No reload or close controls are added.
+
+### In-process quota capability
+
+The optional Agent quota capability is `quota: BaseSubscriptionQuota | None`; absence does not masquerade as an implemented operation that raises unavailable. `BaseSubscriptionQuota.read() -> SubscriptionSnapshot` is the abstract owned-provider contract in the existing extension-base module. Codex, Claude and OpenCode implement it in their quota modules. Composition metadata selects supported credential methods without runtime construction. The shared controller consumes only the contract under the existing account/generation admission fence.
+
+Readers use only admitted saved credentials, submit no model turn, bound native work and finish exact cleanup before returning. Unknown fields stay unknown; stable authentication/busy/transport/cleanup errors propagate without publishing successful data. Codex's provider-local adapter preserves its async discovery and credential lifecycle; its native extension decoding stays in the runtime. OpenCode retains its execution lock around the whole read, releasing on failure. No wire schemas, persisted connection identities or polling policies change in this structural refactor.
