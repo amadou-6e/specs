@@ -218,6 +218,16 @@ than assuming an empty directory is admissible under every provider.
 
 ## Review questions and known gaps
 
+### AS-311 authoring and observation extension
+
+Specification #443 and Laomedo #311 extend the existing authoring MCP. A4's
+AC311 rows show resolution/readiness diagnostics, observed run outputs and
+requested/settled cancellation in the existing chat tool/result language. They
+add no parallel editor or automatic model execution. Dynamic choices come from
+audited resource owners, not component Python hooks. Exact supported coverage,
+resolution lifetime, validation, binding and result-release rules belong to
+AS-311 in the contract. No final implementation or visual acceptance is claimed.
+
 The initial source checks and implementation acceptance are summarized in
 [validation](../validation.md#application-assistant-implementation-2026-11-17).
 The selected chat controls, per-turn configuration, retry identity and keyboard

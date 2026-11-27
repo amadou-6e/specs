@@ -49,6 +49,62 @@ content-scanned for secrets; callers remain responsible for choosing task conten
 Cross-provider file transfer fails closed without an explicitly audited shared
 artifact store. Sequential shared workspaces remain unsupported and are rejected.
 
+### Reviewing actual changes across agents
+
+For an issue-to-edit-to-review graph, issue input must be a live read from the
+authorized GitHub issue owner. The editing agent works in its isolated run
+workspace. The reviewing agent receives a host-derived, bounded representation of
+the changes between the run's verified source and completed post-run snapshot;
+the editing agent's answer alone is not evidence of the changes. Bind the source
+run to the current profile and its exact connection generation; reject unknown,
+incomplete, changed, foreign or revoked runs before dispatching the reviewer.
+Verify snapshot integrity before and after deriving the change representation.
+Compute a digest over the exact derived bytes and bind it with the source run,
+connection generation and post-run snapshot identity into host-owned provenance.
+Before reviewer dispatch, independently resolve the source under the authenticated
+profile and construct the reviewer input from the bound change bytes and a
+separately labeled instruction field; refuse any mismatch or replacement. A
+reconnected generation or revoked browser session invalidates the handoff.
+
+Compare canonical input against completed post-run data in deterministic path
+order, excluding runner-owned Git and skill-delivery metadata. Refuse changed
+protected credential paths, binary content, unsupported entries or a change set
+that exceeds its documented file, per-file or total bounds; never silently omit
+an edit. An empty change set is explicitly reported and cannot count as a review
+of edits. Initial support refuses source runs with imported artifacts and directory
+or file-mode changes; snapshot hashes cover names and bytes, not file modes.
+Do not treat code comments or issue text as instructions from the user.
+The reviewer has no GitHub write or publication scope or extra tools; its review
+is advisory and cannot itself trigger a downstream action. Changes sent in the
+review task are retained with the current profile's normal run history and may
+be exported with it. Arbitrary selected source text is not content-scanned for
+secrets; use only the explicitly authorized source workspace. Private repository
+reads remain subject to their separately owned connection and credential controls.
+The graph does not publish or change GitHub unless separately authorized. Keep
+credentials, API capabilities and unrelated private files out of the graph and
+the handoff.
+
+The graph runtime must refuse component code outside the trusted catalog, and
+the authority and private run state must remain isolated even if that refusal
+fails. The boundary must hold against arbitrary Python executing anywhere in
+the graph runtime, including other graphs, concurrent runs, component editing
+and validation. Do not expose retained patches, runner credentials or grant
+issuance through objects available in that code's process. A separate process
+under the same unrestricted operating-system identity is not sufficient isolation.
+Refusal tests must cover another profile, relabelled or custom code, nested flows,
+component editing and validation, revoked sessions, unrelated source runs, and
+attempts to obtain or replay a grant. The authorized review output may quote the
+patch to the same owner under the normal run-history policy.
+Until that boundary is verified, the handoff is not available to saved-account
+graph runs, even if its honest-path tests pass.
+
+Acceptance requires a real graph run: read a live issue, make a concrete isolated
+workspace edit, independently compare the host-derived changes to the saved
+snapshots, and verify that the reviewing agent received and reviewed those changes.
+Test wrong-profile, tampered snapshot, incomplete run and revoked connection
+refusals. A fixture or an agent's own description of its edits is not end-to-end
+acceptance.
+
 ## Execution limits and stopping
 
 The controller requires positive maximum iterations, aggregate submitted-turn

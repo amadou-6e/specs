@@ -11,6 +11,114 @@ related: []
 
 # Persistent application assistant and Laomedo MCP
 
+## AS-311 — Complete supported flow configuration and observation
+
+Owner-selected implementation: Laomedo #311; specification #443. This extends
+the delivered draft/edit/run tools, rather than introducing another execution
+engine. Subscription quota work is outside this feature.
+
+The assistant must discover, configure, validate, save, request execution,
+observe and repair a supported flow without a human completing its configuration
+in the editor. A static demonstration alone does not establish this capability.
+The editable A4 workshop's AC311 states own the interaction outcomes below.
+
+### Supported configuration inventory
+
+Discovery identifies the exact component/schema revision and each field's kind,
+dependencies, configurability, safe default provenance and blocked reason.
+Existing visible primitive static fields remain supported. The initial audited
+dynamic families are Laomedo Codex/Claude/OpenCode Agent account/model/effort,
+local imported Skill identity/revision, and registered MCP selections where the
+registration owner provides authorized metadata. Schema-declared structured
+values require explicit field-specific support. Unknown hooks, custom code,
+unmediated endpoints/host paths and secret values remain unavailable, visibly
+reported during discovery. They must not be silently cleared and called ready.
+Private GitHub node configuration retains its separate PR287 dependency.
+
+`resolve_node_configuration` accepts an installed component and candidate values,
+plus the expected schema revision when continuing a candidate. It returns safe
+normalized values, dependent choices, remaining requirements and an expiring
+resolution identity. Resolution is bound to the authenticated owner/conversation,
+browser authority, component/schema, values and resource generations; the identity
+does not grant permission. Revalidate on save, apply and dispatch. No account
+fallback or model-supplied credentials. Audited resolvers call existing resource
+owners; they never invoke arbitrary component update/build hooks. Zero-turn model
+catalogue discovery may start its normal bounded native discovery, but submits no
+model task and never changes the selected connection. Report that operation's
+availability honestly; validation itself performs no native discovery.
+
+For existing nodes, incremental edits retain unmentioned values and trusted code
+exactly. For new nodes, retain only explicitly supported, schema-valid nonsecret
+defaults. Cached connection selections, private references, executable values and
+host configuration are not defaults to copy. Missing required bindings remain
+not ready. Ordinary authorized read grants cover resource discovery; missing
+authority is an explicit refusal, not a new automatic grant.
+
+### Readiness, saving and execution
+
+`validate_workflow` supports a declarative candidate or an exact owned saved
+revision and returns structured node/field/edge diagnostics, unresolved resources
+and readiness. Structural and configuration checks never build or execute graph
+nodes or call their refresh hooks. Resource bindings are checked through their
+owners without credential release. Saving an incomplete draft still requires
+explicit `allow_incomplete`; it does not constitute runnable readiness.
+
+Extend existing draft/edit requests with resolution references and existing run
+proposals with typed runtime node inputs and output selection where the pinned
+execution API supports them. All semantics participate in existing action digest,
+revision and human consent checks. Never expose a generic tweaks/HTTP/code tool.
+Late schema, resource generation or graph changes refuse rather than overwrite.
+The exact approved graph revision is the executed snapshot.
+
+Runs admitted through existing conversation consent retain only the original
+verified browser authentication and provider-session metadata, bound to the
+active owner, conversation, message and browser authority. A private MCP bearer
+never becomes browser authentication. Discard that capture on turn release,
+session revocation and shutdown; recheck current session and resource authority
+before dispatch. Do not carry unrelated chat/request context into graph execution.
+
+### Run evidence and cancellation
+
+`get_workflow_run` selects this conversation's approved action, with optional
+node/result pagination. Return authoritative lifecycle, output availability,
+bounded typed captured outputs and safe structured diagnostics. Owner decision
+(2026-11-25): cancelled runs retain available node statuses and explicitly report
+output not captured; partial-output capture is outside this feature. A
+completed job without retained output is not a fabricated answer. Reuse existing
+Langflow execution records; retain any missing bridge result under the same owned
+database lifecycle, with bounded release and restart reconciliation. Do not
+expose raw errors, settings, templates, credentials or arbitrary nested runtime
+objects. Recheck current session/owner/resource authority at release.
+
+`cancel_workflow_run` affects only an exact owned previously approved run through
+the existing execution owner. It is idempotent and submits no new graph work.
+Owner decision (2026-11-25): the assistant may request cancellation of its own
+conversation's previously approved runs without another human approval. This
+does not grant cancellation authority over another conversation or owner.
+Distinguish requested cancellation, observed settlement and uncertain outcomes;
+cancelled is separate from failed. Chat Stop retains its existing scope. Never
+automatically replay a run or infer success from assistant prose.
+
+### Acceptance and evidence
+
+Maintain a supported capability inventory mapped to applicable checks. Real
+internal-agent MCP acceptance must create a new target graph, resolve dependent
+settings, save/reload, validate and run with an independently checked result;
+also edit an existing flow and diagnose/repair a controlled failure. Cover a
+pinned Skill/registered MCP path and an independently worded holdout. Source
+graphs may exist for edit/combine tests; no prebuilt target may masquerade as
+agent authoring. Verify no human editor save between agent save and execution.
+
+Concern-owned tests cover stale schema/options, foreign/revoked resources,
+conflicts, lost acknowledgements, duplicate operations, result release bounds,
+cancellation and restart. Negative cases assert no unauthorized dispatch or
+release; they do not require a run. Fixtures cannot establish real provider
+acceptance. Record exact revisions, approved live submission budget/accounting,
+tool receipts, saved/run identities, independent output oracle and actual editor
+render. Production must not depend on experiment drivers. Independent code,
+specification and actual UI review remain required before merge. No acceptance
+or safety certification is claimed by this draft.
+
 ## Native agents and slash commands â€” selected work, Laomedo #293
 
 AS-293 is an incomplete implementation target tracked by specs #435. The owner

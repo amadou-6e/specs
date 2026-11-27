@@ -112,6 +112,15 @@ code. New nodes use installed templates; secret/code/host-routing fields remain
 unwritable. Removing a node also removes its incident edges and the preview says so.
 Refuse locked/published/filesystem-managed flows under existing edit rules.
 
+An edit may explicitly reposition identified nodes using finite, bounded canvas
+coordinates. The proposal preview identifies every move and its destination;
+the full revision and ordinary edit approval apply. Reject unknown or duplicate
+node IDs and moves of nodes removed in the same proposal. A move preserves every
+other node property, connections and viewport. Read-only graph inspection exposes
+existing positions so the assistant can plan a layout. Position-only edits are
+edits, not renames. Newly created nodes keep their default layout until explicitly
+moved.
+
 The edit and successful action receipt commit atomically. The assistant refuses a changed base revision, and duplicate approval clicks
 cannot repeat an edit. Ordinary editor PATCH does not require an expected revision:
 an already-open editor can later overwrite the approved change. Both the pending

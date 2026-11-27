@@ -36,6 +36,13 @@ that its text was frozen at selection time.
   authorization binding and whether the selected issue is revalidated before
   dispatch. Timer/PR/Actions event launches are outside the first slice.
 
+For a host-configured public-repository demonstration, the Issue service may use
+an explicit anonymous, read-only transport scoped to one validated repository.
+It sends no account credential, refuses every write operation, and treats a
+private, inaccessible or rate-limited repository as unavailable. This mode does
+not provide saved-account or private-repository access, and does not replace
+their independently secured connection boundary.
+
 ## IF-12 — reviewed follow-up issue publication
 
 - **Provider / consumer:** [Results and artifacts](../../results-artifacts/contract/interfaces.md)

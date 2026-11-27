@@ -166,6 +166,24 @@ skill controls on the Agent. Legacy request IDs and inline skill overrides are i
 Fresh/start without Skill References runs the task without skills; supplied
 references must be pinned and valid. Older components or runners may still report
 `skill_reference_required_use_skill_node`; update them to use optional references.
+The Claude node also offers an optional **Verified Changes** input immediately
+below MCP Tools. Connect a completed graph Agent Run Reference from the same
+profile; it can belong to a different provider connection. The reference is
+untrusted: the host takes only its run identity and resolves status, snapshots,
+owner and current connection generation itself. The reviewing Claude connection
+must belong to that profile. The separately supplied Task instructions are
+required. The host constructs the review input under the
+[verified handoff contract](handoffs.md#reviewing-actual-changes-across-agents).
+
+Verified Changes requires fresh/start and refuses Prior Run, Skill References,
+MCP Tools and any write or publication capability before dispatch. Other operation
+combinations are refused as `verified_review_conflicting_inputs`. Unsafe, stale,
+incomplete, still-running or empty source changes create no reviewer run. The
+visible status distinguishes **No edits — review not performed**, a changed or
+revoked connection, and unsupported protected, binary, oversized, directory,
+mode or imported-artifact changes. Answer and Run Reference must not imply a
+completed review after refusal. Review task retention follows the same-profile
+run-history rule in the handoff contract.
 Update an old component to refresh its Inspector metadata; older Inspector schemas
 may still list obsolete fields, but changing them has no execution effect.
 The canvas suppresses those fields even in older saved schemas.
