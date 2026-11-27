@@ -438,8 +438,7 @@ as remaining allowance and its timezone-aware reported reset. Missing meters
 remain absent, invalid scalar values remain unknown, invalid structural data
 fails safely. No model/cost/credit values substitute for subscription allowance.
 
-Use one bounded HTTPS GET (15-second total process deadline, at most 64 KiB) and no automatic
-retry. HTTP401 means the key was not accepted; HTTP403 means this key cannot
+Use one bounded HTTPS GET per observation (15-second total process deadline, at most 64 KiB), with no internal retry. The owner-selected panel polling below may request another observation after a failure. HTTP401 means the key was not accepted; HTTP403 means this key cannot
 access Go limits, without asserting which subscription/workspace cause applies;
 HTTP429 asks the user to try later. Other HTTP/transport/protocol errors are a
 failed refresh. Do not display raw upstream messages, keys or request headers.
@@ -456,7 +455,7 @@ Source: https://opencode.ai/docs/console/go/#usage (checked 2026-11-26).
 
 ### Selected automatic quota refresh (owner decision, 2026-11-26)
 
-For all supported connected providers, opening the subscription panel immediately requests fresh limits and repeats every 10 seconds while the panel remains mounted. This supersedes earlier explicit-only/cache-only mounting requirements in PC-09 and its provider amendments. Keep the manual Refresh icon without button text. Skip polling ticks while a check is in flight; clean up timers and browser requests when leaving the panel or changing account generation. Existing native admission, zero-inference, lifecycle, single-writer and stale-data protections remain mandatory. Failures remain visible and do not fabricate allowance or start authentication. Verify initial automatic loading, ten-second repetition, no overlapping checks and cleanup on leaving.
+For all supported connected providers, opening the subscription panel immediately requests fresh limits and repeats every 10 seconds while the panel remains mounted. This supersedes earlier explicit-only/cache-only mounting requirements in PC-09 and its provider amendments. Keep the manual Refresh icon without button text. Skip polling ticks while a check is in flight; clean up timers and browser requests when leaving the panel or changing account generation. Existing native admission, zero-inference, lifecycle, single-writer and stale-data protections remain mandatory. Failures remain visible and do not fabricate allowance or start authentication. Owner decision (2026-11-27): continue panel polling every 10 seconds after failures, including HTTP429, while mounted; do not pause until manual Refresh. Each tick remains subject to the existing freshness cache, failure cooldown, account admission and no-overlap protections. Leaving the panel stops polling and preserves the last snapshot. This authorizes new scheduled observations, not retries inside an individual bounded read. Verify initial automatic loading, ten-second repetition, no overlapping checks and cleanup on leaving.
 
 ### OpenCode chat usage command (selected 2026-11-26)
 
