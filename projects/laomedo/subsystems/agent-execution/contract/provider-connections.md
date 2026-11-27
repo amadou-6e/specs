@@ -247,8 +247,7 @@ ambient host credential import is permitted. Codex admits only
 `account/rateLimits/read`, with empty parameters, before creating a native
 session. The existing connection-owned controller and exact cleanup receipts
 remain authoritative; discovery/active-work conflicts report temporary
-unavailability instead of weakening admission. OpenCode reports unavailable until a supported account-scoped zero-turn quota
-operation is established. The selected Claude observation below supersedes the
+unavailability instead of weakening admission. OpenCode Go uses the supported account-scoped zero-turn quota operation in the Go amendment below; other unsupported OpenCode account methods report unavailable. The selected Claude observation below supersedes the
 earlier Claude-unavailable state and reuses the same P13-P16 surface.
 
 Preserve primary/secondary windows and every returned metered bucket. Prefer
@@ -455,7 +454,7 @@ Source: https://opencode.ai/docs/console/go/#usage (checked 2026-11-26).
 
 ### Selected automatic quota refresh (owner decision, 2026-11-26)
 
-For all supported connected providers, opening the subscription panel immediately requests fresh limits and repeats every 10 seconds while the panel remains mounted. This supersedes earlier explicit-only/cache-only mounting requirements in PC-09 and its provider amendments. Keep the manual Refresh icon without button text. Skip polling ticks while a check is in flight; clean up timers and browser requests when leaving the panel or changing account generation. Existing native admission, zero-inference, lifecycle, single-writer and stale-data protections remain mandatory. Failures remain visible and do not fabricate allowance or start authentication. Owner decision (2026-11-27): continue panel polling every 10 seconds after failures, including HTTP429, while mounted; do not pause until manual Refresh. Each tick remains subject to the existing freshness cache, failure cooldown, account admission and no-overlap protections. Leaving the panel stops polling and preserves the last snapshot. This authorizes new scheduled observations, not retries inside an individual bounded read. Verify initial automatic loading, ten-second repetition, no overlapping checks and cleanup on leaving.
+For all supported connected providers, opening the subscription panel immediately requests fresh limits and repeats every 10 seconds while the panel remains mounted. This supersedes earlier explicit-only/cache-only mounting requirements in PC-09 and its provider amendments. Keep the manual Refresh icon without button text. Skip polling ticks while a check is in flight; clean up timers and browser requests when leaving the panel or changing account generation. Existing native admission, zero-inference, lifecycle, single-writer and stale-data protections remain mandatory. Failures remain visible and do not fabricate allowance or start authentication. Owner decision (2026-11-27): continue panel polling every 10 seconds after failures, including HTTP429, while mounted; polling does not wait for a manual Refresh. Each tick remains subject to the existing freshness cache, failure cooldown, account admission and no-overlap protections. Leaving the panel stops polling and preserves the last snapshot. This authorizes new scheduled observations, not retries inside an individual bounded read. Verify initial automatic loading, ten-second repetition, no overlapping checks and cleanup on leaving.
 
 ### OpenCode chat usage command (selected 2026-11-26)
 
